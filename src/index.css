@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;900&family=Oswald:wght@700;900&family=Montserrat:wght@700;900&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Times New Roman", "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-[#f1f5f9] text-[#1e293b] font-sans;
+  }
+}
+
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
+.medical-table {
+  font-family: var(--font-serif);
+}
+
+.alert-highlight {
+  @apply bg-yellow-100 text-red-600 font-bold px-1 rounded;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Custom styles for the blood draw order */
+.tube-blue { background-color: #3b82f6; }
+.tube-black-long { background-color: #1e293b; height: 120px; }
+.tube-red { background-color: #ef4444; }
+.tube-black { background-color: #0f172a; }
+.tube-purple { background-color: #a855f7; }
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s infinite;
+}
+
+/* --- RESPONSIVE OVERHAUL (User Request) --- */
+
+/* Fluid Typography for large titles */
+.fluid-title {
+  font-size: clamp(1.2rem, 5vw, 2.75rem) !important;
+  line-height: 1.1;
+}
+
+/* Media Queries for Mobile & Tablet (< 992px) */
+@media (max-width: 991.98px) {
+  /* Change flex containers to column where appropriate */
+  .flex-responsive {
+    flex-direction: column !important;
+  }
+
+  /* Sidebar behavior for navigation elements */
+  .sidebar-scrollable {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none; /* Firefox */
+  }
+  .sidebar-scrollable::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  /* Force tables and cards to be responsive */
+  table, .card-responsive {
+    max-width: 100% !important;
+    display: block !important;
+    overflow-x: auto !important;
+  }
+
+  /* Optimize medical images */
+  .medical-img-3d {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+  }
+}
