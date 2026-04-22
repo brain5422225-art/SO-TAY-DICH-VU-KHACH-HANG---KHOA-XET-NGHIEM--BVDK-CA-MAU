@@ -2997,10 +2997,17 @@ const KnowledgeCardPopup = ({
 // --- APP ---
 
 
+const STAFF_PASSWORD = "Xetnghiem2026"; // <--- BẠN CÓ THỂ THAY ĐỔI PASSWORD TẠI ĐÂY
+
+
 export default function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [darkMode, setDarkMode] = useState(false);
   const [activeTab, setActiveTab] = useState('patients'); // 'patients' | 'staff'
+  const [isStaffAuthenticated, setIsStaffAuthenticated] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
+  const [passwordError, setPasswordError] = useState(false);
   const [patientSubTab, setPatientSubTab] = useState('instructions'); // 'instructions' | 'tests'
   const [staffSubTab, setStaffSubTab] = useState<'order' | 'collect' | 'policy' | 'dictionary'>('order');
   const [selectedGroup, setSelectedGroup] = useState<null | typeof diseaseGroups[0]>(null);
@@ -3013,6 +3020,28 @@ export default function App() {
       test.group.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [searchTerm]);
+
+  const handleSetActiveTab = (tab: string) => {
+    if (tab === 'staff' && !isStaffAuthenticated) {
+      setShowPasswordModal(true);
+    } else {
+      setActiveTab(tab);
+    }
+  };
+
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passwordInput === STAFF_PASSWORD) {
+      setIsStaffAuthenticated(true);
+      setShowPasswordModal(false);
+      setActiveTab('staff');
+      setPasswordInput('');
+      setPasswordError(false);
+    } else {
+      setPasswordError(true);
+      setTimeout(() => setPasswordError(false), 2000);
+    }
+  };
 
   return (
     <div className={`min-h-screen transition-colors duration-500 relative ${darkMode ? 'dark bg-slate-900' : 'bg-slate-50'}`}>
@@ -3052,7 +3081,7 @@ export default function App() {
         })}
       </script>
 
-      <Header darkMode={darkMode} setDarkMode={setDarkMode} activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Header darkMode={darkMode} setDarkMode={setDarkMode} activeTab={activeTab} setActiveTab={handleSetActiveTab} />
 
       <main className="pt-8 pb-20">
         <AnimatePresence mode="wait">
@@ -3858,6 +3887,76 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Staff Password Modal */}
+      <AnimatePresence>
+        {showPasswordModal && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center px-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowPasswordModal(false)}
+              className="absolute inset-0 bg-slate-900/60 backdrop-blur-md"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-sm bg-white dark:bg-slate-800 rounded-[30px] sm:rounded-[40px] shadow-2xl p-8 sm:p-10 border-4 border-white mx-auto overflow-hidden"
+            >
+              <div className="text-center mb-8">
+                  <div className="w-20 h-20 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Lock className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-black text-slate-800 dark:text-white uppercase tracking-tighter">Yêu cầu bảo mật</h3>
+                  <p className="text-slate-500 dark:text-slate-400 mt-2 font-bold italic text-lg truncate px-2">Nhập PW để đăng nhập</p>
+              </div>
+              
+              <form onSubmit={handlePasswordSubmit} className="space-y-6">
+                  <div className="relative">
+                    <input 
+                        type="password"
+                        placeholder="Mật khẩu..."
+                        autoFocus
+                        className={`w-full px-6 py-5 rounded-3xl border-4 outline-none transition-all font-black text-center text-2xl tracking-widest ${passwordError ? 'border-red-500 bg-red-50 dark:bg-red-900/10' : 'border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 focus:border-blue-500'}`}
+                        value={passwordInput}
+                        onChange={(e) => {
+                            setPasswordInput(e.target.value);
+                            setPasswordError(false);
+                        }}
+                    />
+                    {passwordError && (
+                      <motion.p 
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-red-500 text-center font-black text-xs uppercase mt-2"
+                      >
+                        Mật khẩu không chính xác!
+                      </motion.p>
+                    )}
+                  </div>
+
+                  <button 
+                      type="submit"
+                      className="w-full py-5 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white rounded-3xl font-black text-xl transition-all shadow-xl active:scale-95 flex items-center justify-center gap-3"
+                  >
+                      <span>Vào hệ thống</span>
+                      <ArrowRight className="w-6 h-6" />
+                  </button>
+                  
+                  <button 
+                      type="button"
+                      onClick={() => setShowPasswordModal(false)}
+                      className="w-full py-2 text-slate-400 dark:text-slate-500 font-bold hover:text-slate-600 dark:hover:text-slate-300 transition-all uppercase text-sm tracking-widest"
+                  >
+                      Hủy bỏ
+                  </button>
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
