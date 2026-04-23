@@ -6,6 +6,8 @@ import {
   ShieldCheck, 
   AlertCircle, 
   ChevronRight, 
+  ChevronDown,
+  Filter,
   Clock, 
   Microscope, 
   Stethoscope, 
@@ -3013,13 +3015,26 @@ export default function App() {
   const [selectedGroup, setSelectedGroup] = useState<null | typeof diseaseGroups[0]>(null);
   const [selectedTest, setSelectedTest] = useState<null | LabTest>(null);
   const [selectedKnowledge, setSelectedKnowledge] = useState<null | TestKnowledge>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [showGroupFilter, setShowGroupFilter] = useState(false);
 
   const filteredTests = useMemo(() => {
-    return labTests.filter(test => 
+    let results = labTests.filter(test => 
       test.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
       test.group.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  }, [searchTerm]);
+
+    if (selectedCategory) {
+      results = results.filter(test => test.group === selectedCategory);
+    }
+
+    // Luôn sắp xếp Alpha B (theo tên) khi có chọn nhóm hoặc hiển thị tổng quát
+    return results.sort((a, b) => a.name.localeCompare(b.name, 'vi', { sensitivity: 'base' }));
+  }, [searchTerm, selectedCategory]);
+
+  const uniqueGroups = useMemo(() => {
+    return Array.from(new Set(labTests.map(t => t.group))).sort();
+  }, []);
 
   const handleSetActiveTab = (tab: string) => {
     if (tab === 'staff' && !isStaffAuthenticated) {
@@ -3572,15 +3587,82 @@ export default function App() {
                         <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-2 underline decoration-blue-500 decoration-4 underline-offset-8">Từ điển Xét nghiệm</h2>
                         <p className="text-slate-500 dark:text-slate-400 text-base sm:text-lg mt-2 sm:mt-4 font-serif italic">SOP & Dữ liệu tham chiếu chuẩn kỹ thuật.</p>
                       </div>
-                      <div className="relative w-full md:w-96">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
-                        <input 
-                          type="text" 
-                          placeholder="Tìm xét nghiệm..."
-                          className="w-full pl-12 pr-4 py-3 sm:py-4 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all shadow-sm text-sm sm:text-base"
-                          value={searchTerm}
-                          onChange={(e) => setSearchTerm(e.target.value)}
-                        />
+                      <div className="flex gap-2 w-full md:w-auto">
+                        <div className="relative flex-1 md:w-96">
+                          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
+                          <input 
+                            type="text" 
+                            placeholder="Tìm xét nghiệm..."
+                            className="w-full pl-12 pr-4 py-3 sm:py-4 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 dark:text-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all shadow-sm text-sm sm:text-base"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                          />
+                        </div>
+                        {/* Mobile Filter Button toggle */}
+                        <div className="lg:hidden relative">
+                           <button 
+                            onClick={() => setShowGroupFilter(!showGroupFilter)}
+                            className={`h-full px-4 rounded-xl border-2 transition-all flex items-center justify-center ${selectedCategory ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-500/30' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-500'}`}
+                           >
+                              <Filter className="w-5 h-5" />
+                           </button>
+
+                           <AnimatePresence>
+                             {showGroupFilter && (
+                               <>
+                                 <div className="fixed inset-0 z-40 bg-transparent" onClick={() => setShowGroupFilter(false)} />
+                                 <motion.div 
+                                   initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                   animate={{ opacity: 1, y: 0, scale: 1 }}
+                                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                   className="absolute top-full right-0 mt-2 z-50 bg-white dark:bg-slate-800 rounded-[24px] shadow-2xl border-4 border-white dark:border-slate-700 overflow-hidden min-w-[280px] text-slate-800 dark:text-white"
+                                 >
+                                   <div className="p-3 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 flex items-center justify-between">
+                                      <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Chọn nhóm lọc</span>
+                                   </div>
+                                   <div className="max-h-80 overflow-y-auto p-2 space-y-1">
+                                      <button 
+                                        onClick={() => { setSelectedCategory(null); setShowGroupFilter(false); }}
+                                        className={`w-full text-center px-5 py-4 rounded-xl text-sm font-black transition-all ${
+                                          !selectedCategory 
+                                            ? 'bg-blue-600 text-white shadow-md' 
+                                            : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
+                                        }`}
+                                      >
+                                        --- TẤT CẢ XÉT NGHIỆM ---
+                                      </button>
+                                      {uniqueGroups.map(group => {
+                                        const g = group.toLowerCase();
+                                        const colorClass = 
+                                          g === 'sinh hóa' ? 'bg-blue-100 text-blue-700 border-blue-200' :
+                                          g === 'huyết học' ? 'bg-purple-100 text-purple-700 border-purple-200' :
+                                          g === 'miễn dịch' ? 'bg-orange-100 text-orange-700 border-orange-200' :
+                                          g === 'đông máu' ? 'bg-red-100 text-red-700 border-red-200' :
+                                          g === 'vi sinh' ? 'bg-emerald-100 text-emerald-700 border-emerald-200' :
+                                          g === 'nước tiểu & dịch' ? 'bg-cyan-100 text-cyan-700 border-cyan-200' :
+                                          g === 'truyền máu' ? 'bg-rose-100 text-rose-700 border-rose-200' :
+                                          'bg-slate-100 text-slate-700 border-slate-200';
+
+                                        return (
+                                          <button 
+                                            key={group}
+                                            onClick={() => { setSelectedCategory(group); setShowGroupFilter(false); }}
+                                            className={`w-full text-left px-5 py-4 rounded-xl text-sm font-black transition-all border ${
+                                              selectedCategory === group 
+                                                ? 'bg-blue-600 text-white border-blue-500 shadow-md' 
+                                                : `${colorClass} dark:opacity-90`
+                                            }`}
+                                          >
+                                            {group.toUpperCase()}
+                                          </button>
+                                        );
+                                      })}
+                                   </div>
+                                 </motion.div>
+                               </>
+                             )}
+                           </AnimatePresence>
+                        </div>
                       </div>
                     </div>
 
@@ -3596,7 +3678,77 @@ export default function App() {
                                   Tên Xét nghiệm
                                 </div>
                               </th>
-                              <th className="px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-black uppercase tracking-wider text-center">PHÂN LOẠI</th>
+                              <th className="px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-black uppercase tracking-wider text-center relative">
+                                <button 
+                                  onClick={() => setShowGroupFilter(!showGroupFilter)}
+                                  className={`w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl transition-all border-2 font-black shadow-lg ${
+                                    selectedCategory 
+                                      ? 'bg-blue-500 text-white border-blue-400 shadow-blue-500/30' 
+                                      : 'bg-cyan-400 text-blue-950 border-cyan-300 hover:bg-cyan-300 shadow-cyan-400/40 hover:scale-[1.02] active:scale-95'
+                                  }`}
+                                >
+                                  <Filter className="w-5 h-5 hidden sm:block" />
+                                  <span>{selectedCategory ? selectedCategory : 'PHÂN LOẠI'}</span>
+                                  <ChevronDown className={`w-5 h-5 transition-transform ${showGroupFilter ? 'rotate-180' : ''}`} />
+                                </button>
+
+                                <AnimatePresence>
+                                  {showGroupFilter && (
+                                    <>
+                                      <div className="fixed inset-0 z-40 bg-transparent" onClick={() => setShowGroupFilter(false)} />
+                                      <motion.div 
+                                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                        className="absolute top-full left-0 mt-3 z-50 bg-white dark:bg-slate-800 rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.3)] border-4 border-white dark:border-slate-700 overflow-hidden min-w-[280px] text-slate-800 dark:text-white"
+                                      >
+                                        <div className="p-3 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between">
+                                          <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 pl-2">Lọc theo nhóm chuyên môn</span>
+                                          <Filter className="w-3 h-3 text-slate-300" />
+                                        </div>
+                                        <div className="max-h-80 overflow-y-auto p-2 space-y-1">
+                                          <button 
+                                            onClick={() => { setSelectedCategory(null); setShowGroupFilter(false); }}
+                                            className={`w-full text-center px-5 py-3 rounded-xl text-sm font-black transition-all ${
+                                              !selectedCategory 
+                                                ? 'bg-blue-600 text-white shadow-md' 
+                                                : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-900/20'
+                                            }`}
+                                          >
+                                            --- TẤT CẢ XÉT NGHIỆM ---
+                                          </button>
+                                          {uniqueGroups.map(group => {
+                                            const g = group.toLowerCase();
+                                            const colorClass = 
+                                              g === 'sinh hóa' ? 'bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-200' :
+                                              g === 'huyết học' ? 'bg-purple-100 text-purple-700 border-purple-200 hover:bg-purple-200' :
+                                              g === 'miễn dịch' ? 'bg-orange-100 text-orange-700 border-orange-200 hover:bg-orange-200' :
+                                              g === 'đông máu' ? 'bg-red-100 text-red-700 border-red-200 hover:bg-red-200' :
+                                              g === 'vi sinh' ? 'bg-emerald-100 text-emerald-700 border-emerald-200 hover:bg-emerald-200' :
+                                              g === 'nước tiểu & dịch' ? 'bg-cyan-100 text-cyan-700 border-cyan-200 hover:bg-cyan-200' :
+                                              g === 'truyền máu' ? 'bg-rose-100 text-rose-700 border-rose-200 hover:bg-rose-200' :
+                                              'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200';
+
+                                            return (
+                                              <button 
+                                                key={group}
+                                                onClick={() => { setSelectedCategory(group); setShowGroupFilter(false); }}
+                                                className={`w-full text-left px-5 py-3 rounded-xl text-xs sm:text-sm font-black transition-all border ${
+                                                  selectedCategory === group 
+                                                    ? 'bg-blue-600 text-white border-blue-500 shadow-md ring-2 ring-blue-500/20' 
+                                                    : `${colorClass} dark:opacity-90`
+                                                }`}
+                                              >
+                                                {group.toUpperCase()}
+                                              </button>
+                                            );
+                                          })}
+                                        </div>
+                                      </motion.div>
+                                    </>
+                                  )}
+                                </AnimatePresence>
+                              </th>
                               <th className="px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-black uppercase tracking-wider text-center">
                                 <div className="flex items-center justify-center gap-2">
                                   <Clock className="w-5 h-5 sm:w-6 h-6 text-emerald-300" />
@@ -3619,9 +3771,13 @@ export default function App() {
                                 </td>
                                 <td className="px-4 sm:px-6 py-4 sm:py-6 text-center">
                                   <span className={`text-xs sm:text-sm font-black px-3 sm:px-4 py-1 sm:py-2 rounded-xl uppercase tracking-tight shadow-sm whitespace-nowrap border ${
-                                    test.group === 'Sinh Hóa' ? 'bg-blue-100 text-blue-700 border-blue-200' :
-                                    test.group === 'Huyết học' ? 'bg-purple-100 text-purple-700 border-purple-200' :
-                                    test.group === 'Miễn dịch' ? 'bg-orange-100 text-orange-700 border-orange-200' :
+                                    test.group.toLowerCase() === 'sinh hóa' ? 'bg-blue-100 text-blue-700 border-blue-200' :
+                                    test.group.toLowerCase() === 'huyết học' ? 'bg-purple-100 text-purple-700 border-purple-200' :
+                                    test.group.toLowerCase() === 'miễn dịch' ? 'bg-orange-100 text-orange-700 border-orange-200' :
+                                    test.group.toLowerCase() === 'đông máu' ? 'bg-red-100 text-red-700 border-red-200' :
+                                    test.group.toLowerCase() === 'vi sinh' ? 'bg-emerald-100 text-emerald-700 border-emerald-200' :
+                                    test.group.toLowerCase() === 'nước tiểu & dịch' ? 'bg-cyan-100 text-cyan-700 border-cyan-200' :
+                                    test.group.toLowerCase() === 'truyền máu' ? 'bg-rose-100 text-rose-700 border-rose-200' :
                                     'bg-slate-100 text-slate-700 border-slate-200'
                                   }`}>
                                     {test.group}
