@@ -54,6 +54,13 @@ interface LabTest {
     increase: string;
     decrease: string;
   };
+  // Expanded fields for deep clinical integration
+  physiology?: string;
+  specimenCollection?: string;
+  testingMethods?: string;
+  interferingFactors?: string;
+  clearanceInfo?: string;
+  clinicalNote?: string;
 }
 
 interface TestKnowledge {
@@ -227,14 +234,20 @@ const labTests: LabTest[] = [
         name: "Định lượng Acid Uric [máu]", 
         group: "Sinh Hóa", 
         time: "120 phút / 45 phút", 
-        ref: "4 - 7 mg/dL", 
-        alert: "",
-        concept: "Acid Uric là sản phẩm thoái hóa tự nhiên của purin (có trong thịt đỏ, hải sản, nội tạng). Đa số hòa tan trong máu và đào thải qua thận.",
-        indication: "Chẩn đoán và theo dõi bệnh Gout, đánh giá chức năng thận, bệnh lý cơ xương khớp.",
+        ref: "Nam: 3.6 - 8.5 mg/dL\nNữ: 2.3 - 6.6 mg/dL\nNước tiểu 24h: 250 - 1000 mg/24h\nDịch khớp: 2 - 6 mg/dL", 
+        alert: "Máu ≥ 9.0 mg/dL (Nguy cơ Gout cao)\nCảnh báo: 20-30% Gout có Acid Uric bình thường.",
+        concept: "ACID URIC (Acide Urique / Uric Acid; 2, 6, 8 Trioxypurine; Urate) là sản phẩm chuyển hóa bazơ purin của acid nucleic.",
+        physiology: "Acid uric là chất có trọng lượng phân tử 169 dalton, có nguồn gốc từ quá trình dị hóa các bazơ purin (adenin và guanidin) của các acid nucleic. Các nguồn tạo chính bao gồm: thức ăn chứa purin (100 - 200 mg/ngày) và nguồn nội sinh do thoái biến acid nucleic cơ thể (600 mg/ngày). Quá trình tổng hợp chủ yếu ở gan và một phần niêm mạc ruột, cần sự xúc tác của enzym xanthin oxydase (Allopurinol ức chế enzym này để điều trị). Bài tiết chủ yếu qua nước tiểu (400 - 1000 mg/ngày) nhờ lọc cầu thận và bài xuất tích cực ở ống thận xa. Đường tiêu hóa thải trừ yếu hơn (100 - 200 mg/ngày).",
+        indication: "Chẩn đoán bệnh lý nồng độ acid uric (sỏi thận, gout, suy thận không rõ nguồn gốc). Đánh giá đau quặn thận, thận ứ nước, viêm khớp. Theo dõi bệnh máu, tan máu (sốt rét, hồng cầu hình liềm), điều trị hóa/xạ trị (hội chứng ly giải khối u), nhịn đói lâu ngày, béo phì. Tiên lượng nhiễm độc thai nghén/tiền sản giật.",
+        specimenCollection: "Huyết tương: Nhịn ăn 4-8 giờ. Nước tiểu: Thu nước tiểu 24 giờ. Lưu ýRasburicase: Nếu dùng thuốc này, phải lấy ống heparin lạnh, ly tâm lạnh, tách huyết tương trong đá và xét nghiệm trong vòng 4 giờ.",
+        testingMethods: "Sử dụng phương pháp enzym hoặc đo màu. Lưu ý: Đo màu có thể sai lệch nếu huyết thanh có nhiều Cystin, Glucose, Phenol, Vitamin C, Tryptophan, Tyrosin.",
         pathologicalMeaning: {
-            increase: "Nguy cơ kết tinh tinh thể urat tại khớp gây viêm khớp (Gout), sỏi thận. Gặp trong suy thận, ung thư đang hóa trị, ăn nhiều purin.",
-            decrease: "Thường do dùng thuốc hạ acid uric hoặc ở người bệnh gan nặng."
-        }
+            increase: "<strong>1. Tăng sản xuất:</strong> Gout vô căn, hóa/xạ trị, lơxêmi, u lympho, đa u tủy xương, tan máu (sốt rét, thiếu G6PD), chế độ ăn giàu purin, béo phì.\n<strong>2. Giảm đào thải:</strong> Suy thận, nghiện rượu, thuốc lợi tiểu (thiazid, furosemid), tổn thương ống thận xa, nhiễm toan lactic.\n<strong>3. Khác:</strong> Xơ vữa, tăng HA, tiền sản giật, suy giáp, ngộ độc chì mạn, thận đa nang, bệnh sỏi thận urat thấu tia X (không thấy trên X-quang).",
+            decrease: "Hòa loãng máu, hội chứng SIADH, tổn thương ống thận gần (Fanconi), bệnh Wilson, thiếu enzym xanthin oxydase, to đầu chi, bệnh Celiac, u tân sinh (Hodgkin). Chú ý giảm do thuốc ACTH, Allopurinol, Salicylat liều cao."
+        },
+        interferingFactors: "<strong>Làm TĂNG:</strong> Adrenalin, acetaminophen, beta blockers, caffein, hóa trị, cyclosporin, lợi tiểu, levodopa, niacin, NSAIDs, rifampin, theophyllin, warfarin.\n<strong>Lâm GIẢM:</strong> Acetazolamid, allopurinol, aspirin liều cao, corticoid, estrogen, lithium, mannitol, probenecid.",
+        clearanceInfo: "Hệ số thanh thải = [Acid Uric nước tiểu (mmol/ngày) × Thể tích nước tiểu 24h (L)] / Acid Uric huyết thanh (mmol/L). Giúp phân biệt tăng do sản xuất quá mức hay giảm đào thải.",
+        clinicalNote: "Gout có tương quan nồng độ máu > 9 mg/dL. Nên uống nhiều nước (> 2L), tránh rượu bia (cồn ức chế bài tiết urat). Hạn chế: măng tây, nấm, rau bina, phủ tạng động vật. Sỏi urat không cản quang nên cần siêu âm hoặc UIV để phát hiện."
     },
     {
         name: "Định lượng Albumin [máu]", 
@@ -3853,93 +3866,165 @@ export default function App() {
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                            className="relative w-full max-w-2xl bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto"
+                            className={`relative w-full max-w-2xl bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto ${selectedTest.name.includes('Acid Uric') ? 'ring-8 ring-blue-500/5' : ''}`}
                           >
-                            <div className="bg-blue-600 p-6 sm:p-8 text-white relative">
-                              <div className="flex justify-between items-start mb-4">
-                                <div className="bg-white/20 p-2 sm:p-3 rounded-xl sm:rounded-2xl backdrop-blur-md">
-                                  <FlaskConical className="w-6 h-6 sm:w-8 h-8" />
+                            <div className={`${selectedTest.name.includes('Acid Uric') ? 'bg-gradient-to-tr from-[#a18cd1] 0% via-[#fbc2eb] 100% shadow-inner' : 'bg-blue-600'} p-6 sm:p-10 text-white relative overflow-hidden`}>
+                              {/* Soft decorative blur circles for Korean style */}
+                              {selectedTest.name.includes('Acid Uric') && (
+                                <>
+                                  <div className="absolute top-[-20%] left-[-10%] w-40 h-40 bg-white/20 rounded-full blur-3xl animate-pulse" />
+                                  <div className="absolute bottom-[-10%] right-[-5%] w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl" />
+                                </>
+                              )}
+                              
+                              <div className="flex justify-between items-start mb-6 relative z-10">
+                                <div className="bg-white/30 p-3 sm:p-4 rounded-2xl backdrop-blur-xl border border-white/40 shadow-xl">
+                                  <FlaskConical className="w-8 h-8 sm:w-10 h-10 drop-shadow-md text-white" />
                                 </div>
                                 <button 
                                   onClick={() => setSelectedTest(null)}
-                                  className="p-2 hover:bg-white/20 rounded-xl transition-colors"
+                                  className="p-2 sm:p-3 hover:bg-white/30 rounded-2xl transition-all duration-300 backdrop-blur-md active:scale-90"
                                 >
-                                  <X className="w-5 h-5 sm:w-6 h-6" />
+                                  <X className="w-6 h-6 sm:w-7 h-7" />
                                 </button>
                               </div>
-                              <h3 className="text-2xl sm:text-3xl font-bold mb-2 tracking-tight leading-tight">{selectedTest.name}</h3>
-                              <div className="flex items-center gap-3">
-                                <span className="bg-white/20 px-2 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold backdrop-blur-md uppercase tracking-wider">
+                              <h3 className="text-2xl sm:text-4xl font-black mb-3 tracking-tighter leading-tight uppercase drop-shadow-sm relative z-10 italic">{selectedTest.name}</h3>
+                              <div className="flex items-center gap-3 relative z-10">
+                                <span className="bg-white/40 border border-white/50 px-4 py-1.5 rounded-2xl text-[10px] sm:text-xs font-black backdrop-blur-lg uppercase tracking-widest shadow-sm">
                                   {selectedTest.group}
                                 </span>
                               </div>
                             </div>
 
-                            <div className="p-6 sm:p-8 space-y-6 sm:space-y-8">
+                            <div className={`p-6 sm:p-10 space-y-8 sm:space-y-12 ${selectedTest.name.includes('Acid Uric') ? 'bg-slate-50/30' : ''}`}>
                               {selectedTest.concept && (
-                                <div>
-                                  <h4 className="text-blue-600 dark:text-blue-400 text-[10px] sm:text-xs font-black uppercase tracking-widest mb-2 sm:mb-3">Khái niệm & Cơ chế</h4>
+                                <div className={selectedTest.name.includes('Acid Uric') ? 'p-6 bg-white rounded-3xl border border-indigo-50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden' : ''}>
+                                  {selectedTest.name.includes('Acid Uric') && <div className="absolute top-0 left-0 w-1.5 h-full bg-indigo-400" />}
+                                  <h4 className={`${selectedTest.name.includes('Acid Uric') ? 'text-indigo-500' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-4`}>Khái niệm & Cơ chế</h4>
                                   <p className="text-slate-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-serif italic text-justify">
                                     {selectedTest.concept}
                                   </p>
                                 </div>
                               )}
 
+                              {selectedTest.physiology && (
+                                <div className={selectedTest.name.includes('Acid Uric') ? 'p-6 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-3xl border border-purple-100 shadow-sm relative overflow-hidden' : ''}>
+                                  {selectedTest.name.includes('Acid Uric') && <div className="absolute top-0 left-0 w-1.5 h-full bg-purple-400" />}
+                                  <h4 className="text-purple-600 text-xs font-black uppercase tracking-[0.2em] mb-4">Sinh lý học & Tổng hợp</h4>
+                                  <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify font-medium">
+                                    {selectedTest.physiology}
+                                  </p>
+                                </div>
+                              )}
+
                               {selectedTest.indication && (
-                                <div>
-                                  <h4 className="text-blue-600 dark:text-blue-400 text-[10px] sm:text-xs font-black uppercase tracking-widest mb-2 sm:mb-3">Chỉ định</h4>
-                                  <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base font-medium leading-relaxed">
+                                <div className={selectedTest.name.includes('Acid Uric') ? 'p-6 bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl border border-pink-100 shadow-sm relative overflow-hidden' : ''}>
+                                  {selectedTest.name.includes('Acid Uric') && <div className="absolute top-0 left-0 w-1.5 h-full bg-pink-400" />}
+                                  <h4 className={`${selectedTest.name.includes('Acid Uric') ? 'text-pink-600' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-4`}>Chỉ định</h4>
+                                  <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base font-bold leading-relaxed">
                                     {selectedTest.indication}
                                   </p>
                                 </div>
                               )}
 
+                              {selectedTest.specimenCollection && (
+                                <div className="p-6 bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl border border-amber-100 shadow-sm relative overflow-hidden">
+                                  <div className="absolute top-0 left-0 w-1.5 h-full bg-amber-400" />
+                                  <h4 className="text-amber-600 text-xs font-black uppercase tracking-[0.2em] mb-4">Lấy bệnh phẩm & Lưu ý đặc biệt</h4>
+                                  <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-medium">
+                                    {selectedTest.specimenCollection}
+                                  </p>
+                                </div>
+                              )}
+
+                              {selectedTest.testingMethods && (
+                                <div className="p-6 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl border border-cyan-100 shadow-sm relative overflow-hidden">
+                                  <div className="absolute top-0 left-0 w-1.5 h-full bg-cyan-400" />
+                                  <h4 className="text-cyan-600 text-xs font-black uppercase tracking-[0.2em] mb-4">Phương pháp xét nghiệm</h4>
+                                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-mono font-bold italic">
+                                    {selectedTest.testingMethods}
+                                  </p>
+                                </div>
+                              )}
+
                               {(selectedTest.ref || selectedTest.alert) && (
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                                   {selectedTest.ref && (
-                                    <div className="bg-green-50 dark:bg-green-900/20 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-green-100 dark:border-green-800/50">
-                                      <h4 className="text-green-700 dark:text-green-400 text-[10px] sm:text-xs font-black uppercase mb-2 leading-none">Khoảng tham chiếu</h4>
-                                      <p className="font-mono text-base sm:text-lg font-bold text-green-800 dark:text-green-300 whitespace-pre-wrap">{selectedTest.ref}</p>
+                                    <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-3xl border-2 border-white shadow-lg shadow-green-100 relative overflow-hidden">
+                                      <div className="absolute top-0 right-0 p-2 opacity-10"><Dna className="w-12 h-12" /></div>
+                                      <h4 className="text-green-700 text-xs font-black uppercase tracking-widest mb-4">Khoảng tham chiếu</h4>
+                                      <p className="font-mono text-base sm:text-xl font-black text-green-800 whitespace-pre-wrap leading-relaxed tracking-tight">{selectedTest.ref}</p>
                                     </div>
                                   )}
                                   {selectedTest.alert && (
-                                    <div className="bg-red-50 dark:bg-red-900/20 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-red-100 dark:border-red-800/50">
-                                      <h4 className="text-red-700 dark:text-red-400 text-[10px] sm:text-xs font-black uppercase mb-2 leading-none">Cảnh báo lâm sàng</h4>
-                                      <p className="font-mono text-base sm:text-lg font-bold text-red-800 dark:text-red-300 whitespace-pre-wrap">{selectedTest.alert}</p>
+                                    <div className="bg-gradient-to-br from-red-50 to-rose-50 p-6 rounded-3xl border-2 border-white shadow-lg shadow-red-100 relative overflow-hidden">
+                                      <div className="absolute top-0 right-0 p-2 opacity-10"><TriangleAlert className="w-12 h-12" /></div>
+                                      <h4 className="text-red-700 text-xs font-black uppercase tracking-widest mb-4">Cảnh báo lâm sàng</h4>
+                                      <p className="font-mono text-base sm:text-xl font-black text-red-800 whitespace-pre-wrap leading-relaxed tracking-tight">{selectedTest.alert}</p>
                                     </div>
                                   )}
                                 </div>
                               )}
 
                               {selectedTest.pathologicalMeaning && (
-                                <div>
-                                  <h4 className="text-blue-600 dark:text-blue-400 text-[10px] sm:text-xs font-black uppercase tracking-widest mb-3 sm:mb-4">Ý nghĩa bệnh lý</h4>
-                                  <div className="space-y-3 sm:space-y-4">
-                                    <div className="flex gap-3 sm:gap-4 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                                      <div className="bg-red-100 dark:bg-red-900/30 p-2 rounded-lg sm:rounded-xl h-fit">
-                                        <TrendingUp className="w-5 h-5 text-red-600" />
+                                <div className="space-y-6">
+                                  <h4 className={`${selectedTest.name.includes('Acid Uric') ? 'text-indigo-600' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-2 text-center`}>--- Ý nghĩa bệnh lý & Phân tích ---</h4>
+                                  <div className="grid grid-cols-1 gap-6">
+                                    <div className="group flex flex-col sm:flex-row gap-4 p-6 bg-white rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500">
+                                      <div className="bg-gradient-to-br from-red-100 to-rose-200 p-4 rounded-2xl h-fit w-fit shadow-inner">
+                                        <TrendingUp className="w-6 h-6 text-red-600" />
                                       </div>
                                       <div>
-                                        <p className="font-bold text-red-600 mb-1 text-sm sm:text-base">Tăng:</p>
+                                        <p className="font-black text-red-600 mb-2 text-lg uppercase tracking-tight">Tăng nồng độ</p>
                                         <div 
-                                          className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 text-justify whitespace-pre-wrap leading-relaxed capitalize-first"
+                                          className="text-sm sm:text-base text-slate-700 leading-relaxed text-justify whitespace-pre-wrap font-medium"
                                           dangerouslySetInnerHTML={{ __html: selectedTest.pathologicalMeaning.increase }}
                                         />
                                       </div>
                                     </div>
-                                    <div className="flex gap-3 sm:gap-4 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl sm:rounded-2xl border border-slate-100 dark:border-slate-700">
-                                      <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg sm:rounded-xl h-fit">
-                                        <TrendingDown className="w-5 h-5 text-blue-600" />
+                                    <div className="group flex flex-col sm:flex-row gap-4 p-6 bg-white rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500">
+                                      <div className="bg-gradient-to-br from-blue-100 to-indigo-200 p-4 rounded-2xl h-fit w-fit shadow-inner">
+                                        <TrendingDown className="w-6 h-6 text-blue-600" />
                                       </div>
                                       <div>
-                                        <p className="font-bold text-blue-600 mb-1 text-sm sm:text-base">Giảm:</p>
+                                        <p className="font-black text-blue-600 mb-2 text-lg uppercase tracking-tight">Giảm nồng độ</p>
                                         <div 
-                                          className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 text-justify whitespace-pre-wrap leading-relaxed capitalize-first"
+                                          className="text-sm sm:text-base text-slate-700 leading-relaxed text-justify whitespace-pre-wrap font-medium"
                                           dangerouslySetInnerHTML={{ __html: selectedTest.pathologicalMeaning.decrease }}
                                         />
                                       </div>
                                     </div>
                                   </div>
+                                </div>
+                              )}
+
+                              {selectedTest.interferingFactors && (
+                                <div className="p-8 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-3xl border-2 border-white shadow-xl">
+                                  <div className="flex items-center gap-3 mb-4">
+                                     <div className="w-2 h-2 rounded-full bg-yellow-400 animate-ping" />
+                                     <h4 className="text-yellow-700 text-xs font-black uppercase tracking-widest">Yếu tố gây nhiễu & Thuốc can giữ</h4>
+                                  </div>
+                                  <div className="text-slate-700 text-sm sm:text-base leading-relaxed whitespace-pre-wrap font-bold" dangerouslySetInnerHTML={{ __html: selectedTest.interferingFactors }} />
+                                </div>
+                              )}
+
+                              {selectedTest.clearanceInfo && (
+                                <div className="p-8 bg-gradient-to-br from-[#e0c3fc] to-[#8ec5fc] rounded-3xl border-2 border-white shadow-2xl relative group">
+                                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-12 transition-transform duration-700"><CheckCircle2 className="w-16 h-16" /></div>
+                                  <h4 className="text-blue-900 text-xs font-black uppercase tracking-widest mb-4">Hệ số thanh thải (Clearance)</h4>
+                                  <p className="text-blue-950 text-base sm:text-lg leading-relaxed font-serif font-black italic">
+                                    {selectedTest.clearanceInfo}
+                                  </p>
+                                </div>
+                              )}
+
+                              {selectedTest.clinicalNote && (
+                                <div className="p-8 bg-gradient-to-br from-white to-blue-50/50 rounded-[40px] border-4 border-white shadow-[0_20px_60px_rgba(0,0,0,0.08)] relative">
+                                  <div className="absolute -top-4 left-10 bg-blue-600 text-white px-6 py-1.5 rounded-full text-xs font-black shadow-lg">GHI CHÚ QUAN TRỌNG</div>
+                                  <h4 className="text-blue-800 text-xs font-black uppercase tracking-widest mb-6 opacity-0 h-0">Ghi chú & Cảnh báo lối sống</h4>
+                                  <p className="text-slate-800 text-base sm:text-lg leading-relaxed text-justify font-bold italic first-letter:text-4xl first-letter:font-black first-letter:mr-2 first-letter:float-left first-letter:text-blue-600">
+                                    {selectedTest.clinicalNote}
+                                  </p>
                                 </div>
                               )}
                             </div>
