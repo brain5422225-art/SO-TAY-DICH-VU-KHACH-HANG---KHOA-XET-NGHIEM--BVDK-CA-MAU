@@ -61,6 +61,7 @@ interface LabTest {
   interferingFactors?: string;
   clearanceInfo?: string;
   clinicalNote?: string;
+  isFeatured?: boolean;
 }
 
 interface TestKnowledge {
@@ -74,149 +75,203 @@ interface TestKnowledge {
 }
 
 const labTests: LabTest[] = [
-    { 
+  { 
     name: "Định lượng Glucose [máu]", 
     group: "Sinh Hóa", 
     time: "120 phút / 45 phút", 
-    ref: "70 - 110 mg/dL", 
-    alert: "≤ 45 hoặc > 500 mg/dL.",
-    concept: "Glucose là loại đường chính trong máu và là nguồn cung cấp năng lượng chủ yếu cho các tế bào, đặc biệt là não bộ. Nồng độ glucose được cơ thể điều hòa chặt chẽ thông qua các hormone từ tuyến tụy, quan trọng nhất là insulin (giúp hạ đường huyết) và glucagon (giúp tăng đường huyết).",
-    indication: "Tầm soát, chẩn đoán và theo dõi bệnh đái tháo đường; đánh giá các trường hợp nghi ngờ hạ đường huyết.",
+    isFeatured: true,
+    ref: "Huyết tương: 60 - 110 mg/dL hay 3,36 - 6,16 mmol/L.\nMáu toàn phần: 60 - 105 mg/dL hay 3,36 - 5,58 mmol/L.\nTrẻ sơ sinh: 20 - 80 mg/dL hay 1,12 - 4,48 mmol/L.", 
+    alert: "0 - 4 tháng và 4 tháng - 1 tuổi: < 1,94 mmol/L (< 35 mg/dL) hoặc > 18,2 mmol/L (> 325 mg/dL).\n> 1 tuổi: < 2,5 mmol/L (45 mg/dL) hoặc > 28 mmol/L (> 500mg/dL).",
+    concept: "Bình thường glucose máu xuất xứ từ 2 nguồn hoàn toàn khác biệt: Nguồn gốc ngoại sinh (chuyển hóa các carbohydrat do thức ăn cung cấp) và nguồn gốc nội sinh (chuyển đổi glycogen thành glucose).",
+    physiology: "Điều hoà nồng độ glucose máu chịu tác động của 2 hệ thống hormon đối lập nhau:\n\nInsulin có tác dụng làm hạ glucose máu.\n\nGlucagon, adrenalin, cortisol và GH có tác dụng làm tăng nồng độ glucose máu.",
+    indication: "Để chẩn đoán các bất thường chuyển hóa glucid.",
+    specimenCollection: "Máu được lấy vào ống nghiệm chứa natri fluorat. Ống nghiệm phải được bảo quản ở 4°C. BN phải được nhịn ăn tuyệt đối trong vòng ít nhất 8 giờ trước khi lấy máu XN.\n\nNếu có thể được, yêu cầu BN tạm ngừng dùng insulin và thuốc viên hạ đường huyết tới khi lấy hết các mẫu máu XN. Hiện nay việc sử dụng các giấy thử có tẩm enzym glucose oxydase và máy đo đường huyết cho phép đo gần như ngay tức thì.",
+    testingMethods: "Enzym Glucose Oxydase / Hexokinase.",
     pathologicalMeaning: {
-      increase: "Điển hình trong bệnh đái tháo đường, viêm tụy cấp, cường giáp, hội chứng Cushing, hoặc do sử dụng thuốc (như corticoid).",
-      decrease: "Thường gặp do quá liều insulin hoặc thuốc hạ đường huyết, nhịn đói kéo dài, suy tuyến yên, suy thượng thận, u tiết insulin."
-    }
+      increase: "1. Di truyền/Dinh dưỡng: Đái tháo đường (ĐTĐ) typ I & II, lấy bệnh phẩm khi BN không nhịn ăn.\n2. Bệnh lý nội tiết: Hội chứng Cushing, quá thừa Adrenalin (stress, sốc, u tế bào ưa crom, bỏng), các nguyên nhân hormon khác.\n3. Bệnh lý tụy: Viêm tụy cấp/mạn, khối u tụy.\n4. Khác: Nhiễm thiết huyết tố (Hemochromatosis), tổn thương thần kinh trung ương.",
+      decrease: "1. Điều trị: Quá liều thuốc hạ đường huyết/insulin, dùng insulin không đúng chỉ định.\n2. Bệnh lý tụy/Nội tiết: Tiết insulin quá mức, u tế bào đảo tụy, u ngoài tụy, thiếu hụt hormon đối kháng insulin.\n3. Chức năng/Chuyển hóa: Hội chứng Dumping, rối loạn hệ thần kinh tự động, bệnh lý gan nặng và lan tỏa, rối loạn kho chứa glycogen.\n4. Khác: Sốt rét, suy dinh dưỡng, rối loạn bẩm sinh hiếm gặp ở nhi khoa."
+    },
+    interferingFactors: "Lưu ý bệnh phẩm: Mẫu bị vỡ hồng cầu, tách huyết thanh không tốt hoặc lấy không đủ bệnh phẩm.\nBiến số sinh lý: Hematocrit > 55% (giảm kết quả), < 35% (tăng kết quả). Oxy thấp gây tăng giả tạo. Gắng sức mạnh, xúc cảm, sốc, bỏng, nhiễm trùng làm tăng nồng độ sinh lý.\nẢnh hưởng thuốc: Thuốc tâm thần, chẹn bêta, corticoid, adrenalin, estrogen, lợi tiểu, insulin, thuốc viên hạ đường huyết.",
+    clinicalNote: "Đường huyết đói >= 7.0 mmol/L trong ít nhất 2 lần xét nghiệm riêng biệt thường là tiêu chuẩn chẩn đoán ĐTĐ. Cần phối hợp với HbA1c để đánh giá kiểm soát đường huyết trong 3 tháng."
   },
   {
     name: "Định lượng Ure [máu]", 
     group: "Sinh Hóa", 
     time: "120 phút / 45 phút", 
-    ref: "20 - 40 mg/dL", 
-    alert: "≥ 70 mg/dL.",
-    concept: "Urea (hay carbamide) là sản phẩm được sản xuất bởi quá trình chuyển hóa protein trong cơ thể. Ammoniac sinh ra từ thoái hóa protein được gan chuyển đổi thành Urea, sau đó vào máu, vận chuyển đến thận và đào thải ra nước tiểu. Đây là quá trình loại bỏ nitơ hữu hiệu nhất của cơ thể.",
-    indication: "Nghi ngờ có vấn đề về thận, theo dõi điều trị bệnh thận, hoặc theo dõi chức năng thận khi dùng một số loại thuốc điều trị có ảnh hưởng lên thận. Thường được xét nghiệm cùng với creatinine.",
+    isFeatured: true,
+    ref: "Urê: 13 - 40 mg/dL hay 2,1 - 6,6 mmol/L.\nBUN: 5 - 17 mg/dL.", 
+    alert: "Tất cả các rối loạn nặng chức năng thận đều dẫn tới tăng nồng độ urê huyết thanh và nồng độ này trở nên độc khi > 33 mmol/L (> 200 mg/dL).",
+    concept: "Urê là con đường thoái hóa chính của các protein trong cơ thể và là sản phẩm quan trọng nhất của chuyển hoá nitơ. Ure nitrogen (BUN) là phần nitrogen của urê.",
+    physiology: "Urê có TLPT 60 dalton và quá trình tổng hợp urê xẩy ra ở gan theo Chu trình Krebs - Henseleit. Nguồn NH3 và Urê có xuất xứ chủ yếu từ quá trình thoái hoá các protein (ngoại sinh và nội sinh).\n\nCác con đường đào thải urê bao gồm đường tiêu hoá và đường thận.",
+    indication: "Giúp chẩn đoán tình trạng suy thận nhất là khi phân tích kết hợp với tỷ lệ nồng độ urê niệu/nồng độ urê máu.\n\nĐể đánh giá mức cung cấp protein của một chế độ ăn.",
+    specimenCollection: "Máu: xét nghiệm được tiến hành trên huyết thanh. Không nhất thiết cần nhịn ăn trước khi lấy máu XN.\n\nHướng dẫn BN không nên ăn chế độ có quá nhiều protein trước khi lấy máu xét nghiệm.",
     pathologicalMeaning: {
-        increase: "Ure máu tăng cao trong một số trường hợp như: suy thận, viêm cầu thận mạn, u tiền liệt tuyến.",
-        decrease: "Thường gặp trong suy gan nặng (do gan không thể chuyển hóa ammoniac thành ure), suy dinh dưỡng, chế độ ăn nghèo protein hoặc ở phụ nữ có thai."
-    }
+        increase: "1. Chế độ ăn giàu protein.\n2. Tăng dị hoá protein: Sốt, Bỏng, Suy dinh dưỡng, Nhịn đói, Bệnh lý u tân sinh, Xuất huyết đường tiêu hoá.\n3. Suy thận nguồn gốc trước thận: Mất nước, Giảm thể tích máu, Suy tim.\n4. Suy thận nguồn gốc tại thận: Tổn thương cầu thận, Tổn thương ống thận.\n5. Suy thận nguồn gốc sau thận: Sỏi, Xơ hoá sau phúc mạc, U bàng quang hay tử cung, U biểu mô tuyến hay ung thư tuyến tiền liệt.\n6. Các nguyên nhân khác: Ngộ độc thủy ngân, Nhiễm trùng nặng.",
+        decrease: "1. Đang tuổi phát triển.\n2. Có thai.\n3. Hoà loãng máu: Lọc máu, Có thai những tháng cuối, Hội chứng thận hư, Tăng gánh thể tích.\n4. Hội chứng tiết ADH không thích hợp.\n5. Suy gan: Viêm gan nặng cấp hay mạn tính, Xâm nhiễm di căn lớn, Xơ gan.\n6. Bệnh Celiac.\n7. Chế độ ăn không cung cấp đủ protein.\n8. Hội chứng giảm hấp thu."
+    },
+    interferingFactors: "Tăng giả tạo nồng độ urê máu có thể xẩy ra khi để bệnh phẩm xẩy ra vỡ hồng cầu.\n\nCác thuốc có thể làm tăng nồng độ urê máu: Thuốc ức chế men chuyển angiotensin, acetaminophen, acyclovir, allopurinol, amantadin, aminoglycosid, amiodaron, amphotericin B, v.v.\n\nCác thuốc có thể làm giảm nồng độ urê máu: Chloramphenicol, streptomycin.",
+    clinicalNote: "Nồng độ urê máu phụ thuộc đáng kể vào chế độ ăn. Để đánh giá chính xác chức năng thận, nên nhịn ăn và phối hợp với kết quả Creatinin."
   },
   {
     name: "Định lượng Creatinin [máu]", 
     group: "Sinh Hóa", 
     time: "120 phút / 45 phút", 
-    ref: "0.6 - 1.5 mg/dL", 
-    alert: "≥ 10 mg/dL.",
-    concept: "Creatinin là sản phẩm thoái hóa tự nhiên của creatin (một hợp chất cung cấp năng lượng cho cơ bắp). Nó được giải phóng vào máu với tốc độ khá hằng định và được thận lọc ra khỏi cơ thể qua nước tiểu. Do đó, nồng độ creatinin trong máu phản ánh trực tiếp chức năng lọc của cầu thận.",
-    indication: "Được sử dụng để đánh giá chức năng thận và theo dõi bệnh nhân suy thận hoặc những người được lọc thận.",
+    isFeatured: true,
+    ref: "Nam: 0,7 - 1,3 mg/dL hay 62 - 115 µmol/L.\nNữ: 0,5 - 1,0 mg/dL hay 44 - 88 µmol/L.\nTrẻ em: 0,3 - 1,0 mg/dL hay 26 - 88 µmol/L.", 
+    alert: "Creatinin máu > 1.5 mg/dL (133 µmol/L) thường gợi ý suy giảm chức năng thận.",
+    concept: "Creatinin là một chất chuyển hóa nitơ, sản phẩm của sự thoái giáng của creatin cơ. Creatin trong cơ thể có nguồn gốc hỗn hợp: nguồn gốc ngoại sinh do thức ăn cung cấp và nguồn gốc nội sinh chủ yếu từ gan, ngoài ra có thể ở thận và tụy.",
+    physiology: "Creatin bị thoái biến trong các cơ thành creatinin, chất này được đưa trở lại tuần hoàn, rồi được thải trừ qua thận. Ở thận, creatinin được lọc qua các cầu thận và được coi là không được ống thận tái hấp thu. Vì vậy, nồng độ creatinin máu chủ yếu phản ánh chức năng thận của BN.",
+    indication: "Để chẩn đoán và đánh giá mức độ suy thận.\n\nĐịnh lượng nồng độ creatinin niệu kết hợp với định lượng nồng độ creatinin máu được sử dụng để tính toán độ thanh thải creatinin nhằm để đánh giá chức năng thận.",
+    specimenCollection: "XN được thực hiện trên huyết thanh. Không nhất thiết yêu cầu BN cần phải nhịn ăn trước khi lấy máu làm XN.",
     pathologicalMeaning: {
-        increase: "Chỉ ra tình trạng suy giảm chức năng thận (suy thận cấp/mạn), tắc nghẽn đường tiết niệu, tổn thương cơ nặng, hoặc suy tim gây giảm tưới máu thận.",
-        decrease: "Thường không có ý nghĩa bệnh lý nghiêm trọng, có thể gặp ở người teo cơ, suy dinh dưỡng cơ bắp, hoặc phụ nữ có thai."
-    }
+        increase: "1. Suy thận nguồn gốc trước thận: Suy tim mất bù, Mất nước, giảm khối lượng tuần hoàn, Dùng thuốc lợi tiểu hay thuốc hạ áp, Xuất huyết, Hẹp động mạch thận.\n2. Suy thận nguồn gốc thận: Tổn thương cầu thận (Tăng huyết áp, Đái tháo đường, Bệnh nhiễm amyloid, Viêm cầu thận, Bệnh lupus ban đỏ hệ thống...), Tổn thương ống thận, Do chất độc.\n3. Suy thận nguồn gốc sau thận: Sỏi thận, U biểu mô tuyến hay ung thư tuyến tiền liệt, Các khối u bàng quang, Khối u tử cung, Xơ hoá sau phúc mạc.",
+        decrease: "1. Hoà loãng máu.\n2. Hội chứng tiết hormon chống bài niệu (ADH) không thích hợp.\n3. Tình trạng suy dinh dưỡng nặng.\n4. Một số bệnh cơ gây teo mô cơ.\n5. Có thai."
+    },
+    interferingFactors: "Mẫu bệnh phẩm bị vỡ hồng cầu có thể làm thay đổi kết quả XN.\n\nNồng độ creatinin máu vào cuối buổi chiều sẽ tăng cao hơn 20 - 40% so với buổi sáng. Chế độ ăn chứa quá nhiều thịt cũng có thể làm thay đổi kết quả XN.\n\nCác thuốc làm biến đổi kết quả: Amphotericin B, androgen, arginin, acid ascorbic, barbiturat, cefoxitin, cimetidin, chlorpromazin, thuốc lợi tiểu nhóm thiazid, vancomycin, v.v.",
+    clinicalNote: "Mức lọc cầu thận (eGFR) được tính từ Creatinin máu là chỉ số quan trọng nhất để phân độ suy thận mạn."
+  },
+  {
+    name: "Xét nghiệm Khí máu [máu] (pH, pO2, pCO2, HCO3-)", 
+    group: "Sinh Hóa", 
+    time: "120 phút / 45 phút", 
+    isFeatured: true,
+    ref: "pH: 7,35 - 7,45.\nPaCO2: 35 - 45 mmHg (torr).\nHCO3-: 22 - 26 mEq/L (mmol/L).\nPaO2: 75 - 100 mmHg.", 
+    alert: "pH < 7,35: Nhiễm acid máu (acidosis).\npH > 7,45: Nhiễm kiềm máu (alkalosis).",
+    concept: "Khí máu động mạch giúp đánh giá tình trạng thăng bằng toan kiềm của cơ thể thông qua 3 hệ thống: Hệ đệm, Hệ hô hấp và Hệ thận.",
+    physiology: "Hệ thống đệm: Tham gia thăng bằng thông qua việc giữ lại hoặc thải ion H+.\n\nHệ hô hấp: Tác động qua hệ đệm acid carbonic - bicarbonat. Phổi kiểm soát CO2 và đáp ứng nhanh với thay đổi toan kiềm bằng cách điều chỉnh nhịp thở.\n\nPaO2: Áp lực riêng phần oxy động mạch phản ánh hiệu quả oxy hóa máu của phổi.",
+    indication: "Xác định pH, áp lực O2, CO2 và nồng độ bicarbonat. Hữu ích trong chẩn đoán suy hô hấp, nhiễm toan/kiềm chuyển hóa hoặc hô hấp.",
+    specimenCollection: "Không cần nhịn ăn. Lấy 3-5 mL máu động mạch bằng bơm tiêm tráng heparin 0,2 mL.\nLưu ý: Phải đẩy hết bóng khí, đậy kín nắp, bảo quản trong đá lạnh và phân tích ngay lập tức.",
+    testingMethods: "Phân tích máy khí máu (Blood Gas Analyzer).",
+    pathologicalMeaning: {
+        increase: "1. Toan hô hấp (Tăng PCO2): Hen phế quản, ngừng tim, viêm phế quản mạn, COPD, suy tim, chấn thương sọ não, béo phì (Pickwick).\n2. Kiềm chuyển hóa (Tăng HCO3-): Dùng lợi tiểu, nôn nhiều, mất clo/kali, truyền natri bicarbonat, dùng thuốc trung hòa acid dạ dày.",
+        decrease: "1. Kiềm hô hấp (Giảm pCO2): Lo lắng, đau đớn, sốt, nhiễm trùng huyết, suy hô hấp cấp, suy gan, ngộ độc salicylat giai đoạn đầu.\n2. Toan chuyển hóa (Giảm HCO3-): Nhiễm toan lactic (sau ngừng tim), toan ceton đái tháo đường, tiêu chảy nặng, suy thận, đói ăn kéo dài."
+    },
+    interferingFactors: "Sai sót lấy mẫu: Không đẩy hết bọt khí làm biến đổi PaCO2/PaO2.\nThuốc ảnh hưởng: Aldosteron, hydrocortison, lợi tiểu thiazid, tetracyclin, aspirin, muối kiềm.",
+    clinicalNote: "Xét nghiệm khí máu là tiêu chuẩn vàng để quản lý bệnh nhân hồi sức và cấp cứu. Cần đối chiếu với tình trạng lâm sàng (nhịp thở, tri giác) để có hướng xử trí bù kiềm/toan chính xác."
+  },
+  {
+    name: "Đo hoạt độ AST (GOT) [máu]", 
+    group: "Sinh Hóa", 
+    time: "120 phút / 45 phút", 
+    isFeatured: true,
+    ref: "Nam: < 25 U/L.\nNữ: < 21 U/L.\nNgười già: Tăng nhẹ.\nTrẻ sơ sinh: Tăng 2 - 3 lần.\n(BV Bạch Mai: Nam: < 37 U/L-37°C; Nữ: < 31 U/L-37°C).", 
+    alert: "AST > 10 lần giới hạn bình thường thường chỉ ra hoại tử tế bào gan cấp tính.",
+    concept: "Transaminase là các enzym có vai trò cơ bản là chuyển nhóm NH2 của một acid amin tới một acid cetonic. AST (ASAT) xúc tác phản ứng Aspartat + Oxoglutamat <=> Oxaloacetat + Glutamat.",
+    physiology: "Hiện diện trong tim, gan, cơ xương, thận, tụy, hồng cầu. AST được giải phóng vào tuần hoàn sau khi xẩy ra tình trạng tổn thương hay chết của các tế bào chứa enzym này.\n\nCác AST có thời gian bán huỷ trong máu là 17h.",
+    indication: "Xác định tình trạng phân hủy tế bào (cytolyse). Đánh giá tổn thương gan, theo dõi độc tính thuốc, đánh giá tổn thương cơ tim trong NMCT.",
+    specimenCollection: "Tiến hành trên huyết thanh. Thường không cần nhịn ăn. Tách hồng cầu nhanh do vỡ hồng cầu làm XN không chính xác.",
+    pathologicalMeaning: {
+        increase: "1. Bệnh lý tim (AST/ALT > 1): Nhồi máu cơ tim, Viêm cơ tim, Phẫu thuật tim, Suy tim mất bù (gan xung huyết).\n2. Căn nguyên gan: Viêm gan virus, Viêm gan do thuốc/nhiễm độc, Tắc mật, Hoại tử gan, Xơ gan, Viêm gan do rượu, Xâm nhiễm gan.\n3. Bệnh lý tụy: Viêm tụy cấp do mật, Viêm tụy cấp do rượu.\n4. Bệnh lý cơ: Hội chứng vùi lấp, Viêm đa cơ, Viêm da và cơ, Tăng thân nhiệt ác tính, Bệnh loạn dưỡng cơ Duchenne.\n5. Suy giáp với phù niêm.\n6. Các nguyên nhân khác: Chấn thương não, Di căn xương, Ung thư tuyến tiền liệt, Nhiễm độc thai nghén, Nhồi máu phổi, Hội chứng Reye, Bỏng nặng.",
+        decrease: "1. Bệnh Beriberi (thiếu vitamin B1).\n2. Thiếu hụt pyridoxal phosphat (suy dinh dưỡng, bệnh gan do rượu).\n3. Nhiễm toan cetôn do ĐTĐ.\n4. Lọc máu mạn.\n5. Có thai.\n6. Hội chứng urê máu cao."
+    },
+    interferingFactors: "Mẫu bị vỡ hồng cầu làm tăng giả hoạt độ.\n\nThuốc làm tăng: Acetaminophen, allopurinol, kháng sinh, acid ascorbic, chlpropamid, clofibrat, statin, hydralazin, isoniazid, meperidin, methyldopa, morphin, thuốc ngừa thai, phenothiazin, procainamid, pyridoxin, salicylat, sufonamid, verapamil, vitamin A.\n\nThuốc làm giảm: Metronidazol, trifluoperazin.",
+    clinicalNote: "Tỷ lệ AST/ALT (Chỉ số de Ritis) giúp phân biệt tổn thương gan do rượu (>2) hay do virus (<1)."
   },
  {
-        name: "Xét nghiệm Khí máu [máu] (pH, pO2, pCO2, HCO3-)", 
-        group: "Sinh Hóa", 
-        time: "30 phút / 15 phút", 
-        ref: "pH: 7.35 - 7.45\npO2: 75 - 100 mmHg\npCO2: 35 - 45 mmHg\nHCO3-: 22 - 26 mmol/L", 
-        alert: "pH: < 7.0 hoặc > 7.6\npO2: < 45 mmHg\npCO2: < 20 hoặc > 70 mmHg\nHCO3-: < 10 hoặc > 40 mmol/L",
-        concept: "Khí máu động mạch là xét nghiệm đo lượng oxy, carbon dioxide và mức độ kiềm toan (pH) trong máu động mạch. Nó phản ánh khả năng trao đổi khí của phổi và chức năng bù trừ màng đệm của thận.",
-        indication: "Hỗ trợ chẩn đoán cấp cứu, đánh giá mức độ suy hô hấp trong COPD, hen phế quản, hoặc bệnh nhân đang thở máy, sốc, chấn thương nặng.",
-        pathologicalMeaning: {
-            increase: "• TĂNG pH (> 7.45): Nhiễm kiềm (hô hấp hoặc chuyển hóa).\n\n• TĂNG pCO2: Nhiễm toan hô hấp (do suy hô hấp, COPD, ngưng thở).\n\n• TĂNG pO2: Thường do can thiệp y tế (liệu pháp thở oxy liều cao, thở máy).\n\n• TĂNG HCO3-: Nhiễm kiềm chuyển hóa (do nôn ói nhiều, mất kali, dùng lợi tiểu) hoặc sự bù trừ của thận trong toan hô hấp mạn.",
-            decrease: "• GIẢM pH (< 7.35): Nhiễm toan (hô hấp hoặc chuyển hóa).\n\n• GIẢM pCO2: Nhiễm kiềm hô hấp (do thở nhanh, tăng thông khí vì lo âu, đau đớn).\n\n• GIẢM pO2: Thiếu oxy máu (gặp trong viêm phổi, phù phổi, suy tim, ARDS).\n\n• GIẢM HCO3-: Nhiễm toan chuyển hóa (do toan ceton đái tháo đường, suy thận, sốc toan lactic, tiêu chảy nặng)."
-        }
+    "name": "Đo hoạt độ ALT (GPT) [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "TRANSAMINASE (ALT hay ALAT và ASAT hay AST)\n(Transaminases sériques: ALAT [GPT], ASAT [GOT] / Alanine Aminotransferase [ALT], Serum Glutamic Pyruvic Transaminase [SGPT], Aspartate Aminotransferase [AST], Serum Glutamic Oxaloacetic transaminase [SGOT])",
+    "physiology": "Transaminase là các enzym được phân bố rộng trong tế bào có vai trò cơ bản là chuyển nhóm NH2 của một acid amin (alanin hay acid aspartic) tới một acid cetonic (acid alpha - cetoglutaric). Vì vậy, người ta tách biệt:\n\n1. Các AST hay ASAT: Aspartate Aminotransferase (đồng nghĩa GOT: Glutamat Oxaloacetat Transaminase). Các enzym này xúc tác phản ứng: L Aspartat + a Oxoglutamat Oxaloacetat + L - glutamat. Các AST (hay ASAT) có trong bào tương (cytoplasme) cũng như trong ty lạp thể và được thấy chủ yếu trong tế bào của các cơ quan sau (theo trình tự giảm dần): Tim, Gan, Cơ xương, Thận, Tụy tạng, Hồng cầu, Tiểu cầu. AST được giải phóng vào vòng tuần hoàn sau khi xẩy ra tình trạng tổn thương hay chết của các tế bào chứa enzym này. Các AST có thời gian bán huỷ trong máu là 17h.\n\n2. Các ALT hay ALAT: Alanine Aminotransferase (Đồng nghĩa GPT = Glutamat Pyruvat Transaminase). Enzym này xúc tác phản ứng: L - alanin + a Oxoglutamat Pyruvat + L - glutamat. Các ALT có thời gian bán huỷ trong máu là 47h. Chúng có mặt duy nhất trong bào tương của các tế bào và được thấy chủ yếu trong các cơ quan sau (theo trình tự giảm dần): Gan, Thận, Tim, Cơ xương.\n\nTrong nhồi máu cơ tim, các transaminase (chủ yếu là AST) tăng lên sớm ngay từ giờ thứ 4 và trở lại bình thường vào ngày thứ 3. Các ALT chỉ tăng nhẹ và tỷ lệ AST/ALT > 1. Nói chung, giá trị của transaminase tăng song hành với giá trị của CPK và phản ánh mức độ rộng của hoại tử cơ tim.\n\nTrong bệnh lý gan, giá trị của các AST thấp hơn giá trị của ALT với tỷ lệ AST/ALT < 1 ngoại trừ trong xơ gan do rượu (khi đó tỷ lệ này kinh điển thường > 1). Nhìn chung trong các bệnh lý gan (Vd: viêm gan, xơ gan) không thấy có mối tương quan giữa giá trị của transaminase và mức độ nặng của bệnh nguyên nhân. VD: trong xơ gan, tăng các transaminase tương đối ít (gấp 2 - 3 lần so với bình thường), mặc dù có các dấu hiệu mất bù rõ rệt như cổ chướng, vàng da (tăng bilirubin, giảm nồng độ antithrombin III, fibrinogen, PPT và cholesterol). Một ví dụ khác là trong viêm gan tối cấp, tình trạng giảm nhanh hoạt độ các transaminase trong thời gian bị bệnh đôi khi phản ánh tình trạng suy các tế bào gan rất nặng (do tế bào mất khả năng tổng hợp enzym), hơn là một bằng chứng chứng tỏ có cải thiện lâm sàng.\n\nCần nhắc lại là xác định hoạt độ CPK và các gamma GT thường cho phép định hướng chẩn đoán phân biệt nguồn gốc tăng transaminase máu:\n- Tăng CPK: Nguồn gốc cơ tim hay cơ vân.\n- Tăng gamma GT: Nguồn gốc gan mật hay tụy.",
+    "indication": "XN giúp xác định có tình trạng phân hủy tế bào (cytolyse) nhất là do nguồn gốc gan, cơ tim hay cơ vân. Vì vậy, xét nghiệm đo hoạt độ các transaminase thường được chỉ định để:\n1. Đánh giá tình trạng tổn thương gan.\n2. Theo dõi tác động độc trên tế bào gan của các thuốc sử dụng có nguy cơ gây độc cho gan.\n3. Đánh giá tình trạng tổn thương cơ tim trong NMCT (hiện nay ít được sử dụng).",
+    "specimenCollection": "Xét nghiệm được tiến hành trên huyết thanh. Thường không cần yêu cầu BN phải nhịn ăn trước khi lấy máu XN.\n\nGhi chú:\n1. Hoạt độ các transaminase huyết thanh tương đối ổn định trong một thời gian, vì vậy huyết thanh có thể được bảo quản 24h ở nhiệt độ phòng hay 48h ở 4°C. Nửa đời sống của AST là 18 giờ và nửa đời sống của ALT là 48 giờ.\n2. Tách hồng cầu phải được tiến hành nhanh do vỡ hồng cầu làm XN không chính xác.\n3. Khi muốn đánh giá tình trạng nhồi máu cơ tim, XN hoạt độ AST (hay GOT) thường được tiến hành trong vòng 3 ngày liên tiếp và sau đó 1 tuần.",
+    "testingMethods": "",
+    "ref": "AST (hay GOT)\nNam: < 25 U/L.\nNữ: < 21 U/L.\nNgười già: Tăng nhẹ so với giá trị bình thường.\nTrẻ sơ sinh: Tăng 2 - 3 lần giá trị bình thường.\n\nALT (hay GPT)\nNam: < 22 U/L.\nNữ: < 17 U/L.",
+    "alert": "",
+    "pathologicalMeaning": {
+      "increase": "Tăng hoạt độ ALT\nCác nguyên nhân chính thường gặp là:\n1. Bệnh lý gan:\nAST/ALT <1:\n- Viêm gan do virus (viêm gan A, viêm gan B, viêm gan không phải A - không phải B, tăng bạch cầu đơn nhân nhiễm trùng, viêm gan do cytomegalovirus).\n- Viêm gan do thuốc (rifampicin, INH, salicylat, heparin).\n- Viêm gan nhiễm độc (CCl4, amanit phalloid).\n- Tắc mật do các nguyên nhân không phải là ung thư.\n- Hoại tử gan.\nAST/ALT >1:\n- Xơ gan (AST/ALT > 1).\n- Viêm gan do rượu (alcohol - induced hepatitis).\n- Xâm nhiễm gan (Vd: do di căn ung thư, nhiễm sarcoid, lao, u lympho, luput ban đỏ).\n2. Nhồi máu cơ tim (AST/ALT > 1).\n3. Suy giáp với phù niêm.\n4. Suy tim mất bù (gan xung huyết).\n5. Sốc (thiếu máu cục bộ gan).\n6. Các nguyên nhân khác: Nhiễm độc thai nghén hay tiền sản giật (Hội chứng HELLP). Viêm tụy. Nhồi máu phổi. Hội chứng Reye. Chấn thương. Thiếu hụt carnitin tiên phát.\n\nTăng hoạt độ AST\nCác nguyên nhân chính thường gặp là:\n1. Bệnh lý tim (AST/ALT > 1): Nhồi máu cơ tim. Viêm cơ tim. Bóp tim ngoài lồng ngực. Phẫu thuật tim, sau thông tim. Suy tim mất bù (gan xung huyết).\n2. Các bệnh lý gan:\nAST/ALT <1:\n- Viêm gan do virus (viêm gan A, viêm gan B, viêm gan không phải A - không phải B, tăng bạch cầu đơn nhân nhiễm trùng, viêm gan do cytomegalovirus).\n- Viêm gan do thuốc (rifampicin, INH, salicylat, heparin).\n- Viêm gan nhiễm độc (CC14, amanit phalloid).\n- Tắc mật do các nguyên nhân không phải là ung thư.\n- Hoại tử gan.\nAST/ALT >1:\n- Xơ gan (AST/ALT > 1).\n- Viêm gan do rượu (alcohol - induced hepatitis).\n- Xâm nhiễm gan (do di căn ung thư, nhiễm sarcoid, lao, u lympho, luput ban đỏ).\n3. Các bệnh lý tụy tạng: Viêm tụy cấp do mật. Viêm tụy cấp do rượu.\n4. Các bệnh lý cơ: Hội chứng vùi lấp. Viêm đa cơ. Viêm da và cơ. Tăng thân nhiệt ác tính. Bệnh loạn dưỡng cơ của Duchenne.\n5. Suy giáp với phù niêm.\n6. Các nguyên nhân khác: Chấn thương não. Di căn xương. Ung thư tuyến tiền liệt. Nhiễm độc thai nghén, tiền sản giật và sản giật (Vd: hội chứng HELLP). Nhồi máu phổi. Hội chứng Reye. Bỏng nặng. Thiếu hụt carnitin tiên phát.",
+      "decrease": "Giảm hoạt độ AST\nCác nguyên nhân chính thường gặp là:\n1. Bệnh Beriberi (thiếu vitamin B1).\n2. Tình trạng thiếu hụt pyridoxal phosphat (Vd: suy dinh dưỡng, bệnh gan do rượu).\n3. Nhiễm toan cetôn do ĐTĐ.\n4. Lọc máu mạn.\n5. Có thai.\n6. Hội chứng urê máu cao."
     },
-    {
-        name: "Định lượng HbA1C [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 30 phút", 
-        ref: "4.2 - 6.4%", 
-        alert: "",
-        concept: "HbA1C đo tỷ lệ hemoglobin trong hồng cầu có gắn với đường. Kết quả này phản ánh trung bình mức đường huyết trong vòng 2-3 tháng qua.",
-        indication: "Tiêu chuẩn vàng để chẩn đoán, theo dõi kiểm soát đường huyết và nguy cơ biến chứng trong bệnh tiểu đường.",
-        pathologicalMeaning: {
-            increase: "Người bệnh đang kiểm soát đường huyết kém, nguy cơ cao tiến triển các biến chứng tiểu đường (suy thận, tim mạch).",
-            decrease: "Có thể gặp ở bệnh nhân tan máu, mất máu, hoặc quá liều thuốc tiểu đường."
-        }
+    "interferingFactors": "Mẫu bệnh phẩm bị vỡ hồng cầu có thể làm thay đổi kết quả XN.\nCó rất nhiều thuốc có thể làm tăng hoạt độ ALT như: Thuốc ức chế men chuyển angiotensin, acetaminophen, thuốc chống co giật, một số loại kháng sinh, thuốc điều trị tâm thần, benzodiazepin, estrogen, sulfat sắt, heparin, interferon, thuốc làm giảm mỡ máu, thuốc chống viêm không phải steroid, salicylat, thuốc lợi tiểu loại thiazid.\nCác thuốc có thể làm tăng hoạt độ AST là: Acetaminophen, allopurinol, một số loại kháng sinh, acid ascorbic, chlpropamid, cholestyramin, cholinergic, clofibrat, codein, statin, hydralazin, isoniazid, meperidin, methyldopa, morphin, thuốc ngừa thai uống, phenothiazin, procainamid, pyridoxin, salicylat, sufonamid, verapamil, vitamin A.\nCác thuốc có thể làm giảm hoạt độ AST là: Metronidazol, trifluoperazin.",
+    "benefits": "Lợi ích của xét nghiệm đo hoạt độ transaminase\n1. XN hữu ích trong bệnh lý tim để phát hiện nhồi máu cơ tim hay viêm cơ tim (khi phối hợp với định lượng CPK và/hoặc troponin).\n2. XN cho phép xác định một bệnh lý gan và theo dõi tiến triển của bệnh. XN này được coi là một test nhạy nhất để phát hiện tình trạng tổn thương tế bào gan do virus và do thuốc (tăng hoạt độ enzym gan có thể đi trước tình trạng tăng bilirubin máu hàng tuần). Tỷ lệ AST/ALT > 1, kết hợp với tăng gamma globulin máu kèm giảm nồng độ antithrombin III, rất gợi ý có tình trạng xơ gan.\n3. XN không thể thiếu để tiếp tục theo dõi các BN nghiện rượu được điều trị thuốc kháng lao (nguy cơ viêm gan do thuốc).",
+    "ebmGuidelines": "Các hướng dẫn thực hành lâm sàng dựa trên y học bằng chứng\nThuốc điều trị loại ức chế HMG - Coenzym A reductase (nhóm statin) thường được sử dụng để điều trị tình trạng rối loạn lipid máu. Một tác dụng phụ quan trọng có thể gặp khi điều trị bằng statin là nguy cơ gây độc đối với gan, mặc dù nguy cơ bị tăng transaminase gan len > 3 lần so với giá trị bình thường ít gặp. Cần đo hoạt độ các transaminase gan (ALT và AST) 6 - 12 tuần sau khi bắt đầu điều trị bằng statin.",
+    "clinicalNote": ""
+  },
+{
+    "name": "Đo hoạt độ GGT [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "GAMMA-GLUTAMYL-TRANSFERASE (GAMMA GT hay GGT)\n(Gamma-Glutamyl Transpeptidase / Gamma-Glutamyl Transferase, Gamma-Glutamyl Transpeptidase)",
+    "physiology": "Gamma-Glutamyl-Transferase (gamma GT) là một enzym gắn với màng tế bào (membrane-bound enzyme) tham gia vào quá trình xúc tác chuyển các nhóm gamma-glutamyl giữa các acid amin qua màng tế bào.\n\nEnzym này được thấy với hoạt độ lớn ở gan, thận, tuỵ, đường mật và với hoạt độ thấp hơn ở tim, lách và ruột non. Tuy vậy, enzym lưu hành trong huyết tương có nguồn gốc chủ yếu từ gan.\n\nGamma GT chịu trách nhiệm trong quá trình chuyển hóa glutathion ngoài tế bào (một chất chống oxi hóa chính trong tế bào). Enzym này có thể được coi là enzym đầu tiên chịu tác động một khi xẩy ra các bệnh lý của gan và đường mật, chính độ nhạy rất cao đó khiến gamma GT rất hữu ích trong loại trừ một bệnh lý gan mật. Tuy nhiên do tính đặc hiệu thấp nên không giúp ích gì cho việc xác định nguyên nhân gây bệnh.\n\nỞ người nghiện rượu, gamma GT thường bị gia tăng đơn độc. Giá trị của enzym tương ứng với lượng rượu hấp thụ và nghiên cứu đường tiến triển của enzym theo thời gian giúp người thầy thuốc đánh giá thói quen dùng rượu của bệnh nhân.\n\nTrong trường hợp tăng phosphatase kiềm, xác định gamma GT cho phép phân biệt nguồn gốc xương (gamma GT bình thường) với nguồn gốc gan mật của tình trạng tăng phosphatse kiềm (gamma GT tăng).",
+    "indication": "1. Để chẩn đoán và theo dõi một bệnh lý gan mật. Đây là một chỉ dấu enzym rất nhạy đối với các bệnh gan.\n2. Để phân biệt tình trạng tăng phosphatase kiềm do nguyên nhân bệnh cơ hay do bệnh gan mật.\n3. Để sàng lọc các tình trạng nghiện rượu mạn tính nhưng bệnh nhân không chịu khai báo.",
+    "specimenCollection": "XN được tiến hành trên huyết thanh.\nYêu cầu BN nhịn ăn 8h trước khi lấy máu XN. BN không được uống rượu trong vòng 24h trước khi lấy máu XN.\n\nGhi chú:\nCó thể bảo quản bệnh phẩm trong vòng 24h ở 4°C. Tuy vậy, phải tiến hành tương đối nhanh quá trình tách hồng cầu để tránh bệnh phẩm bị vỡ hồng cầu.",
+    "testingMethods": "",
+    "ref": "0-3 tháng: 4 - 120 U/L hay IU/L.\n3 tháng - 1 năm: 3 - 30 U/L hay 3 - 30 IU/L.\n1 - 16 tuổi: 2 - 25 U/L hay 2 - 25 IU/L.\nNam: 5 - 38 U/L hay 5 - 38 IU/L.\nNữ: 5 - 29 U/L hay 5 - 29 IU/L.",
+    "alert": "Các cảnh báo lâm sàng\nTrong chẩn đoán tình trạng nghiện rượu mạn:\n- Kết quả đo hoạt độ gamma GT huyết thanh bình thường không cho phép loại bỏ chẩn đoán có ngộ độc rượu. Kết hợp giữa đo hoạt độ gamma GT và XN công thức máu thấy có tăng thể tích hồng cầu chỉ giúp phát hiện được khoảng 70% các BN bị nghiện rượu mạn.\n- Trái lại, kết quả XN bất thường song không có biểu hiện bệnh lý gan trên lâm sàng cũng không cho phép khẳng định chẩn đoán có tình trạng nghiện rượu mạn do có nhiều nguyên nhân khác cũng gây tăng hoạt độ gamma GT (Vd: đái tháo đường, cường giáp, bệnh cầu thận).\nĐối với các bệnh lý gan mật, mặc dù gamma GT cho thấy là một XN rất nhạy song nó hoàn toàn không giúp ích gì trong xác định nguyên nhân gây bệnh đặc hiệu. Các tình trạng gây tăng gamma GT mạnh nhất là ứ mật và viêm gan do rượu.\nNửa đời sống của gamma-GT vào khoảng 7 - 10 ngày, song ở các bệnh nhân bị tổn thương gan liên quan với rượu cồn, nửa đời sống của gamma-GT có thể bị tăng lên tới 28 ngày do suy giảm khả năng thanh thải của gan.",
+    "pathologicalMeaning": {
+      "increase": "Các nguyên nhân chính thường gặp là:\n1. Các bệnh lý gan mật\nRượu:\n- Viêm gan do rượu: Gamma-GT tăng trung bình > 3,5 lần giới hạn bình thường cao.\n- Thoái hoá mỡ, thoái hoá mỡ xơ hoá: tăng gamma-GT song song với tăng hoạt độ AST và ALT song ở mức nhiều hơn.\nThuốc: Phenobarbital, phenytoin, warfarin, thuốc ngừa thai uống, rifampicin, INH, carbamazepin, methotrexat, acid valproic.\nViêm gan nhiễm trùng: Viêm gan A, B, không A - không B, tăng bạch cầu đơn nhân nhiễm trùng, bệnh do toxoplasma, nhiễm trùng do cytomegalovirus.\nViêm gan cấp: Tăng hoạt độ gamma-GT thường kém rõ rệt hơn so với tình trạng các enzym gan khác, song đây là enzym trở về mức bình thường muộn nhất, vì vậy rất hữu ích để chỉ dẫn tình trạng hồi phục.\nViêm gan mạn hoạt động (chronic active hepatitis): Tăng cao hơn so với trong viêm gan cấp (trung bình la > 7 lần mức giới hạn bình thường cao) và tăng nhiêu hơn so với mức tăng AST và ALT. Trong giai đoạn viêm gan mạn không hoạt động, có thể thấy đây là enzym duy nhất tiếp tục tăng hoạt tính trong khi các enzym khác trở về giá trị bình thường.\nXơ gan: Trong các trường hợp không tiến triển, giá trị gamma-GT trung bình tăng ít hơn so với mức tăng gặp trong viêm gan mạn (< 4 lần giới hạn bình thường cao). Khi mức tăng > 10-20 lần bình thường xẩy ra ở bệnh nhân xơ gan sẽ gợi ý có carcinoma tế bào gan nguyên phát chồng thêm vào (mức tăng trung bình la > 21 lần giới hạn bình thường cao).\nSuy tim mất bù (gan ứ huyết).\n\n2. Các xâm nhiễm gan\nTăng lipid máu.\nDi căn gan. Tăng gamma GT xẩy ra song song với tăng phosphatase kiềm (ALP) và đi trước khi chụp scan gan dương tính. Mức tăng trung bình > 14 lần giới hạn bình thường cao.\nU lympho.\nÁp xe.\nKén sán lá gan.\nBệnh sarcoidose (sarcoidosis).\nLao.\n\n3. Bệnh lý gây ứ mật: Nói chung hoạt độ gamma-GT biến đổi song hành với nồng độ phosphatase kiềm (ALP), leucin amino peptidase (LAP) và 5'-Nucleotidase (5'-NT) huyết thanh song gamma-GT nhạy hơn.\nVàng da tắc mật: Tăng gamma GT xẩy ra nhanh hơn và ở mức mạnh hơn so với mức tăng ALP và LAP. Mức tăng trung bình là > 5 lần giới hạn bình thường cao.\nXơ gan do mật tiên phát: Tăng gamma GT rõ rệt với mức tăng trung bình la > 13 lần giới hạn bình thường cao.\nViêm đường mật xơ hoá.\nỨ mật (cholestasis): Trong ứ mật cơ giới (Vd: do sỏi mật) và do viêm gan virus tăng gamma-GT và LAP tương đương nhau, song trong ứ mật do thuốc (drug-induced cholestasis), mức tăng gamma-GT nhiều hơn so với mức tăng LAP. Mức tăng trung bình được gặp > 6 lần giới hạn bình thường cao.\nUng thư biểu mô đường mật.\nTắc mật ở trẻ nhỏ: Gamma-GT tăng cao hơn nhiều trong thiểu sản đường mật gây chít hẹp (biliary atresia) so với trong viêm gan sơ sinh (điểm cắt 300 IU/L là ngưỡng phân biệt hữu ích). Các trẻ có tình trạng thiếu hụt a1-antitrypsin có hoạt độ gamma-GT cao hơn so với các bệnh nhân bị thiểu sản đường mật gây trít hẹp đường mật.\n\n4. Các tổn thương tụy tạng:\nViêm tụy: Hoạt độ gamma-GT luôn tăng cao trong viêm tụy cấp. Trong viêm tụy mạn chỉ gặp tăng gamma-GT khi có tổn thương tới đường mật hoặc viêm hoạt động.\nUng thư tụy.\nU bóng Vater (Ampullome de Vater).\n\n5. Các tổn thương thận\nHội chứng thận hư.\nUng thư biểu mô thận (hypernephroma) (hiếm gặp).\n\n6. Các nguyên nhân khác:\nĐái tháo đường, cường giáp, bệnh phổi tắc nghẽn mạn tính (COPD) và viêm khớp dạng thấp.\nNhồi máu cơ tim: tăng gamma-GT ở 50% các bệnh nhân. Tình trạng tăng này bắt đầu xảy ra vào ngày thứ 4 đến ngày thứ 5, đạt tới giá trị tối đa vào ngày thứ 8-12. Khi có tình trạng sốc tim hoặc suy tim phải cấp, có thể xuất hiện một đỉnh nồng độ sớm trong vòng 48h sau đó giảm nhanh và được tiếp theo bằng tình trạng tăng gamma-GT xây ra muộn hơn.\nMột số trường hợp ung thư biểu mô tuyến tiền liệt.\nCác khối u tân sinh, ngay cả khi không có di căn gan: U tế bào hắc tố ác tính, ung thư vú và phổi.\nCác tình trạng khác: Béo phì quá mức, bệnh tim, tình trạng sau mổ.",
+      "decrease": "Nguyên nhân chính thường gặp là: Suy giáp"
     },
-    {
-        name: "Đo hoạt độ AST (GOT) [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "10 - 37 U/L", 
-        alert: "> 1600 U/L.",
-        concept: "AST (Aspartate Aminotransferase) là một enzyme nội bào, có mặt nhiều ở tế bào gan, cơ tim và cơ xương. Khi các tế bào này bị tổn thương, AST sẽ giải phóng ồ ạt vào máu.",
-        indication: "Tầm soát, chẩn đoán và đánh giá mức độ tổn thương tế bào gan, các bệnh lý cơ tim (nhồi máu cơ tim) và cơ xương.",
-        pathologicalMeaning: {
-            increase: "Tăng rất cao trong viêm gan cấp tính (do virus, thuốc, độc chất). Tăng vừa trong xơ gan, viêm gan mạn, nhồi máu cơ tim, chấn thương cơ.",
-            decrease: "Thường không có ý nghĩa bệnh lý nghiêm trọng."
-        }
+    "interferingFactors": "Mẫu bệnh phẩm bị vỡ hồng cầu có thể làm thay đổi kết quả XN.\nHoạt độ gamma-GT cho thấy có các thay đổi giữa các ngày xét nghiệm ở mức 10 - 15%.\nHoạt độ gamma-GT có thể tăng 25 - 50% khi BN có BMI cao; Gamma-GT bị giảm thấp hơn 25% trong những tháng đầu thai kỳ.\nCác thuốc có thể làm tăng hoạt độ gamma-GT là: Rượu, aminoglycosid, barbiturat (Vd: phenobarbital), thuốc kháng H2, thuốc chống viêm không phải là steroid, phenytoin, thuốc ngừa thai uống, thuốc chống trầm cảm, carbamzepin, cimetidin, furosemid.\nCác thuốc có thể làm giảm hoạt độ gamma-GT là: Clofibrat, thuốc chông đông.",
+    "benefits": "Lợi ích của XN đo hoạt độ gamma-GT huyết thanh\n1. XN cho phép phát hiện các BN nghiện rượu nhưng không chịu nhận mình nghiện rượu (tăng gamma GT thường đi kèm với thiếu máu hồng cầu to và tăng acid uric máu). Tỷ lệ gamma-GT/ phosphatase kiềm > 2,5 là bằng chứng rất gợi ý cho tình trạng lạm dụng rượu.\n2. XN hữu ích để theo dõi các BN nghiện rượu: Đo hoạt độ gamma GT giúp chẩn đoán sớm các vấn đề gan mật ở BN nghiện rượu nhất là xơ gan do rượu và u gan. Trong thời gian cai rượu, gamma GT giảm xuống khoảng 50% trong vòng 8 ngày.\n3. XN cho phép phân biệt tăng phosphatase kiềm nguồn gốc xương với tăng phosphatase kiềm nguồn gốc gan mật khi tiến hành đo hoạt độ gamma GT huyết thanh cùng với đo hoạt độ phosphatase kiềm (do gamma GT đặc hiệu hơn đối với các bệnh lý gan mật).\n4. XN hữu ích để theo dõi các tình trạng ứ mật: Giảm rõ rệt hoạt độ gamma GT ở BN sỏi mật gợi ý đã loại bỏ được sỏi mật. XN đo hoạt độ gamma GT nhạy hơn XN đo hoạt độ phosphatase kiềm và transaminase (ALT, AST) trong phát hiện tình trạng vàng da tắc mật.\n5. XN giúp hỗ trợ cho chẩn đoán bị bệnh gan ở trẻ nhỏ > 3 tháng tuổi, phụ nữ có thai hoặc khi có bệnh lý xương do các đối tượng này có tình trạng tăng phosphatase kiềm và leucine aminopeptidase huyết thanh song không tăng gamma GT.\n6. Do hoạt độ gamma-GT bình thường ở các đối tượng bị bệnh xương hoặc đang tuổi tăng trưởng xương vì vậy đây là một XN hữu ích giúp chẩn đoán phân biệt giữa bệnh xương với bệnh gan như nguyên nhân gây tăng hoạt độ phosphatase kiềm huyết thanh.",
+    "ebmGuidelines": "",
+    "clinicalNote": ""
+  },
+  {
+    "name": "Định lượng Triglyceride [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "TRIGLYCERID\n(Triglycéridémie / Triglycerides)",
+    "physiology": "Triglycerid (triacylglycerol [TGA]) là một ester do glycerol kết hợp với ba acid béo tạo nên. Phân tử glycerol có ba nhóm hydroxyl OH. Mỗi acid béo có một nhóm carboxyl (COOH). Trong phân tử triglycerid, các nhóm hydroxyl của glycerol kết hợp với các nhóm carboxyl của acid béo tạo nên các cầu nối ester.\n\nTriglycerid là một dạng mỡ và là nguồn cung cấp năng lượng chính cho cơ thể, nó được tổng hợp ở gan từ acid béo, protein và glucose. Hầu hết triglycerid được trữ trong mô mỡ dưới dạng glycerol, monoglycerid và acid béo và được cơ thể mang ra tái sử dụng như một nguồn cung cấp năng lượng khi cần (phân hủy một phân tử triglycerid cung cấp một năng lượng gấp đôi so với phân tử protein hay carbohydrat: 9 kcal/g hay 38 kJ/g so với 4,5 kcal/g). Triglycerid di chuyển qua máu từ lòng ruột tới mô mỡ và được tích trữ ở đó. Hầu hết triglycerid được lipoprotein vận chuyển trong máu. Trong tình trạng nhịn ăn và ở người bình thường, phần lớn lượng triglycerid huyết tương tập trung trong VLDL (80%) và chỉ có 15% tập trung trong LDL cholesterol. Tăng triglycerid máu có thể phản ánh tình trạng quá tải VLDL song cũng có thể là hậu quả của một tích tụ bất thường khi đói của các chylomicron.",
+    "indication": "Triglycerid thường được định lượng để giúp đánh giá tình trạng cân bằng giữa lượng lipid đưa vào và chuyển hóa lipid trong cơ thể. Tăng nồng độ triglycerid trong máu thường được kết hợp với tăng nguy cơ xuất hiện bệnh tim mạch và vữa xơ động mạch.",
+    "specimenCollection": "XN được tiến hành trên huyết thanh. Yêu cầu BN phải nhịn ăn 12h trước khi lấy máu XN. BN không được uống rượu hay các chất có cồn trong vòng 24h trước khi XN.",
+    "testingMethods": "",
+    "ref": "Bình thường: < 150 mg/dL hay < 1,70 mmol/L.\nGiới hạn cao: 150 - 199 mmg/dL hay 1,70 - 2,25 mmol/L\nCao: 200 - 499 mg/dL hay 2,26 - 5,64 mmol/L.\nRất cao: ≥ 500 mg/dL hay ≥ 5,65 mmol/L.",
+    "alert": "Các cảnh báo lâm sàng\nMột nồng độ triglycerid máu ≥ 150 mg/dL là một trong các yếu tố nguy cơ của hội chứng chuyển hóa. Cho bệnh nhân ăn một khẩu phần chứa mỡ toàn phần cao hơn (chủ yếu dưới dạng mỡ không bão hòa) có thể giúp làm giảm triglycerid và làm tăng HDL cholesterol ở các đối tượng bị hội chứng chuyển hóa.\n\nCác BN bị ĐTĐ song không được kiểm soát nồng độ glucose máu thường sẽ có nồng độ triglycerid rất cao. Tiến hành kiểm soát chặt nồng độ glucose máu sẽ có tác động kết hợp làm hạ thấp nồng độ triglycerid. Một khi đã đưa được nồng độ glucose máu về giới hạn bình thường, cần đánh giá lại nồng độ triglycerid máu để quyết định có cần điều trị hay không tình trạng này.",
+    "pathologicalMeaning": {
+      "increase": "Tăng triglycerid máu\nCác nguyên nhân chính thường gặp là:\n- Tăng lipid máu tiên phát: Tăng lipoprotein máu có tính gia đình, tăng triglycerid máu có tính gia đình, thiếu hụt lipase lipoprotein có tính gia đình (bệnh Buerger-Grutz), thiếu hụt apoprotein CII.\n- Tăng lipid máu thứ phát: Béo phì, rối loạn dung nạp glucose, bệnh ĐTĐ, viêm tụy cấp.\n- Bệnh về gan (xơ gan, viêm gan, ứ mật), nghiện rượu.\n- Bệnh thận: Hội chứng thận hư, suy thận mạn.\n- Chế độ ăn: Chế độ ăn chứa quá nhiều mỡ, carbonhydrat hoặc calo.\n- Phụ nữ có thai.\n- Tình trạng stress, nhồi máu cơ tim cấp.\n- Bệnh gout, bệnh lý kho chứa glycogen (bệnh von Gierke), chứng porphyria cấp từng lúc (acute intermittent porphyria).\n- Do dùng thuốc: Corticosteroid, estrogen, thuốc ngừa thai uống, thuốc lợi tiểu thiazid, thuốc chẹn bêta giao cảm.",
+      "decrease": "Giảm triglycerid máu\nCác nguyên nhân chính thường gặp là:\nKhông có bêta lipoprotein máu bẩm sinh (Abeta-lipoproteinemia).\nCường cận giáp.\nHội chứng giảm hấp thu.\nSuy dinh dưỡng.\nBệnh phổi tắc nghẽn mạn tính.\nDo chế độ ăn: Tỷ lệ mỡ thấp.\nCường giáp."
     },
-    {
-        name: "Đo hoạt độ ALT (GPT) [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "10 - 40 U/L", 
-        alert: "> 1600 U/L.",
-        concept: "ALT (Alanine Aminotransferase) là enzyme xúc tác có nồng độ tập trung chủ yếu tại bào tương của tế bào gan. Do đó, ALT có tính đặc hiệu cho gan cao hơn so với AST.",
-        indication: "Là xét nghiệm đầu tay để tầm soát, chẩn đoán và theo dõi diễn tiến các bệnh lý viêm gan siêu vi, gan nhiễm mỡ, tổn thương gan do thuốc/rượu.",
-        pathologicalMeaning: {
-            increase: "Tăng đột biến trong viêm gan virus cấp. Tăng nhẹ/vừa trong gan nhiễm mỡ, xơ gan, khối u gan.",
-            decrease: "Không có ý nghĩa lâm sàng đáng kể."
-        }
+    "interferingFactors": "Có thai và lấy mẫu máu khi BN không nhịn ăn sẽ làm tăng nồng độ triglycerid máu (cần yêu cầu bệnh nhân nhịn ăn 12 giờ trước khi lấy máu XN và không được uống rượu trong vòng 24 giờ trước đó).\nTình trạng thay đổi nồng độ theo nhịp ngày đêm khiến nồng độ triglycerid trở nên thấp nhất vào buổi sáng và cao nhất quanh buổi trưa.\nCác thuốc có thể làm tăng nồng độ triglycerid máu là: Rượu, thuốc chẹn bêta - giao cảm, cholestyramin, corticosteroid, estrogen, thuốc ngừa thai uống, thuốc lợi tiểu thiazid, thuốc ức chế protease để điều trị HIV.\nCác thuốc có thể làm giảm nồng độ triglycerid máu là: Acid ascorbic, asparaginase, colestipol, clofibrat, dextrothyroxin, metformin, niacin.",
+    "benefits": "Lợi ích của xét nghiệm định lượng triglycerid máu\n1. XN cơ bản để đánh giá bilan lipid máu. Định lượng nồng độ triglycerid máu luôn được làm cùng với XN định lượng choleterol máu để giúp xác định các biến đổi bệnh lý của lipoprotein máu.\n2. Nồng độ triglycerid luôn được coi như một thành phần của bảng phân tích lipid máu (bao gồm cholesterol toàn phần, lipoprotein tỷ trọng thấp [LDL Cholesterol], lipoprotein tỷ trọng cao [HDL Cholesterol] và triglycerid). Triglycerid cũng được sử dụng để tính toán nồng độ LDL Cholesterol: LDL Cholesterol (mmol/L) = Cholesterol toàn phần - HDL Cholesterol - (triglycerid/5).\n3. Nồng độ triglycerid máu là một thông số để đánh giá các nguy cơ bị bệnh động mạch vành. Nồng độ triglycerid cao sẽ kết hợp với nguy cơ bị bệnh lý tim mạch và đột quỵ cao hơn. Tình trạng tăng triglycerid máu thường được gặp đồng thời với tình trạng ĐTĐ và béo phì và các tình trạng này cũng là các yếu tố nguy cơ tim mạch đối với BN.\n4. Nồng độ triglycerid máu có liên quan với một số rối loạn:\n- Nồng độ < 1,7 mmol/L (150 mg/dL) không kết hợp với bất kỳ tình trạng bệnh lý nào.\n- Nồng độ 2,82 - 5.64 mmol/L (250 - 500 mg/dL) được kết hợp với bệnh mạch ngoại biên. Đây có thể là một chỉ dấu đối với BN thuộc dạng di truyền bị tăng lipoprotein máu cần được điều trị đặc hiệu.\n- Nồng độ > 5,64 mmol/L (500 mg/dL) được kết hợp với nguy cơ cao bị viêm tụy.\n- Nồng độ > 11,29 mmol/L (1.000 mg/dL) được kết hợp với tăng lipid máu. nhất là typ I hoặc typ V; Nguy cơ viêm tụy rõ.\n- Nồng độ > 56,45 mmol/L (5.000 mg/dL) được kết hợp với vỡ u vàng (xanthoma), xâm nhiễm lipid vùng ngoại biên đồng tử mắt (corneal arcus), các tĩnh mạch và động mạch võng mạc có biểu hiện lăng đọng lipid có mầu trắng như sữa (lipemia retinalis), gan và lách to.",
+    "ebmGuidelines": "Các hướng dẫn thực hành lâm sàng dựa trên y học bằng chứng\nBáo cáo lần thứ ba của Chương trình Giáo dục Quốc gia (Mỹ) về cholesterol (NCEP) theo ý kiến đồng thuận của các chuyên gia để phát hiện, đánh giá và điều trị tình trạng cholesterol máu cao ở người lớn (ATP III) khuyến cáo:\nỞ tất cả các đối tượng người lớn từ 20 tuổi trở lên, cần tiến hành XN bilan mỡ máu lúc đói (cholesterol toàn phần, HDL cholesterol và triglycerid) × 5 năm một lần.\nChiến lược điều trị đối với BN bị tăng triglycerid phụ thuộc vào nguyên nhân gây tăng triglycerid máu và mức độ nặng của tình trạng này.\n- Đối với các đối tượng bị tăng triglycerid máu, đích điều trị cấp một là phải đạt được ngưỡng đích đối với nồng độ LDL cholesterol.\n- Khi triglycerid ở mức giới hạn cao (150-199 mg/dL), cần chú trọng tới khuyến cáo BN giảm cân và tăng cường hoạt động thể lực.\n- Đối với triglycerid ở mức cao (200-499 mg/dL), thông số cholesterol không phải là HDL (non - HDL cholesterol) trở thành đích điều trị cấp hai cần đạt. Bên cạnh việc khuyến cáo BN giảm cân và tăng cường hoạt động thể lực, có thể xem xét điều trị bằng thuốc cho các đối tượng có nguy cơ cao để đạt được đích điều trị đối với cholesterol không phải là HDL. Nếu một đối tượng thuộc nguy cơ cao có nồng độ triglycerid máu cao hay HDL cholesterol thấp, xem xét điều trị kết hợp giữa một fibrat hay acid nicotinic với một thuốc làm giảm LDL cholesterol.\n- Trong một số trường hợp hãn hữu, khi bệnh nhân có nồng độ triglycerid rất cao (≥ 500 mg/dL) đích điều trị khởi đầu là dự phòng viêm tụy cấp bằng cách làm giảm nhanh nồng độ triglycerid máu. Phác đồ điều trị này đòi hỏi một chế độ ăn chứa rất ít mỡ (< 15% khẩu phần cấp calo), giảm cân, tăng cường hoạt động thể lực và thường kết hợp với dùng thuốc làm giảm tryglycerid máu (fibrat hay acid nicotinic). Chỉ sau khi nồng độ triglycerid đã được hạ thấp xuống < 500 mg/dL, khi đó người thầy thuốc điều trị mới nên chuyển sự quan tâm điều trị sang mục tiêu làm giảm LDL cholesterol để làm giảm nguy cơ bị bệnh mạch vành.",
+    "clinicalNote": ""
+  },
+  {
+    "name": "Định lượng Cholesterol toàn phần [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "CHOLESTEROL\n(Cholestérolémie / Cholesterol, Total, High-density Lipoprotein [HDL], Low-density Lipoprotein [LDL], Serum)",
+    "physiology": "Các lipid chính trong hệ tuần hoàn (cholesterol, triglycerid, phospholipid) có bản chất là các chất không tan trong máu. Để có thể lưu hành trong dòng tuần hoàn, các chất này phải được gắn với với các protein có thể tan trong nước gọi là apolipoprotein (A1, A2, B, C, E...)\nToàn bộ lipid + Apolipoprotein hình thành các nhóm lipoprotein.\nCó 4 loại lipoprotein chính với các thành phần lipid và protein được trình bày dưới đây:\n1. Các vi dưỡng chấp (chylomicron).\n2. Các VLDL (lipoprotein có tỷ trọng rất thấp [Very Low Density Lipoproteins]).\n3. LDL (lipoprotein có tỷ trọng thấp [Low Density Lipoproteins]).\n4. HDL (lipoprotein có tỷ trọng cao [High Density Lipoproteins]).\n\nCholesterol là một chất cần thiết cho hoạt động chức năng màng tế bào và như một tiền chất của acid mật, progesteron, vitamin D, estrogen, glucocorticoid và các corticosteroid điều hòa chuyển hóa khoáng chất (mineralocorticoid).\n\nCholesterol lưu hành trong tuần hoàn có xuất xứ từ 2 nguồn:\n1. Nguồn gốc ngoại sinh: Tuỳ theo mức kinh tế của từng vùng, thức ăn cung cấp khoảng 50 mg tới 3g cholesterol mỗi ngày, chủ yếu dưới dạng este hoá. Khi đi qua tá tràng, cholesterol được thủy phân nhờ lipase của tuỵ (cholesterol esterase) thành cholesterol + acid béo tự do rồi được các TB ruột hấp thu nhờ tác động của các acid mật. Trong các TB của ống tiêu hoá, cholesterol được nhập vào chylomicron và các VLDL ruột. Nhờ các lipoprotein, cholesterol được vận chuyển trong ống ngực rồi tới dòng tuần hoàn.\n2. Nguồn gốc nội sinh: Tổng hợp ở gan chủ yếu từ acetyl CoA. Gan cũng có khả năng chuyển hóa cholesterol ngoại sinh. Hầu hết lượng cholesterol trong cơ thể được tổng hợp ở gan.\n\nTrái lại, cholesterol được tích hợp vào HDL lipoprotein (thường được gọi HDL-cholesterol) sẽ được vận chuyển từ các mô ngoại biên tới gan để được dị hoá tại đó (vận chuyển ngược chiều cholesterol [reverse cholesterol transport]). Vì vậy, HDL cholesterol còn được gọi dưới tên \"cholesterol tốt\" (good cholesterol) với nồng độ trong máu tương quan nghịch với nguy cơ bị bệnh động mạch vành của bệnh nhân do nó có liên quan với quá trình dị hoá cholesterol.\n\nCó rất nhiều nghiên cứu tập trung tìm hiểu vai trò của cholesterol trong bệnh tim mạch. Một nồng độ cholesterol máu tăng cao, nhất là khi kết hợp với nồng độ HDL cholesterol thấp được cho thấy là đi kèm với tăng nguy cơ bị vữa xơ động mạch và bệnh tim do vữa xơ động mạch.\n\nĐánh giá về chuyển hóa lipid máu trong cơ thể (lipid profile) thường được chỉ định kết hợp đánh giá nồng độ cholesterol toàn phần, LDL cholesterol, HDL cholesterol và triglycerid máu.",
+    "indication": "Để nghiên cứu các tình trạng rối loạn lipoprotein máu.\nĐể đánh giá nguy cơ hình thành mảng vữa xơ động mạch.\nĐể nghiên cứu chức năng của gan.\nĐể hỗ trợ cho chẩn đoán các tình trạng rối loạn chức năng tuyến giáp.",
+    "specimenCollection": "Xét nghiệm được tiến hành trên huyết thanh.\nCần yêu cầu BN nhịn ăn 12h trước khi lấy máu làm XN. BN không được uống rượu trong vòng 24h trước khi lấy máu làm XN.",
+    "testingMethods": "1. Phương pháp tốt nhất để định lượng cholesterol là phương pháp enzym so màu.\n2. Định lượng cholesterol trong HDL lipoprotein (HDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng bằng phương pháp đo độ đục sau khi làm kết tủa huyết thanh (nếu nồng độ triglycerit < 400 mg/dL).\nHoặc tính toán (khi nồng độ triglycerid ≤ 4,5 mmol/L), dựa vào công thức của Friedewald, sau khi xác định LDL.cholesterol: LDL cholesterol = Cholesterol - (triglycerit/2,2 + HDL Cholesterol)\n3. Định lượng cholesterol nhập trong LDL lipoprotein (LDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng sau khi tách trên cột thạch agar.\nHoặc tính toán từ công thức của Friedewald, sau khi xác định HDL cholesterol.",
+    "ref": "1. Cholesterol toàn phần\n< 10 tuổi: 100 - 180 mg/dL hay 2,6 - 4,7 mmol/L.\n10 - 20 tuổi: 120 - 180 mg/dL hay 3,1 - 4,7 mmol/L.\n> 20 tuổi: 120 - 200 mg/dL hay 3,1 - 5,2 mmol/L.\n\n2. Giá trị bình thường mong muốn đạt được\n< 200 mg/dL hay (< 5,18 mmol/L).\n\n3. HDL cholesterol\nNam: 35 - 54 mg/dL hay 0,9 - 1,4 mmol/L.\nNữ: 45 - 64 mg/dL hay 1,1 - 1,7 mmol/L\n\n4. LDL cholesterol:\n80 - 150 mg/dL hay 2,1 - 3,9 mmol/L.\n\n5. Tỷ lệ cholesterol/HDL cholesterol:\nNam: 3,50 - 4,50.\nNữ: 3,39 - 4,39.\n\n6. Giá trị bất thường:\nCao giới hạn: 200 - 239 mg/dL hay (5,18 - 6,19 mmol/L)\nCao: > 239 mg/dL hay (> 6,20 mmol/L).",
+    "alert": "Các cảnh báo lâm sàng\n1. Nếu kết quả xét nghiệm nồng độ cholesterol máu > 5,2 mmol/L (> 200 mg/dL), cần tiến hành chương trình giáo dục bệnh tật cho BN:\n- Giảm cung cấp mỡ bão hòa và cholesterol trong chế độ ăn.\n- Tăng hoạt động thể lực.\n- Kiểm soát cân nặng.\n2. Tùy theo nồng độ của các lipoprotein khác và mức độ tăng cholesterol máu, có thể bắt đầu điều trị cho BN bằng các thuốc làm giảm cholesterol máu, phối hợp cùng với các biện pháp thay đổi lối sống của người bệnh.\n3. Bilan đánh giá rối loạn lipid máu thường không tiến hành đo trực tiếp nồng độ LDL mà chỉ ước tính nồng độ này bằng cách sử dụng phương trình Friedewald: LDL chol = chol toàn phần (mg/dL) - HDL chol - (0,20 x triglycerid)\nLưu ý:\nCông thức tính toán này chỉ có giá trị chính xác khi tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân nhịn ăn và nồng độ triglycerid máu phải < 4,5 mmol/L (< 400 mg/dL).\nCần tiến hành định lượng trực tiếp LDL cholesterol khi có tăng nồng độ triglycerid máu.",
+    "pathologicalMeaning": {
+      "increase": "Tăng nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nKhẩu phần dinh dưỡng giàu cholesterol và acid béo bão hoà.\nBệnh vữa xơ động mạch (atherosclerosis).\nBệnh tim mạch.\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh có nhiều khối u vàng (Xanthomatosis).\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nTăng lipoprotein máu có tính chất gia đình (typ IIa, IIb, III).\nTăng triglycerid máu.\nBệnh lý kho chứa glycogen (glycogen storage disease) (Vd: bệnh von Gierke và bệnh Werner).\nSuy giáp.\nSuy thận.\nHội chứng thận hư.\nTắc mật.\nXơ gan do mật (biliary cirrhosis), bệnh lý tế bào gan.\nBéo phì.\nRối loạn chức năng tụy.\nTiền sản giật.\nCó thai.\nNghiện thuốc lá.\nU tân sinh tuyến tiền liệt và tụy.\n\nTăng nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng alphalipoprotein máu.\nHoạt động thê lực và tập thể dục đều đặn.\nLàm mất cân.\nBệnh gan mạn tính.\n\nTăng nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nHội chứng thận hư.\nBệnh lý gan.\nTắc mật.\nSuy thận mạn.\nTăng lipid máu typ II và III.\nĐái tháo đường.",
+      "decrease": "Giảm nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nHội chứng suy giảm miễn dịch mắc phải (AIDS).\nSuy dinh dưỡng.\nHội chứng giảm hấp thu (Vd: cắt đoạn ruột, viêm tuỵ mạn, bệnh Crohn).\nKhẩu phần dinh dưỡng nghèo cholesterol và acid béo bão hoà song lại giàu acid béo, không bão hoà.\nCường giáp.\nBệnh gan nặng gây suy tế bào gan.\nĐiều trị bằng các thuốc làm giảm lipid máu.\nKhông có beta lipoprotein máu mang tính chất gia đình.\nTăng alpha lipoprotein máu có tính gia đình (bệnh Tangier).\nThiếu máu mạn, thiếu máu ác tính Biermer.\nThiếu máu do tan máu.\nNhiễm trùng nặng và sepsis.\nTình trạng stress.\nBệnh lý tăng sinh tủy (myeloproliferative diseases).\n\nGiảm nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh lý tế bào gan.\nSuy thận mạn, hội chứng thận hư, hội chứng urê máu cao.\nTắc mật.\nKhông có betaliprotetin máu (abetalipoproteinemia).\nTăng alpha lipoprotein máu có tính gia đình (bệnh Tangier).\nThiếu hụt Apo A-I và Apo C-III.\n\nGiảm nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nKhông có bêtalipoprotein máu (abetalipoproteinemia).\nCường giáp.\nBệnh Tangier.\nGiảm lipoprotein máu.\nThiếu máu mạn tính.\nBệnh lý tế bào gan.\nThiếu hụt lecithin cholesterol acyltransferase.\nThiếu hụt Apo C-II.\nTăng lipid máu typ I."
     },
-    {
-        name: "Đo hoạt độ GGT [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "12 - 45 U/L", 
-        alert: "",
-        concept: "GGT (Gamma-Glutamyl Transferase) là màng enzyme có nhiều ở màng tế bào gan, ống mật. Nó rất nhạy cảm với tình trạng ứ mật và các độc chất (đặc biệt là rượu).",
-        indication: "Đánh giá tổn thương tế bào gan, đặc biệt phân biệt bệnh lý gan mật do rượu, tổn thương đường mật hoặc theo dõi người nghiện rượu.",
-        pathologicalMeaning: {
-            increase: "Tăng cao trong viêm gan do rượu, tắc mật, xơ gan, viêm tụy, ung thư gan hoặc do tác dụng phụ của một số thuốc.",
-            decrease: "Không có ý nghĩa lâm sàng."
-        }
+    "interferingFactors": "Các biến đổi nồng độ cholesterol máu liên quan với từng cá thể có thể tới 10%.\nCác biến đôi theo mùa gây giao động trong nồng độ cholesterol máu (tăng hơn 8% vào mùa đông so với mùa hè).\nCác biến đổi theo tư thế có thể gây giao động trong nồng độ cholesterol máu (giảm hơn 5% khi ở tư thế ngồi lấy máu và giảm hơn 10 - 15% khi ở tư thế nằm so với khi lấy máu ở tư thế đứng).\nChỉ được tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân được yêu cầu nhịn ăn trước khi xét nghiệm.\nCác yếu tố khác có thể làm tăng nồng độ cholesterol máu bao gồm: hút thuốc lá, tuổi tác (nam > 45 tuổi; nữ > 55 tuổi), tăng HA (HA > 140/90 mmHg hoặc BN đang dùng thuốc điều trị tăng HA), tiền sử gia đình bị mắc bệnh tim sớm (premature heart disease), bệnh tim bị trước đó và đái tháo đường.\nCác thuốc có thể làm tăng nồng độ cholesterol máu là: Thuốc an thần kinh, thuốc chẹn bêta giao cảm, steroid gây tăng chuyển hóa (anabolic steroid), disulfiram, lanzoprazol, levodopa, lithium, thuốc ngừa thai uống, pergolid, phenobarbital, phenytoin, sulfonamid, testosteron, thuốc lợi tiểu nhóm thiazid, ticlopidin, venlafaxin, vitamin D và adrenalin.\nCác thuốc có thể làm giảm nồng độ cholesterol máu là: Thuốc ức chế men chuyển angiotensin, allopurinol, androgen, thuốc làm giảm cholesterol máu, erythromycin, estrogen, filgrastim, levothyroxin, metformin, phenytoin, prazosin, tomoxifen, terazosin.\nNồng độ HDL cholesterol sẽ tăng lên khi sử dụng vừa phải rượu ethanol, estrogen và insulin.\nNồng độ LDL cholesterol có thể tăng cao do sử dụng chế độ ăn chứa nhiều mỡ bão hòa và cholesterol, khi có thai hoặc dùng steroid.\nNồng độ HDL cholesterol sẽ giảm đi ở người bị bỏ đói, bị stress hoặc gần đây bị bệnh lý cấp tính, hút thuốc lá, béo phì và lười hoạt động thể lực, dùng một số loại thuốc (Vd: steroid, lợi tiểu thiazid, thuốc chẹn bêta giao cảm), tăng triglycerid máu (> 19,2 mmol/L [> 1700 mg/dL]) và tăng nồng độ globulin miễn dịch huyết thanh.\nNồng độ LDL cholesterol có thể bị giảm đi khi bệnh nhân có tình trạng stress cấp, bị bệnh lý cấp tính gần đây và dùng estrogen.",
+    "benefits": "Lợi ích của xét nghiệm định lượng cholesterol\n1. Phát hiện và đánh giá các BN có nguy cơ bị vữa xơ động mạch, giúp quyết định các lựa chọn điều trị và để theo dõi hiệu quả của điều trị.\n2. Đánh giá mức độ nặng của một bệnh lý gan.\n3. Điều chỉnh hội chứng giảm hấp thu.\n4. Chẩn đoán, phân loại và theo dõi BN tăng lipid máu: Gia tăng mạnh nồng độ cholesterol máu > 8,25 mmol/L (3,2 g/L) khẳng định có tình trạng tăng lipoprotein máu và cho phép phân loại khi phối hợp với định lượng nồng độ triglyerid máu. Khi nồng độ triglycerid bình thường, có nghĩa là BN bị tăng cholesterol máu đơn thuần do tăng gánh LDL - cholesterol; Khi nồng độ triglycerid tăng vừa, có nghĩa là BN bị tăng lipid máu hỗn hợp; Khi nồng độ triglycerid tăng gấp 2-3 lần hơn cholesterol, có nghĩa là BN bị tăng triglycerid máu nội sinh do tăng lipoprotein tỷ trọng rất thấp (VLDL).",
+    "ebmGuidelines": "Các hướng dẫn thực hành lâm sàng dựa trên y học bằng chứng\nTheo báo cáo lần thứ III của Chương trình Giáo dục cholesterol Quốc gia (National Cholesterol Educational Program [NCEP] của các chuyên gia Mỹ về phát hiện, đánh giá và điều trị tình trạng tăng cholesterol máu ở người lớn.\n- Đối với tất cả người ≥ 20 tuổi, cần tiến hành làm XN các thành phần lipoprotein máu lúc đói (bao gồm cholesterol toàn phần, LDL cholesterol, HDL cholesterol và triglycerid) định kỳ 5 năm/lần.\n- Nếu tiến hành làm xét nghiệm các thành phần lipoprotein thì chỉ sử dụng các giá trị của cholesterol toàn phần và HDL cholesterol để đánh giá. Trong trường hợp này, nếu nồng độ cholesterol toàn phần ≥ 200 mg/dL (≥ 5,2 mmol/L) hay HDL cholesterol < 40 mg/dL (< 1 mmol/L) cần tiến hành theo dõi định kỳ các thành phần lipoprotein máu để xử trí thích hợp.\n(Ngoài ra tài liệu còn cung cấp các Bảng phân loại chi tiết nồng độ LDL cholesterol, HDL cholesterol và điểm cut-off theo khuyến cáo của ATP III).",
+    "clinicalNote": ""
+  },
+  {
+    "name": "Định lượng HDL-C [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "CHOLESTEROL\n(Cholestérolémie / Cholesterol, Total, High-density Lipoprotein [HDL], Low-density Lipoprotein [LDL], Serum)",
+    "physiology": "Các lipid chính trong hệ tuần hoàn (cholesterol, triglycerid, phospholipid) có bản chất là các chất không tan trong máu. Để có thể lưu hành trong dòng tuần hoàn, các chất này phải được gắn với với các protein có thể tan trong nước gọi là apolipoprotein (A1, A2, B, C, E...)\nToàn bộ lipid + Apolipoprotein hình thành các nhóm lipoprotein.\nCó 4 loại lipoprotein chính với các thành phần lipid và protein được trình bày dưới đây:\n1. Các vi dưỡng chấp (chylomicron).\n2. Các VLDL (lipoprotein có tỷ trọng rất thấp [Very Low Density Lipoproteins]).\n3. LDL (lipoprotein có tỷ trọng thấp [Low Density Lipoproteins]).\n4. HDL (lipoprotein có tỷ trọng cao [High Density Lipoproteins]).\n\nCholesterol là một chất cần thiết cho hoạt động chức năng màng tế bào và như một tiền chất của acid mật, progesteron, vitamin D, estrogen, glucocorticoid và các corticosteroid điều hòa chuyển hóa khoáng chất (mineralocorticoid).\n\nCholesterol lưu hành trong tuần hoàn có xuất xứ từ 2 nguồn:\n1. Nguồn gốc ngoại sinh: Tuỳ theo mức kinh tế của từng vùng, thức ăn cung cấp khoảng 50 mg tới 3g cholesterol mỗi ngày, chủ yếu dưới dạng este hoá. Khi đi qua tá tràng, cholesterol được thủy phân nhờ lipase của tuỵ (cholesterol esterase) thành cholesterol + acid béo tự do rồi được các TB ruột hấp thu nhờ tác động của các acid mật. Trong các TB của ống tiêu hoá, cholesterol được nhập vào chylomicron và các VLDL ruột. Nhờ các lipoprotein, cholesterol được vận chuyển trong ống ngực rồi tới dòng tuần hoàn.\n2. Nguồn gốc nội sinh: Tổng hợp ở gan chủ yếu từ acetyl CoA. Gan cũng có khả năng chuyển hóa cholesterol ngoại sinh. Hầu hết lượng cholesterol trong cơ thể được tổng hợp ở gan.\n\nTrái lại, cholesterol được tích hợp vào HDL lipoprotein (thường được gọi HDL-cholesterol) sẽ được vận chuyển từ các mô ngoại biên tới gan để được dị hoá tại đó (vận chuyển ngược chiều cholesterol [reverse cholesterol transport]). Vì vậy, HDL cholesterol còn được gọi dưới tên \"cholesterol tốt\" (good cholesterol) với nồng độ trong máu tương quan nghịch với nguy cơ bị bệnh động mạch vành của bệnh nhân do nó có liên quan với quá trình dị hoá cholesterol.\n\nCó rất nhiều nghiên cứu tập trung tìm hiểu vai trò của cholesterol trong bệnh tim mạch. Một nồng độ cholesterol máu tăng cao, nhất là khi kết hợp với nồng độ HDL cholesterol thấp được cho thấy là đi kèm với tăng nguy cơ bị vữa xơ động mạch và bệnh tim do vữa xơ động mạch.\n\nĐánh giá về chuyển hóa lipid máu trong cơ thể (lipid profile) thường được chỉ định kết hợp đánh giá nồng độ cholesterol toàn phần, LDL cholesterol, HDL cholesterol và triglycerid máu.",
+    "indication": "Để nghiên cứu các tình trạng rối loạn lipoprotein máu.\nĐể đánh giá nguy cơ hình thành mảng vữa xơ động mạch.\nĐể nghiên cứu chức năng của gan.\nĐể hỗ trợ cho chẩn đoán các tình trạng rối loạn chức năng tuyến giáp.",
+    "specimenCollection": "Xét nghiệm được tiến hành trên huyết thanh.\nCần yêu cầu BN nhịn ăn 12h trước khi lấy máu làm XN. BN không được uống rượu trong vòng 24h trước khi lấy máu làm XN.",
+    "testingMethods": "1. Phương pháp tốt nhất để định lượng cholesterol là phương pháp enzym so màu.\n2. Định lượng cholesterol trong HDL lipoprotein (HDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng bằng phương pháp đo độ đục sau khi làm kết tủa huyết thanh (nếu nồng độ triglycerit < 400 mg/dL).\nHoặc tính toán (khi nồng độ triglycerid ≤ 4,5 mmol/L), dựa vào công thức của Friedewald, sau khi xác định LDL.cholesterol: LDL cholesterol = Cholesterol - (triglycerit/2,2 + HDL Cholesterol)\n3. Định lượng cholesterol nhập trong LDL lipoprotein (LDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng sau khi tách trên cột thạch agar.\nHoặc tính toán từ công thức của Friedewald, sau khi xác định HDL cholesterol.",
+    "ref": "1. Cholesterol toàn phần\n< 10 tuổi: 100 - 180 mg/dL hay 2,6 - 4,7 mmol/L.\n10 - 20 tuổi: 120 - 180 mg/dL hay 3,1 - 4,7 mmol/L.\n> 20 tuổi: 120 - 200 mg/dL hay 3,1 - 5,2 mmol/L.\n\n2. Giá trị bình thường mong muốn đạt được\n< 200 mg/dL hay (< 5,18 mmol/L).\n\n3. HDL cholesterol\nNam: 35 - 54 mg/dL hay 0,9 - 1,4 mmol/L.\nNữ: 45 - 64 mg/dL hay 1,1 - 1,7 mmol/L\n\n4. LDL cholesterol:\n80 - 150 mg/dL hay 2,1 - 3,9 mmol/L.\n\n5. Tỷ lệ cholesterol/HDL cholesterol:\nNam: 3,50 - 4,50.\nNữ: 3,39 - 4,39.\n\n6. Giá trị bất thường:\nCao giới hạn: 200 - 239 mg/dL hay (5,18 - 6,19 mmol/L)\nCao: > 239 mg/dL hay (> 6,20 mmol/L).",
+    "alert": "Các cảnh báo lâm sàng\n1. Nếu kết quả xét nghiệm nồng độ cholesterol máu > 5,2 mmol/L (> 200 mg/dL), cần tiến hành chương trình giáo dục bệnh tật cho BN:\n- Giảm cung cấp mỡ bão hòa và cholesterol trong chế độ ăn.\n- Tăng hoạt động thể lực.\n- Kiểm soát cân nặng.\n2. Tùy theo nồng độ của các lipoprotein khác và mức độ tăng cholesterol máu, có thể bắt đầu điều trị cho BN bằng các thuốc làm giảm cholesterol máu, phối hợp cùng với các biện pháp thay đổi lối sống của người bệnh.\n3. Bilan đánh giá rối loạn lipid máu thường không tiến hành đo trực tiếp nồng độ LDL mà chỉ ước tính nồng độ này bằng cách sử dụng phương trình Friedewald: LDL chol = chol toàn phần (mg/dL) - HDL chol - (0,20 x triglycerid)\nLưu ý:\nCông thức tính toán này chỉ có giá trị chính xác khi tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân nhịn ăn và nồng độ triglycerid máu phải < 4,5 mmol/L (< 400 mg/dL).\nCần tiến hành định lượng trực tiếp LDL cholesterol khi có tăng nồng độ triglycerid máu.",
+    "pathologicalMeaning": {
+      "increase": "Tăng nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nKhẩu phần dinh dưỡng giàu cholesterol và acid béo bão hoà.\nBệnh vữa xơ động mạch (atherosclerosis).\nBệnh tim mạch.\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh có nhiều khối u vàng (Xanthomatosis).\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nTăng lipoprotein máu có tính chất gia đình (typ IIa, IIb, III).\nTăng triglycerid máu.\nBệnh lý kho chứa glycogen (glycogen storage disease) (Vd: bệnh von Gierke và bệnh Werner).\nSuy giáp.\nSuy thận.\nHội chứng thận hư.\nTắc mật.\nXơ gan do mật (biliary cirrhosis), bệnh lý tế bào gan.\nBéo phì.\nRối loạn chức năng tụy.\nTiền sản giật.\nCó thai.\nNghiện thuốc lá.\nU tân sinh tuyến tiền liệt và tụy.\n\nTăng nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng alphalipoprotein máu.\nHoạt động thê lực và tập thể dục đều đặn.\nLàm mất cân.\nBệnh gan mạn tính.\n\nTăng nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nHội chứng thận hư.\nBệnh lý gan.\nTắc mật.\nSuy thận mạn.\nTăng lipid máu typ II và III.\nĐái tháo đường.",
+      "decrease": "Giảm nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nHội chứng suy giảm miễn dịch mắc phải (AIDS).\nSuy dinh dưỡng.\nHội chứng giảm hấp thu (Vd: cắt đoạn ruột, viêm tuỵ mạn, bệnh Crohn).\nKhẩu phần dinh dưỡng nghèo cholesterol và acid béo bão hoà song lại giàu acid béo, không bão hoà.\nCường giáp.\nBệnh gan nặng gây suy tế bào gan.\nĐiều trị bằng các thuốc làm giảm lipid máu.\nKhông có beta lipoprotein máu mang tính chất gia đình.\nTăng alpha lipoprotein máu có tính gia đình (bệnh Tangier).\nThiếu máu mạn, thiếu máu ác tính Biermer.\nThiếu máu do tan máu.\nNhiễm trùng nặng và sepsis.\nTình trạng stress.\nBệnh lý tăng sinh tủy (myeloproliferative diseases).\n\nGiảm nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh lý tế bào gan.\nSuy thận mạn, hội chứng thận hư, hội chứng urê máu cao.\nTắc mật.\nKhông có betaliprotetin máu (abetalipoproteinemia).\nTăng alpha lipoprotein máu có tính gia đình (bệnh Tangier).\nThiếu hụt Apo A-I và Apo C-III.\n\nGiảm nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nKhông có bêtalipoprotein máu (abetalipoproteinemia).\nCường giáp.\nBệnh Tangier.\nGiảm lipoprotein máu.\nThiếu máu mạn tính.\nBệnh lý tế bào gan.\nThiếu hụt lecithin cholesterol acyltransferase.\nThiếu hụt Apo C-II.\nTăng lipid máu typ I."
     },
-    {
-        name: "Định lượng Triglyceride [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "70 - 150 mg/dL", 
-        alert: "",
-        concept: "Triglyceride là dạng chất béo lưu trữ năng lượng chính trong cơ thể, hình thành từ lượng calo dư thừa chưa được sử dụng đến.",
-        indication: "Tầm soát và đánh giá nguy cơ bệnh lý tim mạch, xơ vữa động mạch, rối loạn chuyển hóa và nguy cơ viêm tụy cấp.",
-        pathologicalMeaning: {
-            increase: "Tăng nguy cơ xơ vữa động mạch, bệnh mạch vành, đột quỵ. Tăng rất cao (>500 mg/dL) có nguy cơ gây viêm tụy cấp.",
-            decrease: "Hiếm gặp, có thể do suy dinh dưỡng, hội chứng kém hấp thu, hoặc cường giáp."
-        }
-    },
-    {
-        name: "Định lượng Cholesterol toàn phần [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "150 - 220 mg/dL", 
-        alert: "",
-        concept: "Cholesterol là một chất béo thiết yếu được tổng hợp chủ yếu ở gan, cấu tạo nên màng tế bào và các hormone steroid. Tuy nhiên, dư thừa cholesterol sẽ tích tụ tại thành mạch.",
-        indication: "Thuộc bộ mỡ máu, dùng để tầm soát mỡ máu, theo dõi nguy cơ bệnh lý tim mạch, đột quỵ.",
-        pathologicalMeaning: {
-            increase: "Tăng nguy cơ hình thành mảng xơ vữa, gây nhồi máu cơ tim, tai biến mạch máu não. Gặp trong rối loạn lipid máu, tiểu đường, suy giáp.",
-            decrease: "Sưng gan nặng, cường giáp, suy dinh dưỡng hoặc ung thư."
-        }
-    },
-    {
-        name: "Định lượng HDL-C [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "> 40 mg/dL", 
-        alert: "",
-        concept: "HDL-C (High-Density Lipoprotein) được gọi là 'cholesterol tốt' vì nó giúp vận chuyển cholesterol dư thừa từ mạch máu về gan để đào thải, ngăn ngừa xơ vữa.",
-        indication: "Đánh giá chi tiết bộ mỡ máu và tiên lượng bảo vệ tim mạch.",
-        pathologicalMeaning: {
-            increase: "Yếu tố bảo vệ, làm giảm nguy cơ mắc bệnh tim mạch.",
-            decrease: "Mức HDL-C thấp làm tăng rủi ro xơ vữa động mạch, bệnh mạch vành, hay gặp ở người hút thuốc, béo phì, lười vận động."
-        }
-    },
+    "interferingFactors": "Các biến đổi nồng độ cholesterol máu liên quan với từng cá thể có thể tới 10%.\nCác biến đôi theo mùa gây giao động trong nồng độ cholesterol máu (tăng hơn 8% vào mùa đông so với mùa hè).\nCác biến đổi theo tư thế có thể gây giao động trong nồng độ cholesterol máu (giảm hơn 5% khi ở tư thế ngồi lấy máu và giảm hơn 10 - 15% khi ở tư thế nằm so với khi lấy máu ở tư thế đứng).\nChỉ được tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân được yêu cầu nhịn ăn trước khi xét nghiệm.\nCác yếu tố khác có thể làm tăng nồng độ cholesterol máu bao gồm: hút thuốc lá, tuổi tác (nam > 45 tuổi; nữ > 55 tuổi), tăng HA (HA > 140/90 mmHg hoặc BN đang dùng thuốc điều trị tăng HA), tiền sử gia đình bị mắc bệnh tim sớm (premature heart disease), bệnh tim bị trước đó và đái tháo đường.\nCác thuốc có thể làm tăng nồng độ cholesterol máu là: Thuốc an thần kinh, thuốc chẹn bêta giao cảm, steroid gây tăng chuyển hóa (anabolic steroid), disulfiram, lanzoprazol, levodopa, lithium, thuốc ngừa thai uống, pergolid, phenobarbital, phenytoin, sulfonamid, testosteron, thuốc lợi tiểu nhóm thiazid, ticlopidin, venlafaxin, vitamin D và adrenalin.\nCác thuốc có thể làm giảm nồng độ cholesterol máu là: Thuốc ức chế men chuyển angiotensin, allopurinol, androgen, thuốc làm giảm cholesterol máu, erythromycin, estrogen, filgrastim, levothyroxin, metformin, phenytoin, prazosin, tomoxifen, terazosin.\nNồng độ HDL cholesterol sẽ tăng lên khi sử dụng vừa phải rượu ethanol, estrogen và insulin.\nNồng độ LDL cholesterol có thể tăng cao do sử dụng chế độ ăn chứa nhiều mỡ bão hòa và cholesterol, khi có thai hoặc dùng steroid.\nNồng độ HDL cholesterol sẽ giảm đi ở người bị bỏ đói, bị stress hoặc gần đây bị bệnh lý cấp tính, hút thuốc lá, béo phì và lười hoạt động thể lực, dùng một số loại thuốc (Vd: steroid, lợi tiểu thiazid, thuốc chẹn bêta giao cảm), tăng triglycerid máu (> 19,2 mmol/L [> 1700 mg/dL]) và tăng nồng độ globulin miễn dịch huyết thanh.\nNồng độ LDL cholesterol có thể bị giảm đi khi bệnh nhân có tình trạng stress cấp, bị bệnh lý cấp tính gần đây và dùng estrogen.",
+    "benefits": "Lợi ích của xét nghiệm định lượng cholesterol\n1. Phát hiện và đánh giá các BN có nguy cơ bị vữa xơ động mạch, giúp quyết định các lựa chọn điều trị và để theo dõi hiệu quả của điều trị.\n2. Đánh giá mức độ nặng của một bệnh lý gan.\n3. Điều chỉnh hội chứng giảm hấp thu.\n4. Chẩn đoán, phân loại và theo dõi BN tăng lipid máu: Gia tăng mạnh nồng độ cholesterol máu > 8,25 mmol/L (3,2 g/L) khẳng định có tình trạng tăng lipoprotein máu và cho phép phân loại khi phối hợp với định lượng nồng độ triglyerid máu. Khi nồng độ triglycerid bình thường, có nghĩa là BN bị tăng cholesterol máu đơn thuần do tăng gánh LDL - cholesterol; Khi nồng độ triglycerid tăng vừa, có nghĩa là BN bị tăng lipid máu hỗn hợp; Khi nồng độ triglycerid tăng gấp 2-3 lần hơn cholesterol, có nghĩa là BN bị tăng triglycerid máu nội sinh do tăng lipoprotein tỷ trọng rất thấp (VLDL).",
+    "ebmGuidelines": "Các hướng dẫn thực hành lâm sàng dựa trên y học bằng chứng\nTheo báo cáo lần thứ III của Chương trình Giáo dục cholesterol Quốc gia (National Cholesterol Educational Program [NCEP] của các chuyên gia Mỹ về phát hiện, đánh giá và điều trị tình trạng tăng cholesterol máu ở người lớn.\n- Đối với tất cả người ≥ 20 tuổi, cần tiến hành làm XN các thành phần lipoprotein máu lúc đói (bao gồm cholesterol toàn phần, LDL cholesterol, HDL cholesterol và triglycerid) định kỳ 5 năm/lần.\n- Nếu tiến hành làm xét nghiệm các thành phần lipoprotein thì chỉ sử dụng các giá trị của cholesterol toàn phần và HDL cholesterol để đánh giá. Trong trường hợp này, nếu nồng độ cholesterol toàn phần ≥ 200 mg/dL (≥ 5,2 mmol/L) hay HDL cholesterol < 40 mg/dL (< 1 mmol/L) cần tiến hành theo dõi định kỳ các thành phần lipoprotein máu để xử trí thích hợp.\n(Ngoài ra tài liệu còn cung cấp các Bảng phân loại chi tiết nồng độ LDL cholesterol, HDL cholesterol và điểm cut-off theo khuyến cáo của ATP III).",
+    "clinicalNote": "Nội dung xét nghiệm này được trình bày gộp chung trong bài CHOLESTEROL của tài liệu gốc (bao gồm Cholesterol toàn phần, HDL-C và LDL-C). Dưới đây là toàn bộ nội dung của phần này để đảm bảo không lược bỏ thông tin."
+  },
     {
         name: "Định lượng LDL-C [máu]", 
         group: "Sinh Hóa", 
@@ -234,36 +289,38 @@ const labTests: LabTest[] = [
         name: "Định lượng Acid Uric [máu]", 
         group: "Sinh Hóa", 
         time: "120 phút / 45 phút", 
-        ref: "Nam: 3.6 - 8.5 mg/dL\nNữ: 2.3 - 6.6 mg/dL\nNước tiểu 24h: 250 - 1000 mg/24h\nDịch khớp: 2 - 6 mg/dL", 
-        alert: "Máu ≥ 9.0 mg/dL (Nguy cơ Gout cao)\nCảnh báo: 20-30% Gout có Acid Uric bình thường.",
-        concept: "ACID URIC (Acide Urique / Uric Acid; 2, 6, 8 Trioxypurine; Urate) là sản phẩm chuyển hóa bazơ purin của acid nucleic.",
-        physiology: "Acid uric là chất có trọng lượng phân tử 169 dalton, có nguồn gốc từ quá trình dị hóa các bazơ purin (adenin và guanidin) của các acid nucleic. Các nguồn tạo chính bao gồm: thức ăn chứa purin (100 - 200 mg/ngày) và nguồn nội sinh do thoái biến acid nucleic cơ thể (600 mg/ngày). Quá trình tổng hợp chủ yếu ở gan và một phần niêm mạc ruột, cần sự xúc tác của enzym xanthin oxydase (Allopurinol ức chế enzym này để điều trị). Bài tiết chủ yếu qua nước tiểu (400 - 1000 mg/ngày) nhờ lọc cầu thận và bài xuất tích cực ở ống thận xa. Đường tiêu hóa thải trừ yếu hơn (100 - 200 mg/ngày).",
-        indication: "Chẩn đoán bệnh lý nồng độ acid uric (sỏi thận, gout, suy thận không rõ nguồn gốc). Đánh giá đau quặn thận, thận ứ nước, viêm khớp. Theo dõi bệnh máu, tan máu (sốt rét, hồng cầu hình liềm), điều trị hóa/xạ trị (hội chứng ly giải khối u), nhịn đói lâu ngày, béo phì. Tiên lượng nhiễm độc thai nghén/tiền sản giật.",
-        specimenCollection: "Huyết tương: Nhịn ăn 4-8 giờ. Nước tiểu: Thu nước tiểu 24 giờ. Lưu ýRasburicase: Nếu dùng thuốc này, phải lấy ống heparin lạnh, ly tâm lạnh, tách huyết tương trong đá và xét nghiệm trong vòng 4 giờ.",
-        testingMethods: "Sử dụng phương pháp enzym hoặc đo màu. Lưu ý: Đo màu có thể sai lệch nếu huyết thanh có nhiều Cystin, Glucose, Phenol, Vitamin C, Tryptophan, Tyrosin.",
+        isFeatured: true,
+        ref: "1. Máu:\n+ Nam: 3,6 - 8,5 mg/dL (214 - 506 µmol/L)\n+ Nữ: 2,3 - 6,6 mg/dL (137 - 393 µmol/L)\n2. Nước tiểu 24h: 250 - 1000 mg/24h (1,5 - 5,9 mmol/24h)\n3. Nước tiểu ngẫu nhiên:\n+ Nam: 105 - 595 mg/g creatinin\n+ Nữ: 95 - 740 mg/g creatinin\n4. Dịch khớp: 2 - 6 mg/dL (0,1 - 0,3 mmol/L)", 
+        alert: "Nguy cơ viêm khớp gout tăng cao khi nồng độ acid uric trong máu > 530 µmol/L (9 mg/dL). Tuy vậy, có từ 20 đến 30% các trường hợp viêm khớp do gout có nồng độ acid uric huyết thanh bình thường.",
+        concept: "ACID URIC (Acide Urique / Uric Acid; 2, 6, 8 Trioxypurine; Urate)",
+        physiology: "Acid uric là một chất có TLPT 169 dalton, có nguồn gốc từ quá trình dị hoá các bazơ purin (adenin và guanidin) của các acid nucleic.\n\nCác nguồn chính tạo acid uric trong cơ thể bao gồm:\n1. Thức ăn chứa purin (100 - 200 mg/ngày).\n2. Nguồn nội sinh do thoái biến các acid nucleic (600 mg/ngày).\n\nTổng hợp chủ yếu ở gan và một phần tại niêm mạc ruột nhờ enzym xanthin oxydase (Allopurinol ức chế enzym này).\n\nThải trừ chính:\n1. Qua nước tiểu (400 - 1000 mg/ngày): lọc qua cầu thận, tái hấp thu ở ống lượn gần và bài xuất tích cực ở ống lượn xa.\n2. Qua đường tiêu hoá (100 - 200 mg/ngày): mật, dịch vị và các dịch tiết của ruột.",
+        indication: "Chẩn đoán các bệnh lý gây biến đổi nồng độ acid uric (ví dụ: sỏi thận). Theo dõi điều trị bệnh gout. Theo dõi điều trị hóa chất chống ung thư nhằm hạn chế lắng đọng cấp urat tại thận gây suy thận cấp (hội chứng ly giải khối u).",
+        specimenCollection: "Máu: Tiến hành trên huyết tương, thường nhịn ăn 4 - 8h trước khi lấy máu. Nước tiểu: Thu bệnh phẩm nước tiểu 24h. Lưu ý Rasburicase: Cần ống heparin lạnh, ly tâm lạnh, tách huyết tương trong đá và xét nghiệm trong vòng 4 giờ.",
+        testingMethods: "Định lượng theo phương pháp Enzym hoặc Đo màu. Lưu ý: Đo màu có thể bị biến đổi khi trong huyết thanh có: Cystin, Glucose, Phenol, Vitamin C, Tryptophan, Tyrosin.",
         pathologicalMeaning: {
-            increase: "<strong>1. Tăng sản xuất:</strong> Gout vô căn, hóa/xạ trị, lơxêmi, u lympho, đa u tủy xương, tan máu (sốt rét, thiếu G6PD), chế độ ăn giàu purin, béo phì.\n<strong>2. Giảm đào thải:</strong> Suy thận, nghiện rượu, thuốc lợi tiểu (thiazid, furosemid), tổn thương ống thận xa, nhiễm toan lactic.\n<strong>3. Khác:</strong> Xơ vữa, tăng HA, tiền sản giật, suy giáp, ngộ độc chì mạn, thận đa nang, bệnh sỏi thận urat thấu tia X (không thấy trên X-quang).",
-            decrease: "Hòa loãng máu, hội chứng SIADH, tổn thương ống thận gần (Fanconi), bệnh Wilson, thiếu enzym xanthin oxydase, to đầu chi, bệnh Celiac, u tân sinh (Hodgkin). Chú ý giảm do thuốc ACTH, Allopurinol, Salicylat liều cao."
+            increase: "1. Tăng sản xuất: Gout tiên phát (30% vô căn), phá huỷ tổ chức (hoá/xạ trị), gia tăng chuyển hóa tế bào (lơxêmi cấp, u lympho, đa u tủy xương, đa hồng cầu), thiếu máu tan máu (sốt rét, hồng cầu hình liềm, thiếu G6PD), thức ăn giàu purin, béo phì, nhịn đói lâu ngày.\n2. Giảm đào thải qua thận: Suy thận, nghiện rượu cấp, dùng lợi tiểu (thiazid, furosemid...), tổn thương ống thận xa, nhiễm toan lactic, suy tim ứ huyết. Thuốc gây giảm thải: Aspirin (liều thấp), lợi tiểu, Probenecid/Phenylbutazon liều thấp.\n3. Các nguyên nhân khác: Vữa xơ động mạch, tăng HA vô căn, nhiễm virus Epstein-Barr, tiền sản giật, suy/cường cận giáp, suy giáp, ngộ độc chì mạn, chấn thương, thận đa nang, bệnh Von Gierke, hội chứng Lesch-Nyhan, Down, bệnh đái nước tiểu mù ngọt hương tùng.",
+            decrease: "Hoà loãng máu, hội chứng SIADH, tổn thương ống thận gần (hội chứng Fanconi), bệnh Wilson, thiếu enzym xanthin oxydase (đái xanthin), to đầu chi, bệnh Celiac, u tân sinh (Hodgkin, ung thư biểu mô).\nThuốc gây tăng thải: ACTH, Benzbromaron, Allopurinol, Probenecid/Phenylbutazon (liều cao), Cortison, Acid ascorbic, kháng vitamin K, thuốc độc tế bào, thuốc cản quang, estrogen, indomethacin..."
         },
-        interferingFactors: "<strong>Làm TĂNG:</strong> Adrenalin, acetaminophen, beta blockers, caffein, hóa trị, cyclosporin, lợi tiểu, levodopa, niacin, NSAIDs, rifampin, theophyllin, warfarin.\n<strong>Lâm GIẢM:</strong> Acetazolamid, allopurinol, aspirin liều cao, corticoid, estrogen, lithium, mannitol, probenecid.",
-        clearanceInfo: "Hệ số thanh thải = [Acid Uric nước tiểu (mmol/ngày) × Thể tích nước tiểu 24h (L)] / Acid Uric huyết thanh (mmol/L). Giúp phân biệt tăng do sản xuất quá mức hay giảm đào thải.",
-        clinicalNote: "Gout có tương quan nồng độ máu > 9 mg/dL. Nên uống nhiều nước (> 2L), tránh rượu bia (cồn ức chế bài tiết urat). Hạn chế: măng tây, nấm, rau bina, phủ tạng động vật. Sỏi urat không cản quang nên cần siêu âm hoặc UIV để phát hiện."
+        interferingFactors: "Làm TĂNG: Adrenalin, acetaminophen, ampicillin, acid ascorbic, chẹn bêta, caffein, hóa trị, cyclosporin, diltiazem, lợi tiểu thiazid, G-CSF, isoniazid, levodopa, lisinopril, methyldopa, niacin, NSAIDs, rifampin, salicylat, sildenafil, theophyllin, warfarin.\nLàm GIẢM: Acetazolamid, allopurinol, aspirin (liều cao), chlorpromazin, corticosteroid, enalapril, estrogen, griseofulvin, lisinopril, lithium, mannitol, marijuana, probenecid, salicylat, verapamil, vinblastin.\nLưu ý: Rasburicase làm thoái giáng nhanh acid uric ở nhiệt độ phòng. Cần lấy máu vào ống heparin lạnh, ly tâm lạnh và xét nghiệm trong vòng 4 giờ.",
+        clearanceInfo: "Hệ số thanh thải = [Nồng độ acid uric nước tiểu (mmol/ngày) × Thể tích nước tiểu 24 giờ (L)] / Nồng độ acid uric huyết thanh (mmol/L). Giúp phân biệt tăng do sản xuất (thanh thải bình thường/tăng) hay do giảm thải trừ (thanh thải giảm), tách biệt tổn thương ống thận gần (tăng) hay ống thận xa (giảm).",
+        clinicalNote: "Xác định cơn đau quặn thận, thận ứ nước, suy thận không rõ nguồn gốc, viêm khớp/đau khớp. Theo dõi tan máu, hóa/xạ trị, tiền sản giật.\nLời khuyên: Tăng khẩu phần nước uống, tránh rượu (ức chế bài tiết urat). Hạn chế thực phẩm giàu purin (măng tây, caffein, nấm, rau bina, phủ tạng động vật). Lưu ý: Sỏi urat thấu tia X (không cản quang) nên cần siêu âm hoặc UIV để phát hiện."
     },
     {
         name: "Định lượng Albumin [máu]", 
         group: "Sinh Hóa", 
         time: "120 phút / 45 phút", 
+        isFeatured: true,
         ref: "0 - 4 tháng: 2.0 - 4.5 g/dL\n4 tháng - 16 tuổi: 3.2 - 5.2 g/dL\nNgười lớn (> 16 tuổi): 3.5 - 4.8 g/dL (35 - 48 g/L)", 
         alert: "Giảm albumin xuống mức < 45% so với protein toàn phần luôn có ý nghĩa bệnh lý.",
         concept: "Albumin là một thành phần protein quan trọng nhất, chiếm tới 58 - 74% lượng protein toàn phần trong máu.",
-        physiology: "Albumin thiết yếu trong duy trì áp lực keo và vận chuyển nhiều chất (bilirubin, acid béo, thuốc và hormon). Gan sản xuất khoảng 15g mỗi ngày. Nửa đời sống khoảng 20 ngày. Nồng độ cơ thể phản ánh tốc độ tổng hợp, thoái hóa, tình trạng dinh dưỡng và tác động của cytokin/hormon.",
+        physiology: "Albumin thiết yếu trong duy trì áp lực keo và vận chuyển nhiều chất (bilirubin, acid béo, thuốc và hormon).\n\nGan sản xuất khoảng 15g albumin mỗi ngày. Nửa đời sống của albumin vào khoảng 20 ngày.\n\nNồng độ albumin huyết thanh phản ánh tốc độ tổng hợp, thoái hóa, thể tích phân bố và chịu tác động của tình trạng dinh dưỡng, áp lực keo huyết thanh, cytokin và hormon.",
         indication: "Đánh giá tình trạng dinh dưỡng. Thăm dò các tình trạng bệnh lý mạn tính và bệnh lý gan.",
         specimenCollection: "Tiến hành trên huyết thanh (ống khô). Không nhất thiết cần yêu cầu bệnh nhân phải nhịn ăn trước khi lấy máu.",
         pathologicalMeaning: {
             increase: "Tình trạng mất nước, Viêm tụy cấp.",
-            decrease: "<strong>1. Gan giảm tổng hợp:</strong> Bệnh gan (xơ gan, viêm gan), suy dinh dưỡng, ĐTĐ, suy giáp, suy thượng thận.\n<strong>2. Phản ứng pha cấp & Viêm:</strong> Nhiễm trùng vi khuẩn, ký sinh trùng, loét dạ dày, bất động lâu ngày, ung thư (lơxêmi).\n<strong>3. Tăng mất:</strong> Bỏng, bệnh Crohn, viêm đại tràng, chảy máu, hội chứng thận hư, chọc hút dịch màng phổi/cổ trướng nhiều lần, chấn thương dập nát.\n<strong>4. Tăng dị hóa:</strong> Sốt cao, bệnh Cushing, tiền sản giật.\n<strong>5. Tăng gánh thể tích:</strong> Suy tim, có thai, thuốc ngừa thai."
+            decrease: "1. Gan giảm tổng hợp: Bệnh gan (xơ gan, viêm gan), suy dinh dưỡng, ĐTĐ, suy giáp, suy thượng thận.\n2. Phản ứng pha cấp & Viêm: Nhiễm trùng vi khuẩn, ký sinh trùng, loét dạ dày, bất động lâu ngày, ung thư (lơxêmi).\n3. Tăng mất: Bỏng, bệnh Crohn, viêm đại tràng, chảy máu, hội chứng thận hư, chọc hút dịch màng phổi/cổ trướng nhiều lần, chấn thương dập nát.\n4. Tăng dị hóa: Sốt cao, bệnh Cushing, tiền sản giật.\n5. Tăng gánh thể tích: Suy tim, có thai, thuốc ngừa thai."
         },
-        interferingFactors: "<strong>Yếu tố sinh lý:</strong> Có thai (giảm nhẹ), hòa loãng hoặc cô đặc máu làm biến đổi số lượng tuyệt đối.\n<strong>Thuốc gây biến đổi:</strong> Aspirin, corticosteroid, estrogen, penicillin, phenytoin, procainamid, thuốc viên ngừa thai.",
+        interferingFactors: "Yếu tố sinh lý: Có thai (giảm nhẹ), hòa loãng hoặc cô đặc máu làm biến đổi số lượng tuyệt đối.\nThuốc gây biến đổi: Aspirin, corticosteroid, estrogen, penicillin, phenytoin, procainamid, thuốc viên ngừa thai.",
         clinicalNote: "Giảm Albumin < 45% protein toàn phần gợi ý tình trạng giảm hấp thu hoặc xơ gan. Ngược lại, việc tăng nồng độ albumin máu thường ít gợi ý cho một nguyên nhân cụ thể."
     },
     {
@@ -3772,7 +3829,7 @@ export default function App() {
                                   Trả Kết Quả
                                 </div>
                               </th>
-                              <th className="px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-black uppercase tracking-wider">Tầm Tham Chiếu</th>
+                              <th className="px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-black uppercase tracking-wider">Khoảng Tham Chiếu</th>
                               <th className="px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-black uppercase tracking-wider text-red-200">CẢNH BÁO LÂM SÀNG</th>
                             </tr>
                           </thead>
@@ -3803,8 +3860,10 @@ export default function App() {
                                 <td className="px-4 sm:px-6 py-4 sm:py-6 text-slate-600 dark:text-slate-400 font-bold text-sm sm:text-base text-center">
                                   {test.time}
                                 </td>
-                                <td className="px-4 sm:px-6 py-4 sm:py-6 font-mono text-base sm:text-lg font-bold text-slate-800 dark:text-slate-200 whitespace-pre-wrap leading-relaxed">
-                                  {test.ref}
+                                <td className="px-4 sm:px-6 py-4 sm:py-6 font-mono text-[9px] sm:text-[11px] font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap leading-tight tracking-tighter">
+                                  {test.ref.split('\n').map((line, idx) => (
+                                    <div key={idx}>{line}</div>
+                                  ))}
                                 </td>
                                 <td className="px-4 sm:px-6 py-4 sm:py-6">
                                   <span className="text-base sm:text-lg font-black text-rose-600 dark:text-rose-400 whitespace-pre-wrap leading-relaxed">
@@ -3842,8 +3901,12 @@ export default function App() {
                                 <Clock className="w-5 h-5 text-emerald-500" /> Trả Kết Quả: <span className="text-slate-800 dark:text-slate-200">{test.time}</span>
                              </div>
                              <div className="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-2xl">
-                                <p className="text-[10px] uppercase font-black text-slate-400 mb-2">Tầm Tham Chiếu</p>
-                                <p className="text-sm font-mono font-bold text-slate-800 dark:text-slate-200 leading-relaxed">{test.ref}</p>
+                                <p className="text-[10px] uppercase font-black text-slate-400 mb-2">Khoảng Tham Chiếu</p>
+                                <div className="text-[10px] sm:text-xs font-mono font-bold text-slate-800 dark:text-slate-200 leading-tight whitespace-nowrap overflow-x-auto pb-1">
+                                  {test.ref.split('\n').map((line, idx) => (
+                                    <div key={idx}>{line}</div>
+                                  ))}
+                                </div>
                              </div>
                              {test.alert && (
                                <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-2xl border border-red-100 dark:border-red-900/50">
@@ -3870,11 +3933,11 @@ export default function App() {
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                            className={`relative w-full max-w-2xl bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto ${selectedTest.name.includes('Acid Uric') ? 'ring-8 ring-blue-500/5' : ''}`}
+                            className={`relative w-full max-w-2xl bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto ${selectedTest.isFeatured ? 'ring-8 ring-blue-500/5' : ''}`}
                           >
-                            <div className={`${selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'bg-gradient-to-tr from-[#a18cd1] 0% via-[#fbc2eb] 100% shadow-inner' : 'bg-blue-600'} p-6 sm:p-10 text-white relative overflow-hidden`}>
+                            <div className={`${selectedTest.isFeatured ? 'bg-gradient-to-tr from-[#a18cd1] 0% via-[#fbc2eb] 100% shadow-inner' : 'bg-blue-600'} p-6 sm:p-10 text-white relative overflow-hidden`}>
                               {/* Soft decorative blur circles for Korean style */}
-                              {(selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin')) && (
+                              {selectedTest.isFeatured && (
                                 <>
                                   <div className="absolute top-[-20%] left-[-10%] w-40 h-40 bg-white/20 rounded-full blur-3xl animate-pulse" />
                                   <div className="absolute bottom-[-10%] right-[-5%] w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl" />
@@ -3900,31 +3963,37 @@ export default function App() {
                               </div>
                             </div>
 
-                            <div className={`p-6 sm:p-10 space-y-8 sm:space-y-12 ${selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'bg-slate-50/30' : ''}`}>
+                            <div className={`p-6 sm:p-10 space-y-8 sm:space-y-12 ${selectedTest.isFeatured ? 'bg-slate-50/30' : ''}`}>
                               {selectedTest.concept && (
-                                <div className={selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'p-6 bg-white rounded-3xl border border-indigo-50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden' : ''}>
-                                  {(selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin')) && <div className="absolute top-0 left-0 w-1.5 h-full bg-indigo-400" />}
-                                  <h4 className={`${selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'text-indigo-500' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-4`}>Khái niệm & Cơ chế</h4>
-                                  <p className="text-slate-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-serif italic text-justify">
-                                    {selectedTest.concept}
-                                  </p>
+                                <div className={selectedTest.isFeatured ? 'p-6 bg-white rounded-3xl border border-indigo-50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden' : ''}>
+                                  {selectedTest.isFeatured && <div className="absolute top-0 left-0 w-1.5 h-full bg-indigo-400" />}
+                                  <h4 className={`${selectedTest.isFeatured ? 'text-indigo-500' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-4`}>Khái niệm & Cơ chế</h4>
+                                  <div className="text-slate-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-serif italic text-justify space-y-3">
+                                    {selectedTest.concept.split('\n\n').map((block, i) => (
+                                      <p key={i}>{block}</p>
+                                    ))}
+                                  </div>
                                 </div>
                               )}
 
                               {selectedTest.physiology && (
-                                <div className={selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'p-6 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-3xl border border-purple-100 shadow-sm relative overflow-hidden' : ''}>
-                                  {(selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin')) && <div className="absolute top-0 left-0 w-1.5 h-full bg-purple-400" />}
+                                <div className={selectedTest.isFeatured ? 'p-6 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-3xl border border-purple-100 shadow-sm relative overflow-hidden' : ''}>
+                                  {selectedTest.isFeatured && <div className="absolute top-0 left-0 w-1.5 h-full bg-purple-400" />}
                                   <h4 className="text-purple-600 text-xs font-black uppercase tracking-[0.2em] mb-4">Sinh lý học & Tổng hợp</h4>
-                                  <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify font-medium">
-                                    {selectedTest.physiology}
-                                  </p>
+                                  <div className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify font-medium space-y-4">
+                                    {selectedTest.physiology.split('\n').map((paragraph, i) => (
+                                      <p key={i}>
+                                        {paragraph}
+                                      </p>
+                                    ))}
+                                  </div>
                                 </div>
                               )}
 
                               {selectedTest.indication && (
-                                <div className={selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'p-6 bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl border border-pink-100 shadow-sm relative overflow-hidden' : ''}>
-                                  {(selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin')) && <div className="absolute top-0 left-0 w-1.5 h-full bg-pink-400" />}
-                                  <h4 className={`${selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'text-pink-600' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-4`}>Chỉ định</h4>
+                                <div className={selectedTest.isFeatured ? 'p-6 bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl border border-pink-100 shadow-sm relative overflow-hidden' : ''}>
+                                  {selectedTest.isFeatured && <div className="absolute top-0 left-0 w-1.5 h-full bg-pink-400" />}
+                                  <h4 className={`${selectedTest.isFeatured ? 'text-pink-600' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-4`}>Chỉ định</h4>
                                   <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base font-bold leading-relaxed">
                                     {selectedTest.indication}
                                   </p>
@@ -3957,7 +4026,14 @@ export default function App() {
                                     <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-3xl border-2 border-white shadow-lg shadow-green-100 relative overflow-hidden">
                                       <div className="absolute top-0 right-0 p-2 opacity-10"><Dna className="w-12 h-12" /></div>
                                       <h4 className="text-green-700 text-xs font-black uppercase tracking-widest mb-4">Khoảng tham chiếu</h4>
-                                      <p className="font-mono text-base sm:text-xl font-black text-green-800 whitespace-pre-wrap leading-relaxed tracking-tight">{selectedTest.ref}</p>
+                                      <div className="font-mono text-base sm:text-xl font-black text-green-800 whitespace-pre-wrap leading-relaxed tracking-tight space-y-2">
+                                        {selectedTest.ref.split('\n').map((line, idx) => (
+                                          <div key={idx} className="flex items-start gap-2">
+                                            <span className="text-green-500 mt-1">•</span>
+                                            <span>{line}</span>
+                                          </div>
+                                        ))}
+                                      </div>
                                     </div>
                                   )}
                                   {selectedTest.alert && (
@@ -3972,7 +4048,7 @@ export default function App() {
 
                               {selectedTest.pathologicalMeaning && (
                                 <div className="space-y-6">
-                                  <h4 className={`${selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'text-indigo-600' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-2 text-center`}>--- Ý nghĩa bệnh lý & Phân tích ---</h4>
+                                  <h4 className={`${selectedTest.isFeatured ? 'text-indigo-600' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-2 text-center`}>--- Ý nghĩa bệnh lý & Phân tích ---</h4>
                                   <div className="grid grid-cols-1 gap-6">
                                     <div className="group flex flex-col sm:flex-row gap-4 p-6 bg-white rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500">
                                       <div className="bg-gradient-to-br from-red-100 to-rose-200 p-4 rounded-2xl h-fit w-fit shadow-inner">
@@ -3981,9 +4057,12 @@ export default function App() {
                                       <div>
                                         <p className="font-black text-red-600 mb-2 text-lg uppercase tracking-tight">Tăng nồng độ</p>
                                         <div 
-                                          className="text-sm sm:text-base text-slate-700 leading-relaxed text-justify whitespace-pre-wrap font-medium"
-                                          dangerouslySetInnerHTML={{ __html: selectedTest.pathologicalMeaning.increase }}
-                                        />
+                                          className="text-sm sm:text-base text-slate-700 leading-relaxed text-justify whitespace-pre-wrap font-medium space-y-2"
+                                        >
+                                          {selectedTest.pathologicalMeaning.increase.split('\n').map((line, i) => (
+                                            <div key={i} dangerouslySetInnerHTML={{ __html: line }} />
+                                          ))}
+                                        </div>
                                       </div>
                                     </div>
                                     <div className="group flex flex-col sm:flex-row gap-4 p-6 bg-white rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500">
@@ -3993,9 +4072,12 @@ export default function App() {
                                       <div>
                                         <p className="font-black text-blue-600 mb-2 text-lg uppercase tracking-tight">Giảm nồng độ</p>
                                         <div 
-                                          className="text-sm sm:text-base text-slate-700 leading-relaxed text-justify whitespace-pre-wrap font-medium"
-                                          dangerouslySetInnerHTML={{ __html: selectedTest.pathologicalMeaning.decrease }}
-                                        />
+                                          className="text-sm sm:text-base text-slate-700 leading-relaxed text-justify whitespace-pre-wrap font-medium space-y-2"
+                                        >
+                                          {selectedTest.pathologicalMeaning.decrease.split('\n').map((line, i) => (
+                                            <div key={i} dangerouslySetInnerHTML={{ __html: line }} />
+                                          ))}
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
@@ -4006,9 +4088,13 @@ export default function App() {
                                 <div className="p-8 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-3xl border-2 border-white shadow-xl">
                                   <div className="flex items-center gap-3 mb-4">
                                      <div className="w-2 h-2 rounded-full bg-yellow-400 animate-ping" />
-                                     <h4 className="text-yellow-700 text-xs font-black uppercase tracking-widest">Yếu tố gây nhiễu & Thuốc can giữ</h4>
+                                     <h4 className="text-yellow-700 text-xs font-black uppercase tracking-widest">Yếu tố gây nhiễu & Thuốc</h4>
                                   </div>
-                                  <div className="text-slate-700 text-sm sm:text-base leading-relaxed whitespace-pre-wrap font-bold" dangerouslySetInnerHTML={{ __html: selectedTest.interferingFactors }} />
+                                  <div className="text-slate-700 text-sm sm:text-base leading-relaxed whitespace-pre-wrap font-bold space-y-2">
+                                    {selectedTest.interferingFactors.split('\n').map((line, i) => (
+                                      <div key={i} dangerouslySetInnerHTML={{ __html: line }} />
+                                    ))}
+                                  </div>
                                 </div>
                               )}
 
