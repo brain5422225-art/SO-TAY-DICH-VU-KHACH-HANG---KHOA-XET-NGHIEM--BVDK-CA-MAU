@@ -253,14 +253,18 @@ const labTests: LabTest[] = [
         name: "Định lượng Albumin [máu]", 
         group: "Sinh Hóa", 
         time: "120 phút / 45 phút", 
-        ref: "45 - 55 g/L", 
-        alert: "",
-        concept: "Albumin là protein dồi dào nhất trong máu, do gan sản xuất, đóng vai trò tạo áp lực keo giữ nước trong lòng mạch và vận chuyển các chất (thuốc, hormone).",
-        indication: "Đánh giá chức năng tổng hợp của gan, tình trạng dinh dưỡng và sàng lọc hội chứng thận hư.",
+        ref: "0 - 4 tháng: 2.0 - 4.5 g/dL\n4 tháng - 16 tuổi: 3.2 - 5.2 g/dL\nNgười lớn (> 16 tuổi): 3.5 - 4.8 g/dL (35 - 48 g/L)", 
+        alert: "Giảm albumin xuống mức < 45% so với protein toàn phần luôn có ý nghĩa bệnh lý.",
+        concept: "Albumin là một thành phần protein quan trọng nhất, chiếm tới 58 - 74% lượng protein toàn phần trong máu.",
+        physiology: "Albumin thiết yếu trong duy trì áp lực keo và vận chuyển nhiều chất (bilirubin, acid béo, thuốc và hormon). Gan sản xuất khoảng 15g mỗi ngày. Nửa đời sống khoảng 20 ngày. Nồng độ cơ thể phản ánh tốc độ tổng hợp, thoái hóa, tình trạng dinh dưỡng và tác động của cytokin/hormon.",
+        indication: "Đánh giá tình trạng dinh dưỡng. Thăm dò các tình trạng bệnh lý mạn tính và bệnh lý gan.",
+        specimenCollection: "Tiến hành trên huyết thanh (ống khô). Không nhất thiết cần yêu cầu bệnh nhân phải nhịn ăn trước khi lấy máu.",
         pathologicalMeaning: {
-            increase: "Thường chỉ do tình trạng mất nước nghiêm trọng (cô đặc máu).",
-            decrease: "Bệnh gan mạn tính (xơ gan, giảm tổng hợp), hội chứng thận hư (mất qua nước tiểu), suy dinh dưỡng, viêm nhiễm nặng."
-        }
+            increase: "Tình trạng mất nước, Viêm tụy cấp.",
+            decrease: "<strong>1. Gan giảm tổng hợp:</strong> Bệnh gan (xơ gan, viêm gan), suy dinh dưỡng, ĐTĐ, suy giáp, suy thượng thận.\n<strong>2. Phản ứng pha cấp & Viêm:</strong> Nhiễm trùng vi khuẩn, ký sinh trùng, loét dạ dày, bất động lâu ngày, ung thư (lơxêmi).\n<strong>3. Tăng mất:</strong> Bỏng, bệnh Crohn, viêm đại tràng, chảy máu, hội chứng thận hư, chọc hút dịch màng phổi/cổ trướng nhiều lần, chấn thương dập nát.\n<strong>4. Tăng dị hóa:</strong> Sốt cao, bệnh Cushing, tiền sản giật.\n<strong>5. Tăng gánh thể tích:</strong> Suy tim, có thai, thuốc ngừa thai."
+        },
+        interferingFactors: "<strong>Yếu tố sinh lý:</strong> Có thai (giảm nhẹ), hòa loãng hoặc cô đặc máu làm biến đổi số lượng tuyệt đối.\n<strong>Thuốc gây biến đổi:</strong> Aspirin, corticosteroid, estrogen, penicillin, phenytoin, procainamid, thuốc viên ngừa thai.",
+        clinicalNote: "Giảm Albumin < 45% protein toàn phần gợi ý tình trạng giảm hấp thu hoặc xơ gan. Ngược lại, việc tăng nồng độ albumin máu thường ít gợi ý cho một nguyên nhân cụ thể."
     },
     {
         name: "Định lượng Protein toàn phần [máu]", 
@@ -3868,9 +3872,9 @@ export default function App() {
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
                             className={`relative w-full max-w-2xl bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto ${selectedTest.name.includes('Acid Uric') ? 'ring-8 ring-blue-500/5' : ''}`}
                           >
-                            <div className={`${selectedTest.name.includes('Acid Uric') ? 'bg-gradient-to-tr from-[#a18cd1] 0% via-[#fbc2eb] 100% shadow-inner' : 'bg-blue-600'} p-6 sm:p-10 text-white relative overflow-hidden`}>
+                            <div className={`${selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'bg-gradient-to-tr from-[#a18cd1] 0% via-[#fbc2eb] 100% shadow-inner' : 'bg-blue-600'} p-6 sm:p-10 text-white relative overflow-hidden`}>
                               {/* Soft decorative blur circles for Korean style */}
-                              {selectedTest.name.includes('Acid Uric') && (
+                              {(selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin')) && (
                                 <>
                                   <div className="absolute top-[-20%] left-[-10%] w-40 h-40 bg-white/20 rounded-full blur-3xl animate-pulse" />
                                   <div className="absolute bottom-[-10%] right-[-5%] w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl" />
@@ -3896,11 +3900,11 @@ export default function App() {
                               </div>
                             </div>
 
-                            <div className={`p-6 sm:p-10 space-y-8 sm:space-y-12 ${selectedTest.name.includes('Acid Uric') ? 'bg-slate-50/30' : ''}`}>
+                            <div className={`p-6 sm:p-10 space-y-8 sm:space-y-12 ${selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'bg-slate-50/30' : ''}`}>
                               {selectedTest.concept && (
-                                <div className={selectedTest.name.includes('Acid Uric') ? 'p-6 bg-white rounded-3xl border border-indigo-50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden' : ''}>
-                                  {selectedTest.name.includes('Acid Uric') && <div className="absolute top-0 left-0 w-1.5 h-full bg-indigo-400" />}
-                                  <h4 className={`${selectedTest.name.includes('Acid Uric') ? 'text-indigo-500' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-4`}>Khái niệm & Cơ chế</h4>
+                                <div className={selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'p-6 bg-white rounded-3xl border border-indigo-50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden' : ''}>
+                                  {(selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin')) && <div className="absolute top-0 left-0 w-1.5 h-full bg-indigo-400" />}
+                                  <h4 className={`${selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'text-indigo-500' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-4`}>Khái niệm & Cơ chế</h4>
                                   <p className="text-slate-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-serif italic text-justify">
                                     {selectedTest.concept}
                                   </p>
@@ -3908,8 +3912,8 @@ export default function App() {
                               )}
 
                               {selectedTest.physiology && (
-                                <div className={selectedTest.name.includes('Acid Uric') ? 'p-6 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-3xl border border-purple-100 shadow-sm relative overflow-hidden' : ''}>
-                                  {selectedTest.name.includes('Acid Uric') && <div className="absolute top-0 left-0 w-1.5 h-full bg-purple-400" />}
+                                <div className={selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'p-6 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-3xl border border-purple-100 shadow-sm relative overflow-hidden' : ''}>
+                                  {(selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin')) && <div className="absolute top-0 left-0 w-1.5 h-full bg-purple-400" />}
                                   <h4 className="text-purple-600 text-xs font-black uppercase tracking-[0.2em] mb-4">Sinh lý học & Tổng hợp</h4>
                                   <p className="text-slate-700 text-sm sm:text-base leading-relaxed text-justify font-medium">
                                     {selectedTest.physiology}
@@ -3918,9 +3922,9 @@ export default function App() {
                               )}
 
                               {selectedTest.indication && (
-                                <div className={selectedTest.name.includes('Acid Uric') ? 'p-6 bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl border border-pink-100 shadow-sm relative overflow-hidden' : ''}>
-                                  {selectedTest.name.includes('Acid Uric') && <div className="absolute top-0 left-0 w-1.5 h-full bg-pink-400" />}
-                                  <h4 className={`${selectedTest.name.includes('Acid Uric') ? 'text-pink-600' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-4`}>Chỉ định</h4>
+                                <div className={selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'p-6 bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl border border-pink-100 shadow-sm relative overflow-hidden' : ''}>
+                                  {(selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin')) && <div className="absolute top-0 left-0 w-1.5 h-full bg-pink-400" />}
+                                  <h4 className={`${selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'text-pink-600' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-4`}>Chỉ định</h4>
                                   <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base font-bold leading-relaxed">
                                     {selectedTest.indication}
                                   </p>
@@ -3968,7 +3972,7 @@ export default function App() {
 
                               {selectedTest.pathologicalMeaning && (
                                 <div className="space-y-6">
-                                  <h4 className={`${selectedTest.name.includes('Acid Uric') ? 'text-indigo-600' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-2 text-center`}>--- Ý nghĩa bệnh lý & Phân tích ---</h4>
+                                  <h4 className={`${selectedTest.name.includes('Acid Uric') || selectedTest.name.includes('Albumin') ? 'text-indigo-600' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-2 text-center`}>--- Ý nghĩa bệnh lý & Phân tích ---</h4>
                                   <div className="grid grid-cols-1 gap-6">
                                     <div className="group flex flex-col sm:flex-row gap-4 p-6 bg-white rounded-3xl border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-xl transition-all duration-500">
                                       <div className="bg-gradient-to-br from-red-100 to-rose-200 p-4 rounded-2xl h-fit w-fit shadow-inner">
