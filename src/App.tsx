@@ -36,6 +36,7 @@ import {
   X,
   TrendingUp,
   TrendingDown,
+  BookOpen,
   Stethoscope as StethoscopeIcon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -61,6 +62,8 @@ interface LabTest {
   interferingFactors?: string;
   clearanceInfo?: string;
   clinicalNote?: string;
+  benefits?: string;
+  ebmGuidelines?: string;
   isFeatured?: boolean;
 }
 
@@ -240,7 +243,7 @@ const labTests: LabTest[] = [
     "indication": "Để nghiên cứu các tình trạng rối loạn lipoprotein máu.\nĐể đánh giá nguy cơ hình thành mảng vữa xơ động mạch.\nĐể nghiên cứu chức năng của gan.\nĐể hỗ trợ cho chẩn đoán các tình trạng rối loạn chức năng tuyến giáp.",
     "specimenCollection": "Xét nghiệm được tiến hành trên huyết thanh.\nCần yêu cầu BN nhịn ăn 12h trước khi lấy máu làm XN. BN không được uống rượu trong vòng 24h trước khi lấy máu làm XN.",
     "testingMethods": "1. Phương pháp tốt nhất để định lượng cholesterol là phương pháp enzym so màu.\n2. Định lượng cholesterol trong HDL lipoprotein (HDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng bằng phương pháp đo độ đục sau khi làm kết tủa huyết thanh (nếu nồng độ triglycerit < 400 mg/dL).\nHoặc tính toán (khi nồng độ triglycerid ≤ 4,5 mmol/L), dựa vào công thức của Friedewald, sau khi xác định LDL.cholesterol: LDL cholesterol = Cholesterol - (triglycerit/2,2 + HDL Cholesterol)\n3. Định lượng cholesterol nhập trong LDL lipoprotein (LDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng sau khi tách trên cột thạch agar.\nHoặc tính toán từ công thức của Friedewald, sau khi xác định HDL cholesterol.",
-    "ref": "1. Cholesterol toàn phần\n< 10 tuổi: 100 - 180 mg/dL hay 2,6 - 4,7 mmol/L.\n10 - 20 tuổi: 120 - 180 mg/dL hay 3,1 - 4,7 mmol/L.\n> 20 tuổi: 120 - 200 mg/dL hay 3,1 - 5,2 mmol/L.\n\n2. Giá trị bình thường mong muốn đạt được\n< 200 mg/dL hay (< 5,18 mmol/L).\n\n3. HDL cholesterol\nNam: 35 - 54 mg/dL hay 0,9 - 1,4 mmol/L.\nNữ: 45 - 64 mg/dL hay 1,1 - 1,7 mmol/L\n\n4. LDL cholesterol:\n80 - 150 mg/dL hay 2,1 - 3,9 mmol/L.\n\n5. Tỷ lệ cholesterol/HDL cholesterol:\nNam: 3,50 - 4,50.\nNữ: 3,39 - 4,39.\n\n6. Giá trị bất thường:\nCao giới hạn: 200 - 239 mg/dL hay (5,18 - 6,19 mmol/L)\nCao: > 239 mg/dL hay (> 6,20 mmol/L).",
+    "ref": "1. Cholesterol toàn phần\n< 10 tuổi: 100 - 180 mg/dL hay 2,6 - 4,7 mmol/L.\n10 - 20 tuổi: 120 - 180 mg/dL hay 3,1 - 4,7 mmol/L.\n> 20 tuổi: 120 - 200 mg/dL hay 3,1 - 5,2 mmol/L.\n\n2. Giá trị bình thường mong muốn đạt được\n< 200 mg/dL hay (< 5,18 mmol/L).\n\n3. Tỷ lệ cholesterol/HDL cholesterol:\nNam: 3,50 - 4,50.\nNữ: 3,39 - 4,39.\n\n4. Giá trị bất thường:\nCao giới hạn: 200 - 239 mg/dL hay (5,18 - 6,19 mmol/L)\nCao: > 239 mg/dL hay (> 6,20 mmol/L).",
     "alert": "Các cảnh báo lâm sàng\n1. Nếu kết quả xét nghiệm nồng độ cholesterol máu > 5,2 mmol/L (> 200 mg/dL), cần tiến hành chương trình giáo dục bệnh tật cho BN:\n- Giảm cung cấp mỡ bão hòa và cholesterol trong chế độ ăn.\n- Tăng hoạt động thể lực.\n- Kiểm soát cân nặng.\n2. Tùy theo nồng độ của các lipoprotein khác và mức độ tăng cholesterol máu, có thể bắt đầu điều trị cho BN bằng các thuốc làm giảm cholesterol máu, phối hợp cùng với các biện pháp thay đổi lối sống của người bệnh.\n3. Bilan đánh giá rối loạn lipid máu thường không tiến hành đo trực tiếp nồng độ LDL mà chỉ ước tính nồng độ này bằng cách sử dụng phương trình Friedewald: LDL chol = chol toàn phần (mg/dL) - HDL chol - (0,20 x triglycerid)\nLưu ý:\nCông thức tính toán này chỉ có giá trị chính xác khi tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân nhịn ăn và nồng độ triglycerid máu phải < 4,5 mmol/L (< 400 mg/dL).\nCần tiến hành định lượng trực tiếp LDL cholesterol khi có tăng nồng độ triglycerid máu.",
     "pathologicalMeaning": {
       "increase": "Tăng nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nKhẩu phần dinh dưỡng giàu cholesterol và acid béo bão hoà.\nBệnh vữa xơ động mạch (atherosclerosis).\nBệnh tim mạch.\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh có nhiều khối u vàng (Xanthomatosis).\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nTăng lipoprotein máu có tính chất gia đình (typ IIa, IIb, III).\nTăng triglycerid máu.\nBệnh lý kho chứa glycogen (glycogen storage disease) (Vd: bệnh von Gierke và bệnh Werner).\nSuy giáp.\nSuy thận.\nHội chứng thận hư.\nTắc mật.\nXơ gan do mật (biliary cirrhosis), bệnh lý tế bào gan.\nBéo phì.\nRối loạn chức năng tụy.\nTiền sản giật.\nCó thai.\nNghiện thuốc lá.\nU tân sinh tuyến tiền liệt và tụy.\n\nTăng nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng alphalipoprotein máu.\nHoạt động thê lực và tập thể dục đều đặn.\nLàm mất cân.\nBệnh gan mạn tính.\n\nTăng nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nHội chứng thận hư.\nBệnh lý gan.\nTắc mật.\nSuy thận mạn.\nTăng lipid máu typ II và III.\nĐái tháo đường.",
@@ -261,7 +264,7 @@ const labTests: LabTest[] = [
     "indication": "Để nghiên cứu các tình trạng rối loạn lipoprotein máu.\nĐể đánh giá nguy cơ hình thành mảng vữa xơ động mạch.\nĐể nghiên cứu chức năng của gan.\nĐể hỗ trợ cho chẩn đoán các tình trạng rối loạn chức năng tuyến giáp.",
     "specimenCollection": "Xét nghiệm được tiến hành trên huyết thanh.\nCần yêu cầu BN nhịn ăn 12h trước khi lấy máu làm XN. BN không được uống rượu trong vòng 24h trước khi lấy máu làm XN.",
     "testingMethods": "1. Phương pháp tốt nhất để định lượng cholesterol là phương pháp enzym so màu.\n2. Định lượng cholesterol trong HDL lipoprotein (HDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng bằng phương pháp đo độ đục sau khi làm kết tủa huyết thanh (nếu nồng độ triglycerit < 400 mg/dL).\nHoặc tính toán (khi nồng độ triglycerid ≤ 4,5 mmol/L), dựa vào công thức của Friedewald, sau khi xác định LDL.cholesterol: LDL cholesterol = Cholesterol - (triglycerit/2,2 + HDL Cholesterol)\n3. Định lượng cholesterol nhập trong LDL lipoprotein (LDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng sau khi tách trên cột thạch agar.\nHoặc tính toán từ công thức của Friedewald, sau khi xác định HDL cholesterol.",
-    "ref": "1. Cholesterol toàn phần\n< 10 tuổi: 100 - 180 mg/dL hay 2,6 - 4,7 mmol/L.\n10 - 20 tuổi: 120 - 180 mg/dL hay 3,1 - 4,7 mmol/L.\n> 20 tuổi: 120 - 200 mg/dL hay 3,1 - 5,2 mmol/L.\n\n2. Giá trị bình thường mong muốn đạt được\n< 200 mg/dL hay (< 5,18 mmol/L).\n\n3. HDL cholesterol\nNam: 35 - 54 mg/dL hay 0,9 - 1,4 mmol/L.\nNữ: 45 - 64 mg/dL hay 1,1 - 1,7 mmol/L\n\n4. LDL cholesterol:\n80 - 150 mg/dL hay 2,1 - 3,9 mmol/L.\n\n5. Tỷ lệ cholesterol/HDL cholesterol:\nNam: 3,50 - 4,50.\nNữ: 3,39 - 4,39.\n\n6. Giá trị bất thường:\nCao giới hạn: 200 - 239 mg/dL hay (5,18 - 6,19 mmol/L)\nCao: > 239 mg/dL hay (> 6,20 mmol/L).",
+    "ref": "1. HDL cholesterol\nNam: 35 - 54 mg/dL hay 0,9 - 1,4 mmol/L.\nNữ: 45 - 64 mg/dL hay 1,1 - 1,7 mmol/L.\n\n2. Tỷ lệ cholesterol/HDL cholesterol:\nNam: 3,50 - 4,50.\nNữ: 3,39 - 4,39.",
     "alert": "Các cảnh báo lâm sàng\n1. Nếu kết quả xét nghiệm nồng độ cholesterol máu > 5,2 mmol/L (> 200 mg/dL), cần tiến hành chương trình giáo dục bệnh tật cho BN:\n- Giảm cung cấp mỡ bão hòa và cholesterol trong chế độ ăn.\n- Tăng hoạt động thể lực.\n- Kiểm soát cân nặng.\n2. Tùy theo nồng độ của các lipoprotein khác và mức độ tăng cholesterol máu, có thể bắt đầu điều trị cho BN bằng các thuốc làm giảm cholesterol máu, phối hợp cùng với các biện pháp thay đổi lối sống của người bệnh.\n3. Bilan đánh giá rối loạn lipid máu thường không tiến hành đo trực tiếp nồng độ LDL mà chỉ ước tính nồng độ này bằng cách sử dụng phương trình Friedewald: LDL chol = chol toàn phần (mg/dL) - HDL chol - (0,20 x triglycerid)\nLưu ý:\nCông thức tính toán này chỉ có giá trị chính xác khi tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân nhịn ăn và nồng độ triglycerid máu phải < 4,5 mmol/L (< 400 mg/dL).\nCần tiến hành định lượng trực tiếp LDL cholesterol khi có tăng nồng độ triglycerid máu.",
     "pathologicalMeaning": {
       "increase": "Tăng nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nKhẩu phần dinh dưỡng giàu cholesterol và acid béo bão hoà.\nBệnh vữa xơ động mạch (atherosclerosis).\nBệnh tim mạch.\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh có nhiều khối u vàng (Xanthomatosis).\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nTăng lipoprotein máu có tính chất gia đình (typ IIa, IIb, III).\nTăng triglycerid máu.\nBệnh lý kho chứa glycogen (glycogen storage disease) (Vd: bệnh von Gierke và bệnh Werner).\nSuy giáp.\nSuy thận.\nHội chứng thận hư.\nTắc mật.\nXơ gan do mật (biliary cirrhosis), bệnh lý tế bào gan.\nBéo phì.\nRối loạn chức năng tụy.\nTiền sản giật.\nCó thai.\nNghiện thuốc lá.\nU tân sinh tuyến tiền liệt và tụy.\n\nTăng nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng alphalipoprotein máu.\nHoạt động thê lực và tập thể dục đều đặn.\nLàm mất cân.\nBệnh gan mạn tính.\n\nTăng nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nHội chứng thận hư.\nBệnh lý gan.\nTắc mật.\nSuy thận mạn.\nTăng lipid máu typ II và III.\nĐái tháo đường.",
@@ -273,37 +276,45 @@ const labTests: LabTest[] = [
     "clinicalNote": "Nội dung xét nghiệm này được trình bày gộp chung trong bài CHOLESTEROL của tài liệu gốc (bao gồm Cholesterol toàn phần, HDL-C và LDL-C). Dưới đây là toàn bộ nội dung của phần này để đảm bảo không lược bỏ thông tin."
   },
     {
-        name: "Định lượng LDL-C [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "< 130 mg/dL", 
-        alert: "",
-        concept: "LDL-C (Low-Density Lipoprotein) được xem là 'cholesterol xấu' vì nó vận chuyển cholesterol đến các mô và dễ dàng lắng đọng tạo thành mảng xơ vữa ở thành động mạch.",
-        indication: "Là chỉ số quan trọng nhất trong bộ mỡ máu để đánh giá nguy cơ nhồi máu cơ tim, tai biến mạch máu não và mục tiêu điều trị bằng thuốc hạ mỡ máu.",
-        pathologicalMeaning: {
-            increase: "Cảnh báo nguy cơ cao về bệnh lý tim mạch, đột quỵ. Thường do lối sống, chế độ ăn nhiều chất béo bão hòa hoặc di truyền.",
-            decrease: "Thường tốt, ít gặp bệnh lý, trừ trường hợp cường giáp hoặc suy dinh dưỡng nặng."
-        }
+    "name": "Định lượng LDL-C [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "CHOLESTEROL\n(Cholestérolémie / Cholesterol, Total, High-density Lipoprotein [HDL], Low-density Lipoprotein [LDL], Serum)",
+    "physiology": "Các lipid chính trong hệ tuần hoàn (cholesterol, triglycerid, phospholipid) có bản chất là các chất không tan trong máu. Để có thể lưu hành trong dòng tuần hoàn, các chất này phải được gắn với với các protein có thể tan trong nước gọi là apolipoprotein (A1, A2, B, C, E...)\nToàn bộ lipid + Apolipoprotein hình thành các nhóm lipoprotein.\nCó 4 loại lipoprotein chính với các thành phần lipid và protein được trình bày dưới đây:\n1. Các vi dưỡng chấp (chylomicron).\n2. Các VLDL (lipoprotein có tỷ trọng rất thấp [Very Low Density Lipoproteins]).\n3. LDL (lipoprotein có tỷ trọng thấp [Low Density Lipoproteins]).\n4. HDL (lipoprotein có tỷ trọng cao [High Density Lipoproteins]).\n\nCholesterol là một chất cần thiết cho hoạt động chức năng màng tế bào và như một tiền chất của acid mật, progesteron, vitamin D, estrogen, glucocorticoid và các corticosteroid điều hòa chuyển hóa khoáng chất (mineralocorticoid).\n\nCholesterol lưu hành trong tuần hoàn có xuất xứ từ 2 nguồn:\n1. Nguồn gốc ngoại sinh: Tuỳ theo mức kinh tế của từng vùng, thức ăn cung cấp khoảng 50 mg tới 3g cholesterol mỗi ngày, chủ yếu dưới dạng este hoá. Khi đi qua tá tràng, cholesterol được thủy phân nhờ lipase của tuỵ (cholesterol esterase) thành cholesterol + acid béo tự do rồi được các TB ruột hấp thu nhờ tác động của các acid mật. Trong các TB của ống tiêu hoá, cholesterol được nhập vào chylomicron và các VLDL ruột. Nhờ các lipoprotein, cholesterol được vận chuyển trong ống ngực rồi tới dòng tuần hoàn.\n2. Nguồn gốc nội sinh: Tổng hợp ở gan chủ yếu từ acetyl CoA. Gan cũng có khả năng chuyển hóa cholesterol ngoại sinh. Hầu hết lượng cholesterol trong cơ thể được tổng hợp ở gan.\n\nTrái lại, cholesterol được tích hợp vào HDL lipoprotein (thường được gọi HDL-cholesterol) sẽ được vận chuyển từ các mô ngoại biên tới gan để được dị hoá tại đó (vận chuyển ngược chiều cholesterol [reverse cholesterol transport]). Vì vậy, HDL cholesterol còn được gọi dưới tên \"cholesterol tốt\" (good cholesterol) với nồng độ trong máu tương quan nghịch với nguy cơ bị bệnh động mạch vành của bệnh nhân do nó có liên quan với quá trình dị hoá cholesterol.\n\nCó rất nhiều nghiên cứu tập trung tìm hiểu vai trò của cholesterol trong bệnh tim mạch. Một nồng độ cholesterol máu tăng cao, nhất là khi kết hợp với nồng độ HDL cholesterol thấp được cho thấy là đi kèm với tăng nguy cơ bị vữa xơ động mạch và bệnh tim do vữa xơ động mạch.\n\nĐánh giá về chuyển hóa lipid máu trong cơ thể (lipid profile) thường được chỉ định kết hợp đánh giá nồng độ cholesterol toàn phần, LDL cholesterol, HDL cholesterol và triglycerid máu.",
+    "indication": "Để nghiên cứu các tình trạng rối loạn lipoprotein máu.\nĐể đánh giá nguy cơ hình thành mảng vữa xơ động mạch.\nĐể nghiên cứu chức năng của gan.\nĐể hỗ trợ cho chẩn đoán các tình trạng rối loạn chức năng tuyến giáp.",
+    "specimenCollection": "Xét nghiệm được tiến hành trên huyết thanh.\nCần yêu cầu BN nhịn ăn 12h trước khi lấy máu làm XN. BN không được uống rượu trong vòng 24h trước khi lấy máu làm XN.",
+    "testingMethods": "1. Phương pháp tốt nhất để định lượng cholesterol là phương pháp enzym so màu.\n2. Định lượng cholesterol trong HDL lipoprotein (HDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng bằng phương pháp đo độ đục sau khi làm kết tủa huyết thanh (nếu nồng độ triglycerit < 400 mg/dL).\nHoặc tính toán (khi nồng độ triglycerid ≤ 4,5 mmol/L), dựa vào công thức của Friedewald, sau khi xác định LDL.cholesterol: LDL cholesterol = Cholesterol - (triglycerit/2,2 + HDL Cholesterol)\n3. Định lượng cholesterol nhập trong LDL lipoprotein (LDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng sau khi tách trên cột thạch agar.\nHoặc tính toán từ công thức của Friedewald, sau khi xác định HDL cholesterol.",
+    "ref": "80 - 150 mg/dL.\n hay 2,1 - 3,9 mmol/L.",
+    "alert": "Các cảnh báo lâm sàng\n1. Nếu kết quả xét nghiệm nồng độ cholesterol máu > 5,2 mmol/L (> 200 mg/dL), cần tiến hành chương trình giáo dục bệnh tật cho BN:\n- Giảm cung cấp mỡ bão hòa và cholesterol trong chế độ ăn.\n- Tăng hoạt động thể lực.\n- Kiểm soát cân nặng.\n2. Tùy theo nồng độ của các lipoprotein khác và mức độ tăng cholesterol máu, có thể bắt đầu điều trị cho BN bằng các thuốc làm giảm cholesterol máu, phối hợp cùng với các biện pháp thay đổi lối sống của người bệnh.\n3. Bilan đánh giá rối loạn lipid máu thường không tiến hành đo trực tiếp nồng độ LDL mà chỉ ước tính nồng độ này bằng cách sử dụng phương trình Friedewald: LDL chol = chol toàn phần (mg/dL) - HDL chol - (0,20 x triglycerid)\nLưu ý:\nCông thức tính toán này chỉ có giá trị chính xác khi tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân nhịn ăn và nồng độ triglycerid máu phải < 4,5 mmol/L (< 400 mg/dL).\nCần tiến hành định lượng trực tiếp LDL cholesterol khi có tăng nồng độ triglycerid máu.",
+    "pathologicalMeaning": {
+      "increase": "Tăng nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nKhẩu phần dinh dưỡng giàu cholesterol và acid béo bão hoà.\nBệnh vữa xơ động mạch (atherosclerosis).\nBệnh tim mạch.\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh có nhiều khối u vàng (Xanthomatosis).\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nTăng lipoprotein máu có tính chất gia đình (typ IIa, IIb, III).\nTăng triglycerid máu.\nBệnh lý kho chứa glycogen (glycogen storage disease) (Vd: bệnh von Gierke và bệnh Werner).\nSuy giáp.\nSuy thận.\nHội chứng thận hư.\nTắc mật.\nXơ gan do mật (biliary cirrhosis), bệnh lý tế bào gan.\nBéo phì.\nRối loạn chức năng tụy.\nTiền sản giật.\nCó thai.\nNghiện thuốc lá.\nU tân sinh tuyến tiền liệt và tụy.\n\nTăng nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng alphalipoprotein máu.\nHoạt động thê lực và tập thể dục đều đặn.\nLàm mất cân.\nBệnh gan mạn tính.\n\nTăng nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nHội chứng thận hư.\nBệnh lý gan.\nTắc mật.\nSuy thận mạn.\nTăng lipid máu typ II và III.\nĐái tháo đường.",
+      "decrease": "Giảm nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nHội chứng suy giảm miễn dịch mắc phải (AIDS).\nSuy dinh dưỡng.\nHội chứng giảm hấp thu (Vd: cắt đoạn ruột, viêm tuỵ mạn, bệnh Crohn).\nKhẩu phần dinh dưỡng nghèo cholesterol và acid béo bão hoà song lại giàu acid béo, không bão hoà.\nCường giáp.\nBệnh gan nặng gây suy tế bào gan.\nĐiều trị bằng các thuốc làm giảm lipid máu.\nKhông có beta lipoprotein máu mang tính chất gia đình.\nTăng alpha lipoprotein máu có tính gia đình (bệnh Tangier).\nThiếu máu mạn, thiếu máu ác tính Biermer.\nThiếu máu do tan máu.\nNhiễm trùng nặng và sepsis.\nTình trạng stress.\nBệnh lý tăng sinh tủy (myeloproliferative diseases).\n\nGiảm nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh lý tế bào gan.\nSuy thận mạn, hội chứng thận hư, hội chứng urê máu cao.\nTắc mật.\nKhông có betaliprotetin máu (abetalipoproteinemia).\nTăng alpha lipoprotein máu có tính gia đình (bệnh Tangier).\nThiếu hụt Apo A-I và Apo C-III.\n\nGiảm nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nKhông có bêtalipoprotein máu (abetalipoproteinemia).\nCường giáp.\nBệnh Tangier.\nGiảm lipoprotein máu.\nThiếu máu mạn tính.\nBệnh lý tế bào gan.\nThiếu hụt lecithin cholesterol acyltransferase.\nThiếu hụt Apo C-II.\nTăng lipid máu typ I."
     },
-    {
-        name: "Định lượng Acid Uric [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        isFeatured: true,
-        ref: "1. Máu:\n+ Nam: 3,6 - 8,5 mg/dL (214 - 506 µmol/L)\n+ Nữ: 2,3 - 6,6 mg/dL (137 - 393 µmol/L)\n2. Nước tiểu 24h: 250 - 1000 mg/24h (1,5 - 5,9 mmol/24h)\n3. Nước tiểu ngẫu nhiên:\n+ Nam: 105 - 595 mg/g creatinin\n+ Nữ: 95 - 740 mg/g creatinin\n4. Dịch khớp: 2 - 6 mg/dL (0,1 - 0,3 mmol/L)", 
-        alert: "Nguy cơ viêm khớp gout tăng cao khi nồng độ acid uric trong máu > 530 µmol/L (9 mg/dL). Tuy vậy, có từ 20 đến 30% các trường hợp viêm khớp do gout có nồng độ acid uric huyết thanh bình thường.",
-        concept: "ACID URIC (Acide Urique / Uric Acid; 2, 6, 8 Trioxypurine; Urate)",
-        physiology: "Acid uric là một chất có TLPT 169 dalton, có nguồn gốc từ quá trình dị hoá các bazơ purin (adenin và guanidin) của các acid nucleic.\n\nCác nguồn chính tạo acid uric trong cơ thể bao gồm:\n1. Thức ăn chứa purin (100 - 200 mg/ngày).\n2. Nguồn nội sinh do thoái biến các acid nucleic (600 mg/ngày).\n\nTổng hợp chủ yếu ở gan và một phần tại niêm mạc ruột nhờ enzym xanthin oxydase (Allopurinol ức chế enzym này).\n\nThải trừ chính:\n1. Qua nước tiểu (400 - 1000 mg/ngày): lọc qua cầu thận, tái hấp thu ở ống lượn gần và bài xuất tích cực ở ống lượn xa.\n2. Qua đường tiêu hoá (100 - 200 mg/ngày): mật, dịch vị và các dịch tiết của ruột.",
-        indication: "Chẩn đoán các bệnh lý gây biến đổi nồng độ acid uric (ví dụ: sỏi thận). Theo dõi điều trị bệnh gout. Theo dõi điều trị hóa chất chống ung thư nhằm hạn chế lắng đọng cấp urat tại thận gây suy thận cấp (hội chứng ly giải khối u).",
-        specimenCollection: "Máu: Tiến hành trên huyết tương, thường nhịn ăn 4 - 8h trước khi lấy máu. Nước tiểu: Thu bệnh phẩm nước tiểu 24h. Lưu ý Rasburicase: Cần ống heparin lạnh, ly tâm lạnh, tách huyết tương trong đá và xét nghiệm trong vòng 4 giờ.",
-        testingMethods: "Định lượng theo phương pháp Enzym hoặc Đo màu. Lưu ý: Đo màu có thể bị biến đổi khi trong huyết thanh có: Cystin, Glucose, Phenol, Vitamin C, Tryptophan, Tyrosin.",
-        pathologicalMeaning: {
-            increase: "1. Tăng sản xuất: Gout tiên phát (30% vô căn), phá huỷ tổ chức (hoá/xạ trị), gia tăng chuyển hóa tế bào (lơxêmi cấp, u lympho, đa u tủy xương, đa hồng cầu), thiếu máu tan máu (sốt rét, hồng cầu hình liềm, thiếu G6PD), thức ăn giàu purin, béo phì, nhịn đói lâu ngày.\n2. Giảm đào thải qua thận: Suy thận, nghiện rượu cấp, dùng lợi tiểu (thiazid, furosemid...), tổn thương ống thận xa, nhiễm toan lactic, suy tim ứ huyết. Thuốc gây giảm thải: Aspirin (liều thấp), lợi tiểu, Probenecid/Phenylbutazon liều thấp.\n3. Các nguyên nhân khác: Vữa xơ động mạch, tăng HA vô căn, nhiễm virus Epstein-Barr, tiền sản giật, suy/cường cận giáp, suy giáp, ngộ độc chì mạn, chấn thương, thận đa nang, bệnh Von Gierke, hội chứng Lesch-Nyhan, Down, bệnh đái nước tiểu mù ngọt hương tùng.",
-            decrease: "Hoà loãng máu, hội chứng SIADH, tổn thương ống thận gần (hội chứng Fanconi), bệnh Wilson, thiếu enzym xanthin oxydase (đái xanthin), to đầu chi, bệnh Celiac, u tân sinh (Hodgkin, ung thư biểu mô).\nThuốc gây tăng thải: ACTH, Benzbromaron, Allopurinol, Probenecid/Phenylbutazon (liều cao), Cortison, Acid ascorbic, kháng vitamin K, thuốc độc tế bào, thuốc cản quang, estrogen, indomethacin..."
-        },
-        interferingFactors: "Làm TĂNG: Adrenalin, acetaminophen, ampicillin, acid ascorbic, chẹn bêta, caffein, hóa trị, cyclosporin, diltiazem, lợi tiểu thiazid, G-CSF, isoniazid, levodopa, lisinopril, methyldopa, niacin, NSAIDs, rifampin, salicylat, sildenafil, theophyllin, warfarin.\nLàm GIẢM: Acetazolamid, allopurinol, aspirin (liều cao), chlorpromazin, corticosteroid, enalapril, estrogen, griseofulvin, lisinopril, lithium, mannitol, marijuana, probenecid, salicylat, verapamil, vinblastin.\nLưu ý: Rasburicase làm thoái giáng nhanh acid uric ở nhiệt độ phòng. Cần lấy máu vào ống heparin lạnh, ly tâm lạnh và xét nghiệm trong vòng 4 giờ.",
-        clearanceInfo: "Hệ số thanh thải = [Nồng độ acid uric nước tiểu (mmol/ngày) × Thể tích nước tiểu 24 giờ (L)] / Nồng độ acid uric huyết thanh (mmol/L). Giúp phân biệt tăng do sản xuất (thanh thải bình thường/tăng) hay do giảm thải trừ (thanh thải giảm), tách biệt tổn thương ống thận gần (tăng) hay ống thận xa (giảm).",
-        clinicalNote: "Xác định cơn đau quặn thận, thận ứ nước, suy thận không rõ nguồn gốc, viêm khớp/đau khớp. Theo dõi tan máu, hóa/xạ trị, tiền sản giật.\nLời khuyên: Tăng khẩu phần nước uống, tránh rượu (ức chế bài tiết urat). Hạn chế thực phẩm giàu purin (măng tây, caffein, nấm, rau bina, phủ tạng động vật). Lưu ý: Sỏi urat thấu tia X (không cản quang) nên cần siêu âm hoặc UIV để phát hiện."
+    "interferingFactors": "Các biến đổi nồng độ cholesterol máu liên quan với từng cá thể có thể tới 10%.\nCác biến đôi theo mùa gây giao động trong nồng độ cholesterol máu (tăng hơn 8% vào mùa đông so với mùa hè).\nCác biến đổi theo tư thế có thể gây giao động trong nồng độ cholesterol máu (giảm hơn 5% khi ở tư thế ngồi lấy máu và giảm hơn 10 - 15% khi ở tư thế nằm so với khi lấy máu ở tư thế đứng).\nChỉ được tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân được yêu cầu nhịn ăn trước khi xét nghiệm.\nCác yếu tố khác có thể làm tăng nồng độ cholesterol máu bao gồm: hút thuốc lá, tuổi tác (nam > 45 tuổi; nữ > 55 tuổi), tăng HA (HA > 140/90 mmHg hoặc BN đang dùng thuốc điều trị tăng HA), tiền sử gia đình bị mắc bệnh tim sớm (premature heart disease), bệnh tim bị trước đó và đái tháo đường.\nCác thuốc có thể làm tăng nồng độ cholesterol máu là: Thuốc an thần kinh, thuốc chẹn bêta giao cảm, steroid gây tăng chuyển hóa (anabolic steroid), disulfiram, lanzoprazol, levodopa, lithium, thuốc ngừa thai uống, pergolid, phenobarbital, phenytoin, sulfonamid, testosteron, thuốc lợi tiểu nhóm thiazid, ticlopidin, venlafaxin, vitamin D và adrenalin.\nCác thuốc có thể làm giảm nồng độ cholesterol máu là: Thuốc ức chế men chuyển angiotensin, allopurinol, androgen, thuốc làm giảm cholesterol máu, erythromycin, estrogen, filgrastim, levothyroxin, metformin, phenytoin, prazosin, tomoxifen, terazosin.\nNồng độ HDL cholesterol sẽ tăng lên khi sử dụng vừa phải rượu ethanol, estrogen và insulin.\nNồng độ LDL cholesterol có thể tăng cao do sử dụng chế độ ăn chứa nhiều mỡ bão hòa và cholesterol, khi có thai hoặc dùng steroid.\nNồng độ HDL cholesterol sẽ giảm đi ở người bị bỏ đói, bị stress hoặc gần đây bị bệnh lý cấp tính, hút thuốc lá, béo phì và lười hoạt động thể lực, dùng một số loại thuốc (Vd: steroid, lợi tiểu thiazid, thuốc chẹn bêta giao cảm), tăng triglycerid máu (> 19,2 mmol/L [> 1700 mg/dL]) và tăng nồng độ globulin miễn dịch huyết thanh.\nNồng độ LDL cholesterol có thể bị giảm đi khi bệnh nhân có tình trạng stress cấp, bị bệnh lý cấp tính gần đây và dùng estrogen.",
+    "benefits": "Lợi ích của xét nghiệm định lượng cholesterol\n1. Phát hiện và đánh giá các BN có nguy cơ bị vữa xơ động mạch, giúp quyết định các lựa chọn điều trị và để theo dõi hiệu quả của điều trị.\n2. Đánh giá mức độ nặng của một bệnh lý gan.\n3. Điều chỉnh hội chứng giảm hấp thu.\n4. Chẩn đoán, phân loại và theo dõi BN tăng lipid máu: Gia tăng mạnh nồng độ cholesterol máu > 8,25 mmol/L (3,2 g/L) khẳng định có tình trạng tăng lipoprotein máu và cho phép phân loại khi phối hợp với định lượng nồng độ triglyerid máu. Khi nồng độ triglycerid bình thường, có nghĩa là BN bị tăng cholesterol máu đơn thuần do tăng gánh LDL - cholesterol; Khi nồng độ triglycerid tăng vừa, có nghĩa là BN bị tăng lipid máu hỗn hợp; Khi nồng độ triglycerid tăng gấp 2-3 lần hơn cholesterol, có nghĩa là BN bị tăng triglycerid máu nội sinh do tăng lipoprotein tỷ trọng rất thấp (VLDL).",
+    "ebmGuidelines": "Các hướng dẫn thực hành lâm sàng dựa trên y học bằng chứng\nTheo báo cáo lần thứ III của Chương trình Giáo dục cholesterol Quốc gia (National Cholesterol Educational Program [NCEP] của các chuyên gia Mỹ về phát hiện, đánh giá và điều trị tình trạng tăng cholesterol máu ở người lớn.\n- Đối với tất cả người ≥ 20 tuổi, cần tiến hành làm XN các thành phần lipoprotein máu lúc đói (bao gồm cholesterol toàn phần, LDL cholesterol, HDL cholesterol và triglycerid) định kỳ 5 năm/lần.\n- Nếu tiến hành làm xét nghiệm các thành phần lipoprotein thì chỉ sử dụng các giá trị của cholesterol toàn phần và HDL cholesterol để đánh giá. Trong trường hợp này, nếu nồng độ cholesterol toàn phần ≥ 200 mg/dL (≥ 5,2 mmol/L) hay HDL cholesterol < 40 mg/dL (< 1 mmol/L) cần tiến hành theo dõi định kỳ các thành phần lipoprotein máu để xử trí thích hợp.\n(Ngoài ra tài liệu còn cung cấp các Bảng phân loại chi tiết nồng độ LDL cholesterol, HDL cholesterol và điểm cut-off theo khuyến cáo của ATP III).",
+    "clinicalNote": "Nội dung xét nghiệm này được trình bày gộp chung trong bài CHOLESTEROL của tài liệu gốc (bao gồm Cholesterol toàn phần, HDL-C và LDL-C). Nội dung được giữ nguyên vẹn để đảm bảo không lược bỏ thông tin."
+  },
+  {
+    "name": "Định lượng Acid Uric [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "ACID URIC",
+    "physiology": "Cần nhắc lại là acid uric kết tủa khi nước tiểu có pH acid và các tinh thể acid uric thấu tia X (không cản quang). Khi nghi ngờ có sỏi thận loại acid uric, do chụp film X quang bụng không thấy sỏi cản quang, chẩn đoán cần dựa trên siêu âm hay chụp hệ tiết niệu có tiêm thuốc cản quang (UIV).\n\nTrong trường hợp viêm khớp, định lượng acid uric trong dịch khớp hữu ích trong chẩn đoán phân biệt giữa viêm khớp do tăng acid uric trong máu (bệnh gout) với viêm khớp do các căn nguyên khác (chấn thương, thoái khớp, viêm khớp nhiễm khuẩn, viêm khớp do pyrophosphat hay do viêm).\n\nCần ghi nhận là nguy cơ bị viêm khớp trong bệnh gout có mối tương quan với nồng độ acid uric trong máu và nguy cơ này trở nên quan trọng khi nồng độ acid uric trong máu > 530 µmol/L (9 mg/dL). Tuy vậy, có từ 20 đến 30% các trường hợp viêm khớp do gout có nồng độ acid uric huyết thanh bình thường.\n\nCông thức tính hệ số thanh thải acid uric như sau:\nNồng độ acid uric nước tiểu (mmol/ngày) x Thể tích nước tiểu 24 giờ (L) / Nồng độ acid uric huyết thanh (mmol/L)\n\nHệ số thanh thải này cho phép đánh giá khả năng thải trừ acid uric của từng cá thể.\n\nHệ số thanh thải acid uric phụ thuộc vào:\nMức lọc cầu thận.\nKhả năng tái hấp thu của các ống thận gần.\nKhả năng bài xuất của các ống thận xa.",
+    "indication": "Mục đích và chỉ định xét nghiệm\nĐể chẩn đoán các bệnh lý gây biến đổi nồng độ acid uric (ví dụ: sỏi thận).\nĐể theo dõi điều trị bệnh gout.\nĐể theo dõi điều trị hóa chất chống ung thư nhằm hạn chế tình trạng lắng đọng cấp urat tại thận với nguy cơ gây suy thận cấp (hội chứng ly giải khối u).",
+    "specimenCollection": "Cách lấy bệnh phẩm\nMáu: XN được tiến hành trên huyết tương. Thường cần yêu cầu BN phải nhịn ăn 4 - 8h trước khi lấy máu XN tùy theo kỹ thuật xét nghiệm được sử dụng.\nNước tiểu: Thu bệnh phẩm nước tiểu 24h.",
+    "testingMethods": "Phương pháp định lượng\nĐịnh lượng nồng độ acid uric huyết thanh có thể được thực hiện theo các phương pháp:\nDùng enzym.\nĐo màu.\nTuy vậy, kết quả của phương pháp định lượng nồng độ acid uric bằng cách đo màu có thể bị biến đổi khi trong huyết thanh có một số chất như:\nCystin.\nGlucose.\nPhenol.\nVitamin C (Acid ascorbic).\nTryptophan.\nTyrosin.",
+    "ref": "Giá trị bình thường\n1. Nồng độ acid uric trong máu\nNam: 3,6 - 8,5 mg/dL hay 214 - 506 µmol/L.\nNữ: 2,3 - 6,6 mg/dL hay 137 - 393 µmol/L.\n2. Nồng độ acid uric trong nước tiểu\n250-1000 mg/24h hay 1,5 - 5,9 mmol/24h\nTrên mẫu nước tiểu lấy ngẫu nhiên:\nNam: 105-595 mg/g creatinin.\nNữ: 95-740 mg/g creatinin.\n3. Nồng độ acid uric trong dịch khớp\n2- 6 mg/dL hay 0,1 - 0,3 mmol/L.",
+    "alert": "Các cảnh báo lâm sàng\nNếu phát hiện thấy BN có tình trạng tăng acid uric máu, cần hướng dẫn BN tăng khẩu phần nước uống hàng ngày để dự phòng nguy cơ bị sỏi thận. Khuyên BN tránh uống rượu (do đồ uống có cồn gây ức chế bài tiết tinh thể urat qua nước tiểu).\n\nNếu phát hiện BN có tăng nồng độ acid uric bài tiết qua nước tiểu, cần hướng dẫn BN sử dụng các thức ăn chứa ít purin. Các nguồn thực phẩm có hàm lượng purin cao bao gồm: măng tây, các đồ uống có chứa caffein, nấm, rau bina (spinach), men rượu bia và các phủ tạng động vật (Vd: gan và thận).\n\nCòn chưa có được ý kiến đồng thuận trong đánh giá lợi ích điều trị đối với các bệnh nhân tăng nồng độ acid uric máu không có biểu hiện triệu chứng, do chưa đủ bằng chứng để xác nhận điều trị này có thực sự giúp dự phòng các đợt viêm khớp do cơn gout cấp, hình thành sỏi thận urat và nguy cơ tim mạch.",
+    "pathologicalMeaning": {
+      "increase": "Tăng nồng độ acid uric trong máu\nCác nguyên nhân chính thường gặp là:\n1. Tăng sản xuất acid uric\nTăng acid uric máu tiên phát (30% BN gout thuộc loại vô căn).\nPhá huỷ tổ chức (Vd: sau hoá trị liệu, xạ trị).\nGia tăng chuyển hóa tế bào (Vd: bệnh lơxêmi cấp, u lympho, đa u tủy xương, bệnh đa hồng cầu).\nThiếu máu do tan máu (Vd: sốt rét, bệnh hồng cầu hình liềm, thiếu G6PD).\nThức ăn chứa nhiều purin.\nBéo phì.\nNhịn đói hay dùng chế độ ăn giảm cân chứa nhiều protein.\n\n2. Giảm đào thải acid uric qua thận\nSuy thận (không tương quan với mức độ nặng của tổn thương thận).\nNghiện rượu cấp.\nDùng thuốc lợi tiểu (Vd: thiazid, furosemid, acid ethacrynic...).\nTổn thương các ống thận xa.\nNhiễm toan lactic.\nSuy tim ứ huyết.\nCác thuốc gây giảm thải acid uric qua nước tiểu:\nAspirin (liều thấp < 4 g/ngày).\nThuốc lợi tiểu (ngoại trừ spironolacton và ticrynafen).\nProbenecid (với liều thấp).\nPhenylbutazon (với liều thấp).\n\n3. Các nguyên nhân khác\nBệnh nhân bị vữa xơ động mạch và tăng HA vô căn (tăng nồng độ acid uric máu được gặp ở 80% các BN bị tăng trigycerid máu).\nTăng bạch cầu đơn nhân nhiễm trùng cấp (hay bệnh nhiễm virus Epstein-Barr).\nNhiễm độc thai nghén và tiền sản giật (xét nghiệm nồng độ acid uric máu theo seri giúp theo dõi đáp ứng điều trị và đánh giá tiên lượng bệnh).\nSuy cận giáp trạng.\nCường cận giáp tiên phát.\nSuy giáp.\nNgộ độc chì mạn tính.\nChấn thương.\nThận đa nang.\nBệnh sarcoidose.\nNhiễm độc mạn berylium (chronic berylliosis).\nMột số bệnh lý hiếm gặp: Bệnh von Gierke, hội chứng Lesch-Nyhan (Lesch-Nyhan syndrome), hội chứng Down, bệnh đái nước tiểu mùi ngọt hương tùng (maple syrup urine disease).",
+      "decrease": "Giảm nồng độ acid uric trong máu\nCác nguyên nhân chính thường gặp là:\n1. Hoà loãng máu.\n2. Hội chứng tiết hormon chống bài niệu (ADH) không thích hợp (SIADH).\n3. Tổn thương các ống thận gần (Vd: tình trạng được gặp ở người lớn hoàn toàn khỏe mạnh song có khiếm khuyết đơn thuần tái hấp thu hay vận chuyển acid uric ống thận).\n4. Hội chứng Fanconi.\n5. Các thuốc gây tăng thải acid uric qua nước tiểu:\nACTH.\nBenzbromaron.\nAllopurinol.\nProbenecid (với liều cao).\nCortison.\nPhenylbutazon (với liều cao).\nSulfinpyrazon.\nSalicylat (với liều cao).\nAcid ascorbic.\nThuốc kháng vitamin K coumarin.\nCác thuốc gây độc cho tế bào để điều trị bệnh ung thư (cytotoxic drugs).\nThuốc cản quang.\nCác thuốc khác: glyceryl guaiacolat, estrogen, phenothiazin, indomethacin...\n6. Bệnh Wilson.\n7. Thiếu enzym xanthin oxydase (Vd: chứng đái xanthin trong nước tiểu [xanthinuria]).\n8. To đầu chi (ở một số bệnh nhân).\n9. Bệnh Celiac (tăng nhẹ nồng độ acid uric máu).\n10. Một số trường hợp bệnh lý u tân sinh (Vd: Bệnh Hodgkin, ung thư biểu mô)."
+    },
+    "interferingFactors": "Các yếu tố góp phần làm thay đổi kết quả xét nghiệm\nCác thuốc có thể làm tăng nồng độ acid uric máu là: Adrenalin, acetaminophen, ampicillin, acid ascorbic, thuốc chẹn bêta giao cảm, caffein, các hóa chất điều trị ung thư, cyclosporin, diltiazem, thuốc lợi tiểu nhóm thiazid, G-CSF, isoniazid, levodopa, lisinopril, methyldopa, niacin, thuốc kháng viêm không phải steroid, phenothiazin, rifampin, salicylat, sildenafil, theophyllin, warfarin.\nCác thuốc có thể làm giảm nồng độ acid uric máu là: Acetazolamid, allopurinol, aspirin (liều cao), chlorpromazin, corticosteroid, enalapril, estrogen, griseofulvin, lisinopril, lithium, mannitol, marijuana, probenecid, salicylat, verapamil, vinblastin.\nTình trạng thóa giáng nhanh acid uric có trong huyết tương xẩy ra trong điều kiện nhiệt độ phòng ở các bệnh nhân có hội chứng ly giải khối u đang được điều trị bằng rasburicase. Ở các đối tượng này cần lấy máu vào ống nghiệm đã được chuẩn bị để lạnh trước chứa heparin, sau khi thu bệnh phẩm ống nghiệm được đặt ngay vào túi đá lạnh ly tâm trong điều kiện giữ lạnh. Huyết tương sau khi được tách sẽ được duy trì trong túi đá lạnh và phải được xét nghiệm trong vòng 4 giờ sau khi thu mẫu.",
+    "benefits": "Lợi ích của xét nghiệm định lượng acid uric\n1. Xét nghiệm không thể thiếu trong xác định\nCơn đau quặn thận.\nThận ứ nước.\nSuy thận không xác định được nguồn gốc.\nViêm khớp.\nĐau khớp.\n2. Xét nghiệm hữu ích để theo dõi\nCác suy thận.\nCác bệnh máu.\nCác thiếu máu do tan máu (sốt rét, bệnh hồng cầu hình liềm).\nBệnh nhân được điều trị bằng hoá trị liệu hoặc xạ trị.\nBệnh nhân thực hiện liệu trình nhịn đói hoàn toàn hay chế độ ăn < 800 calo/ngày.\nBN nghiện rượu.\n3. XN hữu ích trong theo dõi mức độ nặng và tiên lượng các BN nhiễm độc thai nghén nặng với nguy cơ sản giật và tiền sản giật.\n\nLợi ích của xét nghiệm xác định hệ số thanh thải acid uric\n1. Xét nghiệm cho phép chẩn đoán phân biệt\nTăng acid uric máu liên quan với tình trạng tăng sản xuất (hệ số thanh thải acid uric bình thường hay tăng).\nTăng acid uric máu thứ phát do giảm thải trừ (hệ số thanh thải acid uric giảm).\n2. Xét nghiệm cho phép tách biệt\nTổn thương các ống thận gần (hệ số thanh thải acid uric tăng).\nTổn thương các ống thận xa (hệ số thanh thải acid uric giảm).",
+    "clinicalNote": ""
     },
     {
         name: "Định lượng Albumin [máu]", 
@@ -3963,7 +3974,7 @@ export default function App() {
                               </div>
                             </div>
 
-                            <div className={`p-6 sm:p-10 space-y-8 sm:space-y-12 ${selectedTest.isFeatured ? 'bg-slate-50/30' : ''}`}>
+                            <div className={`p-6 sm:p-10 space-y-8 sm:space-y-12 ${selectedTest.isFeatured ? 'bg-[#fcfcf9]' : 'bg-[#fafafa]'}`}>
                               {selectedTest.concept && (
                                 <div className={selectedTest.isFeatured ? 'p-6 bg-white rounded-3xl border border-indigo-50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden' : ''}>
                                   {selectedTest.isFeatured && <div className="absolute top-0 left-0 w-1.5 h-full bg-indigo-400" />}
@@ -3994,9 +4005,14 @@ export default function App() {
                                 <div className={selectedTest.isFeatured ? 'p-6 bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl border border-pink-100 shadow-sm relative overflow-hidden' : ''}>
                                   {selectedTest.isFeatured && <div className="absolute top-0 left-0 w-1.5 h-full bg-pink-400" />}
                                   <h4 className={`${selectedTest.isFeatured ? 'text-pink-600' : 'text-blue-600 dark:text-blue-400'} text-xs font-black uppercase tracking-[0.2em] mb-4`}>Chỉ định</h4>
-                                  <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base font-bold leading-relaxed">
-                                    {selectedTest.indication}
-                                  </p>
+                                  <div className="text-slate-800 dark:text-slate-300 text-base sm:text-lg font-sans font-bold leading-relaxed space-y-2">
+                                    {selectedTest.indication.split('\n').map((line, i) => (
+                                      <div key={i} className="flex items-start gap-2">
+                                        <span className="text-pink-400">◆</span>
+                                        <span>{line}</span>
+                                      </div>
+                                    ))}
+                                  </div>
                                 </div>
                               )}
 
@@ -4004,9 +4020,13 @@ export default function App() {
                                 <div className="p-6 bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl border border-amber-100 shadow-sm relative overflow-hidden">
                                   <div className="absolute top-0 left-0 w-1.5 h-full bg-amber-400" />
                                   <h4 className="text-amber-600 text-xs font-black uppercase tracking-[0.2em] mb-4">Lấy bệnh phẩm & Lưu ý đặc biệt</h4>
-                                  <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-medium">
-                                    {selectedTest.specimenCollection}
-                                  </p>
+                                  <div className="text-slate-800 text-sm sm:text-base leading-relaxed font-sans font-semibold space-y-3">
+                                    {selectedTest.specimenCollection.split('\n').filter(l => l.trim()).map((line, i) => (
+                                      <div key={i} className="bg-white/50 p-3 rounded-xl border border-amber-100/50">
+                                        {line}
+                                      </div>
+                                    ))}
+                                  </div>
                                 </div>
                               )}
 
@@ -4014,9 +4034,14 @@ export default function App() {
                                 <div className="p-6 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl border border-cyan-100 shadow-sm relative overflow-hidden">
                                   <div className="absolute top-0 left-0 w-1.5 h-full bg-cyan-400" />
                                   <h4 className="text-cyan-600 text-xs font-black uppercase tracking-[0.2em] mb-4">Phương pháp xét nghiệm</h4>
-                                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-mono font-bold italic">
-                                    {selectedTest.testingMethods}
-                                  </p>
+                                  <div className="text-slate-700 text-sm sm:text-base leading-relaxed font-mono font-bold italic space-y-2">
+                                    {selectedTest.testingMethods.split('\n').filter(line => line.trim()).map((line, i) => (
+                                      <div key={i} className="flex items-start gap-2">
+                                        <span className="text-cyan-500">•</span>
+                                        <span>{line}</span>
+                                      </div>
+                                    ))}
+                                  </div>
                                 </div>
                               )}
 
@@ -4040,7 +4065,14 @@ export default function App() {
                                     <div className="bg-gradient-to-br from-red-50 to-rose-50 p-6 rounded-3xl border-2 border-white shadow-lg shadow-red-100 relative overflow-hidden">
                                       <div className="absolute top-0 right-0 p-2 opacity-10"><TriangleAlert className="w-12 h-12" /></div>
                                       <h4 className="text-red-700 text-xs font-black uppercase tracking-widest mb-4">Cảnh báo lâm sàng</h4>
-                                      <p className="font-mono text-base sm:text-xl font-black text-red-800 whitespace-pre-wrap leading-relaxed tracking-tight">{selectedTest.alert}</p>
+                                      <div className="font-mono text-base sm:text-xl font-black text-red-800 whitespace-pre-wrap leading-relaxed tracking-tight space-y-2">
+                                        {selectedTest.alert.split('\n').filter(l => l.trim()).map((line, i) => (
+                                          <div key={i} className="flex items-start gap-2">
+                                            <span className="text-red-500">⚠</span>
+                                            <span>{line}</span>
+                                          </div>
+                                        ))}
+                                      </div>
                                     </div>
                                   )}
                                 </div>
@@ -4055,12 +4087,15 @@ export default function App() {
                                         <TrendingUp className="w-6 h-6 text-red-600" />
                                       </div>
                                       <div>
-                                        <p className="font-black text-red-600 mb-2 text-lg uppercase tracking-tight">Tăng nồng độ</p>
+                                        <p className="font-black text-red-600 mb-2 text-xl uppercase tracking-tighter decoration-red-200 decoration-4 underline-offset-4 underline">Tăng nồng độ</p>
                                         <div 
-                                          className="text-sm sm:text-base text-slate-700 leading-relaxed text-justify whitespace-pre-wrap font-medium space-y-2"
+                                          className="text-base sm:text-lg text-slate-800 leading-relaxed text-justify whitespace-pre-wrap font-sans font-medium space-y-3"
                                         >
-                                          {selectedTest.pathologicalMeaning.increase.split('\n').map((line, i) => (
-                                            <div key={i} dangerouslySetInnerHTML={{ __html: line }} />
+                                          {selectedTest.pathologicalMeaning.increase.split('\n').filter(line => line.trim()).map((line, i) => (
+                                            <div key={i} className="flex items-start gap-3">
+                                              <span className="text-red-400 font-black mt-1">▶</span>
+                                              <div dangerouslySetInnerHTML={{ __html: line }} className="flex-1" />
+                                            </div>
                                           ))}
                                         </div>
                                       </div>
@@ -4070,16 +4105,39 @@ export default function App() {
                                         <TrendingDown className="w-6 h-6 text-blue-600" />
                                       </div>
                                       <div>
-                                        <p className="font-black text-blue-600 mb-2 text-lg uppercase tracking-tight">Giảm nồng độ</p>
+                                        <p className="font-black text-blue-600 mb-2 text-xl uppercase tracking-tighter decoration-blue-200 decoration-4 underline-offset-4 underline">Giảm nồng độ</p>
                                         <div 
-                                          className="text-sm sm:text-base text-slate-700 leading-relaxed text-justify whitespace-pre-wrap font-medium space-y-2"
+                                          className="text-base sm:text-lg text-slate-800 leading-relaxed text-justify whitespace-pre-wrap font-sans font-medium space-y-3"
                                         >
-                                          {selectedTest.pathologicalMeaning.decrease.split('\n').map((line, i) => (
-                                            <div key={i} dangerouslySetInnerHTML={{ __html: line }} />
+                                          {selectedTest.pathologicalMeaning.decrease.split('\n').filter(line => line.trim()).map((line, i) => (
+                                            <div key={i} className="flex items-start gap-3">
+                                              <span className="text-blue-400 font-black mt-1">▶</span>
+                                              <div dangerouslySetInnerHTML={{ __html: line }} className="flex-1" />
+                                            </div>
                                           ))}
                                         </div>
                                       </div>
                                     </div>
+                                  </div>
+                                </div>
+                              )}
+
+                              {selectedTest.benefits && (
+                                <div className="p-8 bg-gradient-to-br from-emerald-50 to-green-100/50 rounded-3xl border-2 border-white shadow-xl relative overflow-hidden group">
+                                  <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform duration-700">
+                                    <ShieldCheck className="w-20 h-20 text-emerald-600" />
+                                  </div>
+                                  <h4 className="text-emerald-700 text-xs font-black uppercase tracking-widest mb-4 flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                    Lợi ích lâm sàng
+                                  </h4>
+                                  <div className="text-slate-800 text-sm sm:text-base leading-relaxed font-sans font-bold space-y-3 relative z-10">
+                                    {selectedTest.benefits.split('\n').filter(l => l.trim()).map((line, i) => (
+                                      <div key={i} className="flex items-start gap-3">
+                                        <span className="text-emerald-500 font-black">✔</span>
+                                        <span>{line}</span>
+                                      </div>
+                                    ))}
                                   </div>
                                 </div>
                               )}
@@ -4108,13 +4166,34 @@ export default function App() {
                                 </div>
                               )}
 
+                              {selectedTest.ebmGuidelines && (
+                                <div className="p-8 bg-gradient-to-br from-indigo-50 to-blue-50 rounded-3xl border-2 border-white shadow-xl relative overflow-hidden group">
+                                  <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:-rotate-6 transition-transform duration-700">
+                                    <BookOpen className="w-20 h-20 text-indigo-600" />
+                                  </div>
+                                  <h4 className="text-indigo-700 text-xs font-black uppercase tracking-widest mb-4 flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                                    Y học bằng chứng (EBM)
+                                  </h4>
+                                  <div className="text-slate-800 text-sm sm:text-base leading-relaxed font-sans font-bold space-y-4 relative z-10 italic border-l-4 border-indigo-200 pl-4">
+                                    {selectedTest.ebmGuidelines.split('\n').filter(l => l.trim()).map((line, i) => (
+                                      <p key={i}>{line}</p>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+
                               {selectedTest.clinicalNote && (
                                 <div className="p-8 bg-gradient-to-br from-white to-blue-50/50 rounded-[40px] border-4 border-white shadow-[0_20px_60px_rgba(0,0,0,0.08)] relative">
-                                  <div className="absolute -top-4 left-10 bg-blue-600 text-white px-6 py-1.5 rounded-full text-xs font-black shadow-lg">GHI CHÚ QUAN TRỌNG</div>
+                                  <div className="absolute -top-4 left-10 bg-blue-600 text-white px-6 py-1.5 rounded-full text-xs font-black shadow-lg uppercase">Lời khuyên chuyên môn</div>
                                   <h4 className="text-blue-800 text-xs font-black uppercase tracking-widest mb-6 opacity-0 h-0">Ghi chú & Cảnh báo lối sống</h4>
-                                  <p className="text-slate-800 text-base sm:text-lg leading-relaxed text-justify font-bold italic first-letter:text-4xl first-letter:font-black first-letter:mr-2 first-letter:float-left first-letter:text-blue-600">
-                                    {selectedTest.clinicalNote}
-                                  </p>
+                                  <div className="text-slate-800 text-base sm:text-lg leading-relaxed text-left font-bold italic space-y-4">
+                                    {selectedTest.clinicalNote.split('\n').filter(l => l.trim()).map((paragraph, i) => (
+                                      <p key={i} className={i === 0 ? "first-letter:text-5xl first-letter:font-black first-letter:mr-2 first-letter:float-left first-letter:text-blue-600" : ""}>
+                                        {paragraph}
+                                      </p>
+                                    ))}
+                                  </div>
                                 </div>
                               )}
                             </div>
