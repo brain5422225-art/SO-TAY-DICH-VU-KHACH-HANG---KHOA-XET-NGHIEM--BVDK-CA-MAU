@@ -170,26 +170,24 @@ const labTests: LabTest[] = [
     interferingFactors: "Mẫu bị vỡ hồng cầu làm tăng giả hoạt độ.\n\nThuốc làm tăng: Acetaminophen, allopurinol, kháng sinh, acid ascorbic, chlpropamid, clofibrat, statin, hydralazin, isoniazid, meperidin, methyldopa, morphin, thuốc ngừa thai, phenothiazin, procainamid, pyridoxin, salicylat, sufonamid, verapamil, vitamin A.\n\nThuốc làm giảm: Metronidazol, trifluoperazin.",
     clinicalNote: "Tỷ lệ AST/ALT (Chỉ số de Ritis) giúp phân biệt tổn thương gan do rượu (>2) hay do virus (<1)."
   },
- {
+{
     "name": "Đo hoạt độ ALT (GPT) [máu]",
     "group": "Sinh Hóa",
     "time": "120 phút / 45 phút",
     "isFeatured": true,
-    "concept": "TRANSAMINASE (ALT hay ALAT và ASAT hay AST)\n(Transaminases sériques: ALAT [GPT], ASAT [GOT] / Alanine Aminotransferase [ALT], Serum Glutamic Pyruvic Transaminase [SGPT], Aspartate Aminotransferase [AST], Serum Glutamic Oxaloacetic transaminase [SGOT])",
-    "physiology": "Transaminase là các enzym được phân bố rộng trong tế bào có vai trò cơ bản là chuyển nhóm NH2 của một acid amin (alanin hay acid aspartic) tới một acid cetonic (acid alpha - cetoglutaric). Vì vậy, người ta tách biệt:\n\n1. Các AST hay ASAT: Aspartate Aminotransferase (đồng nghĩa GOT: Glutamat Oxaloacetat Transaminase). Các enzym này xúc tác phản ứng: L Aspartat + a Oxoglutamat Oxaloacetat + L - glutamat. Các AST (hay ASAT) có trong bào tương (cytoplasme) cũng như trong ty lạp thể và được thấy chủ yếu trong tế bào của các cơ quan sau (theo trình tự giảm dần): Tim, Gan, Cơ xương, Thận, Tụy tạng, Hồng cầu, Tiểu cầu. AST được giải phóng vào vòng tuần hoàn sau khi xẩy ra tình trạng tổn thương hay chết của các tế bào chứa enzym này. Các AST có thời gian bán huỷ trong máu là 17h.\n\n2. Các ALT hay ALAT: Alanine Aminotransferase (Đồng nghĩa GPT = Glutamat Pyruvat Transaminase). Enzym này xúc tác phản ứng: L - alanin + a Oxoglutamat Pyruvat + L - glutamat. Các ALT có thời gian bán huỷ trong máu là 47h. Chúng có mặt duy nhất trong bào tương của các tế bào và được thấy chủ yếu trong các cơ quan sau (theo trình tự giảm dần): Gan, Thận, Tim, Cơ xương.\n\nTrong nhồi máu cơ tim, các transaminase (chủ yếu là AST) tăng lên sớm ngay từ giờ thứ 4 và trở lại bình thường vào ngày thứ 3. Các ALT chỉ tăng nhẹ và tỷ lệ AST/ALT > 1. Nói chung, giá trị của transaminase tăng song hành với giá trị của CPK và phản ánh mức độ rộng của hoại tử cơ tim.\n\nTrong bệnh lý gan, giá trị của các AST thấp hơn giá trị của ALT với tỷ lệ AST/ALT < 1 ngoại trừ trong xơ gan do rượu (khi đó tỷ lệ này kinh điển thường > 1). Nhìn chung trong các bệnh lý gan (Vd: viêm gan, xơ gan) không thấy có mối tương quan giữa giá trị của transaminase và mức độ nặng của bệnh nguyên nhân. VD: trong xơ gan, tăng các transaminase tương đối ít (gấp 2 - 3 lần so với bình thường), mặc dù có các dấu hiệu mất bù rõ rệt như cổ chướng, vàng da (tăng bilirubin, giảm nồng độ antithrombin III, fibrinogen, PPT và cholesterol). Một ví dụ khác là trong viêm gan tối cấp, tình trạng giảm nhanh hoạt độ các transaminase trong thời gian bị bệnh đôi khi phản ánh tình trạng suy các tế bào gan rất nặng (do tế bào mất khả năng tổng hợp enzym), hơn là một bằng chứng chứng tỏ có cải thiện lâm sàng.\n\nCần nhắc lại là xác định hoạt độ CPK và các gamma GT thường cho phép định hướng chẩn đoán phân biệt nguồn gốc tăng transaminase máu:\n- Tăng CPK: Nguồn gốc cơ tim hay cơ vân.\n- Tăng gamma GT: Nguồn gốc gan mật hay tụy.",
-    "indication": "XN giúp xác định có tình trạng phân hủy tế bào (cytolyse) nhất là do nguồn gốc gan, cơ tim hay cơ vân. Vì vậy, xét nghiệm đo hoạt độ các transaminase thường được chỉ định để:\n1. Đánh giá tình trạng tổn thương gan.\n2. Theo dõi tác động độc trên tế bào gan của các thuốc sử dụng có nguy cơ gây độc cho gan.\n3. Đánh giá tình trạng tổn thương cơ tim trong NMCT (hiện nay ít được sử dụng).",
-    "specimenCollection": "Xét nghiệm được tiến hành trên huyết thanh. Thường không cần yêu cầu BN phải nhịn ăn trước khi lấy máu XN.\n\nGhi chú:\n1. Hoạt độ các transaminase huyết thanh tương đối ổn định trong một thời gian, vì vậy huyết thanh có thể được bảo quản 24h ở nhiệt độ phòng hay 48h ở 4°C. Nửa đời sống của AST là 18 giờ và nửa đời sống của ALT là 48 giờ.\n2. Tách hồng cầu phải được tiến hành nhanh do vỡ hồng cầu làm XN không chính xác.\n3. Khi muốn đánh giá tình trạng nhồi máu cơ tim, XN hoạt độ AST (hay GOT) thường được tiến hành trong vòng 3 ngày liên tiếp và sau đó 1 tuần.",
-    "testingMethods": "",
-    "ref": "AST (hay GOT)\nNam: < 25 U/L.\nNữ: < 21 U/L.\nNgười già: Tăng nhẹ so với giá trị bình thường.\nTrẻ sơ sinh: Tăng 2 - 3 lần giá trị bình thường.\n\nALT (hay GPT)\nNam: < 22 U/L.\nNữ: < 17 U/L.",
-    "alert": "",
+    "concept": "ALT (Alanine Aminotransferase) hay GPT là enzym nội bào, xúc tác chuyển hóa acid amin. ALT **đặc hiệu cho gan** do hầu như chỉ tồn tại duy nhất trong bào tương tế bào gan.",
+    "physiology": "📌 **Vị trí:** Phân bố chủ yếu ở **Gan** (nhiều nhất), sau đó là Thận, Tim, Cơ xương.\n📌 **Đặc tính:** Chỉ có mặt trong **bào tương** của tế bào.\n📌 **Động học:** Thời gian bán hủy trong máu là **47 giờ**.\n📌 **Cơ chế:** Khi màng tế bào gan tổn thương/hoại tử, ALT rò rỉ vào vòng tuần hoàn làm **tăng nồng độ máu**.",
+    "indication": "🎯 **Chẩn đoán:** Tầm soát, đánh giá bệnh lý tổn thương gan (viêm gan cấp/mạn, xơ gan).\n🎯 **Theo dõi độc tính thuốc:** Các thuốc nguy cơ độc gan cao (Statin, thuốc kháng lao).\n🎯 **Tầm soát bệnh chuyển hóa:** Sàng lọc chủ động bệnh gan nhiễm mỡ liên quan đến rối loạn chuyển hóa (**MASLD**).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Thường không bắt buộc nhịn ăn.\n⚠️ **Lưu ý:** Phải tách hồng cầu nhanh, tránh **vỡ hồng cầu** làm sai lệch kết quả.",
+    "testingMethods": "Đo hoạt độ enzym.",
+    "ref": "📊 **Ngưỡng truyền thống:** Nam < 22 U/L, Nữ < 17 U/L. Trẻ sơ sinh tăng 2-3 lần bình thường.\n📊 **Cập nhật AASLD 2024-2025:** Ngưỡng bình thường thực tế (ULN) là **≤ 35 U/L (Nam)** và **≤ 25 U/L (Nữ)** nhằm tăng khả năng phát hiện sớm tổn thương gan.",
+    "alert": "⚠️ Mức độ tăng ALT **không phản ánh tỷ lệ thuận** với mức độ nặng của tổn thương gan (Trong xơ gan hoặc viêm gan tối cấp, ALT có thể không tăng cao do tế bào gan đã suy kiệt).\n💡 Nồng độ ALT tăng nhẹ (dù < 40 U/L) hiện được xem là tín hiệu sớm của **kháng insulin** và gia tăng **rủi ro tim mạch**.",
     "pathologicalMeaning": {
-      "increase": "Tăng hoạt độ ALT\nCác nguyên nhân chính thường gặp là:\n1. Bệnh lý gan:\nAST/ALT <1:\n- Viêm gan do virus (viêm gan A, viêm gan B, viêm gan không phải A - không phải B, tăng bạch cầu đơn nhân nhiễm trùng, viêm gan do cytomegalovirus).\n- Viêm gan do thuốc (rifampicin, INH, salicylat, heparin).\n- Viêm gan nhiễm độc (CCl4, amanit phalloid).\n- Tắc mật do các nguyên nhân không phải là ung thư.\n- Hoại tử gan.\nAST/ALT >1:\n- Xơ gan (AST/ALT > 1).\n- Viêm gan do rượu (alcohol - induced hepatitis).\n- Xâm nhiễm gan (Vd: do di căn ung thư, nhiễm sarcoid, lao, u lympho, luput ban đỏ).\n2. Nhồi máu cơ tim (AST/ALT > 1).\n3. Suy giáp với phù niêm.\n4. Suy tim mất bù (gan xung huyết).\n5. Sốc (thiếu máu cục bộ gan).\n6. Các nguyên nhân khác: Nhiễm độc thai nghén hay tiền sản giật (Hội chứng HELLP). Viêm tụy. Nhồi máu phổi. Hội chứng Reye. Chấn thương. Thiếu hụt carnitin tiên phát.\n\nTăng hoạt độ AST\nCác nguyên nhân chính thường gặp là:\n1. Bệnh lý tim (AST/ALT > 1): Nhồi máu cơ tim. Viêm cơ tim. Bóp tim ngoài lồng ngực. Phẫu thuật tim, sau thông tim. Suy tim mất bù (gan xung huyết).\n2. Các bệnh lý gan:\nAST/ALT <1:\n- Viêm gan do virus (viêm gan A, viêm gan B, viêm gan không phải A - không phải B, tăng bạch cầu đơn nhân nhiễm trùng, viêm gan do cytomegalovirus).\n- Viêm gan do thuốc (rifampicin, INH, salicylat, heparin).\n- Viêm gan nhiễm độc (CC14, amanit phalloid).\n- Tắc mật do các nguyên nhân không phải là ung thư.\n- Hoại tử gan.\nAST/ALT >1:\n- Xơ gan (AST/ALT > 1).\n- Viêm gan do rượu (alcohol - induced hepatitis).\n- Xâm nhiễm gan (do di căn ung thư, nhiễm sarcoid, lao, u lympho, luput ban đỏ).\n3. Các bệnh lý tụy tạng: Viêm tụy cấp do mật. Viêm tụy cấp do rượu.\n4. Các bệnh lý cơ: Hội chứng vùi lấp. Viêm đa cơ. Viêm da và cơ. Tăng thân nhiệt ác tính. Bệnh loạn dưỡng cơ của Duchenne.\n5. Suy giáp với phù niêm.\n6. Các nguyên nhân khác: Chấn thương não. Di căn xương. Ung thư tuyến tiền liệt. Nhiễm độc thai nghén, tiền sản giật và sản giật (Vd: hội chứng HELLP). Nhồi máu phổi. Hội chứng Reye. Bỏng nặng. Thiếu hụt carnitin tiên phát.",
-      "decrease": "Giảm hoạt độ AST\nCác nguyên nhân chính thường gặp là:\n1. Bệnh Beriberi (thiếu vitamin B1).\n2. Tình trạng thiếu hụt pyridoxal phosphat (Vd: suy dinh dưỡng, bệnh gan do rượu).\n3. Nhiễm toan cetôn do ĐTĐ.\n4. Lọc máu mạn.\n5. Có thai.\n6. Hội chứng urê máu cao."
+      "increase": "🔹 **Tăng ALT thường được phân tích qua Tỷ số De Ritis (AST/ALT) để định hướng nguyên nhân:**\n  🔴 **AST/ALT < 1 (ALT tăng ưu thế):**\n    ▫️ Viêm gan virus cấp/mạn (A, B, C, EBV, CMV).\n    ▫️ Viêm gan do thuốc hoặc nhiễm độc (Rifampicin, Paracetamol, CCl4...).\n    ▫️ Tắc mật ngoài gan, bệnh gan nhiễm mỡ liên quan rối loạn chuyển hóa (MASLD).\n  🔴 **AST/ALT > 1 (AST tăng ưu thế):**\n    ▫️ Xơ gan hoặc Viêm gan do rượu (đặc trưng).\n    ▫️ Tổn thương cơ tim (Nhồi máu cơ tim) hoặc cơ vân.\n    ▫️ Xâm nhiễm gan (di căn ung thư, lao, sarcoidosis).\n🔹 **Các nguyên nhân khác:**\n    ▫️ Hội chứng HELLP (tiền sản giật).\n    ▫️ Hội chứng Reye.\n    ▫️ Suy tim mất bù (gan xung huyết), viêm tụy.",
+      "decrease": "Không có ý nghĩa lâm sàng đặc hiệu. Có thể gặp giảm trong **nhiễm toan ceton** do đái tháo đường, hoặc thiếu hụt **Vitamin B1, B6**."
     },
-    "interferingFactors": "Mẫu bệnh phẩm bị vỡ hồng cầu có thể làm thay đổi kết quả XN.\nCó rất nhiều thuốc có thể làm tăng hoạt độ ALT như: Thuốc ức chế men chuyển angiotensin, acetaminophen, thuốc chống co giật, một số loại kháng sinh, thuốc điều trị tâm thần, benzodiazepin, estrogen, sulfat sắt, heparin, interferon, thuốc làm giảm mỡ máu, thuốc chống viêm không phải steroid, salicylat, thuốc lợi tiểu loại thiazid.\nCác thuốc có thể làm tăng hoạt độ AST là: Acetaminophen, allopurinol, một số loại kháng sinh, acid ascorbic, chlpropamid, cholestyramin, cholinergic, clofibrat, codein, statin, hydralazin, isoniazid, meperidin, methyldopa, morphin, thuốc ngừa thai uống, phenothiazin, procainamid, pyridoxin, salicylat, sufonamid, verapamil, vitamin A.\nCác thuốc có thể làm giảm hoạt độ AST là: Metronidazol, trifluoperazin.",
-    "benefits": "Lợi ích của xét nghiệm đo hoạt độ transaminase\n1. XN hữu ích trong bệnh lý tim để phát hiện nhồi máu cơ tim hay viêm cơ tim (khi phối hợp với định lượng CPK và/hoặc troponin).\n2. XN cho phép xác định một bệnh lý gan và theo dõi tiến triển của bệnh. XN này được coi là một test nhạy nhất để phát hiện tình trạng tổn thương tế bào gan do virus và do thuốc (tăng hoạt độ enzym gan có thể đi trước tình trạng tăng bilirubin máu hàng tuần). Tỷ lệ AST/ALT > 1, kết hợp với tăng gamma globulin máu kèm giảm nồng độ antithrombin III, rất gợi ý có tình trạng xơ gan.\n3. XN không thể thiếu để tiếp tục theo dõi các BN nghiện rượu được điều trị thuốc kháng lao (nguy cơ viêm gan do thuốc).",
-    "ebmGuidelines": "Các hướng dẫn thực hành lâm sàng dựa trên y học bằng chứng\nThuốc điều trị loại ức chế HMG - Coenzym A reductase (nhóm statin) thường được sử dụng để điều trị tình trạng rối loạn lipid máu. Một tác dụng phụ quan trọng có thể gặp khi điều trị bằng statin là nguy cơ gây độc đối với gan, mặc dù nguy cơ bị tăng transaminase gan len > 3 lần so với giá trị bình thường ít gặp. Cần đo hoạt độ các transaminase gan (ALT và AST) 6 - 12 tuần sau khi bắt đầu điều trị bằng statin.",
-    "clinicalNote": ""
+    "interferingFactors": "❌ **Lỗi mẫu:** Vỡ hồng cầu gây sai số.\n💊 **Thuốc làm TĂNG ALT:** Nhóm Statin (hạ mỡ máu), Paracetamol, kháng sinh, thuốc chống co giật, ức chế men chuyển, thuốc tránh thai (estrogen), NSAIDs.",
+    "clinicalNote": "ALT là test nhạy nhất phát hiện sớm tổn thương gan do virus/thuốc (có thể tăng trước khi có biểu hiện vàng da). Bệnh nhân dùng **Statin** cần kiểm tra ALT 6 - 12 tuần sau khi bắt đầu dùng. Hiện nay, ALT kết hợp AST, tuổi và tiểu cầu được tính thành **chỉ số FIB-4** để đánh giá xơ hóa gan không xâm lấn trong quản lý bệnh **MASLD**."
   },
 {
     "name": "Đo hoạt độ GGT [máu]",
@@ -202,7 +200,7 @@ const labTests: LabTest[] = [
     "specimenCollection": "XN được tiến hành trên huyết thanh.\nYêu cầu BN nhịn ăn 8h trước khi lấy máu XN. BN không được uống rượu trong vòng 24h trước khi lấy máu XN.\n\nGhi chú:\nCó thể bảo quản bệnh phẩm trong vòng 24h ở 4°C. Tuy vậy, phải tiến hành tương đối nhanh quá trình tách hồng cầu để tránh bệnh phẩm bị vỡ hồng cầu.",
     "testingMethods": "",
     "ref": "0-3 tháng: 4 - 120 U/L hay IU/L.\n3 tháng - 1 năm: 3 - 30 U/L hay 3 - 30 IU/L.\n1 - 16 tuổi: 2 - 25 U/L hay 2 - 25 IU/L.\nNam: 5 - 38 U/L hay 5 - 38 IU/L.\nNữ: 5 - 29 U/L hay 5 - 29 IU/L.",
-    "alert": "Các cảnh báo lâm sàng\nTrong chẩn đoán tình trạng nghiện rượu mạn:\n- Kết quả đo hoạt độ gamma GT huyết thanh bình thường không cho phép loại bỏ chẩn đoán có ngộ độc rượu. Kết hợp giữa đo hoạt độ gamma GT và XN công thức máu thấy có tăng thể tích hồng cầu chỉ giúp phát hiện được khoảng 70% các BN bị nghiện rượu mạn.\n- Trái lại, kết quả XN bất thường song không có biểu hiện bệnh lý gan trên lâm sàng cũng không cho phép khẳng định chẩn đoán có tình trạng nghiện rượu mạn do có nhiều nguyên nhân khác cũng gây tăng hoạt độ gamma GT (Vd: đái tháo đường, cường giáp, bệnh cầu thận).\nĐối với các bệnh lý gan mật, mặc dù gamma GT cho thấy là một XN rất nhạy song nó hoàn toàn không giúp ích gì trong xác định nguyên nhân gây bệnh đặc hiệu. Các tình trạng gây tăng gamma GT mạnh nhất là ứ mật và viêm gan do rượu.\nNửa đời sống của gamma-GT vào khoảng 7 - 10 ngày, song ở các bệnh nhân bị tổn thương gan liên quan với rượu cồn, nửa đời sống của gamma-GT có thể bị tăng lên tới 28 ngày do suy giảm khả năng thanh thải của gan.",
+    "alert": "Trong chẩn đoán tình trạng nghiện rượu mạn:\n- Kết quả đo hoạt độ gamma GT huyết thanh bình thường không cho phép loại bỏ chẩn đoán có ngộ độc rượu. Kết hợp giữa đo hoạt độ gamma GT và XN công thức máu thấy có tăng thể tích hồng cầu chỉ giúp phát hiện được khoảng 70% các BN bị nghiện rượu mạn.\n- Trái lại, kết quả XN bất thường song không có biểu hiện bệnh lý gan trên lâm sàng cũng không cho phép khẳng định chẩn đoán có tình trạng nghiện rượu mạn do có nhiều nguyên nhân khác cũng gây tăng hoạt độ gamma GT (Vd: đái tháo đường, cường giáp, bệnh cầu thận).\nĐối với các bệnh lý gan mật, mặc dù gamma GT cho thấy là một XN rất nhạy song nó hoàn toàn không giúp ích gì trong xác định nguyên nhân gây bệnh đặc hiệu. Các tình trạng gây tăng gamma GT mạnh nhất là ứ mật và viêm gan do rượu.\nNửa đời sống của gamma-GT vào khoảng 7 - 10 ngày, song ở các bệnh nhân bị tổn thương gan liên quan với rượu cồn, nửa đời sống của gamma-GT có thể bị tăng lên tới 28 ngày do suy giảm khả năng thanh thải của gan.",
     "pathologicalMeaning": {
       "increase": "Các nguyên nhân chính thường gặp là:\n1. Các bệnh lý gan mật\nRượu:\n- Viêm gan do rượu: Gamma-GT tăng trung bình > 3,5 lần giới hạn bình thường cao.\n- Thoái hoá mỡ, thoái hoá mỡ xơ hoá: tăng gamma-GT song song với tăng hoạt độ AST và ALT song ở mức nhiều hơn.\nThuốc: Phenobarbital, phenytoin, warfarin, thuốc ngừa thai uống, rifampicin, INH, carbamazepin, methotrexat, acid valproic.\nViêm gan nhiễm trùng: Viêm gan A, B, không A - không B, tăng bạch cầu đơn nhân nhiễm trùng, bệnh do toxoplasma, nhiễm trùng do cytomegalovirus.\nViêm gan cấp: Tăng hoạt độ gamma-GT thường kém rõ rệt hơn so với tình trạng các enzym gan khác, song đây là enzym trở về mức bình thường muộn nhất, vì vậy rất hữu ích để chỉ dẫn tình trạng hồi phục.\nViêm gan mạn hoạt động (chronic active hepatitis): Tăng cao hơn so với trong viêm gan cấp (trung bình la > 7 lần mức giới hạn bình thường cao) và tăng nhiêu hơn so với mức tăng AST và ALT. Trong giai đoạn viêm gan mạn không hoạt động, có thể thấy đây là enzym duy nhất tiếp tục tăng hoạt tính trong khi các enzym khác trở về giá trị bình thường.\nXơ gan: Trong các trường hợp không tiến triển, giá trị gamma-GT trung bình tăng ít hơn so với mức tăng gặp trong viêm gan mạn (< 4 lần giới hạn bình thường cao). Khi mức tăng > 10-20 lần bình thường xẩy ra ở bệnh nhân xơ gan sẽ gợi ý có carcinoma tế bào gan nguyên phát chồng thêm vào (mức tăng trung bình la > 21 lần giới hạn bình thường cao).\nSuy tim mất bù (gan ứ huyết).\n\n2. Các xâm nhiễm gan\nTăng lipid máu.\nDi căn gan. Tăng gamma GT xẩy ra song song với tăng phosphatase kiềm (ALP) và đi trước khi chụp scan gan dương tính. Mức tăng trung bình > 14 lần giới hạn bình thường cao.\nU lympho.\nÁp xe.\nKén sán lá gan.\nBệnh sarcoidose (sarcoidosis).\nLao.\n\n3. Bệnh lý gây ứ mật: Nói chung hoạt độ gamma-GT biến đổi song hành với nồng độ phosphatase kiềm (ALP), leucin amino peptidase (LAP) và 5'-Nucleotidase (5'-NT) huyết thanh song gamma-GT nhạy hơn.\nVàng da tắc mật: Tăng gamma GT xẩy ra nhanh hơn và ở mức mạnh hơn so với mức tăng ALP và LAP. Mức tăng trung bình là > 5 lần giới hạn bình thường cao.\nXơ gan do mật tiên phát: Tăng gamma GT rõ rệt với mức tăng trung bình la > 13 lần giới hạn bình thường cao.\nViêm đường mật xơ hoá.\nỨ mật (cholestasis): Trong ứ mật cơ giới (Vd: do sỏi mật) và do viêm gan virus tăng gamma-GT và LAP tương đương nhau, song trong ứ mật do thuốc (drug-induced cholestasis), mức tăng gamma-GT nhiều hơn so với mức tăng LAP. Mức tăng trung bình được gặp > 6 lần giới hạn bình thường cao.\nUng thư biểu mô đường mật.\nTắc mật ở trẻ nhỏ: Gamma-GT tăng cao hơn nhiều trong thiểu sản đường mật gây chít hẹp (biliary atresia) so với trong viêm gan sơ sinh (điểm cắt 300 IU/L là ngưỡng phân biệt hữu ích). Các trẻ có tình trạng thiếu hụt a1-antitrypsin có hoạt độ gamma-GT cao hơn so với các bệnh nhân bị thiểu sản đường mật gây trít hẹp đường mật.\n\n4. Các tổn thương tụy tạng:\nViêm tụy: Hoạt độ gamma-GT luôn tăng cao trong viêm tụy cấp. Trong viêm tụy mạn chỉ gặp tăng gamma-GT khi có tổn thương tới đường mật hoặc viêm hoạt động.\nUng thư tụy.\nU bóng Vater (Ampullome de Vater).\n\n5. Các tổn thương thận\nHội chứng thận hư.\nUng thư biểu mô thận (hypernephroma) (hiếm gặp).\n\n6. Các nguyên nhân khác:\nĐái tháo đường, cường giáp, bệnh phổi tắc nghẽn mạn tính (COPD) và viêm khớp dạng thấp.\nNhồi máu cơ tim: tăng gamma-GT ở 50% các bệnh nhân. Tình trạng tăng này bắt đầu xảy ra vào ngày thứ 4 đến ngày thứ 5, đạt tới giá trị tối đa vào ngày thứ 8-12. Khi có tình trạng sốc tim hoặc suy tim phải cấp, có thể xuất hiện một đỉnh nồng độ sớm trong vòng 48h sau đó giảm nhanh và được tiếp theo bằng tình trạng tăng gamma-GT xây ra muộn hơn.\nMột số trường hợp ung thư biểu mô tuyến tiền liệt.\nCác khối u tân sinh, ngay cả khi không có di căn gan: U tế bào hắc tố ác tính, ung thư vú và phổi.\nCác tình trạng khác: Béo phì quá mức, bệnh tim, tình trạng sau mổ.",
       "decrease": "Nguyên nhân chính thường gặp là: Suy giáp"
@@ -223,7 +221,7 @@ const labTests: LabTest[] = [
     "specimenCollection": "XN được tiến hành trên huyết thanh. Yêu cầu BN phải nhịn ăn 12h trước khi lấy máu XN. BN không được uống rượu hay các chất có cồn trong vòng 24h trước khi XN.",
     "testingMethods": "",
     "ref": "Bình thường: < 150 mg/dL hay < 1,70 mmol/L.\nGiới hạn cao: 150 - 199 mmg/dL hay 1,70 - 2,25 mmol/L\nCao: 200 - 499 mg/dL hay 2,26 - 5,64 mmol/L.\nRất cao: ≥ 500 mg/dL hay ≥ 5,65 mmol/L.",
-    "alert": "Các cảnh báo lâm sàng\nMột nồng độ triglycerid máu ≥ 150 mg/dL là một trong các yếu tố nguy cơ của hội chứng chuyển hóa. Cho bệnh nhân ăn một khẩu phần chứa mỡ toàn phần cao hơn (chủ yếu dưới dạng mỡ không bão hòa) có thể giúp làm giảm triglycerid và làm tăng HDL cholesterol ở các đối tượng bị hội chứng chuyển hóa.\n\nCác BN bị ĐTĐ song không được kiểm soát nồng độ glucose máu thường sẽ có nồng độ triglycerid rất cao. Tiến hành kiểm soát chặt nồng độ glucose máu sẽ có tác động kết hợp làm hạ thấp nồng độ triglycerid. Một khi đã đưa được nồng độ glucose máu về giới hạn bình thường, cần đánh giá lại nồng độ triglycerid máu để quyết định có cần điều trị hay không tình trạng này.",
+    "alert": "Một nồng độ triglycerid máu ≥ 150 mg/dL là một trong các yếu tố nguy cơ của hội chứng chuyển hóa. Cho bệnh nhân ăn một khẩu phần chứa mỡ toàn phần cao hơn (chủ yếu dưới dạng mỡ không bão hòa) có thể giúp làm giảm triglycerid và làm tăng HDL cholesterol ở các đối tượng bị hội chứng chuyển hóa.\n\nCác BN bị ĐTĐ song không được kiểm soát nồng độ glucose máu thường sẽ có nồng độ triglycerid rất cao. Tiến hành kiểm soát chặt nồng độ glucose máu sẽ có tác động kết hợp làm hạ thấp nồng độ triglycerid. Một khi đã đưa được nồng độ glucose máu về giới hạn bình thường, cần đánh giá lại nồng độ triglycerid máu để quyết định có cần điều trị hay không tình trạng này.",
     "pathologicalMeaning": {
       "increase": "Tăng triglycerid máu\nCác nguyên nhân chính thường gặp là:\n- Tăng lipid máu tiên phát: Tăng lipoprotein máu có tính gia đình, tăng triglycerid máu có tính gia đình, thiếu hụt lipase lipoprotein có tính gia đình (bệnh Buerger-Grutz), thiếu hụt apoprotein CII.\n- Tăng lipid máu thứ phát: Béo phì, rối loạn dung nạp glucose, bệnh ĐTĐ, viêm tụy cấp.\n- Bệnh về gan (xơ gan, viêm gan, ứ mật), nghiện rượu.\n- Bệnh thận: Hội chứng thận hư, suy thận mạn.\n- Chế độ ăn: Chế độ ăn chứa quá nhiều mỡ, carbonhydrat hoặc calo.\n- Phụ nữ có thai.\n- Tình trạng stress, nhồi máu cơ tim cấp.\n- Bệnh gout, bệnh lý kho chứa glycogen (bệnh von Gierke), chứng porphyria cấp từng lúc (acute intermittent porphyria).\n- Do dùng thuốc: Corticosteroid, estrogen, thuốc ngừa thai uống, thuốc lợi tiểu thiazid, thuốc chẹn bêta giao cảm.",
       "decrease": "Giảm triglycerid máu\nCác nguyên nhân chính thường gặp là:\nKhông có bêta lipoprotein máu bẩm sinh (Abeta-lipoproteinemia).\nCường cận giáp.\nHội chứng giảm hấp thu.\nSuy dinh dưỡng.\nBệnh phổi tắc nghẽn mạn tính.\nDo chế độ ăn: Tỷ lệ mỡ thấp.\nCường giáp."
@@ -244,7 +242,7 @@ const labTests: LabTest[] = [
     "specimenCollection": "Xét nghiệm được tiến hành trên huyết thanh.\nCần yêu cầu BN nhịn ăn 12h trước khi lấy máu làm XN. BN không được uống rượu trong vòng 24h trước khi lấy máu làm XN.",
     "testingMethods": "1. Phương pháp tốt nhất để định lượng cholesterol là phương pháp enzym so màu.\n2. Định lượng cholesterol trong HDL lipoprotein (HDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng bằng phương pháp đo độ đục sau khi làm kết tủa huyết thanh (nếu nồng độ triglycerit < 400 mg/dL).\nHoặc tính toán (khi nồng độ triglycerid ≤ 4,5 mmol/L), dựa vào công thức của Friedewald, sau khi xác định LDL.cholesterol: LDL cholesterol = Cholesterol - (triglycerit/2,2 + HDL Cholesterol)\n3. Định lượng cholesterol nhập trong LDL lipoprotein (LDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng sau khi tách trên cột thạch agar.\nHoặc tính toán từ công thức của Friedewald, sau khi xác định HDL cholesterol.",
     "ref": "1. Cholesterol toàn phần\n< 10 tuổi: 100 - 180 mg/dL hay 2,6 - 4,7 mmol/L.\n10 - 20 tuổi: 120 - 180 mg/dL hay 3,1 - 4,7 mmol/L.\n> 20 tuổi: 120 - 200 mg/dL hay 3,1 - 5,2 mmol/L.\n\n2. Giá trị bình thường mong muốn đạt được\n< 200 mg/dL hay (< 5,18 mmol/L).\n\n3. Tỷ lệ cholesterol/HDL cholesterol:\nNam: 3,50 - 4,50.\nNữ: 3,39 - 4,39.\n\n4. Giá trị bất thường:\nCao giới hạn: 200 - 239 mg/dL hay (5,18 - 6,19 mmol/L)\nCao: > 239 mg/dL hay (> 6,20 mmol/L).",
-    "alert": "Các cảnh báo lâm sàng\n1. Nếu kết quả xét nghiệm nồng độ cholesterol máu > 5,2 mmol/L (> 200 mg/dL), cần tiến hành chương trình giáo dục bệnh tật cho BN:\n- Giảm cung cấp mỡ bão hòa và cholesterol trong chế độ ăn.\n- Tăng hoạt động thể lực.\n- Kiểm soát cân nặng.\n2. Tùy theo nồng độ của các lipoprotein khác và mức độ tăng cholesterol máu, có thể bắt đầu điều trị cho BN bằng các thuốc làm giảm cholesterol máu, phối hợp cùng với các biện pháp thay đổi lối sống của người bệnh.\n3. Bilan đánh giá rối loạn lipid máu thường không tiến hành đo trực tiếp nồng độ LDL mà chỉ ước tính nồng độ này bằng cách sử dụng phương trình Friedewald: LDL chol = chol toàn phần (mg/dL) - HDL chol - (0,20 x triglycerid)\nLưu ý:\nCông thức tính toán này chỉ có giá trị chính xác khi tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân nhịn ăn và nồng độ triglycerid máu phải < 4,5 mmol/L (< 400 mg/dL).\nCần tiến hành định lượng trực tiếp LDL cholesterol khi có tăng nồng độ triglycerid máu.",
+    "alert": "1. Nếu kết quả xét nghiệm nồng độ cholesterol máu > 5,2 mmol/L (> 200 mg/dL), cần tiến hành chương trình giáo dục bệnh tật cho BN:\n- Giảm cung cấp mỡ bão hòa và cholesterol trong chế độ ăn.\n- Tăng hoạt động thể lực.\n- Kiểm soát cân nặng.\n2. Tùy theo nồng độ của các lipoprotein khác và mức độ tăng cholesterol máu, có thể bắt đầu điều trị cho BN bằng các thuốc làm giảm cholesterol máu, phối hợp cùng với các biện pháp thay đổi lối sống của người bệnh.\n3. Bilan đánh giá rối loạn lipid máu thường không tiến hành đo trực tiếp nồng độ LDL mà chỉ ước tính nồng độ này bằng cách sử dụng phương trình Friedewald: LDL chol = chol toàn phần (mg/dL) - HDL chol - (0,20 x triglycerid)\nLưu ý:\nCông thức tính toán này chỉ có giá trị chính xác khi tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân nhịn ăn và nồng độ triglycerid máu phải < 4,5 mmol/L (< 400 mg/dL).\nCần tiến hành định lượng trực tiếp LDL cholesterol khi có tăng nồng độ triglycerid máu.",
     "pathologicalMeaning": {
       "increase": "Tăng nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nKhẩu phần dinh dưỡng giàu cholesterol và acid béo bão hoà.\nBệnh vữa xơ động mạch (atherosclerosis).\nBệnh tim mạch.\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh có nhiều khối u vàng (Xanthomatosis).\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nTăng lipoprotein máu có tính chất gia đình (typ IIa, IIb, III).\nTăng triglycerid máu.\nBệnh lý kho chứa glycogen (glycogen storage disease) (Vd: bệnh von Gierke và bệnh Werner).\nSuy giáp.\nSuy thận.\nHội chứng thận hư.\nTắc mật.\nXơ gan do mật (biliary cirrhosis), bệnh lý tế bào gan.\nBéo phì.\nRối loạn chức năng tụy.\nTiền sản giật.\nCó thai.\nNghiện thuốc lá.\nU tân sinh tuyến tiền liệt và tụy.\n\nTăng nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng alphalipoprotein máu.\nHoạt động thê lực và tập thể dục đều đặn.\nLàm mất cân.\nBệnh gan mạn tính.\n\nTăng nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nHội chứng thận hư.\nBệnh lý gan.\nTắc mật.\nSuy thận mạn.\nTăng lipid máu typ II và III.\nĐái tháo đường.",
       "decrease": "Giảm nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nHội chứng suy giảm miễn dịch mắc phải (AIDS).\nSuy dinh dưỡng.\nHội chứng giảm hấp thu (Vd: cắt đoạn ruột, viêm tuỵ mạn, bệnh Crohn).\nKhẩu phần dinh dưỡng nghèo cholesterol và acid béo bão hoà song lại giàu acid béo, không bão hoà.\nCường giáp.\nBệnh gan nặng gây suy tế bào gan.\nĐiều trị bằng các thuốc làm giảm lipid máu.\nKhông có beta lipoprotein máu mang tính chất gia đình.\nTăng alpha lipoprotein máu có tính gia đình (bệnh Tangier).\nThiếu máu mạn, thiếu máu ác tính Biermer.\nThiếu máu do tan máu.\nNhiễm trùng nặng và sepsis.\nTình trạng stress.\nBệnh lý tăng sinh tủy (myeloproliferative diseases).\n\nGiảm nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh lý tế bào gan.\nSuy thận mạn, hội chứng thận hư, hội chứng urê máu cao.\nTắc mật.\nKhông có betaliprotetin máu (abetalipoproteinemia).\nTăng alpha lipoprotein máu có tính gia đình (bệnh Tangier).\nThiếu hụt Apo A-I và Apo C-III.\n\nGiảm nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nKhông có bêtalipoprotein máu (abetalipoproteinemia).\nCường giáp.\nBệnh Tangier.\nGiảm lipoprotein máu.\nThiếu máu mạn tính.\nBệnh lý tế bào gan.\nThiếu hụt lecithin cholesterol acyltransferase.\nThiếu hụt Apo C-II.\nTăng lipid máu typ I."
@@ -265,7 +263,7 @@ const labTests: LabTest[] = [
     "specimenCollection": "Xét nghiệm được tiến hành trên huyết thanh.\nCần yêu cầu BN nhịn ăn 12h trước khi lấy máu làm XN. BN không được uống rượu trong vòng 24h trước khi lấy máu làm XN.",
     "testingMethods": "1. Phương pháp tốt nhất để định lượng cholesterol là phương pháp enzym so màu.\n2. Định lượng cholesterol trong HDL lipoprotein (HDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng bằng phương pháp đo độ đục sau khi làm kết tủa huyết thanh (nếu nồng độ triglycerit < 400 mg/dL).\nHoặc tính toán (khi nồng độ triglycerid ≤ 4,5 mmol/L), dựa vào công thức của Friedewald, sau khi xác định LDL.cholesterol: LDL cholesterol = Cholesterol - (triglycerit/2,2 + HDL Cholesterol)\n3. Định lượng cholesterol nhập trong LDL lipoprotein (LDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng sau khi tách trên cột thạch agar.\nHoặc tính toán từ công thức của Friedewald, sau khi xác định HDL cholesterol.",
     "ref": "1. HDL cholesterol\nNam: 35 - 54 mg/dL hay 0,9 - 1,4 mmol/L.\nNữ: 45 - 64 mg/dL hay 1,1 - 1,7 mmol/L.\n\n2. Tỷ lệ cholesterol/HDL cholesterol:\nNam: 3,50 - 4,50.\nNữ: 3,39 - 4,39.",
-    "alert": "Các cảnh báo lâm sàng\n1. Nếu kết quả xét nghiệm nồng độ cholesterol máu > 5,2 mmol/L (> 200 mg/dL), cần tiến hành chương trình giáo dục bệnh tật cho BN:\n- Giảm cung cấp mỡ bão hòa và cholesterol trong chế độ ăn.\n- Tăng hoạt động thể lực.\n- Kiểm soát cân nặng.\n2. Tùy theo nồng độ của các lipoprotein khác và mức độ tăng cholesterol máu, có thể bắt đầu điều trị cho BN bằng các thuốc làm giảm cholesterol máu, phối hợp cùng với các biện pháp thay đổi lối sống của người bệnh.\n3. Bilan đánh giá rối loạn lipid máu thường không tiến hành đo trực tiếp nồng độ LDL mà chỉ ước tính nồng độ này bằng cách sử dụng phương trình Friedewald: LDL chol = chol toàn phần (mg/dL) - HDL chol - (0,20 x triglycerid)\nLưu ý:\nCông thức tính toán này chỉ có giá trị chính xác khi tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân nhịn ăn và nồng độ triglycerid máu phải < 4,5 mmol/L (< 400 mg/dL).\nCần tiến hành định lượng trực tiếp LDL cholesterol khi có tăng nồng độ triglycerid máu.",
+    "alert": "1. Nếu kết quả xét nghiệm nồng độ cholesterol máu > 5,2 mmol/L (> 200 mg/dL), cần tiến hành chương trình giáo dục bệnh tật cho BN:\n- Giảm cung cấp mỡ bão hòa và cholesterol trong chế độ ăn.\n- Tăng hoạt động thể lực.\n- Kiểm soát cân nặng.\n2. Tùy theo nồng độ của các lipoprotein khác và mức độ tăng cholesterol máu, có thể bắt đầu điều trị cho BN bằng các thuốc làm giảm cholesterol máu, phối hợp cùng với các biện pháp thay đổi lối sống của người bệnh.\n3. Bilan đánh giá rối loạn lipid máu thường không tiến hành đo trực tiếp nồng độ LDL mà chỉ ước tính nồng độ này bằng cách sử dụng phương trình Friedewald: LDL chol = chol toàn phần (mg/dL) - HDL chol - (0,20 x triglycerid)\nLưu ý:\nCông thức tính toán này chỉ có giá trị chính xác khi tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân nhịn ăn và nồng độ triglycerid máu phải < 4,5 mmol/L (< 400 mg/dL).\nCần tiến hành định lượng trực tiếp LDL cholesterol khi có tăng nồng độ triglycerid máu.",
     "pathologicalMeaning": {
       "increase": "Tăng nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nKhẩu phần dinh dưỡng giàu cholesterol và acid béo bão hoà.\nBệnh vữa xơ động mạch (atherosclerosis).\nBệnh tim mạch.\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh có nhiều khối u vàng (Xanthomatosis).\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nTăng lipoprotein máu có tính chất gia đình (typ IIa, IIb, III).\nTăng triglycerid máu.\nBệnh lý kho chứa glycogen (glycogen storage disease) (Vd: bệnh von Gierke và bệnh Werner).\nSuy giáp.\nSuy thận.\nHội chứng thận hư.\nTắc mật.\nXơ gan do mật (biliary cirrhosis), bệnh lý tế bào gan.\nBéo phì.\nRối loạn chức năng tụy.\nTiền sản giật.\nCó thai.\nNghiện thuốc lá.\nU tân sinh tuyến tiền liệt và tụy.\n\nTăng nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng alphalipoprotein máu.\nHoạt động thê lực và tập thể dục đều đặn.\nLàm mất cân.\nBệnh gan mạn tính.\n\nTăng nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nHội chứng thận hư.\nBệnh lý gan.\nTắc mật.\nSuy thận mạn.\nTăng lipid máu typ II và III.\nĐái tháo đường.",
       "decrease": "Giảm nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nHội chứng suy giảm miễn dịch mắc phải (AIDS).\nSuy dinh dưỡng.\nHội chứng giảm hấp thu (Vd: cắt đoạn ruột, viêm tuỵ mạn, bệnh Crohn).\nKhẩu phần dinh dưỡng nghèo cholesterol và acid béo bão hoà song lại giàu acid béo, không bão hoà.\nCường giáp.\nBệnh gan nặng gây suy tế bào gan.\nĐiều trị bằng các thuốc làm giảm lipid máu.\nKhông có beta lipoprotein máu mang tính chất gia đình.\nTăng alpha lipoprotein máu có tính gia đình (bệnh Tangier).\nThiếu máu mạn, thiếu máu ác tính Biermer.\nThiếu máu do tan máu.\nNhiễm trùng nặng và sepsis.\nTình trạng stress.\nBệnh lý tăng sinh tủy (myeloproliferative diseases).\n\nGiảm nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh lý tế bào gan.\nSuy thận mạn, hội chứng thận hư, hội chứng urê máu cao.\nTắc mật.\nKhông có betaliprotetin máu (abetalipoproteinemia).\nTăng alpha lipoprotein máu có tính gia đình (bệnh Tangier).\nThiếu hụt Apo A-I và Apo C-III.\n\nGiảm nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nKhông có bêtalipoprotein máu (abetalipoproteinemia).\nCường giáp.\nBệnh Tangier.\nGiảm lipoprotein máu.\nThiếu máu mạn tính.\nBệnh lý tế bào gan.\nThiếu hụt lecithin cholesterol acyltransferase.\nThiếu hụt Apo C-II.\nTăng lipid máu typ I."
@@ -286,7 +284,7 @@ const labTests: LabTest[] = [
     "specimenCollection": "Xét nghiệm được tiến hành trên huyết thanh.\nCần yêu cầu BN nhịn ăn 12h trước khi lấy máu làm XN. BN không được uống rượu trong vòng 24h trước khi lấy máu làm XN.",
     "testingMethods": "1. Phương pháp tốt nhất để định lượng cholesterol là phương pháp enzym so màu.\n2. Định lượng cholesterol trong HDL lipoprotein (HDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng bằng phương pháp đo độ đục sau khi làm kết tủa huyết thanh (nếu nồng độ triglycerit < 400 mg/dL).\nHoặc tính toán (khi nồng độ triglycerid ≤ 4,5 mmol/L), dựa vào công thức của Friedewald, sau khi xác định LDL.cholesterol: LDL cholesterol = Cholesterol - (triglycerit/2,2 + HDL Cholesterol)\n3. Định lượng cholesterol nhập trong LDL lipoprotein (LDL cholesterol):\nHoặc định lượng trực tiếp bằng phương pháp enzym so màu.\nHoặc định lượng sau khi tách trên cột thạch agar.\nHoặc tính toán từ công thức của Friedewald, sau khi xác định HDL cholesterol.",
     "ref": "80 - 150 mg/dL.\n hay 2,1 - 3,9 mmol/L.",
-    "alert": "Các cảnh báo lâm sàng\n1. Nếu kết quả xét nghiệm nồng độ cholesterol máu > 5,2 mmol/L (> 200 mg/dL), cần tiến hành chương trình giáo dục bệnh tật cho BN:\n- Giảm cung cấp mỡ bão hòa và cholesterol trong chế độ ăn.\n- Tăng hoạt động thể lực.\n- Kiểm soát cân nặng.\n2. Tùy theo nồng độ của các lipoprotein khác và mức độ tăng cholesterol máu, có thể bắt đầu điều trị cho BN bằng các thuốc làm giảm cholesterol máu, phối hợp cùng với các biện pháp thay đổi lối sống của người bệnh.\n3. Bilan đánh giá rối loạn lipid máu thường không tiến hành đo trực tiếp nồng độ LDL mà chỉ ước tính nồng độ này bằng cách sử dụng phương trình Friedewald: LDL chol = chol toàn phần (mg/dL) - HDL chol - (0,20 x triglycerid)\nLưu ý:\nCông thức tính toán này chỉ có giá trị chính xác khi tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân nhịn ăn và nồng độ triglycerid máu phải < 4,5 mmol/L (< 400 mg/dL).\nCần tiến hành định lượng trực tiếp LDL cholesterol khi có tăng nồng độ triglycerid máu.",
+    "alert": "1. Nếu kết quả xét nghiệm nồng độ cholesterol máu > 5,2 mmol/L (> 200 mg/dL), cần tiến hành chương trình giáo dục bệnh tật cho BN:\n- Giảm cung cấp mỡ bão hòa và cholesterol trong chế độ ăn.\n- Tăng hoạt động thể lực.\n- Kiểm soát cân nặng.\n2. Tùy theo nồng độ của các lipoprotein khác và mức độ tăng cholesterol máu, có thể bắt đầu điều trị cho BN bằng các thuốc làm giảm cholesterol máu, phối hợp cùng với các biện pháp thay đổi lối sống của người bệnh.\n3. Bilan đánh giá rối loạn lipid máu thường không tiến hành đo trực tiếp nồng độ LDL mà chỉ ước tính nồng độ này bằng cách sử dụng phương trình Friedewald: LDL chol = chol toàn phần (mg/dL) - HDL chol - (0,20 x triglycerid)\nLưu ý:\nCông thức tính toán này chỉ có giá trị chính xác khi tiến hành xét nghiệm trên mẫu bệnh phẩm bệnh nhân nhịn ăn và nồng độ triglycerid máu phải < 4,5 mmol/L (< 400 mg/dL).\nCần tiến hành định lượng trực tiếp LDL cholesterol khi có tăng nồng độ triglycerid máu.",
     "pathologicalMeaning": {
       "increase": "Tăng nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nKhẩu phần dinh dưỡng giàu cholesterol và acid béo bão hoà.\nBệnh vữa xơ động mạch (atherosclerosis).\nBệnh tim mạch.\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh có nhiều khối u vàng (Xanthomatosis).\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nTăng lipoprotein máu có tính chất gia đình (typ IIa, IIb, III).\nTăng triglycerid máu.\nBệnh lý kho chứa glycogen (glycogen storage disease) (Vd: bệnh von Gierke và bệnh Werner).\nSuy giáp.\nSuy thận.\nHội chứng thận hư.\nTắc mật.\nXơ gan do mật (biliary cirrhosis), bệnh lý tế bào gan.\nBéo phì.\nRối loạn chức năng tụy.\nTiền sản giật.\nCó thai.\nNghiện thuốc lá.\nU tân sinh tuyến tiền liệt và tụy.\n\nTăng nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng alphalipoprotein máu.\nHoạt động thê lực và tập thể dục đều đặn.\nLàm mất cân.\nBệnh gan mạn tính.\n\nTăng nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nTăng cholesterol máu có tính gia đình (familial hypercholesterolemia).\nHội chứng thận hư.\nBệnh lý gan.\nTắc mật.\nSuy thận mạn.\nTăng lipid máu typ II và III.\nĐái tháo đường.",
       "decrease": "Giảm nồng độ cholesterol\nCác nguyên nhân chính thường gặp là:\nHội chứng suy giảm miễn dịch mắc phải (AIDS).\nSuy dinh dưỡng.\nHội chứng giảm hấp thu (Vd: cắt đoạn ruột, viêm tuỵ mạn, bệnh Crohn).\nKhẩu phần dinh dưỡng nghèo cholesterol và acid béo bão hoà song lại giàu acid béo, không bão hoà.\nCường giáp.\nBệnh gan nặng gây suy tế bào gan.\nĐiều trị bằng các thuốc làm giảm lipid máu.\nKhông có beta lipoprotein máu mang tính chất gia đình.\nTăng alpha lipoprotein máu có tính gia đình (bệnh Tangier).\nThiếu máu mạn, thiếu máu ác tính Biermer.\nThiếu máu do tan máu.\nNhiễm trùng nặng và sepsis.\nTình trạng stress.\nBệnh lý tăng sinh tủy (myeloproliferative diseases).\n\nGiảm nồng độ HDL cholesterol\nCác nguyên nhân chính thường gặp là:\nBệnh ĐTĐ không được kiểm soát tốt.\nBệnh lý tế bào gan.\nSuy thận mạn, hội chứng thận hư, hội chứng urê máu cao.\nTắc mật.\nKhông có betaliprotetin máu (abetalipoproteinemia).\nTăng alpha lipoprotein máu có tính gia đình (bệnh Tangier).\nThiếu hụt Apo A-I và Apo C-III.\n\nGiảm nồng độ LDL cholesterol\nCác nguyên nhân chính thường gặp là:\nKhông có bêtalipoprotein máu (abetalipoproteinemia).\nCường giáp.\nBệnh Tangier.\nGiảm lipoprotein máu.\nThiếu máu mạn tính.\nBệnh lý tế bào gan.\nThiếu hụt lecithin cholesterol acyltransferase.\nThiếu hụt Apo C-II.\nTăng lipid máu typ I."
@@ -307,7 +305,7 @@ const labTests: LabTest[] = [
     "specimenCollection": "Cách lấy bệnh phẩm\nMáu: XN được tiến hành trên huyết tương. Thường cần yêu cầu BN phải nhịn ăn 4 - 8h trước khi lấy máu XN tùy theo kỹ thuật xét nghiệm được sử dụng.\nNước tiểu: Thu bệnh phẩm nước tiểu 24h.",
     "testingMethods": "Phương pháp định lượng\nĐịnh lượng nồng độ acid uric huyết thanh có thể được thực hiện theo các phương pháp:\nDùng enzym.\nĐo màu.\nTuy vậy, kết quả của phương pháp định lượng nồng độ acid uric bằng cách đo màu có thể bị biến đổi khi trong huyết thanh có một số chất như:\nCystin.\nGlucose.\nPhenol.\nVitamin C (Acid ascorbic).\nTryptophan.\nTyrosin.",
     "ref": "1. Nồng độ acid uric trong máu\nNam: 3,6 - 8,5 mg/dL hay 214 - 506 µmol/L.\nNữ: 2,3 - 6,6 mg/dL hay 137 - 393 µmol/L.\n2. Nồng độ acid uric trong nước tiểu\n250-1000 mg/24h hay 1,5 - 5,9 mmol/24h\nTrên mẫu nước tiểu lấy ngẫu nhiên:\nNam: 105-595 mg/g creatinin.\nNữ: 95-740 mg/g creatinin.\n3. Nồng độ acid uric trong dịch khớp\n2- 6 mg/dL hay 0,1 - 0,3 mmol/L.",
-    "alert": "Các cảnh báo lâm sàng\nNếu phát hiện thấy BN có tình trạng tăng acid uric máu, cần hướng dẫn BN tăng khẩu phần nước uống hàng ngày để dự phòng nguy cơ bị sỏi thận. Khuyên BN tránh uống rượu (do đồ uống có cồn gây ức chế bài tiết tinh thể urat qua nước tiểu).\n\nNếu phát hiện BN có tăng nồng độ acid uric bài tiết qua nước tiểu, cần hướng dẫn BN sử dụng các thức ăn chứa ít purin. Các nguồn thực phẩm có hàm lượng purin cao bao gồm: măng tây, các đồ uống có chứa caffein, nấm, rau bina (spinach), men rượu bia và các phủ tạng động vật (Vd: gan và thận).\n\nCòn chưa có được ý kiến đồng thuận trong đánh giá lợi ích điều trị đối với các bệnh nhân tăng nồng độ acid uric máu không có biểu hiện triệu chứng, do chưa đủ bằng chứng để xác nhận điều trị này có thực sự giúp dự phòng các đợt viêm khớp do cơn gout cấp, hình thành sỏi thận urat và nguy cơ tim mạch.",
+    "alert": "Nếu phát hiện thấy BN có tình trạng tăng acid uric máu, cần hướng dẫn BN tăng khẩu phần nước uống hàng ngày để dự phòng nguy cơ bị sỏi thận. Khuyên BN tránh uống rượu (do đồ uống có cồn gây ức chế bài tiết tinh thể urat qua nước tiểu).\n\nNếu phát hiện BN có tăng nồng độ acid uric bài tiết qua nước tiểu, cần hướng dẫn BN sử dụng các thức ăn chứa ít purin. Các nguồn thực phẩm có hàm lượng purin cao bao gồm: măng tây, các đồ uống có chứa caffein, nấm, rau bina (spinach), men rượu bia và các phủ tạng động vật (Vd: gan và thận).\n\nCòn chưa có được ý kiến đồng thuận trong đánh giá lợi ích điều trị đối với các bệnh nhân tăng nồng độ acid uric máu không có biểu hiện triệu chứng, do chưa đủ bằng chứng để xác nhận điều trị này có thực sự giúp dự phòng các đợt viêm khớp do cơn gout cấp, hình thành sỏi thận urat và nguy cơ tim mạch.",
     "pathologicalMeaning": {
       "increase": "Tăng nồng độ acid uric trong máu\nCác nguyên nhân chính thường gặp là:\n1. Tăng sản xuất acid uric\nTăng acid uric máu tiên phát (30% BN gout thuộc loại vô căn).\nPhá huỷ tổ chức (Vd: sau hoá trị liệu, xạ trị).\nGia tăng chuyển hóa tế bào (Vd: bệnh lơxêmi cấp, u lympho, đa u tủy xương, bệnh đa hồng cầu).\nThiếu máu do tan máu (Vd: sốt rét, bệnh hồng cầu hình liềm, thiếu G6PD).\nThức ăn chứa nhiều purin.\nBéo phì.\nNhịn đói hay dùng chế độ ăn giảm cân chứa nhiều protein.\n\n2. Giảm đào thải acid uric qua thận\nSuy thận (không tương quan với mức độ nặng của tổn thương thận).\nNghiện rượu cấp.\nDùng thuốc lợi tiểu (Vd: thiazid, furosemid, acid ethacrynic...).\nTổn thương các ống thận xa.\nNhiễm toan lactic.\nSuy tim ứ huyết.\nCác thuốc gây giảm thải acid uric qua nước tiểu:\nAspirin (liều thấp < 4 g/ngày).\nThuốc lợi tiểu (ngoại trừ spironolacton và ticrynafen).\nProbenecid (với liều thấp).\nPhenylbutazon (với liều thấp).\n\n3. Các nguyên nhân khác\nBệnh nhân bị vữa xơ động mạch và tăng HA vô căn (tăng nồng độ acid uric máu được gặp ở 80% các BN bị tăng trigycerid máu).\nTăng bạch cầu đơn nhân nhiễm trùng cấp (hay bệnh nhiễm virus Epstein-Barr).\nNhiễm độc thai nghén và tiền sản giật (xét nghiệm nồng độ acid uric máu theo seri giúp theo dõi đáp ứng điều trị và đánh giá tiên lượng bệnh).\nSuy cận giáp trạng.\nCường cận giáp tiên phát.\nSuy giáp.\nNgộ độc chì mạn tính.\nChấn thương.\nThận đa nang.\nBệnh sarcoidose.\nNhiễm độc mạn berylium (chronic berylliosis).\nMột số bệnh lý hiếm gặp: Bệnh von Gierke, hội chứng Lesch-Nyhan (Lesch-Nyhan syndrome), hội chứng Down, bệnh đái nước tiểu mùi ngọt hương tùng (maple syrup urine disease).",
       "decrease": "Giảm nồng độ acid uric trong máu\nCác nguyên nhân chính thường gặp là:\n1. Hoà loãng máu.\n2. Hội chứng tiết hormon chống bài niệu (ADH) không thích hợp (SIADH).\n3. Tổn thương các ống thận gần (Vd: tình trạng được gặp ở người lớn hoàn toàn khỏe mạnh song có khiếm khuyết đơn thuần tái hấp thu hay vận chuyển acid uric ống thận).\n4. Hội chứng Fanconi.\n5. Các thuốc gây tăng thải acid uric qua nước tiểu:\nACTH.\nBenzbromaron.\nAllopurinol.\nProbenecid (với liều cao).\nCortison.\nPhenylbutazon (với liều cao).\nSulfinpyrazon.\nSalicylat (với liều cao).\nAcid ascorbic.\nThuốc kháng vitamin K coumarin.\nCác thuốc gây độc cho tế bào để điều trị bệnh ung thư (cytotoxic drugs).\nThuốc cản quang.\nCác thuốc khác: glyceryl guaiacolat, estrogen, phenothiazin, indomethacin...\n6. Bệnh Wilson.\n7. Thiếu enzym xanthin oxydase (Vd: chứng đái xanthin trong nước tiểu [xanthinuria]).\n8. To đầu chi (ở một số bệnh nhân).\n9. Bệnh Celiac (tăng nhẹ nồng độ acid uric máu).\n10. Một số trường hợp bệnh lý u tân sinh (Vd: Bệnh Hodgkin, ung thư biểu mô)."
@@ -327,7 +325,7 @@ const labTests: LabTest[] = [
     "specimenCollection": "Cách lấy bệnh phẩm\nXét nghiệm được tiến hành trên huyết thanh. Bệnh phẩm được chứa trong ống nghiệm khô. Không nhất thiết cần yêu cầu BN phải nhịn ăn trước khi lấy máu XN.",
     "testingMethods": "",
     "ref": "0 - 4 tháng tuổi: 2,0 - 4,5 g/dL.\n4 tháng - 16 tuổi: 3,2 - 5,2 g/dL.\nNgười lớn (> 16 tuổi): 3,5 - 4,8 g/dL hay (35 - 48 g/L)",
-    "alert": "Các cảnh báo lâm sàng\nTrong thực hành lâm sàng, một trong số hai thử nghiệm gắn thuốc nhuộm (dye-binding assay) - bromcresol xanh (brom-cresol green [BCG]) và bromcresol tím (bromcresol purple [BCP]) được sử dụng để định lượng nồng độ albumin máu và sự khác biệt giữa hai phương pháp này đã được ghi nhận từ lâu. Kỹ thuật sử dụng phương pháp BCG có thể bị tương tác không đặc hiệu do tình trạng gắn với các protein không phải là albumin, trái lại phương pháp BCP đặc hiệu hơn. Tuy vậy, phương pháp BCP đã được cho thấy là ước tính thấp hơn thực tế nồng độ albumin máu ở các bệnh nhân nhi đang được lọc máu và các bệnh nhân bị suy thận mạn.\nCác kháng thể kháng albumin thường được thấy ở bệnh nhân bị rối loạn chức năng gan và rất thường gặp typ IgA.",
+    "alert": "Trong thực hành lâm sàng, một trong số hai thử nghiệm gắn thuốc nhuộm (dye-binding assay) - bromcresol xanh (brom-cresol green [BCG]) và bromcresol tím (bromcresol purple [BCP]) được sử dụng để định lượng nồng độ albumin máu và sự khác biệt giữa hai phương pháp này đã được ghi nhận từ lâu. Kỹ thuật sử dụng phương pháp BCG có thể bị tương tác không đặc hiệu do tình trạng gắn với các protein không phải là albumin, trái lại phương pháp BCP đặc hiệu hơn. Tuy vậy, phương pháp BCP đã được cho thấy là ước tính thấp hơn thực tế nồng độ albumin máu ở các bệnh nhân nhi đang được lọc máu và các bệnh nhân bị suy thận mạn.\nCác kháng thể kháng albumin thường được thấy ở bệnh nhân bị rối loạn chức năng gan và rất thường gặp typ IgA.",
     "pathologicalMeaning": {
       "increase": "Tăng nồng độ albumin máu\nCác nguyên nhân chính thường gặp là:\nTình trạng mất nước.\nViêm tụy cấp.",
       "decrease": "Giảm nồng độ albumin máu\nNguyên nhân chính thường gặp là:\nDo gan giảm tổng hợp albumin:\nBệnh gan cấp và mạn (Vd: nghiện rượu, xơ gan, viêm gan).\nGiảm hấp thu và suy dinh dưỡng.\nĐói ăn, suy dinh dưỡng thể thiếu calo-protein.\nBệnh amyloidosis.\nCác bệnh lý mạn tính.\nBệnh ĐTĐ.\nGiảm nồng độ hormon tăng trưởng.\nSuy chức năng tuyến giáp.\nSuy thượng thận.\nTình trạng không có albumin trong máu do di truyền.\n\nPhản ứng pha cấp, tình trạng viêm và các bệnh lý mạn tính:\nCác nhiễm trùng vi khuẩn (Vd: viêm túi mật cấp).\nBệnh lý gammaglobulin đơn dòng clon và các bệnh lý u tân sinh khác.\nCác nhiễm ký sinh trùng.\nBệnh lý ở loét dạ dày-tá tràng.\nTình trạng bất động dài ngày.\nBệnh thấp.\nBệnh da nặng.\nBệnh lý ung thư (Vd: bệnh Hodgkin, bệnh lơxêmi).\n\nTăng mất albumin qua bề mặt cơ thể:\nBỏng.\nBệnh ruột liên quan với tình trạng tăng mẫn cảm với các chất được ăn vào (Vd: tăng mẫn cảm với gluten, bệnh Crohn, viêm đại tràng loét).\nDò (đường tiêu hóa hoặc bạch mạch).\nChảy máu.\nBệnh thận gây mất protein qua cầu thận.\nMất protein qua đường tiêu hóa.\nBồi phụ tình trạng mất nước quá nhanh hoặc tăng gánh dịch.\nChọc hút dịch màng phổi hoặc dịch cổ chướng nhiều lần.\nChấn thương và vết thương dập nát.\n\nTăng dị hóa protein:\nSốt cao.\nBệnh Cushing.\nTiền sản giật.\nRối loạn chức năng tuyến giáp.\n\nTăng gánh thể tích huyết tương:\nSuy tim ứ huyết.\nDùng thuốc viên ngừa thai.\nCó thai."
@@ -367,7 +365,7 @@ const labTests: LabTest[] = [
     "specimenCollection": "Cách lấy bệnh phẩm\nXN được thực hiện trên huyết thanh. Yêu cầu BN nhịn ăn từ 4 - 8h trước khi lấy máu làm XN song BN có thể được uống nước bình thường.\nCần phải tách nhanh HC, do tan máu có thể làm sai lệch kết quả XN.\nTránh để bệnh phẩm tiếp xúc với ánh sáng và tiến hành xét nghiệm càng nhanh càng tốt.",
     "testingMethods": "",
     "ref": "1. Nồng độ Bilirubin toàn phần trong máu: \nTrẻ sơ sinh: < 10 mg/dL hay < 171 µmol/L.\n1 tháng: 0,3 - 1,2 mg/dL hay 5,1 - 20,5 µmol/L.\nNgười lớn: 0,2 - 1,0 mg/dL hay 3,4 - 17,1 µmol/L.\n2. Tỷ lệ bilirubin trực tiếp/ bilirubin toàn phần: < 20 %.",
-    "alert": "Các cảnh báo lâm sàng\nNồng độ bilirubin toàn phần không phải là một chỉ số nhạy để đánh giá chức năng gan và thông số này có thể không phản ánh chính xác mức độ tôn thương gan:\nNồng độ bilirubin phải > 40 µmol/L (2,5 mg/dL) mới gây được biêu hiện vàng da trên lâm sàng; tăng nồng độ bilirubin > 85 µmol/L (5mg/dL) hiếm khi xẩy ra ở các bệnh nhân bị tan máu không biến chứng trừ khi họ có thêm bệnh lý gan mật.\nChi tăng bilirubin liên hợp song nồng độ bilirubin toàn phần bình thường được gặp ở tới 1/3 các bệnh nhân bị bệnh gan.\nTrong tắc nghẽn đường mật ngoài gan, nồng độ bilirubin máu có thể tăng lên dần tới mức cao nguyên (510 - 680 µmol/L) một phần do cân bằng giữa bài xuất của thận và chuyển đổi bilirubin thành các chất chuyên hóa khác. Song mức cao nguyên này thường không xây ra trong vàng da do nguyên nhân tổn thương tế bào gan và nồng độ bilirubin có thể tăng lên trên mức 855 µmol/L (50 mg/dL).\nDo vai trò bài xuất của thận, nồng độ bilirubin tối đa chỉ ở mức 170 - 598,5 µmol/L (10 - 35 mg/dL); nếu có tình trạng suy thận nồng độ bilirubin máu có thể lên tới mức 1282,5 µmol/L (75 mg/dL).",
+    "alert": "Nồng độ bilirubin toàn phần không phải là một chỉ số nhạy để đánh giá chức năng gan và thông số này có thể không phản ánh chính xác mức độ tôn thương gan:\nNồng độ bilirubin phải > 40 µmol/L (2,5 mg/dL) mới gây được biêu hiện vàng da trên lâm sàng; tăng nồng độ bilirubin > 85 µmol/L (5mg/dL) hiếm khi xẩy ra ở các bệnh nhân bị tan máu không biến chứng trừ khi họ có thêm bệnh lý gan mật.\nChi tăng bilirubin liên hợp song nồng độ bilirubin toàn phần bình thường được gặp ở tới 1/3 các bệnh nhân bị bệnh gan.\nTrong tắc nghẽn đường mật ngoài gan, nồng độ bilirubin máu có thể tăng lên dần tới mức cao nguyên (510 - 680 µmol/L) một phần do cân bằng giữa bài xuất của thận và chuyển đổi bilirubin thành các chất chuyên hóa khác. Song mức cao nguyên này thường không xây ra trong vàng da do nguyên nhân tổn thương tế bào gan và nồng độ bilirubin có thể tăng lên trên mức 855 µmol/L (50 mg/dL).\nDo vai trò bài xuất của thận, nồng độ bilirubin tối đa chỉ ở mức 170 - 598,5 µmol/L (10 - 35 mg/dL); nếu có tình trạng suy thận nồng độ bilirubin máu có thể lên tới mức 1282,5 µmol/L (75 mg/dL).",
     "pathologicalMeaning": {
       "increase": "Tăng nồng độ bilirubin toàn phần\nCác nguyên nhân chính thường gặp là:\n1. Có thai.\n2. Trẻ sơ sinh và trẻ đe non.\n3. Hoạt động thê lực mạnh.\n4. Các nguyên nhân gây tăng bilirubin không liên hợp.\n5. Các nguyên nhân gây tăng bilirubin liên hợp.\n6. Suy giáp.\n\nTăng nồng độ bilirubin không liên hợp (bilirubin gián tiếp)\nCác nguyên nhân chính thường gặp là:\n1. Tăng phá huỷ HC quá mức gây tăng sản xuất bilirubin:\nTan máu (Vd: sốt rét, bệnh do không tương hợp Rh của trẻ sơ sinh, bệnh hemoglobin, thiếu hụt các enzym của hồng cầu, đông máu rải rác trong lòng mạch, tan máu tự miễn).\nTạo HC không hiệu quả (Vd: bệnh thiếu máu Biermer).\nTruyền máu nhiều.\nCường lách.\nKhối máu tụ lớn.\n2. Suy giảm quá trình liên hợp bilirubin tại gan:\nBệnh Gilbert.\nSuy tim mất bù.\nThuốc: Rifampicin,...\n3. Khiếm khuyết quá trình liên hợp bilirubin:\nVàng da ở trẻ sơ sinh và trẻ đẻ non.\nHội chứng Crigler-Najjar (do thiếu hụt enzym glucuronyl transferase).\n\nTăng nồng độ bilirubin liên hợp (bilirubin trực tiếp)...",
       "decrease": ""
@@ -377,202 +375,309 @@ const labTests: LabTest[] = [
     "ebmGuidelines": "Các hướng dẫn thực hành lâm sàng dựa trên y học bằng chứng\nCác đánh giá ban đầu đối với tình trạng tăng bilirubin máu là cần xác định xem tình trạng tăng bilirubin huyết thanh thuộc loại tăng thành phần trực tiếp (tăng bilirubin liên hợp) hay tăng thành phần gián tiếp (tăng bilirubin không liên hợp).\nCác BN người lớn không có triệu chứng lâm sàng bị tăng đơn độc bilirubin không liên hợp, mức độ nhẹ cần được tìm kiếm các chẩn đoán: hội chứng Gilbert, bị tan máu và tăng bilirubin do thuốc.\nNếu có tăng bilirubin máu loại liên hợp, cần đánh giá có tình trạng tăng phosphatase kiềm đi kèm hay không để loại trừ tình trạng tắc mật.\nTrong viêm gan do virus, nồng độ bilirubin huyết thanh càng cao sẽ gợi ý bệnh nhân bị tôn thương gan nặng nề hơn và tiến triển lâm sàng kéo dài hơn.\nTrong viêm gan cấp do rượu, một nồng độ bilirubin toàn phần > 85 µmol/L (5 mg/dL) gợi ý một kết cục xấu đối với bệnh nhân.\nNồng độ bilirubin liên hợp (trực tiếp) > 17 µmol/L (1,0 mg/dL) ở trẻ nhỏ luôn chỉ dẫn tình trạng bệnh lý.",
     "clinicalNote": ""
   },
-    {
-        name: "Định lượng Bilirubin trực tiếp [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "< 0.3 mg/dL", 
-        alert: "",
-        concept: "Là dạng Bilirubin đã được gan liên hợp, có thể hòa tan trong nước và sẵn sàng đào thải vào ống mật.",
-        indication: "Được làm cùng Bilirubin toàn phần để định hướng vị trí bệnh lý (tại gan hay sau gan).",
-        pathologicalMeaning: {
-            increase: "Tăng ưu thế chỉ ra nguyên nhân vàng da do tắc nghẽn đường mật (sỏi ống mật chủ, u đầu tụy) hoặc viêm gan, xơ gan.",
-            decrease: "Không có ý nghĩa lâm sàng."
-        }
+     {
+    "name": "Định lượng Bilirubin trực tiếp [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "BILIRUBIN\n(Bilirubine / Bilirubin)",
+    "physiology": "Bilirubin (sắc tố mật) có nguồn gốc chủ yếu từ quá trình phá huỷ các hồng cầu và một mức ít hơn từ các cytochrom và myoglobin.\nQuá trình phá huỷ các HC có thể được tiến hành:\n1. Trong tuỷ xương (quá trình tạo HC không hiệu quả).\n2. Trong máu tuần hoàn (do có các tự kháng thể).\n3. Trong lách (sau một thời gian sống trung bình 120 ngày).\nNhư vậy, Hb được giải phóng từ các HC sẽ tạo ra Hem, sắt và globin:\n\nỞ gan, bilirubin không liên hợp (gián tiếp) chịu một quá trình chuyển hoá gồm 3 giai đoạn:\n1. Được các tế bào gan giữ lại.\n2. Liên hợp với glucuronid nhờ enzym glucuronyltransferase của gan.\n3. Bài xuất vào trong đường mật.\n\nBilirubin liên hợp được tạo thành:\nChiếm 20% bilirubin toàn phần lưu hành trong máu.\nKhông gắn với protein, tan trong nước, vì vậy được lọc qua thận.\nThường được gọi là bilirubin trực tiếp do định lượng loại bilirubin này.\n\nGhi chú:\n1. Bình thường, kết quả XN chỉ trả lời nồng độ bilirubin toàn phần. Nếu có tình trạng tăng bilirubin toàn phần, phòng XN sẽ tiến hành thêm các test để xác định nồng độ bilirubin trực tiếp và gián tiếp.\n2. Trong các bệnh lý của tế bào gan (Vd: xơ gan, viêm gan), quá trình liên hợp bilirubin ít bị tác động. Ngược lại, quá trình bài xuất bilirubin liên hợp rất dễ bị biến đổi, điều đó cắt nghĩa tại sao có tăng lượng bilirubin liên hợp (hay trực tiếp) trong các bệnh lý kể trên.\n3. Khi lượng bilirubin liên hợp tăng cao trong các tế bào gan, sẽ gây trào ngược bilirubin liên hợp vào dòng tuần hoàn và gây vàng da.",
+    "indication": "Mục đích và chỉ định xét nghiệm\nĐể chẩn đoán các bệnh lý gan mật và tình trạng tan máu.\nĐể theo dõi hiệu quả của điều trị quang cho trẻ sơ sinh bị vàng da.",
+    "specimenCollection": "Cách lấy bệnh phẩm\nXN được thực hiện trên huyết thanh. Yêu cầu BN nhịn ăn từ 4 - 8h trước khi lấy máu làm XN song BN có thể được uống nước bình thường.\nCần phải tách nhanh HC, do tan máu có thể làm sai lệch kết quả XN.\nTránh để bệnh phẩm tiếp xúc với ánh sáng và tiến hành xét nghiệm càng nhanh càng tốt.",
+    "testingMethods": "",
+    "ref": "1. Bilirubin trực tiếp: 0,0 - 0,4 mg/dL hay 0 - 7 µmol/L.\n2. Tỷ lệ bilirubin trực tiếp/ bilirubin toàn phần: < 20 %.",
+    "alert": "Nồng độ bilirubin toàn phần không phải là một chỉ số nhạy để đánh giá chức năng gan và thông số này có thể không phản ánh chính xác mức độ tôn thương gan:\nNồng độ bilirubin phải > 40 µmol/L (2,5 mg/dL) mới gây được biêu hiện vàng da trên lâm sàng; tăng nồng độ bilirubin > 85 µmol/L (5mg/dL) hiếm khi xẩy ra ở các bệnh nhân bị tan máu không biến chứng trừ khi họ có thêm bệnh lý gan mật.\nChi tăng bilirubin liên hợp song nồng độ bilirubin toàn phần bình thường được gặp ở tới 1/3 các bệnh nhân bị bệnh gan.\nTrong tắc nghẽn đường mật ngoài gan, nồng độ bilirubin máu có thể tăng lên dần tới mức cao nguyên (510 - 680 µmol/L) một phần do cân bằng giữa bài xuất của thận và chuyển đổi bilirubin thành các chất chuyên hóa khác. Song mức cao nguyên này thường không xây ra trong vàng da do nguyên nhân tổn thương tế bào gan và nồng độ bilirubin có thể tăng lên trên mức 855 µmol/L (50 mg/dL).\nDo vai trò bài xuất của thận, nồng độ bilirubin tối đa chỉ ở mức 170 - 598,5 µmol/L (10 - 35 mg/dL); nếu có tình trạng suy thận nồng độ bilirubin máu có thể lên tới mức 1282,5 µmol/L (75 mg/dL).",
+    "pathologicalMeaning": {
+      "increase": "Tăng nồng độ bilirubin toàn phần\nCác nguyên nhân chính thường gặp là:\n1. Có thai.\n2. Trẻ sơ sinh và trẻ đe non.\n3. Hoạt động thê lực mạnh.\n4. Các nguyên nhân gây tăng bilirubin không liên hợp.\n5. Các nguyên nhân gây tăng bilirubin liên hợp.\n6. Suy giáp.\n\nTăng nồng độ bilirubin không liên hợp (bilirubin gián tiếp)\nCác nguyên nhân chính thường gặp là:\n1. Tăng phá huỷ HC quá mức gây tăng sản xuất bilirubin:\nTan máu (Vd: sốt rét, bệnh do không tương hợp Rh của trẻ sơ sinh, bệnh hemoglobin, thiếu hụt các enzym của hồng cầu, đông máu rải rác trong lòng mạch, tan máu tự miễn).\nTạo HC không hiệu quả (Vd: bệnh thiếu máu Biermer).\nTruyền máu nhiều.\nCường lách.\nKhối máu tụ lớn.\n2. Suy giảm quá trình liên hợp bilirubin tại gan:\nBệnh Gilbert.\nSuy tim mất bù.\nThuốc: Rifampicin,...\n3. Khiếm khuyết quá trình liên hợp bilirubin:\nVàng da ở trẻ sơ sinh và trẻ đẻ non.\nHội chứng Crigler-Najjar (do thiếu hụt enzym glucuronyl transferase).\n\nTăng nồng độ bilirubin liên hợp (bilirubin trực tiếp)...",
+      "decrease": ""
     },
-    {
-        name: "Định lượng CRP", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "< 6 mg/L", 
-        alert: "",
-        concept: "CRP (C-Reactive Protein) là một protein phản ứng pha cấp do gan sản xuất. Nồng độ CRP tăng rất nhanh khi cơ thể có phản ứng viêm hoặc nhiễm trùng.",
-        indication: "Dấu ấn viêm quan trọng để chẩn đoán nhiễm trùng (đặc biệt do vi khuẩn), theo dõi điều trị viêm phổi, bệnh tự miễn, cơ xương khớp.",
-        pathologicalMeaning: {
-            increase: "Tăng mạnh trong nhiễm trùng vi khuẩn cấp tính (viêm phổi, nhiễm trùng huyết), nhồi máu cơ tim, đợt cấp bệnh tự miễn (viêm khớp dạng thấp).",
-            decrease: "Mức độ bình thường hoặc giảm cho thấy đáp ứng tốt với kháng sinh hoặc điều trị chống viêm."
-        }
+    "interferingFactors": "Các yếu tố góp phần làm thay đổi kết quả xét nghiệm\nĐể xẩy ra tình trạng vỡ hồng cầu của mẫu bệnh phẩm có thể làm thay đổi kết quả XN.\nĐể mẫu bệnh phẩm tiếp xúc trực tiếp với ánh sáng mặt trời hay ánh sáng nhân tạo > 1h sẽ làm giảm nồng độ bilirubin của bệnh phẩm (mức độ giảm nồng độ bilirubin toàn phần có thê lên tới 50% mỗi giờ).\nTiếp xúc trong vòng 24h trước đó với thuốc cản quang sẽ làm thay đổi kết quả XN.\nCác thuốc có thể làm tăng nồng độ bilirubin toàn phần: Adrenalin, allopurinol, các steroid làm tăng chuyển hóa, thuốc điều trị sốt rét, vitamin C, azathioprin, chlorpropamid, thuốc cường cholin (cholinergic), codein, dextran, thuốc lợi tiểu, isoproterenol, levodopa, thuốc ức chế MAO, meperidin, methyldopa, methotrexat, morphin, thuốc ngừa thai uống, phenazopyridin, phenothiazin, quinidin, rifampin, streptomycin, theophyllin, tyrosin, vitamin A.\nCác thuốc có thể làm giảm nồng độ bilirubin toàn phần: Barbituric, caffein, citrat, corticosteroid, ethanol, penicillin, protein, salicylat, sulfonamid, urea.\nĐịnh lượng bilirubin niệu có thể cho kết quả dương tính giả ở BN dùng phenothiazin, trái lại XN này có thể cho kết quả âm tính giả khi có nitrit trong nước tiểu hay BN đang dùng vitamin C.",
+    "benefits": "Lợi ích của xét nghiệm định lượng bilirubin máu\nXét nghiệm hữu ích:\n1. Trong thăm dò các thiếu máu (khi phối hợp đồng thời với định lượng haptoglobin, các LDH, HC lưới và sắt huyết thanh) để xác định căn nguyên là do tan máu hay do tạo hồng cầu không hiệu quả.\n2. Đánh giá mức độ nặng của một bệnh lý gan.\n3. Trong thăm dò các tắc mật (trong và ngoài gan): Một nồng độ bilirubin toàn phần > 685 µmol/L (40 mg/dL) chỉ dẫn tình trạng tắc nghẽn ở mức tế bào gan nhiều hơn là ở ngoài gan.\n4. Đánh giá mức độ tăng ưu thế thuộc về thành phần bilirubin trực tiếp hay gián tiếp có thể gợi ý các định hướng chẩn đoán:\nKhi có tăng bilirubin trực tiếp và chiếm 20 - 40% bilirubin toàn phần: Gợi ý nhiều cho vàng da do nguyên nhân tại gan hơn là do nguyên nhân sau gan.\nKhi có tăng bilirubin trực tiếp và chiếm 40 - 60% bilirubin toàn phần: gặp ở cả vàng da do nguyên nhân tại gan và nguyên nhân sau gan.\nKhi có tăng bilirubin trực tiếp và chiếm > 50% bilirubin toàn phần: gợi ý nhiều cho vàng da do nguyên nhân sau gan hơn là do nguyên nhân tại gan.\n5. Theo dõi BN được điều trị bằng thuốc kháng lao (INH, rifampicin).\n6. Gia tăng đơn lẻ và từng lúc bilirubin không liên hợp (gián tiếp) song không có bằng chứng tan máu được gặp ở 2 - 5% dân số (bệnh Gilbert).\n\nLợi ích của XN định lượng bilirubin trong nước tiểu\nBilirubin được tìm thấy trong nước tiểu là bilirubin liên hợp (trực tiếp), loại không gắn với protein. Vì vậy, XN cho phép chẩn đoán phân biệt:\n1. Các vàng da do tan máu: Không thấy có bilirubin trong nước tiểu.\n2. Các vàng da do bệnh gan hay do ứ mật: Có bilirubin trong nước tiểu.",
+    "ebmGuidelines": "Các hướng dẫn thực hành lâm sàng dựa trên y học bằng chứng\nCác đánh giá ban đầu đối với tình trạng tăng bilirubin máu là cần xác định xem tình trạng tăng bilirubin huyết thanh thuộc loại tăng thành phần trực tiếp (tăng bilirubin liên hợp) hay tăng thành phần gián tiếp (tăng bilirubin không liên hợp).\nCác BN người lớn không có triệu chứng lâm sàng bị tăng đơn độc bilirubin không liên hợp, mức độ nhẹ cần được tìm kiếm các chẩn đoán: hội chứng Gilbert, bị tan máu và tăng bilirubin do thuốc.\nNếu có tăng bilirubin máu loại liên hợp, cần đánh giá có tình trạng tăng phosphatase kiềm đi kèm hay không để loại trừ tình trạng tắc mật.\nTrong viêm gan do virus, nồng độ bilirubin huyết thanh càng cao sẽ gợi ý bệnh nhân bị tôn thương gan nặng nề hơn và tiến triển lâm sàng kéo dài hơn.\nTrong viêm gan cấp do rượu, một nồng độ bilirubin toàn phần > 85 µmol/L (5 mg/dL) gợi ý một kết cục xấu đối với bệnh nhân.\nNồng độ bilirubin liên hợp (trực tiếp) > 17 µmol/L (1,0 mg/dL) ở trẻ nhỏ luôn chỉ dẫn tình trạng bệnh lý.",
+    "clinicalNote": "Trong tài liệu gốc, xét nghiệm Bilirubin trực tiếp được gộp chung trong bài BILIRUBIN. Để đảm bảo nguyên vẹn 100% nội dung, bài BILIRUBIN được sao chép đầy đủ như cấu trúc tài liệu."
+  },
+  {
+    "name": "Định lượng CRP",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "PROTEIN PHẢN ỨNG C\n(C-Réactive Protéine / C-Reactive Protein [CRP], High-Sensitivity CRP [hs-CRP], Cardiac CRP)",
+    "physiology": "Protein phản ứng C (C-reactive protein [CRP]) là một glycoprotein được gan sản xuất có đặc điểm là kết tủa với polysaccharid C của phế cầu. Bình thường, không thấy protein này trong máu. Tình trạng viêm cấp với phá huỷ mô trong cơ thể gây giải phóng các interleukin 1 và 6 sẽ kích thích sản xuất protein này và gây tăng nhanh nồng độ protein ứng ứng C trong huyết thanh (vì vậy protein này còn được gọi là protein phản ứng pha cấp [acute-phase reactant protein]). Khi tình trạng viêm cấp kết thúc, protein phản ứng C (CRP) nhanh chóng mất đi. Vì vậy, protein C phản ứng được coi như một chỉ dấu phản ánh sự hoạt hóa phản ứng viêm hệ thống. Nồng độ CRP máu được biết là có thể tăng lên rất nhanh từ mức giá trị nền bình thường lên mức cao tới 50 mg/dL như một biểu hiện của đáp ứng viêm không đặc hiệu của cơ thể đối với nhiễm trùng và chấn thương.\n\nCó 2 loại Protein phản ứng C có thể định lượng được trong máu:\n1. Protein phản ứng C chuẩn (standard CRP): Được sử dụng để đánh giá tình trạng viêm tiến triển.\n2. Protein phản ứng C siêu nhạy (high-sensitivity CRP [hs-CRP]): Chất này được coi như một chất chỉ điểm đối với tình trạng viêm mạch tiến triển âm ỉ (low-grade vascular inflammation).\n\nProtein phản ứng C không mang tính chất đặc hiệu và nồng độ protein này gia tăng trong tất cả các tình trạng viêm.",
+    "indication": "Mục đích và chỉ định xét nghiệm\nCRP được sử dụng để đánh giá mức độ và tiến triển của một phản ứng viêm.\nhs-CRP được chỉ định để:\nĐánh giá nguy cơ bệnh tim mạch.\nXác định nguy cơ tụt HA.",
+    "specimenCollection": "Cách lấy bệnh phẩm\nXN được tiến hành trên huyết thanh.\nCác phòng XN có thể có các yêu cầu khác nhau đối với BN trước khi lấy máu XN (một số phòng XN không yêu cầu BN phải nhịn ăn trong khi một số phòng XN khác lại yêu cầu BN phải nhịn ăn từ 4 - 12h trước khi lấy máu XN).\nSau khi lấy mẫu bệnh phẩm, nhanh chóng gửi mẫu tới phòng XN để định lượng CRP.",
+    "testingMethods": "",
+    "ref": "CRP: Để đánh giá tình trạng viêm\n0 - 1,0 mg/dL hay < 10 mg/L.\nhs-CRP: Để đánh giá nguy cơ bị bệnh tim mạch\n< 0.3 mg/dL\n\Phân loại nguy cơ tim mạch dựa theo nồng độ protein C phản ứng (CRP)*\n- Mức nguy cơ Thấp: Nồng độ CRP < 1,0 mg/L\n- Mức nguy cơ Vừa: Nồng độ CRP 10 - 30 mg/L\n- Mức nguy cơ Cao: Nồng độ CRP > 3,0 mg/L\n* Các đánh giá nguy cơ bệnh tim mạch dựa trên nồng độ CRP được khuyến cáo dựa trên hướng dẫn điều trị của CDC và Hội tim mạch học Hoa kỳ (CDC/AHA)",
+    "alert": "Bệnh nhân có tăng nồng độ hs-CRP cần được khuyến cáo áp dụng các biện pháp làm giảm nguy cơ bị bệnh tim mạch, và có thể cần chỉ định các thăm dò chẩn đoán bổ sung để xác định sự hiện diện của các bệnh lý tim mạch mới mắc.",
+    "pathologicalMeaning": {
+      "increase": "Tăng nồng độ protein phản ứng C (CRP)\nCác nguyên nhân chính thường gặp là:\n- Viêm tuỵ cấp.\n- Viêm ruột thừa.\n- Nhiễm trùng do vi khuẩn.\n- Bỏng.\n- Tăng nguy cơ bị ung thư đại tràng.\n- Bệnh lý ruột do viêm (Vd: bệnh viêm loét đại tràng).\n- Bệnh lupus ban đỏ hệ thống.\n- U lympho.\n- Nhồi máu cơ tim.\n- Bệnh lý viêm của tiểu khung (Vd: viêm phần phụ, apxe vòi trứng...vv).\n- Viêm động mạch tế bào khổng lồ (polymyalgia rheumatica).\n- Viêm khớp dạng thấp.\n- Tình trạng nhiễm trùng nặng (sepsis).\n- Phẫu thuật (trong vòng 3 ngày đầu sau mổ).\n- Lao tiến triển.\n\nTăng nồng độ hs-CRP\nNguyên nhân chính thường gặp là: Tăng nguy cơ bị bệnh tim mạch.",
+      "decrease": ""
     },
-    {
-        name: "Đo hoạt độ LDH [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "< 450 U/L", 
-        alert: "",
-        concept: "LDH (Lactate Dehydrogenase) là enzyme có mặt ở hầu hết các tế bào trong cơ thể (tim, gan, hồng cầu, cơ). Khi tế bào bị tổn thương, LDH rò rỉ vào máu.",
-        indication: "Đánh giá tình trạng hoại tử mô chung, hỗ trợ chẩn đoán nhồi máu cơ tim muộn, tổn thương phổi, bệnh về máu.",
-        pathologicalMeaning: {
-            increase: "Tăng trong nhồi máu cơ tim, thuyên tắc phổi, thiếu máu tan máu, hoại tử cơ, hoặc một số loại ung thư.",
-            decrease: "Rất hiếm gặp, thường không có giá trị chẩn đoán."
-        }
+    "interferingFactors": "Các yếu tố góp phần làm thay đổi kết quả xét nghiệm\nKết quả âm tính giả: Dùng các thuốc chống viêm không phải steroid, aspirin, corticosteroid, statin, thuốc chẹn bêta giao cảm.\nKết quả dương tính giả: Dùng các thuốc điều trị hormon thay thế, thuốc ngừa thai uống.\nĐặt dụng cụ ngừa thai trong buồng tử cung.\nGắng sức thể lực quá mạnh.\nCó thai.\nBéo phì.",
+    "benefits": "Lợi ích của XN định lượng Protein phản ứng C (CRP)\n1. Protein phản ứng C (CRP) điển hình sẽ tăng lên trong vòng 6h kể từ khi bắt đầu có tình trạng viêm, điều này cho phép xác định tình trạng viêm sớm hơn nhiều so với khi sử dụng tốc độ lắng hồng cầu (thường tăng lên sau khi tình trạng viêm xẩy ra khoảng 1 tuần). Thêm vào đó, nồng độ protein phản ứng C không bị thay đổi khi có biến đổi về nồng độ globulin máu và hematocrit, điều này khiến cho XN định lượng protein phản ứng C (CRP) rất có giá trị khi BN có bất thường protein máu hay có bất thường của hồng cầu.\n2. Định lượng các loại protein phản ứng C có thê cung cấp các thông tin hữu ích:\nProtein phản ứng C chuẩn (standard CRP) được sử dụng để:\n- Đánh giá mức độ tiến triển của phản ứng viêm nhất là đối với bệnh lý mạn tính như bệnh lý ruột do viêm, viêm khớp và các bệnh tự miễn.\n- Đánh giá một nhiễm trùng mới như trong viêm ruột thừa và các tình trạng sau mổ.\n- Theo dõi đáp ứng với điều trị của các tình trạng bệnh lý nhiễm trùng (nhất là nhiễm trùng do vi khuẩn) và viêm.\nProtein phản ứng C siêu nhạy (hs-CRP): Là một yếu tố chính gây tình trạng xuất hiện và đứt rách mảng vữa xơ mạch. Tăng nồng độ hs - CRP dự báo BN có tăng nguy cơ bị các sự cố mạch vành, đột quỵ, bệnh động mạch ngoại biên và ĐTĐ typ 2. Vì vậy, XN này được sử dụng để đánh giá nguy cơ bị các sự cố tim mạch khi nó được làm đồng thời với các XN đánh giá nguy cơ mạch vành khác, như định lượng nồng độ cholesterol máu (cholesterol toàn phần và HDL cholesterol). Bệnh tim mạch được quy là hậu quả cuối cùng của quá trình tương tác giữa các thay đổi nhỏ của tế bào nội mạc mạch máu và đáp ứng viêm liên quan với các thay đổi này:\n- hs-CRP là một yếu tố nguy cơ độc lập đối với bệnh tim mạch, đột quỵ, bệnh động mạch ngoại biên và ĐTĐ typ 2.\n- hs-CRP có thể hữu ích như một chỉ dấu độc lập để tiên liệu các sự cố tái phát ở bệnh nhân có bệnh động mạch vành ổn định hoặc hội chứng vành cấp thông số hữu ích.\n- Xác định nguy cơ tụt HA.",
+    "ebmGuidelines": "Các hướng dẫn thực hành lâm sàng dựa trên y học bằng chứng\nKhi xử trí một số bệnh lý viêm như viêm khớp dạng thấp, nhiễm trùng da và bệnh lý viêm tiểu khung, các tiến hành làm XN cận lâm sàng để đánh giá các chất gây phản ứng pha cấp (acute phase reactant). Hai XN đánh giá các chất gây phản ứng pha cấp (tốc độ lắng hồng cầu và protein phản ứng C) là các chỉ dẫn tốt để đánh giá mức độ của phản ứng viêm.\nĐo nồng độ CRP huyết thanh là XN hữu ích trong quyết định sử dụng kháng sinh cho các BN có dấu hiệu dịch não tủy phù hợp với chân đoán viêm màng não, song kết quả nhuộm Gram tìm vi khuẩn trong dịch não tủy âm tính. Khuyến cáo này được dựa trên các dữ liệu cho thấy XN nồng độ CRP trong giới hạn bình thường có giá trị dự đoán âm tính cao trong chẩn đoán viêm màng não do vi khuẩn.\nCác nghiên cứu gần đây tiếp tục đánh giá lợi ích của định lượng hs-CRP trong dự báo nguy cơ tim mạch, nhất là ở phụ nữ và ở người có hội chứng chuyển hoá, cũng như để dự báo nguy cơ bị ung thư đại tràng, và như một chất chỉ điểm cho tình trạng tổn thương phổi tiến triển.",
+    "clinicalNote": ""
+  },
+  {
+    "name": "Đo hoạt độ LDH [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "LACTAT DEHYDROGENASE (LDH) và CÁC ISOENZYM CỦA LDH\n(Lacticodéhydrogenase [LDH] / Lactate Dehydrogenase and Lactate Dehydrogenase Isoenzymes)",
+    "physiology": "Lactat dehydrogenase (LDH) một enzym gồm 4 tiểu đơn vị (tetrameric enzyme) xúc tác phản ứng chuyển đổi pyruvat lactat. LDH có mặt trong bào tương của hết các mô của cơ thể và được giải phóng khi có tình trạng hủy tế bào.\n\nCác cơ quan giàu LDH được liệt kê dưới đây theo mức độ giảm dần: Cơ vân, Gan, Thận, Cơ tim, Hạch bạch huyết, Lách, Não, Dạ dày, Tụy tạng, HC, BC.\n\nĐiện di LDH cho phép tách biệt 5 loại isoenzym khác biệt: LDH₁ (H[1]), LDH₂ (H[2]M), LDH₃ (H[3]M[3]), LDH₄ (HM[2] và LDH₅ (M[1]). Mỗi isoenzym đặc hiệu cho một hay nhiều cơ quan nội tạng. Tính đặc hiệu tổ chức của các isoenzym LDH là do tình trạng tổng hợp đặc hiệu tổ chức (tissue-specific synthesis) các tiểu đơn vị theo một tỷ lệ được xác định rõ (Vd: các tế bào cơ tim tổng hợp ưu tiên tiểu đơn vị H, trái lại các tế bào gan tổng hợp gần như duy nhất tiểu đơn vị M. Cơ vân cũng tổng hợp các tiểu đơn vị M). Như vậy, xác định các isoenzym của LDH cho phép định hướng chẩn đoán, trong đó các dạng LDH-1 và LDH₅ là các isoenzym rất thường được sử dụng để chỉ dẫn tình trạng bệnh lý của tim (LDH-1) và gan (LDH₅). Song không thể sử dụng đơn độc isoenzym LDH khi không kết nối với bệnh sử và lâm sàng để chẩn đoán chính xác bệnh.\n\nCác isoenzym của LDH và nguồn gốc chính của isoenzym này là:\nLDH₁: Cơ tim và hồng cầu.\nLDH₂: Hệ thống lưới nội mô (reticuloendothelial system).\nLDH₃: Phổi.\nLDH₄: Thận, tụy và rau thai.\nLDH₅: Gan và cơ vân.\n\nLDH cùng với aspartat aminotransferase (AST) và creatin kinase (CK) kinh điển đã được đánh giá ở các trường hợp BN nghĩ ngờ bị nhồi máu cơ tim. Hiện tại do sử dụng rộng rãi XN định lượng nồng độ troponin đã làm giảm nhiều chỉ định xét nghiệm LDH để chẩn đoán nhồi máu cơ tim. Trong nhồi máu cơ tim điển hình, LDH tăng vào khoảng giờ thứ 8 đạt tới mức đỉnh vào giờ 48 và trở lại bình thường vào ngày 12 - 15. Giá trị đình có thể lên tới 300 - 800 IU/L. Như vậy, enzym này xuất hiện hơi muộn nơn so với CPK và AST (ASAT), song lại tồn tại trong một thời gian dài hơn các enzym kể trên. Vì vậy, các xét nghiệm này có thể giúp phát hiện một NMCT ở giai đoạn bán cấp (7 ngày sau nhồi máu) khi hoạt độ các enzym AST (ASAT) và CPK đã trở về giá trị bình thường.",
+    "indication": "Mục đích và chỉ định xét nghiệm\nGia tăng hoạt độ các LDH chứng tỏ có tình trạng hoại tử tế bào, vì vậy XN thường được chỉ định đê:\nTheo dõi tình trạng hoạt động của khối u liên quan với cơ quan tạo máu và ung thư phôi.\nChẩn đoán và theo dõi bệnh gan và bệnh thận.\nSau nhồi máu cơ tim cấp mặc dù chỉ định này hiện tại gần như được thay thế bằng các marker tim khác như troponin.\nTheo dõi tình trạng tan máu trên invivo (Vd: thiếu máu tan máu) học in vitro (gia tạo liên quan với kỹ thuật xét nghiệm).",
+    "specimenCollection": "Cách lấy bệnh phẩm\nXN được tiến hành trên huyết thanh. Không cần yêu cầu BN phải nhịn ăn trước khi lấy máu XN.\nChú ý:\nHoạt độ LDH trong HC cao gấp 100 lần so với hoạt độ enzym này trong huyết thanh vì vậy tất cả các tình trạng vỡ hồng cầu có thể làm XN mất chính xác.",
+    "testingMethods": "",
+    "ref": "LDH toàn phần: 110 - 210 IU/L hay 1,83 - 3,50 µkat/L.\nCác Isoenzym của LDH:\nLDH₁: 17-27%\nLDH₂: 28-38%\nLDH₃: 17-28%\nLDH₄: 5-15%\nLDH₅: 5-15%",
+    "alert": "",
+    "pathologicalMeaning": {
+      "increase": "Tăng hoạt độ LDH toàn phần\nCác nguyên nhân chính thường gặp là:\n1. Bệnh lý tim\n- NMCT: Hoạt độ LDH tăng lên trong vòng 10 - 12h, đạt mức đỉnh trong vòng 48 - 72h (gấp khoảng × 3 lần bình thường). Trước đây hoạt độ LDH được sử dụng để chẩn đoán các tình trạng NMCT muộn do có tăng kéo dài từ 10 - 14 ngày hoạt độ enzym này. Một kết quả LDH > 2000 IU gợi ý tiên lượng tồi. Một tỷ lệ LDH-1/LDH-2 > 1 (LDH bị đảo hướng [\"flipped LDH\"]) cũng có thể xẩy ra trong nhồi máu thận cấp, tan máu, một số rối loạn cơ, có thai và một số bệnh lý ung thư.\n- Suy tim ứ huyết: Các isoenzym của LDH có thể bình thường hoặc LDH-5 tăng cao do ứ huyết gan.\n- Đặt van tim nhân tạo sẽ gây tan máu mạn và gây tăng LDH toàn phần, LDH-1 và LDH-2.\n- Phẫu thuật tim.\n- Viêm cơ tim cấp và thấp tim cấp.\n2. Bệnh lý cơ vân\n- Tổn thương cơ vân do thiếu oxy cấp (anoxic injury) (Vd: hội chứng vùi lấp).\n- Bỏng và chấn thương do nhiệt hoặc điện.\n- Viêm da cơ, viêm đa cơ, loạn dưỡng cơ Duchene.\n3. Bệnh lý gan\n- Xơ gan, vàng da tắc mật (thường tăng vừa).\n- Viêm gan: Tăng rõ rệt nhất là LDH-5. Các bệnh lý viêm gan bao gồm: Nhiễm khuẩn (A, B, non A-non B, nhiễm trùng đơn nhân, cytomegalovirus, toxoplasma), viêm gan nhiễm độc, viêm gan do rượu, viêm gan do thuốc.\n- Hoại tử gan cấp hoặc bán cấp.\n- Di căn gan từ các carcinoma ở nơi khác.\n- Một số rối loạn chuyển hóa bẩm sinh (nhiễm thiết huyết tố, hội chứng Dubin-Johnson, bệnh Gaucher, bệnh McArdle).\n4. Bệnh lý huyết học\n- Thiếu máu Biermer hay thiếu acid folic.\n- Tan máu ngoài cơ thể.\n- Thiều máu do tan máu.\n- Van tim nhân tạo.\n5. Bệnh lý thận\n- Nhồi máu vùng vỏ thận.\n- Viêm cầu thận.\n- Ghép thận.\n- Hội chứng thận hư.\n6. Bệnh lý phổi\n- Nhồi máu phổi, tắc mạch phổi.\n- Bệnh Sarcoidosis.\n7. Các khối u ác tính\n- Tăng trong khoảng 50% các bệnh nhân bị các loại carcinoma đặc khác nhau.\n- Bệnh lơxêmi (leucemie) dòng hạt.\n8. Các bệnh lý khác: Nhiễm trùng, nhiễm ký sinh trùng, viêm tụy cấp, suy giáp, bệnh mạch collagen, tắc ruột, bệnh lý thần kinh trung ương, do thuốc...",
+      "decrease": "Giảm hoạt độ LDH toàn phần\nCác nguyên nhân chính thường gặp là:\n- Sau tia xạ.\n- Thiếu hụt di truyền các tiểu đơn vị."
     },
-    {
-        name: "Định lượng sắt huyết thanh", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "60 - 180 µg/dl", 
-        alert: "≥ 350 µg/dl.",
-        concept: "Sắt là vi chất cốt lõi để tạo hemoglobin trong hồng cầu, giúp vận chuyển oxy đi khắp cơ thể.",
-        indication: "Chẩn đoán nguyên nhân các loại thiếu máu (thiếu sắt), đánh giá tình trạng dự trữ sắt và bệnh lý dinh dưỡng.",
-        pathologicalMeaning: {
-            increase: "Gặp trong bệnh nhiễm sắt (Hemochromatosis), tán huyết, viêm gan, hoại tử tế bào gan, ngộ độc sắt.",
-            decrease: "Thiếu máu do thiếu sắt, phụ nữ mang thai, xuất huyết rỉ rả, suy dinh dưỡng."
-        }
+    "interferingFactors": "Để xẩy ra tình trạng bệnh phẩm bị vỡ hồng cầu và BN có gắng sức thể lực quá mức trước khi lấy máu XN sẽ làm thay đổi kết quả XN. Không bao giờ được xét nghiệm mẫu bệnh phẩm bị vỡ hồng cầu do hồng cầu chứa nhiều LDH hơn huyết thanh.\nBảo quản bệnh phâm quá lâu, hoặc trong tủ lạnh (4°C quá 12h) sẽ làm mất LDH-5.\nCác thuốc có thê làm tăng hoạt độ LDH là: Rượu, các steroid chuyển hóa, thuốc gây mê, kháng sinh, aspirin, thuốc chẹn bêta giao cảm, clofibrat, diltiazem, fluor, itraconazol, levodopa, thuốc giảm đau gây nghiện mocphin và các dẫn chất, thuốc chống viêm không phải steroid, nifedipin, paroxetin, procainamid, propylthiouracil, sulfasalazin, verapamil.\nCác thuốc có thể làm giảm hoạt độ LDH là: Vitamin C, oxalat.",
+    "benefits": "Lợi ích của xét nghiệm đo hoạt độ LDH\n1. Khi kết hợp với transaminase và CPK, XN cho phép xác định một bệnh lý tim hay cơ vân.\n2. Khi kết hợp với transaminase, XN cho phép phát hiện các bệnh lý gan.\n3. XN hữu ích trong chẩn đoán tắc mạch phổi (tăng LDH, bilirubin và các sản phẩm thoái biến của fibrin).\n4. XN hữu ích trong phân biệt các thiếu máu (Thiếu máu Biermer, tan máu).\n5. Là XN đôi khi được sử dụng để chẩn đoán NMCT (hiện tại gần như được thay thế bằng Troponin).\n6. XN đôi khi được sử dụng để theo dõi tình trạng tiến triển của khối u liên quan gây thiếu máu và ung thư phổi.\n7. Xét nghiệm của isoenzym của LDH được chỉ định trong quy trình chẩn đoán một loạt các bệnh liên quan với tim, gan, cơ, thận, phổi và máu và để chẩn đoán phân biệt LDH được tổng hợp bởi cơ tim với LDH được tổng hợp từ tế bào gan và các nguồn tổng hợp khác của LDH. XN không thể thiếu trong qua trình chẩn đoán và tìm kiếm nguyên nhân gây tăng hoạt độ LDH.",
+    "ebmGuidelines": "",
+    "clinicalNote": ""
+  },
+  {
+    "name": "Định lượng sắt huyết thanh",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "SẮT HUYẾT THANH\n(Fer, Fer Sérique / Iron [Fe])",
+    "physiology": "Sắt có chức năng vận chuyển oxy tới các mô và tham gia gián tiếp vào quá trình vận chuyển ngược carbon dioxid (CO2) từ các mô về phổi.\n\nToàn bộ kho chứa sắt của cơ thể được ước tính vào khoảng 2 - 6g trong đó:\n- 60 - 70% lượng sắt này tham gia vào tổng hợp hemoglobin của hồng cầu.\n- Một phần nhỏ tham gia vào quá trình tổng hợp myoglobin và các cytochrom.\n- Phần còn lại (khoảng 30%) được tích trữ dưới dạng Ferritin và hemosiderin trong gan, tuỷ xương và lách.\n\nĐánh giá kết hợp Sắt huyết thanh, Transferrin và Độ bão hòa:\n1. Khi cô tình trạng thiếu sắt, nồng độ sắt huyết thanh giảm thấp, nồng độ transferin tăng lên và độ bão hoà này < 15%.\n2. Trong các tình trạng viêm không có kèm nguyên nhân gây thiếu sắt, nồng độ sắt huyết thanh giảm thấp, nồng độ transferin thấp và độ bão hoà này > 15%.\n3. Trong các tình trạng viêm có kèm nguyên nhân gây thiếu sắt, nồng độ sắt huyết thanh giảm rất thấp, nồng độ transferin thấp và độ bão hoà này < 15%.",
+    "indication": "Mục đích và chỉ định xét nghiệm\nXN giúp để đánh giá tình trạng chuyển hóa của sắt: khẩu phần, kho dự trữ và sử dụng sắt trong cơ thể. Vì vậy, xét nghiệm này thường được chỉ định với mục đích:\n- Chẩn đoán tình trạng mất máu.\n- Chẩn đoán phân biệt các thiếu máu.\n- Chẩn đoán tình trạng nhiễm thiết huyết tố (hematochromatosis) và tăng lắng đọng sắt trong mô (hemosiderosis).\n- Đánh giá tình trạng thiếu hụt sắt (khi kết hợp với TIBC).\n- Chẩn đoán ngộ độc sắt cấp, nhất là ở trẻ em.\n- Đánh giá tình trạng thiếu máu vùng biển (thalassemia) và thiếu máu tăng nguyên bào sắt (sideroblastic anemia).\n- Theo dõi đáp ứng với điều trị thiếu máu (nhất là điều trị bổ sung sắt).",
+    "specimenCollection": "Cách lấy bệnh phẩm\nXét nghiệm được tiến hành trên huyết thanh. Mẫu máu thường được lấy vào buổi sáng (sau 10h sáng). Tránh gây vỡ hồng cầu khi XN.\n\nYêu cầu BN nhịn ăn 12h trước khi lấy máu XN. BN không được dùng các chế phẩm bổ sung sắt trong vòng 24 - 48h trước khi lấy máu XN.",
+    "testingMethods": "",
+    "ref": "Nam: 70 - 190 µg/dL hay 12,5 - 34,1 µmol/L.\nNữ: 60 - 190 µg/dL hay 10,7 - 34,1 µmol/L.\nNgười già: Nồng độ sắt huyết thanh giảm đi.\nCó những biến đổi theo nhịp ngày đêm với giá trị tối đa vào buổi sáng.",
+    "alert": "XN định lượng nồng độ sắt huyết thanh là một test không quá tin cậy trong mục đích tìm kiếm tình trạng thiếu hụt sắt hoặc để sàng lọc tình trạng nhiễm thiết huyết tố (hemochromatosis) và các bệnh gây tăng gánh sắt khác. Đối với các tình trạng này, nồng độ sắt huyết thanh thường được đánh giá cùng với các XN khác như ferritin, khả năng mang sắt toàn thể (total iron binding capacity [TIBC]), transferrin và phần trăm bão hòa transferrin.\nDo sắt huyết thanh có thể bị hạ thấp trong các hội chứng viêm mà không thực sự có tình trạng thiếu hụt sắt rõ rệt, vì vậy, nên kết hợp định lượng sắt với định lượng ferritin huyết thanh để đánh giá dự trữ sắt của cơ thể.\nTrong ngộ độc sắt cấp tính tỷ lệ sắt huyết thanh/TIBC không được coi là một XN hữu ích giúp chẩn đoán tình trạng này.\nKhông khuyến cáo chỉ định xét nghiệm này cho các bệnh nhân đang được điều trị bằng deferoxamin hoặc thuốc gắp bỏ sắt.",
+    "pathologicalMeaning": {
+      "increase": "Tăng nồng độ sắt huyết thanh\nCác nguyên nhân chính thường gặp là:\n1. Nhiễm thiết huyết tố (hemochromatosis) do di truyền hay vô căn.\n2. Tăng lắng đọng sắt trong mô (Hemosiderosis) do tăng quá mức khẩu phần sắt.\n3. Quá trình tạo hồng cầu bị suy giảm (Vd: thiếu máu bất sản, thalassemia, viêm khớp dạng thấp giai đoạn hoạt động).\n4. Tan huyết (Vd: tan máu miễn dịch, thalassemia).\n5. Hoại tử tế bào gan (Vd: tổn thương gan cấp, mức tăng có thể lên tới > 1000 µg/dL), bệnh gan mạn.\n6. Dùng thuốc viên ngừa thai có progesteron và khi có thai.\n7. Trước giai đoạn hành kinh: Tăng 10-30%.\n8. Ngộ độc chì.\n9. Ngộ độc sắt cấp.\n10. Thiếu máu ác tính Biermer.\n11. Đa hồng cầu.",
+      "decrease": "Giảm nồng độ sắt huyết thanh\nCác nguyên nhân chính thường gặp là:\n1. Thiếu máu do thiếu sắt.\n2. Khẩu phần ăn thiếu sắt (suy dinh dưỡng).\n3. Giảm hấp thu (Hội chứng giam hấp thu, Phân mỡ, Ỉa chảy mạn tính).\n4. Mất máu qua: Đường tiêu hoá, Sản phụ khoa, Tiết niệu.\n5. Tăng nhu cầu sắt: Giai đoạn cơ thể sinh trưởng, Có thai, Kinh nguyệt, Tình trạng sau mổ.\n6. Hội chứng viêm (Vd: viêm khớp dạng thấp, bệnh tạo keo giai đoạn hoạt động).\n7. Nhiễm trùng cấp và nhất là nhiễm trùng mạn.\n8. Ung thư và bệnh lý u tân sinh.\n9. Các nguyên nhân khác: Bỏng rộng, Hội chứng tăng urê máu, Suy giáp, Hội chứng thận hư (do gây mất các protein mang sắt qua nước tiểu)."
     },
-    {
-        name: "Định lượng Ethanol (cồn) [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "< 20 mg/dL", 
-        alert: "",
-        concept: "Kiểm tra định lượng cồn (ethanol) có trong hệ tuần hoàn của cơ thể sau khi tiêu thụ các đồ uống có cồn.",
-        indication: "Xử trí hồi sức cấp cứu/chấn thương sọ não do tai nạn giao thông, chẩn đoán nguyên nhân ngộ độc, rối loạn ý thức tâm thần.",
-        pathologicalMeaning: {
-            increase: "Gây ngộ độc thần kinh, tổn thương gan cấp, rối loạn ý thức, ức chế hô hấp ở nồng độ quá cao.",
-            decrease: "Không áp dụng."
-        }
+    "interferingFactors": "Tăng giả tạo nồng độ sắt huyết thanh có thể xẩy ra do BN dùng vitamin B12 trong vòng 48h trước khi XN hay khi bệnh phẩm xẩy ra tình trạng vỡ hồng cầu.\nDùng dextran sắt sẽ gây tăng nồng độ sắt huyết thanh trong vài tuần. BN đang uống thuốc chứa sắt (kể cả vitamin tổng hợp) có thể có tăng tạm thời nồng độ sắt huyết thanh.\nGiao (dao) động nồng độ sắt xẩy ra theo nhịp ngày đêm (cao nhất vào buổi sáng sớm, thấp hơn vào chiều tối và thấp nhất vào gần nửa đêm).\nBệnh nhân đang uống thuốc viên ngừa thai sẽ có tăng nồng độ sắt huyết thanh và/hoặc giá trị khả năng mang sắt toàn thể.\nGiảm giả tạo nồng độ sắt huyết thanh có thể xẩy ra khi mẫu bệnh phẩm bị đục do tăng lipid máu hay khi có các tình trạng viêm.\nCác thuốc có thể làm tăng nồng độ sắt huyết thanh là: Cefotaxim, chloramphenicol, estrogen, sulfat sat, methimazol, methrotrexat.\nCác thuốc có thể làm giảm nồng độ sắt huyết thanh là: Allopurinol, aspirin, cholestyramin, hocmôn hướng thượng thận, metformin, pergolid, progestin, risperidon, testosteron.",
+    "benefits": "Lợi ích của xét nghiệm định lượng sắt huyết thanh\nXN hữu ích trong trường hợp:\n1. Thăm dò thiếu máu:\nXN hữu ích trong chẩn đoán thiếu máu: Khi định lượng sắt huyết thanh với mục đích chẩn đoán, cần xác định đồng thời độ bão hòa của transferrin. Khi nồng độ hemoglobin và hematocrit thấp, định lượng sắt huyết thanh giúp xác định nguyên nhân gây thiếu máu.\nXN giúp đánh giá đáp ứng của cá thế đối với điều trị bổ sung sắt trong quá trình điều trị thiếu máu do thiếu sắt. Để theo dõi điều trị thiếu sắt, chỉ cần định lượng định kỳ nồng độ sắt huyết thanh.\n2. Làm bilan tình trạng giảm hấp thu.\n3. Phát hiện bệnh căn của xơ gan (Vd: do nhiễm thiết huyết tố).\n4. Thăm dò các tình trạng suy nhược.\n5. Theo dõi các phụ nữ đang mang thai.",
+    "ebmGuidelines": "Các hướng dẫn thực hành lâm sàng dựa trên y học bằng chứng\nHiệp hội USPSTF của Mỹ khuyến cáo sàng lọc thường quy tình trạng thiếu máu do thiếu sắt cho tất cả các phụ nữ có thai không có triệu chứng.",
+    "clinicalNote": ""
+  },
+  {
+    "name": "Định lượng Ethanol (cồn) [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "ETHANOL\n(Ethylémie / Bood Alcohol level, ETOH, Ethyl Alcohol)",
+    "physiology": "Alcol (Alcohol) là các hợp chất hữu cơ có chứa nhóm -OH bao gồm methanol hay alcol sản xuất từ gỗ (CH3OH), ethanol hay ethyl alcohol (C2H5OH), isopropanol (alcol sát khuẩn hay dung môi hữu cơ). Mặc dù aceton (CH3COCH3) là một xetôn, không phải là một alcol song thường được gộp vào trong nhóm do nó thường được phát hiện bằng cùng một phương pháp XN.\n\nEthanol là một loại alcol được tìm thấy trong các đồ uống chứa cồn. Nó được coi là một chất gây ức chế hệ thần kinh trung ương. Tình trạng ức chế này có thể gây hôn mê và chết khi nồng độ cồn trong máu (alcoolémie) đạt tới mức ≥ 300 mg/dL Xét nghiệm xác định nồng độ cồn trong máu thường được thực hiện như một phần của biên bản điều tra pháp y liên quan với tai nạn giao thông. Mỗi quốc gia phê chuẩn một giới hạn của riêng mình về nồng độ cồn trong máu được coi là ngưỡng gây độc.",
+    "indication": "Mục đích và chỉ định xét nghiệm\n1. Chẩn đoán: Giúp chẩn đoán các bệnh lý cấp tính liên quan với ngộ độc rượu cấp.\n2. Bằng chứng pháp lý. Đối với người gây ra tai nạn giao thông khi lái xe.\n3. Đánh giá các tình trạng ngộ độc cấp có tăng khoảng trống áp lực thẩm thấu máu.",
+    "specimenCollection": "Cách lấy bệnh phẩm\nKhông nhất thiết yêu cầu BN phải nhịn ăn trước khi lấy máu làm XN. Nếu XN này được sử dụng để cung cấp một bằng chứng pháp lý sau này, khi lấy mẫu bệnh phẩm cần có người chứng kiến.\nSát trùng vị trí chọc tĩnh mạch lấy máu bằng dung dịch sát khuẩn không có ether, cồn và thậm chí cả dẫn xuất iod.\nTuân thủ nghiêm ngặt các quy trình pháp lý tại nước sở tại nếu sau đó kết quả XN này sẽ được sử dụng như một bằng chứng pháp lý đối với người được chỉ định làm test.\nSử dụng kỹ thuật thử nghiệm miễn dịch để XN ethanol trong nước tiểu, huyết thanh/huyết tương, máu toàn phần. Phản ứng chéo: < 1% với isopropanol, methanol, ethylen glycol, acetaldehyd; < 15% với n-propanol.\nSử dụng kỹ thuật sắc ký khí để XN ethanol, isopropanol alcohol, methanol, aceton trong nước tiểu, huyết thanh/huyết tương, máu toàn phần.",
+    "testingMethods": "",
+    "ref": "0 mg/dL hay 0 mmol/L (< 10 mg/dL).",
+    "alert": "1. Các XN khác như công thức máu, nồng độ glucose máu và điện giải đồ thường được chỉ định thực hiện cùng với XN định lượng nồng độ cồn trong máu do một số tình trạng lâm sàng liên quan với các rối loạn nói trên, cũng có thể gây các triệu chứng tương tự như triệu chứng ngộ độc rượu.\n2. Do XN này có vai trò như một bằng chứng pháp lý, mẫu bệnh phẩm phải được bảo quản cẩn thận. Bệnh phẩm được vận chuyển trong túi chất dẻo, được niêm phong và phải được ký nhận mỗi khi chuyển giao tới người có liên quan.",
+    "pathologicalMeaning": {
+      "increase": "Tăng nồng độ cồn trong máu\nNguyên nhân chính thường gặp là uống rượu và ngộ độc rượu cấp:\n50 mg/dL: Giảm ức chế, mất phối hợp mức độ nhẹ.\n100 mg/dL: Thời gian phản ứng chậm, khả năng cảm giác bị biến đổi.\n150 mg/dL: Quá trình suy nghĩ bị biến đổi, thay đổi nhân cách và hành vi.\n200 mg/dL: Đi đứng loạng choạng, nôn, ý thức lú lẫn.\n300 mg/dL: Nói líu, mất cảm giác, rối loạn thị lực.\n400 mg/dL: Giảm thân nhiệt, hạ đường huyết, kiểm soát cơ kém, co giật.\n700 mg/dL: Mất ý thức, giảm phản xạ, suy hô hấp (tình trạng này cũng có thể xẩy ra ở mức nồng độ alcol máu thấp hơn).",
+      "decrease": ""
     },
+    "interferingFactors": "Nồng độ cồn trong máu có thể bị tăng lên khi BN dùng đồng thời với các thuốc như: Thuốc kháng histamin, barbiturat, chlordiazepoxid, diazepam, isoniazid, meprobamat, opiat, phenyltoin và thuốc an thần.",
+    "benefits": "Lợi ích của xét nghiệm định lượng cồn trong máu\n1. Nồng độ cồn trong máu tiến triển theo thời gian: Tăng rất cao sau 1h và được thải trừ sau 4 - 5h.\n2. Trong trường hợp có suy gan: Đường biểu diễn nồng độ cồn trong máu tăng cao hơn và nồng độ này giảm xuống chậm hơn.\nTrong trường hợp BN đã bị cắt dạ dày: đường biểu diễn nồng độ cồn trong máu tăng cao hơn với nồng độ đỉnh xảy ra sớm hơn (25 phút).\nĐường biểu diễn tình trạng tăng lên của nồng độ cồn trong máu xấy ra chậm hơn và ở mức tăng thấp hơn khi hấp thụ rượu xẩy ra trong và sau bữa ăn, hay khi hấp thu rượu cùng với đường.\nNồng độ cồn tối đa trong máu được phép theo luật định tại Pháp là 0,8 g/L, tuy nhiên, tình trạng say xỉn đã có thể xẩy ra từ mức nồng độ 0,5 g/L.\nHôn mê do ngộ độc rượu có thể được đặt ra khi nồng độ cồn trong máu ≥ 2,5 g/L (tình trạng này có thể đi kèm với hạ đường máu, hay nhiễm toan cetôn do rượu).\nTử vong có thể xẩy ra khi nồng độ cồn trong máu đạt tới ngưỡng 5 g/L.\nTheo tiêu chuẩn của Pháp và đã được luật phê chuẩn, người lái xe được coi là trong tình trạng say xỉn khi họ có nồng độ cồn trong khí thở > 0,4 mg/L (được đo 2 lần liên tiếp qua ống thổi) hay khi nồng độ cồn trong máu > 0,8 g/L.",
+    "ebmGuidelines": "",
+    "clinicalNote": ""
+  },
     {
-        name: "Đo hoạt độ Amylase [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "< 90 U/L", 
-        alert: "> 355 U/L.",
-        concept: "Amylase là enzyme tiêu hóa carbohydrate, được sản xuất chủ yếu tại tuyến tụy và tuyến nước bọt.",
-        indication: "Là xét nghiệm ưu tiên hàng đầu để chẩn đoán viêm tụy cấp hoặc các vấn đề liên quan đến tuyến tụy, tiêu hóa.",
-        pathologicalMeaning: {
-            increase: "Tăng đột biến (thường gấp >3 lần giới hạn trên) trong viêm tụy cấp. Ngoài ra tăng nhẹ trong quai bị, loét dạ dày thủng.",
-            decrease: "Tổn thương tụy mạn tính làm mất chức năng tiết enzyme, ung thư tụy."
-        }
+    "name": "Đo hoạt độ Amylase [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "AMYLASE\n(Amylase)",
+    "physiology": "Amylase là một nhóm các enzym hydrolase được sản xuất chủ yếu ở tụy và các tuyến nước bọt và với một lượng không đáng kể ở gan, niêm mạc ruột non, buồng trứng và vòi trứng. Amylase tham gia vào quá trình tiêu hóa các carbohydrat phức tạp (Vd: tinh bột) thành các đoạn carbohydrat ngắn hơn.\n\nHoạt độ amylase toàn phần có thể đo được trong huyết thanh, nước tiểu hay trong các dịch sinh học khác của của cơ thể (Vd: dịch cổ chướng, dịch màng phổi...). Hoạt độ toàn phần này là tổng hoạt độ của 2 isoenzym chính: isoenzym P có nguồn gốc từ tụy và isoenzym S có nguồn gốc từ tuyến nước bọt, phổi, sinh dục hay khối u. Trong huyết thanh của người bình thường, isoenzym typ S chiếm ưu thế hơn một chút. Thông thường, có thể đo được hoạt độ amylase trong huyết thanh và trong nước tiểu.\n\nCó rất nhiều nguyên nhân gây tăng hoạt độ amylase máu và/hoặc amylase nước tiểu. Ngoài viêm tuyến nước bọt, tình trạng gia tăng rõ rệt hoạt độ amylase gợi ý trước tiên tới chẩn đoán viêm tụy cấp hay đợt tiến triển cấp của viêm tụy mạn. Nếu không thấy có tình trạng viêm tụy, cần yêu cầu đo hoạt độ isoenzym P và S.",
+    "indication": "1. Để chẩn đoán và theo dõi viêm tụy cấp, đợt cấp của viêm tụy mạn và các bệnh lý tụy khác.\n2. Xét nghiệm được chỉ định trong quy trình thăm dò chẩn đoán đối với tất cả các sự cố viêm trong ổ bụng.",
+    "specimenCollection": "Máu: XN được thực hiện trên huyết thanh. Yêu cầu BN nhịn ăn trước khi lấy máu XN.\n\nNước tiểu. Thu bệnh phẩm nước tiểu 24h. Nước tiểu được bảo quản trong tủ mát hay trong đá lạnh.",
+    "testingMethods": "",
+    "ref": "< 90 U/L",
+    "alert": "Điển hình ra, phải đánh giá cả hoạt độ amylase và lipase huyết thanh đối với các trường hợp nghi ngờ viêm tụy cấp.\nỞ một số BN bị viêm tụy cấp song không thấy có tăng bất thường enzym tụy.\nHoạt độ amylase máu thường trong giới hạn bình thường ở bệnh nhân viêm tụy cấp do rượu.\nTăng hoạt độ amylase huyết thanh với hoạt độ amylase niệu thấp có thể được gặp ở BN bị suy thận. Hoạt độ amylase huyết thanh 4 lần giá trị bình thường ở các BN có bệnh thận chỉ khi độ thanh thải creatinin < 50 mL/phút do sự hiện diện của các isoamylase nguồn gốc tụy hoặc nước bọt; song hoạt độ này hiếm khi tăng > 4 lần giá trị bình thường khi không có tình trạng viêm tụy cấp.\nMột số BN bình thường có tình trạng tăng amylase máu được biết dưới tên “macro-amylase”. Tình trạng này được xác định khi BN có tăng hoạt độ amylase máu nhưng amylase niệu bình thường và không có tình trạng suy thận. Tăng cao bất thường hoạt độ amylase máu ở các BN này là do amylase được gắn bất thường với một globulin huyết tương và không được chẩn đoán có viêm tụy cấp. Tính hệ số amylase/độ thanh thải creatinin niệu (amylase/creatinine clearance ratio [ALCR] in urine) giúp làm sáng tỏ tình trạng này.\n\nALCR bình thường: 1-4%.",
+    "pathologicalMeaning": {
+      "increase": "Tăng hoạt độ amylase máu\nCác nguyên nhân chính thường gặp là:\nViêm tuy cấp: do rượu, tự miễn.\nĐợt cấp của viêm tụy mạn.\nViêm tụy biến chứng (nang giả tụy, cổ chướng, apxe).\nChấn thương tụy.\nCác tổn thương đại thể của tụy (Vd: thủng ổ loét dạ dày-tá tràng, ung thư biểu mô [carcinoma] đầu tụy).\nTắc nghẽn ống mật (Vd: sỏi ống mật chủ).\nSau chụp mật tụy ngược dòng qua nội soi (ERCP).\nBiến chứng của ghép thận.\nViêm túi mật cấp.\nTắc ruột và nhồi máu ruột.\nCác bệnh lý viêm tiến triển của vùng tiểu khung, có thai ngoài tử cung vỡ.\nSuy thận.\nViêm tuyến nước bọt, quai bị, tắc nghẽn ống tuyến nước bọt.\nNhiễm toan cetôn do ĐTĐ.\nTính thấm của đường tiêu hóa bị biến đổi: Bệnh ruột do thiếu máu cục bộ hoặc thủng ruột non. Thủng ổ loét dạ dày tá tràng hay thủng ổ loét vào hậu cung mạc nối. Thủng thực quản.\nNgộ độc rượu cấp.\nBệnh lý tuyến nước bọt: Viêm mưng mủ tuyến nước bọt, quai bị, tắc nghẽn ống dẫn nước bọt do sỏi, sau tia xạ.\nCác khối u ác tính nhất là ung thư tụy, phổi, buồng trứng, thực quản, vú và đại tràng (thường hoạt độ amylase tăng rất cao > 25 lần giới hạn bình thường cao và mức tăng này hiếm khi được gặp trong viêm tụy cấp).\nSuy thận giai đoạn cuối (hoạt độ amylase máu tăng ngay cả khi không có viêm tụy).\nCác nguyên nhân khác: Bệnh gan mạn (Vd: xơ gan với hoạt độ amylase máu thường tăng ≤ 2 lần giá trị bình thường). Nhiễm toan cetôn do ĐTĐ. Tăng lipid máu. Cường chức năng tuyến giáp. Có thai (bao gồm cả chửa ngoài tử cung vỡ). U nang buồng trứng. Bỏng. Phẫu thuật lồng ngực gần đây, phình tách động mạch chủ. Đái myoglobin (myoglobinuria). Vỡ lách. Một số trường hợp chảy máu nội sọ (cơ chế không được biết).",
+      "decrease": "Giảm hoạt độ amylase máu\nCác nguyên nhân chính thường gặp là:\nTình trạng phá hủy tụy nặng và lan rộng (Vd: viêm tụy cấp bùng phát, viêm tụy mạn giai đoạn cuối, xơ hóa nang giai đoạn cuối).\nTổn hại gan nặng (Vd: viêm gan, nhiễm độc, nhiễm độc thai nghén, nhiễm độc giáp nặng, bỏng nặng)."
     },
-    {
-        name: "Đo hoạt độ CK-MB [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "< 24 U/L", 
-        alert: "",
-        concept: "CK-MB là một isoenzyme của Creatine Kinase (CK), tập trung tỷ lệ rất cao tại tế bào cơ tim. Đây là một dấu ấn sinh học tin cậy cho sự phá hủy cơ tim.",
-        indication: "Hỗ trợ chẩn đoán cấp cứu nhồi máu cơ tim, phân biệt tổn thương cơ tim với cơ xương.",
-        pathologicalMeaning: {
-            increase: "Đặc hiệu cho tổn thương hoại tử cơ tim (nhồi máu cơ tim), viêm cơ tim. Nồng độ tăng mạnh trong vòng 3-6 giờ sau cơn nhồi máu.",
-            decrease: "Không có ý nghĩa lâm sàng."
-        }
+    "interferingFactors": "Mẫu bệnh phẩm bị vỡ hồng cầu có thể làm thay đổi kết quả XN.\nBệnh phẩm bị nhiễm bẩn nước bọt có thể gây tăng giả tạo kết quả XN.\nTăng triglycerid nặng (> 5 lần giá trị bình thường cao) có thể gây tình trạng ức chế hoạt độ enzym. Suy thận cũng có thể gây tăng vừa hoạt độ amylase huyết thanh.\nCác thuốc có thể làm tăng hoạt độ amylase huyết thanh là: Acetaminophen, kháng sinh, aspirin, corticosteroid, estrogen, furosemid, thuốc kháng viêm không phải steroid, prednison, salicylat và các lợi tiểu nhóm thiazid.\nCác thuốc có thể làm tăng hoạt độ amylase niệu là: Rượu, aspirin, bethanechol, codein, indomethacin, meperidin, morphin, pentazocin, thuốc lợi tiểu nhóm thiazid.\nCác thuốc có thể làm giảm hoạt độ amylase huyết thanh là: Citrat, oxalat do gắn với ion canxi.\nCác thuốc có thể làm giảm hoạt độ amylase niệu là: Fluorid, glucose.",
+    "benefits": "Lợi ích của XN đo hoạt độ amylase máu và nước tiểu\n1. Xét nghiệm không thể thiếu đối với tất cả các trường hợp đau bụng bị nghi vấn do nguồn gốc tụy và các trường hợp vàng da không rõ nguồn gốc.\n2. Đo hoạt độ amylase huyết thanh thường được thực hiện để chẩn đoán phân biệt tình trạng đau bụng do viêm tụy cấp với đau bụng cần điều trị ngoại khoa do các nguyên nhân khác. Hoạt độ amylase huyết thanh bắt đầu tăng lên từ 3 - 6h sau khi xẩy ra tình trạng viêm tụy cấp và đạt giá trị đỉnh vào khoảng giờ thứ 24. Hoạt độ này trở lại giá trị bình thường sau đó 2 - 3 ngày. Hoạt độ amylase niệu phản ánh các thay đổi trong hoạt độ amylase huyết thanh sau một khoảng thời gian trễ từ 6 - 10h. Hoạt độ amylase niệu tăng cao trong vòng 7 - 10 ngày, vì vậy XN hoạt độ amylase niệu là một XN hữu ích để chứng minh có tình trạng viêm tụy cấp sau khi hoạt độ amylase huyết thanh đã trở về bình thường. Một gợi ý là tăng hoạt độ amylase huyết thanh lên mức > 1000 đơn vị Somogyi thường do các tổn thương có thể sửa chữa được bằng phẫu thuật (thường gặp nhất là sỏi trong đường mật), với mô tụy chỉ bị phù hoặc không bị tổn thương, tuy nhiên mức tăng 200 - 500 đơn vị Somogyi thường được kết hợp với tổn thương tụy và không thể sửa chữa được bằng phẫu thuật (Vd: chảy máu tụy, hoại tử tụy).\n3. Cũng có thể định lượng hoạt độ amylase trong dịch cổ chướng hay dịch màng phổi. Tăng hoạt độ amylase trong các dịch này (> 1000 U/L) gợi ý tràn dịch có nguồn gốc từ tụy.",
+    "ebmGuidelines": "Các hướng dẫn thực hành lâm sàng dựa trên y học bằng chứng\nChẩn đoán viêm tụy cấp được nghi vấn ở các BN có biểu hiện đau bụng vùng thượng vị với khởi đầu cấp tính, tăng nhanh trong mức độ nặng và diễn biến không thuyên giảm. Hoạt độ amylase và/hoặc lipase huyết thanh ≥ 3 lần giá trị bình thường được coi là có giá trị chẩn đoán.",
+    "clinicalNote": ""
+  },
+ {
+  "name": "Đo hoạt độ CK-MB [máu]",
+  "group": "Sinh Hóa",
+  "time": "120 phút / 45 phút",
+  "isFeatured": true,
+  "concept": "ISOENZYM CK-MB CỦA CREATIN KINASE\n(Creatine Kinase-MB / CK-MB)",
+  "physiology": "Creatin kinase (CK) là một enzym đóng vai trò chủ chốt trong kiểm soát dòng cung cấp năng lượng cho các mô khác nhau trong cơ thể. CK-MB là một trong ba loại isoenzym của CK, khu trú chủ yếu trong cơ tim. \n\nTrong điều kiện bình thường, CK-MB chiếm khoảng 5% lượng CK toàn phần của cơ thể. Khi có tình trạng tổn thương cơ tim (như nhồi máu cơ tim), CK-MB sẽ được giải phóng vào dòng tuần hoàn.\n\nTrong nhồi máu cơ tim cấp, hoạt độ CK-MB thường bắt đầu tăng 4 - 6 giờ sau khi bắt đầu bị nhồi máu (song không luôn tăng ở tất cả các bệnh nhân tới khoảng 12 giờ sau nhồi máu). Tình trạng tăng này trở về giá trị nền trong vòng 36 - 48 giờ. Điều này ngụ ý là không thể sử dụng CK-MB để chẩn đoán nhồi máu cơ tim cấp ở giai đoạn muộn, song có thể được sử dụng để đánh giá mức độ lan rộng và mức độ nặng của nhồi máu. Hơn nữa, sự tăng lại hoạt độ CK-MB sau khi giá trị enzym này đã giảm đặt nghi vấn bệnh nhân có thể bị nhồi máu cơ tim tái phát.",
+  "indication": "1. Là chỉ dấu sinh học với độ đặc hiệu tốt đối với tình trạng tổn thương hoặc bệnh lý của cơ tim.\n2. CK-MB được sử dụng rộng rãi như một chỉ dấu sinh học sớm để đánh giá tình trạng tổn thương cơ tim (ví dụ: nhồi máu cơ tim cấp).",
+  "specimenCollection": "Xét nghiệm được tiến hành trên huyết thanh. Không nhất thiết yêu cầu BN cần phải nhịn ăn trước khi lấy máu làm XN.\n\nXét nghiệm thường được chỉ định làm cấp cứu và được làm nhắc lại 3 - 4 lần trong vòng 4 - 24h ở các BN có bệnh cảnh cơn đau ngực kéo dài.\n\nChú ý:\n- Cần tránh gây tan máu do nồng độ cao của hemoglobin có thể làm xét nghiệm định lượng CK-MB không chính xác.\n- Không được tiêm bắp trong vòng 1h trước khi lấy máu XN.",
+  "testingMethods": "",
+  "ref": "< 24 U/L",
+  "alert": "Tình trạng tăng CK-MB ở bệnh nhân có cơn đau thắt ngực, suy vành, sau làm test gắng sức hoặc viêm màng ngoài tim ngụ ý BN bị hoại tử cơ tim ở một mức nào đó, ngay cả khi không thể phát hiện được nhồi máu cơ tim trên lâm sàng.\n\nTăng CK-MB không nhất thiết chứng minh là có tổn thương cơ tim, do tình trạng này có thể gặp ở BN bị loạn dưỡng cơ, viêm đa cơ, nhiễm toan-xêtôn do ĐTĐ và sốc nhiễm khuẩn. Suy thận, tổn thương mô sau phẫu thuật và đụng giập tim cũng có thể gây tăng CK-MB.",
+  "pathologicalMeaning": {
+    "increase": "Tăng hoạt độ CK-MB\nCác nguyên nhân chính thường gặp là:\n- Tình trạng hoại tử hoặc viêm của cơ tim (Chỉ số CK-MB > 2,5%).\n- Nhồi máu cơ tim cấp.\n- Các chấn thương đối với tim: Sau phẫu thuật tim mở/mở ngực (giá trị trở về mức nền sau 24 - 48h); Hồi sinh tim phổi; Nong và đặt stent động mạch vành; Sau chụp mạch vành; Viêm cơ tim; Sau khử rung tim; Suy tim ứ huyết; Nhịp nhanh trên thất kéo dài; Bệnh cơ tim.\n- Bệnh cơ do hoạt động thể lực quá sức: Tăng từ nhẹ tới đáng kể ở 14 - 100% các bệnh nhân sau khi hoạt động thể lực quá mạnh (ví dụ: chạy marathon).\n- Chấn thương cơ vân gây tiêu cơ vân và/hoặc đái myoglobin.\n- Bệnh cơ vân (Vd: viêm cơ, loạn dưỡng cơ, viêm đa cơ, bệnh mạch collagen).\n- Liệt chu kỳ giảm kali máu có tính gia đình.\n- Bỏng hoặc chấn thương do nhiệt và điện.\n- Các rối loạn nội tiết (Vd: suy cận giáp, to đầu chi, nhiễm toan-xêtôn do ĐTĐ, suy giáp).\n- Một số nhiễm trùng do virus, vi khuẩn, nấm, ký sinh trùng.\n- Ngộ độc carbon monoxid.\n- Thuốc và độc chất (Vd: rượu, cocain, halothan, ipecac).\n- Một số u tân sinh (Vd: tuyến tiền liệt, vú).\n- Các nguyên nhân khác: Tăng thân nhiệt ác tính, hạ thân nhiệt, hội chứng Reye, viêm túi mật cấp, cường giáp và suy thận mạn.",
+    "decrease": "Hoạt độ CK-MB có thể không tăng trong các trường hợp:\n- Sau khi chạy tim phổi máy, thông tim, đặt máy tạo nhịp và chụp động mạch vành, trừ khi catheter gây tổn thương cơ tim.\n- Tiêm bắp nhiều lần.\n- Co giật.\n- Nhồi máu hoặc tổn thương não."
+  },
+  "interferingFactors": "Mẫu bệnh phẩm bị vỡ hồng cầu có thể làm thay đổi kết quả XN.\nCác thuốc có thể làm tăng hoạt độ CK (bao gồm CK-MB) là: Amphotericin B, ampicillin, thuốc chống đông, aspirin, clofibrat, cocain, dexamethason, ethanol, furosemid, lithium, morphin và một số thuốc gây mê và tê.",
+  "clinicalNote": "Xác định isoenzym CK-MB có ít lợi ích chẩn đoán nếu CK toàn phần bình thường. Trái lại, trong trường hợp tăng CK toàn phần, xác định CK-MB rất hữu ích do xét nghiệm cho phép phân biệt tăng CK là do nguồn gốc tim với tăng do nguồn gốc cơ hay não.\n\nDo CK-MB nói chung chỉ chiếm một phân số thấp hơn trong cơ vân so với trong cơ tim, tiêu chuẩn phần trăm (4%) đã được đề xuất để phân biệt giữa tình trạng tổn thương cơ vân với tình trạng tổn thương cơ tim."
+},
+  {
+    "name": "Định lượng Lactat [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "LACTAT hay ACID LACTIC",
+    "physiology": "Lactat được chuyển hóa tại gan. Tăng nồng độ acid lactic trong máu phản ánh hoặc có tăng sản xuất quá mức và/hoặc có giảm sử dụng của gan để tân tạo glycogen néoglucogenese).\n\nTích tụ acid lactic quá mức sẽ gây tình trạng nhiễm toan chuyển hóa với tăng khoảng trống anion.",
+    "indication": "Để chẩn đoản và theo dõi các tình trạng nhiễm toan chuyển hóa nhất là nhiễm toan lactic.",
+    "specimenCollection": "XN được tiến hành trên huyết tương máu động mạch hay tĩnh mạch.\nKhông nhất thiết cần yêu cầu bệnh nhân phải nhịn ăn trước khi lấy máu XN.\nCần tuân thủ nghiêm ngặt các yêu cầu khi lấy mẫu bệnh phẩm:\nBN không được hoạt động thể lực trước khi làm XN vài giờ.\nKhi lấy máu tĩnh mạch XN tránh đặt garot quá lâu.\nMẫu máu sau khi lấy cần được bảo quản lạnh ngay và được chuyển nhanh tới phòng xét nghiệm để tiến hành định lượng nồng độ acid lactic máu.\nThu mẫu bệnh phẩm và xử lý quy trình xét nghiệm đúng là điều có tính quyết định để có được kết quả tin cậy.",
+    "testingMethods": "",
+    "ref": "10 - 20 mg/dL",
+    "alert": "Xét nghiệm định lượng nồng độ lactat máu thường quy không định lượng được D-lactat, một nguyên nhân nhiễm toan lactic hiếm gặp và thường bị bỏ sót.",
+    "pathologicalMeaning": {
+      "increase": "Tăng nồng độ acid lactic trong máu phản ánh hoặc có tăng sản xuất quá mức và/hoặc có giảm sử dụng của gan để tân tạo glycogen (tích tụ acid lactic quá mức sẽ gây tình trạng nhiễm toan chuyển hóa với tăng khoảng trống anion).",
+      "decrease": "Giảm nồng độ acid lactic máu\nNguyên nhân chính thường gặp là: Hạ thân nhiệt."
     },
-    {
-        name: "Định lượng Lactat [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "10 - 22 mg/dL", 
-        alert: "≥ 30.6 mg/dL.",
-        concept: "Lactate sinh ra khi tế bào phải tạo năng lượng trong môi trường thiếu oxy (chuyển hóa kỵ khí).",
-        indication: "Dấu ấn sinh tồn tại phòng cấp cứu, hồi sức tích cực để đánh giá tình trạng sốc, thiếu máu cục bộ, chấn thương sọ não.",
-        pathologicalMeaning: {
-            increase: "Cảnh báo tình trạng sốc nhiễm trùng, sốc mất máu, suy hô hấp nặng, suy tim, hoặc tổn thương mô diện rộng gây thiếu oxy tế bào trầm trọng.",
-            decrease: "Không có ý nghĩa chẩn đoán."
-        }
+    "interferingFactors": "Các yếu tố góp phần làm thay đổi kết quả xét nghiệm\nMẫu bệnh phẩm bị vỡ hồng cầu có thê làm thay đôi kết quả XN.\nTrong khi gắng sức, nồng độ lactat máu có thể tăng gấp 10 lần nồng độ bình thường.\nỞ điều kiện nhiệt độ trong phòng (22°C), nồng độ acid lactic máu tăng lên gấp 2 lần sau mỗi 30 phút.\nNồng độ acid lactic có thể bị hạ thấp giả tạo khi có tăng cao nồng độ LDH.\nKhi có trong máu các chất gây tác động tương tác với phương pháp xét nghiệm (Vd: acid ascorbic).\nĐặt garot hay yêu cầu bệnh nhân bóp chặt tay quá lâu có thể làm tăng nồng độ lactat máu.\nCác thuốc có thể làm tăng nồng độ acid lactic máu là: Rượu, adrenalin, glucose. natri bicarbonat.",
+    "benefits": "Lợi ích của xét nghiệm định lượng nồng độ lactat máu\n1. XN rất hữu ích để chân đoán xác định tình trạng nhiễm toan chuyển hóa:\n- Được gọi là tăng acid lactic máu (hyperlactatémie) khi có tăng nồng độ acid lactic trong máu nhưng chưa có biến đổi pH máu.\n- Được gọi là nhiễm toan lactic (hyperlactacidémie) khi có tăng nồng độ acid lactic máu (thường > 7 mmol/L) đi kèm với giảm pH máu.\n2. XN có thể hữu ích trong gợi ý nguyên nhân gây tình trạng nhiễm toan chuyển hóa với tăng khoảng trống anion:\n- Nhiễm toan lactic thứ phát do giảm oxy mô (nhiễm toan lactic typ A): Các tình trạng sốc do tim, nhiễm khuẩn, giam thể tích...\n- Nhiễm toan lactic nguyên phát không đi kèm với tình trạng giảm oxy mô (nhiễm toan lactic typ B): Gợi ý các các căn nguyên ĐTĐ, suy thận mạn, suy gan, dùng biguanid, ngộ độc một số chất (Vd: salicylat, ethylen glycol, ethanol) và đôi khi có thể gặp ở các BN có tình trạng thiếu hụt bâm sinh enzym.\n3. XN có thể được sử dụng như một yếu tố tiên lượng đối với BN hồi sức cấp cứu, nhất là khi nồng độ lactat máu > 30 mmol L nguy cơ tử vong gần như không tránh khỏi.",
+    "ebmGuidelines": "",
+    "clinicalNote": ""
+  },
+  {
+    "name": "Streptococcus Pyogenes ASO",
+    "group":  "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "KHÁNG THỂ KHÁNG STREPTOLYSIN-O hay ASLO\n(Anticorps Antistreptococciques Sériques / Antistreptolysin-O Titer [ASO Titer], Streptococcal Antibody Test)",
+    "physiology": "Streptolysin-O là một enzym do vi khuẩn liên cầu tan máu bêta nhóm A sản xuất ra. Khi đương đầu với enzym ngoại lai này, cơ thể sẽ sản xuất ra các kháng thể chống lại enzym này. Các kháng thể xuất hiện 7 - 10 ngày sau nhiễm trùng do liên cầu cấp và tiếp tục tăng lên trong vòng 2 đến 4 tuần. Nồng độ kháng thể kháng Streptolysin-O (ASLO) điển hình sẽ giảm xuống tới mức như trước khi bị nhiễm trùng trong vòng 6 đến 12 tháng.",
+    "indication": "XN giúp chẩn đoán xác định một nhiễm trùng tiến triển do liên cầu nhóm A gây nên.",
+    "specimenCollection": "XN được tiến hành trên huyết thanh. Không nhất thiết cần yêu cầu BN phải nhịn ăn trước khi lấy máu XN.",
+    "testingMethods": "",
+    "ref": "< 200 IU/mL",
+    "alert": "XN này được coi là kém nhạy do định lượng hiểu giả của ASLO đơn độc chỉ giúp phát hiện được 75 - 85% các trường hợp nhiễm trùng do liên cầu.\n\nHiệu giá ASLO thường được làm nhắc lại sau 10 - 14 ngày để so sánh với kết qủa ban đầu nhằm xác nhận nồng độ kháng thể có tăng lên hay không.\n\nXN ASLO không giúp dự kiến có xảy ra các biến chứng sau một nhiễm trùng do liên cầu hay không. cũng như nó không giúp dự kiến mức độ nặng của tình trạng nhiễm trùng do liên cầu.",
+    "pathologicalMeaning": {
+      "increase": "Tăng hiệu giá kháng thể kháng Streptolysin-O\nCác nguyên nhân chính thường gặp là:\nThấp khớp cấp.\nViêm nội tâm mạc sau nhiễm liên cầu (post-streptococcal endocarditis).\nViêm cầu thận sau nhiễm liên cầu (Post-streptococcal glomerulonephritis).\nBệnh tinh hồng nhiệt (do nhiễm trùng liên cầu).",
+      "decrease": ""
     },
-    {
-        name: "Streptococcus Pyogenes ASO", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "< 200 IU/ml", 
-        alert: "",
-        concept: "ASO (Anti-Streptolysin O) là kháng thể chống lại độc tố của vi khuẩn liên cầu nhóm A (Streptococcus Pyogenes).",
-        indication: "Tầm soát di chứng liên cầu khuẩn, chẩn đoán sốt thấp khớp cấp, viêm cầu thận sau nhiễm liên cầu (Bệnh lý cơ xương khớp).",
-        pathologicalMeaning: {
-            increase: "Bằng chứng về việc có nhiễm liên cầu khuẩn thời gian gần đây, cảnh báo biến chứng cơ xương khớp (thấp tim) hoặc viêm cầu thận.",
-            decrease: "Bình thường."
-        }
+    "interferingFactors": "Mẫu bệnh phẩm bị vỡ hồng cầu có thể làm thay đổi kết quả XN\nCác thuốc có thể làm giảm hiệu giá của ASLO Kháng sinh. corticosteroid.\nCác kết quả (+) giả có thể xẩy ra khi mẫu bệnh phẩm có nông độ lipid tăng cao.",
+    "benefits": "Lợi ích của xét nghiệm định lượng kháng thể kháng Streptolysin-O\n1. XN được chỉ định để cung cấp các bằng chứng về tình trạng nhiễm trùng do liên cầu nhóm A nhất là khi không phân lập được vì khuẩn. XN thường được áp dụng trong thực hành lâm sảng nhâm phát hiện kháng thể kháng Streptolysin-O. Nếu có các kháng thể này, chứng tỏ đối tượng đã từng bị nhiễm trùng do liên cầu. Trên 80% các BN bị thấp khớp cấp và 95% các BN bị viêm cầu thận cấp do liên cầu (acute streptococcal glomerulonephritis) có tăng nông độ kháng thể kháng Streptolysin-O. Nồng độ ASLO thường sẽ không tăng ở người bị nhiễm trung da do liên cầu.\n2. XN đặc biệt hữu ích để xác định tình trạng đau khớp hay viêm cầu thận có phải là hậu quả của nhiễm trùng liên câu hay không",
+    "ebmGuidelines": "",
+    "clinicalNote": ""
+  },
+  {
+    "name": "Định lượng RF [máu]",
+    "group":  "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "YẾU TỐ DẠNG THẤP\n(Facteurs rhumatoïdes / Rheumatoid factor [RF], Rheumatoid Arthritis Factor)",
+    "physiology": "Viêm khớp dạng thấp là một tình trạng viêm tiến triển mạn tính của mô liên kết tác động chủ yếu tới các khớp nhỏ ngoại vi như khớp ngón tay và cổ tay. Đây là một bệnh hệ thống và nó cũng có thể tác động tới các hệ thống khác của cơ thể ngoài biểu hiện viêm khớp.\n\nPhản ứng tự miễn xẩy ra ở mô hoạt dịch, dẫn tới tình trạng sưng đau, nóng, đỏ da và mất chức năng ở vị trí các khớp bị tác động. Trong quá trình viêm, các kháng thể phối hợp cùng với các kháng nguyên tương ứng hình thành các phức hợp miễn dịch. Các phức hợp này lắng đọng tại mô hoạt dịch, kích hoạt phản ứng viêm và dẫn tới tổn thương được thấy tại khớp ở các BN bị viêm khớp dạng thấp.\n\nMột trong các test chẩn đoán đối với viêm khớp dạng thấp là XN tìm yếu tố dạng thấp (rheumatoid factor). Yếu tố dạng thấp (RF) là các globulin miễn dịch (thường gặp nhất là typ IgM) được cơ thể sản xuất ra để chống lại đoạn Fc của các globulin miễn dịch bị biến đổi (dénaturées) thuộc typ IgG. Thường có thể phát hiện được globulin miễn dịch này bằng test latex (gây ngưng kết huyết thanh của BN bằng các hạt latex được phủ IgG người) hay bằng phản ứng Waaler - Rose (gây ngưng kết huyết thanh của BN bằng các hồng cầu cừu được phủ IgG của thỏ). Yếu tố dạng thấp được thấy trong huyết thanh ở 50-95% bệnh nhân người lớn bị viêm khớp dạng thấp. Globulin miễn dịch này xuất hiện trong huyết thanh và dịch khớp chỉ sau khi khởi phát viêm khớp vài tháng và tồn tại nhiều năm sau điều trị.",
+    "indication": "XN giúp cho chẩn đoán viêm đa khớp dạng thấp, nhất là đối với các trường hợp khó chẩn đoán lâm sàng.",
+    "specimenCollection": "XN được tiến hành trên huyết thanh. Không nhất thiết cần yêu cầu BN phải nhịn ăn trước khi lấy máu XN.",
+    "testingMethods": "",
+    "ref": "< 14 IU/mL.",
+    "alert": "Test tìm yếu tố dạng thấp (+) không đặc hiệu đối với bệnh viêm khớp dạng thấp do cũng có thể gặp test tìm yếu tố dạng thấp (+) ở nhiều bệnh lý khác (Vd: bệnh mô liên kết và các bệnh lý gây viêm như tăng bạch cầu đơn nhân nhiễm trùng, viêm gan mạn hoạt động).\nPhát hiện được yếu tố dạng thấp ở mức hiệu giá thấp không được coi là bằng chứng để chẩn đoán viêm khớp dạng thấp và được thấy ở 4% người bình thường và tới 20% người > 70 tuổi hoàn toàn khỏe mạnh.\nThường thì XN tìm yếu tố dạng thấp được tiến hành đồng thời với XN tìm kháng thể kháng nhân, protein C phản ứng (C - RP), tốc độ lắng hồng cầu và công thức máu.\nBN bị viêm khớp dạng thấp thường có thiếu máu do bệnh mạn tính và tăng tốc độ lắng hồng cầu.\nYếu tố RF có thể được sử dụng cùng với XN tìm kháng thể kháng - SS - A (Ro) và anti - SS - B (La) để chẩn đoán hội chứng Sjogren.",
+    "pathologicalMeaning": {
+      "increase": "Yếu tố dạng thấp dương tính\nCác nguyên nhân chính thường gặp là:\nViêm khớp dạng thấp.\nMảnh ghép cùng loài (allograft).\nUng thư.\nXơ gan.\nCó ngưng kết tủa lạnh (cryglobulinemia).\nNhiễm cytomegalovirus.\nViêm da cơ (dermatomyosis).\nViêm gan mạn.\nTăng bạch cầu đơn nhân nhiễm trùng.\nBệnh cúm.\nBệnh thận.\nBệnh gan.\nBệnh phổi.\nSốt rét.\nViêm xương khớp.\nBệnh lý quanh cuống răng (periondotal disease).\nBệnh Rubella.\nBệnh sarcoidosis.\nXơ cứng bì.\nHội chứng Sjogren.\nViêm nội tâm mạc bán cấp do vi khuẩn.\nGiang mai.\nLupus ban đỏ hệ thống.\nLao.\nCác nhiễm trùng do virus.\nTăng macroglobulin máu Waldenstrom.",
+      "decrease": ""
     },
-    {
-        name: "Định lượng RF [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "≤ 14 IU/mL", 
-        alert: "",
-        concept: "RF (Rheumatoid Factor - Yếu tố dạng thấp) là một tự kháng thể, do hệ miễn dịch nhầm lẫn tự tấn công các mô khỏe mạnh của cơ thể.",
-        indication: "Chẩn đoán bệnh tự miễn, viêm khớp dạng thấp (Bệnh lý cơ xương khớp).",
-        pathologicalMeaning: {
-            increase: "Dương tính mạnh trong Viêm khớp dạng thấp, hội chứng Sjogren, Lupus ban đỏ. Tuy nhiên, một số người bình thường lớn tuổi cũng có thể có RF.",
-            decrease: "Thường là âm tính ở người bình thường."
-        }
+    "interferingFactors": "Kết quả tìm yếu tố dạng thấp (RF) dương tính giả có thể xẩy ra ở người già và ở các đối tượng vừa mới được tiêm phòng nhiều loại vaccin và/hoặc truyền máu.\nHuyết thanh bệnh nhân có globulin tủa lạnh hoặc tăng nồng độ lipid máu có thể gây kết quả test dương tính giả.\nAspirin và thuốc chống viêm không phải steroid không có tác động giao thoa với XN tìm yếu tố dạng thấp.",
+    "benefits": "Lợi ích của xét nghiệm tìm yếu tố dạng thấp (RF)\n1. XN hữu ích để chẩn đoán viêm khớp dạng thấp: Test tìm yếu tố dạng thấp (+) được thấy (với hiệu giá thay đổi) ở 50 - 95% các BN bị viêm đa khớp dạng thấp.\n2. Kháng thể này được sản xuất bởi mô hoạt dịch, có thể xuất hiện trong các bệnh của mô liên kết, bệnh lý tự miễn dịch và trong các nhiễm trùng mạn tính (Vd: viêm nội tâm mạc bán cấp nhiễm khuẩn).",
+    "ebmGuidelines": "Các hướng dẫn thực hành lâm sàng dựa trên y học bằng chứng\nTheo tiêu chuẩn của Hội Thấp khớp học Mỹ (American Rheumatism Assocation Criteria) (Arnett, 1988), các tiêu chuẩn để phân loại viêm khớp dạng thấp bao gồm:\n1. Cứng khớp buổi sáng (kéo dài ít nhất 1 giờ trước khi đạt được sự cải thiện tối đa).\n2. Viêm khớp tác động tới ≥ 3 vùng khớp (đồng thời với tình trạng sưng mô mềm hay tràn dịch khớp).\n3. Viêm khớp tác động tới các khớp bàn tay (khớp cổ tay, khớp gian ngón và khớp bàn ngón).\n4. Viêm khớp đối xứng hai bên (tác động đồng thời các khớp ở các hai bên của cơ thể).\n5. Có các hạt dưới da dạng thấp (các hạt dưới da ở vùng củ xương hay mặt duỗi của khớp).\n6. Test tìm yếu tố dạng thấp (+).\n7. Có các thay đổi hình ảnh X quang (các thay đổi này điển hình đối với viêm khớp dạng thấp trên phim chụp cổ tay và bàn tay).\nĐể chẩn đoán viêm khớp dạng thấp, BN phải có ít nhất 4 trong số 7 tiêu chuẩn. Tiêu chuẩn từ 1 đến 4 phải được thể hiện trong vòng ít nhất 6 tuần.",
+    "clinicalNote": ""
+  },
+     {
+    "name": "Điện giải đồ (Na, K, Cl) [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Điện giải đồ là xét nghiệm định lượng các ion chủ chốt ở dịch ngoài tế bào, trong đó: **Natri (Na+)** quyết định áp lực thẩm thấu; **Kali (K+)** cực kỳ quan trọng cho dẫn truyền thần kinh và co bóp cơ tim; **Clo (Cl-)** đi kèm Na+ để duy trì thăng bằng toan-kiềm.",
+    "physiology": "📌 **Natri (Na+):** Ion dương chính ngoài tế bào, được điều hòa bởi Aldosteron, Cortisol và ADH.\n📌 **Kali (K+):** Ion dương chính trong tế bào, nồng độ máu rất thấp. Bơm Na+-K+ ATPase duy trì chênh lệch này.\n📌 **Clo (Cl-):** Ion âm chính ngoài tế bào, tương quan nghịch với Bicarbonat (HCO3-) trong hệ đệm toan-kiềm.",
+    "indication": "🎯 **Sàng lọc:** Rối loạn thăng bằng nước - điện giải và toan - kiềm.\n🎯 **Bệnh lý:** Suy thận cấp/mạn, suy tim, xơ gan, đái tháo đường mất bù.\n🎯 **Giám sát điều trị:** Bệnh nhân dùng thuốc lợi tiểu, thuốc hạ huyết áp (ACEi/ARB), truyền dịch, hoặc dùng thuốc SGLT2i/MRA theo hướng dẫn tim-thận mới.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh hoặc huyết tương.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn. Cần khai báo các thuốc đang sử dụng.\n⚠️ **Lưu ý đặc biệt:** Tránh buộc garo quá lâu hoặc cho bệnh nhân co duỗi tay liên tục khi lấy máu vì sẽ làm **tăng giả tạo Kali máu** lên tới 20%. Mẫu vỡ hồng cầu tuyệt đối không đo Kali.",
+    "testingMethods": "Điện cực chọn lọc ion (Ion Selective Electrode - ISE).",
+    "ref": "📊 **Natri:** 135 - 145 mmol/L. Ngưỡng nguy hiểm: <121 hoặc >158 mmol/L.\n📊 **Kali:** 3,5 - 5,0 mmol/L. Ngưỡng nguy hiểm: <2,5 hoặc >6,5 mmol/L.\n📊 **Clo:** 96 - 110 mmol/L.",
+    "alert": "⚠️ Tăng hoặc giảm Kali máu đều có thể gây **loạn nhịp tim đe dọa tính mạng**. Hạ Kali làm tăng độc tính của Digitalis.\n💡 Bệnh nhân dùng **Finerenone (MRA mới)** hoặc thuốc ức chế men chuyển/chẹn thụ thể (ACEi/ARB) theo chuẩn ADA 2025/KDIGO 2024 cần theo dõi sát Kali máu vì nguy cơ tăng Kali.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Natri máu:**\n    ▫️ Mất nước (đái tháo nhạt, nôn, ỉa chảy, hôn mê tăng thẩm thấu).\n    ▫️ Cường Aldosteron tiên phát, hội chứng Cushing.\n🔹 **Tăng Kali máu:**\n    ▫️ Suy thận cấp/mạn (khi GFR giảm nặng).\n    ▫️ Chuyển dịch ion: Nhiễm toan ceton, ly giải khối u, tiêu cơ vân, bỏng nặng.\n    ▫️ Bệnh Addison (suy thượng thận).\n🔹 **Tăng Clo máu:**\n    ▫️ Toan chuyển hóa mất Bicarbonat (tiêu chảy kéo dài).\n    ▫️ Toan hóa do ống thận.",
+      "decrease": "🔹 **Giảm Natri máu:**\n    ▫️ Ứ đọng dịch (Suy tim ứ huyết, xơ gan, hội chứng thận hư).\n    ▫️ Hội chứng SIADH (Tăng tiết ADH không thích hợp).\n🔹 **Giảm Kali máu:**\n    ▫️ Mất qua tiêu hóa (Nôn, ỉa chảy mạn).\n    ▫️ Mất qua thận (Dùng lợi tiểu quai/Thiazid, cường Aldosteron).\n    ▫️ Chuyển dịch ion: Nhiễm kiềm, dùng Insulin.\n🔹 **Giảm Clo máu:**\n    ▫️ Mất acid dạ dày (Nôn nhiều, hút dịch vị).\n    ▫️ Kiềm chuyển hóa."
     },
-    {
-        name: "Điện giải đồ (Na, K, Cl) [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "Na: 135 - 150 mEq/L\nK: 3.5 - 5.5 mEq/L\nCl: 98 - 110 mEq/L", 
-        alert: "Na: ≤ 115 hoặc ≥ 165 mEq/L\nK: ≤ 2.5 hoặc ≥ 5.5 mEq/L\nCl: ≤ 70 hoặc ≥ 120 mEq/L",
-        concept: "Là xét nghiệm đo nồng độ các ion quan trọng trong máu, quyết định cân bằng nước, áp suất thẩm thấu và sự dẫn truyền xung động thần kinh - cơ tim.",
-        indication: "Đánh giá rối loạn điện giải trong bệnh lý thận, tim mạch, tiêu chảy, nôn ói, hoặc theo dõi bệnh nhân hồi sức cấp cứu.",
-        pathologicalMeaning: {
-            increase: "• TĂNG Natri (Na+ > 150 mEq/L): Thường do mất nước nặng (tiêu chảy, nôn ói, đổ mồ hôi nhiều), đái tháo nhạt, hoặc truyền quá nhiều muối mặn.\n\n• TĂNG Kali (K+ > 5.5 mEq/L): Cảnh báo cực kỳ nguy hiểm, có nguy cơ gây ngừng tim. Thường do suy thận (không đào thải được kali), toan chuyển hóa, hoặc tổn thương dập nát cơ nặng.\n\n• TĂNG Clo (Cl- > 110 mEq/L): Thường đi kèm với tăng Natri, gặp trong nhiễm toan chuyển hóa, tiêu chảy kéo dài, bệnh lý ống thận.",
-            
-            decrease: "• GIẢM Natri (Na+ < 135 mEq/L): Gây phù tế bào não, lú lẫn, hôn mê. Thường gặp trong suy tim, xơ gan, hội chứng SIADH, hoặc do lạm dụng thuốc lợi tiểu.\n\n• GIẢM Kali (K+ < 3.5 mEq/L): Gây yếu cơ, liệt cơ, nhược cơ ruột và rối loạn nhịp tim. Gặp do nôn mửa, tiêu chảy, dùng thuốc lợi tiểu thải kali.\n\n• GIẢM Clo (Cl- < 98 mEq/L): Gặp trong nhiễm kiềm chuyển hóa (do nôn nhiều làm mất acid dạ dày), suy tim xung huyết."
-        }
+    "interferingFactors": "❌ **Lỗi mẫu:** Vỡ hồng cầu làm tăng vọt Kali giả tạo do Kali từ trong nội bào rò rỉ ra ngoài.\n💊 **Thuốc làm TĂNG Kali:** ACEi, ARB, MRA (Spironolacton, Finerenone), NSAIDs.\n💊 **Thuốc làm GIẢM Kali:** Lợi tiểu quai (Furosemid), Thiazid, Insulin (đẩy K+ vào tế bào).",
+    "clinicalNote": "Theo KDIGO 2024 và tim mạch hiện đại, mọi bệnh nhân suy thận mạn (CKD) hoặc suy tim dùng SGLT2i và MRA (như Finerenone) bắt buộc phải có phác đồ theo dõi điện giải định kỳ để kiểm soát nguy cơ tăng Kali máu, giúp bệnh nhân an toàn duy trì các loại thuốc bảo vệ cơ quan đích này."
+  },
+  {
+    "name": "Định lượng Calci toàn phần [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Calci (Ca) là khoáng chất phong phú nhất cơ thể, 99% nằm trong xương. Calci máu toàn phần bao gồm: dạng tự do (ion hóa - có hoạt tính), dạng gắn protein (chủ yếu là Albumin), và dạng phức hợp (với citrate, phosphate).",
+    "physiology": "📌 **Điều hòa:** Chịu sự kiểm soát nghiêm ngặt của 3 yếu tố: Hormon cận giáp (PTH), Vitamin D và Calcitonin.\n📌 **Chức năng:** Tham gia dẫn truyền thần kinh, co cơ (đặc biệt cơ tim), và quá trình đông máu.\n📌 **Liên kết:** Khoảng 40-45% Calci toàn phần gắn với Albumin. Do đó, nồng độ Calci toàn phần phụ thuộc rất lớn vào nồng độ Albumin trong máu.",
+    "indication": "🎯 **Sàng lọc:** Đánh giá các rối loạn chuyển hóa xương, bệnh lý tuyến cận giáp.\n🎯 **Bệnh lý:** Suy thận mạn (CKD-MBD), sỏi thận, bệnh lý ác tính di căn xương, đa u tủy xương.\n🎯 **Hồi sức:** Tình trạng co giật (tetany), rối loạn nhịp tim.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Yêu cầu nhịn ăn trước khi lấy máu. Ngừng các thuốc bổ sung Calci trước đó nếu được chỉ định.\n⚠️ **Lưu ý:** Buộc garo quá lâu gây ứ trệ tĩnh mạch sẽ làm **tăng giả tạo** Calci máu.",
+    "testingMethods": "Đo quang phổ (P/p so màu).",
+    "ref": "📊 **Người lớn:** 2,1 - 2,6 mmol/L (8,5 - 10,5 mg/dL).\n📊 **Trẻ em:** Thường cao hơn người lớn do quá trình phát triển xương.",
+    "alert": "⚠️ Tình trạng tăng Calci máu bất kể nguyên nhân gì có thể hoàn toàn không có triệu chứng cho đến khi đột ngột biểu hiện bằng các rối loạn nhịp tim nguy hiểm.\n💡 Khoảng 30% bệnh nhân ung thư có di căn xương (như vú, phổi, đa u tủy) sẽ bị tăng Calci máu do hội chứng nội tiết cận u hoặc tiêu xương.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Calci toàn phần:**\n    ▫️ Cường tuyến cận giáp tiên phát (Adenoma hoặc tăng sản).\n    ▫️ Bệnh lý ác tính (Di căn xương có tiêu xương, Đa u tủy xương, U lympho).\n    ▫️ Hội chứng tăng Calci máu thể dịch (do khối u tiết chất giống PTH).\n    ▫️ Ngộ độc Vitamin D, lạm dụng thuốc kháng acid dạ dày chứa Calci.\n    ▫️ Bệnh tạo u hạt (Sarcoidosis, Lao).",
+      "decrease": "🔹 **Giảm Calci toàn phần:**\n    ▫️ Giảm Albumin máu (nguyên nhân cực kỳ phổ biến làm giảm Calci toàn phần nhưng Calci ion hóa vẫn bình thường).\n    ▫️ Suy thận mạn (do giảm tổng hợp Vitamin D hoạt tính và ứ đọng Phosphate).\n    ▫️ Suy tuyến cận giáp (Sau phẫu thuật vùng cổ hoặc tự miễn).\n    ▫️ Thiếu hụt Vitamin D (Còi xương, nhuyễn xương, hội chứng kém hấp thu).\n    ▫️ Viêm tụy cấp thể hoại tử chảy máu."
     },
-    {
-        name: "Định lượng Calci toàn phần [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "2.2 - 2.6 mEq/L", 
-        alert: "≤ 1.625 hoặc ≥ 3.25 mEq/L.",
-        concept: "Đo tổng lượng canxi trong máu (bao gồm canxi gắn với protein và canxi tự do), vi khoáng quan trọng cho xương, răng và co cơ.",
-        indication: "Đánh giá bệnh lý cơ xương khớp (loãng xương), thận, rối loạn tuyến cận giáp.",
-        pathologicalMeaning: {
-            increase: "Cường tuyến cận giáp, ung thư di căn xương, dùng quá liều vitamin D.",
-            decrease: "Suy tuyến cận giáp, thiếu vitamin D, suy thận mạn, hội chứng kém hấp thu, có thể gây co rút cơ (tetany)."
-        }
+    "interferingFactors": "❌ **Lỗi mẫu:** Tăng giả tạo do ứ trệ tĩnh mạch kéo dài. Giảm giả tạo khi dùng ống chống đông EDTA (vì EDTA gắp Calci).\n💊 **Thuốc làm TĂNG:** Lợi tiểu Thiazid, Lithium, Vitamin A & D, Androgen.\n💊 **Thuốc làm GIẢM:** Lợi tiểu quai (Furosemid), Calcitonin, Bisphosphonates, Corticosteroid, Magie Sulfat.",
+    "clinicalNote": "Khi Albumin máu giảm, Calci toàn phần sẽ giảm theo giả tạo. Bác sĩ luôn phải áp dụng công thức hiệu chỉnh: **Calci hiệu chỉnh = Calci đo được + 0,8 × (4,0 - Albumin bệnh nhân)**. Theo KDIGO 2024, kiểm soát Calci và Phosphate là cực kỳ quan trọng ở bệnh nhân suy thận mạn để ngăn ngừa biến chứng mạch máu vôi hóa."
+  },
+  {
+    "name": "Định lượng Calci ion hóa [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Calci ion hóa ($Ca^{2+}$) là dạng Calci tự do, không gắn với protein (chiếm khoảng 45-50% tổng lượng Calci trong máu). Đây là phần Calci duy nhất có **hoạt tính sinh lý** trực tiếp tham gia vào các hoạt động của tế bào.",
+    "physiology": "📌 **Đặc tính:** Không bị ảnh hưởng bởi sự thay đổi nồng độ Albumin trong máu.\n📌 **Ảnh hưởng của pH:** Tương quan nghịch với pH máu. Tình trạng nhiễm kiềm làm tăng gắn Calci vào protein, làm giảm Calci ion hóa (gây co rút cơ). Nhiễm toan làm tăng Calci ion hóa.",
+    "indication": "🎯 **Ưu tiên chỉ định:** Khám và hồi sức cấp cứu ở các bệnh nhân nặng, suy đa tạng, sốc.\n🎯 **Bệnh lý:** Phẫu thuật lớn, truyền máu khối lượng lớn (Citrat trong máu truyền sẽ gắp Calci ion hóa), bệnh nhân suy gan, hội chứng thận hư, rối loạn toan-kiềm nghiêm trọng.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần hoặc huyết thanh (lấy vào ống chân không hoàn toàn kín).\n⏳ **Chuẩn bị:** Thường không bắt buộc nhịn ăn.\n⚠️ **Lưu ý:** Phải tránh tiếp xúc mẫu với không khí (làm mất CO2 gây kiềm hóa máu, làm giảm giả tạo Calci ion hóa).",
+    "testingMethods": "Điện cực chọn lọc ion (ISE).",
+    "ref": "📊 **Người lớn:** 1,14 - 1,30 mmol/L.\n📊 **Trẻ sơ sinh:** Nồng độ thường có biến động sinh lý trong những ngày đầu sau sinh.",
+    "alert": "⚠️ Triệu chứng hạ Calci máu (tê bì quanh miệng, co cứng cơ - cơn Tetany, dấu hiệu Chvostek/Trousseau dương tính) thường chỉ xuất hiện rõ rệt khi nồng độ **Calci ion hóa bị sụt giảm**, ngay cả khi Calci toàn phần trông có vẻ bình thường.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Calci ion hóa:**\n    ▫️ Tương tự các nguyên nhân gây tăng Calci toàn phần (Cường cận giáp, ung thư di căn).\n    ▫️ Nhiễm toan máu (làm nhả Calci khỏi Albumin).",
+      "decrease": "🔹 **Giảm Calci ion hóa:**\n    ▫️ Nhiễm kiềm máu (Tăng thông khí, dùng Bicarbonat quá mức).\n    ▫️ Truyền máu ồ ạt (do chất chống đông Citrat trong túi máu liên kết với Calci ion hóa).\n    ▫️ Tăng acid béo tự do (trong viêm tụy cấp, nhiễm toan ceton, nhồi máu cơ tim cấp).\n    ▫️ Suy thận, suy cận giáp, thiếu Vitamin D."
     },
-    {
-        name: "Định lượng Calci ion hóa [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "1.1 - 1.3 mEq/L", 
-        alert: "≤ 0.75 hoặc ≥ 1.625 mEq/L.",
-        concept: "Là nồng độ canxi tự do, dạng hoạt động sinh lý thực sự của canxi trong máu, không bị ảnh hưởng bởi nồng độ Albumin.",
-        indication: "Đánh giá chính xác tình trạng chuyển hóa canxi ở những bệnh nhân hồi sức tích cực, rối loạn protein máu.",
-        pathologicalMeaning: {
-            increase: "Nguy cơ rối loạn nhịp tim, nguyên nhân do cường cận giáp, ung thư.",
-            decrease: "Gây tê bì, co quắp cơ, rối loạn ý thức. Gặp ở bệnh nhân suy thận, sau phẫu thuật tuyến giáp."
-        }
+    "interferingFactors": "❌ **Lỗi mẫu:** Mở nắp ống nghiệm làm bay hơi CO2, làm thay đổi pH mẫu máu dẫn đến giảm Calci ion hóa giả tạo.\n💊 **Thuốc:** Tương tự như Calci toàn phần, nhưng cần đặc biệt lưu ý việc truyền Lipid tĩnh mạch hoặc dùng Heparin có thể làm tăng acid béo tự do, kéo theo giảm Calci ion hóa.",
+    "clinicalNote": "Trong hồi sức tích cực (ICU), đo Calci ion hóa là tiêu chuẩn vàng. Khoảng 25% bệnh nhân cường cận giáp có nồng độ Calci toàn phần bình thường nhưng Calci ion hóa lại tăng. Đặc biệt khi truyền máu khối lượng lớn, bác sĩ phải theo dõi sát Calci ion hóa để bổ sung kịp thời tránh trụy tim mạch."
+  },
+  {
+    "name": "Đo hoạt độ Lipase [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Lipase là enzym nội bào do tuyến tụy sản xuất, có chức năng phân giải chất béo (triglycerid) thành acid béo và glycerol trong ống tiêu hóa. Nó đặc hiệu cho mô tụy hơn so với Amylase.",
+    "physiology": "📌 **Động học:** Trong viêm tụy cấp, Lipase tăng lên trong máu từ 24 - 36 giờ (trễ hơn Amylase một chút) nhưng **duy trì mức tăng rất lâu** (lên tới 14 ngày), trong khi Amylase thường về bình thường sau 3 ngày.\n📌 **Thải trừ:** Được lọc qua cầu thận và được ống thận gần tái hấp thu lại hoàn toàn.",
+    "indication": "🎯 **Chẩn đoán:** Tiêu chuẩn vàng sinh hóa để chẩn đoán viêm tụy cấp.\n🎯 **Chẩn đoán phân biệt:** Phân biệt đau bụng do viêm tụy với các cơn đau bụng cấp tính khác (thủng tạng rỗng, nhồi máu mạc treo).\n🎯 **Theo dõi:** Biến chứng nang giả tụy sau viêm tụy cấp.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Yêu cầu nhịn ăn từ 8 - 12h trước khi lấy máu.\n⚠️ **Lưu ý:** Không sử dụng ống chứa chất chống đông Citrat, EDTA vì có thể ức chế hoạt độ enzym.",
+    "testingMethods": "Đo độ đục động học (Turbidimetric) hoặc P/p Enzym.",
+    "ref": "📊 **Người lớn bình thường:** 0 - 50 U/L (tùy thuộc hệ thống máy, có thể dao động 13-60 U/L ở nhiệt độ 37°C).",
+    "alert": "⚠️ Tăng Lipase ≥ 3 lần giới hạn trên bình thường (kèm theo đau thượng vị cấp tính) là tiêu chuẩn chẩn đoán chắc chắn viêm tụy cấp.\n💡 Theo cảnh báo từ ADA 2025/2026, nhóm thuốc đồng vận GLP-1 (như Semaglutide) dùng trị đái tháo đường và béo phì có mang nguy cơ hiếm gặp gây viêm tụy cấp. Việc đo Lipase định kỳ khi có triệu chứng đau bụng ở nhóm này là bắt buộc.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Lipase máu:**\n    ▫️ Viêm tụy cấp (tăng cực cao), Đợt cấp của viêm tụy mạn.\n    ▫️ Tắc nghẽn ống tụy (Sỏi mật, khối u, co thắt cơ Oddi do dùng thuốc Opiate).\n    ▫️ Biến chứng nang giả tụy.\n    ▫️ Các cấp cứu ổ bụng khác: Loét dạ dày-tá tràng thủng, tắc ruột non, nhồi máu mạc treo.\n    ▫️ Suy thận cấp/mạn (tăng gấp 2-3 lần bình thường do giảm thải trừ).\n    ▫️ Bệnh gan mạn tính, viêm gan do rượu.",
+      "decrease": "🔹 **Giảm Lipase máu:**\n    ▫️ Giai đoạn cuối của viêm tụy mạn (tuyến tụy xơ hóa, mất chức năng tổng hợp).\n    ▫️ Bệnh xơ nang (Cystic fibrosis)."
     },
-    {
-        name: "Đo hoạt độ Lipase [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "10-18 tuổi: 7-39 U/L; >18 tuổi: < 67 U/L", 
-        alert: "",
-        concept: "Lipase là enzyme tiêu hóa chất béo do tuyến tụy tiết ra. So với Amylase, Lipase đặc hiệu và giữ mức tăng lâu hơn trong máu khi tụy bị tổn thương.",
-        indication: "Đánh giá và chẩn đoán phân biệt viêm tụy cấp, các bệnh lý gan mật - tiêu hóa.",
-        pathologicalMeaning: {
-            increase: "Tăng rất mạnh (thường >3 lần) trong viêm tụy cấp, ung thư tụy, tắc nghẽn ống tụy (sỏi mật).",
-            decrease: "Gặp ở viêm tụy mạn giai đoạn muộn (tụy bị xơ hóa không còn tiết enzyme)."
-        }
+    "interferingFactors": "❌ **Lỗi mẫu:** Vỡ hồng cầu có thể làm sai lệch kết quả XN.\n💊 **Thuốc làm TĂNG Lipase:** Paracetamol, Opiates (Morphin, Codein - gây co thắt cơ Oddi), Thuốc tránh thai, Thiazid, Corticosteroid, thuốc ức chế men chuyển.\n💊 **Giao thoa phương pháp:** Canxi, Quinin, kim loại nặng có thể làm giảm hoạt độ enzym do ức chế phản ứng trong phòng thí nghiệm.",
+    "clinicalNote": "So với Amylase, Lipase là xét nghiệm nhạy hơn và đặc hiệu hơn nhiều để chẩn đoán viêm tụy cấp. Đặc biệt với các bệnh nhân đến viện muộn (sau 3-4 ngày kể từ lúc đau bụng), Amylase có thể đã về bình thường nhưng Lipase vẫn tăng rất cao, giúp bác sĩ không bỏ sót chẩn đoán."
+  },
+  {
+    "name": "Định lượng Ceton (Ketone) [Máu/Niệu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Khi tế bào không có đủ Insulin để đưa Glucose vào bên trong tạo năng lượng, cơ thể buộc phải đốt cháy acid béo dự trữ để thay thế. Quá trình thoái hóa lipid này sinh ra 3 loại thể Ceton: Acetoacetate, Aceton và Beta-hydroxybutyrate. Chúng mang tính acid và tích tụ sẽ gây toan máu.",
+    "physiology": "📌 **Sinh lý bệnh:** Ceton là sản phẩm chuyển hóa năng lượng \"bất đắc dĩ\". Tích tụ lượng lớn Ceton gây ra bệnh cảnh **Nhiễm toan ceton do đái tháo đường (DKA)** – một cấp cứu nội tiết nguy hiểm chết người.\n📌 **Định lượng:** Thường kiểm tra Ceton niệu qua que nhúng nước tiểu, hoặc chính xác hơn là đo trực tiếp nồng độ Beta-hydroxybutyrate trong máu.",
+    "indication": "🎯 **Sàng lọc và Cấp cứu:** Chẩn đoán tình trạng nhiễm toan ceton đái tháo đường (DKA) ở bệnh nhân có đường huyết cao, lơ mơ, thở nhanh sâu (Kussmaul).\n🎯 **Kiểm tra:** Khi bệnh nhân đái tháo đường bị ốm, sốt, nôn mửa hoặc đường huyết liên tục > 14 mmol/L.\n🎯 **Giám sát:** Phụ nữ mang thai bị ốm nghén nặng, người nhịn đói dài ngày.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh, Huyết tương hoặc Nước tiểu ngẫu nhiên.\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn. Cấp cứu lấy mẫu ngay lập tức.\n⚠️ **Lưu ý:** Nước tiểu để ở nhiệt độ phòng quá lâu sẽ làm bay hơi Aceton, vi khuẩn phân hủy Acetoacetate, dẫn đến kết quả **âm tính giả**.",
+    "testingMethods": "Phản ứng Nitroprusside (cho Acetoacetate) hoặc Enzymatic (cho Beta-hydroxybutyrate máu).",
+    "ref": "📊 **Huyết thanh:** Âm tính hoặc < 0,6 mmol/L.\n📊 **Nước tiểu:** Âm tính.",
+    "alert": "⚠️ Ceton dương tính mạnh trong máu kèm theo độ toan (pH máu giảm) là tiêu chuẩn chẩn đoán DKA cần truyền Insulin tĩnh mạch cấp cứu.\n💡 **Cập nhật ADA 2025/2026 cực kỳ quan trọng:** Nhóm thuốc ức chế SGLT2 (SGLT2i) ưu việt trong bảo vệ tim/thận nhưng có nguy cơ gây **Nhiễm toan ceton ĐTĐ nồng độ glucose máu bình thường (Euglycemic DKA)**. Cần đo Ceton máu ngay nếu bệnh nhân dùng SGLT2i có biểu hiện buồn nôn, mệt mỏi dù đường máu không cao.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Ceton (Ceton dương tính):**\n    ▫️ Nhiễm toan ceton do Đái tháo đường (DKA).\n    ▫️ Nhịn đói lâu ngày, suy dinh dưỡng nặng, chứng chán ăn tâm thần (Anorexia).\n    ▫️ Chế độ ăn Keto (giàu Lipid, cực ít Carbohydrate).\n    ▫️ Ngộ độc rượu cấp, xơ gan.\n    ▫️ Nôn nghén quá mức ở phụ nữ có thai (Hyperemesis gravidarum).\n    ▫️ Sốt cao, cường giáp (tình trạng tăng tiêu thụ năng lượng).\n    ▫️ Ngộ độc Isopropanol.",
+      "decrease": "Không có ý nghĩa bệnh lý (Bình thường cơ thể không có Ceton trong máu/niệu)."
     },
-    {
-        name: "Định lượng Ceton", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "0.03 - 0.3 mmol/L", 
-        alert: "",
-        concept: "Ceton là sản phẩm của quá trình đốt cháy chất béo để lấy năng lượng khi tế bào bị thiếu hụt nguồn glucose.",
-        indication: "Đánh giá tình trạng nhiễm toan chuyển hóa, đặc biệt cảnh báo biến chứng tiểu đường.",
-        pathologicalMeaning: {
-            increase: "Cảnh báo nhiễm toan ceton do đái tháo đường (biến chứng đe dọa tính mạng), nhịn đói lâu ngày, nghiện rượu nặng.",
-            decrease: "Bình thường."
-        }
-    },
+    "interferingFactors": "❌ **Lỗi mẫu:** Nước tiểu lấy xong không xét nghiệm ngay gây âm tính giả do vi khuẩn phân hủy.\n💊 **Thuốc gây dương tính giả (que thử niệu):** Levodopa, Captopril, thuốc cản quang, Penicillamine.\n💊 **Yếu tố nội sinh:** Nồng độ Vitamin C liều cao trong nước tiểu có thể can thiệp vào phản ứng màu của que thử.",
+    "clinicalNote": "Theo dõi Beta-hydroxybutyrate trong máu chính xác hơn so với dùng que nhúng nước tiểu khi cấp cứu DKA. Lý do: Que nhúng nước tiểu chủ yếu đo Acetoacetate. Khi bệnh nhân bắt đầu hồi phục, Beta-hydroxybutyrate chuyển hóa ngược lại thành Acetoacetate, làm que thử nước tiểu vẫn \"đỏ đậm\" khiến bác sĩ tưởng bệnh nặng lên, nhưng thực chất máu đang bớt toan dần."
+  },
     {
         name: "Đo hoạt độ ALP [máu]", 
         group: "Sinh Hóa", 
@@ -3683,7 +3788,7 @@ export default function App() {
                 )}
 
                 {staffSubTab === 'dictionary' && (
-                  <motion.div key="s-dict" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  <motion.div key="s-dict" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="bg-[#f0f4f8] dark:bg-slate-950 p-4 sm:p-10 rounded-[3rem] shadow-inner border border-slate-100 dark:border-slate-900 border-opacity-50">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
                       <div>
                         <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-2 underline decoration-blue-500 decoration-4 underline-offset-8">Từ điển Xét nghiệm</h2>
@@ -3769,18 +3874,18 @@ export default function App() {
                     </div>
 
                     {/* Dictionary Content */}
-                    <div className="hidden lg:block rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden shadow-2xl">
-                      <div className="overflow-x-auto">
-                        <table className="w-full text-left border-collapse medical-table min-w-[900px]">
-                          <thead className="bg-[#1e3a8a] text-white">
+                    <div className="hidden lg:block rounded-[2.5rem] border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/30 overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] backdrop-blur-md p-2">
+                      <div className="rounded-[2rem] overflow-hidden border border-white dark:border-slate-800 bg-white/70 dark:bg-slate-800/70">
+                        <table className="w-full text-left border-collapse table-fixed min-w-[1000px]">
+                          <thead className="bg-slate-900 dark:bg-slate-950 text-slate-200">
                             <tr>
-                              <th className="px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-black uppercase tracking-wider">
+                              <th className="w-[20%] px-6 py-6 text-xs font-black uppercase tracking-[0.2em] border-b border-slate-800">
                                 <div className="flex items-center gap-2">
-                                  <FlaskConical className="w-5 h-5 sm:w-6 h-6 text-cyan-300" />
+                                  <FlaskConical className="w-5 h-5 text-cyan-400" />
                                   Tên Xét nghiệm
                                 </div>
                               </th>
-                              <th className="px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-black uppercase tracking-wider text-center relative">
+                              <th className="w-[12%] px-6 py-6 text-xs font-black uppercase tracking-[0.2em] border-b border-slate-800 text-center relative">
                                 <button 
                                   onClick={() => setShowGroupFilter(!showGroupFilter)}
                                   className={`w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl transition-all border-2 font-black shadow-lg ${
@@ -3851,14 +3956,14 @@ export default function App() {
                                   )}
                                 </AnimatePresence>
                               </th>
-                              <th className="px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-black uppercase tracking-wider text-center">
-                                <div className="flex items-center justify-center gap-2">
-                                  <Clock className="w-5 h-5 sm:w-6 h-6 text-emerald-300" />
+                              <th className="w-[12%] px-6 py-6 text-xs font-black uppercase tracking-[0.2em] border-b border-slate-800 text-center">
+                                <div className="flex items-center justify-center gap-2 text-emerald-400">
+                                  <Clock className="w-5 h-5 sm:w-6 h-6" />
                                   Trả Kết Quả
                                 </div>
                               </th>
-                              <th className="px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-black uppercase tracking-wider">Khoảng Tham Chiếu</th>
-                              <th className="px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-black uppercase tracking-wider text-red-200">CẢNH BÁO LÂM SÀNG</th>
+                              <th className="w-[26%] px-6 py-6 text-xs font-black uppercase tracking-[0.2em] border-b border-slate-800">Khoảng Tham Chiếu</th>
+                              <th className="w-[30%] px-6 py-6 text-xs font-black uppercase tracking-[0.2em] border-b border-slate-800 text-rose-300">CẢNH BÁO LÂM SÀNG</th>
                             </tr>
                           </thead>
                           <tbody className="divide-y divide-slate-100 dark:divide-slate-700 bg-white dark:bg-slate-800">
@@ -3872,31 +3977,44 @@ export default function App() {
                                   {test.name}
                                 </td>
                                 <td className="px-4 sm:px-6 py-4 sm:py-6 text-center">
-                                  <span className={`text-xs sm:text-sm font-black px-3 sm:px-4 py-1 sm:py-2 rounded-xl uppercase tracking-tight shadow-sm whitespace-nowrap border ${
-                                    test.group.toLowerCase() === 'sinh hóa' ? 'bg-blue-100 text-blue-700 border-blue-200' :
-                                    test.group.toLowerCase() === 'huyết học' ? 'bg-purple-100 text-purple-700 border-purple-200' :
-                                    test.group.toLowerCase() === 'miễn dịch' ? 'bg-orange-100 text-orange-700 border-orange-200' :
-                                    test.group.toLowerCase() === 'đông máu' ? 'bg-red-100 text-red-700 border-red-200' :
-                                    test.group.toLowerCase() === 'vi sinh' ? 'bg-emerald-100 text-emerald-700 border-emerald-200' :
-                                    test.group.toLowerCase() === 'nước tiểu & dịch' ? 'bg-cyan-100 text-cyan-700 border-cyan-200' :
-                                    test.group.toLowerCase() === 'truyền máu' ? 'bg-rose-100 text-rose-700 border-rose-200' :
-                                    'bg-slate-100 text-slate-700 border-slate-200'
-                                  }`}>
-                                    {test.group}
-                                  </span>
+                                  <div className="flex justify-center">
+                                    <span className={`text-xs sm:text-sm font-black px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-xl uppercase tracking-tight shadow-sm border inline-flex flex-col items-center justify-center text-center leading-[1.15] min-w-[100px] ${
+                                      test.group.toLowerCase() === 'sinh hóa' ? 'bg-blue-100 text-blue-700 border-blue-200' :
+                                      test.group.toLowerCase() === 'huyết học' ? 'bg-purple-100 text-purple-700 border-purple-200' :
+                                      test.group.toLowerCase() === 'miễn dịch' ? 'bg-orange-100 text-orange-700 border-orange-200' :
+                                      test.group.toLowerCase() === 'đông máu' ? 'bg-red-100 text-red-700 border-red-200' :
+                                      test.group.toLowerCase() === 'vi sinh' ? 'bg-emerald-100 text-emerald-700 border-emerald-200' :
+                                      test.group.toLowerCase() === 'nước tiểu & dịch' ? 'bg-cyan-100 text-cyan-700 border-cyan-200' :
+                                      test.group.toLowerCase() === 'sinh học phân tử' ? 'bg-indigo-100 text-indigo-700 border-indigo-200' :
+                                      test.group.toLowerCase() === 'truyền máu' ? 'bg-rose-100 text-rose-700 border-rose-200' :
+                                      'bg-slate-100 text-slate-700 border-slate-200'
+                                    }`}>
+                                      {test.group.toLowerCase() === 'nước tiểu & dịch' ? (
+                                        <>
+                                          <span>NƯỚC TIỂU</span>
+                                          <span>& DỊCH</span>
+                                        </>
+                                      ) : test.group.toLowerCase() === 'sinh học phân tử' ? (
+                                        <>
+                                          <span>SINH HỌC</span>
+                                          <span>PHÂN TỬ</span>
+                                        </>
+                                      ) : test.group}
+                                    </span>
+                                  </div>
                                 </td>
-                                <td className="px-4 sm:px-6 py-4 sm:py-6 text-slate-600 dark:text-slate-400 font-bold text-sm sm:text-base text-center">
-                                  {test.time}
+                                <td className="px-6 py-6 text-slate-500 dark:text-slate-400 font-bold text-xs text-center">
+                                  <div className="bg-slate-50 dark:bg-slate-900/50 py-1 rounded-lg border border-slate-100 dark:border-slate-800">
+                                    {test.time}
+                                  </div>
                                 </td>
-                                <td className="px-4 sm:px-6 py-4 sm:py-6 font-mono text-[9px] sm:text-[11px] font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap leading-tight tracking-tighter">
-                                  {test.ref.split('\n').map((line, idx) => (
-                                    <div key={idx}>{line}</div>
-                                  ))}
+                                <td className="px-6 py-6 font-mono text-[10px] font-bold text-slate-800 dark:text-slate-200 whitespace-pre-wrap leading-relaxed tracking-tight">
+                                  {test.ref}
                                 </td>
-                                <td className="px-4 sm:px-6 py-4 sm:py-6">
-                                  <span className="text-base sm:text-lg font-black text-rose-600 dark:text-rose-400 whitespace-pre-wrap leading-relaxed">
+                                <td className="px-6 py-6 bg-rose-50/20 dark:bg-rose-950/10">
+                                  <p className="text-[11px] font-bold text-rose-700 dark:text-rose-300 whitespace-pre-wrap leading-relaxed">
                                     {test.alert}
-                                  </span>
+                                  </p>
                                 </td>
                               </tr>
                             ))}
@@ -3915,13 +4033,28 @@ export default function App() {
                         >
                           <div className="flex justify-between items-start mb-4">
                             <h3 className="text-xl font-black text-indigo-900 dark:text-indigo-200 leading-tight">{test.name}</h3>
-                            <span className={`text-[10px] font-black px-3 py-1 rounded-xl uppercase border ${
-                              test.group === 'Sinh Hóa' ? 'bg-blue-50 text-blue-600 border-blue-100' :
-                              test.group === 'Huyết học' ? 'bg-purple-50 text-purple-600 border-purple-100' :
-                              test.group === 'Miễn dịch' ? 'bg-orange-50 text-orange-600 border-orange-100' :
+                            <span className={`text-[10px] font-black px-3 py-1.5 rounded-xl uppercase border text-center inline-flex flex-col items-center justify-center leading-[1.15] min-w-[70px] ${
+                              test.group.toLowerCase() === 'sinh hóa' ? 'bg-blue-50 text-blue-600 border-blue-100' :
+                              test.group.toLowerCase() === 'huyết học' ? 'bg-purple-50 text-purple-600 border-purple-100' :
+                              test.group.toLowerCase() === 'miễn dịch' ? 'bg-orange-50 text-orange-600 border-orange-100' :
+                              test.group.toLowerCase() === 'nước tiểu & dịch' ? 'bg-cyan-50 text-cyan-600 border-cyan-100' :
+                              test.group.toLowerCase() === 'sinh học phân tử' ? 'bg-indigo-50 text-indigo-600 border-indigo-100' :
+                              test.group.toLowerCase() === 'đông máu' ? 'bg-red-50 text-red-600 border-red-100' :
+                              test.group.toLowerCase() === 'vi sinh' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' :
+                              test.group.toLowerCase() === 'truyền máu' ? 'bg-rose-50 text-rose-600 border-rose-100' :
                               'bg-slate-50 text-slate-600 border-slate-100'
                             }`}>
-                              {test.group}
+                              {test.group.toLowerCase() === 'nước tiểu & dịch' ? (
+                                <>
+                                  <span>NƯỚC TIỂU</span>
+                                  <span>& DỊCH</span>
+                                </>
+                              ) : test.group.toLowerCase() === 'sinh học phân tử' ? (
+                                <>
+                                  <span>SINH HỌC</span>
+                                  <span>PHÂN TỬ</span>
+                                </>
+                              ) : test.group}
                             </span>
                           </div>
                           <div className="space-y-4 mt-4 pt-4 border-t border-slate-50 dark:border-slate-700">
@@ -3930,10 +4063,8 @@ export default function App() {
                              </div>
                              <div className="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-2xl">
                                 <p className="text-[10px] uppercase font-black text-slate-400 mb-2">Khoảng Tham Chiếu</p>
-                                <div className="text-[10px] sm:text-xs font-mono font-bold text-slate-800 dark:text-slate-200 leading-tight whitespace-nowrap overflow-x-auto pb-1">
-                                  {test.ref.split('\n').map((line, idx) => (
-                                    <div key={idx}>{line}</div>
-                                  ))}
+                                <div className="text-[10px] sm:text-xs font-mono font-bold text-slate-800 dark:text-slate-200 leading-tight whitespace-pre-wrap">
+                                  {test.ref}
                                 </div>
                              </div>
                              {test.alert && (
@@ -4108,12 +4239,16 @@ export default function App() {
                                         <div 
                                           className="text-base sm:text-lg text-slate-800 leading-relaxed text-justify whitespace-pre-wrap font-sans font-medium space-y-3"
                                         >
-                                          {selectedTest.pathologicalMeaning.increase.split('\n').filter(line => line.trim()).map((line, i) => (
-                                            <div key={i} className="flex items-start gap-3">
-                                              <span className="text-red-400 font-black mt-1">▶</span>
-                                              <div dangerouslySetInnerHTML={{ __html: line }} className="flex-1" />
-                                            </div>
-                                          ))}
+                                          <div className="space-y-3 mt-2">
+                                            {selectedTest.pathologicalMeaning.increase.split('\n').filter(line => line.trim()).map((line, i) => (
+                                              <div key={i} className="flex items-start gap-4 p-4 bg-red-50/50 dark:bg-red-900/10 rounded-2xl border border-red-100/50 dark:border-red-800/10 hover:bg-red-100/50 transition-colors group/item">
+                                                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center text-xs font-black shadow-lg shadow-red-200 group-hover/item:scale-110 transition-transform">
+                                                  {i + 1}
+                                                </span>
+                                                <div dangerouslySetInnerHTML={{ __html: line.replace(/^\d+\.\s*/, '') }} className="flex-1 text-slate-700 dark:text-slate-300 leading-relaxed font-bold italic" />
+                                              </div>
+                                            ))}
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
@@ -4121,17 +4256,21 @@ export default function App() {
                                       <div className="bg-gradient-to-br from-blue-100 to-indigo-200 p-4 rounded-2xl h-fit w-fit shadow-inner">
                                         <TrendingDown className="w-6 h-6 text-blue-600" />
                                       </div>
-                                      <div>
+                                      <div className="flex-1">
                                         <p className="font-black text-blue-600 mb-2 text-xl uppercase tracking-tighter decoration-blue-200 decoration-4 underline-offset-4 underline">Giảm nồng độ</p>
                                         <div 
                                           className="text-base sm:text-lg text-slate-800 leading-relaxed text-justify whitespace-pre-wrap font-sans font-medium space-y-3"
                                         >
-                                          {selectedTest.pathologicalMeaning.decrease.split('\n').filter(line => line.trim()).map((line, i) => (
-                                            <div key={i} className="flex items-start gap-3">
-                                              <span className="text-blue-400 font-black mt-1">▶</span>
-                                              <div dangerouslySetInnerHTML={{ __html: line }} className="flex-1" />
-                                            </div>
-                                          ))}
+                                          <div className="space-y-3 mt-2">
+                                            {selectedTest.pathologicalMeaning.decrease.split('\n').filter(line => line.trim()).map((line, i) => (
+                                              <div key={i} className="flex items-start gap-4 p-4 bg-blue-50/50 dark:bg-blue-900/10 rounded-2xl border border-blue-100/50 dark:border-blue-800/10 hover:bg-blue-100/50 transition-colors group/item">
+                                                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center text-xs font-black shadow-lg shadow-blue-200 group-hover/item:scale-110 transition-transform">
+                                                  {i + 1}
+                                                </span>
+                                                <div dangerouslySetInnerHTML={{ __html: line.replace(/^\d+\.\s*/, '') }} className="flex-1 text-slate-700 dark:text-slate-300 leading-relaxed font-bold italic" />
+                                              </div>
+                                            ))}
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
