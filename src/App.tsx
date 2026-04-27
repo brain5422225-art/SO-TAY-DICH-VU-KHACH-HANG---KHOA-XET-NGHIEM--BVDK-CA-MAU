@@ -479,7 +479,7 @@ const labTests: LabTest[] = [
   },
  {
     "name": "Đo hoạt độ CK-MB [máu]",
-    "group": "Sinh hóa máu",
+    "group": "Sinh Hóa",
     "time": "120 phút / 45 phút",
     "isFeatured": true,
     "concept": "CK-MB là một trong ba isoenzym của Creatin Kinase (CK), đóng vai trò chủ chốt trong việc xúc tác quá trình cung cấp năng lượng. Khác với CK-MM (ở cơ vân) hay CK-BB (ở não), CK-MB **khu trú chủ yếu ở cơ tim**.",
@@ -498,7 +498,7 @@ const labTests: LabTest[] = [
   },
   {
     "name": "Định lượng Lactat [máu]",
-    "group": "Sinh hóa máu",
+    "group": "Sinh Hóa",
     "time": "120 phút / 45 phút",
     "isFeatured": true,
     "concept": "Lactat (Acid Lactic) là sản phẩm của quá trình chuyển hóa yếm khí carbohydrat (khi tế bào không được cung cấp đủ Oxy). Các vị trí sản xuất chính là cơ vân, não và hồng cầu.",
@@ -517,7 +517,7 @@ const labTests: LabTest[] = [
   },
   {
     "name": "Streptococcus Pyogenes ASO [máu]",
-    "group": "Sinh hóa máu",
+    "group": "Sinh Hóa",
     "time": "120 phút / 45 phút",
     "isFeatured": true,
     "concept": "ASLO (Anti-Streptolysin O) là kháng thể do hệ miễn dịch sinh ra để chống lại Streptolysin-O - một loại enzym độc do vi khuẩn Liên cầu tan máu beta nhóm A (Group A Streptococcus) tiết ra.",
@@ -536,7 +536,7 @@ const labTests: LabTest[] = [
   },
   {
     "name": "Định lượng RF (Yếu tố dạng thấp) [máu]",
-    "group": "Sinh hóa máu",
+    "group": "Sinh Hóa",
     "time": "120 phút / 45 phút",
     "isFeatured": true,
     "concept": "Yếu tố dạng thấp (Rheumatoid Factor - RF) chủ yếu là các tự kháng thể typ IgM, được hệ miễn dịch của cơ thể sản xuất ra để tấn công lại chính đoạn Fc của các kháng thể IgG bị biến đổi. Kháng thể này lắng đọng tại màng hoạt dịch khớp gây viêm và sưng đau.",
