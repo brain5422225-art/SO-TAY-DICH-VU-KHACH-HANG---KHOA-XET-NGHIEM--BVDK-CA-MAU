@@ -515,7 +515,7 @@ const labTests: LabTest[] = [
     "interferingFactors": "❌ **Lỗi mẫu:** Để máu ở nhiệt độ phòng, garo quá chặt, hoặc máu bị vỡ hồng cầu.\n💊 **Thuốc làm TĂNG Lactat:** Rượu (Ethanol), Adrenalin, Natri Bicarbonat, truyền Glucose khối lượng lớn.",
     "clinicalNote": "Tăng acid lactic máu (hyperlactatémie) là khi Lactat tăng nhưng pH máu chưa biến đổi. Nhiễm toan lactic (lactic acidosis) là khi Lactat tăng cao (thường > 7 mmol/L) kèm theo giảm pH máu. Cần lưu ý xét nghiệm này không đo được D-lactat (một loại toan hiếm gặp nhưng dễ bị bỏ sót ở bệnh nhân ruột ngắn)."
   },
-  {
+   {
     "name": "Streptococcus Pyogenes ASO [máu]",
     "group": "Sinh Hóa",
     "time": "120 phút / 45 phút",
@@ -523,7 +523,7 @@ const labTests: LabTest[] = [
     "concept": "ASLO (Anti-Streptolysin O) là kháng thể do hệ miễn dịch sinh ra để chống lại Streptolysin-O - một loại enzym độc do vi khuẩn Liên cầu tan máu beta nhóm A (Group A Streptococcus) tiết ra.",
     "physiology": "📌 **Động học:** Kháng thể ASLO bắt đầu xuất hiện trong máu từ 7 - 10 ngày sau đợt nhiễm liên cầu cấp, tiếp tục tăng và đạt đỉnh trong vòng 2 - 4 tuần.\n📌 **Thoái triển:** Điển hình, nồng độ ASLO sẽ giảm dần và trở về mức cơ sở trong vòng từ 6 đến 12 tháng sau khi bệnh nhân khỏi bệnh.",
     "indication": "🎯 **Chẩn đoán hồi cứu:** Cung cấp bằng chứng xác nhận bệnh nhân đã từng nhiễm Liên cầu nhóm A gần đây (đặc biệt khi cấy dịch họng không còn tìm thấy vi khuẩn).\n🎯 **Bệnh lý hậu liên cầu:** Hỗ trợ chẩn đoán Thấp tim (Thấp khớp cấp) và Viêm cầu thận cấp sau nhiễm liên cầu.",
-    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn trước khi lấy máu.\n⚠️ **Lưu ý:** Thường cần lấy 2 mẫu máu cách nhau 10 - 14 ngày để so sánh hiệu giá kháng thể (xem có đang tăng lên hay không).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn trước khi lấy máu.\n⚠️ **Lưu ý:** Thường cần lấy 2 mẫu máu cách nhau 10 - 14 ngày để so sánh hiệu giá kháng thể (đánh giá động lực kháng thể xem có đang tăng lên hay không).",
     "testingMethods": "Phản ứng ngưng kết hoặc Miễn dịch độ đục.",
     "ref": "📊 **Trẻ sơ sinh (0 - 2 tuổi):** < 50 đơn vị Todd/mL.\n📊 **Trẻ nhỏ (2 - 5 tuổi):** < 160 đơn vị Todd/mL.\n📊 **Trẻ em (5 - 12 tuổi):** < 170 đơn vị Todd/mL.\n📊 **Người lớn:** < 160 đơn vị Todd/mL.",
     "alert": "⚠️ Xét nghiệm ASLO đơn độc chỉ giúp phát hiện được 75 - 85% các trường hợp nhiễm trùng do liên cầu. Nồng độ ASLO thường **không tăng** ở người bị nhiễm trùng da do liên cầu (như chốc lở).\n💡 ASLO cao chỉ chứng minh có sự hiện diện của kháng thể, nó **không giúp dự đoán** liệu bệnh nhân có bị biến chứng hay không, và cũng không phản ánh mức độ nặng của tình trạng nhiễm trùng.",
@@ -540,7 +540,7 @@ const labTests: LabTest[] = [
     "time": "120 phút / 45 phút",
     "isFeatured": true,
     "concept": "Yếu tố dạng thấp (Rheumatoid Factor - RF) chủ yếu là các tự kháng thể typ IgM, được hệ miễn dịch của cơ thể sản xuất ra để tấn công lại chính đoạn Fc của các kháng thể IgG bị biến đổi. Kháng thể này lắng đọng tại màng hoạt dịch khớp gây viêm và sưng đau.",
-    "physiology": "📌 **Động học:** RF xuất hiện trong huyết thanh và dịch khớp vài tháng sau khi khởi phát Viêm khớp dạng thấp và có thể tồn tại nhiều năm sau khi điều trị.\n📌 **Ý nghĩa:** Có khoảng 50 - 95% bệnh nhân người lớn bị Viêm khớp dạng thấp có yếu tố RF dương tính trong máu.",
+    "physiology": "📌 **Động học:** RF xuất hiện trong huyết thanh và dịch khớp vài tháng sau khi khởi phát Viêm khớp dạng thấp và có thể tồn tại nhiều năm sau khi điều trị.\n📌 **Ý nghĩa:** Khoảng 50 - 95% bệnh nhân người lớn bị Viêm khớp dạng thấp có yếu tố RF dương tính trong máu.",
     "indication": "🎯 **Chẩn đoán:** Hỗ trợ chẩn đoán Viêm khớp dạng thấp (đặc biệt các ca khó phân biệt trên lâm sàng).\n🎯 **Miễn dịch:** Chẩn đoán hội chứng Sjogren (khi kết hợp với kháng thể Anti-Ro/Anti-La).",
     "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn.",
     "testingMethods": "Kỹ thuật đo độ đục (Nephelometry), Test Latex, hoặc Phản ứng Waaler - Rose.",
@@ -548,10 +548,10 @@ const labTests: LabTest[] = [
     "alert": "⚠️ Test RF (+) **không hoàn toàn đặc hiệu** cho Viêm khớp dạng thấp. Phát hiện RF ở mức hiệu giá thấp có thể gặp ở 4% người bình thường và lên tới 20% người > 70 tuổi khỏe mạnh.\n💡 Test RF (-) cũng không loại trừ được Viêm khớp dạng thấp (được gọi là Viêm khớp dạng thấp thể huyết thanh âm tính).",
     "pathologicalMeaning": {
       "increase": "🔹 **Yếu tố RF Dương tính (Tăng):**\n  🔴 **Bệnh tự miễn & Mô liên kết:**\n    ▫️ Viêm khớp dạng thấp (Rheumatoid Arthritis).\n    ▫️ Hội chứng Sjogren, Lupus ban đỏ hệ thống (SLE), Xơ cứng bì.\n    ▫️ Viêm da cơ (Dermatomyositis).\n  🔴 **Bệnh lý Viêm / Nhiễm trùng mạn tính:**\n    ▫️ Viêm nội tâm mạc bán cấp nhiễm khuẩn (Osler).\n    ▫️ Lao, Giang mai, Sốt rét.\n    ▫️ Nhiễm virus: Viêm gan C, Viêm gan mạn tính, Rubella, Tăng bạch cầu đơn nhân (EBV).\n  🔴 **Các bệnh lý Tạng & Ác tính:**\n    ▫️ Xơ gan, Bệnh phổi kẽ, Sarcoidosis.\n    ▫️ Tăng macroglobulin máu Waldenstrom, Globulin tủa lạnh (Cryoglobulinemia).",
-      "decrease": "Không có ý nghĩa bệnh lý."
+      "decrease": "Không có ý nghĩa bệnh lý lâm sàng."
     },
-    "interferingFactors": "❌ **Dương tính giả:** Rất hay gặp ở người già, người có tăng nồng độ lipid máu nặng, hoặc người vừa mới tiêm phòng nhiều loại vaccine / truyền máu gần đây.\n💡 **Thông tin thêm:** Các thuốc giảm đau chống viêm như Aspirin và NSAIDs không gây nhiễu, không làm thay đổi kết quả RF.",
-    "clinicalNote": "Theo tiêu chuẩn chẩn đoán Viêm khớp dạng thấp (ACR), Yếu tố RF (+) là 1 trong 7 tiêu chuẩn cốt lõi (Bệnh nhân cần đạt ít nhất 4/7 tiêu chuẩn và kéo dài trên 6 tuần). Trên lâm sàng, RF thường được xét nghiệm kết hợp với Anti-CCP (có độ đặc hiệu cao hơn RF rất nhiều) và các chỉ số viêm (CRP, Máu lắng) để đưa ra quyết định chẩn đoán chính xác."
+    "interferingFactors": "❌ **Dương tính giả:** Rất hay gặp ở người già, người có tăng nồng độ lipid máu nặng, hoặc người vừa mới tiêm phòng nhiều loại vaccine / truyền máu gần đây.\n💊 **Ghi chú Thuốc:** Các thuốc giảm đau chống viêm như Aspirin và NSAIDs không gây nhiễu, không làm thay đổi kết quả xét nghiệm RF.",
+    "clinicalNote": "Theo bản cập nhật **EULAR 2025**, chiến lược \"Điều trị mục tiêu\" (Treat-to-Target) yêu cầu kiểm soát viêm cực kỳ nhanh chóng. RF (+) là một yếu tố cấu thành chẩn đoán quan trọng, nhưng thường được xét nghiệm kết hợp với **Anti-CCP** (có độ đặc hiệu cao hơn RF rất nhiều) để đánh giá phân tầng rủi ro chính xác và ra quyết định sử dụng các thuốc DMARDs sớm nhằm ngăn chặn sự tiến triển của biến dạng khớp."
   },
      {
     "name": "Điện giải đồ (Na, K, Cl) [máu]",
@@ -649,200 +649,290 @@ const labTests: LabTest[] = [
     "clinicalNote": "Theo dõi Beta-hydroxybutyrate trong máu chính xác hơn so với dùng que nhúng nước tiểu khi cấp cứu DKA. Lý do: Que nhúng nước tiểu chủ yếu đo Acetoacetate. Khi bệnh nhân bắt đầu hồi phục, Beta-hydroxybutyrate chuyển hóa ngược lại thành Acetoacetate, làm que thử nước tiểu vẫn \"đỏ đậm\" khiến bác sĩ tưởng bệnh nặng lên, nhưng thực chất máu đang bớt toan dần."
   },
     {
-        name: "Đo hoạt độ ALP [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "Nam: 43-115 U/L; Nữ: 33-98 U/L", 
-        alert: "",
-        concept: "ALP (Phosphatase kiềm) là enzyme có nhiều trong ống dẫn mật của gan và tổ chức xương đang tạo cốt.",
-        indication: "Chẩn đoán bệnh lý gan mật (tắc mật) và bệnh lý về xương (bệnh Paget, di căn xương).",
-        pathologicalMeaning: {
-            increase: "Tăng cao trong tắc đường mật (sỏi, u), viêm gan, bệnh còi xương, ung thư di căn xương. Trẻ em đang tuổi lớn hoặc phụ nữ có thai ALP cũng tăng sinh lý.",
-            decrease: "Ít gặp, có thể do suy dinh dưỡng nặng, thiếu kẽm, magie."
-        }
+    "name": "Định lượng HbA1C [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "HbA1c là dạng Hemoglobin bị glycosyl hóa (gắn đường) một cách tự nhiên. Xét nghiệm này là \"thước đo vàng\" phản ánh nồng độ đường huyết trung bình của cơ thể trong vòng 2 - 3 tháng trước đó, không bị ảnh hưởng bởi bữa ăn hay stress tức thời.",
+    "physiology": "📌 **Cơ chế:** Phản ứng glycosyl hóa diễn ra liên tục không cần enzym xúc tác, tỷ lệ thuận với nồng độ Glucose máu.\n📌 **Động học:** Do đời sống của hồng cầu là khoảng 120 ngày, nồng độ HbA1c trở thành một \"cuốn nhật ký\" lưu trữ thông tin đường huyết trong 8 - 12 tuần.",
+    "indication": "🎯 **Sàng lọc & Chẩn đoán:** Tiền đái tháo đường, Đái tháo đường (ĐTĐ) Type 1 và Type 2.\n🎯 **Theo dõi:** Đánh giá hiệu quả điều trị và mức độ kiểm soát đường huyết dài hạn ở bệnh nhân ĐTĐ, tiên lượng rủi ro biến chứng vi mạch.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (chống đông bằng EDTA).\n⏳ **Chuẩn bị:** **Không bắt buộc nhịn ăn**, có thể lấy máu bất kỳ thời điểm nào trong ngày.",
+    "testingMethods": "Sắc ký lỏng hiệu năng cao (HPLC).",
+    "ref": "📊 **Bình thường:** 4,8% - 5,6%.\n📊 **Tiền đái tháo đường:** 5,7% - 6,4%.\n📊 **Chẩn đoán Đái tháo đường:** > 6,5%.",
+    "alert": "⚠️ **Cập nhật ADA 2025/2026:** Nếu bệnh nhân không có triệu chứng lâm sàng rõ rệt của tăng đường huyết, chẩn đoán ĐTĐ bắt buộc phải có **2 kết quả bất thường** (từ cùng 1 mẫu máu như kết hợp HbA1c và Glucose đói, hoặc ở 2 thời điểm khác nhau).\n💡 HbA1c sẽ **bị sai lệch** và không dùng được để chẩn đoán trong các trường hợp có thay đổi đời sống hồng cầu: Phụ nữ có thai (đặc biệt 3 tháng cuối), tán huyết, bệnh lý huyết sắc tố, hoặc suy thận mạn giai đoạn cuối.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng HbA1c:**\n  🔴 **Bệnh lý nội tiết chuyển hóa:**\n    ▫️ Đái tháo đường.\n    ▫️ Tiền đái tháo đường.\n    ▫️ Tình trạng kháng Insulin.",
+      "decrease": "🔹 **Giảm HbA1c (Thường do sai số hoặc bệnh lý huyết học):**\n  🔴 **Nguyên nhân làm giảm giả tạo:**\n    ▫️ Tình trạng tan máu, xuất huyết cấp tính (hồng cầu mới sinh ra chưa kịp gắn đường).\n    ▫️ Truyền máu số lượng lớn."
     },
-    {
-        name: "Định lượng Phospho [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "2.5 - 4.5 mg/dL", 
-        alert: "≥ 8.9 mg/dL.",
-        concept: "Phospho là khoáng chất chiếm lượng lớn thứ hai trong cơ thể (sau canxi), kết hợp cùng canxi để bảo vệ hệ xương khớp.",
-        indication: "Đánh giá các bệnh lý thận - tiết niệu, cơ xương khớp, và tuyến cận giáp.",
-        pathologicalMeaning: {
-            increase: "Rất thường gặp trong suy thận mạn (thận không thể đào thải phospho), suy tuyến cận giáp, tiêu cơ vân.",
-            decrease: "Cường tuyến cận giáp, thiếu vitamin D, suy dinh dưỡng."
-        }
+    "interferingFactors": "❌ **Lỗi phương pháp:** Các biến thể Hemoglobin bẩm sinh (HbS, HbC, HbF) có thể gây nhiễu phương pháp HPLC ở một số dòng máy.\n💊 **Thuốc / Sinh lý:** Bệnh nhân đang dùng EPO (Erythropoietin) tạo hồng cầu mới liên tục sẽ làm giảm HbA1c. Uống liều cao Vitamin C hoặc Vitamin E cũng có thể gây nhiễu kết quả.",
+    "clinicalNote": "Theo **ADA 2025-2026**, độ tuổi sàng lọc ĐTĐ phổ quát được hạ xuống từ **35 tuổi**. Bệnh nhân chuẩn bị phẫu thuật chương trình được yêu cầu kiểm soát HbA1c < 8% hoặc chỉ số TIR (Time in Range qua máy đo liên tục CGM) > 50% để hạn chế biến chứng nhiễm trùng vết mổ. Hiện nay, ADA đặc biệt khuyến khích sử dụng công nghệ CGM (Đo đường huyết liên tục) song hành cùng HbA1c để cá thể hóa việc điều trị."
+  },
+  {
+    "name": "Đo hoạt độ ALP (Phosphatase kiềm) [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Phosphatase kiềm (ALP) là một enzym tham gia vào quá trình tách nhóm phosphat. Trong cơ thể, nó được tìm thấy chủ yếu ở 2 nơi: **các tế bào biểu mô lót đường mật (trong Gan)** và **các tạo cốt bào (trong Xương)**.",
+    "physiology": "📌 **Nguồn gốc:** Tồn tại dưới dạng các isoenzym khác nhau: Gan mật, Xương, Ruột non, Thận, Rau thai.\n📌 **Chức năng:** Ở xương, nó tham gia mạnh mẽ vào quá trình tân tạo xương mới (canxi hóa). Ở gan, nó tăng vọt khi ống mật bị tắc nghẽn.",
+    "indication": "🎯 **Gan mật:** Chẩn đoán và phân biệt tình trạng ứ mật (tắc mật) với hoại tử tế bào gan.\n🎯 **Cơ xương khớp:** Chẩn đoán bệnh lý tủy xương, Paget xương, còi xương, u di căn xương.\n🎯 **Sàng lọc:** Đánh giá tình trạng ứ mật ở bệnh nhân đang dùng các thuốc có rủi ro độc gan.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Yêu cầu nhịn ăn từ 10 - 12h trước khi lấy máu xét nghiệm (do ALP ruột tăng nhẹ sau bữa ăn).\n⚠️ **Lưu ý:** Xét nghiệm nên được phân tích sớm, hoặc bảo quản lạnh.",
+    "testingMethods": "Đo hoạt độ động học enzym.",
+    "ref": "📊 **Nam:** 45 - 115 U/L.\n📊 **Nữ:** 30 - 100 U/L.\n*(Người cao tuổi và trẻ em đang tuổi lớn sẽ có mức ALP sinh lý cao hơn đáng kể)*.",
+    "alert": "⚠️ Ở trẻ em và thanh thiếu niên, ALP tăng sinh lý rất cao (do xương đang dài ra). Ở phụ nữ có thai 3 tháng cuối, ALP cũng tăng gấp đôi do rau thai bài tiết. Do đó, tăng ALP ở các đối tượng này hiếm khi mang ý nghĩa bệnh lý gan mật.\n💡 Khi ALP tăng cao, bắt buộc phải đo thêm **GGT**. Nếu GGT tăng cùng, nguyên nhân 100% từ Gan mật. Nếu GGT bình thường, nguyên nhân từ Xương hoặc Sinh lý.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng do nguyên nhân Gan Mật (Cùng tăng GGT):**\n  🔴 **Tắc nghẽn đường mật:**\n    ▫️ Sỏi ống mật chủ, u đầu tụy, ung thư đường mật.\n    ▫️ Xơ gan ứ mật tiên phát (PBC), viêm đường mật xơ hóa nguyên phát (PSC).\n  🔴 **Tổn thương nhu mô gan:**\n    ▫️ Áp xe gan, ung thư gan di căn, viêm gan do thuốc (tác dụng ứ trệ mật).\n🔹 **Tăng do nguyên nhân Xương (GGT bình thường):**\n  🔴 **Tăng hoạt động tạo cốt bào:**\n    ▫️ Bệnh Paget xương (tăng rất cao).\n    ▫️ Ung thư di căn xương (đặc biệt từ vú, tuyến tiền liệt).\n    ▫️ Quá trình liền xương sau gãy, bệnh nhuyễn xương, cường cận giáp.\n🔹 **Các nguyên nhân khác:**\n    ▫️ Có thai 3 tháng cuối, trẻ em đang lớn.",
+      "decrease": "🔹 **Giảm ALP (Ít gặp):**\n  🔴 **Nguyên nhân:**\n    ▫️ Suy dinh dưỡng nặng (thiếu Kẽm, Magiê).\n    ▫️ Suy giáp, thiếu máu ác tính."
     },
-    {
-        name: "Định lượng Amoniac (NH3) [máu]", 
-        group: "Sinh Hóa", 
-        time: "120 phút / 45 phút", 
-        ref: "18 - 72 µmol/L", 
-        alert: "≥ 200 µmol/L.",
-        concept: "Amoniac là một chất độc thần kinh sinh ra do vi khuẩn đường ruột phân hủy protein. Gan có nhiệm vụ chuyển NH3 thành Ure lành tính.",
-        indication: "Chẩn đoán bệnh não gan (hôn mê gan), đánh giá tổn thương tâm thần và hệ thần kinh do suy gan nặng.",
-        pathologicalMeaning: {
-            increase: "Cảnh báo gan đã mất chức năng chuyển hóa (xơ gan giai đoạn cuối, suy gan cấp), dẫn đến tích tụ NH3 gây độc cho não, lú lẫn, hôn mê.",
-            decrease: "Không có ý nghĩa bệnh lý."
-        }
+    "interferingFactors": "❌ **Lỗi mẫu:** Mẫu máu bị vỡ hồng cầu làm sai lệch kết quả.\n💊 **Thuốc làm TĂNG ALP:** Rất nhiều loại thuốc gây ứ mật (Allopurinol, kháng sinh Macrolide, thuốc tránh thai, Androgen).\n💊 **Yếu tố sinh lý:** BMI cao tăng 25%, hút thuốc tăng 10%.",
+    "clinicalNote": "Theo bản cập nhật **EASL 2025**, ALP đóng vai trò trung tâm trong chẩn đoán và theo dõi bệnh **Xơ gan ứ mật tiên phát (PBC)**. Sự kết hợp giữa **ALP > 1.5 lần giới hạn trên bình thường (ULN) và GGT tăng cao** là chỉ dấu lâm sàng mạnh mẽ nhất để bác sĩ đưa ra quyết định chỉ định xét nghiệm chuyên sâu kháng thể kháng ty thể (AMA)."
+  },
+  {
+    "name": "Định lượng Phospho vô cơ [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Phospho (P) là khoáng chất quan trọng, với 85% kết hợp cùng Canxi ở trong xương và răng. Trong máu, phospho vô cơ tham gia vào cấu trúc màng tế bào, duy trì hệ đệm toan-kiềm, và đặc biệt là tổng hợp năng lượng (ATP).",
+    "physiology": "📌 **Điều hòa:** Mức Phospho máu bị chi phối mạnh mẽ bởi nồng độ Canxi, Hormon cận giáp (PTH) và Vitamin D. Khi Canxi máu tăng, Phospho thường giảm và ngược lại.\n📌 **Thải trừ:** Quá trình đào thải Phospho dư thừa do Thận đảm nhận.",
+    "indication": "🎯 **Bilan xương & nội tiết:** Đánh giá chức năng tuyến cận giáp (cường/suy cận giáp), rối loạn chuyển hóa Vitamin D.\n🎯 **Bệnh lý Thận:** Theo dõi và quản lý tiến triển bệnh thận mạn tính (CKD-MBD).\n🎯 **Hồi sức cấp cứu:** Chẩn đoán các tình trạng yếu cơ nặng, suy hô hấp không rõ nguyên nhân (do thiếu hụt ATP).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh hoặc huyết tương.\n⏳ **Chuẩn bị:** Yêu cầu nhịn ăn qua đêm. Nên lấy mẫu máu vào buổi sáng (do nồng độ Phospho có nhịp sinh học, giảm mạnh sau ăn carbohydrat).\n⚠️ **Lưu ý:** Tuyệt đối tránh vỡ hồng cầu.",
+    "testingMethods": "Đo quang phổ / Phản ứng Molybdate.",
+    "ref": "📊 **Người lớn:** 0,84 - 1,45 mmol/L (2,6 - 4,5 mg/dL).\n📊 **Trẻ em:** Thường cao hơn người lớn do nhu cầu phát triển xương (khoảng 1,29 - 2,26 mmol/L).",
+    "alert": "⚠️ Hạ Phospho máu nặng (< 0,3 mmol/L) là một cấp cứu nội khoa, gây suy kiệt năng lượng tế bào dẫn đến tiêu cơ vân, suy tim, suy hô hấp và rối loạn tri giác.\n💡 Bệnh nhân nhịn ăn dài ngày, khi được truyền dinh dưỡng ồ ạt trở lại cực kỳ dễ gặp \"Hội chứng nuôi ăn lại\" (Refeeding Syndrome) do Phospho bị đẩy hết vào trong tế bào, gây hạ Phospho máu đột ngột đe dọa tính mạng.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Phospho máu:**\n  🔴 **Giảm đào thải qua Thận:**\n    ▫️ Suy thận cấp và suy thận mạn (nguyên nhân cực kỳ phổ biến).\n    ▫️ Suy tuyến cận giáp (giảm PTH làm thận tăng tái hấp thu Phospho).\n  🔴 **Tăng giải phóng từ Nội bào hoặc Xương:**\n    ▫️ Hội chứng ly giải khối u (do hóa trị ung thư).\n    ▫️ Tiêu cơ vân, nhiễm toan acid lactic, nhiễm toan ceton đái tháo đường.\n    ▫️ Thừa Vitamin D, tổn thương xương do di căn.",
+      "decrease": "🔹 **Giảm Phospho máu:**\n  🔴 **Giảm hấp thu:**\n    ▫️ Hội chứng kém hấp thu, suy dinh dưỡng nặng, nghiện rượu mạn.\n    ▫️ Thiếu hụt Vitamin D (Còi xương, nhuyễn xương).\n  🔴 **Tăng đào thải / Mất cân bằng nội môi:**\n    ▫️ Cường tuyến cận giáp tiên phát (tăng PTH làm thận tăng thải Phospho).\n    ▫️ Kiềm hô hấp, điều trị Insulin (kéo Phospho vào trong tế bào).\n    ▫️ Dùng thuốc trung hòa acid dạ dày (Antacid) kéo dài."
     },
-    {
-        name: "Định lượng FT3 [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "1.4 - 4.2 pg/mL", 
-        alert: "",
-        concept: "FT3 (Free Triiodothyronine) là hoóc-môn tuyến giáp ở dạng tự do (chiếm tỷ lệ rất nhỏ nhưng có hoạt tính sinh học trực tiếp), giúp điều hòa quá trình trao đổi chất của cơ thể.",
-        indication: "Chẩn đoán, phân loại và theo dõi các bệnh lý tuyến giáp (cường giáp, suy giáp), thường được làm cùng FT4 và TSH.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Cảnh báo hội chứng cường giáp (như bệnh Basedow/Graves), viêm tuyến giáp, hoặc do dùng quá liều thuốc hormone tuyến giáp.",
-            decrease: "• GIẢM: Gặp trong hội chứng suy giáp, suy tuyến yên, hoặc suy dinh dưỡng nặng."
-        }
+    "interferingFactors": "❌ **Lỗi mẫu:** Vỡ hồng cầu làm tăng giả tạo Phospho vì nồng độ trong hồng cầu rất cao.\n💊 **Thuốc làm TĂNG:** Thuốc nhuận tràng chứa Phosphat, lượng lớn Vitamin D.\n💊 **Thuốc làm GIẢM:** Antacid chứa Nhôm/Magiê (gây tủa phospho ở ruột), Lợi tiểu, Insulin.",
+    "clinicalNote": "Theo hướng dẫn **KDIGO 2024**, ở bệnh nhân Suy thận mạn (CKD), tình trạng tăng Phospho máu là tác nhân trực tiếp gây \"Rối loạn chuyển hóa khoáng chất và xương\" (CKD-MBD), dẫn đến vôi hóa mạch máu và làm tăng đáng kể tỷ lệ tử vong tim mạch. Kiểm soát nghiêm ngặt bộ 3 thông số: Phospho, Canxi và PTH là bắt buộc ở nhóm bệnh nhân này."
+  },
+  {
+    "name": "Định lượng Ammoniac (NH3) [máu]",
+    "group": "Sinh Hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Amoniac (NH3) là một sản phẩm thoái hóa mang độc tính cao sinh ra từ quá trình phân giải protein (đặc biệt tại ruột do vi khuẩn phân hủy máu/thức ăn). Ở người khỏe mạnh, gan nhận trách nhiệm biến đổi hoàn toàn NH3 độc hại này thành Urê để đào thải qua đường tiểu.",
+    "physiology": "📌 **Sinh lý bệnh:** Khi tế bào gan suy kiệt nghiêm trọng, hoặc khi dòng máu bị nối tắt (shunt cửa-chủ) lẩn tránh việc đi qua gan, NH3 sẽ tích tụ ồ ạt trong máu.\n📌 **Độc tính thần kinh:** NH3 dư thừa dễ dàng xuyên qua hàng rào máu não, gây độc cho hệ thần kinh trung ương (Bệnh não gan).",
+    "indication": "🎯 **Gan mật:** Chẩn đoán tình trạng tiền hôn mê gan, hôn mê gan (bệnh não gan) ở bệnh nhân xơ gan, viêm gan tối cấp.\n🎯 **Tiêu hóa:** Đánh giá rủi ro bệnh não gan sau xuất huyết tiêu hóa.\n🎯 **Nhi khoa:** Chẩn đoán hội chứng Reye, rối loạn chu trình Urê bẩm sinh ở trẻ em có biểu hiện lú lẫn, ngủ lịm.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết tương (chống đông bằng EDTA).\n⏳ **Chuẩn bị:** Yêu cầu nhịn ăn 8h. Tuyệt đối không hút thuốc và không gắng sức trước khi lấy máu.\n⚠️ **Lưu ý đặc biệt:** Máu lấy xong **phải đặt ngay vào đá lạnh** và chuyển ngay đến labo (do tế bào hồng cầu liên tục sản sinh NH3 trong ống nghiệm, để ở nhiệt độ phòng sẽ gây tăng giả tạo rất mạnh).",
+    "testingMethods": "Phản ứng enzym (Đo quang phổ).",
+    "ref": "📊 **Người lớn:** 11 - 32 µmol/L (15 - 45 µg/dL). \n*(Lưu ý: Ngưỡng bình thường dao động tùy nam/nữ, Nam thường cao hơn Nữ một chút).* \n📊 **Trẻ sơ sinh:** Nồng độ sinh lý có thể cao gấp nhiều lần người lớn do chức năng gan chưa hoàn thiện.",
+    "alert": "⚠️ Mức độ tăng nồng độ NH3 **không tương quan tuyến tính chặt chẽ** với mức độ nặng của hôn mê gan. Bệnh nhân có thể hôn mê rất sâu dù NH3 tăng không quá cao, hoặc NH3 tăng nhưng chưa hôn mê.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng NH3 máu (Độc tính):**\n  🔴 **Suy giảm chức năng Gan:**\n    ▫️ Xơ gan giai đoạn cuối, viêm gan virus/nhiễm độc hoại tử tối cấp.\n    ▫️ Hội chứng Reye ở trẻ em (suy gan não cấp sau khi dùng Aspirin trị nhiễm virus).\n  🔴 **Mất cân bằng tạo và thải NH3 trên nền bệnh Gan:**\n    ▫️ Xuất huyết tiêu hóa trên (lượng lớn máu ở ruột bị vi khuẩn phân hủy sinh ra ồ ạt NH3).\n    ▫️ Shunt cửa-chủ (tự nhiên hoặc nhân tạo sau phẫu thuật TIPS).\n  🔴 **Các bệnh lý khác:**\n    ▫️ Suy tim sung huyết nặng, suy thận, bệnh lý di truyền chu trình Urê.",
+      "decrease": "Không có ý nghĩa lâm sàng đặc hiệu. Có thể gặp ở người dùng một số loại kháng sinh phổ rộng (tiêu diệt vi khuẩn ruột sinh NH3)."
     },
-    {
-        name: "Định lượng FT4 [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "0.8 - 2.0 ng/dL", 
-        alert: "",
-        concept: "FT4 (Free Thyroxine) là dạng tự do của hoóc-môn Thyroxine do tuyến giáp tiết ra. Đây là dạng hoóc-môn dự trữ chính trước khi chuyển hóa thành FT3.",
-        indication: "Đánh giá chức năng tuyến giáp, xét nghiệm đầu tay để chẩn đoán suy giáp hoặc cường giáp.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Dấu hiệu điển hình của cường giáp (Basedow), bướu độc tuyến giáp.",
-            decrease: "• GIẢM: Chỉ điểm của suy giáp (viêm tuyến giáp Hashimoto), suy tuyến yên, thiếu hụt I-ốt."
-        }
+    "interferingFactors": "❌ **Lỗi mẫu:** Không bảo quản đá lạnh, garo quá chặt, thời gian chờ chuyển mẫu lâu.\n💊 **Thuốc làm TĂNG:** Lợi tiểu (gây hạ Kali máu kéo theo tăng NH3), acid valproic, barbiturat, rượu, thuốc cản quang.\n💊 **Thuốc làm GIẢM:** Kháng sinh diệt khuẩn ruột (Neomycin, Kanamycin), Lactulose (thuốc hạ NH3 đặc hiệu).",
+    "clinicalNote": "Ở bệnh nhân xơ gan có xuất huyết tiêu hóa hoặc táo bón lâu ngày, nồng độ NH3 sẽ tăng vọt đẩy bệnh nhân vào cơn hôn mê gan. Việc sử dụng Lactulose hoặc thụt tháo làm sạch đại tràng là các can thiệp lâm sàng tức thời để tống xuất nguồn sinh NH3 ra ngoài."
+  },
+  {
+    "name": "Định lượng FT3 (T3 Tự do) [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Triiodothyronine Tự do (FT3) là phần hormon tuyến giáp không gắn với protein mang. Mặc dù chiếm chưa tới 0,5% tổng lượng T3, nhưng đây chính là **dạng có hoạt tính sinh học mạnh mẽ nhất** (gấp khoảng 4-5 lần T4) và chịu trách nhiệm trực tiếp chi phối các phản ứng chuyển hóa của mô đích.",
+    "physiology": "📌 **Nguồn gốc:** Chỉ có khoảng 20% T3 được tuyến giáp tiết trực tiếp, 80% còn lại là do quá trình khử i-ốt của T4 tại các mô ngoại vi (gan, thận) chuyển thành T3.\n📌 **Ưu điểm xét nghiệm:** Nồng độ FT3 phản ánh chính xác trạng thái chuyển hóa thực tế của bệnh nhân do không bị làm sai lệch bởi các thay đổi của protein mang huyết thanh (như TBG).",
+    "indication": "🎯 **Cường giáp:** Chẩn đoán tình trạng nhiễm độc giáp, đặc biệt là hội chứng \"Nhiễm độc giáp do T3\" (T3 Thyrotoxicosis - TSH giảm, FT4 bình thường nhưng FT3 tăng cao).\n🎯 **Phân biệt:** Phân biệt nguyên nhân gây bất thường các hormon giáp toàn phần do thay đổi protein mang hay do bệnh lý thực thể.\n🎯 **Theo dõi:** Đánh giá hiệu quả liệu pháp ức chế tuyến giáp.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Thường không bắt buộc nhịn ăn. Lấy máu bất kỳ thời điểm nào.\n⚠️ **Lưu ý:** Khuyến cáo tạm ngưng các thuốc có ảnh hưởng tuyến giáp trước khi lấy máu (nếu mục đích là để chẩn đoán lần đầu).",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA, ECLIA).",
+    "ref": "📊 **Bình thường:** 3,1 - 6,8 pmol/L (2,3 - 4,2 pg/mL).",
+    "alert": "⚠️ Không được dùng FT3 như một xét nghiệm tuyến đầu để chẩn đoán **Suy giáp**. Lý do: Khi tuyến giáp suy yếu, cơ thể sẽ ưu tiên tăng tốc độ chuyển T4 thành T3 để duy trì mức FT3 bình thường bù trừ càng lâu càng tốt. TSH và FT4 là các chỉ số chuẩn xác hơn cho suy giáp.\n💡 Ở những bệnh nhân nằm viện thuộc khoa hồi sức tích cực (chấn thương nặng, suy đa tạng), FT3 thường giảm rất thấp gọi là \"Hội chứng Euthyroid Sick\". Đây là cơ chế tự bảo vệ sinh lý (giảm chuyển hóa) chứ không phải là bệnh suy giáp thực thể.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng FT3 máu:**\n  🔴 **Cường giáp & Nhiễm độc giáp:**\n    ▫️ Bệnh Graves (Basedow).\n    ▫️ Bướu giáp đa nhân độc, u tuyến độc giáp (Toxic adenoma).\n    ▫️ Nhiễm độc giáp do T3 đơn thuần (T3 Thyrotoxicosis).\n    ▫️ Viêm tuyến giáp giai đoạn đầu (giải phóng ồ ạt hormon dự trữ).",
+      "decrease": "🔹 **Giảm FT3 máu:**\n  🔴 **Bệnh lý nội tiết & Sinh lý:**\n    ▫️ Suy tuyến giáp tiên phát hoặc thứ phát (Giai đoạn rất muộn).\n    ▫️ Hội chứng bệnh lý không do tuyến giáp (Euthyroid Sick Syndrome / Nonthyroidal Illness) ở bệnh nhân hồi sức tích cực.\n    ▫️ Suy dinh dưỡng nặng, nhịn đói kéo dài."
     },
-    {
-        name: "Định lượng TSH [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "0.3 - 6.2 mIU/L", 
-        alert: "",
-        concept: "TSH (Thyroid Stimulating Hormone) là hoóc-môn do tuyến yên tiết ra để kích thích tuyến giáp sản xuất FT3, FT4. Nó hoạt động theo cơ chế phản hồi ngược (feedback).",
-        indication: "Xét nghiệm nhạy nhất để sàng lọc sớm các rối loạn chức năng tuyến giáp, theo dõi hiệu quả điều trị cường/suy giáp.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Phản ánh tình trạng suy giáp (tuyến giáp hoạt động kém nên tuyến yên phải tăng tiết TSH để bù trừ), hoặc có khối u tuyến yên.",
-            decrease: "• GIẢM: Phản ánh tình trạng cường giáp (lượng FT3, FT4 trong máu quá cao ức chế tuyến yên tiết TSH)."
-        }
+    "interferingFactors": "❌ **Giao thoa:** Các thuốc điều trị rối loạn nhịp như Amiodarone có khả năng ức chế quá trình chuyển đổi T4 thành T3 tại ngoại vi, dẫn đến FT3 giảm giả tạo.\n💊 **Thuốc làm TĂNG:** Các chế phẩm thay thế hormon tuyến giáp chứa T3 (Liothyronine).\n💊 **Thuốc làm GIẢM:** Thuốc kháng giáp (PTU, Methimazole), Propranolol liều cao, Glucocorticoid (ức chế chuyển hóa T4 thành T3).",
+    "clinicalNote": "Trong thực hành lâm sàng lâm sàng, bộ 3 xét nghiệm cơ bản nhất của tuyến giáp thường là **TSH và FT4**. Bác sĩ chỉ chỉ định thêm xét nghiệm **FT3** khi lâm sàng bệnh nhân có các triệu chứng cường giáp (nhịp tim nhanh, gầy sút, run tay, bướu cổ) rõ rệt nhưng kết quả FT4 lại hoàn toàn bình thường, nhằm không bỏ sót thể bệnh Nhiễm độc giáp do T3."
+  },
+     {
+    "name": "Định lượng FT4 (T4 tự do) [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Thyroxin tự do (FT4) là phần hormone tuyến giáp lưu hành trong máu không gắn kết với protein mang (TBG). Mặc dù chỉ chiếm khoảng 0,03% tổng lượng T4, nhưng đây là dạng có hoạt tính sinh học và là tiền chất để chuyển hóa thành T3 tại các mô ngoại vi.",
+    "physiology": "📌 **Nguồn gốc:** T4 được tổng hợp và bài tiết duy nhất từ tuyến giáp, dưới sự kích thích của TSH tuyến yên.\n📌 **Ưu điểm:** Khác với T4 toàn phần, nồng độ FT4 phản ánh trung thực chức năng tuyến giáp do không bị ảnh hưởng bởi những thay đổi nồng độ protein vận chuyển trong huyết thanh (như khi có thai, dùng thuốc tránh thai, hoặc suy gan).",
+    "indication": "🎯 **Chẩn đoán:** Khẳng định tình trạng cường giáp hoặc suy giáp khi kết quả TSH có bất thường.\n🎯 **Theo dõi:** Đánh giá hiệu quả của phác đồ điều trị hormone thay thế (suy giáp) hoặc thuốc kháng giáp trạng (cường giáp).\n🎯 **Phân biệt:** Chẩn đoán các rối loạn tuyến giáp ở phụ nữ có thai (do TBG tăng cao làm sai lệch T4 toàn phần).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Thường không bắt buộc nhịn ăn. Lấy máu bất kỳ thời điểm nào.\n⚠️ **Lưu ý:** Nếu để theo dõi liều thuốc hormone tuyến giáp (Levothyroxine), bệnh nhân nên lấy máu TRƯỚC khi uống liều thuốc của ngày hôm đó.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA, ECLIA).",
+    "ref": "📊 **Bình thường:** 12,0 - 22,0 pmol/L (0,93 - 1,7 ng/dL).",
+    "alert": "⚠️ Dùng liều cao Heparin tĩnh mạch có thể làm tăng giả tạo FT4 do Heparin kích thích giải phóng acid béo tự do, đẩy T4 ra khỏi protein mang trong ống nghiệm.\n💡 Nồng độ FT4 ở giới hạn trên của mức bình thường có thể là sinh lý ở người trẻ, nhưng luôn phải được coi là bất thường (bệnh lý) ở người cao tuổi.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng FT4 máu (Cường giáp):**\n  🔴 **Nguồn gốc tại tuyến giáp:**\n    ▫️ Bệnh Graves (Basedow).\n    ▫️ Bướu giáp đa nhân độc, U tuyến độc giáp (Toxic adenoma).\n    ▫️ Viêm tuyến giáp (Giai đoạn đầu giải phóng ồ ạt hormone dự trữ).\n  🔴 **Nguồn gốc ngoài tuyến:**\n    ▫️ Dùng quá liều thuốc hormone tuyến giáp (Nhiễm độc giáp giả tạo).",
+      "decrease": "🔹 **Giảm FT4 máu (Suy giáp):**\n  🔴 **Nguồn gốc tiên phát (Tại tuyến):**\n    ▫️ Viêm tuyến giáp Hashimoto (Giai đoạn muộn).\n    ▫️ Sau phẫu thuật cắt tuyến giáp hoặc xạ trị bằng I-131.\n    ▫️ Bướu cổ do thiếu hụt Iod nghiêm trọng.\n  🔴 **Nguồn gốc thứ phát:**\n    ▫️ Suy tuyến yên hoặc tổn thương vùng dưới đồi (Giảm tiết TSH)."
     },
-    {
-        name: "Định lượng AFP [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "< 20 ng/ml", 
-        alert: "",
-        concept: "AFP (Alpha-fetoprotein) là một protein do gan của thai nhi sản xuất. Ở người trưởng thành khỏe mạnh, nồng độ này rất thấp.",
-        indication: "Tầm soát, hỗ trợ chẩn đoán ung thư gan nguyên phát (HCC), ung thư tinh hoàn/buồng trứng, và chẩn đoán dị tật ống thần kinh ở thai nhi.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Cảnh báo ung thư gan nguyên phát, xơ gan, viêm gan mạn tính, hoặc ung thư tế bào mầm. Tăng sinh lý ở phụ nữ có thai.",
-            decrease: "• GIẢM/BÌNH THƯỜNG: Đáp ứng tốt với điều trị ung thư hoặc không có bệnh lý ác tính."
-        }
+    "interferingFactors": "❌ **Giao thoa:** Mẫu máu vỡ hồng cầu hoặc bệnh nhân vừa chụp xạ hình đồng vị phóng xạ làm sai lệch kết quả.\n💊 **Thuốc làm TĂNG:** Amiodarone (chứa Iod), Propranolol, Corticosteroid liều cao, Heparin, thuốc cản quang có Iod.\n💊 **Thuốc làm GIẢM:** Phenytoin, Carbamazepine, Lithium, Rifampicin.",
+    "clinicalNote": "Theo Viện Hàn lâm Hóa sinh Lâm sàng Quốc gia Mỹ (NACB): Ở bệnh nhân mới bắt đầu điều trị cường giáp/suy giáp (tình trạng giáp chưa ổn định), định lượng **FT4 là test có độ tin cậy cao hơn TSH** để theo dõi trong 2-3 tháng đầu. (Lý do: Trục tuyến yên cần nhiều tuần để \"thức tỉnh\" và điều chỉnh lại TSH cho phù hợp với nồng độ hormone mới)."
+  },
+  {
+    "name": "Định lượng TSH [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "TSH (Thyroid-Stimulating Hormone) là hormone hướng tuyến giáp do thùy trước tuyến yên tiết ra. TSH đóng vai trò là \"vị chỉ huy\" kích thích tuyến giáp tổng hợp và giải phóng T3, T4 vào dòng tuần hoàn.",
+    "physiology": "📌 **Điều hòa ngược (Negative Feedback):** Tuyến yên liên tục cảm nhận nồng độ T3, T4 trong máu. Nếu T3/T4 thấp, tuyến yên sẽ tăng tiết TSH để \"thúc giục\" tuyến giáp làm việc. Ngược lại, nếu T3/T4 cao, tuyến yên sẽ giảm hoặc ngừng tiết TSH.\n📌 **Động học:** Do bản chất nhạy bén khuếch đại của trục dưới đồi - tuyến yên, một sự thay đổi cực nhỏ của FT4 (chưa vượt khỏi ngưỡng bình thường) đã khiến TSH biến đổi gấp hàng chục lần.",
+    "indication": "🎯 **Sàng lọc & Chẩn đoán tuyến đầu:** Đây là xét nghiệm đơn độc nhạy nhất, tốt nhất để phát hiện sớm rối loạn chức năng tuyến giáp ở bệnh nhân ngoại trú.\n🎯 **Chẩn đoán phân biệt:** Phân biệt suy giáp tại tuyến (TSH tăng) hay suy giáp thứ phát do tuyến yên (TSH giảm).\n🎯 **Theo dõi:** Đánh giá hiệu quả và độ an toàn của liệu pháp hormone thay thế hoặc thuốc kháng giáp.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn.\n⚠️ **Lưu ý:** TSH có nhịp sinh học ngày đêm (đỉnh vào 2-4h sáng, đáy vào 5-6h chiều), nhưng mẫu máu lấy ban ngày vẫn nằm trong giới hạn tham chiếu chuẩn.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA, ECLIA).",
+    "ref": "📊 **Người lớn:** 0,27 - 4,20 mIU/L (hoặc µU/mL).\n📊 **Trẻ sơ sinh:** TSH tăng cao sinh lý trong vài giờ đầu sau sinh và sẽ tự hạ về bình thường trong vòng 5 ngày.",
+    "alert": "⚠️ TSH phản ứng chậm. Phải mất từ **6 - 8 tuần** nồng độ TSH mới thiết lập lại được trạng thái cân bằng sau khi bác sĩ bắt đầu hoặc thay đổi liều điều trị hormone tuyến giáp.\n💡 Không nên dùng TSH đơn độc để đánh giá chức năng giáp ở **bệnh nhân hồi sức tích cực (ICU)** do bệnh lý toàn thân nặng có thể làm ức chế TSH tạm thời (Hội chứng Euthyroid Sick).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng TSH máu (Phản ứng với suy giáp):**\n  🔴 **Suy giáp tiên phát (Tại tuyến giáp):**\n    ▫️ Viêm tuyến giáp Hashimoto.\n    ▫️ Suy giáp sau phẫu thuật / xạ trị I-131.\n    ▫️ Suy giáp tiềm tàng (TSH tăng, FT4 vẫn bình thường).\n  🔴 **Nguyên nhân khác:**\n    ▫️ U tuyến yên tiết TSH (hiếm gặp).\n    ▫️ Điều trị thay thế hormone tuyến giáp không đủ liều.",
+      "decrease": "🔹 **Giảm TSH máu (Bị ức chế):**\n  🔴 **Cường giáp (Tuyến giáp hoạt động quá mức):**\n    ▫️ Bệnh Graves (Basedow), bướu đa nhân độc.\n    ▫️ Cường giáp tiềm tàng (TSH giảm, FT4 bình thường).\n  🔴 **Nguyên nhân tuyến yên / Dưới đồi:**\n    ▫️ Suy tuyến yên (Suy giáp thứ phát).\n  🔴 **Nguyên nhân khác:**\n    ▫️ Dùng quá liều thuốc hormone tuyến giáp (Nhiễm độc giáp ngụy tạo).\n    ▫️ Quý 1 của thai kỳ (do hCG có cấu trúc giống TSH nên ức chế tạm thời TSH)."
     },
-    {
-        name: "Định lượng PSA toàn phần [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "< 4 ng/ml", 
-        alert: "",
-        concept: "PSA (Prostate-Specific Antigen) là một kháng nguyên đặc hiệu do tuyến tiền liệt ở nam giới tiết ra.",
-        indication: "Tầm soát ung thư tiền liệt tuyến ở nam giới > 50 tuổi, theo dõi phì đại tiền liệt tuyến lành tính.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Cảnh báo ung thư tiền liệt tuyến, viêm tiền liệt tuyến, hoặc phì đại tiền liệt tuyến lành tính (BPH).",
-            decrease: "• BÌNH THƯỜNG: Tiền liệt tuyến khỏe mạnh hoặc đáp ứng tốt sau phẫu thuật cắt bỏ u."
-        }
+    "interferingFactors": "❌ **Lỗi mẫu:** Vỡ hồng cầu làm sai lệch kết quả.\n💊 **Thuốc làm TĂNG TSH:** Amiodarone, Lithium, Metoclopramide, Haloperidol.\n💊 **Thuốc làm GIẢM TSH:** Glucocorticoid liều cao, Dopamine, Aspirin liều cao.",
+    "clinicalNote": "Theo các guideline chuyên ngành, trước khi kê đơn **Amiodarone** (thuốc chống loạn nhịp chứa nhiều Iod), bác sĩ bắt buộc phải kiểm tra TSH nền và tầm soát lại mỗi 6 tháng, vì thuốc này gây rối loạn chức năng tuyến giáp ở 14-18% bệnh nhân sử dụng."
+  },
+  {
+    "name": "Định lượng AFP [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Alpha-fetoprotein (AFP) là một glycoprotein được sản xuất chủ yếu ở gan, túi noãn hoàng và hệ tiêu hóa của bào thai. Sau khi sinh, nồng độ AFP giảm nhanh chóng và chỉ tồn tại dạng vết trong máu người trưởng thành. Nó được ứng dụng làm chất chỉ điểm khối u (Tumor Marker) quan trọng nhất cho gan.",
+    "physiology": "📌 **Đặc tính:** Sự gia tăng AFP ở người lớn phản ánh tình trạng tái tạo tế bào gan mạnh mẽ hoặc sự biệt hóa ngược (ác tính hóa) của tế bào biểu mô gan.\n📌 **Động học:** Thời gian bán hủy của AFP trong máu là khoảng 5 - 7 ngày.",
+    "indication": "🎯 **Ung bướu:** Sàng lọc, hỗ trợ chẩn đoán và theo dõi đáp ứng điều trị Ung thư biểu mô tế bào gan nguyên phát (HCC) và ung thư tế bào mầm (tinh hoàn, buồng trứng).\n🎯 **Sản khoa:** Sàng lọc dị tật ống thần kinh (nứt đốt sống, thai vô sọ) hoặc bất thường nhiễm sắc thể ở bào thai (thường kết hợp trong bộ Triple Test).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn.\n⚠️ **Lưu ý Sản khoa:** Việc xác định chính xác tuổi thai (bằng siêu âm) là cốt lõi, vì giá trị tham chiếu AFP biến thiên liên tục theo từng tuần thai.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA, ECLIA).",
+    "ref": "📊 **Người trưởng thành (không mang thai):** < 7,0 ng/mL.\n📊 **Phụ nữ có thai:** Giá trị tham chiếu phụ thuộc vào tuổi thai (được đánh giá bằng đơn vị MoM - Multiple of Median).",
+    "alert": "⚠️ AFP không được khuyến cáo dùng làm test sàng lọc ung thư đơn độc cho quần thể người khỏe mạnh bình thường do độ đặc hiệu không cao.\n💡 Nồng độ AFP không phải lúc nào cũng tương quan với kích thước khối u gan. Khoảng 30% bệnh nhân ung thư gan nguyên phát (HCC) có nồng độ AFP hoàn toàn bình thường.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng AFP máu:**\n  🔴 **Bệnh lý Ác tính:**\n    ▫️ Ung thư biểu mô tế bào gan nguyên phát (HCC).\n    ▫️ Ung thư tế bào mầm không thuộc loại tinh bào (Non-seminomatous germ cell tumors của tinh hoàn/buồng trứng).\n    ▫️ Ung thư di căn gan (Dạ dày, đại tràng, tụy, phổi).\n  🔴 **Bệnh lý Gan Mật Lành tính (Tái tạo tế bào gan):**\n    ▫️ Xơ gan, viêm gan virus (B, C) đợt cấp hoặc mạn tính hoạt động.\n  🔴 **Sản khoa (Bất thường bào thai):**\n    ▫️ Khuyết tật ống thần kinh (Nứt đốt sống, vô sọ).\n    ▫️ Thai suy, đa thai, dị tật thành bụng thai nhi.",
+      "decrease": "🔹 **Giảm AFP máu (Trong Sản khoa):**\n  🔴 Hội chứng Down (Trisomy 21).\n  🔴 Thai chết lưu hoặc sảy thai."
     },
-    {
-        name: "Định lượng CEA [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "< 5 ng/ml", 
-        alert: "",
-        concept: "CEA (Carcinoembryonic Antigen) là một kháng nguyên ung thư phôi, thường xuất hiện ở đường tiêu hóa của thai nhi và biến mất sau khi sinh.",
-        indication: "Theo dõi điều trị, phát hiện tái phát ung thư đại trực tràng, ung thư dạ dày, ung thư phổi.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Ung thư đại trực tràng, dạ dày, phổi, tuyến tụy. Tăng nhẹ ở người hút thuốc lá dai dẳng, viêm ruột.",
-            decrease: "• BÌNH THƯỜNG: Tiên lượng tốt sau phẫu thuật cắt bỏ khối u tiêu hóa."
-        }
+    "interferingFactors": "❌ **Giao thoa:** Các kháng thể dị vòng (HAMA) hoặc yếu tố dạng thấp (RF) có thể gây dương tính giả.\n💊 **Ghi chú:** Ở bệnh nhân viêm gan virus, nồng độ AFP có thể tăng (thường < 200 ng/mL) do quá trình gan phục hồi và sẽ tự giảm sau vài tháng.",
+    "clinicalNote": "Theo **QĐ 3129/QĐ-BYT (Ung thư biểu mô tế bào gan)** và các hướng dẫn AASLD/EASL cập nhật 2024-2025: Để tầm soát HCC ở nhóm nguy cơ cao (viêm gan B/C, xơ gan), **Siêu âm bụng + AFP mỗi 6 tháng** là tiêu chuẩn. Giá trị AFP > 400 ng/mL (hoặc > 500) kết hợp với tổn thương khu trú trên hình ảnh là bằng chứng mạnh để chẩn đoán HCC. Hiện nay, để tăng độ nhạy, y học ưu tiên sử dụng bộ 3 marker: **AFP, AFP-L3 và PIVKA-II**."
+  },
+  {
+    "name": "Định lượng PSA toàn phần [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "PSA (Prostate-Specific Antigen) là một glycoprotein được sản xuất chuyên biệt bởi các tế bào biểu mô tuyến tiền liệt (cả lành tính và ác tính). Chức năng sinh lý của PSA là làm loãng tinh dịch. Một lượng rất nhỏ rò rỉ vào máu, và sẽ tăng vọt khi cấu trúc tuyến bị phá vỡ.",
+    "physiology": "📌 **Động học:** Trong máu, PSA tồn tại ở 2 dạng: dạng gắn kết với protein (chiếm đa số) và dạng tự do (free PSA). PSA toàn phần là tổng của cả hai.\n📌 **Đặc tính:** PSA đặc hiệu cho **CƠ QUAN** (tuyến tiền liệt), nhưng KHÔNG đặc hiệu cho **BỆNH LÝ** (tăng trong cả ung thư, viêm, và phì đại lành tính).",
+    "indication": "🎯 **Sàng lọc:** Phát hiện sớm Ung thư tuyến tiền liệt ở nam giới > 50 tuổi (hoặc sớm hơn với người có tiền sử gia đình).\n🎯 **Phân tầng:** Đánh giá rủi ro, dự đoán di căn xương.\n🎯 **Theo dõi:** Phát hiện sớm tình trạng tái phát sinh hóa sau phẫu thuật cắt bỏ toàn bộ tuyến tiền liệt hoặc sau xạ trị.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Yêu cầu nhịn ăn qua đêm. Lấy máu vào buổi sáng.\n⚠️ **Lưu ý Vô cùng Quan trọng:** Máu PHẢI ĐƯỢC LẤY TRƯỚC khi bác sĩ thăm khám trực tràng (DRE), trước khi siêu âm qua trực tràng hoặc sinh thiết. Tốt nhất bệnh nhân nên kiêng xuất tinh hoặc đạp xe đạp 48h trước khi xét nghiệm.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA, ECLIA).",
+    "ref": "📊 **Bình thường (Được chấp nhận chung):** < 4,0 ng/mL.\n*(Lưu ý: Ngưỡng này tăng dần theo độ tuổi sinh lý. Nam < 40 tuổi: < 2,0 ng/mL; Nam 40-50 tuổi: < 2,5 ng/mL; Nam > 60 tuổi có thể lên tới 4,5 ng/mL).*.",
+    "alert": "⚠️ Nồng độ PSA bình thường KHÔNG loại trừ được ung thư (20% ung thư tiền liệt tuyến có PSA < 4 ng/mL).\n💡 Tốc độ gia tăng PSA (**PSA Velocity**) trên 0,75 ng/mL/năm ở nam giới có PSA bình thường là một dấu hiệu cảnh báo đỏ, cần sinh thiết ngay.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng PSA máu:**\n  🔴 **Ác tính:**\n    ▫️ Ung thư tuyến tiền liệt (Prostate Cancer).\n  🔴 **Lành tính (Thường gặp):**\n    ▫️ Phì đại tuyến tiền liệt lành tính (BPH).\n    ▫️ Viêm tuyến tiền liệt cấp/mạn tính (tăng vọt rất cao).\n    ▫️ Tắc nghẽn đường tiểu cấp tính (bí tiểu).\n    ▫️ Đụng dập do cơ học (Thăm khám trực tràng, nội soi bàng quang, đặt ống thông tiểu, sinh thiết tuyến).",
+      "decrease": "🔹 **Giảm PSA máu:**\n    ▫️ Phản ánh đáp ứng tốt với các phương pháp điều trị cắt bỏ ung thư (phẫu thuật, xạ trị, cắt tinh hoàn nội khoa/ngoại khoa)."
     },
-    {
-        name: "Định lượng CA 15-3 [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "< 31.4 IU/mL", 
-        alert: "",
-        concept: "CA 15-3 (Cancer Antigen 15-3) là một protein được sản xuất bởi các tế bào tuyến vú bình thường, nhưng được sản xuất ồ ạt bởi các tế bào ung thư vú.",
-        indication: "Theo dõi đáp ứng điều trị và phát hiện di căn/tái phát của bệnh ung thư vú.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Cảnh báo ung thư vú di căn, tái phát. Tăng nhẹ trong u vú lành tính, xơ gan, viêm gan.",
-            decrease: "• BÌNH THƯỜNG: Đáp ứng tốt với liệu pháp điều trị ung thư vú."
-        }
+    "interferingFactors": "❌ **Lỗi lâm sàng:** Chọc lấy máu ngay sau khi bác sĩ vừa khám tuyến tiền liệt bằng tay (PSA tăng giả tạo trong 2-3 ngày).\n💊 **Thuốc làm GIẢM PSA:** Nhóm ức chế 5-alpha reductase điều trị phì đại tuyến tiền liệt (Finasteride, Dutasteride) làm **giảm 50%** nồng độ PSA máu sau 6 tháng. Bác sĩ phải nhân đôi kết quả đo được để đánh giá nguy cơ ung thư thực sự.",
+    "clinicalNote": "Theo **Quyết định số 3130/QĐ-BYT**, khi kết quả PSA toàn phần nằm trong \"vùng xám\" từ **4,0 - 10,0 ng/mL**, bác sĩ bắt buộc phải chỉ định thêm xét nghiệm **Tỷ lệ PSA tự do / PSA toàn phần (fPSA/tPSA)**. \n- Nếu Tỷ lệ này > 25%: Khả năng cao là phì đại lành tính.\n- Nếu Tỷ lệ này < 15%: Rủi ro ác tính rất cao, có chỉ định sinh thiết tuyến tiền liệt."
+  },
+  {
+    "name": "Định lượng CEA [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "CEA (Carcinoembryonic Antigen - Kháng nguyên ung thư biểu mô phôi) là một glycoprotein phức tạp. Trong thời kỳ bào thai, nó được sản xuất dồi dào ở niêm mạc đại trực tràng. Ở người lớn, gen sản xuất CEA bị ức chế nên nó chỉ tồn tại dạng vết trong máu, nhưng sẽ được bộc lộ trở lại khi có các đột biến ung thư biểu mô.",
+    "physiology": "📌 **Động học:** CEA bị thanh thải qua gan. Thời gian bán hủy khoảng 2 - 8 ngày.\n📌 **Đặc tính:** CEA không đặc hiệu cho riêng một cơ quan nào và cũng có thể tăng nhẹ trong các tình trạng viêm mạn tính lành tính. Nó là chỉ dấu bộc lộ ưu thế ở nhóm ung thư biểu mô tuyến (Adenocarcinoma).",
+    "indication": "🎯 **Tiên lượng & Phân giai đoạn:** Đánh giá nồng độ CEA trước mổ ở bệnh nhân ung thư đại trực tràng (nồng độ càng cao, khối u càng lớn hoặc đã di căn).\n🎯 **Theo dõi (Chỉ định số 1):** Đánh giá hiệu quả phẫu thuật, hóa/xạ trị và phát hiện cực kỳ sớm tình trạng tái phát hoặc di căn gan ở bệnh nhân ung thư đường tiêu hóa.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn.\n⚠️ **Khai báo:** Phải lưu ý tình trạng **hút thuốc lá** của bệnh nhân vì nó làm thay đổi dải tham chiếu bình thường.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA, ECLIA) hoặc RIA.",
+    "ref": "📊 **Người không hút thuốc:** < 3,4 ng/mL (hay < 3,4 µg/L).\n📊 **Người có hút thuốc lá:** Có thể lên tới ≤ 4,3 ng/mL (hay < 5,0 µg/L).",
+    "alert": "⚠️ Tuyệt đối không dùng CEA để \"tầm soát ung thư\" định kỳ cho người khỏe mạnh vì tỷ lệ âm tính giả (khối u nhỏ chưa tăng CEA) và dương tính giả (viêm dạ dày, hút thuốc) rất cao.\n💡 Nồng độ CEA máu > 20 ng/mL hầu như luôn luôn cảnh báo bệnh lý ung thư đã lan rộng hoặc di căn xa (đặc biệt là di căn gan).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng CEA máu:**\n  🔴 **Các bệnh lý Ác tính:**\n    ▫️ Ung thư Đại tràng và Trực tràng (Tăng mạnh nhất, tỷ lệ cao nhất).\n    ▫️ Ung thư Dạ dày, Tụy, Đường mật.\n    ▫️ Ung thư Vú, Phổi (không phải tế bào nhỏ), Buồng trứng, Tuyến giáp thể tủy.\n  🔴 **Các bệnh lý Lành tính (Thường tăng nhẹ < 10 ng/mL):**\n    ▫️ Viêm loét đại tràng (UC), bệnh Crohn, túi thừa ruột.\n    ▫️ Xơ gan do rượu, viêm gan mạn tính, tắc mật.\n    ▫️ Viêm loét dạ dày - tá tràng.\n    ▫️ Viêm phổi, Bệnh phổi tắc nghẽn mạn tính (COPD).\n    ▫️ Suy thận cấp/mạn (do giảm thanh thải CEA).",
+      "decrease": "🔹 **Giảm CEA máu:**\n    ▫️ Là dấu hiệu tuyệt vời cho thấy khối u đã được cắt bỏ triệt để hoặc hóa trị đang đáp ứng tốt."
     },
-    {
-        name: "Định lượng Tg [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "3.5 - 77 ng/mL", 
-        alert: "",
-        concept: "Tg (Thyroglobulin) là một protein do tuyến giáp sản xuất, đóng vai trò như một 'kho chứa' để tổng hợp hormone tuyến giáp.",
-        indication: "Marker đặc hiệu để theo dõi ung thư tuyến giáp thể nhú và thể nang sau phẫu thuật cắt bỏ tuyến giáp.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Dấu hiệu ung thư tuyến giáp tái phát hoặc di căn sau phẫu thuật. Có thể tăng trong viêm tuyến giáp.",
-            decrease: "• GIẢM: Kết quả mong muốn sau khi phẫu thuật cắt bỏ toàn bộ tuyến giáp."
-        }
+    "interferingFactors": "❌ **Giao thoa:** Kỹ thuật xét nghiệm giữa các hãng máy khác nhau có thể cho ra kết quả chênh lệch. Cần theo dõi bệnh nhân dọc theo thời gian trên **cùng một hệ thống máy**.\n💊 **Lối sống:** Hút thuốc lá kéo dài làm tăng tổng hợp CEA biểu mô đường hô hấp, hòa vào máu gây dương tính giả.",
+    "clinicalNote": "Theo bản cập nhật **ESMO 2026** và Bộ Y tế: Sau phẫu thuật cắt bỏ ung thư đại tràng, nồng độ CEA bắt buộc phải giảm về mức bình thường trong vòng **6 - 12 tuần**. Nếu CEA chững lại hoặc tăng tiếp, đó là bằng chứng của việc ung thư vẫn còn sót lại hoặc đã vi di căn (micro-metastasis). Trong quá trình theo dõi, mức thay đổi nồng độ CEA trên 30% so với giá trị nền được coi là có ý nghĩa lâm sàng, cần chỉ định chụp PET/CT ngay lập tức."
+  },
+     {
+    "name": "Định lượng CA 15-3 [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Kháng nguyên CA 15-3 (Cancer Antigen 15-3) là một glycoprotein được bộc lộ trên tế bào ung thư biểu mô tuyến. Đây là chất chỉ điểm khối u (Tumor Marker) quan trọng đối với ung thư vú.",
+    "physiology": "📌 **Phân bố:** Tìm thấy ở cả tế bào tuyến vú bình thường và ác tính.\n📌 **Động học:** Nồng độ trong dòng tuần hoàn tăng cao khi cấu trúc mô tuyến bị phá vỡ, đặc biệt khi khối u lan rộng hoặc di căn tới các tạng khác (gan, xương).",
+    "indication": "🎯 **Theo dõi điều trị:** Đánh giá đáp ứng với phác đồ hóa/xạ trị ở bệnh nhân ung thư vú giai đoạn II, III và IV.\n🎯 **Phát hiện tái phát:** Thường quy theo dõi định kỳ sau phẫu thuật để phát hiện sớm tình trạng di căn.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn trước khi lấy máu.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA, ECLIA).",
+    "ref": "📊 **Bình thường:** < 35 U/mL (hoặc < 35 kU/L).",
+    "alert": "⚠️ Tuyệt đối không sử dụng xét nghiệm CA 15-3 độc lập để tầm soát (sàng lọc) ung thư vú ở phụ nữ khỏe mạnh, do độ nhạy ở giai đoạn sớm rất thấp (chỉ tăng ở khoảng 30% số ca ung thư vú giai đoạn I/II).\n💡 Sự gia tăng liên tục của CA 15-3 trên 25% so với giá trị nền có ý nghĩa lâm sàng dự báo bệnh tiến triển hoặc tái phát, thường xuất hiện trước khi có biểu hiện trên chẩn đoán hình ảnh từ vài tháng.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Bệnh lý Ác tính:**\n  🔴 **Ung thư vú:**\n    ▫️ Tăng cực kỳ rõ rệt trong ung thư vú có di căn (đặc biệt là di căn xương, gan, phổi).\n  🔴 **Các ung thư biểu mô khác (ít đặc hiệu hơn):**\n    ▫️ Ung thư buồng trứng, ung thư phổi, ung thư tụy, ung thư dạ dày, đại trực tràng.\n🔹 **Bệnh lý Lành tính (Thường chỉ tăng nhẹ):**\n  🔴 **Tại vú:**\n    ▫️ U xơ tuyến vú, các bệnh lý tuyến vú lành tính.\n  🔴 **Ngoài vú:**\n    ▫️ Lạc nội mạc tử cung.\n    ▫️ Viêm gan, xơ gan, viêm vùng tiểu khung.",
+      "decrease": "🔹 **Giảm nồng độ:**\n    ▫️ Phản ánh đáp ứng tốt với phác đồ điều trị ung thư (phẫu thuật cắt bỏ u thành công, hóa/xạ trị có hiệu quả)."
     },
-    {
-        name: "HBsAg test nhanh", 
-        group: "Miễn dịch", 
-        time: "60 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "HBsAg (Hepatitis B surface Antigen) là kháng nguyên bề mặt của virus viêm gan B. Xét nghiệm test nhanh giúp sàng lọc cấp cứu sự hiện diện của virus.",
-        indication: "Sàng lọc viêm gan B trước phẫu thuật, hiến máu, phụ nữ mang thai hoặc khám sức khỏe định kỳ.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Bệnh nhân đang nhiễm virus Viêm gan B (cấp tính hoặc mạn tính), có khả năng lây nhiễm cho người khác.",
-            decrease: "• ÂM TÍNH: Hiện không nhiễm virus viêm gan B."
-        }
+    "interferingFactors": "❌ **Giao thoa phương pháp:** Kết quả có thể dao động giữa các thuốc thử của các hãng máy xét nghiệm khác nhau. Để theo dõi chính xác, bắt buộc phải xét nghiệm dọc theo thời gian trên **cùng một hệ thống máy**.",
+    "clinicalNote": "Theo hướng dẫn của ESMO 2026, đối với ung thư vú di căn, việc đánh giá nồng độ CA 15-3 kết hợp với CEA được khuyến cáo để theo dõi diễn tiến bệnh học, thay vì lạm dụng chụp chiếu hình ảnh (như PET/CT) quá dày đặc gây tốn kém và độc hại phóng xạ cho bệnh nhân."
+  },
+  {
+    "name": "HBsAg test nhanh [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "HBsAg (Hepatitis B surface Antigen) là kháng nguyên bề mặt của vi rút viêm gan B (HBV). Đây là chỉ dấu sinh học đầu tiên xuất hiện trong máu khi nhiễm HBV và là xét nghiệm cốt lõi để chẩn đoán bệnh.",
+    "physiology": "📌 **Động học:** Xuất hiện trong máu từ 1 - 10 tuần sau khi phơi nhiễm, ngay cả trước khi có triệu chứng lâm sàng và men gan tăng.\n📌 **Đặc tính:** Nếu HBsAg tồn tại trong máu liên tục quá 6 tháng, bệnh nhân được chẩn đoán là nhiễm Viêm gan B mạn tính.",
+    "indication": "🎯 **Sàng lọc phổ quát:** Tầm soát nhiễm HBV trong cộng đồng, khám sức khỏe định kỳ, phụ nữ có thai, người hiến máu, nhân viên y tế.\n🎯 **Chẩn đoán:** Xác định nguyên nhân viêm gan cấp hoặc mạn tính.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh, huyết tương hoặc máu toàn phần.\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn.",
+    "testingMethods": "Sắc ký miễn dịch (Test nhanh định tính / POC - Point of care).",
+    "ref": "📊 **Bình thường:** Âm tính (-).",
+    "alert": "⚠️ Test nhanh HBsAg có thể **âm tính giả** trong 'giai đoạn cửa sổ' (khi lượng kháng nguyên chưa đủ ngưỡng phát hiện), hoặc ở các thể HBV đột biến gen (Mutant YMDD/đột biến tiền lõi).\n💡 Một kết quả HBsAg Dương tính (+) chỉ khẳng định có vi rút trong cơ thể, **không phản ánh** vi rút đang hoạt động mạnh hay mức độ tàn phá gan.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **HBsAg Dương tính (+) (Có nhiễm HBV):**\n  🔴 **Viêm gan B cấp tính:**\n    ▫️ Vi rút đang nhân lên, nguy cơ lây nhiễm cao.\n  🔴 **Viêm gan B mạn tính:**\n    ▫️ Khi kết quả dương tính kéo dài liên tục trên 6 tháng.\n  🔴 **Tình trạng người lành mang vi rút (Thể ẩn/Thể dung nạp miễn dịch):**\n    ▫️ HBsAg (+) nhưng men gan (ALT, AST) bình thường, HBV-DNA thấp, không có hoại tử tế bào gan.",
+      "decrease": "🔹 **HBsAg Âm tính (-):**\n    ▫️ Không nhiễm HBV hoặc cơ thể đã thải trừ hoàn toàn vi rút. (Cần xét nghiệm thêm Anti-HBs để xác nhận cơ thể đã có kháng thể bảo vệ chưa)."
     },
-    {
-        name: "HIV Ab test nhanh", 
-        group: "Miễn dịch", 
-        time: "60 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "Xét nghiệm tìm kháng thể chống lại virus HIV trong máu.",
-        indication: "Sàng lọc cấp cứu nhiễm HIV trước phẫu thuật, phụ nữ mang thai, phơi nhiễm nghề nghiệp.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Có thể đang nhiễm HIV. (Cần làm thêm các xét nghiệm chuyên sâu như PCR, khẳng định 3 phương pháp để kết luận).",
-            decrease: "• ÂM TÍNH: Không phát hiện kháng thể HIV tại thời điểm hiện tại (cần chú ý thời kỳ cửa sổ)."
-        }
+    "interferingFactors": "❌ **Lỗi kỹ thuật:** Đọc kết quả quá thời gian quy định của nhà sản xuất (thường > 20 phút) có thể gây dương tính giả.\n💊 **Vắc xin:** Bệnh nhân vừa tiêm vắc xin viêm gan B trong vòng 1-2 tuần có thể có kết quả HBsAg (+) giả thoáng qua.",
+    "clinicalNote": "Theo bản cập nhật **WHO 2024**, xét nghiệm HBsAg bằng test nhanh (POC) được đặc biệt khuyến cáo mở rộng cho nhóm phụ nữ mang thai và các khu vực có tỷ lệ nhiễm > 5%. Đặc biệt, WHO nhấn mạnh chiến lược **'Reflex HBV DNA testing'**: ngay khi HBsAg (+), phòng xét nghiệm tự động dùng lại mẫu máu đó để đo tải lượng HBV-DNA, giúp rút ngắn thời gian chờ đợi và kết nối bệnh nhân vào chương trình điều trị kháng vi rút ngay lập tức."
+  },
+  {
+    "name": "HIV Ab test nhanh [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Xét nghiệm phát hiện kháng thể (Antibody - Ab) do hệ thống miễn dịch của cơ thể sinh ra để nhận diện và chống lại vi rút gây suy giảm miễn dịch ở người (HIV-1 và HIV-2).",
+    "physiology": "📌 **Động học:** Kháng thể IgG đặc hiệu thường xuất hiện từ 6 - 12 tuần sau khi phơi nhiễm với HIV. Ở 95% bệnh nhân, kháng thể này có thể phát hiện rõ ở tháng thứ 6 và tồn tại suốt đời.",
+    "indication": "🎯 **Sàng lọc:** Kiểm tra thường quy trước phẫu thuật, khám thai, hiến máu/hiến tạng.\n🎯 **Dịch tễ:** Sàng lọc cộng đồng cho các nhóm nguy cơ cao (quan hệ tình dục không an toàn, tiêm chích ma túy, đa bạn tình).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh, huyết tương hoặc máu toàn phần.\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn.\n⚠️ **Bảo mật:** Yêu cầu tư vấn tâm lý (Pre-test counseling) và bảo mật tuyệt đối thông tin người bệnh.",
+    "testingMethods": "Sắc ký miễn dịch (Test nhanh định tính ELISA / EIA).",
+    "ref": "📊 **Bình thường:** Âm tính (-).",
+    "alert": "⚠️ Test nhanh HIV là xét nghiệm SÀNG LỌC, có độ nhạy cực cao (để không bỏ sót) nhưng độ đặc hiệu không tuyệt đối. Một kết quả dương tính (Có phản ứng) **CHƯA THỂ khẳng định** bệnh nhân nhiễm HIV mà bắt buộc phải chạy xét nghiệm khẳng định (Western Blot hoặc PCR).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **HIV Ab Dương tính (Có phản ứng):**\n  🔴 **Nhiễm HIV thực sự:**\n    ▫️ Bệnh nhân đã phơi nhiễm và hệ miễn dịch đã tạo kháng thể chống lại vi rút.\n  🔴 **Dương tính giả (Phản ứng chéo do Dị kháng thể):**\n    ▫️ Phụ nữ mang thai (do dị kháng thể thai kỳ).\n    ▫️ Bệnh nhân mắc các bệnh tự miễn (Lupus ban đỏ hệ thống, xơ cứng bì).\n    ▫️ Bệnh nhân đang nhiễm vi rút khác (EBV, CMV, Rubella, Cúm A) hoặc vừa tiêm vắc xin.",
+      "decrease": "🔹 **HIV Ab Âm tính:**\n    ▫️ Không có kháng thể HIV tại thời điểm lấy mẫu."
     },
-    {
-        name: "Dengue virus IgM/IgG test nhanh", 
-        group: "Miễn dịch", 
-        time: "60 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "IgM là kháng thể sinh ra ở giai đoạn cấp tính, IgG là kháng thể sinh ra ở giai đoạn muộn và tồn tại lâu dài sau khi nhiễm virus Sốt xuất huyết (Dengue).",
-        indication: "Chẩn đoán sốt xuất huyết Dengue từ ngày thứ 4 - 5 của bệnh trở đi.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: IgM (+) nghĩa là đang nhiễm cấp tính; IgG (+) nghĩa là đã từng nhiễm hoặc đang tái nhiễm.",
-            decrease: "• ÂM TÍNH: Không mắc Sốt xuất huyết hoặc xét nghiệm quá sớm (kháng thể chưa kịp sinh ra)."
-        }
+    "interferingFactors": "❌ **Giai đoạn cửa sổ (Window phase):** Thường từ 3 - 6 tháng đầu tiên ngay sau khi phơi nhiễm. Lúc này vi rút đã có trong máu nhưng cơ thể chưa kịp sản xuất đủ lượng kháng thể, dẫn đến test cho kết quả **âm tính giả**.",
+    "clinicalNote": "Quy định của Bộ Y tế rất nghiêm ngặt: Nếu nghi ngờ phơi nhiễm nguy cơ cao nhưng test nhanh âm tính, bắt buộc phải tư vấn bệnh nhân xét nghiệm lại sau 1 tháng, 3 tháng và 6 tháng. Không một cơ sở y tế nào được phép thông báo bệnh nhân 'Nhiễm HIV' nếu chỉ dựa vào một lần test nhanh có phản ứng, mà phải chờ kết quả Western Blot."
+  },
+  {
+    "name": "Dengue virus IgM/IgG test nhanh [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Xét nghiệm phát hiện kháng thể IgM và IgG chống lại vi rút Dengue gây bệnh Sốt xuất huyết. Kháng thể IgM đại diện cho phản ứng miễn dịch cấp tính, trong khi IgG đại diện cho miễn dịch lưu nhớ lâu dài hoặc tái nhiễm.",
+    "physiology": "📌 **Động học IgM:** Bắt đầu xuất hiện từ ngày thứ 3 - 5 của cơn sốt, đạt đỉnh vào khoảng tuần thứ 2 và giảm dần rồi biến mất sau 2 - 3 tháng.\n📌 **Động học IgG:** Trong nhiễm Dengue lần đầu, IgG xuất hiện rất muộn (sau ngày 10). Nhưng trong nhiễm lần hai (tái nhiễm), IgG bùng phát và tăng vọt rất nhanh ngay từ những ngày đầu tiên của bệnh.",
+    "indication": "🎯 **Chẩn đoán:** Khẳng định Sốt xuất huyết Dengue từ ngày thứ 4 của cơn sốt trở đi.\n🎯 **Phân loại:** Phân biệt tình trạng nhiễm bệnh tiên phát (mắc lần đầu) hay thứ phát (tái nhiễm).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh, huyết tương.\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn. Có thể lấy máu bất kỳ thời điểm nào trong ngày.",
+    "testingMethods": "Sắc ký miễn dịch (Test nhanh định tính).",
+    "ref": "📊 **Bình thường:** Âm tính (-).",
+    "alert": "⚠️ Kháng thể IgM của vi rút Dengue có thể phản ứng chéo với các vi rút nhóm Flavivirus khác (như vi rút Zika, Viêm não Nhật Bản), gây kết quả dương tính giả.\n💡 Việc xét nghiệm quá sớm (trong 1-3 ngày đầu của bệnh) thường cho kết quả âm tính giả vì cơ thể chưa kịp sinh kháng thể.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Phân tích kết quả Dương tính (+):**\n  🔴 **IgM (+) và IgG (-):**\n    ▫️ Nhiễm Dengue tiên phát cấp tính (Bệnh nhân mắc Sốt xuất huyết lần đầu tiên).\n  🔴 **IgM (+) và IgG (+):**\n    ▫️ Nhiễm Dengue thứ phát cấp tính (Bệnh nhân tái nhiễm với một type vi rút Dengue khác).\n  🔴 **IgM (-) và IgG (+):**\n    ▫️ Bệnh nhân đã từng mắc Sốt xuất huyết trong quá khứ và hiện tại đã có kháng thể bảo vệ (Không phải đợt bệnh cấp).",
+      "decrease": "🔹 **Âm tính:**\n    ▫️ Chưa nhiễm bệnh hoặc lấy mẫu quá sớm trong giai đoạn cửa sổ của vi rút."
     },
-    {
-        name: "Dengue virus NS1Ag test nhanh", 
-        group: "Miễn dịch", 
-        time: "60 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "NS1Ag là kháng nguyên của virus Sốt xuất huyết, xuất hiện rất sớm trong máu ngay từ ngày đầu tiên có triệu chứng sốt.",
-        indication: "Chẩn đoán sớm Sốt xuất huyết Dengue ngay từ ngày 1 đến ngày 3 của bệnh.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Xác định chắc chắn bệnh nhân đang mắc Sốt xuất huyết Dengue giai đoạn khởi phát.",
-            decrease: "• ÂM TÍNH: Không phát hiện virus, hoặc nồng độ virus đã giảm (sau ngày thứ 4 của bệnh)."
-        }
+    "interferingFactors": "❌ **Lỗi thời điểm:** Chạy test IgM/IgG vào ngày thứ 1 hoặc 2 của cơn sốt là không có giá trị chẩn đoán.\n💊 **Bệnh lý nền:** Tình trạng tăng yếu tố dạng thấp (RF) cao có thể gây phản ứng nhiễu trên test nhanh.",
+    "clinicalNote": "Theo Hướng dẫn chẩn đoán và điều trị Sốt xuất huyết Dengue (**QĐ 1450/QĐ-BYT 2024**), việc phân biệt nhiễm tiên phát hay thứ phát rất quan trọng. Bệnh nhân tái nhiễm (thứ phát, có IgG dương tính sớm) có nguy cơ diễn tiến nặng, thoát huyết tương và rơi vào Sốc (Dengue Shock Syndrome) cao hơn rất nhiều so với nhiễm lần đầu do cơ chế tăng cường miễn dịch phụ thuộc kháng thể (ADE)."
+  },
+  {
+    "name": "Dengue virus NS1Ag test nhanh [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "NS1 (Non-Structural protein 1) là một kháng nguyên protein không cấu trúc do vi rút Dengue tiết ra vào dòng máu trong quá trình nhân lên. Nó xuất hiện cực kỳ sớm ngay khi vi rút vừa xâm nhập cơ thể.",
+    "physiology": "📌 **Động học:** Kháng nguyên NS1 xuất hiện trong máu ngay từ ngày đầu tiên (ngày 1) có triệu chứng sốt và nồng độ duy trì ở mức cao trong 5 ngày đầu. Sau ngày thứ 5, kháng nguyên này bị trung hòa bởi các kháng thể nội sinh nên giảm nhanh chóng.",
+    "indication": "🎯 **Chẩn đoán cực sớm:** Khẳng định bệnh Sốt xuất huyết Dengue trong giai đoạn đầu tiên (từ ngày 1 đến ngày 5 của bệnh) khi kháng thể IgM/IgG chưa hình thành.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh, huyết tương.\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn. Cần chỉ định lấy máu ngay khi bệnh nhân có biểu hiện sốt cao đột ngột, nghi ngờ dịch tễ.",
+    "testingMethods": "Sắc ký miễn dịch (Test nhanh định tính).",
+    "ref": "📊 **Bình thường:** Âm tính (-).",
+    "alert": "⚠️ Sau ngày thứ 5 của cơn sốt, nồng độ NS1 trong máu sụt giảm rất nhanh. Một kết quả **NS1 (-) ở ngày thứ 6 hoàn toàn không loại trừ được Sốt xuất huyết** (lúc này phải chuyển sang xét nghiệm IgM/IgG).\n💡 Không được dùng mức độ đậm nhạt của vạch test NS1 để tiên lượng độ nặng của bệnh (Vạch NS1 đậm không có nghĩa là bệnh nhân chắc chắn sẽ bị sốc hay giảm tiểu cầu nặng).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **NS1Ag Dương tính (+):**\n  🔴 **Ý nghĩa chẩn đoán:**\n    ▫️ Khẳng định chắc chắn bệnh nhân đang nhiễm vi rút Dengue cấp tính ở giai đoạn sớm (Giai đoạn vi rút huyết - Viremia).\n  🔴 **Đặc điểm lâm sàng đi kèm:**\n    ▫️ Giai đoạn này bệnh nhân thường sốt cao liên tục 39-40 độ C, nhức mỏi cơ khớp rã rời, đau hốc mắt, sung huyết da (nhưng chưa đến giai đoạn nguy hiểm thoát mạch).",
+      "decrease": "🔹 **Âm tính:**\n    ▫️ Không mắc bệnh hoặc lấy mẫu quá muộn (khi vi rút huyết đã giảm)."
     },
+    "interferingFactors": "❌ **Âm tính giả:** Bệnh nhân đến khám muộn (sau ngày 5), hoặc tải lượng vi rút sinh ra trong máu quá thấp dưới ngưỡng phát hiện của test nhanh.",
+    "clinicalNote": "Theo Phác đồ điều trị của Bộ Y tế hiện hành (**QĐ 1450/QĐ-BYT 2024**), chiến lược cận lâm sàng hoàn hảo nhất là: Sốt < 4 ngày: Chỉ định NS1Ag. Sốt ≥ 4 ngày: Chỉ định IgM/IgG. Cần đặc biệt ghi nhớ, dù test NS1 (+) hay (-), việc quyết định truyền dịch hay cho bệnh nhân nhập viện phải dựa vào việc theo dõi sát sao **HCT (Dung tích hồng cầu) và Tiểu cầu (PLT)** mỗi ngày, vì đây mới là các thông số phản ánh biến chứng thoát dịch và chảy máu."
+  },
     {
         name: "Treponema pallidum test nhanh", 
         group: "Miễn dịch", 
@@ -856,45 +946,82 @@ const labTests: LabTest[] = [
             decrease: "• ÂM TÍNH: Không nhiễm vi khuẩn Giang mai."
         }
     },
-    {
-        name: "Salmonella Widal", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "Phản ứng Widal tìm kháng thể ngưng kết chống lại các kháng nguyên O và H của vi khuẩn Salmonella gây bệnh thương hàn.",
-        indication: "Hỗ trợ chẩn đoán bệnh Sốt thương hàn kéo dài.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Cảnh báo bệnh nhân đang mắc bệnh Sốt thương hàn (hiệu giá kháng thể tăng cao trên 1/100).",
-            decrease: "• ÂM TÍNH: Bình thường."
-        }
+   {
+    "name": "Treponema pallidum test nhanh [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Xét nghiệm test nhanh phát hiện kháng thể đặc hiệu chống lại xoắn khuẩn **Treponema pallidum** - tác nhân gây bệnh Giang mai (Syphilis).",
+    "physiology": "📌 **Động học:** Kháng thể đặc hiệu xuất hiện trong máu từ 1 - 4 tuần sau khi xuất hiện săng giang mai.\n📌 **Đặc tính:** Kháng thể này tồn tại rất lâu, thường là **suốt đời** ngay cả khi bệnh nhân đã được điều trị khỏi bệnh thành công.",
+    "indication": "🎯 **Sàng lọc:** Phụ nữ mang thai, người hiến máu, nhóm đối tượng có nguy cơ cao (quan hệ tình dục không an toàn).\n🎯 **Chẩn đoán:** Hỗ trợ chẩn đoán sơ bộ bệnh giang mai ở các tuyến cơ sở.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh, huyết tương hoặc máu toàn phần.\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn.\n⚠️ **Bảo mật:** Yêu cầu tư vấn và bảo mật thông tin người bệnh trước và sau xét nghiệm.",
+    "testingMethods": "Sắc ký miễn dịch (Test nhanh định tính).",
+    "ref": "📊 **Bình thường:** Âm tính (-).",
+    "alert": "⚠️ Kết quả Treponema pallidum test nhanh Dương tính (+) **chỉ chứng tỏ bệnh nhân đã từng nhiễm** xoắn khuẩn giang mai. Nó KHÔNG thể phân biệt được bệnh nhân đang mắc bệnh cấp tính hay là sẹo huyết thanh của một nhiễm trùng trong quá khứ đã được chữa khỏi.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Test Dương tính (+):**\n  🔴 **Bệnh lý:**\n    ▫️ Giang mai thời kỳ I, II, III hoặc giang mai tiềm ẩn.\n    ▫️ Tiền sử đã từng mắc bệnh giang mai.",
+      "decrease": "🔹 **Test Âm tính (-):**\n    ▫️ Không nhiễm bệnh.\n    ▫️ Giai đoạn cửa sổ (đang ủ bệnh, cơ thể chưa sinh đủ kháng thể)."
     },
-    {
-        name: "HBsAg miễn dịch tự động", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "< 0.03 IU/ml", 
-        alert: "",
-        concept: "Định lượng nồng độ kháng nguyên bề mặt virus viêm gan B bằng hệ thống máy tự động, cho độ chính xác cực cao.",
-        indication: "Chẩn đoán chính xác tình trạng nhiễm viêm gan B và theo dõi đáp ứng với thuốc kháng virus.",
-        pathologicalMeaning: {
-            increase: "• TĂNG (Dương tính): Mắc viêm gan B. Nồng độ càng cao phản ánh lượng kháng nguyên virus trong máu càng nhiều.",
-            decrease: "• BÌNH THƯỜNG (Âm tính): Không nhiễm viêm gan B, hoặc đã điều trị khỏi (chuyển đảo huyết thanh)."
-        }
+    "interferingFactors": "❌ **Lỗi mẫu:** Mẫu máu vỡ hồng cầu hoặc nhiễm khuẩn.\n💊 **Dương tính giả:** Có thể gặp ở phụ nữ có thai, bệnh lý tự miễn (Lupus ban đỏ hệ thống), bệnh phong, sốt rét, hoặc các nhiễm trùng xoắn khuẩn khác (Yaws, Pinta).",
+    "clinicalNote": "Nếu Treponema pallidum test nhanh cho kết quả Dương tính, bác sĩ **bắt buộc phải chỉ định thêm** các xét nghiệm không đặc hiệu (như RPR hoặc VDRL) để định lượng kháng thể. RPR/VDRL sẽ phản ánh mức độ hoạt động thực sự của bệnh ở hiện tại và được dùng để theo dõi xem phác đồ điều trị kháng sinh (Penicillin) có hiệu quả hay không [1]."
+  },
+  {
+    "name": "Salmonella Widal [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Phản ứng Widal là xét nghiệm ngưng kết nhằm phát hiện kháng thể đặc hiệu trong huyết thanh chống lại kháng nguyên thân (O) và kháng nguyên lông (H) của trực khuẩn **Salmonella typhi và paratyphi** (tác nhân gây bệnh Thương hàn).",
+    "physiology": "📌 **Kháng thể O (IgM):** Xuất hiện sớm từ ngày 8 của bệnh, đạt đỉnh ở tuần thứ 3 và giảm nhanh chóng. Phản ánh một nhiễm trùng cấp tính.\n📌 **Kháng thể H (IgG):** Xuất hiện muộn hơn (ngày 10-12), tăng từ từ và tồn tại rất lâu trong máu (có thể nhiều năm). Phản ánh tình trạng đã từng mắc bệnh hoặc sau tiêm vắc xin.",
+    "indication": "🎯 **Chẩn đoán:** Hỗ trợ chẩn đoán sốt thương hàn và phó thương hàn ở tuần thứ 2 của bệnh trở đi.\n🎯 **Dịch tễ:** Thăm dò dịch tễ học tại các khu vực đang có dịch thương hàn bùng phát.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn.\n⚠️ **Lưu ý:** Thường yêu cầu lấy **2 mẫu máu** cách nhau 1 tuần để tìm động lực kháng thể (sự gia tăng hiệu giá kháng thể).",
+    "testingMethods": "Phản ứng ngưng kết trên phiến kính hoặc trong ống nghiệm.",
+    "ref": "📊 **Bình thường:** Kháng thể O < 1/100 và Kháng thể H < 1/200.",
+    "alert": "⚠️ Phản ứng Widal có độ nhạy và độ đặc hiệu không cao. Xét nghiệm âm tính trong tuần đầu tiên của cơn sốt là điều hoàn toàn bình thường (do cơ thể chưa kịp sinh kháng thể).\n💡 Việc lạm dụng kháng sinh sớm có thể ngăn cản sự hình thành kháng thể, dẫn đến kết quả Widal **âm tính giả** dù bệnh nhân thực sự mắc thương hàn.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Widal Dương tính có ý nghĩa chẩn đoán:**\n  🔴 **Nhiễm thương hàn cấp tính:**\n    ▫️ Hiệu giá kháng nguyên O ≥ 1/100 và H ≥ 1/200 ở một lần thử duy nhất (có giá trị gợi ý).\n    ▫️ Động lực kháng thể tăng gấp 4 lần giữa 2 lần lấy máu cách nhau 7-10 ngày (giá trị chẩn đoán chắc chắn).\n  🔴 **Tình trạng khác:**\n    ▫️ Kháng thể H tăng cao đơn độc: Tiền sử mắc thương hàn hoặc đã tiêm vắc xin (TAB).",
+      "decrease": "Không có ý nghĩa lâm sàng đặc hiệu."
     },
-    {
-        name: "HCV Ab miễn dịch tự động", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "< 1.0 COI", 
-        alert: "",
-        concept: "Tìm kháng thể chống lại virus Viêm gan C (HCV) bằng hệ thống miễn dịch tự động.",
-        indication: "Tầm soát, chẩn đoán người có nguy cơ mắc viêm gan C.",
-        pathologicalMeaning: {
-            increase: "• TĂNG (> 1.0 COI): Dấu hiệu cho thấy bệnh nhân đang nhiễm hoặc đã từng tiếp xúc với virus Viêm gan C.",
-            decrease: "• BÌNH THƯỜNG (< 1.0 COI): Không nhiễm virus Viêm gan C."
-        }
+    "interferingFactors": "❌ **Dương tính giả:** Viêm gan mạn, các nhiễm khuẩn đường ruột khác do có phản ứng chéo kháng nguyên.\n💊 **Âm tính giả:** Bệnh nhân suy giảm miễn dịch, hoặc đã dùng kháng sinh đặc hiệu từ rất sớm.",
+    "clinicalNote": "Ngày nay, để chẩn đoán chính xác bệnh thương hàn trong tuần đầu tiên của cơn sốt, **Cấy máu** (Blood culture) là tiêu chuẩn vàng. Phản ứng Widal chủ yếu mang lại lợi ích chẩn đoán hồi cứu khi cấy máu âm tính hoặc được áp dụng ở các cơ sở y tế tuyến dưới thiếu trang thiết bị nuôi cấy vi sinh [1]."
+  },
+  {
+    "name": "HBsAg miễn dịch tự động [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "HBsAg là kháng nguyên bề mặt của vi rút Viêm gan B (HBV). Đo HBsAg bằng hệ thống miễn dịch tự động (phát quang hóa học) mang lại độ nhạy tuyệt đối, giúp khẳng định sự hiện diện của HBV trong cơ thể.",
+    "physiology": "📌 **Động học:** Xuất hiện rất sớm trong máu từ 1 - 10 tuần sau khi phơi nhiễm, ngay cả trước khi men gan (ALT/AST) tăng hoặc có triệu chứng vàng da.\n📌 **Tiến triển mạn tính:** Nếu HBsAg tồn tại liên tục trong máu **vượt quá 6 tháng**, bệnh nhân được chẩn đoán là nhiễm Viêm gan B mạn tính.",
+    "indication": "🎯 **Sàng lọc:** Mọi phụ nữ có thai (để dự phòng lây truyền mẹ con), người hiến máu, khám sức khỏe định kỳ.\n🎯 **Chẩn đoán:** Khẳng định bệnh viêm gan B cấp hoặc mạn tính.\n🎯 **Theo dõi:** Đánh giá đáp ứng với liệu pháp điều trị kháng vi rút.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh hoặc huyết tương.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA, ECLIA) hoặc Điện hóa phát quang.",
+    "ref": "📊 **Bình thường:** Âm tính (Chỉ số COI/SCO < 1.0 tùy hệ thống).",
+    "alert": "⚠️ HBsAg Dương tính (+) chỉ khẳng định có vi rút trong cơ thể, **không phản ánh** mức độ nhân lên của vi rút hay sự tàn phá gan. Bắt buộc phải đo thêm men gan và tải lượng vi rút.\n💡 Hiện nay, sự xuất hiện của **Định lượng HBsAg (qHBsAg)** giúp bác sĩ tiên lượng khả năng chuyển đổi huyết thanh và quyết định thời điểm an toàn để ngừng thuốc kháng vi rút.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **HBsAg Dương tính (Nhiễm HBV):**\n  🔴 **Viêm gan B cấp tính:** Vi rút đang nhân lên mạnh, nguy cơ lây nhiễm cao.\n  🔴 **Viêm gan B mạn tính:** HBsAg dương tính kéo dài > 6 tháng.\n  🔴 **Người lành mang vi rút (Thể dung nạp/ẩn):** HBsAg (+), nhưng men gan bình thường, HBV-DNA thấp, không có tổn thương viêm hoại tử nhu mô gan.",
+      "decrease": "🔹 **HBsAg Âm tính:**\n    ▫️ Không nhiễm HBV hoặc vi rút đã bị thải trừ hoàn toàn (Cần đo thêm Anti-HBs để xác nhận cơ thể đã có kháng thể bảo vệ chưa)."
     },
+    "interferingFactors": "❌ **Lỗi mẫu:** Mẫu máu vỡ hồng cầu nặng có thể ảnh hưởng quang học của máy đo.\n💊 **Dương tính giả thoáng qua:** Bệnh nhân vừa tiêm vắc xin Viêm gan B trong vòng 1-2 tuần trước đó.",
+    "clinicalNote": "Theo bản cập nhật **WHO 2024**, chiến lược **'Reflex HBV DNA testing'** được ưu tiên áp dụng: Khi phòng xét nghiệm chạy ra kết quả HBsAg Dương tính, mẫu máu lưu trữ đó sẽ tự động được sử dụng để đo ngay tải lượng HBV-DNA (PCR) mà không cần chờ bệnh nhân quay lại. Việc này giúp thúc đẩy liên kết chăm sóc, rút ngắn thời gian và đưa bệnh nhân vào phác đồ điều trị sớm nhất [2, 3]."
+  },
+  {
+    "name": "HCV Ab miễn dịch tự động [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Anti-HCV (HCV Ab) là kháng thể do hệ miễn dịch tạo ra để chống lại Vi rút Viêm gan C (HCV). Xét nghiệm miễn dịch tự động (CLIA) mang lại độ nhạy và đặc hiệu gần 100% trong việc phát hiện sự phơi nhiễm với HCV.",
+    "physiology": "📌 **Động học:** Sự chuyển đổi huyết thanh (xuất hiện kháng thể) khá muộn, thường từ **15 - 30 ngày** sau khi nồng độ men gan đạt đỉnh.\n📌 **Đặc tính:** Kháng thể Anti-HCV **không có vai trò bảo vệ**. Nó sẽ tồn tại suốt đời trong máu ngay cả khi bệnh nhân đã được điều trị tiêu diệt hoàn toàn vi rút.",
+    "indication": "🎯 **Sàng lọc:** Quần thể nguy cơ cao (nhận truyền máu trước 1990, tiêm chích, chạy thận nhân tạo), kiểm tra sức khỏe tổng quát.\n🎯 **Chẩn đoán:** Tìm nguyên nhân viêm gan, xơ gan, hoặc bất thường men gan chưa rõ lý do.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh hoặc huyết tương.\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA, ECLIA).",
+    "ref": "📊 **Bình thường:** Âm tính (Chỉ số S/CO < 1.0 tùy hệ thống).",
+    "alert": "⚠️ Kết quả Anti-HCV Dương tính (+) **KHÔNG ĐỒNG NGHĨA** với việc bệnh nhân hiện đang mắc Viêm gan C. Nó chỉ chứng minh bệnh nhân đã TỪNG tiếp xúc với vi rút trong quá khứ.\n💡 Có khoảng 15-25% bệnh nhân tự thải trừ vi rút HCV cấp tính mà không cần thuốc, nhưng Anti-HCV của họ vẫn sẽ dương tính suốt đời.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Anti-HCV Dương tính (+):**\n  🔴 **Tình trạng phơi nhiễm:**\n    ▫️ Đang nhiễm Viêm gan C cấp hoặc mạn tính.\n    ▫️ Tiền sử đã nhiễm Viêm gan C và đã khỏi bệnh (tự khỏi hoặc do điều trị thành công).",
+      "decrease": "🔹 **Anti-HCV Âm tính (-):**\n    ▫️ Không bị lây nhiễm.\n    ▫️ Đang ở \"Giai đoạn cửa sổ\" (phơi nhiễm cấp tính nhưng cơ thể chưa kịp sản xuất kháng thể)."
+    },
+    "interferingFactors": "❌ **Âm tính giả:** Thường gặp ở bệnh nhân suy giảm miễn dịch nặng (đồng nhiễm HIV), bệnh nhân chạy thận nhân tạo (do suy giảm sản xuất kháng thể).\n💊 **Dương tính giả:** Ở bệnh nhân có bệnh lý tự miễn hoặc có yếu tố dạng thấp (RF) tăng cao.",
+    "clinicalNote": "Theo **Quyết định 2855/QĐ-BYT (2024)**, quy trình chuẩn khi có kết quả Anti-HCV Dương tính là **BẮT BUỘC** chỉ định đo ngay tải lượng **HCV-RNA (bằng PCR)**. Nếu HCV-RNA dương tính, bệnh nhân sẽ được đánh giá mức độ xơ hóa gan bằng các phương pháp không xâm lấn (như FIB-4, APRI) và bắt đầu phác đồ thuốc kháng vi rút trực tiếp (DAA) ưu việt hiện nay với tỷ lệ chữa khỏi dứt điểm (SVR) trên 95% [4, 5]."
+  },
     {
         name: "Toxocara Ab miễn dịch bán tự động", 
         group: "Miễn dịch", 
@@ -908,32 +1035,44 @@ const labTests: LabTest[] = [
             decrease: "• ÂM TÍNH: Không nhiễm."
         }
     },
-    {
-        name: "Định lượng NT-ProBNP", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "< 50 tuổi: < 50 pg/ml\n50 - 75 tuổi: 75 - 100 pg/ml\n> 75 tuổi: 250 - 300 pg/ml", 
-        alert: "",
-        concept: "NT-ProBNP là một mảnh peptide được giải phóng từ tâm thất của tim khi cơ tim bị căng giãn hoặc chịu áp lực cao.",
-        indication: "Tiêu chuẩn vàng để chẩn đoán, đánh giá mức độ nghiêm trọng và theo dõi điều trị bệnh Suy tim.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Cảnh báo bệnh lý Suy tim (cấp hoặc mạn tính), phì đại tâm thất, nhồi máu cơ tim, hoặc thuyên tắc phổi.",
-            decrease: "• BÌNH THƯỜNG: Chức năng bơm máu của tim bình thường, giúp loại trừ nguyên nhân suy tim ở bệnh nhân khó thở."
-        }
+   {
+    "name": "Định lượng NT-ProBNP [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "NT-ProBNP (N-terminal pro-brain natriuretic peptide) là một đoạn peptid không có hoạt tính sinh học, được giải phóng vào máu khi cơ tâm thất bị kéo căng do tăng áp lực hoặc quá tải thể tích. Đây là \"Tiêu chuẩn vàng\" sinh hóa để chẩn đoán suy tim.",
+    "physiology": "📌 **Nguồn gốc:** Tiết ra chủ yếu từ các tế bào cơ tâm thất của tim.\n📌 **Động học:** NT-ProBNP có thời gian bán hủy dài (khoảng 120 phút) và ổn định trong ống nghiệm hơn nhiều so với BNP (chỉ 20 phút).\n📌 **Thải trừ:** Lọc và bài xuất hoàn toàn qua thận.",
+    "indication": "🎯 **Cấp cứu hô hấp:** Vũ khí sắc bén nhất để phân biệt tình trạng khó thở do suy tim cấp với khó thở do các bệnh lý phổi (COPD, hen).\n🎯 **Phân tầng:** Đánh giá mức độ trầm trọng và tiên lượng rủi ro tử vong ở bệnh nhân suy tim.\n🎯 **Giám sát:** Theo dõi đáp ứng với các thuốc điều trị nội khoa suy tim.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh hoặc huyết tương (thường dùng ống EDTA).\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn. Bệnh nhân nên được nghỉ ngơi tĩnh trước khi lấy máu.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA, ECLIA).",
+    "ref": "📊 **Bình thường (Loại trừ suy tim mạn):** < 125 pg/mL.\n📊 **Ngưỡng cấp cứu (Rule-out suy tim cấp):** < 300 pg/mL.\n📊 **Ngưỡng chẩn đoán (Rule-in suy tim cấp) theo tuổi:** \n▫️ Dưới 50 tuổi: > 450 pg/mL.\n▫️ 50 - 75 tuổi: > 900 pg/mL.\n▫️ Trên 75 tuổi: > 1800 pg/mL.",
+    "alert": "⚠️ Độ thanh thải của thận chi phối mạnh mẽ NT-ProBNP. Ở bệnh nhân Suy thận mạn, NT-ProBNP sẽ **tăng cao giả tạo** do giảm thải trừ.\n💡 Ngược lại, ở bệnh nhân béo phì (BMI cao), NT-ProBNP lại có xu hướng **thấp giả tạo**, khiến bác sĩ dễ bỏ sót chẩn đoán suy tim nếu chỉ nhìn đơn thuần vào con số.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng NT-ProBNP:**\n  🔴 **Bệnh lý cơ tim (Căng giãn cơ tim):**\n    ▫️ Suy tim sung huyết cấp/mạn tính (Tăng cực cao, tỷ lệ thuận với phân độ NYHA).\n    ▫️ Nhồi máu cơ tim cấp, hội chứng vành cấp.\n    ▫️ Bệnh lý van tim, phì đại thất trái, viêm cơ tim.\n  🔴 **Bệnh lý ngoài tim:**\n    ▫️ Thuyên tắc phổi, tăng áp động mạch phổi, tâm phế mạn (COPD).\n    ▫️ Suy thận cấp/mạn.",
+      "decrease": "🔹 **Giảm NT-ProBNP:**\n    ▫️ Phản ánh bệnh nhân đang đáp ứng rất tốt với phác đồ điều trị suy tim hiện tại (giảm tải thể tích và áp lực buồng tim)."
     },
-    {
-        name: "Định lượng Troponin I [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "Bình thường ở mức cực thấp", 
-        alert: "> 50 pg/ml.",
-        concept: "Troponin I là protein tham gia vào sự co bóp của cơ tim. Nó cực kỳ đặc hiệu cho tim, khi cơ tim bị hoại tử, Troponin I sẽ phóng thích ồ ạt vào máu.",
-        indication: "Xét nghiệm cấp cứu sống còn để chẩn đoán Nhồi máu cơ tim cấp (cơn đau tim).",
-        pathologicalMeaning: {
-            increase: "• TĂNG CAO: Chẩn đoán xác định có sự hoại tử cơ tim (Nhồi máu cơ tim), viêm cơ tim, hoặc chấn thương dập cơ tim.",
-            decrease: "• BÌNH THƯỜNG: Không có dấu hiệu hoại tử cơ tim cấp."
-        }
+    "interferingFactors": "❌ **Yếu tố sinh lý:** Tăng tự nhiên ở người cao tuổi và phụ nữ. Giảm ở người béo phì.\n💊 **Thuốc:** Nhóm thuốc điều trị suy tim mới ARNI (như Entresto) làm tăng nồng độ BNP nhưng **KHÔNG** làm tăng NT-ProBNP.",
+    "clinicalNote": "Theo bản cập nhật từ **AHA/ACC**, một giá trị NT-ProBNP < 300 pg/mL ở bệnh nhân nhập viện cấp cứu vì khó thở cho phép bác sĩ loại trừ nguyên nhân suy tim cấp với độ tin cậy lên tới 98-99%. Ngoài ra, với sự phổ biến của nhóm thuốc ARNI (Entresto), **NT-ProBNP là chỉ dấu duy nhất được công nhận** để theo dõi hiệu quả suy tim ở nhóm bệnh nhân này, vì đo BNP sẽ bị dương tính giả [6, 7]."
+  },
+   {
+    "name": "Định lượng Troponin I [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Troponin I (cTnI) là một protein co cơ đặc hiệu tuyệt đối cho cơ tim. Khác với CK-MB hay Myoglobin có thể tăng khi tổn thương cơ vân, Troponin I chỉ giải phóng vào máu khi tế bào cơ tim bị hoại tử hoặc tổn thương nghiêm trọng.",
+    "physiology": "📌 **Động học (Nhồi máu cơ tim):** Bắt đầu tăng từ 3 - 6 giờ sau tổn thương, đạt đỉnh ở 14 - 20 giờ và **kéo dài rất lâu** (từ 5 đến 7 ngày, Troponin T có thể kéo dài tới 14 ngày).\n📌 **Thanh thải:** Kích thước phân tử lớn, thanh thải chậm qua hệ thống nội mô và thận.",
+    "indication": "🎯 **Cấp cứu (Tiêu chuẩn vàng):** Chẩn đoán xác định Nhồi máu cơ tim cấp (NMCT) và Hội chứng vành cấp (ACS).\n🎯 **Phân tầng rủi ro:** Đánh giá tiên lượng tử vong ở bệnh nhân suy tim, viêm cơ tim hoặc bệnh nhân hồi sức tích cực (ICU).\n🎯 **Bilan trước mổ:** Đánh giá rủi ro tim mạch chu phẫu theo hướng dẫn AHA/ACC 2024.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh hoặc huyết tương (EDTA/Heparin tùy hệ thống máy).\n⏳ **Chuẩn bị:** Cấp cứu không cần nhịn ăn. Lấy máu theo chuỗi thời gian (Vd: 0 giờ, 1 giờ, 2 giờ).",
+    "testingMethods": "Hóa phát quang miễn dịch siêu nhạy (hs-cTnI).",
+    "ref": "📊 **Ngưỡng truyền thống:** < 0,04 ng/mL.\n📊 **Cập nhật AHA/ACC 2025 (hs-cTnI):** Ngưỡng phân vị thứ 99 (99th percentile) phụ thuộc vào giới tính. Phụ nữ có khối lượng cơ tim nhỏ hơn nên ngưỡng cắt (cut-off) bình thường sẽ **thấp hơn nam giới**.",
+    "alert": "⚠️ **Cập nhật AHA/ACC 2025:** Troponin siêu nhạy (hs-cTn) là tiêu chuẩn vàng. Việc sử dụng phác đồ loại trừ nhanh (Rule-out) ở thời điểm **0 giờ và 1 giờ** (hoặc 2 giờ) bằng hs-cTn cho phép bác sĩ cho bệnh nhân xuất viện an toàn chỉ sau 1-2 tiếng theo dõi nếu không có biến động động học (Delta thay đổi không có ý nghĩa).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Bệnh lý Mạch vành (Hội chứng vành cấp - ACS):**\n  🔴 **Hoại tử cơ tim do thiếu máu cục bộ:**\n    ▫️ Nhồi máu cơ tim cấp (ST chênh lên hoặc không có ST chênh lên).\n🔹 **Tổn thương cơ tim không do Mạch vành:**\n  🔴 **Bệnh lý cơ tim trực tiếp:**\n    ▫️ Viêm cơ tim cấp (do virus, tự miễn), đụng dập cơ tim do chấn thương.\n    ▫️ Suy tim cấp mất bù.\n    ▫️ Độc tính cơ tim do hóa chất điều trị ung thư (Doxorubicin).\n  🔴 **Tổn thương thứ phát (Mất cân bằng cung/cầu Oxy):**\n    ▫️ Tắc mạch phổi (gây căng giãn thất phải).\n    ▫️ Nhiễm trùng huyết nặng (Sepsis), sốc nhiễm khuẩn.\n    ▫️ Suy thận mạn tính (làm giảm thanh thải và tổn thương cơ tim âm ỉ).",
+      "decrease": "Không có ý nghĩa bệnh lý lâm sàng."
     },
+    "interferingFactors": "❌ **Giao thoa:** Yếu tố dạng thấp (RF) ở nồng độ rất cao hoặc kháng thể dị vòng (HAMA) có thể gây kết quả dương tính giả.\n💊 **Bệnh lý nền:** Bệnh thận mạn tính thường làm nền Troponin tăng nhẹ dai dẳng, do đó chẩn đoán NMCT bắt buộc phải dựa vào **động học (sự tăng/giảm rõ rệt)** thay vì chỉ một con số cắt ngang.",
+    "clinicalNote": "Theo **AHA/ACC 2025**, để chẩn đoán chính xác tổn thương cơ tim cấp, bắt buộc phải có sự biến thiên nồng độ (tăng lên hoặc giảm xuống) trong đó ít nhất một giá trị vượt ngưỡng phân vị thứ 99. Nếu Troponin tăng cao nhưng duy trì bình nguyên (không thay đổi qua các lần đo), đó là tổn thương cơ tim mạn tính (như suy thận, suy tim mạn) chứ không phải nhồi máu cơ tim cấp."
+  },
     {
         name: "Định lượng Pro-calcitonin [máu]", 
         group: "Miễn dịch", 
@@ -960,58 +1099,82 @@ const labTests: LabTest[] = [
             decrease: "• BÌNH THƯỜNG: Tình trạng viêm đã được kiểm soát."
         }
     },
-    {
-        name: "Định lượng Ferritin [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "15 - 320 ng/ml", 
-        alert: "",
-        concept: "Ferritin là một protein nội bào có chức năng lưu trữ sắt. Nồng độ Ferritin trong máu phản ánh trực tiếp lượng 'kho dự trữ sắt' của cơ thể.",
-        indication: "Phân biệt nguyên nhân gây thiếu máu (do thiếu sắt hay bệnh mạn tính), chẩn đoán bệnh thừa sắt.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Gặp trong bệnh ứ sắt (Hemochromatosis), viêm nhiễm cấp/mãn tính, tổn thương gan, hoặc truyền máu nhiều lần.",
-            decrease: "• GIẢM: Dấu hiệu sớm nhất và đặc hiệu nhất của bệnh Thiếu máu do thiếu sắt."
-        }
+   {
+    "name": "Định lượng Ferritin [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Ferritin là protein dự trữ sắt chính của cơ thể (chủ yếu ở gan, lách, tủy xương). Trong máu, nồng độ Ferritin huyết thanh phản ánh trực tiếp và chính xác nhất tổng khối lượng sắt dự trữ có thể huy động được (1 ng/mL Ferritin tương đương 10 mg sắt dự trữ).",
+    "physiology": "📌 **Đặc tính:** Ferritin đồng thời là một **protein phản ứng pha cấp** (Acute-phase reactant). Nghĩa là nồng độ của nó sẽ tự động tăng vọt khi cơ thể có tình trạng viêm, nhiễm trùng hoặc hoại tử mô, bất kể kho dự trữ sắt thực tế là bao nhiêu.",
+    "indication": "🎯 **Chẩn đoán:** Tiêu chuẩn vàng để chẩn đoán phân biệt Thiếu máu thiếu sắt (Ferritin giảm) với Thiếu máu do bệnh mạn tính (Ferritin tăng/bình thường).\n🎯 **Quá tải sắt:** Sàng lọc và theo dõi bệnh nhiễm thiết huyết tố (Hemochromatosis) hoặc bệnh nhân phải truyền máu nhiều lần (Thalassemia).\n🎯 **Dinh dưỡng:** Đánh giá rủi ro thiếu hụt sắt ở nhóm nguy cơ cao (phụ nữ có thai, trẻ đẻ non).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh hoặc huyết tương.\n⏳ **Chuẩn bị:** Yêu cầu nhịn ăn qua đêm. Lấy máu vào buổi sáng.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA, ECLIA).",
+    "ref": "📊 **Nam:** 30 - 400 ng/mL (hoặc µg/L).\n📊 **Nữ:** 13 - 150 ng/mL.\n*(Ngưỡng thiếu hụt sắt chắc chắn: < 15 ng/mL. Tuy nhiên ở người có bệnh viêm nhiễm, ngưỡng thiếu sắt có thể được đẩy lên < 100 ng/mL).*.",
+    "alert": "⚠️ Ferritin là xét nghiệm nhạy nhất để phát hiện tình trạng cạn kiệt dự trữ sắt (giảm rất lâu trước khi hồng cầu nhỏ lại hay lượng Hemoglobin sụt giảm). Tuy nhiên, nó dễ bị **bình thường hóa giả tạo** nếu bệnh nhân đang có sốt, viêm nhiễm hoặc mắc bệnh gan.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng do Quá tải Sắt thực sự:**\n  🔴 **Bệnh lý:**\n    ▫️ Bệnh nhiễm thiết huyết tố bẩm sinh (Hemochromatosis) (nồng độ có thể > 1000 ng/mL).\n    ▫️ Quá tải sắt thứ phát (truyền máu nhiều lần trong Thalassemia, suy tủy).\n🔹 **Tăng do Hội chứng Viêm / Phá hủy mô (Phản ứng pha cấp):**\n  🔴 **Nhiễm trùng & Viêm mạn tính:**\n    ▫️ Viêm khớp dạng thấp, Lupus, nhiễm trùng huyết.\n  🔴 **Tổn thương tế bào gan:**\n    ▫️ Viêm gan virus cấp, xơ gan do rượu, gan nhiễm mỡ (giải phóng Ferritin dự trữ từ tế bào gan bị vỡ vào máu).\n  🔴 **Ác tính:**\n    ▫️ Bệnh bạch cầu cấp (Leukemia), U lympho Hodgkin, ung thư biểu mô.",
+      "decrease": "🔹 **Giảm Ferritin máu (Cạn kiệt dự trữ sắt):**\n  🔴 **Cung cấp thiếu / Mất máu mạn tính:**\n    ▫️ Xuất huyết rỉ rả đường tiêu hóa (loét dạ dày, trĩ, ung thư đại tràng) hoặc rong kinh nặng.\n    ▫️ Chế độ ăn thiếu sắt, hội chứng kém hấp thu (bệnh Celiac).\n  🔴 **Tăng nhu cầu:**\n    ▫️ Phụ nữ mang thai (đặc biệt 3 tháng cuối), trẻ em đang giai đoạn tăng trưởng nhanh."
     },
-    {
-        name: "Định lượng Folate [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "2.3 - 24.8 ng/mL", 
-        alert: "",
-        concept: "Folate (Vitamin B9) cần thiết cho việc sản xuất DNA và phân chia tế bào, đặc biệt là sự hình thành hồng cầu khỏe mạnh và phát triển thần kinh thai nhi.",
-        indication: "Chẩn đoán nguyên nhân gây thiếu máu hồng cầu to, kiểm tra suy dinh dưỡng, đánh giá ở phụ nữ mang thai.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Ít gặp, có thể do ăn chay nhiều rau xanh hoặc bổ sung quá nhiều vitamin.",
-            decrease: "• GIẢM: Gây thiếu máu hồng cầu khổng lồ, sụt cân, tiêu chảy. Gặp ở người nghiện rượu, suy dinh dưỡng, hội chứng kém hấp thu."
-        }
+    "interferingFactors": "❌ **Lỗi mẫu:** Mẫu máu vỡ hồng cầu hoặc nồng độ Lipid máu quá cao.\n💊 **Thuốc:** Bổ sung sắt đường uống/tĩnh mạch trước đó làm tăng tạm thời Ferritin. Dùng thuốc tránh thai đường uống cũng làm tăng Ferritin.",
+    "clinicalNote": "Theo hướng dẫn của Hiệp hội USPSTF (Mỹ), việc sàng lọc thiếu máu thiếu sắt là bắt buộc đối với phụ nữ mang thai. Khi điều trị thiếu máu thiếu sắt, nồng độ Hemoglobin có thể bình thường lại sau vài tuần, nhưng bác sĩ phải duy trì việc uống Sắt liên tục trong **3 đến 6 tháng** cho đến khi xét nghiệm Ferritin máu đạt mức dự trữ an toàn."
+  },
+   {
+    "name": "Định lượng Folate (Vitamin B9) [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Folate (hay Folic Acid) là một vitamin nhóm B hòa tan trong nước, thiết yếu đối với quá trình tổng hợp DNA, RNA và sự phân chia tế bào (đặc biệt là quá trình tạo hồng cầu ở tủy xương). Cơ thể không tự tổng hợp được Folate mà phải hấp thu hoàn toàn từ thức ăn (rau xanh, nấm, gan động vật) tại hỗng tràng.",
+    "physiology": "📌 **Dự trữ:** Kho chứa Folate của cơ thể rất nhỏ. Nếu ngừng hoàn toàn nguồn cung cấp, cơ thể sẽ cạn kiệt Folate và biểu hiện thiếu máu chỉ sau **3 đến 4 tháng** (nhanh hơn rất nhiều so với Vitamin B12 kéo dài 3-5 năm).\n📌 **Động học:** Nồng độ Folate huyết thanh phản ánh lượng Folate được hấp thu gần đây. Để đánh giá dự trữ tế bào chính xác hơn, có thể đo Folate trong hồng cầu.",
+    "indication": "🎯 **Huyết học:** Chẩn đoán phân biệt nguyên nhân gây Thiếu máu hồng cầu to (Macrocytic anemia).\n🎯 **Dinh dưỡng & Sản khoa:** Đánh giá tình trạng suy dinh dưỡng, nghiện rượu. Tầm soát trước mang thai để dự phòng dị tật ống thần kinh ở thai nhi.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh (ống tránh sáng).\n⏳ **Chuẩn bị:** Yêu cầu nhịn ăn qua đêm (rất quan trọng vì Folate tăng vọt ngay sau bữa ăn).\n⚠️ **Lưu ý:** Mẫu máu không được vỡ hồng cầu (vì nồng độ Folate trong hồng cầu cao gấp nhiều lần huyết thanh).",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA).",
+    "ref": "📊 **Bình thường:** > 7,3 nmol/L (≥ 3,3 ng/mL).\n📊 **Thiếu hụt ở mức ranh giới:** 5,7 - 7,3 nmol/L (2,5 - 3,2 ng/mL).\n📊 **Thiếu hụt:** < 5,7 nmol/L (< 2,5 ng/mL).",
+    "alert": "⚠️ Nếu bệnh nhân bị thiếu hụt cả Folate và Vitamin B12, việc chỉ kê đơn bù Folate đơn độc sẽ làm tình trạng thiếu máu có vẻ hồi phục, nhưng lại **che lấp và làm trầm trọng thêm các tổn thương thần kinh** không hồi phục do thiếu B12 gây ra. Phải luôn xét nghiệm và bù cả hai nếu cần.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Folate máu (Ít có ý nghĩa bệnh lý):**\n  🔴 **Nguyên nhân:**\n    ▫️ Bổ sung Vitamin quá mức hoặc ăn chế độ ăn cực giàu rau xanh sát giờ xét nghiệm.\n    ▫️ Hội chứng quai ruột mù (Blind loop syndrome) - do vi khuẩn ruột sản sinh quá mức Folate.",
+      "decrease": "🔹 **Giảm Folate máu (Thiếu máu hồng cầu to):**\n  🔴 **Giảm cung cấp / Giảm hấp thu:**\n    ▫️ Chế độ ăn nghèo nàn, nghiện rượu mạn tính (nguyên nhân cực kỳ phổ biến).\n    ▫️ Bệnh Celiac, cắt đoạn hỗng tràng.\n  🔴 **Tăng nhu cầu hoặc Mất mát:**\n    ▫️ Phụ nữ có thai, trẻ đẻ non.\n    ▫️ Tình trạng tăng sinh tế bào ác tính (Ung thư máu), tan máu mạn tính.\n    ▫️ Bệnh nhân phải chạy thận nhân tạo."
     },
+    "interferingFactors": "❌ **Lỗi mẫu:** Vỡ hồng cầu gây tăng giả tạo. Phơi sáng ống máu làm phân hủy Folate gây giảm giả tạo.\n💊 **Thuốc làm GIẢM Folate:** Methotrexate, Phenytoin, thuốc chống co giật, thuốc tránh thai đường uống, Trimethoprim (kháng sinh ức chế tổng hợp Folate).",
+    "clinicalNote": "Tình trạng thiếu Folate quanh thời điểm thụ thai làm tăng đáng kể rủi ro khuyết tật ống thần kinh (như nứt đốt sống, thai vô sọ). Mọi hướng dẫn sản khoa hiện đại đều khuyến cáo phụ nữ nên chủ động uống bổ sung Acid Folic (ít nhất 400 µg/ngày) từ 1-3 tháng trước khi có ý định mang thai."
+  },
     {
-        name: "Định lượng Vitamin B12 [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "180 - 914 pg/mL", 
-        alert: "",
-        concept: "Vitamin B12 tham gia vào quá trình tạo máu và duy trì hệ thần kinh khỏe mạnh. Cơ thể không tự tổng hợp được mà phải lấy từ thức ăn động vật.",
-        indication: "Tầm soát nguyên nhân thiếu máu hồng cầu to, tê bì chân tay do tổn thương thần kinh thần kinh, đánh giá hội chứng kém hấp thu.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Gặp trong bệnh gan nặng, suy thận mạn, bệnh bạch cầu.",
-            decrease: "• GIẢM: Gây bệnh Thiếu máu ác tính, tổn thương thần kinh. Gặp ở người ăn chay trường, cắt dạ dày, nhiễm giun sán."
-        }
+    "name": "Định lượng Vitamin B12 [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Vitamin B12 (Cobalamin) là vi chất phức tạp có chứa Cobalt, không thể thiếu cho quá trình tổng hợp DNA, tạo hồng cầu và duy trì sự toàn vẹn của lớp myelin bao bọc hệ thần kinh. Nguồn cung cấp B12 hoàn toàn từ động vật (thịt, cá, trứng, sữa).",
+    "physiology": "📌 **Hấp thu:** Quá trình hấp thu B12 cực kỳ phức tạp. Dạ dày phải tiết ra acid và **Yếu tố nội (Intrinsic Factor)** để gắn kết với B12. Phức hợp này sau đó mới được hấp thu đặc hiệu tại đoạn cuối của hồi tràng.\n📌 **Dự trữ:** Gan là kho chứa khổng lồ của B12. Quá trình cạn kiệt B12 do chế độ ăn mất từ **3 đến 5 năm**.",
+    "indication": "🎯 **Huyết học:** Chẩn đoán nguyên nhân Thiếu máu hồng cầu to (bệnh cảnh phân biệt với thiếu Folate).\n🎯 **Thần kinh:** Chẩn đoán các bệnh lý viêm đa dây thần kinh, tê bì tay chân, sa sút trí tuệ, suy giảm trí nhớ không rõ nguyên nhân ở người lớn tuổi.\n🎯 **Tiêu hóa:** Đánh giá tình trạng kém hấp thu ở bệnh nhân viêm teo niêm mạc dạ dày, cắt dạ dày hoặc viêm ruột.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh (ống tránh sáng).\n⏳ **Chuẩn bị:** Yêu cầu nhịn ăn qua đêm.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA, ECLIA).",
+    "ref": "📊 **Bình thường:** 151 - 646 pmol/L (205 - 876 pg/mL).\n📊 **Mức ranh giới:** 103 - 150 pmol/L (140 - 204 pg/mL).\n📊 **Thiếu hụt:** < 103 pmol/L (< 140 pg/mL).",
+    "alert": "⚠️ Tổn thương thần kinh (tê bì, thất điều, sa sút trí tuệ) do thiếu Vitamin B12 nếu không được phát hiện và bù đắp kịp thời sẽ trở thành **tổn thương vĩnh viễn không thể hồi phục**.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Vitamin B12 máu:**\n  🔴 **Nguyên nhân:**\n    ▫️ Bệnh lý tế bào gan hoại tử (Viêm gan cấp, xơ gan) làm giải phóng kho dự trữ B12 vào máu.\n    ▫️ Bệnh tăng sinh tủy (Đa hồng cầu Vaquez, bạch cầu mạn dòng tủy).\n    ▫️ Uống quá liều thuốc bổ chứa B12.",
+      "decrease": "🔹 **Giảm Vitamin B12 máu (Thiếu máu hồng cầu to):**\n  🔴 **Thiếu Yếu tố nội (Bệnh Biermer - Pernicious Anemia):**\n    ▫️ Thiếu máu ác tính do hệ miễn dịch sinh kháng thể phá hủy tế bào thành dạ dày, làm mất hoàn toàn khả năng hấp thu B12.\n  🔴 **Giảm hấp thu tại ruột / dạ dày:**\n    ▫️ Sau phẫu thuật cắt dạ dày, cắt hồi tràng, mổ nối tắt dạ dày giảm béo.\n    ▫️ Hội chứng kém hấp thu, bệnh Crohn, viêm hồi tràng.\n  🔴 **Cung cấp thiếu:**\n    ▫️ Người ăn thuần chay kéo dài (Vegan) không dùng thực phẩm chức năng bổ sung."
     },
-    {
-        name: "Định lượng 25-OH Vitamin D (D3) [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "30 - 100 ng/mL", 
-        alert: "",
-        concept: "Vitamin D3 giúp cơ thể hấp thụ Canxi và Phospho từ ruột để duy trì sức mạnh của hệ xương cốt và hệ miễn dịch.",
-        indication: "Tầm soát loãng xương, còi xương ở trẻ em, và theo dõi các bệnh lý chuyển hóa xương.",
-        pathologicalMeaning: {
-            increase: "• TĂNG (Ngộ độc): Dùng quá liều thực phẩm chức năng vitamin D, gây tăng canxi máu, vôi hóa mạch máu.",
-            decrease: "• GIẢM: Gây còi xương ở trẻ em, nhuyễn xương/loãng xương ở người lớn, tăng nguy cơ bệnh tự miễn."
-        }
+    "interferingFactors": "❌ **Lỗi mẫu:** Phơi sáng làm giảm giả tạo. Chỉ định xét nghiệm B12 ngay sau khi tiêm thuốc nhuộm huỳnh quang phóng xạ có thể gây sai số.\n💊 **Thuốc làm GIẢM hấp thu B12:** Metformin (thuốc ĐTĐ), thuốc kháng acid dạ dày (Ức chế bơm proton - PPI, kháng H2), Colchicine, Neomycin.",
+    "clinicalNote": "Ở bệnh nhân Đái tháo đường Type 2 điều trị bằng **Metformin** dài ngày, tình trạng thiếu hụt Vitamin B12 xảy ra khá phổ biến do cản trở hấp thu. ADA khuyến cáo nên kiểm tra định kỳ nồng độ B12 ở nhóm bệnh nhân này, đặc biệt khi bệnh nhân phàn nàn về chứng tê bì tay chân (dễ bị nhầm lẫn là biến chứng thần kinh do tiểu đường)."
+  },
+     {
+    "name": "Định lượng 25-OH Vitamin D (D3) [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Vitamin D là một prohormon (tiền hormon) thiết yếu giúp ruột hấp thu Canxi và Phospho, duy trì độ khoáng hóa của xương. 25-OH Vitamin D là dạng chuyển hóa tại gan, có nồng độ cao nhất và thời gian bán hủy dài nhất trong máu, do đó nó là \"thước đo chuẩn xác nhất\" để đánh giá kho dự trữ Vitamin D của cơ thể.",
+    "physiology": "📌 **Nguồn gốc:** Khoảng 80% được tổng hợp dưới da nhờ tia cực tím (UVB) từ ánh sáng mặt trời, 20% đến từ thức ăn (cá hồi, lòng đỏ trứng, ngũ cốc).\n📌 **Động học:** Chuyển hóa lần 1 tại Gan thành 25-OH Vitamin D (dạng dự trữ, bán hủy 2-3 tuần). Sau đó chuyển hóa lần 2 tại Thận thành 1,25-OH Vitamin D (dạng có hoạt tính sinh học mạnh nhất, bán hủy chỉ vài giờ).",
+    "indication": "🎯 **Nội tiết & Xương khớp:** Chẩn đoán còi xương (trẻ em), nhuyễn xương và loãng xương (người lớn).\n🎯 **Bệnh Thận mạn:** Đánh giá tình trạng Rối loạn chuyển hóa khoáng chất và xương (CKD-MBD) theo chuẩn KDIGO 2024.\n🎯 **Tuyến cận giáp:** Tìm nguyên nhân gây cường cận giáp thứ phát (do nồng độ Vitamin D thấp làm giảm Canxi máu, kích thích tiết PTH).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn. Tình trạng lấy máu không bị ảnh hưởng mạnh bởi chu kỳ sinh học ngày đêm.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA, ECLIA) hoặc LC-MS/MS.",
+    "ref": "📊 **Đủ Vitamin D:** 30 - 100 ng/mL (75 - 250 nmol/L).\n📊 **Thiếu hụt ranh giới (Insufficiency):** 20 - 29 ng/mL (50 - 74 nmol/L).\n📊 **Thiếu hụt thực sự (Deficiency):** < 20 ng/mL (< 50 nmol/L).\n📊 **Nguy cơ độc tính:** > 150 ng/mL.",
+    "alert": "⚠️ Trong thực hành lâm sàng, tuyệt đối **không chỉ định đo 1,25-OH Vitamin D** để sàng lọc tình trạng thiếu hụt Vitamin D. Dạng có hoạt tính này thường chỉ giảm khi chức năng thận đã suy kiệt nghiêm trọng, và nó có thể tăng bù trừ khiến bác sĩ bị đánh lừa.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Vitamin D (Ngộ độc):**\n  🔴 **Nguyên nhân:**\n    ▫️ Bổ sung quá liều các chế phẩm Vitamin D đường uống liên tục kéo dài.\n    ▫️ Hội chứng Williams (tăng Canxi máu tự phát ở trẻ em).\n    ▫️ (*Lưu ý: Phơi nắng nhiều không bao giờ gây ngộ độc Vitamin D do da có cơ chế tự thoái giáng khi dư thừa*).",
+      "decrease": "🔹 **Giảm 25-OH Vitamin D (Thiếu hụt):**\n  🔴 **Giảm tổng hợp / Cung cấp:**\n    ▫️ Ít tiếp xúc ánh sáng mặt trời (làm việc văn phòng, bôi kem chống nắng thường xuyên), người lớn tuổi (da giảm khả năng tổng hợp).\n    ▫️ Chế độ ăn thiếu chất mỡ, hội chứng kém hấp thu (Cắt dạ dày, bệnh Crohn).\n  🔴 **Tăng dị hóa / Thải trừ:**\n    ▫️ Hội chứng thận hư (mất protein mang Vitamin D qua nước tiểu).\n    ▫️ Bệnh gan nặng (giảm khả năng chuyển hóa thành 25-OH).\n    ▫️ Đang dùng thuốc chống co giật kéo dài."
     },
+    "interferingFactors": "❌ **Lỗi mẫu:** Giao thoa phương pháp giữa các hệ thống máy đo khác nhau. Nếu theo dõi điều trị, nên xét nghiệm trên cùng một hệ thống.\n💊 **Thuốc làm GIẢM:** Phenytoin, Phenobarbital (làm tăng thoái giáng Vitamin D ở gan), Cholestyramine, Orlistat (thuốc giảm béo ngăn hấp thu mỡ).",
+    "clinicalNote": "Theo **KDIGO 2024**, bệnh nhân Bệnh thận mạn (CKD) thuộc nhóm nguy cơ cực cao bị thiếu hụt Vitamin D do thận mất khả năng hydroxyl hóa lần 2. Tình trạng này kích hoạt Cường cận giáp thứ phát phá hủy xương. Khuyến cáo mọi bệnh nhân CKD từ giai đoạn 3 trở đi phải được đo 25-OH Vitamin D định kỳ để bù đắp, nhằm cắt đứt vòng xoắn bệnh lý biến chứng mạch máu - xương."
+  },
     {
         name: "Định lượng sắt chưa bão hòa huyết thanh (UIBC)", 
         group: "Miễn dịch", 
