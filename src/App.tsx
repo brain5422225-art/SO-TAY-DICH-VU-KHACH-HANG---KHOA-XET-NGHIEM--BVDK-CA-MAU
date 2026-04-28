@@ -45,7 +45,7 @@ import { motion, AnimatePresence } from 'motion/react';
 
 interface LabTest {
   name: string;
-  group: 'Sinh hóa' | 'Miễn dịch' | 'Huyết học' | 'Vi sinh' | 'Đông máu' | 'Sinh Hóa' | 'Nước tiểu & Dịch' | 'Truyền máu' | 'Ký sinh trùng' | 'Sinh học phân tử' | 'Vi nấm';
+  group: 'Sinh hóa' | 'Miễn Dịch' | 'Huyết học' | 'Vi sinh' | 'Đông máu' | 'Sinh Hóa' | 'Nước tiểu & Dịch' | 'Truyền máu' | 'Ký sinh trùng' | 'Sinh học phân tử' | 'Vi nấm';
   time: string;
   ref: string;
   alert: string;
@@ -933,19 +933,6 @@ const labTests: LabTest[] = [
     "interferingFactors": "❌ **Âm tính giả:** Bệnh nhân đến khám muộn (sau ngày 5), hoặc tải lượng vi rút sinh ra trong máu quá thấp dưới ngưỡng phát hiện của test nhanh.",
     "clinicalNote": "Theo Phác đồ điều trị của Bộ Y tế hiện hành (**QĐ 1450/QĐ-BYT 2024**), chiến lược cận lâm sàng hoàn hảo nhất là: Sốt < 4 ngày: Chỉ định NS1Ag. Sốt ≥ 4 ngày: Chỉ định IgM/IgG. Cần đặc biệt ghi nhớ, dù test NS1 (+) hay (-), việc quyết định truyền dịch hay cho bệnh nhân nhập viện phải dựa vào việc theo dõi sát sao **HCT (Dung tích hồng cầu) và Tiểu cầu (PLT)** mỗi ngày, vì đây mới là các thông số phản ánh biến chứng thoát dịch và chảy máu."
   },
-    {
-        name: "Treponema pallidum test nhanh", 
-        group: "Miễn dịch", 
-        time: "60 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "Treponema pallidum là xoắn khuẩn gây bệnh Giang mai. Xét nghiệm giúp tìm kháng thể kháng vi khuẩn này.",
-        indication: "Sàng lọc bệnh Giang mai trước phẫu thuật, thai kỳ, hoặc khám các bệnh lây truyền qua đường tình dục.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Có thể đang mắc hoặc đã từng mắc bệnh Giang mai (cần xét nghiệm thêm RPR/VDRL để chẩn đoán giai đoạn hoạt động).",
-            decrease: "• ÂM TÍNH: Không nhiễm vi khuẩn Giang mai."
-        }
-    },
    {
     "name": "Treponema pallidum test nhanh [máu]",
     "group": "Miễn Dịch",
@@ -1022,19 +1009,6 @@ const labTests: LabTest[] = [
     "interferingFactors": "❌ **Âm tính giả:** Thường gặp ở bệnh nhân suy giảm miễn dịch nặng (đồng nhiễm HIV), bệnh nhân chạy thận nhân tạo (do suy giảm sản xuất kháng thể).\n💊 **Dương tính giả:** Ở bệnh nhân có bệnh lý tự miễn hoặc có yếu tố dạng thấp (RF) tăng cao.",
     "clinicalNote": "Theo **Quyết định 2855/QĐ-BYT (2024)**, quy trình chuẩn khi có kết quả Anti-HCV Dương tính là **BẮT BUỘC** chỉ định đo ngay tải lượng **HCV-RNA (bằng PCR)**. Nếu HCV-RNA dương tính, bệnh nhân sẽ được đánh giá mức độ xơ hóa gan bằng các phương pháp không xâm lấn (như FIB-4, APRI) và bắt đầu phác đồ thuốc kháng vi rút trực tiếp (DAA) ưu việt hiện nay với tỷ lệ chữa khỏi dứt điểm (SVR) trên 95% [4, 5]."
   },
-    {
-        name: "Toxocara Ab miễn dịch bán tự động", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "< 1.1 S/CO", 
-        alert: "",
-        concept: "Đo nồng độ kháng thể (IgG) chống lại giun đũa chó/mèo (Toxocara canis/cati) trong máu.",
-        indication: "Chẩn đoán bệnh ấu trùng giun đũa chó/mèo nội tạng ở người bệnh có biểu hiện ngứa ngáy, mề đay, tăng bạch cầu ái toan.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH (≥ 1.1): Xác nhận bệnh nhân đang nhiễm hoặc đã từng nhiễm ấu trùng giun đũa chó/mèo.",
-            decrease: "• ÂM TÍNH: Không nhiễm."
-        }
-    },
    {
     "name": "Định lượng NT-ProBNP [máu]",
     "group": "Miễn Dịch",
@@ -1073,32 +1047,6 @@ const labTests: LabTest[] = [
     "interferingFactors": "❌ **Giao thoa:** Yếu tố dạng thấp (RF) ở nồng độ rất cao hoặc kháng thể dị vòng (HAMA) có thể gây kết quả dương tính giả.\n💊 **Bệnh lý nền:** Bệnh thận mạn tính thường làm nền Troponin tăng nhẹ dai dẳng, do đó chẩn đoán NMCT bắt buộc phải dựa vào **động học (sự tăng/giảm rõ rệt)** thay vì chỉ một con số cắt ngang.",
     "clinicalNote": "Theo **AHA/ACC 2025**, để chẩn đoán chính xác tổn thương cơ tim cấp, bắt buộc phải có sự biến thiên nồng độ (tăng lên hoặc giảm xuống) trong đó ít nhất một giá trị vượt ngưỡng phân vị thứ 99. Nếu Troponin tăng cao nhưng duy trì bình nguyên (không thay đổi qua các lần đo), đó là tổn thương cơ tim mạn tính (như suy thận, suy tim mạn) chứ không phải nhồi máu cơ tim cấp."
   },
-    {
-        name: "Định lượng Pro-calcitonin [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "< 0.5 ng/mL", 
-        alert: "",
-        concept: "Procalcitonin (PCT) là một prohormone được sinh ra từ nhiều mô trong cơ thể khi có sự kích thích của nội độc tố vi khuẩn nặng.",
-        indication: "Dấu ấn sinh học tuyệt vời để chẩn đoán Sốc nhiễm trùng, nhiễm khuẩn huyết và quyết định việc sử dụng/ngưng sử dụng Kháng sinh.",
-        pathologicalMeaning: {
-            increase: "• TĂNG RẤT CAO: Cảnh báo nhiễm trùng huyết nghiêm trọng do vi khuẩn, sốc nhiễm trùng, suy đa tạng.",
-            decrease: "• BÌNH THƯỜNG: Tình trạng viêm thường là do virus (không cần kháng sinh) hoặc không có nhiễm trùng hệ thống."
-        }
-    },
-    {
-        name: "Định lượng Interleukin 6 [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "< 6.4 pg/ml", 
-        alert: "",
-        concept: "IL-6 là một cytokine (chất trung gian hóa học) kích hoạt phản ứng viêm của hệ miễn dịch, báo hiệu tình trạng viêm toàn thân.",
-        indication: "Theo dõi tình trạng 'cơn bão cytokine' trong nhiễm trùng nặng (như Covid-19, viêm phổi nặng), bệnh tự miễn.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Cảnh báo phản ứng viêm hệ thống nghiêm trọng, tiên lượng nặng ở bệnh nhân hồi sức tích cực, viêm khớp dạng thấp cấp.",
-            decrease: "• BÌNH THƯỜNG: Tình trạng viêm đã được kiểm soát."
-        }
-    },
    {
     "name": "Định lượng Ferritin [máu]",
     "group": "Miễn Dịch",
@@ -1175,930 +1123,1565 @@ const labTests: LabTest[] = [
     "interferingFactors": "❌ **Lỗi mẫu:** Giao thoa phương pháp giữa các hệ thống máy đo khác nhau. Nếu theo dõi điều trị, nên xét nghiệm trên cùng một hệ thống.\n💊 **Thuốc làm GIẢM:** Phenytoin, Phenobarbital (làm tăng thoái giáng Vitamin D ở gan), Cholestyramine, Orlistat (thuốc giảm béo ngăn hấp thu mỡ).",
     "clinicalNote": "Theo **KDIGO 2024**, bệnh nhân Bệnh thận mạn (CKD) thuộc nhóm nguy cơ cực cao bị thiếu hụt Vitamin D do thận mất khả năng hydroxyl hóa lần 2. Tình trạng này kích hoạt Cường cận giáp thứ phát phá hủy xương. Khuyến cáo mọi bệnh nhân CKD từ giai đoạn 3 trở đi phải được đo 25-OH Vitamin D định kỳ để bù đắp, nhằm cắt đứt vòng xoắn bệnh lý biến chứng mạch máu - xương."
   },
-    {
-        name: "Định lượng sắt chưa bão hòa huyết thanh (UIBC)", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "27.8 - 63.6 µmol/L", 
-        alert: "",
-        concept: "UIBC (Unsaturated Iron-Binding Capacity) là khả năng liên kết dự trữ của Transferrin (protein vận chuyển sắt) chưa được bão hòa bởi sắt.",
-        indication: "Phối hợp với Sắt huyết thanh để tính toán độ bão hòa Transferrin, giúp chẩn đoán phân biệt các loại thiếu máu.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Cơ thể thiếu sắt (Transferrin trống nhiều do không có sắt để gắn vào), gặp trong Thiếu máu thiếu sắt.",
-            decrease: "• GIẢM: Cơ thể thừa sắt, bệnh nhiễm sắt, viêm nhiễm mạn tính, hoặc tan máu."
-        }
-    },
-    {
-        name: "Định lượng EPO", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "2.59 - 18.5 mIU/mL", 
-        alert: "",
-        concept: "EPO (Erythropoietin) là hormone do Thận tiết ra để kích thích tủy xương sản xuất hồng cầu khi cơ thể bị thiếu oxy.",
-        indication: "Phân biệt nguyên nhân thiếu máu (do suy thận hay nguyên nhân khác), chẩn đoán chứng đa hồng cầu.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Thiếu máu do tan máu, mất máu, hoặc bệnh nhân có khối u tiết EPO.",
-            decrease: "• GIẢM: Nguyên nhân chính gây thiếu máu ở bệnh nhân Suy thận mạn (do thận hỏng không tiết được EPO)."
-        }
-    },
-    {
-        name: "Định lượng Testosteron [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "Nam: 168 - 746 ng/dl\nNữ: 10 - 90 ng/dl", 
-        alert: "",
-        concept: "Testosteron là hormone sinh dục nam chính (cũng có ở nữ với lượng nhỏ), chịu trách nhiệm về các đặc điểm giới tính, cơ bắp và chức năng sinh sản.",
-        indication: "Đánh giá rối loạn cương dương, vô sinh nam, dậy thì muộn, hoặc hội chứng buồng trứng đa nang (PCOS) ở nữ.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: U tinh hoàn, u thượng thận, hoặc buồng trứng đa nang ở nữ (gây rậm lông, rối loạn kinh nguyệt).",
-            decrease: "• GIẢM: Suy tuyến sinh dục nam, rối loạn cương dương, béo phì, tổn thương tinh hoàn."
-        }
-    },
-    {
-        name: "Định lượng Cortisol [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "Sáng (8h-12h): 138 - 690 nmol/L\nChiều (12h-20h): 138 - 410 nmol/L\nTối (20h-8h): 0 - 276 nmol/L", 
-        alert: "",
-        concept: "Cortisol là 'hormone căng thẳng' do tuyến thượng thận tiết ra, giúp cơ thể chống lại stress, điều hòa huyết áp và chuyển hóa đường. Nồng độ cao nhất vào buổi sáng và giảm dần về đêm.",
-        indication: "Chẩn đoán hội chứng Cushing (thừa Cortisol) và bệnh Addison (suy thượng thận).",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Cảnh báo Hội chứng Cushing (béo bụng, rạn da, mặt tròn), u tuyến thượng thận, stress nặng, hoặc lạm dụng thuốc Corticoid.",
-            decrease: "• GIẢM: Bệnh Addison (suy tuyến thượng thận), suy tuyến yên, mệt mỏi, sạm da, hạ huyết áp."
-        }
-    },
-    {
-        name: "Định lượng Insulin [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "1.9 - 23 µIU/mL", 
-        alert: "",
-        concept: "Insulin là hormone do tuyến tụy tiết ra, chìa khóa mở cửa cho Glucose đi vào tế bào. Nếu thiếu hoặc kháng Insulin sẽ gây ra bệnh tiểu đường.",
-        indication: "Đánh giá hội chứng kháng insulin, tìm nguyên nhân hạ đường huyết, hoặc xác định u tiết insulin (Insulinoma).",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Bệnh tiểu đường tuýp 2 giai đoạn đầu (kháng insulin), u tiết insulin, béo phì, hội chứng buồng trứng đa nang.",
-            decrease: "• GIẢM: Tiểu đường tuýp 1 (tụy bị phá hủy không tiết được insulin), hoặc tụy bị hoại tử."
-        }
-    },
-    {
-        name: "Định lượng C-peptid [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "1.8 - 4.2 ng/mL", 
-        alert: "",
-        concept: "C-peptide được tuyến tụy tạo ra cùng lúc và tỷ lệ 1:1 với Insulin nội sinh. Xét nghiệm C-peptide giúp đánh giá chính xác khả năng tự sản xuất Insulin của tuyến tụy.",
-        indication: "Phân biệt tiểu đường type 1 và type 2, kiểm tra xem bệnh nhân tiểu đường có cần tiêm insulin ngoại sinh hay chưa.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Kháng insulin (tiểu đường type 2), béo phì, hội chứng Cushing, hoặc u tuyến tụy.",
-            decrease: "• GIẢM: Suy kiệt tế bào beta tuyến tụy (tiểu đường type 1), tụy không còn khả năng tự sản xuất insulin."
-        }
-    },
-    {
-        name: "Định lượng Digoxin [máu]", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "1.0 - 2.0 ng/mL", 
-        alert: "",
-        concept: "Digoxin là thuốc trợ tim điều trị suy tim và rối loạn nhịp tim. Thuốc có cửa sổ điều trị rất hẹp, dễ gây ngộ độc nếu nồng độ hơi cao.",
-        indication: "Theo dõi nồng độ thuốc trong máu để đảm bảo hiệu quả điều trị và tránh ngộ độc cấp.",
-        pathologicalMeaning: {
-            increase: "• TĂNG (> 2.0 ng/mL): Nguy cơ ngộ độc Digoxin, gây buồn nôn, rối loạn thị giác (nhìn thấy màu vàng/xanh), nhịp tim chậm nguy hiểm.",
-            decrease: "• GIẢM (< 1.0 ng/mL): Thuốc chưa đạt nồng độ hiệu quả, bệnh nhân vẫn có nguy cơ suy tim/rối loạn nhịp."
-        }
-    },
-    {
-        name: "Định lượng Vancomycin", 
-        group: "Miễn dịch", 
-        time: "120 phút / 60 phút", 
-        ref: "20 - 40 µg/mL", 
-        alert: "",
-        concept: "Vancomycin là kháng sinh liều cao chuyên trị vi khuẩn Gram dương kháng thuốc (MRSA). Thuốc rất độc cho thận và thính giác.",
-        indication: "Theo dõi nồng độ thuốc đáy (trough) để đảm bảo diệt được vi khuẩn và tránh làm suy thận bệnh nhân.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Nguy cơ cao gây độc tính suy thận cấp và tổn thương dây thần kinh thính giác (gây điếc).",
-            decrease: "• GIẢM: Không đủ nồng độ tiêu diệt vi khuẩn, dễ dẫn đến thất bại điều trị và vi khuẩn kháng thuốc."
-        }
-    },
-    {
-        name: "Test Methamphetamine", 
-        group: "Miễn dịch", 
-        time: "60 phút / 30 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "Test nhanh kiểm tra sự hiện diện của Methamphetamine (Ma túy đá - chất kích thích thần kinh trung ương) trong cơ thể.",
-        indication: "Hỗ trợ chẩn đoán ngộ độc chất kích thích tại phòng cấp cứu, khám sức khỏe tâm thần, giám định pháp y.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Xác định bệnh nhân có sử dụng Methamphetamine (ma túy đá) trong thời gian gần đây.",
-            decrease: "• ÂM TÍNH: Không sử dụng."
-        }
-    },
-    {
-        name: "Test Morphin/Heroin", 
-        group: "Miễn dịch", 
-        time: "60 phút / 30 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "Test nhanh kiểm tra nhóm chất dạng thuốc phiện (Opiates) như Morphin, Heroin (chất ức chế thần kinh).",
-        indication: "Xử trí cấp cứu hôn mê/suy hô hấp nghi do ngộ độc ma túy, giám định pháp y.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Bệnh nhân có sử dụng ma túy nhóm Opiates (Heroin, Morphin). Cần chú ý nguy cơ ức chế hô hấp.",
-            decrease: "• ÂM TÍNH: Không sử dụng."
-        }
-    },
-    {
-        name: "Định lượng Creatinin [niệu]", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "Nam: 9.0 - 21.0 mmol/24h\nNữ: 7.0 - 14.0 mmol/24h", 
-        alert: "",
-        concept: "Đo tổng lượng Creatinin được bài tiết qua nước tiểu (thường thu thập trong 24 giờ). Xét nghiệm này giúp đánh giá trực tiếp tốc độ lọc máu của cầu thận.",
-        indication: "Kết hợp với Creatinin máu để tính Độ thanh thải Creatinin (Creatinine Clearance), giúp đánh giá chính xác mức độ suy thận.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Chế độ ăn quá nhiều thịt, tập luyện cơ bắp quá sức, hoặc giai đoạn đầu của bệnh tiểu đường, nhiễm trùng.",
-            decrease: "• GIẢM: Phản ánh thận đang suy giảm chức năng lọc (suy thận cấp/mạn), bệnh teo cơ, suy dinh dưỡng."
-        }
-    },
-    {
-        name: "Định lượng Glucose [niệu]", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "1.8 - 14.4 mg/dl (Hoặc Âm tính)", 
-        alert: "",
-        concept: "Ở người bình thường khỏe mạnh, glucose sẽ được thận tái hấp thu gần như hoàn toàn nên không có mặt trong nước tiểu. Đường chỉ xuất hiện trong nước tiểu khi nồng độ đường trong máu vượt quá 'ngưỡng của thận' (thường > 180 mg/dL).",
-        indication: "Hỗ trợ chẩn đoán đái tháo đường, theo dõi tình trạng đường huyết và đánh giá tổn thương ống thận.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH (Có đường trong nước tiểu): Gặp trong bệnh đái tháo đường kiểm soát kém, đái tháo đường thai kỳ, hoặc hội chứng Fanconi (thận mất khả năng tái hấp thu đường).",
-            decrease: "• ÂM TÍNH: Bình thường."
-        }
-    },
-    {
-        name: "Định lượng MAU [niệu]", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "< 25 mg/L", 
-        alert: "",
-        concept: "MAU (Microalbumin niệu) là xét nghiệm đo lượng rất nhỏ protein albumin bị rò rỉ qua màng lọc cầu thận vào nước tiểu, ở mức mà các xét nghiệm nước tiểu thông thường không phát hiện được.",
-        indication: "Xét nghiệm vàng để tầm soát sớm tổn thương vi mạch thận ở bệnh nhân đái tháo đường và tăng huyết áp.",
-        pathologicalMeaning: {
-            increase: "• TĂNG (> 30 mg/24h): Dấu hiệu sớm nhất của bệnh thận đái tháo đường (Diabetic Nephropathy) hoặc tổn thương thận do cao huyết áp. Giúp bác sĩ can thiệp sớm trước khi thận hỏng hoàn toàn.",
-            decrease: "• BÌNH THƯỜNG: Chức năng màng lọc cầu thận còn tốt."
-        }
-    },
-    {
-        name: "Định lượng Protein niệu (Nước tiểu 24h)", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "< 300 mg/24h", 
-        alert: "",
-        concept: "Bệnh nhân phải thu thập toàn bộ nước tiểu trong 24 giờ để đo tổng lượng protein mất đi. Màng lọc cầu thận khỏe mạnh sẽ không để lọt các protein phân tử lớn.",
-        indication: "Chẩn đoán Hội chứng thận hư, viêm cầu thận, và đặc biệt để đánh giá biến chứng Tiền sản giật ở phụ nữ mang thai.",
-        pathologicalMeaning: {
-            increase: "• TĂNG CAO: Tăng rất cao (> 3.5g/24h) là chỉ điểm của Hội chứng thận hư. Tăng vừa gặp trong viêm cầu thận, suy thận mạn, tiền sản giật, lupus ban đỏ.",
-            decrease: "• BÌNH THƯỜNG: Không tổn thương thận."
-        }
-    },
-    {
-        name: "Đo hoạt độ Amylase [niệu]", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "< 450 U/L", 
-        alert: "",
-        concept: "Amylase từ máu được lọc qua thận và bài tiết vào nước tiểu. Trong viêm tụy cấp, Amylase nước tiểu sẽ tăng muộn hơn nhưng lại duy trì ở mức cao lâu hơn so với Amylase máu (kéo dài từ 7-10 ngày).",
-        indication: "Hỗ trợ chẩn đoán Viêm tụy cấp, đặc biệt hữu ích khi bệnh nhân đến viện muộn (lúc này Amylase máu đã trở về bình thường).",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Viêm tụy cấp tính, tắc nghẽn ống tụy (sỏi, u), thủng loét dạ dày, hoặc quai bị.",
-            decrease: "• BÌNH THƯỜNG: Không có bệnh lý tuyến tụy cấp tính."
-        }
-    },
-    {
-        name: "Điện giải đồ (Na, K, Cl) [niệu]", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "Na: 54 - 150 mEq/L\nK: 20 - 80 mEq/L\nCl: 46 - 168 mEq/L", 
-        alert: "",
-        concept: "Đo lượng muối (Natri, Kali, Clo) mà thận bài tiết ra. Phản ánh trực tiếp khả năng cô đặc/pha loãng nước tiểu và duy trì cân bằng điện giải của thận.",
-        indication: "Xác định nguyên nhân gây rối loạn điện giải máu là do mất qua thận (bệnh lý ống thận, lợi tiểu) hay mất ngoài thận (tiêu chảy, nôn mửa).",
-        pathologicalMeaning: {
-            increase: "• TĂNG BÀI TIẾT (Mất muối qua thận): Gặp do sử dụng thuốc lợi tiểu, suy thượng thận (thiếu Aldosterone), viêm ống thận mô kẽ.",
-            decrease: "• GIẢM BÀI TIẾT (Thận giữ muối): Thận đang cố gắng giữ nước bù trừ do bệnh nhân bị mất nước nặng (tiêu chảy, nôn ói), suy tim, hoặc hội chứng Cushing."
-        }
-    },
-    {
-        name: "Tổng phân tích nước tiểu bằng máy tự động", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 30 phút", 
-        ref: "Tỷ trọng: 1.005 - 1.030\npH: 5.0 - 8.0\nCác chỉ số khác (Hồng cầu, Bạch cầu, Nitrit...): Âm tính", 
-        alert: "",
-        concept: "Là xét nghiệm sàng lọc nhanh 10-11 thông số hóa lý của nước tiểu bằng que thử tự động (Urine Dipstick).",
-        indication: "Khám sức khỏe tổng quát, tầm soát nhiễm trùng tiết niệu, sỏi thận, bệnh lý gan mật và đái tháo đường.",
-        pathologicalMeaning: {
-            increase: "• BẤT THƯỜNG: Có Hồng cầu (nghi sỏi, u, viêm); Có Bạch cầu/Nitrit (Nhiễm trùng đường tiểu); Có Protein (Bệnh lý màng lọc thận); Có Urobilinogen (Bệnh lý gan mật); Có Ceton/Glucose (Tiểu đường).",
-            decrease: "• BÌNH THƯỜNG: Nước tiểu sạch, không có bệnh lý tiết niệu."
-        }
-    },
-    {
-        name: "Xét nghiệm tế bào cặn nước tiểu", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "", 
-        alert: "",
-        concept: "Nhân viên y tế tiến hành quay ly tâm nước tiểu và soi cặn lắng dưới kính hiển vi quang học để đếm trực tiếp số lượng Hồng cầu, Bạch cầu, Trụ niệu, Tế bào biểu mô và Tinh thể.",
-        indication: "Kiểm tra chuyên sâu khi Tổng phân tích nước tiểu có bất thường, giúp chẩn đoán chính xác vị trí và nguyên nhân tổn thương hệ tiết niệu.",
-        pathologicalMeaning: {
-            increase: "• BẤT THƯỜNG: Thấy nhiều Hồng cầu méo mó/Trụ hồng cầu (Viêm cầu thận); Thấy nhiều Bạch cầu (Viêm bàng quang, niệu đạo); Thấy tinh thể Urat/Canxi (Nguy cơ sỏi thận).",
-            decrease: "• BÌNH THƯỜNG: Rất ít hoặc không có tế bào."
-        }
-    },
-    {
-        name: "Định lượng Glucose (dịch não tủy)", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "39.6 - 70.3 mg/dl (khoảng 60% nồng độ Glucose máu)", 
-        alert: "",
-        concept: "Dịch não tủy (DNT) là chất lỏng trong suốt bao quanh não và tủy sống. Glucose trong DNT được vận chuyển từ máu sang để nuôi dưỡng hệ thần kinh trung ương.",
-        indication: "Xét nghiệm cực kỳ quan trọng để chẩn đoán phân biệt các loại Viêm màng não.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Tăng theo đường huyết do bệnh đái tháo đường, không mang nhiều ý nghĩa chẩn đoán bệnh lý màng não.",
-            decrease: "• GIẢM MẠNH: Dấu hiệu điển hình của Viêm màng não mủ (do vi khuẩn, nấm, lao tiêu thụ hết đường để sinh sôi). Trong viêm màng não do Virus, lượng đường thường bình thường."
-        }
-    },
-    {
-        name: "Định lượng Protein (dịch não tủy)", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "< 45 mg/dL", 
-        alert: "",
-        concept: "Hàng rào máu não bình thường ngăn cản các phân tử protein lớn xâm nhập vào DNT. Khi màng não bị viêm, rách hoặc có khối u, protein sẽ rò rỉ vào DNT làm nồng độ tăng cao.",
-        indication: "Chẩn đoán viêm màng não, xuất huyết màng não, u não và hội chứng Guillain-Barré.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Bệnh lý thần kinh nghiêm trọng như Viêm màng não mủ, Lao màng não, Xuất huyết dưới nhện, U não, tủy sống hoặc các bệnh thoái hóa thần kinh.",
-            decrease: "• BÌNH THƯỜNG/GIẢM: DNT rò rỉ ra ngoài (chấn thương sọ não, tai biến chọc dò)."
-        }
-    },
-    {
-        name: "Định lượng Glucose (dịch chọc dò)", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "Tương đương nồng độ huyết thanh", 
-        alert: "",
-        concept: "Đo nồng độ đường trong dịch màng phổi, màng bụng hoặc dịch khớp.",
-        indication: "Hỗ trợ phân biệt dịch tiết (do viêm/ung thư) và dịch thấm (do áp lực mạch máu).",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Thường tương đồng với đường huyết bệnh nhân.",
-            decrease: "• GIẢM MẠNH: Dấu hiệu của Dịch tiết do Viêm nhiễm mủ (vi khuẩn tiêu thụ đường), Lao màng phổi, hoặc bệnh lý Ác tính (Ung thư di căn), Viêm khớp dạng thấp."
-        }
-    },
-    {
-        name: "Định lượng Protein (dịch chọc dò)", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "< 30 g/L (Tùy thuộc bản chất dịch)", 
-        alert: "",
-        concept: "Xác định lượng protein trong khoang dịch. Là tiêu chuẩn chính (Tiêu chuẩn Light) để phân loại Dịch thấm và Dịch tiết.",
-        indication: "Phân biệt nguyên nhân gây tràn dịch các khoang màng.",
-        pathologicalMeaning: {
-            increase: "• TĂNG (DỊCH TIẾT - Protein dịch/máu > 0.5): Gặp do tính thấm mao mạch tăng vì tổn thương màng. Phổ biến trong Viêm phổi màng phổi, Ung thư di căn, Lao, Viêm tụy cấp.",
-            decrease: "• THẤP (DỊCH THẤM): Gặp do mất cân bằng áp lực keo/thủy tĩnh. Phổ biến trong Suy tim sung huyết, Xơ gan, Hội chứng thận hư."
-        }
-    },
-    {
-        name: "Đo hoạt độ LDH (dịch chọc dò)", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "Tùy thuộc bản chất dịch", 
-        alert: "",
-        concept: "LDH là enzyme rò rỉ ra khi có sự phá hủy tế bào mô.",
-        indication: "Tiêu chuẩn quan trọng (Tiêu chuẩn Light) phối hợp với Protein để phân loại Dịch thấm / Dịch tiết.",
-        pathologicalMeaning: {
-            increase: "• TĂNG CAO (LDH dịch/máu > 0.6): Dấu hiệu có hoại tử mô, viêm nhiễm nhiều tế bào tại khoang màng. Gặp trong Dịch tiết (Lao, Ung thư, Viêm mủ).",
-            decrease: "• THẤP: Thường là Dịch thấm (Suy tim, Suy gan)."
-        }
-    },
-    {
-        name: "Đo hoạt độ Amylase (dịch)", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "", 
-        alert: "",
-        concept: "Đo lượng enzyme tuyến tụy rò rỉ vào các khoang cơ thể (thường là màng phổi hoặc màng bụng).",
-        indication: "Chẩn đoán tràn dịch do nguyên nhân từ tuyến tụy hoặc thủng đường tiêu hóa.",
-        pathologicalMeaning: {
-            increase: "• TĂNG RẤT CAO: Gặp trong Viêm tụy cấp (dịch lan lên màng phổi/bụng), nang giả tụy vỡ, hoặc thủng/vỡ thực quản, loét dạ dày tá tràng thủng.",
-            decrease: "• BÌNH THƯỜNG: Tràn dịch do các nguyên nhân khác ngoài đường tiêu hóa."
-        }
-    },
-    {
-        name: "Định lượng Creatinin (dịch chọc dò)", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "", 
-        alert: "",
-        concept: "So sánh nồng độ Creatinin trong dịch chọc dò (dịch ổ bụng) với nồng độ trong máu.",
-        indication: "Chẩn đoán phân biệt tràn dịch màng bụng do nguyên nhân tiết niệu (rò rỉ nước tiểu).",
-        pathologicalMeaning: {
-            increase: "• TĂNG MẠNH (Tỷ lệ Dịch/Máu > 1.0): Chẩn đoán xác định có sự vỡ bàng quang, chấn thương niệu quản làm rò rỉ nước tiểu vào khoang bụng (Cổ trướng nước tiểu).",
-            decrease: "• BÌNH THƯỜNG: Không có rò rỉ từ đường tiết niệu."
-        }
-    },
-    {
-        name: "Định lượng Cholesterol (dịch chọc dò)", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "", 
-        alert: "",
-        concept: "Phân tích lượng mỡ trong dịch màng phổi hoặc ổ bụng.",
-        indication: "Hỗ trợ phân biệt Dịch thấm/Dịch tiết và chẩn đoán tràn dịch dưỡng trấp giả.",
-        pathologicalMeaning: {
-            increase: "• TĂNG (> 45 mg/dL): Gợi ý Dịch tiết. Nếu cholesterol rất cao kèm theo có tinh thể cholesterol, thường gợi ý Tràn dịch màng phổi do Viêm khớp dạng thấp hoặc Lao cũ mạn tính.",
-            decrease: "• BÌNH THƯỜNG: Gợi ý Dịch thấm."
-        }
-    },
-    {
-        name: "Định lượng Ure (dịch chọc dò)", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "", 
-        alert: "",
-        concept: "So sánh nồng độ Ure trong dịch với huyết thanh.",
-        indication: "Thường dùng chung với Creatinin dịch để chẩn đoán chấn thương rách vỡ đường tiết niệu.",
-        pathologicalMeaning: {
-            increase: "• TĂNG CAO: Xác nhận có nước tiểu tràn vào khoang bụng do vỡ bàng quang, chấn thương niệu quản.",
-            decrease: "• BÌNH THƯỜNG: Không có nguồn gốc rò rỉ từ hệ tiết niệu."
-        }
-    },
-    {
-        name: "Định lượng Triglycerid (dịch chọc dò)", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "", 
-        alert: "",
-        concept: "Kiểm tra mức độ mỡ máu (Triglyceride) trong khoang dịch. Dịch chứa nhiều Triglyceride thường có màu trắng đục như sữa.",
-        indication: "Chẩn đoán xác định Tràn dịch dưỡng trấp (Chylothorax/Chylous ascites).",
-        pathologicalMeaning: {
-            increase: "• TĂNG CAO (> 110 mg/dL): Xác định Tràn dịch dưỡng trấp do vỡ/tắc nghẽn ống ngực (ống dẫn bạch huyết chính) bởi khối u (Lymphoma), chấn thương, hoặc phẫu thuật lồng ngực.",
-            decrease: "• THẤP (< 50 mg/dL): Loại trừ tràn dịch dưỡng trấp."
-        }
-    },
-    {
-        name: "Phản ứng Rivalta (dịch)", 
-        group: "Nước tiểu & Dịch", 
-        time: "120 phút / 45 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "Là phản ứng hóa học định tính cổ điển và nhanh chóng bằng cách nhỏ giọt dịch chọc dò vào dung dịch axit acetic loãng để quan sát hiện tượng kết tủa (khói trắng).",
-        indication: "Sàng lọc nhanh tại giường hoặc phòng lab để phân biệt Dịch thấm và Dịch tiết dựa trên lượng Protein.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH (Có kết tủa khói trắng): Dịch có chứa nhiều Protein (> 30g/L), xác định đây là Dịch tiết (do Viêm nhiễm mủ, Lao, hoặc Ác tính).",
-            decrease: "• ÂM TÍNH (Nước trong suốt): Dịch có ít Protein, xác định đây là Dịch thấm (do Suy tim, Xơ gan, Hội chứng thận hư)."
-        }
-    },
-    {
-        name: "Bạch cầu (WBC)", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "3.70 - 10.1 (10^3/µL)", 
-        alert: "> 50 hoặc < 1 (10^3/µL).",
-        concept: "WBC (White Blood Cell) là tổng số lượng tế bào bạch cầu trong máu. Bạch cầu đóng vai trò như 'đội quân bảo vệ', giúp cơ thể chống lại các tác nhân gây bệnh như vi khuẩn, virus, nấm và ký sinh trùng.",
-        indication: "Xét nghiệm thường quy để tầm soát, chẩn đoán và theo dõi tình trạng nhiễm trùng, viêm, dị ứng hoặc các bệnh lý ác tính về máu (như ung thư máu bạch cầu).",
-        pathologicalMeaning: {
-            increase: "• TĂNG CAO: Gặp trong nhiễm trùng cấp tính (đặc biệt do vi khuẩn), viêm ruột thừa, áp xe, hoặc bệnh lý ác tính như bệnh Bạch cầu cấp/mạn (Leukemia).\n\n• TĂNG NHẸ: Phản ứng viêm, dị ứng, sau phẫu thuật hoặc phụ nữ có thai.",
-            decrease: "• GIẢM: Cơ thể suy giảm miễn dịch, dễ bị nhiễm trùng cơ hội. Gặp trong nhiễm virus nặng (như Dengue, HIV), suy tủy xương, hoặc do tác dụng phụ của hóa/xạ trị."
-        }
-    },
-    {
-        name: "NEU#", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "1.63 - 6.96 (10^3/µL)", 
-        alert: "",
-        concept: "NEU (Neutrophil - Bạch cầu đa nhân trung tính) là loại bạch cầu chiếm tỷ lệ cao nhất. Chúng là lực lượng phản ứng nhanh, chuyên tiêu diệt vi khuẩn và xử lý các mô hoại tử.",
-        indication: "Đánh giá chi tiết tình trạng nhiễm khuẩn cấp tính hoặc mức độ ức chế tủy xương.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Điển hình của nhiễm khuẩn cấp tính (viêm phổi, nhiễm trùng huyết), nhồi máu cơ tim, stress nặng.",
-            decrease: "• GIẢM: Nhiễm virus, suy tủy, thiếu hụt vitamin B12/Folate, hoặc do dùng thuốc ức chế miễn dịch."
-        }
-    },
-    {
-        name: "Lympho#", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "1.09 - 2.99 (10^3/µL)", 
-        alert: "",
-        concept: "Lympho (Lymphocyte - Bạch cầu lympho) là tế bào miễn dịch đặc hiệu, bao gồm tế bào B (sản xuất kháng thể) và tế bào T (tiêu diệt tế bào nhiễm virus/ung thư).",
-        indication: "Chẩn đoán phân biệt các nguyên nhân nhiễm trùng (chủ yếu do virus) và bệnh lý lympho.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Gặp trong các bệnh nhiễm virus (Cúm, Sởi, Quai bị, Viêm gan), ho gà, lao, hoặc ung thư hạch (Lymphoma).",
-            decrease: "• GIẢM: Hội chứng suy giảm miễn dịch (HIV/AIDS), sử dụng corticoid kéo dài, hoặc xạ trị."
-        }
-    },
-    {
-        name: "Mono#", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "0.24 - 0.79 (10^3/µL)", 
-        alert: "",
-        concept: "Mono (Monocyte - Bạch cầu đơn nhân) là những 'tế bào dọn dẹp' kích thước lớn. Chúng di chuyển đến các mô viêm, biến thành đại thực bào để thực bào vi khuẩn và mô chết.",
-        indication: "Hỗ trợ chẩn đoán các bệnh lý nhiễm trùng mạn tính hoặc bệnh tự miễn.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Nhiễm trùng mạn tính (Lao, sốt rét, giang mai), bệnh tự miễn, hoặc trong giai đoạn phục hồi của nhiễm trùng cấp.",
-            decrease: "• GIẢM: Ít có ý nghĩa lâm sàng, có thể gặp trong suy tủy."
-        }
-    },
-    {
-        name: "EOS#", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "0.03 - 0.44 (10^3/µL)", 
-        alert: "",
-        concept: "EOS (Eosinophil - Bạch cầu ái toan) là loại bạch cầu chuyên biệt chống lại ký sinh trùng và phản ứng trong các tình trạng dị ứng.",
-        indication: "Chẩn đoán tình trạng nhiễm ký sinh trùng (giun, sán) và các bệnh lý dị ứng.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Đặc trưng trong nhiễm giun sán (Toxocara, giun đũa, giun móc), bệnh dị ứng (hen phế quản, chàm, mề đay).",
-            decrease: "• GIẢM: Giai đoạn đầu của nhiễm trùng cấp hoặc sử dụng thuốc corticoid."
-        }
-    },
-    {
-        name: "BASO#", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "0.0 - 0.08 (10^3/µL)", 
-        alert: "",
-        concept: "BASO (Basophil - Bạch cầu ái kiềm) chiếm tỷ lệ thấp nhất, giải phóng histamine tham gia vào phản ứng dị ứng nghiêm trọng và phản ứng viêm.",
-        indication: "Hỗ trợ theo dõi bệnh lý tủy xương và dị ứng nặng.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Bệnh bạch cầu mạn tính, rối loạn tăng sinh tủy, phản ứng dị ứng nặng.",
-            decrease: "• GIẢM: Bão hòa trong máu do giải phóng hạt viêm, ít có ý nghĩa chẩn đoán."
-        }
-    },
-    {
-        name: "Hồng cầu (RBC)", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "4.06 - 4.69 (10^6/µL)", 
-        alert: "",
-        concept: "RBC (Red Blood Cell) là tổng số lượng tế bào hồng cầu trong máu. Hồng cầu chứa Hemoglobin giúp vận chuyển oxy từ phổi đến các mô và mang CO2 trở lại phổi.",
-        indication: "Khảo sát cơ bản để đánh giá tình trạng thiếu máu hoặc chứng đa hồng cầu.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Bệnh đa hồng cầu nguyên phát, mất nước nặng, hoặc cơ thể tăng sản xuất để bù trừ do thiếu oxy mạn tính (bệnh phổi tắc nghẽn, bệnh tim bẩm sinh).",
-            decrease: "• GIẢM: Tình trạng Thiếu máu do nhiều nguyên nhân (xuất huyết, suy tủy, thiếu sắt, tan máu)."
-        }
-    },
-    {
-        name: "Hemoglobin (HGB)", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "12.9 - 14.2 g/dL", 
-        alert: "≤ 7 hoặc > 20 g/dL.",
-        concept: "HGB là phân tử protein giàu sắt nằm trong hồng cầu, tạo nên màu đỏ của máu và đảm nhiệm chức năng chuyên chở oxy.",
-        indication: "Là tiêu chuẩn vàng và chính xác nhất để chẩn đoán xác định bệnh Thiếu máu và đánh giá mức độ thiếu máu.",
-        pathologicalMeaning: {
-            increase: "• TĂNG (Nguy cơ tắc mạch): Gặp ở bệnh đa hồng cầu, người sống ở vùng cao, người hút thuốc lá lâu năm, hoặc mất nước.",
-            decrease: "• GIẢM (Thiếu máu): Gây mệt mỏi, da xanh xao. Cảnh báo mức ≤ 7 g/dL là thiếu máu rất nặng, thường có chỉ định truyền máu cấp cứu."
-        }
-    },
-    {
-        name: "Hematocrit (HCT)", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "37.7 - 53.7%", 
-        alert: "< 18% hoặc > 60%.",
-        concept: "HCT (Dung tích hồng cầu) là tỷ lệ phần trăm thể tích mà các tế bào hồng cầu chiếm chỗ trong tổng thể tích máu toàn phần.",
-        indication: "Đánh giá mức độ cô đặc của máu (trong bệnh sốt xuất huyết, sốc) hoặc tình trạng thiếu máu.",
-        pathologicalMeaning: {
-            increase: "• TĂNG (> 60%): Máu bị cô đặc cao độ, tăng độ nhớt, nguy cơ huyết khối. Cảnh báo tình trạng thoát huyết tương nặng trong Sốt xuất huyết Dengue hoặc sốc mất nước.",
-            decrease: "• GIẢM (< 18%): Máu loãng do thiếu máu nặng, mất máu ồ ạt, hoặc do truyền quá nhiều dịch."
-        }
-    },
-    {
-        name: "MCV", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "81.1 - 96.0 fL", 
-        alert: "",
-        concept: "MCV (Mean Corpuscular Volume) đo thể tích trung bình của một tế bào hồng cầu, giúp phân loại kích thước hồng cầu là nhỏ, bình thường hay to.",
-        indication: "Cực kỳ quan trọng để chẩn đoán phân biệt nguyên nhân gây Thiếu máu.",
-        pathologicalMeaning: {
-            increase: "• TĂNG (Hồng cầu to): Điển hình trong thiếu máu do thiếu Vitamin B12, thiếu Folate, hoặc bệnh gan.",
-            decrease: "• GIẢM (Hồng cầu nhỏ): Gặp trong thiếu máu thiếu sắt, bệnh Thalassemia (tan máu bẩm sinh)."
-        }
-    },
-    {
-        name: "MCH", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "27.0 - 31.2 pg", 
-        alert: "",
-        concept: "MCH (Mean Corpuscular Hemoglobin) đo lượng huyết sắc tố (Hemoglobin) trung bình có trong một tế bào hồng cầu, phản ánh độ 'nhạt' hay 'đậm' màu của hồng cầu.",
-        indication: "Dùng chung với MCV để phân loại thiếu máu.",
-        pathologicalMeaning: {
-            increase: "• TĂNG (Hồng cầu ưu sắc): Thường đi kèm với MCV tăng trong thiếu máu hồng cầu to (thiếu B12/Folate).",
-            decrease: "• GIẢM (Hồng cầu nhược sắc): Điển hình trong thiếu máu thiếu sắt, Thalassemia (màu hồng cầu nhợt nhạt do thiếu huyết sắc tố)."
-        }
-    },
-    {
-        name: "MCHC", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "31.8 - 35.4 g/dl", 
-        alert: "",
-        concept: "MCHC (Mean Corpuscular Hemoglobin Concentration) là nồng độ trung bình của hemoglobin trong một thể tích hồng cầu nhất định.",
-        indication: "Kiểm tra chéo độ chính xác của máy huyết học và hỗ trợ phân loại thiếu máu.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Bệnh hồng cầu hình cầu di truyền (spherocytosis).",
-            decrease: "• GIẢM: Thiếu máu thiếu sắt, Thalassemia."
-        }
-    },
-    {
-        name: "RDW", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "11.5 - 14.5%", 
-        alert: "",
-        concept: "RDW (Red Cell Distribution Width) là dải phân bố kích thước hồng cầu, đánh giá xem các hồng cầu có kích thước đồng đều nhau hay không.",
-        indication: "Phân biệt thiếu máu thiếu sắt (kích thước hồng cầu rất không đều) và Thalassemia (kích thước hồng cầu nhỏ nhưng đều nhau).",
-        pathologicalMeaning: {
-            increase: "• TĂNG (Hồng cầu to nhỏ không đều): Gặp trong thiếu máu thiếu sắt, thiếu B12/Folate, hoặc bệnh nhân vừa được truyền máu.",
-            decrease: "• GIẢM: Không có ý nghĩa lâm sàng (Hồng cầu đồng đều)."
-        }
-    },
-    {
-        name: "Tiểu cầu (PLT)", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "155 - 366 (10^3/µL)", 
-        alert: "< 30 hoặc > 1000 (10^3/µL).",
-        concept: "PLT (Platelet) là các mảnh tế bào nhỏ không nhân lưu thông trong máu. Chức năng sống còn của tiểu cầu là kết dính với nhau tạo thành cục máu đông để cầm máu khi mạch máu bị tổn thương.",
-        indication: "Đánh giá rối loạn đông máu, theo dõi sốt xuất huyết, và kiểm tra trước các phẫu thuật/thủ thuật xâm lấn.",
-        pathologicalMeaning: {
-            increase: "• TĂNG CAO (> 1000): Nguy cơ hình thành huyết khối (cục máu đông) gây tắc mạch. Gặp trong hội chứng tăng sinh tủy, sau cắt lách, hoặc phản ứng sau viêm/chảy máu.",
-            decrease: "• GIẢM NẶNG (< 30): Cảnh báo cực kỳ nguy hiểm, nguy cơ xuất huyết tự nhiên (chảy máu não, chảy máu nội tạng). Điển hình trong Sốt xuất huyết Dengue, xuất huyết giảm tiểu cầu miễn dịch (ITP), suy tủy."
-        }
-    },
-    {
-        name: "MPV", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "6.90 - 10.6 fL", 
-        alert: "",
-        concept: "MPV (Mean Platelet Volume) đo thể tích trung bình của tiểu cầu, giúp đánh giá tuổi thọ và kích thước của tiểu cầu trong máu.",
-        indication: "Hỗ trợ tìm nguyên nhân gây giảm tiểu cầu (do tủy xương không sản xuất được hay do bị phá hủy ở ngoại vi).",
-        pathologicalMeaning: {
-            increase: "• TĂNG (Tiểu cầu to): Tiểu cầu non mới được tủy xương giải phóng ồ ạt để bù đắp (gặp trong xuất huyết giảm tiểu cầu miễn dịch ITP).",
-            decrease: "• GIẢM (Tiểu cầu nhỏ): Suy tủy xương (tủy không sản xuất được tiểu cầu non)."
-        }
-    },
-    {
-        name: "PDW", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "7 - 17.0 fL", 
-        alert: "",
-        concept: "PDW (Platelet Distribution Width) đánh giá độ đồng đều về kích thước của các tiểu cầu.",
-        indication: "Hỗ trợ chẩn đoán các bệnh lý huyết khối hoặc xuất huyết.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Kích thước tiểu cầu to nhỏ không đều, gặp trong các rối loạn sinh tủy.",
-            decrease: "• GIẢM: Không có ý nghĩa bệnh lý rõ rệt."
-        }
-    },
-    {
-        name: "PCT", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "0.10 - 2.28%", 
-        alert: "",
-        concept: "PCT (Plateletcrit) là dung tích tiểu cầu, tính bằng phần trăm thể tích máu được chiếm bởi tiểu cầu (tương tự như HCT của hồng cầu).",
-        indication: "Đánh giá tổng khối lượng tiểu cầu tham gia vào quá trình đông máu.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Có nguy cơ huyết khối.",
-            decrease: "• GIẢM: Phản ánh nguy cơ chảy máu do thiếu hụt khối lượng tiểu cầu."
-        }
-    },
-    {
-        name: "Tổng phân tích tế bào máu ngoại vi (Phết máu ngoại biên)", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "", 
-        alert: "",
-        concept: "Kỹ thuật viên trải một giọt máu mỏng lên lam kính, nhuộm màu và soi trực tiếp dưới kính hiển vi để quan sát hình thái, kích thước và cấu trúc của từng tế bào máu.",
-        indication: "Khi máy tự động báo lỗi hoặc nghi ngờ có tế bào bất thường, giúp chẩn đoán Ung thư máu (Leukemia), Thalassemia, hoặc ký sinh trùng sốt rét.",
-        pathologicalMeaning: {
-            increase: "• BẤT THƯỜNG: Phát hiện tế bào non ác tính (Blast) cảnh báo ung thư máu; Hồng cầu hình bia/hình liềm cảnh báo bệnh lý di truyền; Phát hiện mảnh vỡ hồng cầu.",
-            decrease: "• BÌNH THƯỜNG: Tế bào máu trưởng thành có hình thái chuẩn."
-        }
-    },
-    {
-        name: "Số lượng và độ tập trung tiểu cầu (thủ công)", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "", 
-        alert: "",
-        concept: "Kiểm tra và đếm tiểu cầu bằng mắt thường qua kính hiển vi.",
-        indication: "Xác nhận lại kết quả khi máy tự động báo tiểu cầu giảm sâu (để loại trừ trường hợp tiểu cầu bị vón cục giả tạo trong ống nghiệm EDTA).",
-        pathologicalMeaning: {
-            increase: "• BẤT THƯỜNG: Tiểu cầu vón cụm to (giảm giả tạo trên máy). Cần lấy lại máu bằng ống Citrat để đếm lại.",
-            decrease: "• BÌNH THƯỜNG: Xác nhận kết quả đếm của máy tự động là chính xác."
-        }
-    },
-    {
-        name: "Hồng cầu lưới (phương pháp thủ công)", 
-        group: "Huyết học", 
-        time: "90 phút / 30 phút", 
-        ref: "0.2 - 2.0%", 
-        alert: "",
-        concept: "Hồng cầu lưới là những tế bào hồng cầu non, mới được tủy xương giải phóng vào máu ngoại vi. Tỷ lệ này phản ánh trực tiếp 'công suất' làm việc của tủy xương.",
-        indication: "Đánh giá khả năng đáp ứng tạo máu của tủy xương ở bệnh nhân thiếu máu, và theo dõi hiệu quả sau khi điều trị bổ sung Sắt/B12.",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Phản ứng tốt của tủy xương đang tăng tốc sản xuất hồng cầu để bù đắp (sau khi mất máu cấp, tan máu, hoặc đáp ứng tốt với thuốc trị thiếu máu).",
-            decrease: "• GIẢM: Tủy xương suy yếu, không sản xuất được hồng cầu (suy tủy), hoặc thiếu hụt nguyên liệu tạo máu (sắt, B12, Folate)."
-        }
-    },
-    {
-        name: "Thời gian máu đông (TS)", 
-        group: "Huyết học", 
-        time: "30 phút", 
-        ref: "4 - 10 phút", 
-        alert: "",
-        concept: "Đo thời gian từ khi máu chảy ra khỏi tĩnh mạch vào ống nghiệm thủy tinh không có chất chống đông cho đến khi tạo thành cục máu đông hoàn toàn.",
-        indication: "Đánh giá con đường đông máu nội sinh tổng quát.",
-        pathologicalMeaning: {
-            increase: "• KÉO DÀI (> 10 phút): Thiếu hụt nghiêm trọng các yếu tố đông máu nội sinh (Hemophilia), bệnh gan nặng, hoặc đang dùng thuốc chống đông (Heparin).",
-            decrease: "• RÚT NGẮN: Máu dễ đông, có tình trạng tăng đông."
-        }
-    },
-    {
-        name: "Thời gian máu chảy (TC) phương pháp Duke", 
-        group: "Huyết học", 
-        time: "30 phút", 
-        ref: "2 - 4 phút", 
-        alert: "",
-        concept: "Tạo một vết chích nhỏ ở dái tai và đo thời gian cho đến khi vết thương tự ngừng chảy máu. Phản ánh chức năng tạo nút cầm máu của thành mạch và tiểu cầu.",
-        indication: "Kiểm tra chức năng tiểu cầu và thành mao mạch trước khi thực hiện các tiểu phẫu (nhổ răng, cắt amidan).",
-        pathologicalMeaning: {
-            increase: "• KÉO DÀI: Dấu hiệu của giảm số lượng tiểu cầu, giảm chức năng tiểu cầu (suy nhược tiểu cầu), hoặc tổn thương thành mạch mạn tính.",
-            decrease: "• BÌNH THƯỜNG: Chức năng cầm máu ban đầu hoạt động tốt."
-        }
-    },
-    {
-        name: "Máu lắng (bằng máy tự động)", 
-        group: "Huyết học", 
-        time: "120 phút / 60 phút", 
-        ref: "Giờ 1: < 15mm\nGiờ 2: < 20mm", 
-        alert: "",
-        concept: "ESR (Erythrocyte Sedimentation Rate) đo tốc độ lắng của hồng cầu xuống đáy ống nghiệm thẳng đứng. Khi trong máu có nhiều protein viêm, hồng cầu sẽ kết dính và lắng nhanh hơn.",
-        indication: "Xét nghiệm không đặc hiệu nhưng rất hữu ích để sàng lọc, theo dõi các tình trạng viêm nhiễm mạn tính, nhiễm khuẩn, và các bệnh lý tự miễn (Lao, Viêm khớp dạng thấp).",
-        pathologicalMeaning: {
-            increase: "• TĂNG NHANH: Chỉ điểm cơ thể đang có phản ứng viêm mạnh mẽ (viêm khớp dạng thấp, đa u tủy xương, nhiễm trùng mạn tính, lao).",
-            decrease: "• BÌNH THƯỜNG: Không có viêm nhiễm hệ thống tiến triển."
-        }
-    },
-    {
-        name: "Xét nghiệm tế bào trong nước dịch chẩn đoán tế bào học", 
-        group: "Huyết học", 
-        time: "120 phút / 60 phút", 
-        ref: "", 
-        alert: "",
-        concept: "Quay ly tâm các loại dịch (màng phổi, màng bụng, khớp, DNT), lấy cặn lắng nhuộm và soi dưới kính hiển vi để tìm và phân biệt các loại tế bào (Hồng cầu, Bạch cầu đoạn, Bạch cầu Lympho).",
-        indication: "Rất quan trọng để chẩn đoán nguyên nhân gây tràn dịch các khoang màng.",
-        pathologicalMeaning: {
-            increase: "• BẤT THƯỜNG: Ưu thế Bạch cầu đa nhân trung tính (Viêm nhiễm cấp, mủ); Ưu thế Lympho (Gợi ý Lao hoặc Viêm mạn tính); Ưu thế Bạch cầu ái toan (Gợi ý Dị ứng hoặc ký sinh trùng). Thấy tế bào ác tính (Ung thư di căn).",
-            decrease: "• BÌNH THƯỜNG: Dịch trong suốt, ít tế bào."
-        }
-    },
-    {
-        name: "Thời gian prothrombin (PT)", 
-        group: "Đông máu", 
-        time: "60 phút / 30 phút", 
-        ref: "PT < 16 giây\nINR < 1.2", 
-        alert: "PT > 180 giây\nINR > 15.0",
-        concept: "PT (Prothrombin Time) là xét nghiệm đo lường thời gian cần thiết để hình thành cục máu đông qua con đường đông máu ngoại sinh. Chỉ số INR được tính toán từ PT để chuẩn hóa kết quả toàn cầu.",
-        indication: "Đánh giá chức năng đông máu trước phẫu thuật, theo dõi bệnh nhân đang dùng thuốc chống đông kháng Vitamin K (như Warfarin, Sintrom), và đánh giá chức năng tổng hợp của gan.",
-        pathologicalMeaning: {
-            increase: "• KÉO DÀI (Máu chậm đông): Bệnh nhân có nguy cơ chảy máu ồ ạt. Nguyên nhân do dùng quá liều thuốc chống đông, xơ gan nặng (gan không tổng hợp được yếu tố đông máu), thiếu hụt Vitamin K.",
-            decrease: "• RÚT NGẮN (Máu dễ đông): Nguy cơ hình thành huyết khối (cục máu đông gây tắc mạch)."
-        }
-    },
-    {
-        name: "APTT", 
-        group: "Đông máu", 
-        time: "60 phút / 30 phút", 
-        ref: "< 36 giây", 
-        alert: "> 140 giây",
-        concept: "APTT (Activated Partial Thromboplastin Time) đo thời gian đông máu theo con đường nội sinh.",
-        indication: "Tầm soát các rối loạn chảy máu (như bệnh máu khó đông Hemophilia), theo dõi bệnh nhân đang điều trị bằng thuốc chống đông Heparin tiêu chuẩn.",
-        pathologicalMeaning: {
-            increase: "• KÉO DÀI: Nguy cơ xuất huyết cao. Gặp ở bệnh nhân Hemophilia A/B, bệnh von Willebrand, đang truyền Heparin, hoặc mắc hội chứng DIC (Đông máu rải rác trong lòng mạch).",
-            decrease: "• RÚT NGẮN: Ít gặp, có thể do tình trạng tăng đông máu hoặc do lỗi lấy mẫu."
-        }
-    },
-    {
-        name: "Định lượng Fibrinogen", 
-        group: "Đông máu", 
-        time: "60 phút / 30 phút", 
-        ref: "200 - 400 mg/dl", 
-        alert: "< 60 hoặc > 1200 mg/dl",
-        concept: "Fibrinogen là một protein hòa tan trong huyết tương do gan sản xuất. Trong quá trình đông máu, nó chuyển hóa thành mạng lưới Fibrin để cầm máu.",
-        indication: "Khảo sát rối loạn chảy máu, chẩn đoán hội chứng DIC, và đánh giá tình trạng viêm nhiễm hệ thống (do fibrinogen cũng là một protein phản ứng pha cấp).",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Phản ứng viêm cấp/mạn tính, phụ nữ có thai, nhồi máu cơ tim, hoặc người có nguy cơ huyết khối tĩnh mạch.",
-            decrease: "• GIẢM MẠNH: Nguy cơ chảy máu nghiêm trọng. Gặp trong hội chứng DIC (suy kiệt yếu tố đông máu), xơ gan giai đoạn cuối, hoặc tiêu sợi huyết tiên phát."
-        }
-    },
-    {
-        name: "Định lượng D-Dimer", 
-        group: "Đông máu", 
-        time: "60 phút / 30 phút", 
-        ref: "0 - 0.55 mg/L", 
-        alert: "",
-        concept: "D-Dimer là một đoạn protein nhỏ xuất hiện trong máu sau khi một cục máu đông bị hòa tan (tiêu sợi huyết).",
-        indication: "Là xét nghiệm loại trừ (Rule-out test) quan trọng tại phòng cấp cứu để chẩn đoán huyết khối tĩnh mạch sâu (DVT) và Thuyên tắc phổi (PE).",
-        pathologicalMeaning: {
-            increase: "• TĂNG: Cơ thể đang hình thành và phá vỡ cục máu đông ở đâu đó. Gặp trong Thuyên tắc phổi, Huyết khối tĩnh mạch sâu, DIC, chấn thương lớn, sau phẫu thuật, hoặc phụ nữ có thai.",
-            decrease: "• BÌNH THƯỜNG: Có giá trị chẩn đoán loại trừ rất cao (khẳng định bệnh nhân không bị thuyên tắc phổi/huyết khối ở thời điểm hiện tại)."
-        }
-    },
-    {
-        name: "Xét nghiệm Anti-Xa", 
-        group: "Đông máu", 
-        time: "60 phút / 30 phút", 
-        ref: "UFH: 0 - 1.50 IU/ml\nLMWH: 0 - 1.75 IU/ml", 
-        alert: "",
-        concept: "Xét nghiệm Anti-Xa đo lường hoạt động của Yếu tố Xa (một yếu tố đông máu), thông qua đó đánh giá nồng độ và hiệu quả của thuốc chống đông Heparin trong máu.",
-        indication: "Theo dõi sát sao nồng độ thuốc ở bệnh nhân đang điều trị bằng Heparin trọng lượng phân tử thấp (LMWH) hoặc Heparin không phân đoạn (UFH) để tránh quá liều.",
-        pathologicalMeaning: {
-            increase: "• TĂNG (Hoạt độ Anti-Xa cao): Bệnh nhân đang bị quá liều thuốc chống đông Heparin, đối mặt với nguy cơ xuất huyết đe dọa tính mạng.",
-            decrease: "• GIẢM: Liều Heparin chưa đủ để ngăn ngừa huyết khối (cục máu đông vẫn tiếp tục lan rộng)."
-        }
-    },
-    {
-        name: "Định nhóm máu tại giường bệnh trước truyền máu", 
-        group: "Truyền máu", 
-        time: "Nhanh chóng", 
-        ref: "", 
-        alert: "",
-        concept: "Là bước kiểm tra chéo cuối cùng, được thực hiện ngay tại giường bệnh nhân bởi bác sĩ/điều dưỡng ngay trước khi cắm kim truyền bịch máu.",
-        indication: "Quy định bắt buộc của Bộ Y tế nhằm đảm bảo an toàn tuyệt đối, tránh tai biến truyền nhầm nhóm máu.",
-        pathologicalMeaning: {
-            increase: "• THUẬN HỢP: Ngưng kết đúng nhóm máu, an toàn để tiến hành truyền máu.",
-            decrease: "• KHÔNG THUẬN HỢP: Phát hiện bất đồng nhóm máu giữa bệnh nhân và bịch máu. Đình chỉ truyền máu ngay lập tức."
-        }
-    },
-    {
-        name: "Định nhóm máu hệ ABO, Rh(D) bằng máy tự động", 
-        group: "Truyền máu", 
-        time: "120 phút / 60 phút", 
-        ref: "Nhóm máu ABO: A, B, AB, O\nYếu tố Rh: (+) hoặc (-)", 
-        alert: "",
-        concept: "Xác định sự hiện diện của các kháng nguyên A, B (hệ ABO) và kháng nguyên D (hệ Rh) trên bề mặt hồng cầu bằng hệ thống máy tự động chính xác cao.",
-        indication: "Sàng lọc định kỳ, chuẩn bị trước phẫu thuật, phụ nữ mang thai, hoặc làm hồ sơ quản lý sức khỏe.",
-        pathologicalMeaning: {
-            increase: "• Nhóm O: Nhóm chuyên cho phổ biến.\n• Nhóm AB: Nhóm chuyên nhận.\n• Rh(D) Âm tính (-): Nhóm máu hiếm ở Việt Nam, cần quản lý chặt chẽ ở phụ nữ có thai để tránh tan máu ở trẻ sơ sinh.",
-            decrease: "• Kết quả là thông số sinh học cố định của mỗi người, không phải bệnh lý."
-        }
-    },
-    {
-        name: "Phản ứng hòa hợp trong môi trường nước muối / kháng Globulin", 
-        group: "Truyền máu", 
-        time: "120 phút", 
-        ref: "", 
-        alert: "Không thuận hợp",
-        concept: "Xét nghiệm trộn hồng cầu của người hiến với huyết thanh của người nhận (và ngược lại) để kiểm tra xem có xảy ra hiện tượng ngưng kết (đánh nhau) hay không.",
-        indication: "Là xét nghiệm Cross-match bắt buộc tại phòng xét nghiệm trước khi phát máu cho bệnh nhân.",
-        pathologicalMeaning: {
-            increase: "• TƯƠNG THÍCH (Âm tính): Không có phản ứng ngưng kết, máu an toàn để truyền.",
-            decrease: "• KHÔNG TƯƠNG THÍCH (Cảnh báo): Có hiện tượng ngưng kết/tan máu. Bịch máu này tuyệt đối không được truyền cho bệnh nhân vì sẽ gây tai biến tử vong."
-        }
-    },
-    {
-        name: "Nghiệm pháp Coombs trực tiếp / gián tiếp", 
-        group: "Truyền máu", 
-        time: "120 phút / 60 phút", 
-        ref: "Âm tính", 
-        alert: "Dương tính",
-        concept: "Xét nghiệm tìm các kháng thể bất thường bám trên bề mặt hồng cầu (Trực tiếp) hoặc trôi tự do trong huyết thanh (Gián tiếp) gây phá hủy hồng cầu.",
-        indication: "Chẩn đoán bệnh Thiếu máu tan máu tự miễn, bất đồng nhóm máu mẹ-con, hoặc tìm nguyên nhân tai biến truyền máu.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Xác nhận cơ thể bệnh nhân đang tự sản xuất kháng thể chống lại chính hồng cầu của mình (hoặc chống lại hồng cầu của thai nhi/người hiến), gây ra tình trạng tan máu (vỡ hồng cầu).",
-            decrease: "• ÂM TÍNH: Bình thường, không có kháng thể bất thường."
-        }
-    },
-    {
-        name: "Đơn bào đường ruột soi tươi", 
-        group: "Ký sinh trùng", 
-        time: "120 phút / 60 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "Quan sát trực tiếp mẫu phân dưới kính hiển vi để tìm sự chuyển động hoặc nang của các loại đơn bào (như Amip Entamoeba histolytica, Giardia).",
-        indication: "Chẩn đoán nguyên nhân tiêu chảy kéo dài, phân có nhầy máu, viêm đại tràng do Amip.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Phát hiện đơn bào gây bệnh. Bệnh nhân cần được điều trị bằng thuốc diệt đơn bào (như Metronidazole).",
-            decrease: "• ÂM TÍNH: Không tìm thấy đơn bào (Tuy nhiên có thể cần soi nhiều lần trong nhiều ngày để chắc chắn)."
-        }
-    },
-    {
-        name: "Trứng giun, sán soi tươi", 
-        group: "Ký sinh trùng", 
-        time: "120 phút / 60 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "Lấy cặn lắng của mẫu phân soi dưới kính hiển vi quang học để tìm cấu trúc đặc trưng của trứng các loại giun (đũa, móc, tóc, kim) và sán.",
-        indication: "Chẩn đoán bệnh nhiễm giun sán đường ruột, tìm nguyên nhân đau bụng dai dẳng, suy dinh dưỡng, thiếu máu.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Phát hiện trứng giun/sán, xác định loại giun để chỉ định thuốc tẩy giun phù hợp.",
-            decrease: "• ÂM TÍNH: Không tìm thấy trứng giun sán trong mẫu phân này."
-        }
-    },
-    {
-        name: "Hồng cầu, Bạch cầu trong phân soi tươi", 
-        group: "Ký sinh trùng", 
-        time: "120 phút / 60 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "Soi phân để đếm sự xuất hiện của tế bào máu (Hồng cầu, Bạch cầu) - những tế bào vốn dĩ không được phép có mặt trong phân bình thường.",
-        indication: "Chẩn đoán phân biệt hội chứng lỵ (do Amip hay trực khuẩn), lồng ruột, u xơ ruột, hoặc viêm loét đại tràng.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Sự xuất hiện của Bạch cầu phản ánh tình trạng viêm nhiễm khuẩn đường ruột (như lỵ trực khuẩn, Shigella). Sự xuất hiện của Hồng cầu cảnh báo có xuất huyết/tổn thương viêm loét niêm mạc ruột.",
-            decrease: "• ÂM TÍNH: Đường ruột không có tổn thương xuất huyết hay viêm nhiễm cấp."
-        }
-    },
-    {
-        name: "Tìm ký sinh trùng sốt rét trong máu (phương pháp thủ công)", 
-        group: "Ký sinh trùng", 
-        time: "120 phút / 60 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "Kéo lam máu đàn (giọt mỏng/giọt đặc), nhuộm Giemsa và soi kính hiển vi để tìm trực tiếp ký sinh trùng Plasmodium cư trú bên trong hồng cầu.",
-        indication: "Tiêu chuẩn vàng để chẩn đoán xác định bệnh Sốt Rét, xác định chủng loại và mật độ ký sinh trùng.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Chẩn đoán chắc chắn bệnh nhân mắc Sốt Rét. Loại ký sinh trùng (P. falciparum hay P. vivax) sẽ quyết định phác đồ thuốc điều trị.",
-            decrease: "• ÂM TÍNH: Không tìm thấy. Nếu lâm sàng vẫn nghi ngờ, cần lấy máu soi lại trong cơn sốt tiếp theo."
-        }
-    },
-    {
-        name: "Neisseria gonorrhoeae nhuộm soi (Lậu cầu)", 
-        group: "Vi sinh", 
-        time: "120 phút / 60 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "Lấy dịch mủ niệu đạo/âm đạo, nhuộm Gram và soi để tìm song cầu khuẩn Gram âm (Neisseria gonorrhoeae) hình hạt cà phê nằm trong và ngoài bạch cầu.",
-        indication: "Chẩn đoán nhanh bệnh Lậu (bệnh lây truyền qua đường tình dục STDs).",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Chẩn đoán xác định bệnh nhân đang mắc bệnh Lậu, cần tiến hành điều trị ngay cho cả bệnh nhân và bạn tình.",
-            decrease: "• ÂM TÍNH: Không tìm thấy vi khuẩn Lậu trong mẫu mủ/dịch."
-        }
-    },
-    {
-        name: "Vi nấm nhuộm soi / Vi nấm soi tươi", 
-        group: "Vi sinh", 
-        time: "120 phút / 60 phút", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "Lấy bệnh phẩm (vảy da, tóc, móng, dịch tỵ hầu, đàm), hòa với dung dịch KOH và soi để tìm cấu trúc sợi nấm hoặc bào tử nấm.",
-        indication: "Chẩn đoán nhanh các bệnh lý nấm da, nấm móng, nấm men Candida ở niêm mạc (miệng, âm đạo).",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH: Bệnh nhân bị nhiễm nấm. Tùy hình thái (sợi nấm hay nấm men sinh chồi) để bác sĩ chỉ định thuốc kháng nấm phù hợp.",
-            decrease: "• ÂM TÍNH: Không có hiện tượng nhiễm vi nấm."
-        }
-    },
-    {
-        name: "AFB trực tiếp nhuộm Ziehl-Neelsen", 
-        group: "Vi sinh", 
-        time: "24 giờ", 
-        ref: "Âm tính", 
-        alert: "",
-        concept: "AFB (Acid-Fast Bacillus) là trực khuẩn kháng cồn kháng toan (vi khuẩn Lao). Nhuộm Ziehl-Neelsen làm vi khuẩn Lao bắt màu đỏ rực rỡ nổi bật trên nền xanh dưới kính hiển vi.",
-        indication: "Xét nghiệm đầu tay và kinh điển nhất để sàng lọc, chẩn đoán Lao phổi ở người có triệu chứng ho kéo dài, ho ra máu.",
-        pathologicalMeaning: {
-            increase: "• DƯƠNG TÍNH (AFB +): Khẳng định bệnh nhân đang mắc bệnh Lao hoạt động và đang ở giai đoạn thải vi khuẩn ra môi trường (khả năng lây nhiễm rất cao).",
-            decrease: "• ÂM TÍNH: Không tìm thấy vi khuẩn lao (Nhưng không loại trừ hoàn toàn, cần cấy đàm hoặc làm sinh học phân tử PCR để chắc chắn)."
-        }
-    },
-    {
-        name: "HBV đo tải lượng hệ thống tự động", 
-        group: "Sinh học phân tử", 
-        time: "14 ngày", 
-        ref: "Dưới ngưỡng phát hiện", 
-        alert: "",
-        concept: "Sử dụng công nghệ PCR (Polymerase Chain Reaction) tự động để khuếch đại và đếm chính xác số lượng bản sao DNA của virus Viêm gan B trong máu.",
-        indication: "Quyết định thời điểm bắt đầu dùng thuốc kháng virus, theo dõi tiến độ điều trị và đánh giá tình trạng kháng thuốc của virus HBV.",
-        pathologicalMeaning: {
-            increase: "• TĂNG CAO (Virus đang nhân lên): Mật độ virus trong máu càng lớn, nguy cơ tiến triển thành xơ gan, ung thư gan càng cao và khả năng lây nhiễm cho người khác rất mạnh.",
-            decrease: "• DƯỚI NGƯỠNG PHÁT HIỆN: Đáp ứng cực kỳ tốt với thuốc kháng virus. Virus đang bị ức chế tối đa (tuy nhiên chưa hẳn là đã loại bỏ hoàn toàn khỏi cơ thể)."
-        }
-    },
-    {
-        name: "HCV đo tải lượng hệ thống tự động", 
-        group: "Sinh học phân tử", 
-        time: "14 ngày", 
-        ref: "Dưới ngưỡng phát hiện", 
-        alert: "",
-        concept: "Sử dụng công nghệ RT-PCR để đếm số lượng bản sao RNA của virus Viêm gan C trong 1ml máu.",
-        indication: "Khẳng định chẩn đoán nhiễm Viêm gan C (khi Test kháng thể HCV Ab dương tính) và theo dõi phác đồ điều trị viêm gan C.",
-        pathologicalMeaning: {
-            increase: "• PHÁT HIỆN VIRUS: Bệnh nhân đang nhiễm Viêm gan C thể hoạt động, cần chỉ định phác đồ thuốc kháng virus DAA ngay lập tức.",
-            decrease: "• DƯỚI NGƯỠNG PHÁT HIỆN SÂU (Sau 12 tuần điều trị): Bệnh nhân đã đạt được Đáp ứng virus bền vững (SVR), đồng nghĩa với việc đã chữa khỏi hoàn toàn bệnh Viêm gan C."
-        }
-    },
-    {
+  {
+    "name": "Định lượng Sắt chưa bão hòa (UIBC) và Khả năng gắn sắt toàn thể (TIBC) [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "TIBC đánh giá khả năng gắn sắt với transferrin của máu. UIBC là phần khả năng mang sắt không bão hòa (chưa bị gắn). Đây là thông số gián tiếp đánh giá lượng transferrin lưu hành [1], [2].",
+    "physiology": "📌 **Động học:** 1 mg transferrin có thể gắn được 1,25 µg sắt [1]. \n📌 **Phân bố:** Bình thường chỉ có khoảng 30% các vị trí gắn sắt trên transferrin được bão hòa [3].",
+    "indication": "🎯 **Huyết học:** Chẩn đoán phân biệt các loại thiếu máu (thiếu máu do thiếu sắt, thiếu máu bệnh mạn tính) [4].\n🎯 **Tầm soát:** Sàng lọc và theo dõi tình trạng tăng gánh sắt (nhiễm thiết huyết tố - hemochromatosis) [4].",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Nhịn ăn 12h trước khi lấy máu. Lấy máu vào buổi sáng (sau 10h) [5].\n⚠️ **Lưu ý:** Ngừng các chế phẩm bổ sung sắt 24 - 48h trước khi XN [5].",
+    "testingMethods": "Đo quang phổ so màu.",
+    "ref": "📊 **Bình thường (TIBC):** 255 - 450 µg/dL (45 - 73 µmol/L) [6], [7].",
+    "alert": "⚠️ Tỷ lệ bão hòa Transferrin (Sắt / TIBC) < 15% là tiêu chuẩn vàng để xác định tình trạng thiếu máu do thiếu hụt sắt thực sự [3], [8].",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng TIBC / UIBC:**\n  🔴 **Nguyên nhân sinh lý & Dinh dưỡng:**\n    ▫️ Thiếu hụt sắt, mất máu cấp và mạn tính [2].\n    ▫️ Phụ nữ ở giai đoạn muộn của thai kỳ [2].\n  🔴 **Tổn thương tạng:**\n    ▫️ Tổn thương gan cấp [2].",
+      "decrease": "🔹 **Giảm TIBC / UIBC:**\n  🔴 **Bệnh lý ứ đọng và mạn tính:**\n    ▫️ Nhiễm thiết huyết tố (Hemochromatosis) [6].\n    ▫️ Bệnh xơ gan, Thalassemia [6].\n    ▫️ Hội chứng viêm, nhiễm trùng, bệnh ác tính, hội chứng tăng urê máu [6].\n    ▫️ Hội chứng thận hư (mất protein) [6]."
+    },
+    "interferingFactors": "❌ **Thuốc làm TĂNG TIBC:** Estrogen, thuốc viên ngừa thai [2].\n💊 **Thuốc làm GIẢM TIBC:** Chloramphenicol, corticotropin, testosteron [2].",
+    "clinicalNote": "Không được nhầm lẫn giữa TIBC (Toàn thể) và UIBC (Không bão hòa) [2]. Trong ngộ độc sắt cấp tính, tỷ lệ sắt huyết thanh/TIBC không mang lại giá trị chẩn đoán [9]."
+  },
+  {
+    "name": "Định lượng Procalcitonin [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Procalcitonin là một tiền chất của hormon calcitonin, được tiết ra mạnh mẽ bởi nhiều mô trong cơ thể khi có sự hiện diện của độc tố vi khuẩn hoặc các cytokine tiền viêm [10], [11].",
+    "physiology": "📌 **Đặc tính:** Có tính đặc hiệu cao hơn CRP trong việc phân biệt giữa nhiễm khuẩn và nhiễm virus [10], [11].",
+    "indication": "🎯 **Hồi sức cấp cứu:** Chẩn đoán, tiên lượng và theo dõi các trường hợp nhiễm khuẩn nặng, đặc biệt là nhiễm khuẩn huyết (Sepsis) [11], [12].\n🎯 **Hô hấp:** Đánh giá tình trạng bội nhiễm vi khuẩn ở bệnh nhân nhiễm cúm mùa/Covid-19 [10].",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết tương (ống EDTA) [11].\n⏳ **Chuẩn bị:** Thường lấy ngay khi cấp cứu, không yêu cầu nhịn ăn.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA / ECLIA).",
+    "ref": "📊 **Bình thường:** < 0,05 ng/mL [11].",
+    "alert": "⚠️ Nồng độ Procalcitonin tăng vọt tỷ lệ thuận với mức độ nặng của tình trạng nhiễm khuẩn huyết và sốc nhiễm khuẩn [12].",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Procalcitonin:**\n  🔴 **Bệnh lý nhiễm trùng:**\n    ▫️ Nhiễm khuẩn huyết, sốc nhiễm khuẩn [12].\n    ▫️ Viêm phổi do vi khuẩn, bội nhiễm sau nhiễm virus [10].\n    ▫️ Nhiễm nấm hệ thống [10].",
+      "decrease": "🔹 **Giảm Procalcitonin:**\n    ▫️ Phản ánh đáp ứng tốt với phác đồ kháng sinh hiện tại (nồng độ giảm nhanh chóng khi kiểm soát được ổ nhiễm khuẩn)."
+    },
+    "interferingFactors": "❌ **Giao thoa:** Ở các bệnh nhân đa chấn thương hoặc bỏng nặng trong những ngày đầu, Procalcitonin có thể tăng mà không do nhiễm khuẩn.",
+    "clinicalNote": "Theo các hướng dẫn Hồi sức (Surviving Sepsis Campaign), việc theo dõi động học Procalcitonin không chỉ giúp chẩn đoán mà còn là công cụ mạnh mẽ để bác sĩ quyết định thời điểm an toàn để **ngừng kháng sinh**, giúp giảm tình trạng kháng thuốc."
+  },
+  {
+    "name": "Định lượng Interleukin-6 (Cytokin) [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Cytokin (bao gồm Interleukin-6) là các protein do tế bào của hệ miễn dịch sản xuất, đóng vai trò trung gian trong việc điều hòa miễn dịch, kích hoạt phản ứng viêm và kích thích tạo hồng cầu [13].",
+    "physiology": "📌 **Đặc tính:** Các cytokin hoạt động như các tín hiệu thông tin giữa các tế bào. IL-6 là một cytokin tiền viêm chủ chốt, kích thích gan sản xuất các protein pha cấp (như CRP) [13].",
+    "indication": "🎯 **Theo dõi hội chứng viêm:** Đánh giá mức độ cơn bão cytokin trong các nhiễm trùng nặng, nhiễm cúm mùa nguy kịch [10], hoặc Covid-19.\n🎯 **Bệnh tự miễn:** Đánh giá và tiên lượng trong Viêm khớp dạng thấp [14].",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh [14].\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn [14].\n⚠️ **Lưu ý:** Bệnh phẩm phải được ly tâm và bảo quản đúng cách vì cytokin tiếp tục sản xuất hoặc phân hủy ngay trong ống nghiệm [15].",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA / ECLIA).",
+    "ref": "📊 **Bình thường:** Tùy thuộc vào giá trị tham chiếu của từng hệ thống máy phòng Lab [14].",
+    "alert": "⚠️ Sự gia tăng đột ngột của IL-6 là dấu hiệu báo động đỏ cho \"Hội chứng bão Cytokine\" (Cytokine Storm Syndrome), đe dọa tổn thương đa tạng nghiêm trọng.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Cytokin (IL-6):**\n  🔴 **Bệnh lý Miễn dịch & Viêm:**\n    ▫️ Nhiễm trùng huyết do vi khuẩn hoặc virus (Cúm, Covid) [10].\n    ▫️ Viêm khớp dạng thấp [14].\n    ▫️ Hội chứng suy giảm miễn dịch (AIDS) [14].\n  🔴 **Ung bướu:**\n    ▫️ Đa u tủy xương, các bệnh lý ác tính [14].",
+      "decrease": "Không mang ý nghĩa lâm sàng đặc hiệu."
+    },
+    "interferingFactors": "❌ **Lỗi mẫu:** Sự thoái giáng nhanh của cytokine nếu không bảo quản mẫu huyết thanh bằng đá lạnh có thể gây sai số [15].",
+    "clinicalNote": "Theo Hướng dẫn điều trị cúm mùa của Bộ Y tế, định lượng Cytokines được chỉ định ở các bệnh nhân cúm nặng/nguy kịch để đánh giá tình trạng viêm toàn thân và suy cơ quan [10]."
+  },
+  {
+    "name": "Định lượng Testosteron [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Testosteron là hormon androgen chính. Ở nam, nó chịu trách nhiệm phát triển sinh dục và duy trì đặc tính sinh dục thứ phát. Ở nữ, testosteron đóng vai trò là chất tiền thân để tổng hợp estrogen [16].",
+    "physiology": "📌 **Điều hòa:** Được điều hòa qua cơ chế hồi tác âm (feed-back) trên trục dưới đồi - tuyến yên (chịu sự chi phối của LH) [17].\n📌 **Động học:** Nồng độ Testosteron đạt đỉnh cao nhất vào buổi sáng sớm [18].",
+    "indication": "🎯 **Ở Nam:** Đánh giá suy chức năng sinh dục, rối loạn cương dương, vô sinh, hoặc tình trạng dậy thì sớm/muộn [19], [20].\n🎯 **Ở Nữ:** Khảo sát tình trạng rậm lông, nam tính hóa, hội chứng buồng trứng đa nang (PCOS) [21].",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh [21].\n⏳ **Chuẩn bị:** Lấy máu vào 7h sáng. Tránh hoạt động thể lực mạnh hoặc stress trước khi xét nghiệm [18].",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA / ECLIA).",
+    "ref": "📊 **Nam trưởng thành:** 300 - 1100 ng/dL (10,4 - 38,1 nmol/L) [18], [22].\n📊 **Nữ trưởng thành:** 20 - 90 ng/dL (0,7 - 3,1 nmol/L) [22].",
+    "alert": "⚠️ Định lượng Testosteron toàn phần thường là đủ cho chẩn đoán, ngoại trừ trường hợp có bất thường về protein mang (SHBG) thì mới cần đo Testosteron tự do [17].",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Testosteron:**\n  🔴 **Ở Nam:** Dậy thì sớm, khối u tinh hoàn tiết androgen, cường giáp [23].\n  🔴 **Ở Nữ:** Hội chứng buồng trứng đa nang (PCOS), khối u buồng trứng hoặc thượng thận gây nam hóa, tăng sản thượng thận bẩm sinh [24].",
+      "decrease": "🔹 **Giảm Testosteron:**\n  🔴 **Ở Nam:**\n    ▫️ Suy sinh dục (nguyên phát hoặc thứ phát do suy tuyến yên) [23].\n    ▫️ Hội chứng Klinefelter, xơ gan, suy thận [23].\n    ▫️ Cắt bỏ tinh hoàn, chấn thương tinh hoàn [23]."
+    },
+    "interferingFactors": "❌ **Thuốc làm TĂNG:** Nữ dùng estrogen, thuốc chống co giật, tamoxifen [25].\n💊 **Thuốc làm GIẢM:** Nam dùng corticosteroid, cimetidin, estrogen, spironolacton, ketoconazol [25].",
+    "clinicalNote": "Ở bệnh nhân nữ có hội chứng buồng trứng đa nang (PCOS), nồng độ testosteron toàn phần tăng nhưng hiếm khi vượt quá 200 ng/dL. Nếu nồng độ > 200 ng/dL, phải nghĩ ngay đến khối u tiết androgen ở buồng trứng hoặc thượng thận [24]."
+  },
+  {
+    "name": "Định lượng Cortisol [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Cortisol là một hormon glucocorticoid thiết yếu do vỏ thượng thận tiết ra dưới sự kích thích của ACTH. Nó chi phối chuyển hóa đường, lipid, protein và giúp cơ thể chống đỡ lại các tình trạng stress [26], [27].",
+    "physiology": "📌 **Động học:** Hầu hết gắn với protein (globulin và albumin). Khoảng 5-10% là dạng tự do có hoạt tính [27].\n📌 **Nhịp ngày đêm:** Nồng độ cao nhất vào 8h sáng và thấp nhất vào 20h tối (nửa đêm) [28].",
+    "indication": "🎯 **Chẩn đoán:** Phân biệt và chẩn đoán Hội chứng Cushing (cường thượng thận) và Bệnh Addison (suy thượng thận) [29].",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết tương.\n⏳ **Chuẩn bị:** Nhịn ăn và hạn chế vận động 10 - 12h. Để chẩn đoán Cushing, bắt buộc phải lấy máu ở 2 thời điểm: 8h sáng và 20h tối để đánh giá nhịp sinh học [28].\n⚠️ **Lưu ý:** Ngừng các thuốc ngừa thai (estroprogestatif) trước 24h [28].",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA / ECLIA).",
+    "ref": "📊 **8h - 12h:** 138 - 690 nmol/L (5,0 - 25,0 µg/dL) [30].\n📊 **20h - 8h sáng:** 0 - 276 nmol/L (0 - 10,0 µg/dL) [30].",
+    "alert": "⚠️ Tình trạng stress cấp tính, nằm viện, phẫu thuật, trầm cảm hoặc nghiện rượu có thể làm **mất hoàn toàn nhịp ngày đêm bình thường** của cortisol [31].",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Cortisol máu:**\n  🔴 **Bệnh lý nội tiết:**\n    ▫️ Hội chứng Cushing, u tiết ACTH lạc chỗ, ung thư thượng thận [30].\n    ▫️ Cường giáp, béo phì [30].\n  🔴 **Tình trạng Sinh lý & Stress:**\n    ▫️ Có thai, chấn thương, stress thể lực/tâm lý, nhồi máu cơ tim [30].",
+      "decrease": "🔹 **Giảm Cortisol máu:**\n  🔴 **Bệnh lý nội tiết:**\n    ▫️ Bệnh Addison (Suy thượng thận nguyên phát) [32].\n    ▫️ Suy tuyến yên (giảm tiết ACTH) [32].\n    ▫️ Hoại tử tuyến yên sau đẻ (Hội chứng Sheehan) [32]."
+    },
+    "interferingFactors": "❌ **Phản ứng chéo:** Bệnh nhân đang uống Prednison/Prednisolon không nên làm XN này vì thuốc có thể phản ứng chéo với kháng thể đo lường, gây tăng giả tạo [33].\n💊 **Giảm giả tạo:** Bệnh nhân hồi sức tích cực (ICU) bị giảm albumin và globulin máu kéo theo giảm cortisol toàn phần giả tạo [31].",
+    "clinicalNote": "Chẩn đoán Hội chứng Cushing đặc trưng bởi việc nồng độ cortisol lúc 20h tối không giảm mà lại duy trì ở mức cao tương đương hoặc cao hơn mức 8h sáng (mất nhịp ngày đêm) [34]. Kết hợp định lượng Cortisol tự do trong nước tiểu 24h sẽ cho kết quả cực kỳ chính xác [29]."
+  },
+  {
+    "name": "Định lượng Insulin [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Insulin là hormon duy nhất có tác dụng làm hạ đường huyết, do tế bào beta của đảo Langerhans (tuyến tụy) sản xuất. Nó cho phép đưa glucose từ dòng máu vào bên trong tế bào để sinh năng lượng [35].",
+    "physiology": "📌 **Động học:** Chế tiết tương ứng với mức độ tăng của glucose máu. Đánh giá sự kháng insulin là một chìa khóa trong bệnh lý chuyển hóa [36].",
+    "indication": "🎯 **Nội tiết:** Chẩn đoán các nguyên nhân gây hạ đường huyết lúc đói, phát hiện u tiết insulin (Insulinoma) [35].\n🎯 **Chuyển hóa:** Cùng với đường huyết để tính chỉ số HOMA-IR đánh giá tình trạng kháng insulin trong Tiền đái tháo đường và PCOS [36].",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Yêu cầu nhịn ăn 8h trước khi lấy máu [35]. Nếu tiến hành nghiệm pháp dung nạp glucose (OGTT), phải lấy máu đo insulin trước khi cho uống đường [35].",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA / ECLIA).",
+    "ref": "📊 **Lúc đói:** 2,6 - 24,9 µU/mL (0 - 208 pmol/L) [37], [38].",
+    "alert": "⚠️ Khi chẩn đoán hạ đường huyết vô căn, việc định lượng insulin bắt buộc phải đi đôi với định lượng C-peptid để loại trừ nguyên nhân do tiêm lén insulin [39], [40].",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Insulin máu:**\n  🔴 **Bệnh lý Tụy:**\n    ▫️ U tế bào tiết Insulin (Insulinoma) [35].\n  🔴 **Rối loạn Chuyển hóa (Kháng insulin):**\n    ▫️ Đái tháo đường type 2 (giai đoạn đầu), béo phì, hội chứng buồng trứng đa nang (PCOS) [38].\n    ▫️ Hội chứng Cushing, To đầu chi [35].",
+      "decrease": "🔹 **Giảm Insulin máu:**\n  🔴 **Bệnh lý Tụy:**\n    ▫️ Đái tháo đường type 1 (tế bào tụy bị phá hủy hoàn toàn) [38], [41].\n    ▫️ Suy tuyến yên."
+    },
+    "interferingFactors": "❌ **Kháng thể kháng insulin:** Có thể gây nhiễu và làm sai lệch nghiêm trọng kết quả định lượng insulin ở bệnh nhân dùng insulin ngoại sinh. Trong trường hợp này, C-peptid là xét nghiệm thay thế ưu việt [39].",
+    "clinicalNote": "Theo bản cập nhật **AACE 2026**, tình trạng kháng insulin (tăng insulin máu bù trừ) trong giai đoạn tiền đái tháo đường được coi là một yếu tố nguy cơ độc lập gây xơ vữa động mạch và bệnh gan nhiễm mỡ MASLD, cần được can thiệp sớm ngay cả khi đường máu chưa đạt mức chẩn đoán [36]."
+  },
+  {
+    "name": "Định lượng C-peptid [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "C-peptid là phần chuỗi acid amin bị cắt ra khi pro-insulin phân tách thành insulin hoạt động. Do tụy luôn bài tiết C-peptid và insulin vào máu với tỷ lệ 1:1, nồng độ C-peptid phản ánh chính xác tuyệt đối **lượng insulin nội sinh** do cơ thể tự sản xuất [39].",
+    "physiology": "📌 **Ưu điểm:** Khác với insulin, C-peptid không bị gan giữ lại và thanh thải nhiều, thời gian bán hủy dài hơn, và đặc biệt **không bị nhiễu bởi insulin tiêm từ ngoài vào** [39], [40].",
+    "indication": "🎯 **Phân loại Đái tháo đường:** Đánh giá khả năng tiết insulin còn lại của tụy, giúp phân biệt rõ ĐTĐ type 1 (LADA) và ĐTĐ type 2 [39], [41].\n🎯 **Cấp cứu nội tiết:** Chẩn đoán hạ đường huyết giả tạo (do tiêm lén insulin) [42], [40].",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Yêu cầu nhịn ăn 8 - 10h [42]. Có thể làm test động bằng cách đo C-peptid trước và sau khi tiêm Glucagon để kích thích tụy [42].",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA / ECLIA).",
+    "ref": "📊 **Bình thường:** 0,37 - 1,47 nmol/L [38].",
+    "alert": "⚠️ **Cập nhật ADA 2025 / AACE 2026:** Định lượng C-peptid kết hợp tự kháng thể tụy là tiêu chuẩn vàng khi bệnh nhân ĐTĐ có kiểu hình không điển hình (người gầy, kiểm soát kém, nhanh phải dùng insulin) để xác định xem có phải ĐTĐ Type 1 hoặc LADA hay không [41].",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng C-peptid:**\n  🔴 **Tăng tiết nội sinh:**\n    ▫️ U tiết insulin (Insulinoma) [43], [38].\n    ▫️ Đái tháo đường type 2 có kháng insulin nặng [38].\n    ▫️ Suy thận (do giảm bài xuất C-peptid qua thận làm tăng tích tụ trong máu) [40].",
+      "decrease": "🔹 **Giảm C-peptid:**\n  🔴 **Suy kiệt tuyến tụy:**\n    ▫️ Đái tháo đường type 1 [41].\n    ▫️ Hạ đường huyết do tiêm insulin ngoại sinh (tiêm lén) [40]."
+    },
+    "interferingFactors": "❌ **Thuốc:** Nhóm thuốc kích thích tụy sulfonylureas (Gliclazide, Glimepiride...) làm tăng nồng độ C-peptid máu [40].",
+    "clinicalNote": "Để chẩn đoán hạ đường huyết giả tạo (Ví dụ: đầu độc bằng insulin): Nếu tiêm insulin ngoại lai vào, máu sẽ có **Insulin tăng rất cao nhưng C-peptid lại giảm thấp** (do tụy ngừng tiết). Nếu là Insulinoma, cả Insulin và C-peptid đều tăng song hành [40], [43]."
+  },
+  {
+    "name": "Định lượng Thyroglobulin (Tg) [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Thyroglobulin (Tg) là một glycoprotein kích thước lớn, đóng vai trò là chất tiền thân trong quá trình sinh tổng hợp hormon tuyến giáp (T3, T4). Tg **chỉ được sản xuất duy nhất tại các nang tuyến giáp** [44], [11].",
+    "physiology": "📌 **Đặc tính:** Sự hiện diện của Tg trong dòng tuần hoàn là dấu hiệu sinh học chứng tỏ có sự tồn tại của mô tuyến giáp (lành tính hoặc ác tính) trong cơ thể [45].",
+    "indication": "🎯 **Ung bướu (Chỉ định số 1):** Dùng làm Tumor Marker (chất chỉ điểm khối u) để theo dõi sự tái phát và di căn của Ung thư giáp thể biệt hóa (sau khi đã phẫu thuật cắt bỏ toàn bộ giáp hoặc điều trị I-131) [44], [11].\n🎯 **Nhi khoa:** Chẩn đoán tình trạng không có tuyến giáp bẩm sinh ở trẻ sơ sinh [46].",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn [44].\n⚠️ **Thời điểm vàng:** Chỉ định đo Tg phải tiến hành **ít nhất 6 tuần** sau khi phẫu thuật cắt giáp hoặc xạ trị I-131 (do cần thời gian để Tg cũ thoái giáng hết) [47].",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA / ECLIA).",
+    "ref": "📊 **Người có tuyến giáp bình thường:** 1,4 - 7,8 ng/mL (hoặc 0 - 50 ng/mL tùy phương pháp) [44], [11].\n📊 **Sau cắt toàn bộ tuyến giáp:** Giá trị mong muốn là không thể phát hiện (< 0,1 ng/mL).",
+    "alert": "⚠️ Tuyệt đối **không khuyến cáo** sử dụng Tg để sàng lọc hay chẩn đoán ban đầu ung thư tuyến giáp vì Tg tăng trong rất nhiều bệnh lý lành tính khác [46].",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Thyroglobulin:**\n  🔴 **Ác tính:**\n    ▫️ Tái phát hoặc di căn ung thư giáp thể nhú / thể nang sau khi đã điều trị tiệt căn [45].\n    ▫️ Sự hiện diện Tg trong dịch màng phổi khẳng định ung thư giáp đã di căn lên phổi [46].\n  🔴 **Lành tính:**\n    ▫️ Viêm tuyến giáp Hashimoto, Basedow, viêm tuyến giáp bán cấp [48].\n    ▫️ Bướu cổ đa nhân [48].",
+      "decrease": "🔹 **Giảm Thyroglobulin:**\n    ▫️ Bệnh nhân đã được cắt bỏ tuyến giáp hoàn toàn thành công [48].\n    ▫️ Không có tuyến giáp bẩm sinh."
+    },
+    "interferingFactors": "❌ **Giao thoa (Rất quan trọng):** Sự hiện diện của tự kháng thể **Anti-Tg** (có mặt ở khoảng 10% dân số) sẽ gây nhiễu phương pháp đo, dẫn tới kết quả Tg bị **âm tính giả**. Luôn luôn phải chỉ định đo kèm xét nghiệm Anti-Tg [45].\n💊 **Yếu tố sinh lý:** Thai kỳ làm tăng sinh lý Tg [46].",
+    "clinicalNote": "Ở bệnh nhân đã cắt toàn bộ tuyến giáp, nồng độ Tg bất ngờ tăng lên là hồi chuông báo động sớm về việc tế bào ung thư đang phân chia hoặc mô giáp còn sót lại đang tái phát. Cần kết hợp xạ hình toàn thân hoặc siêu âm để định vị tổn thương [45]."
+  },
+  {
+    "name": "Định lượng Digoxin [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Digoxin là một loại thuốc trợ tim nhóm glycosid trợ tim, được sử dụng trong điều trị suy tim và kiểm soát tần số thất trong Rung nhĩ. Việc xét nghiệm nồng độ thuốc trong máu được gọi là **Giám sát nồng độ thuốc điều trị (Therapeutic Drug Monitoring - TDM)**.",
+    "physiology": "📌 **Cửa sổ điều trị:** Digoxin có khoảng cách an toàn giữa liều điều trị và liều độc rất hẹp. Nồng độ thuốc cao dễ gây ngộ độc đe dọa tính mạng (rối loạn nhịp thất chết người).",
+    "indication": "🎯 **Giám sát an toàn:** Đánh giá hiệu quả điều trị, kiểm tra tình trạng tuân thủ uống thuốc.\n🎯 **Cấp cứu ngộ độc:** Bệnh nhân đang dùng Digoxin nhập viện với biểu hiện nôn mửa, nhìn mờ (nhìn thấy quầng sáng vàng), loạn nhịp tim chậm/nhanh [49].",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh hoặc huyết tương.\n⏳ **Thời điểm bắt buộc:** Phải lấy máu sau liều uống cuối cùng từ **6 đến 8 giờ** (khi thuốc đã phân bố ổn định trong các mô). Lấy quá sớm sẽ cho nồng độ cao giả tạo [49].",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA) / FPIA.",
+    "ref": "📊 **Nồng độ điều trị đạt đích:** 1,2 - 2,6 nmol/L [49].\n*(Tuy nhiên theo các Hướng dẫn Tim mạch hiện đại (AHA), với suy tim, đích nên duy trì ở mức thấp hơn: 0,64 - 1,15 nmol/L)*.",
+    "alert": "⚠️ Nếu bệnh nhân có **hạ Kali máu** hoặc **hạ Magie máu**, độc tính của Digoxin sẽ xuất hiện ngay cả khi nồng độ Digoxin trong máu vẫn nằm trong giới hạn \"bình thường\" [50], [51].",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng (Ngộ độc Digoxin):**\n  🔴 **Nguyên nhân:**\n    ▫️ Uống quá liều thuốc.\n    ▫️ Suy giảm chức năng thận (làm giảm đào thải digoxin ra khỏi cơ thể).\n    ▫️ Tương tác thuốc (Amiodaron, Verapamil, Spironolacton làm tăng mạnh nồng độ digoxin).",
+      "decrease": "🔹 **Giảm nồng độ:**\n    ▫️ Không tuân thủ điều trị (bệnh nhân quên uống thuốc).\n    ▫️ Rối loạn hấp thu ở đường tiêu hóa."
+    },
+    "interferingFactors": "❌ **Can thiệp kỹ thuật:** Bệnh nhân đang được cấp cứu bằng chất giải độc Digoxin-Fab fragments sẽ có kết quả đo nồng độ digoxin bị sai lệch hoàn toàn.\n💊 **Rối loạn điện giải:** Việc dùng thuốc lợi tiểu quai (Furosemid) gây mất Kali là nguyên nhân hàng đầu thúc đẩy ngộ độc Digoxin.",
+    "clinicalNote": "Theo dõi TDM là bắt buộc ở các bệnh nhân lớn tuổi, người có bệnh lý thận mạn tính hoặc có chỉ định phối hợp thuốc phức tạp. Khi có biểu hiện ngộ độc, ngay lập tức phải ngưng thuốc, bù Kali và đo nồng độ thuốc trong máu."
+  },
+  {
+    "name": "Định lượng Kháng sinh (Aminoglycosid / Vancomycin) [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Các kháng sinh diệt khuẩn mạnh (như Vancomycin, hay nhóm Aminoglycosid: Amikacin, Gentamicin, Tobramycin) có đặc điểm là **độc tính rất cao trên thận và thính giác**. Việc Giám sát nồng độ thuốc điều trị (TDM) là bắt buộc để đảm bảo liều lượng đủ diệt khuẩn nhưng không gây hỏng thận [52], [12].",
+    "physiology": "📌 **Đỉnh (Peak):** Mức nồng độ cao nhất của thuốc sau khi truyền, quyết định hiệu quả tiêu diệt vi khuẩn.\n📌 **Đáy (Trough):** Mức nồng độ thấp nhất ngay trước khi dùng liều tiếp theo, quyết định mức độ an toàn (tránh tích lũy gây độc).",
+    "indication": "🎯 **Hồi sức và Truyền nhiễm:** Theo dõi sát sao ở bệnh nhân nhiễm khuẩn huyết nặng, viêm nội tâm mạc, hoặc bệnh nhân đang bị suy giảm chức năng thận cần dùng kháng sinh mạnh [12].",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh hoặc huyết tương.\n⏳ **Nồng độ đỉnh (Peak):** Lấy máu 30 phút sau khi kết thúc truyền tĩnh mạch [12].\n⏳ **Nồng độ đáy (Trough):** Lấy máu ngay trước liều thuốc kế tiếp (trong vòng 30 phút trước khi tiêm) [12].",
+    "testingMethods": "Hóa phát quang miễn dịch, FPIA, hoặc LC-MS/MS.",
+    "ref": "📊 *(Giá trị tham khảo đối với Aminoglycosid)*:\n▫️ **Amikacin:** Đỉnh 34,2 - 42,8 µmol/L; Đáy 8,6 - 17,1 µmol/L [12].\n▫️ **Gentamicin:** Đỉnh 10,5 - 16,7 µmol/L; Đáy 2,1 - 4,2 µmol/L [12].",
+    "alert": "⚠️ Nếu nồng độ đáy (Trough) liên tục duy trì ở mức cao, nguy cơ bệnh nhân bị suy thận cấp (hoại tử ống thận) và điếc vĩnh viễn là cực kỳ lớn.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Nồng độ thuốc tăng quá mức:**\n  🔴 Bệnh nhân suy thận (giảm thải trừ), tính toán sai liều lượng hoặc khoảng cách đưa thuốc quá ngắn.\n  🔴 Hậu quả: Tổn thương ống thận cấp (tăng Ure, Creatinin) [52], nhiễm độc tai trong.",
+      "decrease": "🔹 **Nồng độ thuốc không đạt đích:**\n  🔴 Bệnh nhân có mức thanh thải thận tăng cao (thường gặp ở người trẻ, chấn thương sọ não, bỏng), hoặc liều dùng không đủ.\n  🔴 Hậu quả: Không tiêu diệt được vi khuẩn, dẫn đến kháng thuốc (như chuẩn IDSA 2024 cảnh báo về đề kháng kháng sinh) [53]."
+    },
+    "interferingFactors": "❌ **Lấy mẫu sai thời điểm:** Lấy máu sai giờ Peak/Trough sẽ khiến bác sĩ tính toán nhầm và đổi liều sai lầm.",
+    "clinicalNote": "Đối với bệnh nhân sử dụng các loại kháng sinh độc với thận, bắt buộc bác sĩ phải chỉ định định kỳ xét nghiệm **Ure và Creatinin máu** kèm theo. Theo hướng dẫn IDSA 2024, việc tối ưu hóa dược động học / dược lực học (PK/PD) bằng phương pháp TDM là vũ khí cốt lõi để cứu sống bệnh nhân nhiễm vi khuẩn đa kháng thuốc [53]."
+  },
+   {
+    "name": "Toxocara Ab miễn dịch bán tự động [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Xét nghiệm huyết thanh học nhằm phát hiện kháng thể IgG chống lại ấu trùng giun đũa chó/mèo (Toxocara canis/cati) - tác nhân gây hội chứng ấu trùng di chuyển nội tạng. *(Lưu ý: Thông tin sinh lý/bệnh lý được bổ sung từ kiến thức y khoa chung do không có trong tài liệu gốc)*.",
+    "physiology": "📌 **Cơ chế:** Con người là ký chủ ngẫu nhiên. Khi nuốt phải trứng giun đũa chó/mèo, ấu trùng nở ra ở ruột, xuyên qua thành ruột và theo dòng máu đi lạc vị trí vào các tạng (gan, phổi, mắt, não) gây viêm và kích thích hệ miễn dịch sinh kháng thể.",
+    "indication": "🎯 **Ký sinh trùng:** Chẩn đoán hội chứng ấu trùng di chuyển nội tạng (đau bụng, gan to, ho kéo dài) hoặc ấu trùng di chuyển ở mắt (giảm thị lực).\n🎯 **Lâm sàng:** Bệnh nhân có nổi mẩn ngứa, mề đay dai dẳng kèm tăng bạch cầu ái toan (Eosinophil) không rõ nguyên nhân.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn.",
+    "testingMethods": "Miễn dịch Enzym (ELISA) phát hiện kháng thể IgG.",
+    "ref": "📊 **Bình thường:** Âm tính.",
+    "alert": "⚠️ Kháng thể IgG của Toxocara có thể tồn tại trong máu **nhiều năm** sau khi đã điều trị khỏi bệnh. Một kết quả Dương tính đơn thuần chỉ chứng minh bệnh nhân đã \"từng phơi nhiễm\", không khẳng định 100% đang mắc bệnh cấp tính.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Dương tính (+):**\n    ▫️ Đang nhiễm hoặc có tiền sử nhiễm giun đũa chó/mèo.",
+      "decrease": "🔹 **Âm tính (-):**\n    ▫️ Không nhiễm, hoặc lấy máu quá sớm trong giai đoạn cửa sổ khi cơ thể chưa kịp sinh kháng thể."
+    },
+    "interferingFactors": "❌ **Phản ứng chéo (Dương tính giả):** Có thể xẩy ra nếu bệnh nhân đang nhiễm các loại giun sán khác (Giun lươn, giun móc, giun đũa người).",
+    "clinicalNote": "Không được chỉ định thuốc tẩy giun sán diệt Toxocara chỉ dựa trên một tờ kết quả ELISA (+). Bác sĩ bắt buộc phải kết hợp với triệu chứng lâm sàng (ngứa, tổn thương tạng) và xét nghiệm thấy tỷ lệ Bạch cầu ái toan (EOS) tăng cao để quyết định điều trị."
+  },
+  {
+    "name": "Test Methamphetamine (Ma túy đá) [niệu]",
+    "group": "Miễn Dịch",
+    "time": "Làm ngay",
+    "isFeatured": false,
+    "concept": "Methamphetamine là một chất kích thích hệ thần kinh trung ương cực mạnh, gây nghiện cao (thường gọi là ma túy đá). Xét nghiệm này sử dụng nguyên lý sắc ký miễn dịch để phát hiện sự bài tiết của chất này hoặc các chất chuyển hóa của nó qua nước tiểu. *(Lưu ý: Thông tin bổ sung từ kiến thức y khoa chung)*.",
+    "physiology": "📌 **Động học:** Methamphetamine hấp thu nhanh và bài tiết chủ yếu qua thận. Thời gian phát hiện trong nước tiểu thường kéo dài từ 3 - 5 ngày sau lần sử dụng cuối cùng (tùy thuộc vào liều lượng và độ pH của nước tiểu).",
+    "indication": "🎯 **Sàng lọc & Pháp y:** Kiểm tra sức khỏe, tầm soát chất gây nghiện, giám định pháp y, cấp cứu các trường hợp rối loạn tâm thần kích động nghi do ngộ độc ma túy.",
+    "specimenCollection": "💧 **Loại mẫu:** Nước tiểu lấy ngẫu nhiên.\n⚠️ **Bảo mật:** Việc lấy mẫu phải được giám sát chặt chẽ để chống tình trạng tráo đổi mẫu hoặc pha loãng nước tiểu.",
+    "testingMethods": "Sắc ký miễn dịch (Test nhanh định tính).",
+    "ref": "📊 **Bình thường:** Âm tính (-).",
+    "alert": "⚠️ Đây là test SÀNG LỌC định tính. Mọi kết quả Dương tính đều mang ý nghĩa pháp lý và y khoa nghiêm trọng, do đó nếu có tranh chấp, mẫu nước tiểu phải được gửi đi chạy Sắc ký khí khối phổ (GC-MS) để khẳng định.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Dương tính (+):**\n    ▫️ Bệnh nhân có sử dụng Methamphetamine hoặc các dẫn xuất của Amphetamine trong vài ngày qua.",
+      "decrease": "Âm tính."
+    },
+    "interferingFactors": "❌ **Dương tính giả:** Một số thuốc cảm cúm, thuốc chống ngạt mũi (chứa Pseudoephedrine, Ephedrine) hoặc thuốc giảm cân có thể phản ứng chéo gây dương tính giả.\n❌ **Âm tính giả:** Bệnh nhân uống quá nhiều nước trước khi lấy mẫu làm hòa loãng nồng độ chất gây nghiện dưới ngưỡng phát hiện của test.",
+    "clinicalNote": "Trong cấp cứu, bệnh nhân ngộ độc Methamphetamine thường có biểu hiện nhịp tim rất nhanh, tăng huyết áp dữ dội, vã mồ hôi, đồng tử giãn và hoang tưởng ảo giác. Test nhanh nước tiểu giúp định hướng xử trí chống loạn thần kịp thời."
+  },
+  {
+    "name": "Test Morphin / Heroin (Opiat) [niệu]",
+    "group": "Miễn Dịch",
+    "time": "Làm ngay",
+    "isFeatured": false,
+    "concept": "Morphin và Heroin thuộc nhóm chất dạng thuốc phiện (Opiate) có tác dụng giảm đau mạnh, ức chế hô hấp và gây nghiện. Test nhanh Opiate phát hiện sự có mặt của nhóm chất này trong nước tiểu. *(Lưu ý: Thông tin bổ sung từ kiến thức y khoa chung)*.",
+    "physiology": "📌 **Chuyển hóa:** Heroin sau khi vào cơ thể sẽ nhanh chóng bị thủy phân thành Morphin. Morphin được bài tiết qua nước tiểu và có thể được phát hiện trong vòng từ 2 đến 4 ngày sau khi sử dụng.",
+    "indication": "🎯 **Sàng lọc & Pháp y:** Giám định pháp y, kiểm tra định kỳ người cai nghiện, cấp cứu bệnh nhân hôn mê nghi quá liều ma túy.",
+    "specimenCollection": "💧 **Loại mẫu:** Nước tiểu lấy ngẫu nhiên.\n⚠️ **Lưu ý:** Lấy mẫu dưới sự giám sát trực tiếp.",
+    "testingMethods": "Sắc ký miễn dịch (Test nhanh định tính) hoặc Định lượng.",
+    "ref": "📊 **Bình thường:** Âm tính (-).",
+    "alert": "⚠️ Bệnh nhân hôn mê, đồng tử co nhỏ như đầu đinh ghim, nhịp thở chậm là tam chứng kinh điển của ngộ độc Opiate cấp. Lúc này test nước tiểu có vai trò củng cố chẩn đoán để sử dụng ngay thuốc giải độc Naloxone.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Dương tính (+):**\n    ▫️ Bệnh nhân có sử dụng Heroin, Morphin, Codein hoặc các chế phẩm thuốc phiện khác.",
+      "decrease": "Âm tính."
+    },
+    "interferingFactors": "❌ **Dương tính giả:** Ăn lượng lớn hạt anh túc (poppy seeds), dùng các loại thuốc ho chứa Codein (Terpin Codein) hoặc thuốc giảm đau chứa Opiate trong y tế.\n❌ **Âm tính giả:** Pha loãng mẫu hoặc đã qua thời gian thải trừ của thuốc.",
+    "clinicalNote": "Nếu test Opiate (+) trên một bệnh nhân không có tiền sử nghiện, bác sĩ phải lập tức rà soát lại đơn thuốc xem bệnh nhân có đang được kê các loại thuốc ho (chứa codein, pholcodin) hoặc thuốc giảm đau (tramadol, morphin) hay không để tránh kết luận sai lệch."
+  },
+  {
+    "name": "Định lượng Creatinin [niệu]",
+    "group": "Nước tiểu & Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Creatinin là sản phẩm thoái hóa của cơ bắp, được lọc hoàn toàn qua cầu thận và KHÔNG bị ống thận tái hấp thu. Do đó, định lượng Creatinin trong nước tiểu là thước đo cực kỳ trung thực để đánh giá khả năng lọc của cầu thận.",
+    "physiology": "📌 **Động học:** Creatinin niệu phản ánh khối lượng cơ bắp của cơ thể. Tỷ lệ thải trừ luôn hằng định ở mức ổn định mỗi ngày đối với người khỏe mạnh.\n📌 **Ưu điểm vượt trội:** Tuyệt đối không bao giờ được chỉ định Creatinin niệu đơn độc. Xét nghiệm này sinh ra để đánh giá kèm với Creatinin máu nhằm tính **Độ thanh thải Creatinin (Mức lọc cầu thận - eGFR)** hoặc dùng làm mẫu số để tính các tỷ lệ (như Tỷ lệ Albumin/Creatinin).",
+    "indication": "🎯 **Chức năng Thận:** Tính độ thanh thải Creatinin (CrCl) để đánh giá giai đoạn suy thận.\n🎯 **Kiểm soát chất lượng mẫu:** Sử dụng để xác nhận xem bệnh nhân có thu thập đủ và đúng lượng nước tiểu 24 giờ hay không.",
+    "specimenCollection": "💧 **Loại mẫu:** Nước tiểu 24 giờ hoặc Mẫu nước tiểu ngẫu nhiên.\n⚠️ **Lưu ý:** Việc lấy mẫu nước tiểu 24 giờ sai quy cách (bỏ sót nước tiểu) sẽ làm sai lệch hoàn toàn kết quả chẩn đoán.",
+    "testingMethods": "Phản ứng mầu động học (Jaffe) hoặc Enzym.",
+    "ref": "📊 **Nước tiểu 24 giờ:** \n▫️ Nam: 800 - 2000 mg/ngày.\n▫️ Nữ: 600 - 1800 mg/ngày.\n*(Lưu ý: Mẫu ngẫu nhiên được tính theo mg/g Creatinin)*.",
+    "alert": "⚠️ Tuyệt đối không dùng nồng độ Creatinin niệu để kết luận tình trạng suy thận (bởi trong suy thận, nồng độ Creatinin niệu sẽ bị tăng giả tạo do ống thận tăng bài xuất bù trừ).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Creatinin niệu:**\n  🔴 Chế độ ăn quá nhiều đạm động vật (thịt), gắng sức thể lực.\n  🔴 To đầu chi, Đái tháo đường, nhiễm trùng.",
+      "decrease": "🔹 **Giảm Creatinin niệu:**\n  🔴 Suy thận giai đoạn nặng (cầu thận mất khả năng lọc).\n  🔴 Teo cơ, loạn dưỡng cơ, thiếu máu, chế độ ăn thuần chay."
+    },
+    "interferingFactors": "❌ **Lỗi mẫu:** Không bảo quản lạnh mẫu nước tiểu 24h gây thoái giáng creatinin (âm tính giả). Mẫu có nhiều xeton cũng gây sai số.\n💊 **Thuốc làm TĂNG:** Corticosteroid, thuốc ngừa thai.\n💊 **Thuốc làm GIẢM:** NSAIDs (Ibuprofen), thuốc lợi tiểu Thiazid, Cimetidin.",
+    "clinicalNote": "Khi tính độ thanh thải Creatinin theo nước tiểu 24h, nếu phát hiện lượng Creatinin niệu tổng cộng < 500 mg/ngày ở một người trưởng thành có cơ bắp bình thường, bác sĩ có thể khẳng định chắc chắn 100% bệnh nhân đã **lấy thiếu nước tiểu** và yêu cầu thu thập lại từ đầu."
+  },
+  {
+    "name": "Định lượng Glucose [niệu]",
+    "group": "Nước tiểu & Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Ở người có chức năng thận khỏe mạnh, 100% lượng glucose lọc qua cầu thận sẽ được tái hấp thu tại ống lượn gần. Glucose chỉ xuất hiện trong nước tiểu khi nồng độ đường trong máu vượt quá **\"Ngưỡng thận\"** (thường là khoảng 180 mg/dL hay 10 mmol/L).",
+    "physiology": "📌 **Đặc tính:** Ngưỡng thận đối với Glucose khác nhau ở từng cá thể. Nó có thể tăng lên ở người già (suy thận) và bị hạ thấp sinh lý ở phụ nữ mang thai.\n📌 **Hậu quả:** Sự có mặt của lượng lớn đường trong nước tiểu sẽ kéo theo nước (lợi tiểu thẩm thấu) gây ra triệu chứng đái nhiều, khát nhiều kinh điển của Đái tháo đường.",
+    "indication": "🎯 **Nội tiết:** Đánh giá tình trạng Đái tháo đường mất bù.\n🎯 **Thận học:** Chẩn đoán khiếm khuyết chức năng ống thận gần (Hội chứng Fanconi - Đường máu bình thường nhưng đường niệu dương tính).",
+    "specimenCollection": "💧 **Loại mẫu:** Nước tiểu 24 giờ hoặc mẫu ngẫu nhiên (sàng lọc qua que nhúng - Dipstick).\n⚠️ **Lưu ý:** Không bảo quản bằng hóa chất, giữ trong tủ lạnh.",
+    "testingMethods": "Phản ứng Enzym (Que thử) hoặc Sinh hóa tự động.",
+    "ref": "📊 **Nước tiểu 24h:** < 200 mg/24h (hay < 11,2 mmol/L).\n📊 **Định tính:** Âm tính (-).",
+    "alert": "⚠️ Sàng lọc Đái tháo đường bằng Glucose niệu có tỷ lệ **âm tính giả rất cao**. Rất nhiều bệnh nhân bị Đái tháo đường nhưng đường niệu hoàn toàn âm tính (do ngưỡng thận tăng lên). Phải dùng Đường máu hoặc HbA1C để chẩn đoán.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Xuất hiện Glucose niệu (Dương tính):**\n  🔴 **Đường máu vượt ngưỡng thận:**\n    ▫️ Đái tháo đường không kiểm soát, Đái tháo đường thai kỳ.\n    ▫️ Bệnh nội tiết: Hội chứng Cushing, To đầu chi, U tủy thượng thận, Nhiễm độc giáp.\n    ▫️ Stress nặng: Nhồi máu cơ tim, bỏng, đột quỵ.\n  🔴 **Đường máu bình thường (Ngưỡng thận bị hạ thấp):**\n    ▫️ Rối loạn chức năng ống thận gần (Hội chứng Fanconi).\n    ▫️ Phụ nữ có thai (sinh lý).",
+      "decrease": "Không có ý nghĩa (Bình thường là âm tính)."
+    },
+    "interferingFactors": "❌ **Lỗi mẫu:** Để mẫu nước tiểu ở nhiệt độ phòng quá lâu, vi khuẩn sẽ tiêu thụ hết glucose gây âm tính giả.\n💊 **Dương tính giả:** Dùng Cephalosporin, Penicillin, Vitamin C liều cao.\n💊 **Thuốc ức chế SGLT2:** (Nhóm thuốc trị tiểu đường mới như Dapagliflozin) chủ động ức chế tái hấp thu đường, ép thận đào thải glucose, làm Glucose niệu luôn dương tính mạnh (Đây là tác dụng điều trị, không phải lỗi).",
+    "clinicalNote": "Nếu bệnh nhân đi khám có kết quả Đường máu lúc đói hoàn toàn bình thường (5.0 mmol/L) nhưng xét nghiệm nước tiểu lại có Glucose niệu (+++), bác sĩ phải nghĩ ngay đến Hội chứng Fanconi (ống thận hỏng không giữ được đường) hoặc hỏi xem bệnh nhân có đang uống thuốc tiểu đường nhóm SGLT2 (như Forxiga, Jardiance) hay không."
+  },
+  {
+    "name": "Định lượng MAU (Microalbumin) [niệu]",
+    "group": "Nước tiểu & Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Microalbumin niệu (MAU) là tình trạng rò rỉ một lượng cực nhỏ Albumin vào nước tiểu (30 - 300 mg/ngày). Lượng này quá nhỏ để các que thử nước tiểu thông thường (Dipstick) phát hiện được, nhưng lại là **\"Bằng chứng sớm nhất\"** cảnh báo màng lọc cầu thận đang bị tổn thương.",
+    "physiology": "📌 **Động học:** Xuất hiện rất sớm, thường xảy ra từ vài năm trước khi nồng độ Creatinin máu tăng hay chức năng thận suy giảm rõ rệt trên lâm sàng.\n📌 **Tiên lượng:** Ở bệnh nhân Đái tháo đường Typ 1, nếu có Microalbumin niệu, nguy cơ chuyển thành suy thận mạn trong 15 năm tới tăng gấp 20 lần.",
+    "indication": "🎯 **Sàng lọc Bắt buộc:** Hội Đái tháo đường Mỹ (ADA) quy định sàng lọc MAU hàng năm cho mọi bệnh nhân Đái tháo đường (Typ 2 ngay khi chẩn đoán, Typ 1 sau 5 năm mắc bệnh).\n🎯 **Tăng huyết áp:** Phát hiện tổn thương cơ quan đích (Thận) ở bệnh nhân Tăng huyết áp vô căn.",
+    "specimenCollection": "💧 **Loại mẫu ưu tiên:** Mẫu nước tiểu thu ngẫu nhiên (Lấy nước tiểu đầu tiên buổi sáng là tốt nhất).\n⚠️ **Quy trình:** Để giảm sai số do lượng nước tiểu ít/nhiều, hiện nay toàn thế giới sử dụng XN tính **Tỷ lệ Albumin/Creatinin niệu (UACR - mg/g)**.",
+    "testingMethods": "Đo độ đục miễn dịch (Immunoturbidimetric).",
+    "ref": "📊 **Bình thường:** < 30 mg/24h (hoặc < 30 µg/mg Creatinin).\n📊 **Microalbumin niệu:** 30 - 300 mg/24h (hoặc 30 - 300 µg/mg Creatinin).\n📊 **Protein niệu đại thể:** > 300 mg/24h.",
+    "alert": "⚠️ Sự bài xuất Albumin có dao động cực lớn (tới 50%) tùy theo thời điểm trong ngày và hoạt động thể lực. Do đó, chẩn đoán chỉ được xác lập khi có **2 trong 3 mẫu thử** dương tính trong khoảng thời gian từ 3 - 6 tháng.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Microalbumin niệu (Dương tính):**\n  🔴 **Tổn thương Thận & Mạch máu:**\n    ▫️ Bệnh cầu thận do Đái tháo đường (Diabetic Nephropathy).\n    ▫️ Bệnh thận do Tăng huyết áp.\n    ▫️ Tiền sản giật ở phụ nữ có thai.\n  🔴 **Nguyên nhân thoáng qua (Lành tính):**\n    ▫️ Gắng sức thể lực quá mức, stress tâm thần, sốt, nhiễm trùng tiết niệu.\n    ▫️ Đang trong kỳ kinh nguyệt, chế độ ăn quá nhiều đạm.",
+      "decrease": "Không có ý nghĩa."
+    },
+    "interferingFactors": "❌ **Âm tính giả:** Nước tiểu bị hòa loãng quá mức (uống nhiều nước).\n❌ **Dương tính giả:** Nhiễm bẩn máu kinh nguyệt, nước tiểu có tính kiềm cao.",
+    "clinicalNote": "Việc phát hiện Microalbumin niệu mang tính chất sống còn. Ngay khi có kết quả dương tính, dù huyết áp bệnh nhân đang bình thường, bác sĩ bắt buộc phải khởi trị bằng nhóm thuốc **Ức chế men chuyển (ACEi)** hoặc **Ức chế thụ thể (ARB)**. Các thuốc này có tác dụng giãn tiểu động mạch đi của cầu thận, giúp \"đóng lại\" lỗ thủng, đảo ngược tình trạng rò rỉ Albumin và bảo vệ thận."
+  },
+  {
+    "name": "Định lượng Protein niệu (Nước tiểu 24h)",
+    "group": "Nước tiểu & Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Trong điều kiện bình thường, màng lọc cầu thận như một chiếc rây thông minh, chặn đứng các phân tử Protein kích thước lớn (như Albumin, Globulin) không cho lọt vào nước tiểu. Sự xuất hiện của Protein trong nước tiểu với số lượng lớn (>300 mg/ngày) luôn là chỉ điểm kinh điển của sự sụp đổ hàng rào màng lọc cầu thận hoặc tổn thương ống thận.",
+    "physiology": "📌 **Phân loại nguồn gốc:** \n- Nguồn gốc cầu thận: Do rách màng lọc (xuất hiện nhiều phân tử lớn).\n- Nguồn gốc ống thận: Do ống lượn gần mất khả năng tái hấp thu (xuất hiện phân tử nhỏ).\n- Nguồn gốc trước thận: Do sản xuất quá mức protein dị thường trong máu vượt khả năng lọc (Protein Bence-Jones).",
+    "indication": "🎯 **Thận học:** Tiêu chuẩn vàng để chẩn đoán Hội chứng thận hư, Viêm cầu thận, và theo dõi đáp ứng điều trị bệnh thận mạn.\n🎯 **Sản khoa:** Chẩn đoán Tiền sản giật (Tăng HA + Protein niệu) đe dọa sinh non.",
+    "specimenCollection": "💧 **Loại mẫu:** Nước tiểu 24 giờ (Tiêu chuẩn vàng) hoặc mẫu ngẫu nhiên tính tỷ số Protein/Creatinin.\n⚠️ **Lưu ý:** Nước tiểu 24h phải được thu gom chính xác tuyệt đối, bảo quản trong tủ mát (không dùng chất bảo quản làm sai lệch protein).",
+    "testingMethods": "Đo độ đục hoặc So màu (Pyrogallol red).",
+    "ref": "📊 **Bình thường:** < 150 mg/24h (hoặc < 0,15 g/24h).\n*(Trẻ em, phụ nữ có thai có thể có ngưỡng khác một chút)*.",
+    "alert": "⚠️ Tình trạng \"Protein niệu tư thế đứng\" (Orthostatic proteinuria) rất hay gặp ở người trẻ tuổi: Protein chỉ xuất hiện vào ban ngày khi đứng, và hoàn toàn âm tính vào ban đêm khi nằm ngủ. Đây là tình trạng hoàn toàn lành tính.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Protein niệu (Dương tính):**\n  🔴 **Ngưỡng Hội chứng thận hư (> 3.5 g/24h):**\n    ▫️ Viêm cầu thận mạn, Hội chứng thận hư nguyên phát/thứ phát.\n    ▫️ Bệnh cầu thận do Đái tháo đường, Bệnh Lupus ban đỏ hệ thống.\n  🔴 **Ngưỡng trung bình (0.5 - 3.0 g/24h):**\n    ▫️ Viêm thận - bể thận, Tăng huyết áp ác tính.\n    ▫️ Đa u tủy xương (Sản xuất ồ ạt chuỗi nhẹ tự do Bence-Jones).\n    ▫️ Tiền sản giật.\n  🔴 **Nguyên nhân sinh lý / Tạm thời:**\n    ▫️ Sốt cao, gắng sức nặng, stress, suy tim ứ huyết.",
+      "decrease": "Không có ý nghĩa."
+    },
+    "interferingFactors": "❌ **Dương tính giả:** Nước tiểu quá kiềm, lẫn máu kinh nguyệt, viêm nhiễm đường tiết niệu hoặc để nước tiểu quá lâu vi khuẩn phân hủy urê thành kiềm.\n💊 **Thuốc làm TĂNG:** Thuốc cản quang, kháng sinh nhóm Aminoglycosid, Cephalosporin.",
+    "clinicalNote": "Theo hướng dẫn KDIGO 2024, đối với bệnh nhân khám ngoại trú, việc yêu cầu xách bình nước tiểu 24h đi lại rất bất tiện và dễ lấy sai mẫu. Hiện nay, thế giới ưu tiên dùng **Tỷ số Protein/Creatinin niệu ngẫu nhiên (UPCR)** hoặc **Albumin/Creatinin niệu (UACR)** làm công cụ chẩn đoán và theo dõi thường quy thay cho nước tiểu 24h."
+  },
+  {
+    "name": "Đo hoạt độ Amylase [niệu]",
+    "group": "Nước tiểu & Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Amylase là enzym tiêu hóa sinh ra từ Tụy và Tuyến nước bọt. Do có phân tử lượng rất nhỏ, Amylase dễ dàng lọt qua màng lọc cầu thận và bài xuất ra ngoài nước tiểu. Tốc độ thanh thải Amylase qua thận phản ánh rất nhanh tình trạng ứ đọng enzym này trong dòng máu.",
+    "physiology": "📌 **Động học (trong Viêm tụy cấp):** Trong khi Amylase máu chỉ tăng nhanh và biến mất trong vòng 2 - 3 ngày, thì Amylase niệu có độ trễ hơn (phản ánh lại sau 6-10 giờ) nhưng lại **tồn tại ở mức cao rất lâu** (có thể kéo dài từ 7 đến 10 ngày).",
+    "indication": "🎯 **Tiêu hóa / Cấp cứu bụng:** Chẩn đoán Viêm tụy cấp, đặc biệt hữu ích khi bệnh nhân đến viện muộn (sau 3 ngày khởi phát đau bụng, lúc này Amylase máu đã về mức bình thường).",
+    "specimenCollection": "💧 **Loại mẫu:** Nước tiểu 24 giờ hoặc Mẫu nước tiểu thu ngẫu nhiên (nước tiểu giữa dòng).\n⚠️ **Bảo quản:** Phải giữ trong tủ mát hoặc đá lạnh.",
+    "testingMethods": "Đo hoạt độ enzym.",
+    "ref": "📊 **Bình thường:** 0 - 375 U/L (hay 0 - 6,25 µkat/L).\n*(Lưu ý: Tùy sinh phẩm phòng Lab, có thể có ngưỡng cắt khác nhau)*.",
+    "alert": "⚠️ Tăng Amylase niệu là bằng chứng muộn nhưng bền vững nhất của Viêm tụy cấp. Tuy nhiên, mức độ tăng cao của Amylase niệu không dùng để tiên lượng mức độ nặng hay độ hoại tử của tuyến tụy.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Amylase niệu:**\n  🔴 **Bệnh lý tại Tụy:**\n    ▫️ Viêm tụy cấp (Tăng rất cao, có thể > 1000 U/L).\n    ▫️ Đợt cấp của viêm tụy mạn.\n    ▫️ Biến chứng nang giả tụy.\n  🔴 **Tổn thương ngoài Tụy:**\n    ▫️ Thủng ổ loét dạ dày - tá tràng, tắc ruột, viêm phúc mạc.\n    ▫️ Viêm tuyến nước bọt (Quai bị).",
+      "decrease": "🔹 **Giảm Amylase niệu:**\n  🔴 Tổn thương nhu mô tụy lan rộng (Viêm tụy cấp thể hoại tử bùng phát, Viêm tụy mạn giai đoạn cuối).\n  🔴 Tổn thương thận nặng (Giảm chức năng lọc)."
+    },
+    "interferingFactors": "❌ **Hiện tượng Macro-amylase:** Phân tử Amylase kết hợp với Globulin tạo thành phân tử khổng lồ, không thể lọt qua màng lọc cầu thận. Hậu quả: Amylase máu tăng vọt nhưng **Amylase niệu hoàn toàn bình thường**. (Trường hợp này không bị Viêm tụy cấp).\n💊 **Thuốc làm TĂNG:** Aspirin, thuốc lợi tiểu Thiazid, Corticosteroid.",
+    "clinicalNote": "Bài toán biện luận kinh điển trong Viêm tụy: \n- Bệnh nhân đau bụng ngày 1: Amylase máu TĂNG, Amylase niệu BÌNH THƯỜNG.\n- Bệnh nhân đau bụng ngày 5: Amylase máu BÌNH THƯỜNG, Amylase niệu TĂNG CAO.\nĐây là chìa khóa để bác sĩ không bỏ sót các trường hợp viêm tụy đến muộn."
+  },
+  {
+    "name": "Điện giải đồ (Na, K, Cl) [niệu]",
+    "group": "Nước tiểu & Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Xét nghiệm đo lường lượng các ion Natri, Kali, Clo bài xuất ra nước tiểu 24 giờ. Thận là cơ quan chủ chốt duy trì sự cân bằng muối nước (hằng định nội môi). Khi nồng độ điện giải trong máu biến động, việc đánh giá điện giải niệu giúp bác sĩ \"đọc vị\" xem Thận đang phản ứng bảo vệ đúng cách hay chính Thận là kẻ gây ra lỗi.",
+    "physiology": "📌 **Đặc tính:** \n- Khi Natri máu giảm (Thiếu muối), thận khỏe mạnh sẽ co thắt tối đa để tái hấp thu Natri, khiến Natri niệu giảm sát đáy (< 20 mmol/L).\n- Ngược lại, nếu Natri máu giảm mà Natri niệu vẫn tăng ào ạt, chứng tỏ màng lọc hoặc ống thận đã bị \"thủng/hỏng\", mất khả năng giữ muối.",
+    "indication": "🎯 **Thận & Hồi sức:** Chẩn đoán phân biệt nguyên nhân hạ Natri máu, hạ Kali máu.\n🎯 **Chẩn đoán Suy thận cấp:** Xác định suy thận nguồn gốc \"Trước thận\" (do mất nước, tụt huyết áp) hay \"Tại thận\" (hoại tử ống thận cấp).",
+    "specimenCollection": "💧 **Loại mẫu:** Nước tiểu 24 giờ (tốt nhất) hoặc Mẫu ngẫu nhiên.\n⚠️ **Lưu ý:** Phải khai báo toàn bộ các thuốc lợi tiểu bệnh nhân đang sử dụng (vì lợi tiểu ép thận thải muối nước, làm sai lệch hoàn toàn biện luận lâm sàng).",
+    "testingMethods": "Điện cực ion chọn lọc (ISE).",
+    "ref": "📊 **Natri niệu:** 40 - 220 mmol/24h.\n📊 **Kali niệu:** 25 - 125 mmol/24h.\n📊 **Clo niệu:** 110 - 250 mmol/24h.\n*(Tất cả đều dao động phụ thuộc chặt chẽ vào lượng muối đưa vào qua ăn uống)*.",
+    "alert": "⚠️ Điện giải đồ niệu là một trong những xét nghiệm có tính \"biện luận\" cao nhất. Đánh giá nó luôn phải đặt trên bàn cân cùng lúc với **Điện giải đồ máu** và **Tình trạng thể tích** (phù hay mất nước) của bệnh nhân.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Na, K, Cl Niệu TĂNG:**\n  🔴 **Do tổn thương Ống thận (Mất muối):**\n    ▫️ Hoại tử ống thận cấp (Suy thận cấp tại thận).\n    ▫️ Bệnh thận kẽ, viêm thận - bể thận mạn.\n  🔴 **Do Nội tiết & Thuốc:**\n    ▫️ Hội chứng tiết ADH không thích hợp (SIADH) (Natri niệu > 40 mmol/L dù Natri máu đang hạ).\n    ▫️ Lạm dụng thuốc lợi tiểu (Thiazid, Furosemid).\n    ▫️ Bệnh Addison (Suy thượng thận - không giữ được Natri).",
+      "decrease": "🔹 **Na, K, Cl Niệu GIẢM:**\n  🔴 **Phản ứng bù trừ sinh lý (Giữ muối):**\n    ▫️ Mất nước nặng, sốc giảm thể tích, nôn, tiêu chảy ồ ạt.\n    ▫️ Suy tim sung huyết, Xơ gan cổ trướng (Cơ thể lầm tưởng đang thiếu nước nên ép thận giữ muối tối đa).\n  🔴 **Do Nội tiết:**\n    ▫️ Cường Aldosteron (Giữ Natri, thải Kali)."
+    },
+    "interferingFactors": "❌ **Lỗi mẫu:** Thu thập nước tiểu 24h không đủ.\n💊 **Thuốc làm nhiễu:** Thuốc lợi tiểu là \"kẻ thù\" của xét nghiệm này, làm kết quả bài xuất điện giải niệu tăng vọt giả tạo, phá hỏng mọi công thức biện luận.",
+    "clinicalNote": "Trong thực hành Hồi sức, để phân biệt Suy thận cấp (Tiểu ít, Creatinin máu tăng): \n- **Nếu Tỷ lệ $Na^+ / K^+$ niệu < 1 (Bị đảo ngược):** Đây là suy thận nguồn gốc \"Trước thận\" (Do sốc, mất nước). Thận vẫn tốt, đang cố gắng giữ Natri và thải Kali.\n- **Nếu Tỷ lệ $Na^+ / K^+$ niệu > 1 (Bình thường):** Đây là suy thận nguồn gốc \"Tại thận\" hoặc \"Sau thận\". Ống thận đã hoại tử, mất hoàn toàn khả năng giữ Natri."
+  },
+   {
+    "name": "Tổng phân tích nước tiểu bằng máy tự động",
+    "group": "Nước tiểu & Dịch",
+    "time": "Làm ngay / 45 phút",
+    "isFeatured": true,
+    "concept": "Là xét nghiệm tầm soát cơ bản (sử dụng que nhúng - dipstick) đánh giá 10 thông số hóa lý của nước tiểu (pH, Tỷ trọng, Protein, Glucose, Cetôn, Urobilinogen, Bilirubin, Nitrit, Bạch cầu, Hồng cầu). Xét nghiệm cung cấp bức tranh toàn cảnh về hệ tiết niệu và các rối loạn chuyển hóa toàn thân.",
+    "physiology": "📌 **Động học:** Nước tiểu là sản phẩm lọc của huyết tương qua cầu thận và sự tái hấp thu/bài tiết tại ống thận. Bất kỳ sự xuất hiện nào của các chất vốn dĩ không có trong nước tiểu (glucose, protein phân tử lớn, tế bào máu) đều là dấu hiệu chỉ điểm tổn thương.\n📌 **Bảo quản:** Vi khuẩn trong môi trường có thể phân hủy urê thành amoniac (làm kiềm hóa nước tiểu) và tiêu thụ glucose nếu để mẫu quá 2 giờ.",
+    "indication": "🎯 **Sàng lọc thường quy:** Khám sức khỏe định kỳ, bilan trước mổ, phụ nữ có thai.\n🎯 **Chẩn đoán:** Nhiễm khuẩn tiết niệu (Nitrit, Bạch cầu), bệnh thận (Protein, Hồng cầu), rối loạn chuyển hóa (Glucose, Ceton trong Đái tháo đường), bệnh gan mật (Bilirubin, Urobilinogen).",
+    "specimenCollection": "💧 **Loại mẫu:** Nước tiểu giữa dòng, ưu tiên lấy mẫu đầu tiên vào buổi sáng (đậm đặc nhất).\n⏳ **Chuẩn bị:** Vệ sinh sạch bộ phận sinh dục ngoài trước khi lấy. Phân tích ngay trong vòng 1-2 giờ.",
+    "testingMethods": "Hóa sinh tự động (Nguyên lý phản ứng màu trên que nhúng).",
+    "ref": "📊 **Bình thường:** pH 4,8 - 7,4; Tỷ trọng 1,014 - 1,028; Các thông số còn lại: Âm tính hoặc dạng vết.",
+    "alert": "⚠️ Test Nitrit chỉ phát hiện được vi khuẩn Gram (-) có khả năng khử nitrat thành nitrit (như E.Coli). Một kết quả Nitrit (-) **không loại trừ** nhiễm khuẩn tiết niệu do vi khuẩn Gram (+) hoặc nấm.\n💡 Không dùng que nhúng Glucose niệu để chẩn đoán Đái tháo đường vì tỷ lệ âm tính giả cao (do ngưỡng thận thay đổi).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Thay đổi bất thường (Dương tính):**\n  🔴 **Đường tiết niệu:**\n    ▫️ Nhiễm khuẩn (Nitrit +, Leukocyte +).\n    ▫️ Sỏi, u bàng quang, viêm cầu thận (Erythrocyte +, Protein +).\n  🔴 **Chuyển hóa & Toàn thân:**\n    ▫️ Đái tháo đường mất bù (Glucose +, Keton +).\n    ▫️ Bệnh lý gan mật, tắc mật (Bilirubin +, Urobilinogen +/giảm).\n    ▫️ Mất nước (Tỷ trọng tăng cao).",
+      "decrease": "Không có ý nghĩa (bình thường là âm tính)."
+    },
+    "interferingFactors": "❌ **Âm tính giả:** Uống quá nhiều nước làm hòa loãng nước tiểu. Dùng liều cao Vitamin C gây âm tính giả với Glucose, Máu, Nitrit, Bilirubin.\n💊 **Dương tính giả:** Dùng thuốc nhuộm màu nước tiểu (Phenazopyridine), nhiễm bẩn máu kinh nguyệt, chất tiết âm đạo.",
+    "clinicalNote": "Theo **KDIGO 2024**, que nhúng nước tiểu là test sàng lọc đầu tay. Nếu que nhúng dương tính với Protein (≥ 1+), bệnh nhân bắt buộc phải được chỉ định làm xét nghiệm định lượng (UACR hoặc UPCR) để chẩn đoán chính xác Bệnh thận mạn (CKD)."
+  },
+  {
+    "name": "Xét nghiệm tế bào cặn nước tiểu",
+    "group": "Nước tiểu & Dịch",
+    "time": "Làm ngay / 45 phút",
+    "isFeatured": true,
+    "concept": "Là bước soi vi thể ly tâm cặn nước tiểu dưới kính hiển vi để định danh và đếm số lượng các tế bào (hồng cầu, bạch cầu, tế bào biểu mô), các loại trụ niệu (casts) và tinh thể (crystals).",
+    "physiology": "📌 **Trụ niệu (Casts):** Được hình thành do sự đông vón của protein Tamm-Horsfall trong lòng ống thận lượn xa và ống góp. Sự xuất hiện của trụ là bằng chứng \"đóng dấu\" chắc chắn tổn thương có nguồn gốc từ Nhu mô thận (không phải từ bàng quang hay niệu đạo).",
+    "indication": "🎯 **Thận - Tiết niệu:** Chẩn đoán phân biệt nguyên nhân đái máu (viêm cầu thận vs. sỏi/u), đánh giá tổn thương ống thận cấp, phát hiện sỏi tinh thể.",
+    "specimenCollection": "💧 **Loại mẫu:** Nước tiểu giữa dòng, mới lấy, đựng trong lọ sạch vô khuẩn.\n⏳ **Bảo quản:** Phải soi vi thể ngay khi mẫu còn tươi để tránh tế bào và trụ niệu bị phá hủy (ly giải).",
+    "testingMethods": "Soi vi thể cặn lắng (sau khi ly tâm).",
+    "ref": "📊 **Bình thường:** Hồng cầu 0-5/vi trường; Bạch cầu 0-5/vi trường; Không có trụ niệu (trừ vài trụ trong/hyaline); Ít tế bào biểu mô.",
+    "alert": "⚠️ **Trụ hồng cầu** là dấu hiệu chỉ điểm kinh điển và đặc hiệu tuyệt đối cho **Viêm cầu thận cấp**.\n💡 **Trụ bạch cầu** là bằng chứng cực kỳ giá trị để phân biệt Viêm thận-bể thận cấp (viêm nhu mô thận) với Viêm bàng quang đơn thuần (không bao giờ có trụ).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Sự hiện diện bất thường:**\n  🔴 **Tế bào máu:**\n    ▫️ Đái máu (Hồng cầu > 5/VT): Sỏi, u, chấn thương, viêm cầu thận.\n    ▫️ Đái mủ (Bạch cầu > 5/VT): Nhiễm khuẩn tiết niệu, viêm thận kẽ.\n  🔴 **Trụ niệu (Casts):**\n    ▫️ Trụ sáp/bùn nâu (Muddy brown casts): Hoại tử ống thận cấp (ATN).\n    ▫️ Trụ mỡ (Fatty casts): Hội chứng thận hư.\n    ▫️ Trụ hạt (Granular casts): Bệnh thận mạn tính.\n  🔴 **Tinh thể (Crystals):**\n    ▫️ Tinh thể Urat, Oxalat, Canxi (Nguy cơ sỏi thận).",
+      "decrease": "Không có ý nghĩa."
+    },
+    "interferingFactors": "❌ **Lỗi mẫu:** Để nước tiểu quá lâu làm tế bào và trụ bị ly giải. Nước tiểu quá kiềm cũng làm trụ niệu tan nhanh.\n💊 **Nhiễu:** Lẫn dịch tiết âm đạo sẽ làm tăng lượng tế bào biểu mô vảy (Squamous epithelial cells), làm mờ kết quả.",
+    "clinicalNote": "Khi bệnh nhân có đái máu vi thể, việc soi hình thái hồng cầu rất quan trọng. Nếu hồng cầu **méo mó, biến dạng, gai góc (Dysmorphic RBCs)**, tổn thương 100% nằm ở màng lọc cầu thận. Nếu hồng cầu **nguyên vẹn**, nguyên nhân từ đường bài xuất (sỏi, u bàng quang)."
+  },
+   {
+    "name": "Định lượng Glucose [dịch chọc dò]",
+    "group": "Nước tiểu & Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Glucose trong các khoang thanh mạc (màng phổi, màng bụng, màng ngoài tim, bao hoạt dịch) được khuếch tán tự do từ máu. Trong điều kiện bình thường, nồng độ glucose trong dịch chọc dò gần tương đương với đường huyết. Sự giảm đường trong dịch chọc dò là dấu hiệu tế bào viêm hoặc vi khuẩn đang hoạt động mạnh mẽ.",
+    "physiology": "📌 **Động học:** Bạch cầu đa nhân, đại thực bào và vi khuẩn sinh sôi trong dịch tiết sẽ tiêu thụ glucose ồ ạt, đồng thời tình trạng dày dính màng thanh mạc làm giảm sự khuếch tán glucose từ máu vào khoang dịch bù trừ.",
+    "indication": "🎯 **Hô hấp / Nội khoa:** Phân biệt nguyên nhân tràn dịch màng phổi, tràn dịch ổ bụng (Dịch thấm hay Dịch tiết). Đặc biệt hữu ích trong chẩn đoán Tràn mủ màng phổi, Lao màng phổi hoặc Viêm khớp dạng thấp.",
+    "specimenCollection": "💧 **Loại mẫu:** Dịch chọc dò (Dịch màng phổi, màng bụng, dịch khớp...).\n⏳ **Bắt buộc:** Đo đường huyết máu tĩnh mạch cùng lúc để so sánh.",
+    "testingMethods": "Phản ứng Enzym sinh hóa.",
+    "ref": "📊 **Bình thường:** Gần tương đương với nồng độ Glucose huyết thanh (Tỷ lệ Dịch/Máu xấp xỉ 1.0).",
+    "alert": "⚠️ Nồng độ Glucose dịch màng phổi < 3,3 mmol/L (< 60 mg/dL) luôn mang ý nghĩa bệnh lý nghiêm trọng, đặc trưng cho một \"Dịch tiết\" (Exudate) cường độ cao.",
+    "pathologicalMeaning": {
+      "increase": "Không có ý nghĩa chẩn đoán (chủ yếu do tăng đường huyết toàn thân).",
+      "decrease": "🔹 **Giảm Glucose Dịch (< 60 mg/dL hoặc Tỷ số Dịch/Máu < 0.5):**\n  🔴 **Các bệnh lý Dịch tiết (Exudate):**\n    ▫️ **Viêm khớp dạng thấp / Tràn dịch màng phổi do thấp:** Glucose dịch giảm cực kỳ sâu (thường < 1.6 mmol/L hay 30 mg/dL).\n    ▫️ **Tràn mủ màng phổi / Viêm mủ màng ngoài tim:** Vi khuẩn tiêu thụ ồ ạt.\n    ▫️ **Lao màng phổi / Lao màng bụng:** Mức giảm vừa phải.\n    ▫️ **Tràn dịch ác tính (Ung thư):** Tế bào ung thư chuyển hóa mạnh tiêu thụ đường."
+    },
+    "interferingFactors": "❌ **Lỗi lâm sàng:** Không đo đường huyết máu tĩnh mạch đối chiếu. Bệnh nhân có truyền dịch Glucose trước đó.",
+    "clinicalNote": "Theo các Hướng dẫn lâm sàng về Hô hấp, đối với tràn dịch màng phổi cận viêm phổi (Parapneumonic effusion), một mức **Glucose dịch màng phổi < 3,3 mmol/L (< 60 mg/dL) hoặc pH < 7.20** là chỉ định bắt buộc phải **đặt ống dẫn lưu màng phổi** ngay lập tức, vì dịch này chắc chắn sẽ diễn tiến thành ổ mủ (empyema) và đóng kén."
+  },
+  {
+    "name": "Định lượng Protein [dịch não tủy]",
+    "group": "Nước tiểu & Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Protein trong dịch não tủy (CSF) có nồng độ rất thấp so với trong huyết thanh do \"Hàng rào máu-não\" (Blood-Brain Barrier) ngăn cản các đại phân tử lọt qua. Sự gia tăng protein trong CSF là dấu hiệu chỉ điểm hàng rào này đã bị phá vỡ hoặc có sự chèn ép dòng chảy tủy sống.",
+    "physiology": "📌 **Đặc tính:** Chỉ những phân tử protein nhỏ (chủ yếu là Albumin) mới có thể đi qua hàng rào máu não. Globulin miễn dịch (IgG) trong CSF đa số được sản xuất tại chỗ khi có viêm.",
+    "indication": "🎯 **Thần kinh học:** Chẩn đoán viêm màng não, viêm não, xuất huyết dưới nhện, các khối u thần kinh trung ương.\n🎯 **Tự miễn:** Chẩn đoán Hội chứng Guillain-Barré, bệnh xơ cứng rải rác (Multiple Sclerosis).",
+    "specimenCollection": "💧 **Loại mẫu:** Dịch não tủy (chọc dò thắt lưng).\n⚠️ **Lưu ý:** Lấy vào ống nghiệm vô khuẩn. Nhanh chóng chuyển đến Labo.",
+    "testingMethods": "Đo độ đục (Turbidimetry) hoặc So màu.",
+    "ref": "📊 **Bình thường:** 15 - 45 mg/dL (< 0,45 g/L).\n*(Trẻ sơ sinh có thể cao hơn sinh lý: lên tới 1,5 g/L do hàng rào máu-não chưa hoàn thiện).*.",
+    "alert": "⚠️ Sự kiện \"Chọc chạm mạch\" (Traumatic tap - mũi kim chọc làm chảy máu hòa vào dịch não tủy) sẽ làm tăng giả tạo nồng độ Protein (Cứ mỗi 1000 hồng cầu rớt vào sẽ làm tăng Protein lên 1 mg/dL).\n💡 Hội chứng Guillain-Barré có đặc điểm kinh điển là **\"Phân ly đạm - tế bào\"**: Protein tăng rất cao nhưng số lượng Bạch cầu hoàn toàn bình thường.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Protein Dịch não tủy (> 0,45 g/L):**\n  🔴 **Phá vỡ hàng rào máu não (Viêm/Nhiễm trùng):**\n    ▫️ Viêm màng não mủ do vi khuẩn (Tăng rất cao > 1-2 g/L).\n    ▫️ Viêm màng não do lao, nấm, giang mai thần kinh.\n  🔴 **Bệnh lý tự miễn & thoái hóa myelin:**\n    ▫️ Hội chứng Guillain-Barré (Viêm đa rễ dây thần kinh cấp).\n    ▫️ Xơ cứng rải rác (MS - Tăng ưu thế IgG).\n  🔴 **Tắc nghẽn dòng chảy CSF / Khối u:**\n    ▫️ Khối u tủy sống, chèn ép tủy (Hội chứng Froin: protein cao đến mức làm dịch đông đặc lại).\n    ▫️ Xuất huyết não, xuất huyết dưới nhện.",
+      "decrease": "🔹 **Giảm Protein CSF:**\n    ▫️ Rò rỉ dịch não tủy (sau chấn thương sọ não, chọc dò thắt lưng nhiều lần)."
+    },
+    "interferingFactors": "❌ **Lỗi kỹ thuật:** Chọc chạm mạch (Traumatic tap) đưa huyết tương (chứa rất nhiều protein) vào dịch tủy.",
+    "clinicalNote": "Trong chẩn đoán Viêm màng não, nồng độ Protein tăng tương quan với mức độ viêm. Protein < 1 g/L thường hướng về virus, trong khi Protein > 1.5 g/L hướng nhiều về Lao hoặc Vi khuẩn mủ. Ở bệnh nhân nghi xơ cứng rải rác (MS), bác sĩ sẽ chỉ định chạy **Điện di Protein dịch não tủy** để tìm dải Oligoclonal bands (IgG)."
+  },
+  {
+    "name": "Đo hoạt độ LDH [dịch chọc dò]",
+    "group": "Nước tiểu & Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Lactate Dehydrogenase (LDH) là enzym giải phóng khi tế bào bị hoại tử hoặc tổn thương. Trong dịch chọc dò, nồng độ LDH phản ánh trực tiếp \"mức độ tàn phá\" và viêm nhiễm của màng thanh mạc. Nó là một trong hai chỉ số cốt lõi cấu thành nên **Tiêu chuẩn Light**.",
+    "physiology": "📌 **Cơ chế:** Các tế bào viêm (bạch cầu), vi khuẩn, và tế bào u ác tính trong khoang màng phổi/màng bụng chết đi sẽ giải phóng lượng khổng lồ LDH vào dịch.",
+    "indication": "🎯 **Hô hấp / Nội khoa:** Bắt buộc chỉ định cùng Protein dịch để phân định Dịch thấm hay Dịch tiết. Đánh giá mức độ viêm và tiên lượng ổ mủ.",
+    "specimenCollection": "💧 **Loại mẫu:** Dịch chọc dò (Màng phổi, màng bụng).\n⏳ **Bắt buộc:** Đo LDH máu tĩnh mạch cùng lúc.",
+    "testingMethods": "Đo hoạt độ động học enzym.",
+    "ref": "📊 **Dịch thấm (Transudate):** Tỷ lệ LDH Dịch/Máu < 0.6 VÀ LDH dịch < 2/3 Giới hạn trên bình thường của LDH máu.\n📊 **Dịch tiết (Exudate):** Tỷ lệ LDH Dịch/Máu > 0.6 HOẶC LDH dịch > 2/3 Giới hạn trên bình thường của LDH máu.",
+    "alert": "⚠️ Chỉ cần 1 trong 3 Tiêu chuẩn Light (Tỷ lệ Protein >0.5, Tỷ lệ LDH >0.6, hoặc LDH dịch >2/3 ULN máu) thỏa mãn, dịch đó được kết luận chắc chắn là **Dịch tiết**.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng hoạt độ LDH (Chỉ điểm Dịch Tiết & Viêm nặng):**\n  🔴 **Hoạt độ LDH dịch > 1000 U/L (Viêm cực kỳ dữ dội):**\n    ▫️ Tràn mủ màng phổi (Empyema) do vi khuẩn.\n    ▫️ Viêm khớp dạng thấp có tràn dịch màng phổi.\n    ▫️ Bệnh lý ác tính (Ung thư di căn) giai đoạn sinh sôi tế bào mạnh.\n    ▫️ Chảy máu màng phổi (Hemothorax) do chấn thương (hồng cầu vỡ giải phóng LDH).\n  🔴 **Hoạt độ LDH tăng vừa phải:**\n    ▫️ Lao màng phổi, nhồi máu phổi, bệnh tự miễn.",
+      "decrease": "Không có ý nghĩa bệnh lý độc lập (Chỉ điểm dịch thấm an toàn)."
+    },
+    "interferingFactors": "❌ **Lỗi mẫu:** Mẫu dịch bị lẫn nhiều máu (chọc chạm mạch) hoặc vỡ hồng cầu sẽ làm tăng giả tạo hoạt độ LDH.",
+    "clinicalNote": "Theo dõi LDH dịch màng phổi qua các lần chọc tháo là công cụ tiên lượng tuyệt vời. Nếu nồng độ LDH trong dịch giảm dần qua các ngày điều trị, chứng tỏ phản ứng viêm đang được kiểm soát tốt bởi kháng sinh/hóa chất."
+  },
+  {
+    "name": "Đo hoạt độ Amylase [dịch]",
+    "group": "Nước tiểu & Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Amylase là enzym tiêu hóa của tuyến tụy và tuyến nước bọt. Việc xuất hiện nồng độ cao Amylase trong các khoang kín như màng phổi hay màng bụng là một tín hiệu báo động cực kỳ đặc hiệu, chỉ ra sự rò rỉ trực tiếp của dịch tiêu hóa vào khoang này.",
+    "physiology": "📌 **Động học:** Dịch tụy chứa lượng khổng lồ amylase. Khi tụy viêm hoại tử, dịch rò rỉ dọc theo cơ hoành đi lên màng phổi (đặc biệt bên trái), hoặc chảy tràn vào ổ bụng. Dịch nước bọt chứa amylase sẽ lọt vào màng phổi nếu thực quản bị vỡ.",
+    "indication": "🎯 **Tiêu hóa / Hô hấp:** Chỉ định khi có tràn dịch màng phổi, màng bụng ở bệnh nhân có đau bụng dữ dội, nghi ngờ Viêm tụy cấp, rò nang giả tụy hoặc vỡ thực quản.",
+    "specimenCollection": "💧 **Loại mẫu:** Dịch chọc dò màng phổi hoặc dịch cổ trướng.\n⏳ **So sánh:** Thường đo kèm Amylase huyết thanh.",
+    "testingMethods": "Đo hoạt độ động học enzym.",
+    "ref": "📊 **Bình thường:** Nồng độ Amylase dịch < Nồng độ Amylase huyết thanh.",
+    "alert": "⚠️ Tràn dịch màng phổi một bên (thường bên trái) có mức Amylase tăng cực kỳ cao (nhiều nghìn U/L) là một dấu hiệu sinh hóa \"biết nói\", đặc hiệu đến 90% cho bệnh lý tại Tụy hoặc Vỡ thực quản.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Amylase Dịch (Cao hơn giới hạn trên bình thường của máu):**\n  🔴 **Nguồn gốc từ Tụy (Pancreatic isoamylase):**\n    ▫️ Viêm tụy cấp (Tràn dịch ổ bụng hoặc màng phổi trái).\n    ▫️ Rò nang giả tụy (Pancreatic pseudocyst) vào màng bụng/màng phổi.\n  🔴 **Nguồn gốc từ Nước bọt (Salivary isoamylase):**\n    ▫️ Vỡ thực quản (Hội chứng Boerhaave - Cấp cứu ngoại khoa tử vong cực cao).\n  🔴 **Nguồn gốc từ biểu mô ác tính (Hiếm gặp):**\n    ▫️ Ung thư biểu mô tuyến (Adenocarcinoma) phổi hoặc buồng trứng tiết amylase ngoại lai.",
+      "decrease": "Không mang ý nghĩa lâm sàng."
+    },
+    "interferingFactors": "❌ Không có nhiễu đáng kể. Nồng độ quá cao khiến enzym bảo toàn rất lâu trong dịch chọc dò.",
+    "clinicalNote": "Để phân biệt cực nhanh nguyên nhân tràn dịch màng phổi có Amylase cao: Nếu bệnh nhân nôn mửa dữ dội rồi xuất hiện tràn dịch, kèm **pH dịch rất thấp (< 6.0)**, đó là Vỡ thực quản (dịch dạ dày mang theo amylase nước bọt lọt vào). Nếu bệnh nhân đau thượng vị lan ra sau lưng, **pH dịch quanh 7.30**, đó là Tràn dịch do Viêm tụy cấp."
+  },
+  {
+    "name": "Định lượng Creatinin [dịch chọc dò]",
+    "group": "Nước tiểu & Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Định lượng Creatinin trong dịch ổ bụng hoặc dịch sinh dục là xét nghiệm hóa sinh cốt lõi nhằm xác minh xem lượng chất lỏng đọng lại trong khoang cơ thể đó **có phải là nước tiểu rò rỉ ra hay không**.",
+    "physiology": "📌 **Đặc tính:** Nước tiểu là nơi cô đặc creatinin của cơ thể, nồng độ creatinin trong nước tiểu cao gấp hàng chục đến hàng trăm lần so với trong máu huyết tương.",
+    "indication": "🎯 **Ngoại khoa / Niệu khoa:** Chẩn đoán chấn thương vỡ bàng quang, rách niệu quản sau phẫu thuật vùng tiểu khung (cắt tử cung, mổ nội soi), hoặc rò rỉ miệng nối đường tiết niệu gây báng bụng (Urinoma).",
+    "specimenCollection": "💧 **Loại mẫu:** Dịch chọc hút ổ bụng, dịch dẫn lưu màng phổi hoặc âm đạo.\n⏳ **Bắt buộc:** Đo song song Creatinin máu tĩnh mạch.",
+    "testingMethods": "Phản ứng Jaffe hoặc Enzym.",
+    "ref": "📊 **Bình thường:** Nồng độ Creatinin dịch xấp xỉ bằng nồng độ Creatinin máu.",
+    "alert": "⚠️ Nếu tỷ lệ Creatinin Dịch ổ bụng / Creatinin Máu > 1.0 (Thường thực tế là rất lớn, > 5 đến 10 lần), bác sĩ ngoại khoa có thể khẳng định 100% bệnh nhân đã bị **thủng/rách đường tiết niệu** đổ vào ổ bụng.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Nồng độ Creatinin dịch cao bất thường (Tràn nước tiểu vào tạng):**\n  🔴 **Cấp cứu Ngoại Niệu:**\n    ▫️ Vỡ bàng quang trong phúc mạc (do chấn thương vùng hạ vị khi bàng quang căng đầy).\n    ▫️ Rách niệu quản do tai biến phẫu thuật sản phụ khoa / mổ lấy sỏi.\n    ▫️ Tắc nghẽn niệu quản làm nước tiểu trào ngược vào hệ bạch huyết gây tràn dịch màng phổi do nước tiểu (Urinothorax).",
+      "decrease": "Không có ý nghĩa."
+    },
+    "interferingFactors": "❌ Thời gian rò rỉ càng lâu, urê và creatinin từ nước tiểu trong ổ bụng sẽ tái hấp thu ngược lại vào máu màng bụng, làm Creatinin máu giả tăng (giống suy thận), tuy nhiên tỷ lệ Dịch/Máu vẫn luôn giữ mức rất cao.",
+    "clinicalNote": "Việc gửi nhầm một mẫu \"Nước tiểu\" thành mẫu \"Dịch ổ bụng\" cũng sẽ bị máy báo Creatinin cao bất thường. Trong bệnh cảnh sau mổ vùng chậu xuất hiện dịch dẫn lưu ra nhiều liên tục, chỉ định đo ngay Creatinin dịch dẫn lưu là thao tác rẻ tiền, nhanh nhất và chính xác nhất để kết luận có rò niệu đạo/bàng quang hay không trước khi cần tiêm thuốc cản quang chụp CT."
+  },
+  {
+  "name": "Định lượng Cholesterol [dịch chọc dò]",
+  "group": "Nước tiểu & Dịch",
+  "time": "120 phút / 45 phút",
+  "isFeatured": true,
+  "concept": "Đo nồng độ Cholesterol và Triglycerid trong dịch chọc dò có ý nghĩa quan trọng để phân biệt các loại dịch mờ, đục như sữa. Việc định lượng này giúp phân định rõ Tràn dịch Dưỡng chấp (Chylous) do rò rỉ hệ bạch huyết, và Tràn dịch Giả dưỡng chấp (Pseudochylous) do viêm mạn tính dài ngày.",
+  "physiology": "📌 **Dưỡng chấp (Chyle):** Chứa đậm đặc Triglycerid do hệ bạch huyết hấp thu chất béo từ ruột.\n📌 **Giả dưỡng chấp:** Dịch chứa nồng độ Cholesterol rất cao sinh ra do các tế bào viêm, hồng cầu chết đi và thoái giáng giải phóng cholesterol tích tụ lâu ngày trong một khoang kín (không rò bạch huyết).",
+  "indication": "🎯 **Nội khoa / Hô hấp:** Áp dụng khi chọc hút ra dịch màng phổi/màng bụng có màu đục như sữa, trắng vàng.\n🎯 **Phân loại dịch tiết:** Là một tiêu chuẩn bổ sung độc lập rất có giá trị để phân biệt Dịch thấm - Dịch tiết khi Tiêu chuẩn Light nằm ở mức ranh giới.",
+  "specimenCollection": "💧 **Loại mẫu:** Dịch chọc dò thanh mạc đục như sữa.",
+  "testingMethods": "Phản ứng Enzym sinh hóa.",
+  "ref": "📊 **Cholesterol dịch:** \n▫️ Dịch thấm: < 1,16 mmol/L (< 45 mg/dL).\n▫️ Dịch tiết: > 1,16 mmol/L.\n📊 **Triglycerid dịch:** < 1,24 mmol/L (< 110 mg/dL).",
+  "alert": "⚠️ Hình ảnh dịch đục như sữa không đồng nghĩa với rách ống ngực (dưỡng chấp). Bắt buộc phải chạy cả cặp xét nghiệm (Cholesterol + Triglycerid dịch) để ra phác đồ chính xác.",
+  "pathologicalMeaning": {
+    "increase": "🔹 **Phân tích Dịch đục như Sữa:**\n  🔴 **Tràn dịch Dưỡng chấp thực sự (Chylous Effusion):**\n    ▫️ **Hóa sinh:** Triglycerid Dịch RẤT CAO (> 1.24 mmol/L), Cholesterol dịch THẤP.\n    ▫️ **Nguyên nhân:** Chấn thương vỡ ống ngực, u lympho chèn ép hệ bạch huyết vùng trung thất.\n  🔴 **Tràn dịch Giả Dưỡng chấp (Pseudochylous Effusion):**\n    ▫️ **Hóa sinh:** Cholesterol Dịch RẤT CAO (thường > 5.18 mmol/L), Triglycerid dịch THẤP.\n    ▫️ **Nguyên nhân:** Viêm màng phổi do Lao mạn tính đóng kén, Viêm khớp dạng thấp lâu ngày.",
+    "decrease": "Không mang ý nghĩa lâm sàng đặc hiệu."
+  },
+  "interferingFactors": "❌ Bệnh nhân có rối loạn mỡ máu nặng (Tăng Cholesterol máu gia đình) có thể làm nồng độ cholesterol dịch tăng tương ứng.",
+  "clinicalNote": "Cholesterol dịch chọc dò > 1,16 mmol/L (45 mg/dL) được các hướng dẫn Hô hấp hiện đại coi là một công cụ xuất sắc để khẳng định **Dịch Tiết (Exudate)** với độ đặc hiệu ngang ngửa Tiêu chuẩn Light, rất hữu dụng khi bệnh nhân dùng thuốc lợi tiểu làm sai lệch thông số Protein dịch."
+},
+{
+    "name": "Định lượng Urê [dịch chọc dò]",
+    "group": "Nước tiểu & Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Urê là sản phẩm thoái hóa của protein, được đào thải chủ yếu qua nước tiểu [1]. Tương tự như Creatinin, việc định lượng Urê trong dịch chọc dò (dịch màng bụng, dịch dẫn lưu vùng chậu) được sử dụng để xác định xem chất dịch này có bị pha trộn với nước tiểu hay không.",
+    "physiology": "📌 **Động học:** Phân tử Urê có kích thước rất nhỏ và dễ dàng khuếch tán qua màng bụng nhanh hơn Creatinin. Do đó, nếu nước tiểu rò rỉ vào ổ bụng lâu ngày, Urê trong dịch sẽ nhanh chóng tái hấp thu vào máu, làm mất đi sự chênh lệch nồng độ giữa dịch và máu [1].",
+    "indication": "🎯 **Ngoại khoa / Tiết niệu:** Hỗ trợ chẩn đoán chấn thương vỡ bàng quang, đứt rách niệu quản hoặc rò rỉ miệng nối đường tiết niệu sau phẫu thuật vùng chậu.",
+    "specimenCollection": "💧 **Loại mẫu:** Dịch chọc hút ổ bụng, dịch dẫn lưu màng phổi hoặc vùng tiểu khung.\n⏳ **Bắt buộc:** Đo song song Urê máu tĩnh mạch cùng lúc để so sánh [1].",
+    "testingMethods": "Phản ứng Enzym động học (Urease).",
+    "ref": "📊 **Bình thường:** Nồng độ Urê dịch xấp xỉ bằng nồng độ Urê máu (Tỷ lệ Dịch/Máu ≈ 1).",
+    "alert": "⚠️ Trong thực hành lâm sàng, để chẩn đoán rò rỉ nước tiểu (Urinoma), định lượng **Creatinin dịch** có giá trị tin cậy và chính xác cao hơn rất nhiều so với Urê, do Creatinin có phân tử lượng lớn hơn, khó bị tái hấp thu ngược vào máu qua màng phúc mạc.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Nồng độ Urê dịch cao bất thường (Tỷ lệ Dịch/Máu > 1):**\n  🔴 **Tràn nước tiểu vào tạng (Urinoma):**\n    ▫️ Vỡ bàng quang, đứt niệu quản, rò bàng quang - âm đạo.",
+      "decrease": "Không có ý nghĩa chẩn đoán bệnh lý."
+    },
+    "interferingFactors": "❌ Thời gian rò rỉ nước tiểu vào ổ bụng càng lâu, sự cân bằng nồng độ Urê giữa dịch và máu càng lớn, dễ dẫn đến kết quả âm tính giả nếu chỉ dùng Urê để chẩn đoán.",
+    "clinicalNote": "Một bệnh nhân sau mổ vùng chậu có dẫn lưu ra nhiều dịch trong, nếu bác sĩ phân vân đây là dịch tiết hay nước tiểu, việc chỉ định đo cặp Urê + Creatinin dịch là rẻ tiền và cho kết quả nhanh nhất trước khi phải chụp CT cản quang hệ tiết niệu."
+  },
+  {
+    "name": "Định lượng Triglycerid [dịch chọc dò]",
+    "group": "Nước tiểu & Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Triglycerid là thành phần chính của các hạt chylomicron được hệ bạch huyết ruột hấp thu sau bữa ăn. Định lượng Triglycerid trong các khoang dịch (màng phổi, màng bụng) là tiêu chuẩn vàng để chẩn đoán **Tràn dịch Dưỡng chấp (Chylous Effusion)** [1].",
+    "physiology": "📌 **Đặc tính:** Dịch dưỡng chấp được tạo ra từ hệ bạch huyết, có màu trắng đục như sữa bò, chứa hàm lượng Triglycerid cực kỳ đậm đặc và rất nhiều tế bào lympho.",
+    "indication": "🎯 **Hô hấp / Nội khoa:** Chỉ định bắt buộc khi chọc tháo ra loại dịch màng phổi hoặc dịch cổ trướng có màu trắng đục mờ như sữa, nhằm phân biệt Dưỡng chấp thực sự hay Giả dưỡng chấp.",
+    "specimenCollection": "💧 **Loại mẫu:** Dịch chọc dò màng phổi, màng bụng hoặc màng ngoài tim.\n⚠️ **Lưu ý:** Nên đo kèm cả Cholesterol dịch để có cái nhìn toàn diện.",
+    "testingMethods": "Phản ứng Enzym sinh hóa.",
+    "ref": "📊 **Bình thường:** < 1,24 mmol/L (< 110 mg/dL) [1].",
+    "alert": "⚠️ Dịch có màu trắng đục chưa chắc đã là dưỡng chấp. Dịch mủ (mủ màng phổi) hoặc dịch giả dưỡng chấp (chứa tinh thể cholesterol lâu ngày) cũng có màu tương tự. Chỉ có xét nghiệm hóa sinh mới kết luận được.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Triglycerid Dịch > 1,24 mmol/L (> 110 mg/dL) - Tràn dịch Dưỡng chấp:**\n  🔴 **Tổn thương cơ học ống ngực (Thoracic Duct):**\n    ▫️ Chấn thương lồng ngực, tai biến phẫu thuật tim mạch/lồng ngực.\n  🔴 **Chèn ép / Tắc nghẽn hệ bạch huyết:**\n    ▫️ Khối u trung thất (U lympho - Lymphoma là nguyên nhân nội khoa hàng đầu).\n    ▫️ Lao hạch, nhiễm giun chỉ bạch huyết.",
+      "decrease": "🔹 **Triglycerid thấp (< 50 mg/dL) kèm Cholesterol rất cao:**\n  🔴 **Tràn dịch Giả dưỡng chấp (Pseudochylous):** Tràn dịch do viêm mạn tính kéo dài (Lao phổi cũ đóng kén, Viêm khớp dạng thấp) làm tế bào vỡ ra giải phóng cholesterol [1]."
+    },
+    "interferingFactors": "❌ Bệnh nhân nhịn đói dài ngày hoặc đang nuôi dưỡng tĩnh mạch hoàn toàn (không ăn qua ruột) có thể làm giảm lưu lượng dưỡng chấp, khiến Triglycerid dịch thấp giả tạo dù có rách ống ngực.",
+    "clinicalNote": "Tràn dịch dưỡng chấp làm bệnh nhân mất đi một lượng khổng lồ protein, chất béo và tế bào lympho T. Nếu không được can thiệp (chế độ ăn kiêng mỡ chuỗi dài MCT, thắt ống ngực), bệnh nhân sẽ nhanh chóng suy kiệt và suy giảm miễn dịch nặng."
+  },
+  {
+    "name": "Phản ứng Rivalta [dịch chọc dò]",
+    "group": "Nước tiểu & Dịch",
+    "time": "Cấp cứu / Làm ngay",
+    "isFeatured": false,
+    "concept": "Phản ứng Rivalta là một xét nghiệm định tính kinh điển, rẻ tiền và nhanh chóng được thực hiện ngay tại giường bệnh hoặc phòng xét nghiệm để phát hiện sự có mặt của các protein có trọng lượng phân tử lớn (chủ yếu là globulin và fibrinogen) trong dịch chọc dò.",
+    "physiology": "📌 **Cơ chế:** Khi nhỏ dịch chọc dò vào dung dịch acid acetic loãng, nếu dịch có chứa nhiều protein viêm (dịch tiết), môi trường acid sẽ làm các protein này bị tủa lại, tạo thành một vẩn đục màu trắng giống như khói thuốc lá bay trong nước.",
+    "indication": "🎯 **Nội khoa cơ bản:** Sàng lọc bước đầu để phân biệt nhanh **Dịch tiết (Exudate)** và **Dịch thấm (Transudate)** ở các tuyến y tế cơ sở thiếu máy sinh hóa.",
+    "specimenCollection": "💧 **Loại mẫu:** Dịch chọc dò màng phổi, màng bụng.\n⏳ **Tiến hành:** Nhỏ 1-2 giọt dịch vào ống nghiệm chứa nước cất pha vài giọt acid acetic.",
+    "testingMethods": "Phản ứng kết tủa hóa học (Định tính).",
+    "ref": "📊 **Bình thường:** Âm tính (-) (Không có vẩn đục).",
+    "alert": "⚠️ Trong nền y học hiện đại, phản ứng Rivalta đã dần bị thay thế bởi việc **định lượng trực tiếp Protein và LDH dịch (Tiêu chuẩn Light)** do Rivalta có độ nhạy và đặc hiệu không cao, dễ bị dương tính giả nếu dịch có máu.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Rivalta Dương tính (+) (Tương ứng với Dịch Tiết):**\n  🔴 Tổn thương màng thanh mạc do Viêm, Nhiễm trùng (Lao, Viêm phổi) hoặc Ung thư di căn.",
+      "decrease": "🔹 **Rivalta Âm tính (-) (Tương ứng với Dịch Thấm):**\n  🔴 Dịch sinh ra do mất cân bằng áp lực cơ học: Suy tim, Xơ gan, Hội chứng thận hư."
+    },
+    "interferingFactors": "❌ Dịch có lẫn nhiều máu (do chọc chạm mạch) hoặc dịch có quá nhiều tế bào mủ sẽ che lấp hiện tượng kết tủa, làm phản ứng khó đọc và mất chính xác.",
+    "clinicalNote": "Mặc dù là một xét nghiệm \"cổ điển\", Rivalta vẫn có giá trị định hướng tức thì. Nếu bác sĩ chọc ra dịch màng phổi có màu vàng chanh và Rivalta (+), tư duy lâm sàng lập tức hướng tới chẩn đoán Lao màng phổi hoặc Ung thư để cho y lệnh tiếp theo."
+  },
+  {
+    "name": "Đếm số lượng Bạch cầu (WBC) [máu]",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Bạch cầu (White Blood Cells - WBC) là những \"chiến binh\" của hệ thống miễn dịch, tuần hoàn trong máu để nhận diện, tiêu diệt các tác nhân gây bệnh (vi khuẩn, virus, ký sinh trùng) và dọn dẹp tế bào chết [1]. Đếm WBC là một phần của Tổng phân tích tế bào máu ngoại vi (CBC).",
+    "physiology": "📌 **Động học:** Tủy xương liên tục sản xuất bạch cầu. Khi có phản ứng viêm hoặc nhiễm trùng cấp tính, tủy xương sẽ được lệnh giải phóng ồ ạt bạch cầu dự trữ vào máu, làm số lượng WBC tăng vọt chỉ trong vài giờ [1].",
+    "indication": "🎯 **Nhiễm trùng & Hồi sức:** Chỉ định bắt buộc đầu tiên đứng trước mọi bệnh nhân có sốt, viêm, hoặc nghi ngờ nhiễm trùng huyết.\n🎯 **Huyết học:** Chẩn đoán các bệnh lý ác tính của tủy xương (Bệnh bạch cầu - Leukemia).",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn. Tránh lấy máu ngay sau khi bệnh nhân vừa gắng sức mạnh hoặc đang hoảng loạn (có thể làm bạch cầu tăng sinh lý tạm thời).",
+    "testingMethods": "Máy đếm tế bào đếm tự động (Nguyên lý trở kháng hoặc laser phân tán).",
+    "ref": "📊 **Người lớn:** 4,0 - 10,0 G/L (hoặc $4.000 - 10.000/mm^3$) [1].\n📊 **Trẻ sơ sinh:** Rất cao, từ $9.0-30.0~G/L$ [1].",
+    "alert": "⚠️ Bạch cầu tăng hay giảm chỉ là hiện tượng (triệu chứng xét nghiệm). Để biết chính xác cơ thể đang chống lại tác nhân gì, bắt buộc phải xem xét **Công thức bạch cầu (Tỷ lệ NEU, LYM, EOS)**.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng số lượng Bạch cầu (Leukocytosis):**\n  🔴 **Nhiễm trùng mủ / Viêm cấp tính:** Viêm ruột thừa, viêm phổi, áp xe, viêm màng não [1].\n  🔴 **Stress sinh lý mạnh:** Chấn thương nặng, bỏng, sau phẫu thuật, nhồi máu cơ tim [1].\n  🔴 **Bệnh lý ác tính:** Bệnh bạch cầu cấp / mạn tính (Leukemia - nồng độ có thể tăng > 100 G/L) [1].",
+      "decrease": "🔹 **Giảm số lượng Bạch cầu (Leukopenia):**\n  🔴 **Nhiễm Virus nặng:** Sốt xuất huyết Dengue, HIV/AIDS, Cúm, Sởi [1].\n  🔴 **Suy tủy / Độc tính tủy xương:** Suy tủy xương, hậu quả của hóa trị liệu ung thư, ngộ độc thuốc, thiếu hụt B12/Folate [1]."
+    },
+    "interferingFactors": "❌ Máu lấy khó khăn bị đông dây (clot) sẽ làm máy đếm sót, gây giảm giả tạo.\n💊 **Thuốc làm TĂNG:** Corticosteroid (thường xuyên gây tăng bạch cầu ở người đang điều trị khớp/hen), Adrenalin [1].\n💊 **Thuốc làm GIẢM:** Hóa chất chống ung thư, thuốc ức chế miễn dịch [1].",
+    "clinicalNote": "Trong bệnh **Sốt xuất huyết Dengue** (QĐ 1450/QĐ-BYT 2024), Bạch cầu máu của bệnh nhân thường giảm rất sâu (thường < 4.0 G/L) ngay từ những ngày đầu. Đây là một dấu hiệu cận lâm sàng rất điển hình giúp bác sĩ phân biệt sốt Dengue với các loại sốt do vi khuẩn khác [2]."
+  },
+  {
+    "name": "Đếm số lượng Hồng cầu (RBC) [máu]",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Hồng cầu (Red Blood Cells - RBC) là tế bào chiếm số lượng đông đảo nhất trong máu, chứa Hemoglobin làm nhiệm vụ vận chuyển Oxy từ phổi đến mô và mang CO2 từ mô về phổi. Hồng cầu được sinh ra tại tủy xương và có tuổi thọ khoảng 120 ngày [1].",
+    "physiology": "📌 **Động học:** Sự sản sinh hồng cầu chịu sự chỉ huy trực tiếp của hormon Erythropoietin (EPO) tiết ra từ Thận. Thận nhận biết tình trạng thiếu oxy trong máu và sẽ tiết EPO thúc đẩy tủy xương làm việc [1].",
+    "indication": "🎯 **Huyết học tổng quát:** Đánh giá tình trạng thiếu máu (Anemia) hoặc đa hồng cầu (Polycythemia).\n🎯 **Khám sức khỏe:** Sàng lọc sức khỏe tổng quát, theo dõi trước và sau truyền máu.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn.",
+    "testingMethods": "Máy đếm tế bào máu tự động.",
+    "ref": "📊 **Nam:** 4,2 - 5,4 T/L (Tera/Lít, tức là $10^{12}$ tế bào/Lít) [1].\n📊 **Nữ:** 4,0 - 4,9 T/L [1].",
+    "alert": "⚠️ Đánh giá tình trạng thiếu máu KHÔNG bao giờ chỉ dựa vào số lượng Hồng cầu (RBC), mà phải dựa vào nồng độ **Hemoglobin (HGB)**. Có những bệnh lý hồng cầu tăng vọt về số lượng nhưng bệnh nhân vẫn bị thiếu máu (do hồng cầu quá nhỏ, thiếu chất).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Hồng cầu (Polycythemia):**\n  🔴 **Đa hồng cầu nguyên phát:** Bệnh Vaquez (u tủy xương sinh hồng cầu vô tội vạ) [1].\n  🔴 **Đa hồng cầu thứ phát (Do thiếu Oxy mạn tính):** Bệnh phổi tắc nghẽn mạn tính (COPD), bệnh tim bẩm sinh tím, người sống ở vùng núi cao [1].\n  🔴 **Cô đặc máu (Giả tăng):** Mất nước nặng, nôn mửa, tiêu chảy, bỏng [1].",
+      "decrease": "🔹 **Giảm Hồng cầu (Anemia):**\n  🔴 Mất máu cấp tính (xuất huyết tiêu hóa, chấn thương) [1].\n  🔴 Suy giảm sản xuất (suy tủy, thiếu sắt, thiếu B12/Folate, bệnh thận mạn) [1].\n  🔴 Tăng phá hủy (Thiếu máu tan máu tự miễn, Sốt rét) [1]."
+    },
+    "interferingFactors": "❌ Lấy máu ở tĩnh mạch đang cắm dây truyền dịch sẽ làm hòa loãng máu, gây giảm giả tạo RBC [1].",
+    "clinicalNote": "Ở bệnh nhân mắc hội chứng Thalassemia (Bệnh tan máu bẩm sinh), dù bị thiếu máu nghiêm trọng nhưng máy đếm có thể trả về số lượng Hồng cầu (RBC) tăng rất cao (thường > 5.5 T/L). Đây là phản ứng bù trừ của tủy xương sinh ra hàng loạt hồng cầu \"kém chất lượng\" có kích thước cực nhỏ nhằm cố gắng mang oxy."
+  },
+  {
+    "name": "Định lượng Hemoglobin (HGB) [máu]",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Hemoglobin (HGB) là một phân tử protein phức tạp chứa sắt (Heme) nằm trong hồng cầu. Nó là thành phần cốt lõi tạo nên màu đỏ của máu và quyết định 100% khả năng chuyên chở Oxy của cơ thể. Định lượng HGB là **\"Tiêu chuẩn vàng\" độc nhất** để chẩn đoán xác định và phân độ tình trạng Thiếu máu [1].",
+    "physiology": "📌 **Đặc tính:** Nồng độ HGB tỷ lệ thuận với khả năng cung cấp oxy cho các tạng. Khi HGB giảm sâu, tim phải đập nhanh hơn để bơm lượng máu ít ỏi đi khắp cơ thể bù trừ, dẫn đến mệt mỏi, khó thở và suy tim [1].",
+    "indication": "🎯 **Huyết học & Cấp cứu:** Chẩn đoán xác định thiếu máu. Theo dõi sát tình trạng xuất huyết đang tiếp diễn. Quyết định chỉ định truyền khối hồng cầu.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn.",
+    "testingMethods": "Máy đếm tế bào máu tự động (Nguyên lý đo quang phổ cyanmethemoglobin hoặc không chứa cyanide).",
+    "ref": "📊 **Nam:** 13,0 - 18,0 g/dL [1].\n📊 **Nữ:** 12,0 - 16,0 g/dL [1].\n*(Phụ nữ có thai: Nồng độ HGB giảm sinh lý do tình trạng giữ nước làm loãng máu, ngưỡng thiếu máu thường < 11 g/dL).*.",
+    "alert": "⚠️ Sau một tai nạn mất máu cấp tính ồ ạt, nồng độ HGB trong những giờ đầu tiên có thể **chưa kịp giảm** (do cơ thể mất đồng đều cả huyết tương và hồng cầu). Phải chờ sau vài giờ khi dịch ngoại bào tràn vào mạch để bù thể tích, sự sụt giảm HGB mới hiển thị rõ.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Hemoglobin:**\n  🔴 Đa hồng cầu nguyên phát (Bệnh Vaquez) hoặc Đa hồng cầu thứ phát (COPD, dị tật tim bẩm sinh) [1].\n  🔴 Mất nước nặng, cô đặc máu [1].",
+      "decrease": "🔹 **Giảm Hemoglobin (Thiếu máu):**\n  🔴 **Nguyên nhân dinh dưỡng:** Thiếu Sắt (nguyên nhân hàng đầu toàn cầu), thiếu B12, Folate [1].\n  🔴 **Nguyên nhân mất máu:** Rong kinh kéo dài, xuất huyết tiêu hóa, chấn thương [1].\n  🔴 **Nguyên nhân phá hủy / Suy tủy:** Thalassemia, tan máu tự miễn, suy thận mạn tính, ức chế tủy do hóa trị [1]."
+    },
+    "interferingFactors": "❌ Tình trạng lipid máu tăng quá cao (đục huyết thanh) hoặc số lượng bạch cầu tăng quá cao (> 50 G/L) có thể làm máy đo quang phổ bị nhiễu, gây tăng giả tạo HGB [1].",
+    "clinicalNote": "Quyết định truyền máu hiện đại hoàn toàn dựa trên HGB kết hợp với tình trạng tưới máu mô. Theo các hướng dẫn lâm sàng huyết học, ngưỡng truyền khối hồng cầu thường là **HGB < 7 g/dL** đối với bệnh nhân trẻ, khỏe mạnh. Nếu bệnh nhân có bệnh lý mạch vành hoặc suy tim, ngưỡng bắt buộc truyền sẽ được nâng lên **< 8 g/dL hoặc < 10 g/dL** để bảo vệ cơ tim [1]."
+  },
+  {
+    "name": "Hematocrit (HCT) - Dung tích hồng cầu [máu]",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Hematocrit (HCT) đo lường tỷ lệ thể tích mà các tế bào hồng cầu chiếm giữ so với tổng thể tích máu toàn phần. Nếu HCT = 45%, nghĩa là trong 100ml máu có chứa 45ml là tế bào hồng cầu dặc, 55ml còn lại là huyết tương [1].",
+    "physiology": "📌 **Đặc tính:** HCT là một tỷ lệ phần trăm (%). Do đó, nó bị phụ thuộc vào 2 biến số: Số lượng hồng cầu và Lượng nước (huyết tương) trong lòng mạch. Khi cơ thể mất nước, huyết tương giảm đi, hồng cầu bị cô đặc lại làm HCT tăng vọt [1].",
+    "indication": "🎯 **Hồi sức truyền nhiễm:** Chỉ số vô cùng quan trọng để đánh giá mức độ **cô đặc máu** và sốc do thoát huyết tương (đặc biệt trong Sốt xuất huyết Dengue, bỏng nặng, tiêu chảy cấp).\n🎯 **Huyết học:** Đánh giá phối hợp cùng HGB trong chẩn đoán thiếu máu [1].",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn.",
+    "testingMethods": "Máy phân tích tế bào tự động (tính toán dựa trên RBC và Thể tích trung bình hồng cầu MCV) hoặc Quay ly tâm ống mao quản (Microhematocrit).",
+    "ref": "📊 **Nam:** 42% - 52% (0,42 - 0,52 L/L) [1].\n📊 **Nữ:** 37% - 48% (0,37 - 0,48 L/L) [1].",
+    "alert": "⚠️ Bệnh nhân có HCT tăng cao khiến độ nhớt của máu tăng lên rất nhiều, dòng máu chảy lờ đờ, dẫn đến nguy cơ cao hình thành huyết khối (cục máu đông) gây tắc mạch máu não, mạch vành [1].",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng HCT (Cô đặc máu hoặc Đa hồng cầu):**\n  🔴 **Mất nước / Thoát dịch mạch máu:** Sốc Sốt xuất huyết Dengue, Sốc do bỏng diện rộng, Nôn mửa, Tiêu chảy ồ ạt [1].\n  🔴 **Sản sinh quá mức:** Bệnh đa hồng cầu Vaquez, bệnh tim phổi mạn tính (COPD) [1].",
+      "decrease": "🔹 **Giảm HCT (Thiếu máu hoặc Hòa loãng máu):**\n  🔴 Thiếu máu do mất máu cấp tính hoặc mạn tính [1].\n  🔴 Tình trạng giữ nước (Phụ nữ có thai, xơ gan, suy tim, truyền quá nhiều dịch tĩnh mạch không chứa hồng cầu) [1]."
+    },
+    "interferingFactors": "❌ Lấy máu vào ống EDTA không đủ thể tích (do máu ít) sẽ làm lượng chất chống đông bị thừa so với máu, khiến tế bào hồng cầu bị teo lại, làm HCT giảm giả tạo [1].",
+    "clinicalNote": "Trong quản lý **Sốt xuất huyết Dengue** theo QĐ 1450/QĐ-BYT (2024), Hematocrit là một \"chỉ báo sinh tồn\". Khi vi rút Dengue làm tăng tính thấm thành mạch, nước trong máu thoát ra các khoang màng phổi, ổ bụng, để lại các tế bào hồng cầu cô đặc trong lòng mạch. **HCT tăng > 20% so với giá trị nền** là dấu hiệu báo động đỏ cho thấy bệnh nhân đang rơi vào trạng thái sốc giảm thể tích, bắt buộc bác sĩ phải truyền dịch chống sốc ngay lập tức [2]."
+  },
+  {
+    "name": "Đếm số lượng Tiểu cầu (PLT) [máu]",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Tiểu cầu (Platelets - PLT) là những mảnh tế bào siêu nhỏ tróc ra từ tế bào khổng lồ trong tủy xương. Chúng có chức năng cốt lõi là **Cầm máu kỳ đầu**. Khi mạch máu bị rách, tiểu cầu lập tức lao tới kết dính với nhau tạo thành \"đinh cầm máu\" bịt kín lỗ thủng [1].",
+    "physiology": "📌 **Động học:** Tuổi thọ của tiểu cầu trong máu chỉ khoảng 7 - 10 ngày. Chúng liên tục được sinh ra tại tủy xương và bị tiêu hủy chủ yếu tại Lách [1].",
+    "indication": "🎯 **Rối loạn đông cầm máu:** Chỉ định cho mọi bệnh nhân có triệu chứng chảy máu bất thường (chảy máu cam, chảy máu chân răng, bầm tím dưới da, rong kinh).\n🎯 **Phẫu thuật & Sản khoa:** Xét nghiệm bắt buộc để đánh giá an toàn trước khi lên bàn mổ hoặc gây tê tủy sống.\n🎯 **Truyền nhiễm:** Theo dõi bắt buộc hàng ngày trong Sốt xuất huyết Dengue.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).\n⏳ **Bảo quản:** Phải chạy máy trong vòng 2-4 giờ để tránh tiểu cầu bị phá hủy.",
+    "testingMethods": "Máy đếm tế bào máu tự động.",
+    "ref": "📊 **Bình thường:** 150 - 400 G/L (hoặc $150.000 - 400.000/mm^3$) [1].",
+    "alert": "⚠️ Khi số lượng tiểu cầu giảm sâu dưới **50 G/L**, bệnh nhân đối mặt với nguy cơ xuất huyết không cầm được khi có chấn thương. Nếu tiểu cầu **< 20 G/L**, nguy cơ xuất huyết tự phát (đặc biệt là xuất huyết não tủy) đe dọa trực tiếp tính mạng [1].",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Tiểu cầu (Thrombocytosis):**\n  🔴 Hội chứng tăng sinh tủy (Tăng tiểu cầu tiên phát), Bệnh bạch cầu dòng tủy [1].\n  🔴 **Tăng phản ứng:** Sau cắt lách, viêm nhiễm mạn tính, tình trạng chảy máu mạn tính hoặc thiếu máu thiếu sắt [1].",
+      "decrease": "🔹 **Giảm Tiểu cầu (Thrombocytopenia):**\n  🔴 **Giảm sản xuất (Tủy bị hỏng):** Suy tủy xương, hóa trị liệu ung thư, lạm dụng rượu, bạch cầu cấp, di căn tủy [1].\n  🔴 **Tăng phá hủy / Tiêu thụ:** Ban xuất huyết giảm tiểu cầu miễn dịch (ITP), Sốt xuất huyết Dengue, Hội chứng đông máu nội mạch rải rác (DIC), nhiễm trùng huyết [1].\n  🔴 **Cường lách:** Lách to (trong xơ gan) giữ lại và phá hủy tiểu cầu [1]."
+    },
+    "interferingFactors": "❌ **Hiện tượng Tiểu cầu vón cục do EDTA (EDTA-induced pseudothrombocytopenia):** Ở một số bệnh nhân, chất chống đông EDTA làm tiểu cầu dính chùm lại với nhau. Máy đếm tự động tưởng nhầm chùm tiểu cầu là 1 bạch cầu nên trả kết quả Tiểu cầu giảm cực sâu (giả tạo). **Xử lý:** Lấy lại máu bằng ống chống đông Citrate (ống đông máu) để đếm lại [1].",
+    "clinicalNote": "Theo Phác đồ **Sốt xuất huyết Dengue 2024** (QĐ 1450/QĐ-BYT), Tiểu cầu là thông số bắt buộc phải được theo dõi mỗi ngày. Vi rút Dengue trực tiếp ức chế tủy sinh tiểu cầu và tạo ra kháng thể phá hủy tiểu cầu ở ngoại vi. Tuy nhiên, việc truyền khối tiểu cầu cho bệnh nhân Dengue chỉ được chỉ định rất ngặt nghèo (thường khi PLT < 50 G/L kèm xuất huyết nặng, hoặc PLT < 5 G/L dù chưa xuất huyết) vì truyền tiểu cầu dự phòng không làm thay đổi cục diện bệnh và mang lại nhiều tai biến [2]."
+  },
+  {
+    "name": "Bạch cầu trung tính (NEU#) [máu]",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Bạch cầu hạt trung tính (Neutrophils - NEU) chiếm quân số đông đảo nhất (50-70%) trong đội quân bạch cầu. Chúng là lực lượng phản ứng nhanh, những kẻ \"ăn vi khuẩn\" (thực bào) đầu tiên lao đến chiến trường khi cơ thể bị **vi khuẩn** tấn công [1].",
+    "physiology": "📌 **Động học:** Khi có một ổ viêm mủ cấp tính (như viêm ruột thừa), tủy xương lập tức bơm hàng loạt Neutrophils non (bạch cầu đũa - bands) vào máu để tiếp viện, tạo ra hiện tượng \"công thức bạch cầu chuyển trái\" kinh điển [1].",
+    "indication": "🎯 **Nhiễm trùng:** Xác định tình trạng nhiễm khuẩn mủ cấp tính.\n🎯 **Ung bướu:** Theo dõi Tình trạng giảm bạch cầu hạt (Neutropenia) đe dọa tính mạng do tác dụng phụ của hóa chất diệt ung thư.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn.",
+    "testingMethods": "Máy đếm tế bào máu tự động, kết hợp nhuộm soi tiêu bản máu ngoại vi bằng mắt thường để hình thái tế bào [1].",
+    "ref": "📊 **Tỷ lệ phần trăm (%):** 43% - 72% [1].\n📊 **Số lượng tuyệt đối (NEU# / ANC):** 1,6 - 7,5 G/L (hoặc $1.600 - 7.500/mm^3$) [1].",
+    "alert": "⚠️ **Sốt giảm bạch cầu hạt (Febrile Neutropenia):** Khi số lượng NEU tuyệt đối (ANC) < 0,5 G/L kèm theo sốt, bệnh nhân hoàn toàn mất khả năng tự bảo vệ trước mọi loại vi khuẩn (thường gặp sau hóa trị). Đây là một cấp cứu ung bướu, bệnh nhân có thể chết vì nhiễm trùng huyết trong vài giờ nếu không được dùng kháng sinh phổ rộng ngay lập tức [1].",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng NEU# (Neutrophilia):**\n  🔴 **Nhiễm khuẩn cấp tính:** Viêm ruột thừa, viêm màng não mủ, áp xe sâu, viêm phổi [1].\n  🔴 **Tổn thương mô / Stress mạnh:** Bỏng, nhồi máu cơ tim, sau phẫu thuật, chuyển dạ đẻ [1].\n  🔴 **Bệnh tủy xương:** Bệnh bạch cầu mạn dòng tủy (CML) [1].",
+      "decrease": "🔹 **Giảm NEU# (Neutropenia):**\n  🔴 **Nhiễm siêu vi nặng:** Cúm, Dengue, Sởi, Viêm gan virus (hệ miễn dịch tiêu thụ kiệt quệ NEU hoặc tủy bị ức chế tạm thời) [1].\n  🔴 **Ức chế tủy xương:** Hóa trị liệu ung thư, bệnh bạch cầu cấp lấn át tủy, suy tủy [1].\n  🔴 **Phá hủy ngoại vi:** Bệnh tự miễn (Lupus), Cường lách [1]."
+    },
+    "interferingFactors": "💊 **Thuốc làm TĂNG:** Dùng Corticosteroid (dập tắt ổ viêm nhưng lại ép bạch cầu trung tính dạt từ thành mạch ra giữa dòng máu, làm số lượng trên giấy xét nghiệm tăng cao nhưng lại mất chức năng) [1].\n💊 **Thuốc làm GIẢM:** Thuốc ức chế miễn dịch, kháng giáp tổng hợp (PTU), hóa trị [1].",
+    "clinicalNote": "Bài toán biện luận nhiễm trùng: Bệnh nhân sốt cao, Bạch cầu tổng (WBC) tăng, và tỷ lệ NEU% tăng vượt 80%, đây gần như chắc chắn là **nhiễm khuẩn** (cần kháng sinh). Nếu WBC bình thường hoặc giảm, tỷ lệ NEU% giảm nhưng LYM% tăng cao, đây là **nhiễm virus** (kháng sinh vô tác dụng)."
+  },
+  {
+    "name": "Bạch cầu Lympho (LYM#) [máu]",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Bạch cầu Lympho (Lymphocytes - LYM) là các nhạc trưởng của hệ thống Miễn dịch Đặc hiệu (Miễn dịch thu được). Gồm tế bào B (sản xuất kháng thể) và tế bào T (tiêu diệt tế bào nhiễm bệnh). Chúng là lực lượng chủ lực để chống lại **Virus**, nấm và tế bào ung thư [1].",
+    "physiology": "📌 **Đặc tính:** Tuổi thọ của tế bào Lympho có thể kéo dài hàng năm hoặc cả đời (tế bào Lympho nhớ), giúp cơ thể không bị mắc lại cùng một loại virus (như sởi, thủy đậu) lần thứ hai [1].",
+    "indication": "🎯 **Nhiễm trùng học:** Sàng lọc các nhiễm trùng siêu vi (virus), lao, hoặc theo dõi tiến triển của HIV/AIDS (chỉ định đếm riêng dòng Lympho T-CD4).\n🎯 **Huyết học:** Chẩn đoán ung thư hạch (Lymphoma) hoặc Bệnh bạch cầu mạn dòng Lympho (CLL).",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn.",
+    "testingMethods": "Máy đếm tế bào máu tự động, kết hợp nhuộm soi tiêu bản máu ngoại vi [1].",
+    "ref": "📊 **Tỷ lệ phần trăm (%):** 18% - 43% [1].\n📊 **Số lượng tuyệt đối (LYM#):** 0,9 - 3,4 G/L (hoặc $900 - 3.400/mm^3$) [1].\n*(Ở trẻ em dưới 5 tuổi, tỷ lệ Lympho sinh lý luôn cao hơn Bạch cầu trung tính).*.",
+    "alert": "⚠️ Ở người lớn, nếu số lượng tuyệt đối LYM# tăng vọt > 5.0 G/L (hoặc cao hơn nữa) kéo dài, kèm theo hạch to ở cổ, nách, bẹn, bác sĩ bắt buộc phải chuyển bệnh nhân đi chọc hút tủy xương hoặc sinh thiết hạch để loại trừ **Bệnh bạch cầu mạn dòng Lympho (CLL)** [1].",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng LYM# (Lymphocytosis):**\n  🔴 **Nhiễm Virus cấp tính:** Tăng bạch cầu đơn nhân nhiễm trùng (Epstein-Barr virus), Quai bị, Viêm gan virus, Sởi, Thủy đậu [1].\n  🔴 **Nhiễm Khuẩn nội bào mạn tính:** Bệnh Lao (Tuberculosis), Giang mai, Ho gà [1].\n  🔴 **Bệnh lý huyết học ác tính:** Bệnh bạch cầu dòng Lympho cấp/mạn, U lympho [1].",
+      "decrease": "🔹 **Giảm LYM# (Lymphocytopenia):**\n  🔴 **Suy giảm miễn dịch:** HIV/AIDS (vi rút phá hủy trực tiếp tế bào T-CD4), hội chứng suy giảm miễn dịch bẩm sinh [1].\n  🔴 **Do nội tiết / Thuốc:** Bệnh Cushing, Đang điều trị bằng Corticoid liều cao kéo dài, Hóa xạ trị ung thư [1].\n  🔴 **Bệnh tự miễn:** Lupus ban đỏ hệ thống (các kháng thể tự tấn công Lympho bào) [1]."
+    },
+    "interferingFactors": "❌ Lấy máu sai kỹ thuật, cục máu đông hoặc chạy máy khi máu để quá lâu (làm tế bào biến dạng) [1].\n💊 **Thuốc làm TĂNG:** Dùng Adrenalin [1].\n💊 **Thuốc làm GIẢM:** Corticosteroid, thuốc ức chế miễn dịch (chống thải ghép) [1].",
+    "clinicalNote": "Trái ngược với nhiễm khuẩn mủ (tăng Neutrophil), các bệnh nhân mắc bệnh **Lao phổi** thường có biểu hiện tăng dòng bạch cầu Lympho một cách âm ỉ, đi kèm với hội chứng sốt nhẹ về chiều và sút cân. Nếu chọc hút dịch màng phổi ở những bệnh nhân này, kết quả cũng sẽ trả về lượng tế bào Lympho chiếm ưu thế tuyệt đối."
+  },
+    {
+    "name": "Bạch cầu Mono (MONO#) [máu]",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Bạch cầu Mono (Monocytes) là những tế bào bạch cầu có kích thước lớn nhất trong máu. Sau khi lưu hành trong máu khoảng 1-3 ngày, chúng sẽ di chuyển vào các mô, lột xác thành các Đại thực bào (Macrophages) làm nhiệm vụ \"dọn rác\" (thực bào) các mảnh vỡ tế bào, vi khuẩn và kháng trình kháng nguyên.",
+    "physiology": "📌 **Động học:** Bạch cầu Mono là lực lượng dọn dẹp chiến trường. Sự gia tăng của Mono trong một đợt nhiễm trùng cấp tính thường là tín hiệu cho thấy cơ thể đang bước vào **giai đoạn hồi phục**.",
+    "indication": "🎯 **Nhiễm trùng:** Chẩn đoán các bệnh lý nhiễm khuẩn nội bào mạn tính (Lao, Giang mai) hoặc các bệnh do ký sinh trùng/virus.\n🎯 **Huyết học:** Chẩn đoán và theo dõi bệnh Bạch cầu cấp/mạn dòng Mono.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn.",
+    "testingMethods": "Máy đếm tế bào máu tự động.",
+    "ref": "📊 **Tỷ lệ phần trăm (%):** 4% - 12%.\n📊 **Số lượng tuyệt đối (MONO#):** 0,0 - 1,2 G/L (hoặc 0 - 1.200/mm³).",
+    "alert": "⚠️ Ở bệnh nhân đang bị nhiễm khuẩn nặng, nếu số lượng bạch cầu trung tính (NEU) giảm nhưng bạch cầu Mono tăng lên, đó là dấu hiệu miễn dịch tốt (cơ thể đang dọn dẹp ổ viêm).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng MONO# (Monocytosis):**\n  🔴 **Nhiễm trùng mạn tính:**\n    ▫️ Bệnh Lao (Tuberculosis), Giang mai, Viêm nội tâm mạc bán cấp.\n    ▫️ Giai đoạn phục hồi của các nhiễm khuẩn cấp tính.\n  🔴 **Bệnh lý tiêu hóa & Tự miễn:**\n    ▫️ Bệnh viêm ruột (Crohn, viêm loét đại tràng), Viêm khớp dạng thấp.\n  🔴 **Bệnh lý ác tính:**\n    ▫️ Bệnh bạch cầu dòng Mono, U lympho Hodgkin.",
+      "decrease": "🔹 **Giảm MONO# (Monocytopenia):**\n    ▫️ Tình trạng stress cấp tính, suy tủy xương, hoặc do dùng Corticoid liều cao kéo dài."
+    },
+    "interferingFactors": "❌ **Lỗi mẫu:** Máu để quá lâu trước khi chạy máy làm tế bào bị biến dạng.\n💊 **Thuốc:** Glucocorticoid làm giảm số lượng Mono lưu hành.",
+    "clinicalNote": "Trong bệnh sốt rét hoặc bệnh do Brucella (sốt Malta), sự gia tăng bạch cầu Mono là một dấu hiệu cận lâm sàng rất kinh điển. Đặc biệt, theo dõi Mono giúp bác sĩ đánh giá tiến triển của ổ áp xe đang được điều trị nội khoa."
+  },
+  {
+    "name": "Bạch cầu ưa acid (EOS#) [máu]",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Bạch cầu ưa acid (Eosinophils) là các tế bào miễn dịch chứa các hạt màu đỏ cam (khi nhuộm eosin). Chúng là vũ khí chuyên biệt của cơ thể để **tiêu diệt ký sinh trùng** (giun, sán) và là tác nhân chính gây ra các **phản ứng dị ứng**.",
+    "physiology": "📌 **Cơ chế:** Kích thước của giun sán quá lớn để bị thực bào. Do đó, Eosinophil bám vào bề mặt ký sinh trùng và giải phóng các protein độc (Major Basic Protein) để tiêu diệt chúng. Eosinophil cũng giải phóng histaminaza để điều hòa phản ứng dị ứng.",
+    "indication": "🎯 **Miễn dịch & Truyền nhiễm:** Tìm nguyên nhân trong các bệnh cảnh dị ứng (mề đay, hen suyễn), nghi nhiễm giun sán hoặc dị ứng thuốc.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn. Cần lấy máu vào cùng một thời điểm nếu theo dõi dài ngày.",
+    "testingMethods": "Máy đếm tế bào máu tự động / Nhuộm soi tiêu bản.",
+    "ref": "📊 **Tỷ lệ phần trăm (%):** 0% - 8%.\n📊 **Số lượng tuyệt đối (EOS#):** 0,0 - 0,6 G/L (hoặc 0 - 600/mm³).",
+    "alert": "⚠️ Sự gia tăng cực cao của EOS (Hội chứng tăng bạch cầu ái toan - Hypereosinophilic syndrome) có thể đe dọa tính mạng do các hạt độc của Eosinophil thấm nhiễm và phá hủy cơ tim (Viêm nội tâm mạc Loeffler).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng EOS# (Eosinophilia):**\n  🔴 **Ký sinh trùng:**\n    ▫️ Nhiễm giun sán (Giun đũa chó/Toxocara, giun móc, sán lá gan). EOS tăng rất mạnh khi ấu trùng đang di chuyển trong mô.\n  🔴 **Bệnh lý dị ứng:**\n    ▫️ Hen phế quản, viêm mũi dị ứng, chàm, mề đay, dị ứng thuốc trầm trọng.\n  🔴 **Bệnh lý khác:**\n    ▫️ Bệnh Hodgkin, hội chứng Churg-Strauss (viêm mạch), ung thư máu dòng Eos.",
+      "decrease": "🔹 **Giảm EOS# (Eosinopenia):**\n    ▫️ Tình trạng stress cấp tính, nhiễm trùng vi khuẩn cấp tính nặng, sốc, hoặc Hội chứng Cushing."
+    },
+    "interferingFactors": "❌ **Sinh lý:** EOS có nhịp ngày đêm, cao nhất vào ban đêm và thấp nhất vào buổi sáng.\n💊 **Thuốc:** Sử dụng Corticosteroid hoặc Adrenalin sẽ làm giảm số lượng EOS xuống mức gần bằng 0 rất nhanh chóng.",
+    "clinicalNote": "Nếu bệnh nhân có ngứa, nổi mẩn và EOS máu tăng cao, tuyệt đối không được tự ý cho dùng ngay Corticoid mà phải rà soát xét nghiệm huyết thanh giun sán (như Toxocara). Việc dùng Corticoid sẽ làm giảm EOS trên giấy xét nghiệm, nhưng lại làm suy giảm miễn dịch khiến giun sán bùng phát mạnh hơn."
+  },
+  {
+    "name": "Bạch cầu ưa bazơ (BASO#) [máu]",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Bạch cầu ưa bazơ (Basophils) là quần thể bạch cầu có số lượng ít nhất trong máu. Các hạt bào tương của chúng chứa lượng lớn Histamin và Heparin, đóng vai trò then chốt trong khởi phát các phản ứng dị ứng cấp tính và sốc phản vệ.",
+    "physiology": "📌 **Đặc tính:** Basophil trong máu có chức năng tương tự như Tế bào Mast (Mast cells) ở trong mô. Khi tiếp xúc với dị nguyên, chúng vỡ ra, giải phóng ồ ạt histamin gây giãn mạch, tụt huyết áp và co thắt phế quản.",
+    "indication": "🎯 **Huyết học:** Dấu hiệu chỉ điểm (Tumor marker) quan trọng trong chẩn đoán và theo dõi Bệnh bạch cầu mạn dòng tủy (CML) và các hội chứng tăng sinh tủy.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn.",
+    "testingMethods": "Máy đếm tế bào máu tự động.",
+    "ref": "📊 **Tỷ lệ phần trăm (%):** 0% - 2%.\n📊 **Số lượng tuyệt đối (BASO#):** 0,0 - 0,3 G/L (hoặc 0 - 300/mm³).",
+    "alert": "⚠️ Tình trạng tăng Basophil (Basophilia) là một dấu hiệu \"cờ đỏ\" (red flag) trong huyết học. Một lượng Basophil tăng đều đặn, dai dẳng bắt buộc bác sĩ phải tầm soát bệnh bạch cầu tủy mạn (CML).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng BASO# (Basophilia):**\n  🔴 **Bệnh lý ác tính / Tăng sinh tủy:**\n    ▫️ Bệnh bạch cầu mạn dòng tủy (CML), Bệnh đa hồng cầu nguyên phát (Vaquez).\n  🔴 **Tình trạng khác:**\n    ▫️ Phản ứng dị ứng, viêm xoang mạn tính, thủy đậu, suy giáp (phù niêm).",
+      "decrease": "🔹 **Giảm BASO# (Basopenia):**\n    ▫️ Stress cấp tính, cường giáp, hoặc do dùng Corticosteroid kéo dài. (Thường ít có ý nghĩa lâm sàng do số lượng nền đã rất thấp)."
+    },
+    "interferingFactors": "💊 **Thuốc:** Các thuốc ức chế miễn dịch và Glucocorticoid làm giảm lượng Basophil.",
+    "clinicalNote": "Trong theo dõi bệnh Bệnh bạch cầu mạn dòng tủy (CML), sự gia tăng đột ngột của Basophil thường là dấu hiệu cảnh báo bệnh đang chuyển sang giai đoạn cấp tính nguy hiểm (Blastic crisis - cơn bùng phát tế bào non)."
+  },
+  {
+    "name": "Thể tích trung bình hồng cầu (MCV)",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "MCV (Mean Corpuscular Volume) là chỉ số đo lường **thể tích trung bình** của một tế bào hồng cầu. Đây là thông số quan trọng nhất để phân loại các nguyên nhân gây Thiếu máu thành 3 nhóm: Hồng cầu nhỏ, Hồng cầu bình thường, và Hồng cầu to.",
+    "physiology": "📌 **Đặc tính:** \n- Hồng cầu sinh ra quá nhỏ (Microcytic) thường do thiếu nguyên liệu tạo Hemoglobin (Thiếu sắt) hoặc lỗi gen (Thalassemia).\n- Hồng cầu sinh ra quá to (Macrocytic) thường do thiếu nguyên liệu phân chia ADN (Thiếu Vitamin B12, Folate), khiến tế bào không thể phân chia nhỏ lại được.",
+    "indication": "🎯 **Huyết học:** Chẩn đoán phân biệt bệnh căn của mọi trường hợp Thiếu máu.\n🎯 **Tầm soát:** Sàng lọc người mang gen Thalassemia trước tiền hôn nhân.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).\n⏳ **Bảo quản:** Phải chạy máy trong vòng 4-6 giờ. Máu để quá lâu hồng cầu sẽ phình to ra gây tăng MCV giả tạo.",
+    "testingMethods": "Máy đếm tế bào máu tự động (Đo trực tiếp).",
+    "ref": "📊 **Bình thường:** 86 - 98 fL (femtolit).",
+    "alert": "⚠️ MCV bình thường **không loại trừ** được bệnh lý. Nếu bệnh nhân bị thiếu máu hỗn hợp (vừa thiếu sắt làm hồng cầu nhỏ lại, vừa thiếu B12 làm hồng cầu to ra), MCV trung bình có thể hoàn toàn bình thường. Lúc này phải nhìn vào chỉ số **RDW**.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng MCV (Hồng cầu to / Macrocytosis):**\n  🔴 **Nguyên nhân dinh dưỡng / Tiêu hóa:**\n    ▫️ Thiếu hụt Vitamin B12, thiếu Acid Folic.\n    ▫️ Nghiện rượu mạn tính, Xơ gan, Cắt dạ dày.\n  🔴 **Nguyên nhân tủy xương:**\n    ▫️ Rối loạn sinh tủy (MDS), Suy giáp.",
+      "decrease": "🔹 **Giảm MCV (Hồng cầu nhỏ / Microcytosis):**\n  🔴 **Nguyên nhân thường gặp nhất:**\n    ▫️ Thiếu máu do thiếu Sắt (Mất máu rỉ rả, ăn uống kém).\n    ▫️ Thalassemia (Bệnh tan máu bẩm sinh do lỗi chuỗi Globin).\n  🔴 **Nguyên nhân hiếm hơn:**\n    ▫️ Ngộ độc Chì, Thiếu máu nguyên bào sắt."
+    },
+    "interferingFactors": "❌ **Lỗi mẫu:** Máu để qua đêm, hoặc tình trạng tăng đường huyết cực cao (đái tháo đường thẩm thấu) làm nước hút vào hồng cầu gây phình to (Tăng MCV giả tạo).",
+    "clinicalNote": "Bài toán lâm sàng kinh điển: Đứng trước một xét nghiệm có Thiếu máu (HGB giảm) và MCV < 80 fL (Hồng cầu nhỏ), bác sĩ **bắt buộc** phải chỉ định đo thêm **Ferritin**. Nếu Ferritin giảm sát đáy -> Thiếu sắt. Nếu Ferritin bình thường hoặc tăng cao -> Nghĩ ngay đến Thalassemia và cho làm Điện di Hemoglobin."
+  },
+  {
+    "name": "Hemoglobin trung bình hồng cầu (MCH)",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "MCH (Mean Corpuscular Hemoglobin) đo lường **trọng lượng/lượng trung bình** của Hemoglobin có trong một tế bào hồng cầu. Chỉ số này thường song hành với MCV (tế bào nhỏ thì sức chứa ít, tế bào to thì sức chứa nhiều).",
+    "physiology": "📌 **Đặc tính:** Màu đỏ của hồng cầu do Hemoglobin quyết định. Nếu MCH thấp, lượng Hemoglobin ít, hồng cầu khi soi dưới kính hiển vi sẽ có hình ảnh \"nhạt màu\" (Hypochromia) với vùng sáng ở giữa tế bào rất rộng.",
+    "indication": "🎯 **Huyết học:** Phân loại thiếu máu (Thiếu máu nhược sắc hay đẳng sắc). Thường luôn được đọc cùng lúc với MCV.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn.",
+    "testingMethods": "Máy đếm tế bào máu tự động (Tính toán: MCH = HGB / RBC).",
+    "ref": "📊 **Bình thường:** 28 - 33 pg/tế bào (picogram).",
+    "alert": "⚠️ MCH là giá trị tính toán phụ thuộc vào HGB và RBC. Mọi sai số gây đếm sai hồng cầu hoặc đo sai Hemoglobin đều dẫn đến sai số của MCH.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng MCH (Hồng cầu chứa nhiều Hb):**\n  🔴 **Tương ứng với Hồng cầu to:**\n    ▫️ Thiếu máu do thiếu B12, Folate. Tế bào phình to nên chứa được nhiều Hb hơn (Nhưng tổng thể cơ thể vẫn thiếu máu do số lượng tế bào bị sụt giảm nghiêm trọng).",
+      "decrease": "🔹 **Giảm MCH (Thiếu máu nhược sắc):**\n  🔴 **Tương ứng với Hồng cầu nhỏ:**\n    ▫️ Thiếu máu do thiếu Sắt (nhược sắc rất điển hình).\n    ▫️ Thalassemia.\n    ▫️ Thiếu máu trong các bệnh viêm/nhiễm trùng mạn tính kéo dài."
+    },
+    "interferingFactors": "❌ **Lỗi máy:** Tình trạng mỡ máu quá cao (Lipemia) làm đục huyết tương, khiến máy đo quang phổ đọc nhầm nồng độ HGB cao vọt, dẫn đến MCH tăng giả tạo.",
+    "clinicalNote": "MCH hiếm khi được sử dụng đơn độc để ra quyết định lâm sàng. Thuật ngữ \"Thiếu máu hồng cầu nhỏ nhược sắc\" chính là việc MCV giảm và MCH giảm đồng thời. Đây là chỉ điểm mạnh mẽ nhất để bác sĩ điều tra các tình trạng rỉ máu đường tiêu hóa (loét dạ dày, trĩ, ung thư đại tràng) hoặc rong kinh ở phụ nữ."
+  },
+  {
+    "name": "Nồng độ Hemoglobin trung bình hồng cầu (MCHC)",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "MCHC (Mean Corpuscular Hemoglobin Concentration) đánh giá **nồng độ (độ đậm đặc)** của Hemoglobin trên một đơn vị thể tích khối hồng cầu. Nó phản ánh màu sắc thực sự của hồng cầu (đậm hay nhạt).",
+    "physiology": "📌 **Đặc tính:** Khác với MCH (đo trọng lượng tuyệt đối), MCHC đo nồng độ. Đây là **chỉ số ổn định nhất** trong toàn bộ công thức máu do nó bị giới hạn bởi tính chất vật lý của tế bào (Hồng cầu không thể chứa nồng độ Hb đậm đặc quá mức sinh lý, nếu không nó sẽ bị vỡ).",
+    "indication": "🎯 **Huyết học:** Chẩn đoán phân biệt bệnh Hồng cầu hình cầu di truyền (Hereditary Spherocytosis). Đánh giá tính kiểm soát chất lượng (QC) của máy xét nghiệm.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).",
+    "testingMethods": "Máy đếm tế bào máu tự động (Tính toán: MCHC = HGB / HCT).",
+    "ref": "📊 **Bình thường:** 320 - 360 g/L (hoặc 32 - 36 g/dL).",
+    "alert": "⚠️ **Một kết quả MCHC > 360 g/L là cực kỳ bất thường**. Hồng cầu bình thường không thể chứa nồng độ Hb cao hơn mức này. Nếu máy báo MCHC > 360, 99% là lỗi kỹ thuật hoặc máu có kháng thể ngưng kết lạnh, 1% còn lại là bệnh hồng cầu hình cầu.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng MCHC (Ưu sắc):**\n  🔴 **Bệnh lý màng hồng cầu:**\n    ▫️ Bệnh hồng cầu hình cầu di truyền (Hereditary Spherocytosis) - tế bào mất lõm giữa, vo tròn lại nên nồng độ Hb cực kỳ đậm đặc.\n  🔴 **Giả tạo (Rất phổ biến):**\n    ▫️ Bệnh ngưng kết tố lạnh (Cold agglutinins) làm hồng cầu dính chùm lại.\n    ▫️ Mất nước nặng.",
+      "decrease": "🔹 **Giảm MCHC (Nhược sắc):**\n  🔴 **Giảm nguyên liệu:**\n    ▫️ Thiếu máu thiếu sắt nặng (độ bão hòa Hb trong tế bào cực kỳ loãng).\n    ▫️ Thalassemia."
+    },
+    "interferingFactors": "❌ **Lỗi kỹ thuật:** Tăng lipid máu nặng, tan máu trong ống nghiệm, hoặc nồng độ bạch cầu tăng quá cao đều làm máy đo sai HGB, đẩy MCHC tăng vọt. Hiện tượng ngưng kết lạnh bắt buộc kỹ thuật viên phải ủ ấm máu ở $37^0C$ trước khi chạy máy lại.",
+    "clinicalNote": "MCHC là \"chiếc mỏ neo\" của kỹ thuật viên xét nghiệm. Bác sĩ lâm sàng khi thấy một bản kết quả có MCHC tăng vọt > 370 g/L thì không nên vội biện luận bệnh, mà cần yêu cầu phòng xét nghiệm kiểm tra lại tình trạng mẫu máu (tan máu, mỡ máu, hoặc cần ủ ấm)."
+  },
+  {
+    "name": "Dải phân bố kích thước hồng cầu (RDW)",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "RDW (Red Cell Distribution Width) đánh giá **mức độ to nhỏ không đều** của quần thể hồng cầu (Anisocytosis). Nếu RDW bình thường, các hồng cầu có kích thước khá đồng đều nhau. Nếu RDW cao, trong máu đang tồn tại các hồng cầu với kích thước lớn bé lẫn lộn.",
+    "physiology": "📌 **Động học:** Trong giai đoạn đầu của thiếu máu, khi tủy xương bắt đầu thiếu nguyên liệu (Sắt) hoặc vừa được bù nguyên liệu, nó sẽ sinh ra những lứa hồng cầu mới có kích thước khác biệt hoàn toàn với lứa cũ, làm RDW tăng vọt.",
+    "indication": "🎯 **Huyết học (Chỉ điểm sớm):** RDW là chỉ số nhạy nhất, thay đổi **trước cả khi MCV giảm** trong thiếu máu thiếu sắt.\n🎯 **Chẩn đoán phân biệt:** Cực kỳ giá trị để phân biệt Thiếu máu thiếu sắt với bệnh Thalassemia.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).",
+    "testingMethods": "Máy đếm tế bào máu tự động.",
+    "ref": "📊 **Bình thường:** 11,5% - 14,5%.",
+    "alert": "⚠️ RDW **không bao giờ giảm có ý nghĩa lâm sàng** (RDW thấp chỉ có nghĩa là hồng cầu của bệnh nhân cực kỳ đều nhau, đây là điều tốt). Do đó, ta chỉ quan tâm khi RDW TĂNG.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng RDW (Hồng cầu to nhỏ không đều):**\n  🔴 **Kèm theo MCV THẤP (Hồng cầu nhỏ):**\n    ▫️ Đặc trưng tuyệt đối của **Thiếu máu thiếu sắt**.\n  🔴 **Kèm theo MCV CAO (Hồng cầu to):**\n    ▫️ Thiếu hụt B12, Acid Folic.\n  🔴 **Kèm theo MCV BÌNH THƯỜNG:**\n    ▫️ Bệnh nhân vừa được truyền máu (máu người cho trộn với máu người nhận tạo ra 2 kích thước khác nhau).\n    ▫️ Giai đoạn cực kỳ sớm của thiếu hụt dinh dưỡng (sắt/B12).",
+      "decrease": "Không có ý nghĩa bệnh lý lâm sàng."
+    },
+    "interferingFactors": "❌ **Lỗi truyền máu:** Bệnh nhân vừa truyền khối hồng cầu sẽ có RDW tăng cao giả tạo do sự hòa trộn của hai quần thể hồng cầu khác nhau.",
+    "clinicalNote": "Công thức kinh điển để phân biệt Thiếu máu hồng cầu nhỏ (MCV giảm): \n- **MCV giảm + RDW TĂNG CAO:** 90% là Thiếu máu thiếu sắt (do lứa hồng cầu sinh trước và sinh sau thiếu sắt khác nhau).\n- **MCV giảm + RDW BÌNH THƯỜNG:** 90% là Thalassemia thể nhẹ (Gen lỗi đồng đều từ lúc sinh ra, nên tất cả hồng cầu sinh ra đều nhỏ bằng nhau tăm tắp)."
+  },
+  {
+    "name": "Thể tích trung bình tiểu cầu (MPV)",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "MPV (Mean Platelet Volume) đo lường **kích thước trung bình của tiểu cầu**. Tiểu cầu non vừa được tủy xương phóng thích có kích thước lớn, sau đó chúng nhỏ dần khi già đi trong dòng máu.",
+    "physiology": "📌 **Động học:** MPV phản ánh trực tiếp tốc độ sản xuất tiểu cầu của tủy xương. Một MPV cao chứng tỏ tủy xương đang hoạt động hết công suất, đẩy ồ ạt các tiểu cầu non (kích thước lớn) ra ngoại vi để bù đắp sự thiếu hụt.",
+    "indication": "🎯 **Rối loạn xuất huyết:** Chẩn đoán phân biệt nguyên nhân gây Giảm tiểu cầu là do Tủy xương bị suy kiệt (sản xuất kém) hay do Tiểu cầu bị phá hủy quá mức ở ngoại vi.\n🎯 **Truyền nhiễm:** Dấu hiệu dự báo hồi phục rất sớm trong **Sốt xuất huyết Dengue**.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).\n⏳ **Bảo quản:** Phải chạy mẫu sớm. Nếu để quá lâu trong ống EDTA, tiểu cầu sẽ phình to ra làm tăng MPV giả tạo.",
+    "testingMethods": "Máy đếm tế bào máu tự động.",
+    "ref": "📊 **Bình thường:** 6,6 - 11,0 fL (femtolit).",
+    "alert": "⚠️ Đánh giá MPV **bắt buộc** phải đặt cạnh số lượng Tiểu cầu (PLT). Một số lượng PLT thấp kèm MPV thấp là dấu hiệu báo động tủy xương đang bị liệt/ức chế nghiêm trọng.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng MPV (Tủy xương đang tăng cường sản xuất):**\n  🔴 **Giảm tiểu cầu do phá hủy ngoại vi:**\n    ▫️ Ban xuất huyết giảm tiểu cầu miễn dịch (ITP).\n    ▫️ Mất máu cấp tính ồ ạt, Sepsis, Hội chứng đông máu nội mạch rải rác (DIC).\n  🔴 **Giai đoạn phục hồi:**\n    ▫️ Đang hồi phục tủy sau hóa trị hoặc giai đoạn lui bệnh của Sốt xuất huyết Dengue.",
+      "decrease": "🔹 **Giảm MPV (Tủy xương giảm sản xuất):**\n  🔴 **Suy kiệt tủy:**\n    ▫️ Suy tủy xương, hóa trị liệu ung thư độc tính tủy.\n  🔴 **Nguyên nhân khác:**\n    ▫️ Lách to cường chức năng, Wiskott-Aldrich syndrome."
+    },
+    "interferingFactors": "❌ **Lỗi mẫu:** Tế bào tiểu cầu trong ống EDTA có xu hướng trương phồng theo thời gian. Máu lấy buổi sáng mà buổi chiều mới chạy máy sẽ cho MPV tăng rất cao.\n❌ **Nhiễu:** Mảnh vỡ hồng cầu hoặc vi khuẩn lớn có thể bị máy đếm nhầm thành tiểu cầu to.",
+    "clinicalNote": "Theo dõi **Sốt xuất huyết Dengue** (QĐ 1450/QĐ-BYT 2024), trong giai đoạn nguy hiểm, PLT giảm sâu. Khi theo dõi công thức máu mỗi ngày, nếu thấy **chỉ số MPV bắt đầu nhích tăng lên**, đó là tín hiệu cực kỳ đáng mừng báo hiệu tủy xương đã thoát ức chế, đang tống tiểu cầu non ra máu và số lượng PLT sẽ tăng vọt trở lại vào 1-2 ngày tới."
+  },
+  {
+    "name": "Dải phân bố kích thước tiểu cầu (PDW)",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "PDW (Platelet Distribution Width) đánh giá mức độ **to nhỏ không đều của tiểu cầu** (Anisocytosis tiểu cầu). Cơ chế và ý nghĩa của nó tương tự như RDW đối với hồng cầu.",
+    "physiology": "📌 **Đặc tính:** Một PDW cao có nghĩa là trong dòng máu đang tồn tại lẫn lộn giữa các tiểu cầu già siêu nhỏ và các siêu tiểu cầu non khổng lồ vừa được tủy xương xuất xưởng.",
+    "indication": "🎯 **Huyết học:** Đánh giá mức độ kích hoạt của tiểu cầu và rối loạn sinh tủy. Thường luôn được xem xét song hành với MPV.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).",
+    "testingMethods": "Máy đếm tế bào máu tự động.",
+    "ref": "📊 **Bình thường:** 10% - 17% (Tùy thuộc vào phương pháp và hóa chất của từng hệ thống máy).",
+    "alert": "⚠️ Tương tự RDW, PDW giảm (các tiểu cầu đều tăm tắp) thường ít có ý nghĩa bệnh lý lâm sàng. PDW chỉ mang ý nghĩa biện luận khi nó tăng cao.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng PDW (Tiểu cầu to nhỏ không đều):**\n  🔴 **Phản ứng tăng sinh của tủy:**\n    ▫️ Ban xuất huyết giảm tiểu cầu miễn dịch (ITP) - Tủy sinh mạnh để bù đắp sự phá hủy.\n    ▫️ Bệnh lý ác tính: Tăng tiểu cầu tiên phát, Bệnh bạch cầu tủy mạn.\n    ▫️ Nhiễm trùng huyết nặng.",
+      "decrease": "🔹 **Giảm PDW:**\n    ▫️ Suy tủy, ung thư di căn tủy (tủy bị liệt nên chỉ sinh ra một lứa tiểu cầu duy nhất với kích thước đều nhau, thường kèm số lượng PLT giảm nặng)."
+    },
+    "interferingFactors": "❌ **Lỗi mẫu:** Sự kết cụm tiểu cầu do EDTA hoặc máu để quá lâu làm sai lệch sự phân bố kích thước.",
+    "clinicalNote": "Chỉ số PDW tăng cao đi kèm với MPV tăng cao là minh chứng mạnh mẽ cho việc tủy xương đang hoạt động bù trừ rất mãnh liệt. Nếu bệnh nhân có bầm tím ngoài da, PLT giảm nặng, MPV tăng và PDW tăng, chẩn đoán thường hướng về ITP (Tiểu cầu bị hệ miễn dịch tiêu diệt ở ngoại vi) chứ không phải do suy tủy."
+  },
+  {
+    "name": "Khối tiểu cầu (PCT)",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "PCT (Plateletcrit) là chỉ số đo lường **thể tích khối tiểu cầu**. Nó tương tự như khái niệm Hematocrit (HCT) của hồng cầu. PCT cho biết tổng phần trăm thể tích của toàn bộ máu bị chiếm giữ bởi các tế bào tiểu cầu.",
+    "physiology": "📌 **Cơ chế tính toán:** Khối tiểu cầu được tính bằng tích của Số lượng tiểu cầu (PLT) nhân với Thể tích trung bình tiểu cầu (MPV). \n📌 **Đặc tính:** PCT phản ánh tổng khối lượng tiểu cầu khả dụng (Platelet mass) để tham gia vào quá trình đông máu, chính xác hơn là chỉ nhìn vào số lượng.",
+    "indication": "🎯 **Rối loạn đông máu:** Đánh giá tổng thể sức mạnh của \"bức tường\" tiểu cầu. Tầm soát nguy cơ chảy máu do thiếu hụt khối lượng tiểu cầu.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (ống chống đông EDTA).",
+    "testingMethods": "Máy đếm tế bào máu tự động (Tính toán: PCT = PLT x MPV).",
+    "ref": "📊 **Bình thường:** 0,1% - 0,28%.",
+    "alert": "⚠️ Một PCT cực thấp (< 0,05%) cảnh báo bệnh nhân đối mặt với nguy cơ xuất huyết tự phát đe dọa tính mạng (chảy máu não, chảy máu nội tạng) rất lớn, bất kể kích thước tiểu cầu ra sao.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng PCT:**\n  🔴 **Tương ứng với tăng số lượng PLT:**\n    ▫️ Hội chứng tăng sinh tủy (Tăng tiểu cầu tiên phát).\n    ▫️ Phản ứng viêm cấp/mạn tính.\n    ▫️ Tình trạng sau cắt lách (lách không còn bắt giữ tiểu cầu).",
+      "decrease": "🔹 **Giảm PCT:**\n  🔴 **Tương ứng với giảm PLT và/hoặc giảm MPV:**\n    ▫️ Sốt xuất huyết Dengue.\n    ▫️ Suy tủy xương, xơ gan.\n    ▫️ Ban xuất huyết giảm tiểu cầu miễn dịch (ITP)."
+    },
+    "interferingFactors": "❌ **Lỗi mẫu:** Cục máu đông vi thể (clots) trong ống nghiệm làm mất tiểu cầu, gây sụt giảm PCT giả tạo nặng nề.",
+    "clinicalNote": "Mặc dù số lượng Tiểu cầu (PLT) là chỉ số thường được các bác sĩ nhìn vào đầu tiên, nhưng PCT mới thực sự đại diện cho tổng khả năng tạo nút cầm máu sinh lý. Ở một số bệnh nhân có số lượng PLT hơi thấp nhưng MPV (kích thước) rất lớn, thì tổng khối PCT vẫn có thể duy trì ở mức an toàn, do đó bệnh nhân không bị chảy máu trên lâm sàng."
+  },
+    {
+    "name": "Tổng phân tích tế bào máu ngoại vi (Phết máu ngoại biên) [máu]",
+    "group": "Huyết học",
+    "time": "45 phút / 120 phút",
+    "isFeatured": true,
+    "concept": "Phết máu ngoại biên (Peripheral Blood Smear) là kỹ thuật dàn mỏng một giọt máu trên lam kính, nhuộm màu (Giemsa) và soi trực tiếp dưới kính hiển vi. Đây là \"tiêu chuẩn vàng\" về hình thái học, cho phép bác sĩ tận mắt quan sát hình dáng, kích thước và màu sắc thực sự của từng tế bào máu mà máy đếm tự động không thể nhận diện chi tiết.",
+    "physiology": "📌 **Vai trò:** Máy đếm tự động phân loại tế bào dựa trên kích thước và xung điện (trở kháng/laser). Tuy nhiên, khi các tế bào bị vỡ, dính chùm, hoặc xuất hiện các tế bào non (chưa trưởng thành), máy sẽ báo lỗi (cờ rác - flag). Lúc này, mắt người qua kính hiển vi là bước kiểm chứng cuối cùng.",
+    "indication": "🎯 **Huyết học:** Chẩn đoán xác định các bệnh lý bất thường hình thái hồng cầu (Thalassemia, Hồng cầu hình liềm). Phân loại các bệnh lý ác tính của tủy xương (Leukemia - Ung thư máu).\n🎯 **Truyền nhiễm:** Tìm trực tiếp Ký sinh trùng Sốt rét (Plasmodium) nằm trong hồng cầu.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (EDTA). Phải phết lam kính càng sớm càng tốt để tế bào không bị biến dạng do ngâm lâu trong chất chống đông.",
+    "testingMethods": "Nhuộm May-Grunwald-Giemsa và soi hiển vi quang học.",
+    "ref": "📊 **Bình thường:** Hồng cầu hình đĩa lõm hai mặt, kích thước đều. Bạch cầu trưởng thành tỷ lệ chuẩn. Tiểu cầu đứng rải rác hoặc thành từng cụm nhỏ. Không có tế bào non (Blast).",
+    "alert": "⚠️ Việc phát hiện ra các **tế bào non (Blast cells)** hoặc các **tế bào có hạt Auer (Auer rods)** trên tiêu bản máu ngoại vi là một cấp cứu Huyết học, báo động bệnh nhân đang bị Ung thư máu cấp tính (Acute Leukemia).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Bất thường được phát hiện (Dương tính):**\n  🔴 **Dòng Hồng cầu:**\n    ▫️ **HC hình bia bắn (Target cells), HC nhỏ nhược sắc:** Rất điển hình của Thalassemia.\n    ▫️ **HC hình giọt nước, mảnh vỡ HC (Schistocytes):** Gặp trong Hội chứng đông máu nội mạch rải rác (DIC), Tan máu vi mạch.\n  🔴 **Dòng Bạch cầu:**\n    ▫️ **Xuất hiện tế bào Blast:** Bệnh bạch cầu cấp (Leukemia).\n    ▫️ **Bạch cầu đoạn trung tính chia nhiều thùy (Hypersegmented):** Thiếu Vitamin B12/Folate.\n    ▫️ **Tế bào Lympho không điển hình:** Tăng bạch cầu đơn nhân nhiễm trùng (do virus EBV).",
+      "decrease": "Không áp dụng thuật ngữ Tăng/Giảm (Đây là xét nghiệm mô tả hình thái tế bào)."
+    },
+    "interferingFactors": "❌ **Lỗi kỹ thuật:** Phết máu quá dày (tế bào chồng lên nhau) hoặc quá mỏng, nhuộm cặn màu sẽ làm bác sĩ đọc sai kết quả.",
+    "clinicalNote": "Theo bản cập nhật hướng dẫn **ASH 2026** về quản lý Bệnh bạch cầu cấp dòng Lympho (ALL) ở thanh thiếu niên và người trẻ (AYA), việc phát hiện sớm tế bào Blast qua phết máu ngoại vi ngay tại tuyến cơ sở là bước khởi đầu sống còn, giúp rút ngắn thời gian chuyển tuyến đến các trung tâm Huyết học chuyên sâu để can thiệp phác đồ nhi khoa kịp thời."
+  },
+  {
+    "name": "Số lượng và độ tập trung tiểu cầu (thủ công) [máu]",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Đếm tiểu cầu thủ công là phương pháp kỹ thuật viên trực tiếp đếm số lượng và quan sát độ tập trung của tiểu cầu (đứng rời rạc hay dính thành chùm) trên buồng đếm (Goryaev) hoặc trên lam kính hiển vi, thay vì phụ thuộc vào máy huyết học tự động.",
+    "physiology": "📌 **Đặc tính:** Tiểu cầu rất dễ bị kích hoạt và kết cụm lại với nhau ngay khi rời khỏi mạch máu hoặc khi tiếp xúc với hóa chất ống nghiệm.",
+    "indication": "🎯 **Kiểm chứng (QC lâm sàng):** Được chỉ định tuyệt đối khi máy phân tích tự động báo số lượng tiểu cầu giảm rất sâu (< 50 G/L) nhưng trên lâm sàng bệnh nhân lại **không hề có bất kỳ dấu hiệu xuất huyết nào** (không chấm xuất huyết, không chảy máu chân răng).",
+    "specimenCollection": "💉 **Loại mẫu:** Máu mao mạch (trích ở đầu ngón tay/dái tai) hoặc máu tĩnh mạch (chống đông bằng Citrate thay vì EDTA nếu nghi ngờ vón cục).",
+    "testingMethods": "Đếm buồng đếm thủ công hoặc soi lam kính.",
+    "ref": "📊 **Bình thường:** 150 - 400 G/L. Mật độ độ tập trung 3-5 tiểu cầu/cụm trên lam kính.",
+    "alert": "⚠️ Hiện tượng **\"Giảm tiểu cầu giả tạo do EDTA\"**: Kháng thể trong máu bệnh nhân phản ứng với chất chống đông EDTA làm tiểu cầu dính chặt thành từng đám khổng lồ. Máy đếm tự động tưởng chùm này là 1 bạch cầu nên báo PLT sát đáy. Nếu bác sĩ không cho đếm thủ công kiểm chứng mà vội vã truyền tiểu cầu thì sẽ là một tai biến y khoa nghiêm trọng.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng tiểu cầu thực sự:**\n  🔴 Hội chứng tăng sinh tủy, viêm nhiễm mạn tính, sau cắt lách.",
+      "decrease": "🔹 **Giảm tiểu cầu thực sự:**\n  🔴 Sốt xuất huyết Dengue, Xuất huyết giảm tiểu cầu miễn dịch (ITP), Suy tủy, Hóa trị ung thư."
+    },
+    "interferingFactors": "❌ Lấy máu mao mạch bóp vuốt quá mạnh làm dịch mô hòa vào máu, kích hoạt tiểu cầu đông vón ngay trên ngón tay.",
+    "clinicalNote": "Trong thực hành nhi khoa và cấp cứu Sốt xuất huyết, nếu máy báo tiểu cầu là 10 G/L nhưng kỹ thuật viên soi lam thủ công ghi chú \"Tiểu cầu tập trung từng đám lớn, số lượng thực tế bình thường\", bác sĩ hoàn toàn có thể yên tâm cho bệnh nhân theo dõi ngoại trú thay vì nhập viện truyền máu."
+  },
+  {
+    "name": "Hồng cầu lưới (phương pháp thủ công / tự động) [máu]",
+    "group": "Huyết học",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Hồng cầu lưới (Reticulocytes - RET) là những tế bào \"hồng cầu thanh niên\" vừa mới được tủy xương phóng thích vào máu ngoại vi. Chúng vẫn còn sót lại các tàn tích của mạng lưới ARN/Ribosome bên trong bào tương. Sau 24-48 giờ lưu hành, chúng sẽ lột xác thành hồng cầu trưởng thành.",
+    "physiology": "📌 **Gương phản chiếu Tủy xương:** Số lượng hồng cầu lưới trong máu là thước đo trực tiếp, sống động nhất để đánh giá **khả năng sản xuất của nhà máy tủy xương**. Một tủy xương khỏe mạnh, khi thấy cơ thể thiếu máu, sẽ lập tức tăng ca sản xuất và tống hàng loạt hồng cầu lưới ra ngoài bù đắp.",
+    "indication": "🎯 **Huyết học:** \n- Chẩn đoán phân biệt nguyên nhân gây Thiếu máu: Do tại nhà máy (Suy tủy) hay do mất mát ở ngoại vi (Chảy máu, Tan máu).\n- Đánh giá đáp ứng sớm với các phác đồ điều trị thiếu máu (bù Sắt, Vitamin B12, hoặc tiêm EPO).",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (EDTA).",
+    "testingMethods": "Nhuộm xanh cresyl rực rỡ (brilliant cresyl blue) đếm thủ công, hoặc đo bằng máy huyết học dùng công nghệ laser.",
+    "ref": "📊 **Bình thường:** 0,5% - 1,5% (hoặc $25 - 75 \\times 10^9/L$).\n*(Lưu ý: Ở trẻ sơ sinh tỷ lệ này thường cao hơn, khoảng 2-6%).*",
+    "alert": "⚠️ Nếu bệnh nhân đang bị thiếu máu rất nặng (HGB < 7 g/dL) mà tỷ lệ Hồng cầu lưới vẫn lẹt đẹt < 0,5%, điều này chứng tỏ \"nhà máy\" tủy xương đã bị suy kiệt, bại liệt hoàn toàn hoặc không có vật liệu để sản xuất.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Hồng cầu lưới (Tủy xương phản ứng tốt bù trừ):**\n  🔴 **Mất máu hoặc Phá hủy ngoại vi:**\n    ▫️ Thiếu máu do tan máu (Hemolytic anemia), sốt rét, Thalassemia.\n    ▫️ Tình trạng chảy máu rỉ rả kéo dài hoặc vừa mất máu cấp tính.\n  🔴 **Đáp ứng với điều trị (Tin vui):**\n    ▫️ Ngày thứ 5-7 sau khi bắt đầu truyền bù Sắt, B12, Folate (chứng tỏ tủy đã nhận được nguyên liệu và sản xuất ồ ạt).",
+      "decrease": "🔹 **Giảm Hồng cầu lưới (Tủy xương đình công/Suy kiệt):**\n  🔴 **Nguyên nhân tại tủy / Thiếu nguyên liệu:**\n    ▫️ Suy tủy xương, ung thư di căn tủy, xơ tủy.\n    ▫️ Thiếu máu thiếu Sắt, B12, Folate trầm trọng (chưa được điều trị).\n    ▫️ Suy thận mạn tính (Thận không sản xuất đủ hormon EPO để kích thích tủy)."
+    },
+    "interferingFactors": "❌ Bệnh nhân vừa được truyền khối hồng cầu sẽ làm giảm tỷ lệ phần trăm hồng cầu lưới giả tạo (do bị pha loãng bởi lượng hồng cầu trưởng thành của người hiến).",
+    "clinicalNote": "Công thức hiệu chỉnh: Vì phần trăm RET bị ảnh hưởng bởi số lượng HC toàn phần, bác sĩ lâm sàng bắt buộc phải tính **\"Chỉ số hồng cầu lưới hiệu chỉnh (RPI)\"**. Nếu RPI > 2%, tủy xương hoạt động tốt (nguyên nhân thiếu máu là do tan máu/mất máu). Nếu RPI < 2%, tủy xương đang bị suy hoặc thiếu nguyên liệu trầm trọng."
+  },
+  {
+    "name": "Thời gian máu đông (TC - Temps de Coagulation) [máu]",
+    "group": "Đông máu",
+    "time": "Cấp cứu / 30 phút",
+    "isFeatured": true,
+    "concept": "Thời gian máu đông (TC) là khoảng thời gian tính từ lúc máu rời khỏi lòng mạch tiếp xúc với bề mặt lạ (ống nghiệm/lam kính) cho đến khi hình thành được một cục máu đông hoàn chỉnh. Xét nghiệm này đánh giá thô sơ toàn bộ quá trình đông máu nội sinh và con đường chung.",
+    "physiology": "📌 **Đặc tính:** Đây là một xét nghiệm kinh điển (phương pháp Lee-White trong ống nghiệm hoặc phương pháp giọt máu trên phiến kính). Hiện nay nó mang ý nghĩa lịch sử nhiều hơn do độ nhạy rất kém.",
+    "indication": "🎯 **Sàng lọc thô:** Thường chỉ còn được dùng ở các tuyến cơ sở không có máy đông máu tự động để sàng lọc nhanh nguy cơ chảy máu trước các thủ thuật tiểu phẫu (nhổ răng, cắt amidan).",
+    "specimenCollection": "💉 **Loại mẫu:** Máu tĩnh mạch (Lee-White) hoặc máu mao mạch trích ở đầu ngón tay. Không dùng chất chống đông.",
+    "testingMethods": "Bấm đồng hồ bấm giây và quan sát sự đông máu bằng mắt thường.",
+    "ref": "📊 **Phương pháp ống nghiệm (Lee-White):** 5 - 10 phút.\n📊 **Phương pháp phiến kính:** 2 - 5 phút.",
+    "alert": "⚠️ Xét nghiệm TC có độ nhạy cực thấp. Bệnh nhân bị rối loạn đông máu nhẹ (như Hemophilia thể nhẹ) thời gian máu đông vẫn hoàn toàn bình thường. Do đó, ở các bệnh viện tuyến trên, xét nghiệm này đã bị **cấm sử dụng làm bilan trước mổ** và được thay thế bắt buộc bằng **APTT và PT**.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Thời gian máu đông kéo dài:**\n  🔴 Thiếu hụt nghiêm trọng các yếu tố đông máu nội sinh (Hemophilia A, B thiếu hụt yếu tố VIII, IX).\n  🔴 Đang điều trị bằng thuốc chống đông Heparin liều cao.\n  🔴 Tình trạng Suy gan nặng, Hội chứng đông máu nội mạch rải rác (DIC) giai đoạn tiêu thụ kiệt quệ.",
+      "decrease": "🔹 **Thời gian máu đông rút ngắn:**\n  🔴 Hội chứng tăng đông máu, có nguy cơ tắc mạch (ít có giá trị chẩn đoán lâm sàng)."
+    },
+    "interferingFactors": "❌ Lấy máu khó khăn, chọc kim nhiều lần làm mô giải phóng Thromboplastin tổ chức, kích hoạt con đường ngoại sinh làm máu đông cực nhanh (sai số rút ngắn thời gian). Nhiệt độ phòng quá lạnh cũng làm máu chậm đông.",
+    "clinicalNote": "Nếu bệnh viện của bạn có hệ thống máy sinh hóa và đông máu tự động, không bao giờ dùng xét nghiệm này để loại trừ nguy cơ chảy máu trước các ca phẫu thuật lớn. XN này chỉ mang tính tham khảo sơ bộ cấp cứu tại thực địa."
+  },
+  {
+    "name": "Thời gian máu chảy (TS - Temps de Saignement) phương pháp Duke",
+    "group": "Đông máu",
+    "time": "Làm tại giường",
+    "isFeatured": true,
+    "concept": "Thời gian máu chảy (TS) đo khoảng thời gian từ lúc tạo một vết chích rạch tiêu chuẩn trên da (thường là dái tai) cho đến khi vết chích tự động ngừng chảy máu. Nó đánh giá sức mạnh của **Giai đoạn cầm máu ban đầu** (bao gồm sự co thắt của thành mạch và sự kết dính tạo nút nêm của Tiểu cầu).",
+    "physiology": "📌 **Cơ chế:** Ngay khi mao mạch bị đứt, phản xạ co thắt sẽ xảy ra, đồng thời tiểu cầu nhận tín hiệu bu tới dính vào thành mạch bị rách để bịt lỗ thủng. Xét nghiệm TS phản ánh sinh lý chính xác hoạt động này trong cơ thể sống (in vivo).",
+    "indication": "🎯 **Huyết học:** Khảo sát các bệnh nhân có triệu chứng xuất huyết dưới da, chảy máu cam, rong kinh.\n🎯 **Bilan trước mổ:** Xét nghiệm sàng lọc cổ điển trước các thủ thuật ngoại khoa nhỏ.",
+    "specimenCollection": "💧 **Kỹ thuật:** Chích dái tai (phương pháp Duke) hoặc rạch cẳng tay (phương pháp Ivy có băng huyết áp). Cứ mỗi 30 giây dùng giấy thấm giọt máu 1 lần cho đến khi máu ngừng chảy.",
+    "testingMethods": "Khảo sát thời gian thực tại giường bệnh.",
+    "ref": "📊 **Phương pháp Duke (Chích dái tai):** 2 - 5 phút.\n*(Lưu ý: Phương pháp Ivy rạch cẳng tay thường cho thời gian dài hơn, khoảng 2-9 phút)*.",
+    "alert": "⚠️ Việc uống dù chỉ 1 viên Aspirin trước đó 1 tuần cũng sẽ làm tê liệt vĩnh viễn tiểu cầu hiện có, khiến thời gian máu chảy (TS) bị kéo dài bất thường.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Thời gian máu chảy kéo dài (Nguy cơ xuất huyết):**\n  🔴 **Do Tiểu cầu:**\n    ▫️ Giảm số lượng tiểu cầu nghiêm trọng (< 50 G/L).\n    ▫️ Suy nhược chất lượng tiểu cầu (Bệnh Glanzmann - có đủ quân số nhưng tiểu cầu bị \"mù\", không dính được vào nhau).\n  🔴 **Do Yếu tố huyết tương / Thành mạch:**\n    ▫️ Bệnh von Willebrand (Thiếu chất keo dán tiểu cầu vào thành mạch - là bệnh chảy máu di truyền phổ biến nhất).\n    ▫️ Viêm mao mạch dị ứng, bệnh Scorbut (thiếu Vitamin C làm thành mạch dòn dễ vỡ).",
+      "decrease": "Không có ý nghĩa bệnh lý lâm sàng đặc hiệu."
+    },
+    "interferingFactors": "❌ **Lỗi kỹ thuật:** Chích quá sâu (chạm tĩnh mạch) hoặc thao tác dùng giấy thấm quệt mạnh làm tróc nút tiểu cầu đang hình thành sẽ làm TS kéo dài giả tạo.\n💊 **Thuốc:** NSAIDs (Ibuprofen, Naproxen), Aspirin, Clopidogrel làm kéo dài TS.",
+    "clinicalNote": "Mặc dù phương pháp Duke rất phổ biến tại Việt Nam do rẻ và dễ làm, nhưng nó bị sai số phụ thuộc chủ quan vào độ sâu nhát chích của điều dưỡng rất nhiều. Trong Huyết học hiện đại, để đánh giá rối loạn chức năng tiểu cầu, người ta ưu tiên dùng xét nghiệm **Ngưng tập tiểu cầu với Collagen/ADP** tại máy trung tâm."
+  },
+  {
+    "name": "Tốc độ lắng hồng cầu (Máu lắng - ESR) bằng máy tự động [máu]",
+    "group": "Huyết học",
+    "time": "60 phút",
+    "isFeatured": true,
+    "concept": "Tốc độ lắng hồng cầu (Erythrocyte Sedimentation Rate - ESR) đo tốc độ rơi xuống đáy ống nghiệm của các tế bào hồng cầu trong 1 giờ. Khi cơ thể có phản ứng viêm, gan sản xuất ra nhiều fibrinogen và protein viêm. Các protein này bám vào hồng cầu, làm chúng nặng hơn và kết thành chuỗi (như chuỗi tiền xu), khiến chúng chìm xuống đáy nhanh hơn rất nhiều.",
+    "physiology": "📌 **Động học:** ESR là một chỉ số \"chậm chạp\". Trong khi CRP tăng vọt chỉ sau vài giờ có viêm, thì ESR phải mất vài ngày mới tăng lên, và cũng mất nhiều tuần mới hạ xuống sau khi tình trạng viêm đã khỏi.",
+    "indication": "🎯 **Miễn dịch - Khớp:** Xét nghiệm cốt lõi để chẩn đoán và theo dõi bệnh Viêm khớp dạng thấp, Viêm động mạch thái dương (Bệnh Horton), Viêm đa cơ.\n🎯 **Truyền nhiễm / Ung bướu:** Theo dõi tiến triển các bệnh nhiễm trùng mạn tính (Lao, Viêm tủy xương) hoặc Đa u tủy xương.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (Ống Citrate tỷ lệ 1/4 hoặc EDTA tùy hệ thống máy).",
+    "testingMethods": "Máy đo tự động (hoặc ống mao quản Westergren cải tiến đặt thẳng đứng).",
+    "ref": "📊 **Dưới 50 tuổi:** Nam < 15 mm/1h; Nữ < 20 mm/1h.\n📊 **Trên 50 tuổi:** Nam < 20 mm/1h; Nữ < 30 mm/1h.",
+    "alert": "⚠️ Tốc độ máu lắng > 100 mm/h là một con số \"Báo động đỏ\". Nó không bao giờ là biểu hiện viêm thông thường, mà thường chỉ điểm 3 nhóm bệnh lớn: Đa u tủy xương (Myeloma), Viêm mạch máu (Horton), hoặc Lao phổi/Viêm xương lan rộng.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng tốc độ lắng hồng cầu (Có phản ứng Viêm / Protein bất thường):**\n  🔴 **Tự miễn & Khớp:** Viêm khớp dạng thấp, Lupus ban đỏ hệ thống, Viêm động mạch tế bào khổng lồ.\n  🔴 **Nhiễm trùng:** Viêm màng ngoài tim, nhiễm trùng sâu, Lao.\n  🔴 **Bệnh lý ác tính:** Đa u tủy xương (sản xuất lượng khổng lồ protein bất thường làm tăng trọng lượng hồng cầu).\n  🔴 **Sinh lý:** Thai kỳ (các tháng cuối), giai đoạn hành kinh.",
+      "decrease": "🔹 **Giảm tốc độ lắng hồng cầu:**\n  🔴 Tình trạng đa hồng cầu (Vaquez) (quá nhiều tế bào nên chèn ép nhau, không chìm được).\n  🔴 Suy tim sung huyết, bất thường hình thái hồng cầu (HC hình liềm không thể xếp chuỗi tiền xu được)."
+    },
+    "interferingFactors": "❌ Lỗi kỹ thuật đặt ống nghiệm hơi nghiêng (không thẳng đứng vuông góc) sẽ làm máu lắng nhanh hơn đáng kể. Máu để nhiệt độ phòng quá 2 tiếng mới đo cũng làm sai số.",
+    "clinicalNote": "Theo bản cập nhật **EULAR 2025** về quản lý Viêm khớp dạng thấp, việc đo tốc độ máu lắng (ESR) kết hợp với CRP là hai thông số viêm bắt buộc để tính toán chỉ số hoạt động bệnh (DAS28), từ đó quyết định xem bệnh nhân có cần chuyển sang dùng các thuốc sinh học (Biologics) đắt tiền hay không."
+  },
+  {
+    "name": "Xét nghiệm tế bào trong nước dịch chẩn đoán tế bào học [dịch]",
+    "group": "Huyết học",
+    "time": "120 phút",
+    "isFeatured": true,
+    "concept": "Xét nghiệm tế bào học dịch chọc dò (dịch màng phổi, màng bụng, dịch não tủy, dịch khớp) là quá trình ly tâm dịch, đếm số lượng tổng các tế bào và nhuộm soi dưới kính hiển vi để phân định các thành phần (Bạch cầu đa nhân, Bạch cầu lympho, hoặc sự xuất hiện của các tế bào ác tính / tế bào K).",
+    "physiology": "📌 **Đặc tính:** Dịch sinh lý bình thường trong các khoang cơ thể (dịch thấm) chỉ có rất ít tế bào bạch cầu đơn nhân. Khi có viêm nhiễm hoặc u, thành mạch rò rỉ sẽ đưa quân đội bạch cầu hoặc tế bào u rơi rụng vào trong khoang dịch.",
+    "indication": "🎯 **Nội khoa:** Đứng trước bất kỳ một ca tràn dịch màng phổi, màng bụng hay chọc dò dịch não tủy nào, việc đếm tế bào là bắt buộc để hướng tới chẩn đoán Vi khuẩn (viêm mủ), Lao, hay Ung thư.",
+    "specimenCollection": "💧 **Loại mẫu:** Dịch chọc dò chứa trong ống có chất chống đông (EDTA/Heparin) để tế bào không bị dính cục.\n⏳ **Bảo quản:** Phải vận chuyển ngay tới phòng Lab và ly tâm soi sớm để tế bào không bị ly giải (đặc biệt là dịch não tủy).",
+    "testingMethods": "Máy đếm tự động hoặc đếm bằng buồng đếm thủ công, sau đó nhuộm Giemsa hoặc Papanicolaou để phân loại hình thái tế bào ác tính.",
+    "ref": "📊 **Dịch màng phổi/bụng bình thường:** < 1000 tế bào bạch cầu/µL (chủ yếu là đại thực bào và lympho).\n📊 **Dịch não tủy bình thường:** < 5 bạch cầu đơn nhân/µL.",
+    "alert": "⚠️ Trong tràn dịch màng phổi, nếu thấy tỷ lệ Bạch cầu ái toan (Eosinophil) > 10%, nguyên nhân thường gặp nhất lại là do... Tràn khí màng phổi hoặc Chọc hút dịch nhiều lần có máu hòa vào, rất hiếm khi do nhiễm ký sinh trùng.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Bất thường công thức tế bào Dịch (Dương tính):**\n  🔴 **Tăng ưu thế Bạch cầu Đa nhân trung tính (> 50%):**\n    ▫️ Nhiễm trùng cấp mủ (Viêm màng não mủ, Tràn mủ màng phổi do vi khuẩn, Viêm phúc mạc tự phát).\n  🔴 **Tăng ưu thế Bạch cầu Lympho (> 80%):**\n    ▫️ Nhiễm trùng mạn tính: Lao màng phổi, Lao màng não, Viêm màng não do virus.\n    ▫️ Bệnh lý ác tính: U lympho.\n  🔴 **Xuất hiện Tế bào ác tính (Tế bào K):**\n    ▫️ Khẳng định Ung thư di căn màng thanh mạc (Adenocarcinoma) hoặc U trung biểu mô (Mesothelioma).",
+      "decrease": "Không áp dụng thuật ngữ giảm. Sự vắng mặt của tế bào biểu thị tình trạng dịch thấm lành tính (Xơ gan, Suy tim)."
+    },
+    "interferingFactors": "❌ **Chọc chạm mạch (Traumatic tap):** Mũi kim chọc dò làm rách mạch máu khiến máu chảy òa vào ống dịch. Lúc này công thức bạch cầu trong dịch sẽ phản ánh công thức bạch cầu của máu ngoại vi, làm sai lệch hoàn toàn kết quả chẩn đoán.",
+    "clinicalNote": "Một quy tắc vàng trong chẩn đoán Tràn dịch màng phổi cận viêm: Nếu chọc ra dịch có **chứa hàng chục ngàn tế bào bạch cầu đa nhân trung tính đang thoái hóa (mủ)**, dù cấy không mọc vi khuẩn, bệnh nhân vẫn có chỉ định tuyệt đối phải mở màng phổi dẫn lưu ống lớn để tránh đóng kén thành ổ áp xe phổi."
+  },
+  {
+    "name": "Thời gian Prothrombin (PT) / Tỷ lệ Prothrombin / INR [máu]",
+    "group": "Đông máu",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Thời gian Prothrombin (PT - Prothrombin Time) đánh giá tốc độ đông máu của con đường **Đông máu Ngoại sinh** và con đường chung (bao gồm các yếu tố VII, X, V, II và Fibrinogen). Do các máy xét nghiệm dùng hóa chất khác nhau sẽ cho số giây PT khác nhau, Tổ chức Y tế Thế giới (WHO) đã thống nhất sử dụng chỉ số **INR (International Normalized Ratio)** để chuẩn hóa kết quả trên toàn cầu.",
+    "physiology": "📌 **Cơ chế:** Các yếu tố đông máu ngoại sinh (đặc biệt yếu tố VII) được tổng hợp tại Gan và **bắt buộc phải có Vitamin K**. Do yếu tố VII có thời gian sống ngắn nhất, PT/INR là xét nghiệm nhạy bén nhất để phản ánh tình trạng suy giảm chức năng gan cấp tính hoặc thiếu hụt Vitamin K.",
+    "indication": "🎯 **Nội khoa Tim mạch:** Chỉ định cốt lõi để theo dõi và chỉnh liều thuốc chống đông kháng Vitamin K đường uống (Warfarin, Sintrom, Acenocoumarol).\n🎯 **Tiêu hóa:** Đánh giá mức độ nặng của tổn thương tế bào gan (Xơ gan, Hoại tử gan cấp).\n🎯 **Bilan trước mổ:** Xét nghiệm bắt buộc để tầm soát nguy cơ chảy máu do khiếm khuyết con đường ngoại sinh.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết tương (Ống Citrate 3.2% nắp xanh dương). Tỷ lệ chống đông phải chính xác tuyệt đối: 1 thể tích Citrate / 9 thể tích máu.",
+    "testingMethods": "Máy đông máu tự động phân tích quang học hoặc cơ học.",
+    "ref": "📊 **Bình thường (Người không dùng thuốc):** PT khoảng 11 - 13 giây; Tỷ lệ PT > 70%; **INR = 0.8 - 1.2**.\n📊 **Ngưỡng điều trị (Dùng kháng Vitamin K):** **INR từ 2.0 - 3.0** (Tùy bệnh lý).",
+    "alert": "⚠️ Nếu bệnh nhân đang dùng kháng Vitamin K mà kết quả **INR > 5.0**, bệnh nhân đối mặt với nguy cơ xuất huyết tự phát (đặc biệt xuất huyết não) cực kỳ cao. Bác sĩ phải cho dừng thuốc ngay và xem xét tiêm giải độc bằng Vitamin K hoặc truyền huyết tương tươi đông lạnh.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **PT kéo dài / INR tăng / Tỷ lệ PT giảm (Nguy cơ xuất huyết):**\n  🔴 **Do Thuốc:** Đang điều trị thuốc kháng Vitamin K quá liều.\n  🔴 **Bệnh lý Gan mật:** Xơ gan mất bù, viêm gan bùng phát, tắc mật kéo dài (gây không hấp thu được mỡ và Vitamin K hòa tan trong mỡ).\n  🔴 **Thiếu hụt:** Thiếu Vitamin K do suy dinh dưỡng nặng, loạn khuẩn ruột do dùng kháng sinh phổ rộng.\n  🔴 **Bệnh lý tiêu thụ:** Hội chứng đông máu nội mạch rải rác (DIC).",
+      "decrease": "🔹 **PT rút ngắn / INR giảm (Dưới ngưỡng trị liệu):**\n  🔴 Bệnh nhân dùng thuốc kháng Vitamin K không đủ liều, hoặc dùng kèm thực phẩm chứa quá nhiều Vitamin K (súp lơ xanh, rau bina) làm mất tác dụng của thuốc, đe dọa nguy cơ bị Huyết khối tắc mạch (đột quỵ)."
+    },
+    "interferingFactors": "❌ Lấy máu không đủ tới vạch quy định của ống Citrate làm thừa chất chống đông, khiến PT bị kéo dài giả tạo. Máu để quá 4 tiếng không ly tâm chạy máy cũng làm hỏng yếu tố đông máu.",
+    "clinicalNote": "Theo **Hướng dẫn AHA/ACC 2024-2025**, đối với bệnh nhân Rung nhĩ hoặc mang Van tim nhân tạo cơ học, mục tiêu INR sinh tồn thường là **2.0 - 3.0** (van động mạch chủ) hoặc **2.5 - 3.5** (van hai lá). Bác sĩ gia đình và tuyến cơ sở bắt buộc phải điều chỉnh liều Warfarin dựa vào xét nghiệm INR mỗi tháng 1 lần để giữ bệnh nhân trong \"cửa sổ điều trị hẹp\" này."
+  },
+  {
+    "name": "Thời gian Thromboplastin từng phần hoạt hóa (APTT) [máu]",
+    "group": "Đông máu",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "APTT (Activated Partial Thromboplastin Time) đánh giá toàn bộ các yếu tố của con đường **Đông máu Nội sinh** và con đường chung (bao gồm các yếu tố XII, XI, IX, VIII, X, V, II, Fibrinogen). Xét nghiệm này mô phỏng lại quá trình đông máu xảy ra khi máu tiếp xúc với bề mặt lạ bị tổn thương (không cần sự hiện diện của yếu tố mô bên ngoài).",
+    "physiology": "📌 **Động học:** APTT đặc biệt nhạy cảm với sự thiếu hụt các yếu tố nội sinh (như yếu tố VIII trong Hemophilia A) và sự hiện diện của thuốc chống đông Heparin tiêu chuẩn (Heparin không phân đoạn).",
+    "indication": "🎯 **Huyết học:** Chẩn đoán các bệnh lý ưa chảy máu di truyền (Hemophilia A, B) hoặc bệnh von Willebrand.\n🎯 **Hồi sức Tim mạch:** Bắt buộc để theo dõi và chỉnh liều khi truyền liên tục **Heparin không phân đoạn (UFH)** tĩnh mạch (điều trị nhồi máu cơ tim, thuyên tắc phổi).\n🎯 **Bilan trước mổ:** Xét nghiệm sinh tử cùng với PT để đánh giá toàn diện nguy cơ chảy máu.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết tương (Ống Citrate 3.2%).\n⏳ **Lưu ý cấp cứu:** Nếu bệnh nhân đang truyền Heparin liên tục, tuyệt đối không được chọc lấy máu ở tay đang cắm kim truyền dịch chứa Heparin (sẽ làm APTT dài vô tận giả tạo). Phải lấy ở tay đối diện.",
+    "testingMethods": "Máy đông máu tự động.",
+    "ref": "📊 **Bình thường:** 25 - 35 giây (hoặc tỷ số bệnh/chứng từ 0.8 - 1.2).\n📊 **Ngưỡng điều trị (Đang truyền Heparin):** APTT kéo dài gấp **1.5 - 2.5 lần** so với giá trị bình thường của phòng xét nghiệm (thường khoảng 50 - 70 giây).",
+    "alert": "⚠️ Nếu bệnh nhân có **APTT kéo dài đơn độc** (PT bình thường) mà không hề dùng Heparin và có tiền sử chảy máu khớp, sưng gối từ nhỏ, 99% bệnh nhân mắc bệnh **Hemophilia**. Tuyệt đối không được phẫu thuật nếu chưa truyền bù yếu tố đông máu đặc hiệu.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **APTT kéo dài (Nguy cơ chảy máu):**\n  🔴 **Sử dụng thuốc:** Đang điều trị bằng Heparin không phân đoạn (UFH).\n  🔴 **Thiếu hụt bẩm sinh:** Bệnh Hemophilia A (thiếu yếu tố VIII), Hemophilia B (thiếu yếu tố IX).\n  🔴 **Kháng thể ức chế lưu hành:** \n    ▫️ Có sự hiện diện của kháng thể kháng Phospholipid (Hội chứng Antiphospholipid - nghịch lý là trên xét nghiệm APTT dài ra, nhưng bệnh nhân lại bị huyết khối tắc mạch).\n    ▫️ Sinh kháng thể tự miễn ức chế yếu tố VIII.\n  🔴 **Tiêu thụ ồ ạt:** Hội chứng DIC.",
+      "decrease": "🔹 **APTT rút ngắn:**\n  🔴 Tình trạng tăng đông máu (Huyết khối tĩnh mạch sâu, ung thư di căn). Ít có giá trị ứng dụng đơn độc trên lâm sàng."
+    },
+    "interferingFactors": "❌ Lấy máu sai tỷ lệ chống đông, vỡ hồng cầu, hoặc lipid máu tăng cao cản trở đầu dò quang học của máy. Nếu bệnh phẩm để ở nhiệt độ phòng quá lâu, yếu tố VIII bị phân hủy tự nhiên làm APTT kéo dài giả tạo.",
+    "clinicalNote": "Bài toán biện luận đông máu kinh điển trước mổ: \n- **PT dài, APTT bình thường:** Bệnh gan, uống kháng Vitamin K.\n- **PT bình thường, APTT dài:** Hemophilia, truyền Heparin, Hội chứng kháng Phospholipid.\n- **Cả PT và APTT cùng dài:** Suy gan giai đoạn cuối, DIC, hoặc do lấy mẫu sai (thừa chất chống đông)."
+  },
+  {
+    "name": "Định lượng Fibrinogen (Yếu tố I) [máu]",
+    "group": "Đông máu",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Fibrinogen là yếu tố số I, yếu tố cuối cùng và quan trọng nhất của toàn bộ \"thác đông máu\". Dưới tác động của Thrombin, Fibrinogen dạng hòa tan trong máu sẽ biến thành các sợi lưới Fibrin vững chắc quấn chặt lấy tiểu cầu để tạo thành cục máu đông vĩnh viễn.",
+    "physiology": "📌 **Đặc tính kép:** Fibrinogen được tổng hợp tại gan. Ngoài vai trò đông máu, Fibrinogen còn là một **Protein phản ứng pha cấp (Acute-phase reactant)**. Nghĩa là nồng độ của nó sẽ tự động tăng vọt khi cơ thể bị viêm nhiễm, chấn thương, hệt như CRP hay Máu lắng (ESR).",
+    "indication": "🎯 **Đông máu:** Khảo sát sự thiếu hụt Fibrinogen trong các trường hợp băng huyết sau sinh, hoặc Hội chứng DIC.\n🎯 **Viêm & Tim mạch:** Cùng với CRP, đánh giá mức độ hội chứng viêm và tiên lượng nguy cơ hình thành huyết khối mạch vành.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết tương (Ống Citrate 3.2%). Lắc kỹ nhẹ nhàng 5-6 lần ngay sau khi lấy.",
+    "testingMethods": "Máy đông máu tự động (Phương pháp Clauss).",
+    "ref": "📊 **Bình thường:** 2.0 - 4.0 g/L (hoặc 200 - 400 mg/dL).\n*(Lưu ý: Nồng độ tự nhiên tăng dần theo tuổi thọ và ở người hút thuốc lá).*.",
+    "alert": "⚠️ Trong các ca sản khoa (nhau bong non, thai lưu, băng huyết), nếu xét nghiệm Fibrinogen **< 1.0 g/L**, bệnh nhân đang rơi vào tình trạng chảy máu tiêu thụ kiệt quệ (DIC). Bác sĩ phải chỉ định truyền Tủa lạnh (Cryoprecipitate) hoặc Fibrinogen cô đặc ngay lập tức để cứu sống người mẹ.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Fibrinogen (Hội chứng Viêm / Nguy cơ Huyết khối):**\n  🔴 **Viêm nhiễm & Tổn thương:**\n    ▫️ Viêm phổi, nhiễm trùng huyết cấp tính, viêm khớp dạng thấp.\n    ▫️ Sau phẫu thuật lớn, chấn thương, bỏng.\n  🔴 **Sinh lý & Yếu tố nguy cơ:**\n    ▫️ Phụ nữ có thai (Tăng sinh lý để dự phòng chảy máu khi sinh).\n    ▫️ Béo phì, đái tháo đường, hút thuốc lá kéo dài đe dọa tắc mạch máu.",
+      "decrease": "🔹 **Giảm Fibrinogen (Nguy cơ Chảy máu không đông):**\n  🔴 **Suy giảm sản xuất:** Suy gan cấp/mạn tính nặng.\n  🔴 **Tiêu thụ ồ ạt:** \n    ▫️ Hội chứng đông máu nội mạch rải rác (DIC) (Fibrinogen bị xài hết để tạo cục máu đông rải rác khắp cơ thể, khiến máu ngoại vi loãng ra như nước).\n    ▫️ Đang điều trị bằng thuốc tiêu sợi huyết (Streptokinase, tPA) trong nhồi máu não."
+    },
+    "interferingFactors": "❌ Lấy máu dính Heparin từ ống truyền dịch sẽ ức chế tác dụng của thuốc thử Thrombin, khiến máy báo Fibrinogen bị giảm thấp giả tạo hoàn toàn.",
+    "clinicalNote": "Theo các hướng dẫn quản lý Bệnh gan, ở bệnh nhân Xơ gan mất bù, việc giảm Fibrinogen dưới 1.5 g/L là một dấu hiệu tiên lượng sinh tồn rất xấu. Trước khi tiến hành các thủ thuật như chọc hút dịch ổ bụng hay nhổ răng trên nhóm bệnh nhân này, nếu APTT/PT kéo dài do thiếu Fibrinogen, bắt buộc phải truyền dự phòng Huyết tương tươi đông lạnh."
+  },
+  {
+    "name": "Định lượng D-Dimer [máu]",
+    "group": "Đông máu",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "D-dimer là sản phẩm thoái giáng đặc hiệu của mạng lưới Fibrin. Trong cơ thể, quá trình tạo cục máu đông luôn đi kèm với quá trình tiêu sợi huyết (tan cục máu). Sự xuất hiện của D-dimer trong máu chứng tỏ đã có sự hình thành và ly giải cục máu đông trong lòng mạch.",
+    "physiology": "📌 **Động học:** Xét nghiệm D-dimer thế hệ mới (siêu nhạy) có khả năng phát hiện những lượng rất nhỏ fibrin bị phân hủy. Nồng độ D-dimer tăng tỷ lệ thuận với cường độ kích hoạt quá mức của hệ thống đông máu và tiêu sợi huyết.",
+    "indication": "🎯 **Hồi sức / Cấp cứu:** Chẩn đoán loại trừ Huyết khối tĩnh mạch sâu chi dưới (DVT) và Thuyên tắc động mạch phổi (PE).\n🎯 **Huyết học:** Tiêu chuẩn quan trọng để chẩn đoán Hội chứng đông máu nội mạch rải rác (DIC).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết tương (ống chống đông Citrate 3.2%).\n⏳ **Lưu ý:** Lấy đúng tỷ lệ 1 thể tích chống đông / 9 thể tích máu.",
+    "testingMethods": "Đo độ đục miễn dịch siêu nhạy (Ultrasensitive immunoturbidimetric test) hoặc ELISA.",
+    "ref": "📊 **Bình thường:** < 500 ng/mL FEU (hay < 0,5 mg/L).",
+    "alert": "⚠️ D-dimer là xét nghiệm có **giá trị dự đoán âm tính cực cao (Negative Predictive Value)**. Nghĩa là nếu bệnh nhân có nguy cơ thấp trên lâm sàng (theo thang điểm Wells) mà D-dimer Âm tính, bác sĩ có thể tự tin loại trừ hoàn toàn Thuyên tắc phổi hoặc Huyết khối tĩnh mạch sâu mà không cần chụp CT cản quang.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng D-Dimer (Dương tính):**\n  🔴 **Bệnh lý Huyết khối:**\n    ▫️ Thuyên tắc động mạch phổi (PE), Huyết khối tĩnh mạch sâu chi dưới (DVT).\n    ▫️ Hội chứng DIC (Tăng rất cao, tiêu thụ kiệt quệ cục máu đông).\n  🔴 **Tăng không do huyết khối bệnh lý (Giảm độ đặc hiệu):**\n    ▫️ Giai đoạn sau phẫu thuật lớn, chấn thương, bỏng nặng.\n    ▫️ Bệnh lý ác tính (Ung thư), nhiễm trùng huyết cấp, xơ gan.\n    ▫️ Sinh lý: Phụ nữ mang thai những tháng cuối.",
+      "decrease": "Không mang ý nghĩa bệnh lý (Kết quả bình thường là âm tính hoặc rất thấp)."
+    },
+    "interferingFactors": "❌ **Dương tính giả:** Nồng độ yếu tố dạng thấp (RF) tăng cao trong máu có thể làm nhiễu phản ứng kết tập latex.\n💊 **Giảm nồng độ:** Bệnh nhân đang dùng thuốc tiêu sợi huyết (Streptokinase, Urokinase) hoặc thuốc chống đông.",
+    "clinicalNote": "Không nên dùng xét nghiệm D-dimer để \"khẳng định\" huyết khối ở người già, người nằm viện ICU lâu ngày hoặc ngay sau mổ, vì D-dimer của nhóm này vốn dĩ đã tăng cao do stress. Ở những đối tượng này, D-dimer chỉ có ý nghĩa khi kết quả là **âm tính** để loại trừ bệnh."
+  },
+  {
+    "name": "Xét nghiệm Anti-Xa [máu]",
+    "group": "Đông máu",
+    "time": "120 phút",
+    "isFeatured": true,
+    "concept": "Xét nghiệm Anti-Xa đo lường hoạt tính ức chế yếu tố đông máu Xa. Đây là \"thước đo\" chuẩn xác và đặc hiệu nhất để giám sát nồng độ của thuốc chống đông **Heparin trọng lượng phân tử thấp (LMWH - Enoxaparin/Lovenox)** trong cơ thể.",
+    "physiology": "📌 **Đặc tính:** Khác với Heparin tiêu chuẩn (UFH) được theo dõi dễ dàng bằng xét nghiệm APTT, các loại LMWH tác động chủ yếu bằng cách ức chế Yếu tố Xa và hầu như không làm kéo dài APTT. Do đó, bắt buộc phải đo Anti-Xa để theo dõi nồng độ thuốc.",
+    "indication": "🎯 **Tim mạch / Sản khoa:** Theo dõi tối ưu hóa liều lượng LMWH ở các đối tượng đặc biệt (nơi dược động học của thuốc thay đổi khó lường): Bệnh nhân suy thận, béo phì phì đại, trẻ em, và phụ nữ mang thai có van tim cơ học.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết tương (ống Citrate 3.2%).\n⏳ **Thời điểm vàng:** Bắt buộc lấy máu đo nồng độ \"Đỉnh\" vào **chính xác 3 đến 4 giờ** SAU KHI tiêm LMWH dưới da.",
+    "testingMethods": "Xét nghiệm so màu động học enzym (Chromogenic assay).",
+    "ref": "📊 **Liều dự phòng huyết khối:** 0.2 - 0.5 IU/mL.\n📊 **Liều điều trị huyết khối:** 0.5 - 1.2 IU/mL (Tùy phác đồ tiêm 1 lần hay 2 lần/ngày).",
+    "alert": "⚠️ Sai lệch thời điểm lấy mẫu (lấy máu quá sớm hoặc quá muộn so với đỉnh 4 giờ) là nguyên nhân phổ biến nhất gây sai kết quả, khiến bác sĩ điều chỉnh liều sai lầm gây nguy hiểm cho bệnh nhân.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Nồng độ Anti-Xa quá cao (Quá liều):**\n  🔴 Bệnh nhân đối mặt với nguy cơ xuất huyết ồ ạt do thuốc tích lũy (thường gặp ở người suy giảm chức năng thận nặng).",
+      "decrease": "🔹 **Nồng độ Anti-Xa quá thấp (Không đủ liều):**\n  🔴 Nguy cơ thất bại điều trị, hình thành cục máu đông gây tắc mạch, huyết khối kẹt van tim dù đang tiêm thuốc (thường gặp ở phụ nữ có thai do tăng thanh thải, hoặc người béo phì do liều tính theo cân nặng chưa đủ)."
+    },
+    "interferingFactors": "❌ Việc lấy máu từ đường truyền tĩnh mạch đang cắm dây có dính Heparin sẽ làm kết quả Anti-Xa tăng vọt giả tạo.",
+    "clinicalNote": "Theo các Hướng dẫn Tim mạch (AHA/ACC 2024), việc giám sát Anti-Xa không yêu cầu làm thường quy ở người bình thường dùng LMWH. Nhưng với thai phụ mang van tim cơ học đang tiêm Enoxaparin, đo Anti-Xa định kỳ là vũ khí sống còn để điều chỉnh liều, bảo vệ cả mẹ và thai nhi khỏi thảm họa tắc van tim."
+  },
+  {
+    "name": "Định nhóm máu tại giường bệnh trước truyền máu",
+    "group": "Truyền máu",
+    "time": "Làm ngay (Tại giường)",
+    "isFeatured": false,
+    "concept": "Đây là bước kiểm tra an toàn cuối cùng và tối quan trọng do chính bác sĩ lâm sàng hoặc điều dưỡng thực hiện ngay tại giường bệnh nhân trước khi cắm dây truyền máu. Nhằm xác định lại một lần nữa sự tương hợp nhóm máu hệ ABO giữa túi máu chuẩn bị truyền và máu của người bệnh.",
+    "physiology": "📌 **Nguyên tắc:** Dựa trên phản ứng ngưng kết kháng nguyên - kháng thể kinh điển. Phản ứng xảy ra rất nhanh ở nhiệt độ phòng.",
+    "indication": "🎯 **An toàn truyền máu:** Bắt buộc thực hiện 100% trước bất kỳ ca truyền khối hồng cầu hay máu toàn phần nào, bất kể tính cấp cứu.",
+    "specimenCollection": "💧 **Loại mẫu:** 1 giọt máu trích từ đầu ngón tay bệnh nhân và 1 giọt máu nhỏ từ đoạn dây (tube) của túi máu.",
+    "testingMethods": "Ngưng kết hồng cầu trên thẻ huyết thanh mẫu (Card) bằng mắt thường tại giường.",
+    "ref": "📊 Giọt máu của túi truyền và giọt máu của bệnh nhân phải cho kết quả ngưng kết tương hợp tuyệt đối theo sơ đồ truyền máu ABO.",
+    "alert": "⚠️ Nếu kết quả ngưng kết trên thẻ của bệnh nhân và túi máu không giống nhau hoặc không tuân theo quy tắc truyền máu nguyên tắc, tuyệt đối **KHÔNG ĐƯỢC TRUYỀN** và phải trả ngay túi máu về Ngân hàng máu.",
+    "pathologicalMeaning": {
+      "increase": "Không áp dụng thuật ngữ Tăng/Giảm.",
+      "decrease": "Không áp dụng thuật ngữ Tăng/Giảm."
+    },
+    "interferingFactors": "❌ Lỗi do con người: Đọc sai kết quả ở điều kiện ánh sáng kém bệnh phòng, hoặc dùng nhầm que khuấy chéo giữa các giọt máu gây ngưng kết giả.",
+    "clinicalNote": "Sự nhầm lẫn nhóm máu hệ ABO là tai biến y khoa thảm khốc nhất (gây tán huyết cấp, sốc, suy thận và tử vong lập tức). Định nhóm máu tại giường là chốt chặn phòng thủ cuối cùng để bảo vệ mạng sống bệnh nhân nếu có bất kỳ sai sót nhầm lẫn nhãn mác nào ở khâu phát máu."
+  },
+  {
+    "name": "Định nhóm máu hệ ABO, Rh(D) bằng máy tự động",
+    "group": "Truyền máu",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Là xét nghiệm tiêu chuẩn tại khoa Huyết học - Truyền máu để xác định chính xác nhóm máu hệ ABO và hệ Rhesus (RhD) của bệnh nhân bằng cả 2 phương pháp đối chiếu: Phương pháp huyết thanh mẫu (tìm kháng nguyên trên hồng cầu) và Phương pháp hồng cầu mẫu (tìm kháng thể trong huyết tương).",
+    "physiology": "📌 **Đặc tính:** Kháng nguyên nhóm máu là đặc điểm di truyền không đổi. Bất kỳ sự không tương hợp nào giữa hai phương pháp thử nghiệm (phương pháp xuôi và phương pháp ngược) đều báo hiệu sự tồn tại của các dưới nhóm máu phụ (như A2) hoặc các kháng thể tự miễn làm nhiễu.",
+    "indication": "🎯 **Truyền máu:** Sàng lọc và định nhóm máu gốc cho người hiến máu, người nhận máu, hoặc bệnh nhân chuẩn bị phẫu thuật.\n🎯 **Sản khoa:** Sàng lọc phụ nữ mang thai để dự phòng bất đồng nhóm máu Rh giữa mẹ và thai nhi.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (Ống EDTA) không chống đông và Huyết thanh.\n⚠️ **An toàn:** Ống máu phải được dán mã vạch định danh cực kỳ chính xác tại thời điểm lấy máu.",
+    "testingMethods": "Kỹ thuật Gel Card (Cột gel vi lượng) hoặc tự động hoàn toàn bằng máy ly tâm quang học.",
+    "ref": "📊 **Hệ ABO:** Phân loại thành nhóm máu O, A, B, AB.\n📊 **Hệ Rh:** Rh(D) Dương tính (+) hoặc Âm tính (-).",
+    "alert": "⚠️ Ở người Việt Nam, tỷ lệ người mang nhóm máu Rh(D) âm tính rất hiếm (khoảng 0.1%). Bệnh nhân mang nhóm máu Rh(-) bắt buộc chỉ được truyền máu Rh(-) để tránh cơ thể sinh kháng thể anti-D miễn dịch gây phản ứng chết người ở những lần truyền sau.",
+    "pathologicalMeaning": {
+      "increase": "Không áp dụng thuật ngữ Tăng/Giảm.",
+      "decrease": "Không áp dụng thuật ngữ Tăng/Giảm."
+    },
+    "interferingFactors": "❌ **Âm tính giả:** Ở trẻ sơ sinh hoặc người già, người suy giảm miễn dịch nghiêm trọng, nồng độ kháng thể tự nhiên (Anti-A, Anti-B) rất thấp, làm phản ứng hồng cầu mẫu khó đọc.\n❌ **Dương tính giả:** Bệnh Đa u tủy xương (Myeloma) làm tăng protein máu, gây hiện tượng chuỗi tiền xu (Rouleaux) khiến máy đọc nhầm thành ngưng kết.",
+    "clinicalNote": "Trong Sản khoa, nếu thai phụ có nhóm máu Rh(-), bác sĩ phải theo dõi đặc biệt và có chỉ định tiêm dự phòng Anti-D (IgG) vào tuần 28 của thai kỳ và ngay sau khi sinh nếu em bé sinh ra là Rh(+), nhằm xóa trí nhớ miễn dịch của mẹ."
+  },
+  {
+    "name": "Định nhóm máu hệ ABO bằng giấy định nhóm máu",
+    "group": "Truyền máu",
+    "time": "Làm ngay / 15 phút",
+    "isFeatured": false,
+    "concept": "Là phương pháp thủ công định nhóm máu hệ ABO dựa trên nguyên lý ngưng kết hồng cầu, được thực hiện trên giấy định nhóm máu hoặc phiến kính.",
+    "physiology": "📌 **Cơ chế:** Kháng nguyên trên bề mặt hồng cầu (A, B) sẽ phản ứng với kháng thể tương ứng (Anti-A, Anti-B) có sẵn trên giấy thử/huyết thanh mẫu, tạo ra hiện tượng ngưng kết có thể nhìn thấy bằng mắt thường.",
+    "indication": "🎯 **Sàng lọc & Cấp cứu:** Xác định nhanh nhóm máu hệ ABO cho bệnh nhân cấp cứu, phụ nữ có thai, người hiến máu hoặc trước khi truyền máu tại các cơ sở y tế chưa có hệ thống máy tự động.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (lấy từ tĩnh mạch hoặc trích mao mạch đầu ngón tay).",
+    "testingMethods": "Ngưng kết hồng cầu thủ công (Phương pháp huyết thanh mẫu trên phiến kính/giấy).",
+    "ref": "📊 **Bình thường:** Xác định thuộc một trong 4 nhóm máu: A, B, AB, hoặc O.",
+    "alert": "⚠️ Đây chỉ là phương pháp định nhóm máu hệ ABO cơ bản (phương pháp xuôi). Để truyền máu an toàn tuyệt đối, bắt buộc phòng xét nghiệm phải tiến hành định nhóm máu bằng cả 2 phương pháp (xuôi và ngược) trên máy tự động hoặc ống nghiệm.",
+    "pathologicalMeaning": {
+      "increase": "Không áp dụng thuật ngữ Tăng/Giảm.",
+      "decrease": "Không áp dụng thuật ngữ Tăng/Giảm."
+    },
+    "interferingFactors": "❌ **Lỗi kỹ thuật:** Đọc kết quả quá muộn khi máu đã khô, hoặc lượng kháng thể trên giấy bị hỏng do bảo quản kém gây kết quả âm tính giả / dương tính giả.",
+    "clinicalNote": "Trong truyền máu cấp cứu, dù đã có kết quả định nhóm máu trên giấy, điều dưỡng vẫn bắt buộc phải làm lại test định nhóm máu tại giường một lần nữa trước khi cắm kim truyền túi máu để tránh nhầm lẫn bệnh nhân."
+  },
+  {
+    "name": "Phản ứng hòa hợp trong môi trường nước muối",
+    "group": "Truyền máu",
+    "time": "30 phút",
+    "isFeatured": true,
+    "concept": "Thử nghiệm trộn huyết thanh của người nhận với hồng cầu của túi máu hiến trong môi trường nước muối sinh lý ở nhiệt độ phòng (khoảng $22^0C$).",
+    "physiology": "📌 **Đặc tính:** Môi trường nước muối sinh lý là môi trường tối ưu để phát hiện các kháng thể tự nhiên (chủ yếu là IgM có kích thước lớn) thuộc hệ ABO, có khả năng gây ngưng kết ngay ở nhiệt độ phòng mà không cần chất xúc tác.",
+    "indication": "🎯 **An toàn truyền máu:** Bước đầu tiên trong quy trình phản ứng chéo (Cross-matching) bắt buộc trước khi phát máu, nhằm phát hiện sự bất tương hợp nhóm máu hệ ABO (hoặc các kháng thể tự nhiên khác) giữa người cho và người nhận.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh bệnh nhân (nhận) và hồng cầu (từ đoạn dây của túi máu hiến).",
+    "testingMethods": "Ngưng kết hồng cầu trong ống nghiệm (hoặc Gel card) ở môi trường nước muối nhiệt độ phòng.",
+    "ref": "📊 **Bình thường:** Âm tính (-) (Hoàn toàn hòa hợp, không có ngưng kết).",
+    "alert": "⚠️ Môi trường nước muối CHỈ phát hiện được các kháng thể IgM. Nó sẽ bỏ sót hoàn toàn các kháng thể miễn dịch (IgG) kích thước rất nhỏ. Do đó túi máu hòa hợp ở bước này vẫn chưa được truyền mà phải làm tiếp phản ứng trong môi trường kháng Globulin người.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Phản ứng Dương tính (+):** Bất tương hợp hệ ABO (do chọn nhầm túi máu) hoặc do tồn tại các tự kháng thể / dị kháng thể tự nhiên hệ Lewis, M, N, P1.",
+      "decrease": "Âm tính là hòa hợp."
+    },
+    "interferingFactors": "❌ Tình trạng tăng protein máu nặng (như Đa u tủy xương) có thể gây hiện tượng hồng cầu chuỗi tiền xu (Rouleaux) làm người đọc nhầm là ngưng kết dương tính.",
+    "clinicalNote": "Một khi phản ứng hòa hợp trong nước muối Dương tính (+), túi máu này bị loại bỏ ngay lập tức và tuyệt đối không được truyền."
+  },
+  {
+    "name": "Phản ứng hòa hợp có sử dụng kháng Globulin người",
+    "group": "Truyền máu",
+    "time": "45 - 60 phút",
+    "isFeatured": true,
+    "concept": "Là bước 2 của quy trình phản ứng chéo (sau khi ủ nước muối), thực hiện ở $37^0C$ và thêm thuốc thử kháng Globulin người (thuốc thử Coombs) để phát hiện các kháng thể miễn dịch IgG.",
+    "physiology": "📌 **Đặc tính:** Các kháng thể miễn dịch (IgG) như hệ Rh, Kell, Kidd có kích thước rất nhỏ, chúng có thể gắn lên hồng cầu người hiến ở $37^0C$ nhưng không đủ khoảng cách để kéo các hồng cầu lại với nhau tạo thành cục ngưng kết. Thuốc thử Coombs (chứa kháng kháng thể) đóng vai trò như chiếc cầu nối kết dính các IgG này lại, làm xuất hiện ngưng kết rõ ràng.",
+    "indication": "🎯 **An toàn truyền máu:** Bước thử nghiệm bắt buộc để phát hiện các kháng thể bất thường sinh ra do bệnh nhân đã bị mẫn cảm từ tiền sử truyền máu nhiều lần hoặc phụ nữ mang thai nhiều lần.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh bệnh nhân, hồng cầu từ túi máu, và thuốc thử Anti-Human Globulin (AHG).",
+    "testingMethods": "Ngưng kết ống nghiệm sau ủ $37^0C$ và nhỏ thuốc thử Coombs.",
+    "ref": "📊 **Bình thường:** Âm tính (-) (Hoàn toàn hòa hợp an toàn).",
+    "alert": "⚠️ Một túi máu có thể vượt qua an toàn phản ứng nước muối nhưng lại sinh ngưng kết dương tính ở phản ứng kháng Globulin. Bắt buộc phải thực hiện đủ cả hai môi trường mới được phép kết luận túi máu an toàn.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Phản ứng Dương tính (+):** Bệnh nhân đã bị mẫn cảm và sinh kháng thể miễn dịch chống lại các kháng nguyên phụ có trên hồng cầu của túi máu (bất tương hợp hệ Rh, Kell, Kidd...).",
+      "decrease": "Âm tính là hòa hợp."
+    },
+    "interferingFactors": "❌ Rửa hồng cầu trong ống nghiệm không đủ sạch (còn sót protein tự do trong huyết thanh) sẽ làm trung hòa mất thuốc thử Coombs, gây kết quả Âm tính giả cực kỳ nguy hiểm.",
+    "clinicalNote": "Ở những bệnh nhân Thalassemia phải truyền máu định kỳ, phản ứng này rất hay dương tính do cơ thể họ đã sinh ra một 'rừng' kháng thể miễn dịch. Bác sĩ huyết học phải vất vả sàng lọc qua Panel hồng cầu để chọn ra được túi máu dung nạp tốt nhất."
+  },
+  {
+    "name": "Nghiệm pháp Coombs trực tiếp (Direct Antiglobulin Test - DAT)",
+    "group": "Truyền máu",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Test Coombs trực tiếp được sử dụng để phát hiện các kháng thể miễn dịch (chủ yếu là IgG) hoặc thành phần bổ thể (C3d) đã **gắn sẵn trên bề mặt hồng cầu** của bệnh nhân ngay trong cơ thể sống (in vivo). Các kháng thể này như một \"bản án\" đánh dấu hồng cầu để đại thực bào tại lách tiêu diệt.",
+    "physiology": "📌 **Cơ chế:** Bình thường hồng cầu không bị gắn kháng thể. Trong các bệnh lý tự miễn hoặc bị mẫn cảm, hệ thống miễn dịch nhầm lẫn sinh ra tự kháng thể bám chặt vào màng hồng cầu, gây ra hiện tượng vỡ hồng cầu (tán huyết) hàng loạt.",
+    "indication": "🎯 **Huyết học:** Chẩn đoán Thiếu máu tan máu tự miễn (AIHA), tan máu do thuốc.\n🎯 **Sản khoa / Nhi khoa:** Chẩn đoán tình trạng tan máu ở trẻ sơ sinh do bất đồng nhóm máu mẹ - con (Erythroblastosis fetalis).\n🎯 **Cấp cứu truyền máu:** Đánh giá tai biến tán huyết cấp xảy ra ngay sau khi truyền máu.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (Ống EDTA).\n⚠️ **Lưu ý:** Lấy máu ở ven không truyền dịch để tránh hồng cầu bị gắn các protein không đặc hiệu.",
+    "testingMethods": "Rửa sạch hồng cầu bệnh nhân, sau đó nhỏ Huyết thanh kháng Globulin người (Coombs reagent) để tạo ngưng kết.",
+    "ref": "📊 **Bình thường:** Âm tính (-).",
+    "alert": "⚠️ Ở một trẻ sơ sinh có biểu hiện vàng da sậm rất nhanh, nếu test Coombs trực tiếp Dương tính, đây là tình trạng cấp cứu cảnh báo nguy cơ vàng da nhân não gan do tan máu ồ ạt, bác sĩ cần cân nhắc chỉ định thay máu sớm.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Test Coombs Trực tiếp (+) (Đang có tán huyết):**\n  🔴 **Tự miễn:** Thiếu máu tan máu tự miễn (AIHA), Bệnh Lupus ban đỏ hệ thống (SLE), U lympho Hodgkin, Hội chứng Evans.\n  🔴 **Đồng miễn dịch:** Bất đồng nhóm máu mẹ - con (Rh hoặc ABO).\n  🔴 **Tan máu do thuốc:** Dị ứng thuốc sinh kháng thể (Penicillin, Cephalosporin liều cao, Methyldopa).",
+      "decrease": "Âm tính (-)."
+    },
+    "interferingFactors": "❌ Lấy máu từ đường truyền tĩnh mạch đang truyền Dextran hoặc thuốc cản quang có thể gây hiện tượng ngưng kết giả.",
+    "clinicalNote": "Ở một bệnh nhân sau khi được truyền khối hồng cầu xuất hiện sốt, rét run và nước tiểu chuyển màu đỏ sẫm (đái huyết sắc tố), xét nghiệm Coombs trực tiếp chuyển từ Âm tính sang Dương tính là bằng chứng pháp lý và y khoa khẳng định bệnh nhân đang bị tán huyết do tai biến truyền máu."
+  },
+  {
+    "name": "Nghiệm pháp Coombs gián tiếp (Indirect Antiglobulin Test - IAT)",
+    "group": "Truyền máu",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Test Coombs gián tiếp nhằm phát hiện các kháng thể miễn dịch bất thường đang **lưu hành tự do trong huyết thanh** của bệnh nhân. Các kháng thể này như \"quân mai phục\" sẵn sàng tấn công phá hủy bất kỳ tế bào hồng cầu lạ nào mang kháng nguyên tương ứng được truyền vào.",
+    "physiology": "📌 **Động học:** Người khỏe mạnh bình thường không có kháng thể miễn dịch bất thường. Chúng chỉ xuất hiện khi cơ thể từng tiếp xúc với máu ngoại lai (qua việc được truyền máu nhiều lần hoặc phụ nữ mang thai nhiều lần) khiến hệ miễn dịch ghi nhớ và sản sinh (Alloimmunization).",
+    "indication": "🎯 **Sàng lọc an toàn trước truyền máu:** Chỉ định bắt buộc ở bệnh nhân có tiền sử truyền máu nhiều lần (Thalassemia, suy tủy).\n🎯 **Sản khoa:** Sàng lọc và theo dõi hiệu giá kháng thể anti-D ở phụ nữ mang thai có nhóm máu Rh(D) âm tính để dự phòng bệnh lý tán huyết cho thai nhi.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh của bệnh nhân.",
+    "testingMethods": "Ủ huyết thanh bệnh nhân với Panel hồng cầu mẫu (đã biết trước các bộ kháng nguyên) ở $37^0C$, sau đó dùng thuốc thử Coombs để phát hiện ngưng kết in vitro.",
+    "ref": "📊 **Bình thường:** Âm tính (-) (Không tồn tại kháng thể bất thường).",
+    "alert": "⚠️ Nếu một phụ nữ mang nhóm máu Rh(-) đang mang thai lần thứ hai có Test Coombs gián tiếp chuyển sang Dương tính mạnh, đây là hồi chuông báo động đỏ. Báo hiệu cơ thể mẹ đã sản sinh lượng lớn kháng thể anti-D, thai nhi (nếu là Rh+) đang đối mặt với nguy cơ suy tim, phù thai và tử vong trong tử cung.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Test Coombs Gián tiếp (+) (Tồn tại kháng thể miễn dịch):**\n  🔴 Bệnh nhân đã bị mẫn cảm, sinh kháng thể bất thường do tiền sử truyền máu lặp lại (hình thành kháng thể kháng các hệ nhóm máu phụ như Rh, Kell, Duffy, Kidd...).\n  🔴 Phụ nữ mang thai Rh(-) đã mẫn cảm và sinh kháng thể chống lại máu con Rh(+).",
+      "decrease": "Âm tính (-)."
+    },
+    "interferingFactors": "❌ Thuốc thử Coombs hết hạn, hoặc kỹ thuật rửa Panel hồng cầu mẫu không sạch hoàn toàn sẽ làm trung hòa thuốc thử Coombs, gây kết quả âm tính giả cực kỳ nguy hiểm.",
+    "clinicalNote": "Khi test Coombs gián tiếp (+) ở một bệnh nhân đang cần mổ cấp cứu, việc tìm ra một túi máu hòa hợp sẽ cực kỳ khó khăn, tốn kém và mất nhiều thời gian. Bác sĩ lâm sàng bắt buộc phải dự trù máu từ rất sớm và yêu cầu Ngân hàng máu tiến hành định danh kháng thể để chọn túi máu đặc chế cho bệnh nhân."
+  },
+  {
+    "name": "Đơn bào đường ruột soi tươi (Amip / Giardia lamblia)",
+    "group": "Ký sinh trùng",
+    "time": "Làm ngay (Soi ấm)",
+    "isFeatured": true,
+    "concept": "Xét nghiệm cặn phân trực tiếp dưới kính hiển vi quang học để tìm các hình thái sinh học (thể hoạt động - trophozoite hoặc thể bào nang - cyst) của các loại ký sinh trùng đơn bào chuyên gây bệnh tại niêm mạc ruột non và đại tràng.",
+    "physiology": "📌 **Đặc tính bệnh sinh:** *Entamoeba histolytica* (Amip lỵ) phá hủy niêm mạc đại tràng bằng men tiêu protid, gây ra các ổ loét hình tháp, dẫn đến tiêu chảy nhầy máu. *Giardia lamblia* bám sát trên bề mặt niêm mạc ruột non, cản trở cơ học gây hội chứng kém hấp thu và tiêu chảy phân mỡ.",
+    "indication": "🎯 **Tiêu hóa / Truyền nhiễm:** Chẩn đoán bệnh nhân nhập viện với hội chứng lỵ (đau quặn bụng dọc khung đại tràng, mót rặn, đi ngoài phân nhầy máu nhiều lần) hoặc tiêu chảy kéo dài phân sủi bọt, hôi khắm.",
+    "specimenCollection": "💩 **Loại mẫu:** Phân tươi, đặc biệt dùng que cấy lấy chỗ phân có chứa nhầy và máu.\n⏳ **Thời gian vàng:** Mẫu phân nghi ngờ Amip **bắt buộc phải được gửi tới Labo và soi ngay trong vòng 30 phút** khi phân còn ấm. Để nguội đơn bào sẽ chết, vo tròn lại, không di động và không thể nhận diện được thể hoạt động.",
+    "testingMethods": "Soi tươi bằng giọt nước muối sinh lý (tìm thể di động) và nhuộm Lugol (nhuộm màu để quan sát rõ nhân của thể bào nang).",
+    "ref": "📊 **Bình thường:** Âm tính (Không tìm thấy đơn bào).",
+    "alert": "⚠️ Sự hiện diện của hình ảnh **\"Thể hoạt động Amip đang ăn hồng cầu\"** (E. histolytica trophozoite) dưới kính hiển vi là tiêu chuẩn vàng và duy nhất để khẳng định chắc chắn 100% bệnh nhân đang bị Lỵ Amip cấp tính.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tìm thấy Đơn bào (Dương tính):**\n  🔴 **Lỵ Amip (Entamoeba histolytica):** Viêm loét đại tràng do amip (Trên tiêu bản phân thường đi kèm rất nhiều hồng cầu bị phá hủy và đại thực bào).\n  🔴 **Bệnh Giardiasis (Giardia lamblia):** Viêm ruột non, tiêu chảy kéo dài ở trẻ em tập thể hoặc người lớn suy giảm miễn dịch.\n  🔴 **Các đơn bào cơ hội:** Cryptosporidium (thường gây tiêu chảy dữ dội không cầm được ở bệnh nhân nhiễm HIV/AIDS).",
+      "decrease": "Âm tính (-)."
+    },
+    "interferingFactors": "❌ **Âm tính giả:** Bệnh nhân đã tự uống thuốc điều trị tiêu chảy nhóm Bismuth, Kaolin hoặc thụt tháo bằng Barium trước đó sẽ tạo các tinh thể che lấp, hoặc thuốc kháng sinh vô tình tiêu diệt đơn bào trong phân trước khi lấy mẫu.",
+    "clinicalNote": "Việc cấy phân tìm vi khuẩn (như Shigella, Salmonella) thường phải đợi từ 2-3 ngày mới có kết quả, nhưng soi phân tươi tìm Amip chỉ mất 15 phút. Nếu soi thấy Amip ăn hồng cầu, bác sĩ lâm sàng có thể kê ngay đơn thuốc đặc trị (như Metronidazol) để cắt đứt hội chứng lỵ cho bệnh nhân ngay lập tức, tránh nhầm lẫn sang lỵ trực khuẩn."
+  },
+  {
+    "name": "Trứng giun, sán soi tươi [phân]",
+    "group": "Ký sinh trùng",
+    "time": "45 phút",
+    "isFeatured": true,
+    "concept": "Xét nghiệm quan sát cặn phân qua kính hiển vi nhằm phát hiện và định danh hình thái cấu trúc vỏ của trứng các loại giun tròn (giun đũa, giun móc, giun tóc, giun kim) và sán (sán lá gan, sán dây) ký sinh trong đường tiêu hóa hay đường mật.",
+    "physiology": "📌 **Chu kỳ sinh học:** Các giun sán trưởng thành ký sinh trong cơ thể người sẽ đẻ trứng. Trứng đi theo nhu động ruột và được đào thải ra môi trường qua phân. Mỗi loại giun sán có cấu trúc vỏ, hình dáng (hình bầu dục, hình quả cau có nắp) và kích thước đặc trưng không thể nhầm lẫn.",
+    "indication": "🎯 **Khám sức khỏe / Truyền nhiễm:** Sàng lọc bệnh nhân có dấu hiệu suy dinh dưỡng chậm lớn, thiếu máu nhược sắc không rõ nguyên nhân (nghi nhiễm giun móc), đau bụng mạn tính, rối loạn tiêu hóa, hoặc xét nghiệm công thức máu tình cờ thấy tăng vọt Bạch cầu ái toan (Eosinophil).",
+    "specimenCollection": "💩 **Loại mẫu:** Phân thu thập ngẫu nhiên vào lọ sạch vô khuẩn.\n⚠️ **Lưu ý đặc biệt:** Đối với Giun kim (Enterobius vermicularis), không dùng mẫu phân. Bắt buộc phải lấy băng keo trong (Scotch tape) dán áp sát vùng nếp nhăn rìa hậu môn vào **sáng sớm lúc trẻ mới thức dậy chưa đi vệ sinh** để tìm trứng.",
+    "testingMethods": "Soi tươi cặn phân trực tiếp hoặc sử dụng các phương pháp phong phú hóa (Kato-Katz, tập trung nổi Willis) để tập trung trứng, giúp tăng độ nhạy.",
+    "ref": "📊 **Bình thường:** Âm tính (Không thấy trứng giun sán).",
+    "alert": "⚠️ Chỉ một xét nghiệm soi phân âm tính chưa đủ bằng chứng để loại trừ hoàn toàn việc nhiễm giun sán (do giun đực ký sinh, giun chưa đến kỳ đẻ trứng, hoặc giun lạc chỗ vào tạng). Nếu nghi ngờ cao lâm sàng, bác sĩ phải chuyển hướng sang xét nghiệm **Huyết thanh học (ELISA)** tìm kháng thể đặc hiệu trong máu.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tìm thấy Trứng (Đang nhiễm Ký sinh trùng):**\n  🔴 **Giun tròn:** Trứng Giun đũa (Ascaris lumbricoides), Giun tóc (Trichuris trichiura), Giun móc (Ancylostoma duodenale - thủ phạm hút máu gây thiếu máu rỉ rả), Giun kim.\n  🔴 **Sán:** Trứng Sán lá gan lớn/nhỏ (Fasciola/Clonorchis), Trứng Sán dây lợn/bò (Taenia solium/saginata).",
+      "decrease": "Âm tính (-)."
+    },
+    "interferingFactors": "❌ Bệnh nhân sử dụng thuốc cản quang Barium, dầu khoáng, hoặc các loại thuốc nhuận tràng vô cơ trong vòng 1 tuần trước khi lấy phân sẽ tạo thành các giọt mỡ hoặc tinh thể rác che lấp hoàn toàn trứng giun sán trên tiêu bản soi.",
+    "clinicalNote": "Trong các chiến dịch khám sức khỏe trường học hoặc cộng đồng, kỹ thuật viên soi phân bằng phương pháp Kato-Katz có thể đếm và ước tính được \"số lượng trứng trên một gam phân (EPG)\". Chỉ số EPG giúp bác sĩ phân loại mức độ nhiễm giun của cá thể (nhẹ, vừa, hay nặng) để thiết lập chiến lược tẩy giun diện rộng hợp lý."
+  },
+  {
+    "name": "Hồng cầu, Bạch cầu trong phân soi tươi",
+    "group": "Ký sinh trùng",
+    "time": "Làm ngay",
+    "isFeatured": true,
+    "concept": "Đây là một xét nghiệm vô cùng rẻ tiền nhưng lại là \"kim chỉ nam\" cực kỳ sắc bén trong thực hành hồi sức tiêu hóa, nhi khoa và truyền nhiễm. Thông qua việc quan sát cặn phân dưới kính hiển vi, việc đếm số lượng hồng cầu và bạch cầu đa nhân sẽ giúp định hướng bản chất của phản ứng viêm đang diễn ra tại niêm mạc ruột.",
+    "physiology": "📌 **Đặc tính viêm ruột:** Khi vi khuẩn có đặc tính xâm nhập sâu (như Shigella, Salmonella) phá hủy lớp niêm mạc ruột, cơ thể sẽ phản ứng bằng cách thu hút ồ ạt Bạch cầu đa nhân trung tính tới để bao vây thực bào vi khuẩn, đồng thời làm mao mạch rỉ máu (Hồng cầu) vào trong phân.",
+    "indication": "🎯 **Cấp cứu Tiêu hóa:** Cốt lõi để phân biệt nhanh chóng giữa Tiêu chảy do vi khuẩn xâm lấn (Cần dùng kháng sinh ngay) với Tiêu chảy do ngoại độc tố vi khuẩn hoặc do virus (Tuyệt đối không cần dùng kháng sinh).",
+    "specimenCollection": "💩 **Loại mẫu:** Phân tươi, ưu tiên lấy phần phân lỏng có lẫn nhầy và tia máu.",
+    "testingMethods": "Soi tươi bằng nước muối sinh lý hoặc nhuộm xanh methylene/nhuộm Gram để làm nổi rõ nhân của tế bào bạch cầu.",
+    "ref": "📊 **Bình thường:** Không có Hồng cầu; Không có hoặc rải rác rất ít Bạch cầu (0 - 2 tế bào/vi trường).",
+    "alert": "⚠️ Sự hiện diện ồ ạt của Hồng cầu và Bạch cầu đa nhân thoái hóa (mủ) trong phân của một em bé bị tiêu chảy cấp là chỉ định y khoa chắc chắn cho thấy màng ruột đang bị tàn phá, bắt buộc phải sử dụng Kháng sinh diệt khuẩn, thay vì chỉ bù nước Oresol thông thường.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Phân có Hồng cầu & Bạch cầu (+++) (Viêm xuất tiết mạnh):**\n  🔴 **Nhiễm trùng xâm lấn:** Lỵ trực khuẩn (Shigella), Salmonella, vi khuẩn Campylobacter, E.coli xâm nhập (EIEC).\n  🔴 **Nhiễm Ký sinh trùng:** Lỵ Amip (Tuy nhiên Lỵ trực khuẩn thường có lượng bạch cầu ồ ạt hơn Lỵ Amip rất nhiều).\n  🔴 **Bệnh lý Tự miễn:** Đợt cấp của Bệnh viêm ruột (IBD) như Viêm đại tràng xuất huyết, Bệnh viêm đoạn ruột Crohn.",
+      "decrease": "🔹 **Phân toàn nước, KHÔNG CÓ Hồng cầu / Bạch cầu (Tiêu chảy xuất tiết):**\n    ▫️ Viêm ruột do Virus (Rotavirus, Norovirus).\n    ▫️ Ngộ độc thức ăn do ngoại độc tố sinh ra từ trước (Tụ cầu vàng, Vi khuẩn Tả Vibrio cholerae, ETEC)."
+    },
+    "interferingFactors": "❌ Lấy mẫu phân để lẫn quá nhiều nước tiểu vào bô sẽ làm ly giải (vỡ) các tế bào hồng cầu và bạch cầu mong manh, gây ra kết quả âm tính giả khiến bác sĩ biện luận sai.",
+    "clinicalNote": "Theo phác đồ điều trị tiêu chảy nhi khoa của WHO, một bệnh án có kết quả soi \"Phân toàn nước, không có hồng/bạch cầu\" thường không có chỉ định dùng kháng sinh, chỉ cần bù dịch Oresol và Kẽm. Ngược lại, nếu kết quả trả về có nhiều Hồng cầu/Bạch cầu, bác sĩ phải lấy mẫu gửi đi Cấy phân làm kháng sinh đồ và cho khởi trị kháng sinh kinh nghiệm đường ruột ngay lập tức."
+  },
+  {
+    "name": "Tìm ký sinh trùng sốt rét trong máu (phương pháp thủ công)",
+    "group": "Ký sinh trùng",
+    "time": "Cấp cứu / 45 phút",
+    "isFeatured": true,
+    "concept": "Xét nghiệm nhuộm Giemsa trên lam máu (phết giọt đặc và giọt đàn) để quan sát trực tiếp dưới kính hiển vi nhằm tìm kiếm và định danh các hình thái của ký sinh trùng Sốt rét (Plasmodium) đang ký sinh bên trong hồng cầu.",
+    "physiology": "📌 **Cơ chế:** Muỗi Anopheles truyền thoa trùng vào máu người. Sau khi qua gan, KST xâm nhập vào hồng cầu, sinh sôi và làm vỡ hồng cầu hàng loạt, giải phóng độc tố gây ra cơn sốt rét run lập cập kinh điển.",
+    "indication": "🎯 **Truyền nhiễm:** Chẩn đoán xác định bệnh Sốt rét ở bệnh nhân có sốt kèm yếu tố dịch tễ (vừa đi rừng, làm rẫy, hoặc sống ở vùng sốt rét lưu hành như Tây Nguyên, Bình Phước).",
+    "specimenCollection": "💉 **Loại mẫu:** Máu mao mạch (trích đầu ngón tay) hoặc máu tĩnh mạch (EDTA).\n⏳ **Thời điểm vàng:** Tốt nhất là lấy máu **ngay lúc bệnh nhân đang lên cơn sốt** (lúc hồng cầu vỡ giải phóng KST ra máu nhiều nhất).",
+    "testingMethods": "Nhuộm Giemsa (Giọt đặc giúp tập trung tìm KST, giọt đàn giúp định danh loài).",
+    "ref": "📊 **Bình thường:** Âm tính (Không tìm thấy ký sinh trùng sốt rét).",
+    "alert": "⚠️ Nếu kết quả trả về là **Plasmodium falciparum (+) mật độ cao**, bệnh nhân đang đối mặt với nguy cơ Sốt rét ác tính (thể não, đái huyết sắc tố, suy đa tạng) có tỷ lệ tử vong rất cao, cần thuốc đặc trị ACT đường tĩnh mạch ngay lập tức.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Dương tính (Đang mắc Sốt rét):**\n  🔴 *Plasmodium falciparum*: Loài nguy hiểm nhất, thường gây sốt rét ác tính.\n  🔴 *Plasmodium vivax*: Thường gây sốt rét cơn cách nhật, có thể ngủ vùi trong gan gây tái phát xa.\n  🔴 Các loài hiếm hơn: *P. malariae, P. ovale, P. knowlesi*.",
+      "decrease": "Âm tính (-)."
+    },
+    "interferingFactors": "❌ Bệnh nhân đã tự ý uống thuốc sốt rét trước khi lấy máu làm mật độ KST giảm thấp dưới ngưỡng phát hiện của kính hiển vi (Âm tính giả).",
+    "clinicalNote": "Một lần xét nghiệm lam máu âm tính **không loại trừ** được bệnh sốt rét. Lời khuyên lâm sàng là nếu vẫn nghi ngờ, bác sĩ phải chỉ định chích máu soi lại 2-3 lần trong ngày hoặc dùng kết hợp các Test chẩn đoán nhanh (RDT) tìm kháng nguyên sốt rét."
+  },
+  {
+    "name": "Neisseria gonorrhoeae nhuộm soi (Lậu cầu)",
+    "group": "Vi sinh",
+    "time": "Làm ngay / 45 phút",
+    "isFeatured": true,
+    "concept": "Lậu là một bệnh lây truyền qua đường tình dục (STI) nguy hiểm. Xét nghiệm dùng phương pháp nhuộm Gram dịch tiết sinh dục để tìm hình ảnh kinh điển: **Song cầu khuẩn Gram âm hình hạt cà phê nằm gọn bên trong bào tương của Bạch cầu đa nhân**.",
+    "physiology": "📌 **Đặc tính:** Vi khuẩn Lậu (*N. gonorrhoeae*) tấn công mạnh vào niêm mạc tiết niệu - sinh dục, kích thích hệ miễn dịch huy động lượng khổng lồ bạch cầu đa nhân trung tính tới thực bào, tạo thành \"Mủ\".",
+    "indication": "🎯 **Da liễu / Nam khoa / Sản khoa:** Chẩn đoán viêm niệu đạo cấp mủ ở nam giới, viêm cổ tử cung ở nữ giới, hoặc viêm kết mạc mắt mủ ở trẻ sơ sinh (do lây từ mẹ lúc lọt lòng).",
+    "specimenCollection": "💧 **Loại mẫu:** Giọt mủ niệu đạo (nam) lấy vào sáng sớm lúc chưa đi tiểu; dịch cổ tử cung/âm đạo (nữ) hoặc mủ mắt.\n⏳ **Bảo quản:** Vi khuẩn Lậu rất yếu ớt ở môi trường ngoài, nên phết lam kính và nhuộm ngay.",
+    "testingMethods": "Nhuộm Gram soi kính hiển vi quang học độ phóng đại x1000.",
+    "ref": "📊 **Bình thường:** Âm tính (Không thấy lậu cầu).",
+    "alert": "⚠️ Lậu cầu mắt ở trẻ sơ sinh là một cấp cứu nhãn khoa, nếu không được nhuộm soi phát hiện và dùng kháng sinh kịp thời, giác mạc trẻ sẽ bị thủng và dẫn đến mù lòa vĩnh viễn.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Dương tính (Đang mắc Lậu cấp tính):**\n  🔴 Mật độ vi khuẩn tỷ lệ thuận với mức độ viêm mủ. Cần điều trị ngay cho cả bệnh nhân và bạn tình.",
+      "decrease": "Âm tính (-)."
+    },
+    "interferingFactors": "❌ Bệnh nhân đã tự ý uống kháng sinh hoặc bơm rửa chất sát khuẩn sinh dục trước khi lấy mẫu. Ở nữ giới, dịch âm đạo có chứa nhiều vi khuẩn hoại sinh có hình thái giống lậu, dễ gây dương tính giả nếu kỹ thuật viên thiếu kinh nghiệm.",
+    "clinicalNote": "Ở nam giới có triệu chứng đái mủ rõ rệt, kết quả nhuộm soi có độ nhạy và đặc hiệu lên tới 95%, có thể kê đơn kháng sinh ngay. Tuy nhiên, ở nữ giới hoặc người nhiễm lậu mạn tính, độ nhạy của nhuộm soi rất thấp, bác sĩ cần chỉ định thêm phương pháp Cấy hoặc làm sinh học phân tử (PCR Lậu/Chlamydia) để tránh bỏ sót."
+  },
+  {
+    "name": "Vi nấm nhuộm soi / Vi nấm soi tươi",
+    "group": "Vi sinh",
+    "time": "Làm ngay / 45 phút",
+    "isFeatured": true,
+    "concept": "Xét nghiệm sử dụng dung dịch KOH 10% (làm tiêu sừng) hoặc mực Nho (mực Tàu) để làm nổi bật hình thái của tế bào nấm dưới kính hiển vi. XN giúp phát hiện sự xâm nhập của nấm sợi (Dermatophyte), nấm men (Candida) hoặc nấm có nang (Cryptococcus) trên cơ thể.",
+    "physiology": "📌 **Bệnh sinh:** Nấm là các sinh vật cơ hội. Chúng sẽ bùng phát gây bệnh khi hàng rào da bị tổn thương (ẩm ướt, trầy xước), hoặc khi hệ miễn dịch suy giảm, hoặc môi trường vi khuẩn tại chỗ bị tiêu diệt do dùng kháng sinh kéo dài (nấm âm đạo, nấm miệng).",
+    "indication": "🎯 **Da liễu / Truyền nhiễm:** Chẩn đoán viêm âm đạo do nấm, hắc lào, lang ben, nấm móng, nấm phổi hoặc viêm màng não do nấm.",
+    "specimenCollection": "💧 **Loại mẫu:** Vảy da, vảy móng, sợi tóc (cạo ở rìa tổn thương); Dịch âm đạo; Đờm, dịch rửa phế quản hoặc Dịch não tủy.",
+    "testingMethods": "Soi tươi bằng KOH 10% - 20% hoặc nhuộm mực Nho.",
+    "ref": "📊 **Bình thường:** Âm tính (Không thấy tế bào nấm / bào tử nấm).",
+    "alert": "⚠️ Nếu nhuộm mực Nho dịch não tủy phát hiện thấy **\"Tế bào nấm men có nang tròn sáng bao quanh\" (Cryptococcus neoformans)**, đây là một cấp cứu truyền nhiễm tuyệt đối, thường gặp ở bệnh nhân HIV/AIDS giai đoạn cuối.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Dương tính (Đang nhiễm Nấm):**\n  🔴 Tế bào nấm men nảy chồi / Sợi tơ nấm giả: Đặc trưng của nhiễm *Candida albicans*.\n  🔴 Sợi tơ nấm có vách ngăn: Nhiễm nấm sợi ngoài da (Dermatophytes).\n  🔴 Sợi tơ nấm phân nhánh hình chữ Y: Nhiễm nấm mốc *Aspergillus* ở phổi.",
+      "decrease": "Âm tính (-)."
+    },
+    "interferingFactors": "❌ Lấy mẫu sai vị trí (lấy ở giữa mảng tổn thương da thay vì ở rìa đang phát triển), hoặc bệnh nhân đã bôi thuốc trị nấm vài ngày trước khi lấy mẫu gây âm tính giả.",
+    "clinicalNote": "Theo **Quyết định 3651/QĐ-BYT (2024)** về bệnh nấm Aspergillus phổi mạn tính, việc nhuộm soi dịch rửa phế quản thấy sợi nấm kết hợp với hình ảnh X-quang/CT có hang hoại tử là tiêu chuẩn quan trọng để khởi trị thuốc kháng nấm Itraconazole. Ưu điểm của soi tươi là có kết quả ngay sau 30 phút, trong khi cấy nấm phải đợi từ 1 đến 3 tuần."
+  },
+  {
+    "name": "AFB trực tiếp nhuộm Ziehl-Neelsen (Soi đờm tìm vi khuẩn Lao)",
+    "group": "Vi sinh",
+    "time": "120 phút",
+    "isFeatured": true,
+    "concept": "AFB (Acid-Fast Bacilli) là trực khuẩn kháng cồn kháng toan. Nhờ cấu trúc vách tế bào chứa nhiều sáp (acid mycolic), vi khuẩn Lao (*Mycobacterium tuberculosis*) sẽ giữ chặt màu đỏ của thuốc nhuộm Fucsin ngay cả khi bị tẩy bằng dung dịch Cồn-Acid mạnh, nổi bật trên nền xanh của tiêu bản.",
+    "physiology": "📌 **Đặc tính:** Vi khuẩn lao sinh sản rất chậm và có khả năng nằm vùng, trốn tránh bên trong đại thực bào. Khi sức đề kháng giảm, chúng sinh sôi, phá hủy nhu mô phổi tạo thành các \"hang lao\" và được khạc ra ngoài theo đờm.",
+    "indication": "🎯 **Hô hấp / Truyền nhiễm:** Sàng lọc và chẩn đoán bước đầu mọi bệnh nhân có triệu chứng nghi Lao: Ho khạc đờm kéo dài trên 2 tuần, ho ra máu, sốt nhẹ về chiều, đổ mồ hôi trộm, sút cân.",
+    "specimenCollection": "💧 **Loại mẫu:** Đờm sâu (không lấy nước bọt). \n⚠️ **Quy trình:** Theo chương trình chống Lao quốc gia, cần lấy **02 mẫu đờm**: 1 mẫu lấy ngay tại chỗ khi đến khám, 1 mẫu lấy vào sáng sớm lúc mới ngủ dậy.",
+    "testingMethods": "Nhuộm Ziehl-Neelsen (Soi kính hiển vi quang học) hoặc Nhuộm huỳnh quang Auramine (độ nhạy cao hơn).",
+    "ref": "📊 **Bình thường:** Âm tính (Không tìm thấy AFB trong 100 vi trường).",
+    "alert": "⚠️ Bệnh nhân có kết quả soi đờm trực tiếp **AFB Dương tính (+)** là **NGUỒN LÂY NGHIÊM TRỌNG** nhất cho cộng đồng. Bệnh nhân phải được cách ly hô hấp, đeo khẩu trang và khởi trị phác đồ chống Lao DOTS lập tức.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Dương tính (+):**\n  🔴 Xác nhận bệnh nhân đang mắc Lao phổi tiến triển. Mật độ vi khuẩn được đánh giá theo cấp độ 1+, 2+, 3+ (càng cao lây càng mạnh).\n  🔴 (Lưu ý: Một số vi khuẩn cơ hội NTM - Nontuberculous Mycobacteria cũng có thể bắt màu AFB, nhưng hiếm gặp hơn Lao rất nhiều).",
+      "decrease": "Âm tính (-)."
+    },
+    "interferingFactors": "❌ Lấy nhầm nước bọt thay vì đờm đục từ phế quản sâu sẽ gây âm tính giả. Mật độ vi khuẩn trong đờm quá ít (< 10.000 vi khuẩn/mL đờm) kính hiển vi sẽ không thể phát hiện được.",
+    "clinicalNote": "Theo **Quyết định 162/QĐ-BYT (2024)** về chẩn đoán điều trị Lao, soi AFB đờm trực tiếp là xét nghiệm sàng lọc đầu tay. Tuy nhiên, độ nhạy của nó chỉ khoảng 40-60%. Nếu soi đờm ÂM TÍNH nhưng tổn thương trên X-quang nghi ngờ lao cao, bác sĩ **bắt buộc** phải chỉ định các xét nghiệm sinh học phân tử (GeneXpert MTB/RIF) để khẳng định bệnh và phát hiện luôn gen kháng thuốc Rifampicin."
+  },
+  {
+    "name": "Đo tải lượng HBV hệ thống tự động (HBV DNA PCR)",
+    "group": "Sinh học phân tử",
+    "time": "1 - 2 ngày",
+    "isFeatured": true,
+    "concept": "Là xét nghiệm sinh học phân tử kỹ thuật cao (Real-time PCR) dùng để khuếch đại và **đếm chính xác số lượng bản sao ARN/ADN** của vi rút viêm gan B (HBV) lưu hành trong 1 mL máu. Xét nghiệm này là thước đo trực tiếp mức độ sinh sôi nảy nở của vi rút.",
+    "physiology": "📌 **Động học:** Trong tế bào gan, HBV sử dụng khuôn cccDNA để nhân lên và giải phóng vi rút mới vào máu. Tải lượng HBV DNA càng cao, tốc độ tàn phá gan và nguy cơ chuyển thành Ung thư biểu mô tế bào gan (HCC) càng lớn.",
+    "indication": "🎯 **Tiêu hóa / Gan mật:** \n- Quyết định xem bệnh nhân viêm gan B mạn tính có đủ tiêu chuẩn để khởi trị thuốc kháng vi rút (NA) hay không.\n- Đánh giá đáp ứng điều trị thuốc định kỳ.\n- Quyết định chỉ định dự phòng lây truyền từ mẹ sang con ở thai phụ mang HBsAg (+).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết tương (Ống EDTA) hoặc Huyết thanh.\n⏳ **Bảo quản:** Phải quay ly tâm tách huyết tương/huyết thanh sớm, bảo quản âm sâu để tránh nuclease trong máu phân hủy ADN vi rút.",
+    "testingMethods": "Real-time PCR tự động.",
+    "ref": "📊 **Bình thường:** Dưới ngưỡng phát hiện của máy (Âm tính).",
+    "alert": "⚠️ Theo phác đồ mới của **WHO 2024**, phụ nữ mang thai có HBsAg (+) nếu xét nghiệm thấy tải lượng HBV DNA $\\ge 200.000$ IU/mL, **bắt buộc** phải được uống thuốc Tenofovir (TDF) từ 3 tháng giữa thai kỳ để ngăn chặn vi rút tràn qua nhau thai lây cho em bé.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tải lượng Vi rút cao:**\n  🔴 **Chỉ định điều trị (Theo WHO 2024):** Bất kể men gan (ALT) thế nào, nếu HBV DNA > 2.000 IU/mL kèm theo có xơ hóa gan (APRI > 0.5 hoặc FibroScan > 7kPa) hoặc có tiền sử gia đình ung thư gan, bệnh nhân ĐƯỢC CHỈ ĐỊNH điều trị bằng Tenofovir hoặc Entecavir ngay lập tức.\n  🔴 **Thất bại điều trị:** Bệnh nhân đang uống thuốc kháng vi rút tốt mà HBV DNA tăng vọt trở lại chứng tỏ vi rút đã kháng thuốc.",
+      "decrease": "🔹 **Dưới ngưỡng phát hiện (Đáp ứng tốt):**\n    ▫️ Mục tiêu tối thượng của điều trị Viêm gan B mạn tính là ép tải lượng HBV DNA xuống dưới ngưỡng phát hiện, giúp ngăn ngừa hoàn toàn nguy cơ xơ gan và ung thư gan."
+    },
+    "interferingFactors": "❌ Lỗi bảo quản hoặc vận chuyển mẫu làm ADN vi rút bị ly giải, máy sẽ báo tải lượng thấp hơn thực tế (âm tính giả).",
+    "clinicalNote": "Viêm gan B mạn tính hiện tại chưa thể chữa khỏi hoàn toàn (do cccDNA bám rễ sâu trong nhân tế bào gan). Bệnh nhân khi đã có chỉ định uống thuốc (như Tenofovir, Entecavir) thường phải uống suốt đời. Định lượng HBV DNA định kỳ mỗi 6 tháng là vũ khí duy nhất để bác sĩ biết thuốc còn đang phát huy tác dụng hay không."
+  },
+  {
+    "name": "Đo tải lượng HCV hệ thống tự động (HCV RNA PCR)",
+    "group": "Sinh học phân tử",
+    "time": "1 - 2 ngày",
+    "isFeatured": true,
+    "concept": "Đo tải lượng ARN của vi rút viêm gan C (HCV) bằng kỹ thuật Real-time PCR. Khác với xét nghiệm Anti-HCV (chỉ là kháng thể - dấu vết của quá khứ), xét nghiệm HCV RNA khẳng định **vi rút viêm gan C đang thực sự tồn tại và sinh sôi** trong cơ thể ở thời điểm hiện tại.",
+    "physiology": "📌 **Đặc tính:** HCV là vi rút ARN, không tích hợp vào nhân tế bào gan như HBV. Nhờ vậy, y học hiện đại đã phát minh ra các nhóm thuốc DAA (Direct Acting Antivirals) có khả năng càn quét và **tiêu diệt tận gốc 100% vi rút HCV** ra khỏi cơ thể.",
+    "indication": "🎯 **Tiêu hóa / Gan mật:** \n- Khẳng định chẩn đoán Viêm gan C mạn tính ở người có Anti-HCV (+).\n- Xác nhận tiêu chuẩn \"Chữa khỏi hoàn toàn\" (SVR12) sau khi ngưng thuốc điều trị.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết tương (Ống EDTA) hoặc Huyết thanh.\n⏳ **Vận chuyển:** ARN của vi rút C cực kỳ dễ bị phân hủy, mẫu bắt buộc phải được bảo quản lạnh chuẩn xác và chạy máy sớm.",
+    "testingMethods": "Real-time PCR tự động.",
+    "ref": "📊 **Bình thường:** Dưới ngưỡng phát hiện (Âm tính).",
+    "alert": "⚠️ Khoảng 25% người bị nhiễm HCV cấp tính có khả năng tự đào thải vi rút khỏi cơ thể. Ở những người này, xét nghiệm Anti-HCV vẫn dương tính suốt đời, nhưng đo tải lượng HCV RNA sẽ Âm tính. Tuyệt đối không được kê đơn thuốc trị viêm gan C cho những trường hợp này.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **HCV RNA Dương tính (Trên ngưỡng phát hiện):**\n  🔴 Khẳng định bệnh nhân đang mắc Viêm gan C mạn tính (hoặc cấp tính). Đủ tiêu chuẩn bắt buộc phải sử dụng phác đồ thuốc DAA (Sofosbuvir/Velpatasvir...) trong 12 tuần để diệt vi rút.",
+      "decrease": "🔹 **HCV RNA Âm tính:**\n  🔴 Không mắc bệnh hoặc Đã tự khỏi bệnh.\n  🔴 **Đạt SVR12 (Sustained Virological Response):** Tức là xét nghiệm HCV RNA Âm tính vào thời điểm 12 tuần sau khi uống xong viên thuốc cuối cùng. Bệnh nhân được bác sĩ tuyên bố chính thức **CHỮA KHỎI BỆNH VIÊM GAN C**."
+    },
+    "interferingFactors": "❌ Lỗi bảo quản ARN (kém bền hơn ADN rất nhiều) sẽ lập tức gây ra kết quả âm tính giả, khiến bác sĩ đánh giá sai về sự sạch bóng của vi rút.",
+    "clinicalNote": "Theo **Quyết định 2855/QĐ-BYT (2024)** về điều trị Viêm gan vi rút C, hiện nay phác đồ các thuốc DAA pangenotypic (điều trị được mọi kiểu gen) có tỷ lệ chữa khỏi bệnh lên tới >95%. Do đó, mọi bệnh nhân có xét nghiệm HCV RNA Dương tính đều cần được tư vấn khởi trị sớm nhất có thể để ngăn chặn con đường tiến triển thành Xơ gan mất bù."
+  },
+   {
+    "name": "Định lượng PTH [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Hormon cận giáp (PTH - Parathyroid Hormone) là một peptid do tuyến cận giáp sản xuất, đóng vai trò sinh tử trong việc điều hòa hằng định nồng độ Canxi và Phospho trong cơ thể.",
+    "physiology": "📌 **Cơ chế:** Khi Canxi máu hạ, tuyến cận giáp tiết PTH. PTH sẽ huy động Canxi từ xương ra máu, kích thích thận tăng tái hấp thu Canxi, đào thải Phospho, và tăng tổng hợp 1,25-dihydroxyvitamin D (giúp ruột hấp thu Canxi).",
+    "indication": "🎯 **Nội tiết & Thận học:** Chẩn đoán phân biệt Cường/Suy tuyến cận giáp; Đánh giá bệnh nhân có bất thường Canxi máu; Theo dõi rối loạn chuyển hóa xương ở bệnh nhân Bệnh thận mạn (CKD).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết tương (EDTA) hoặc Huyết thanh.\n⏳ **Chuẩn bị:** Nhịn ăn 8-10h. Do nồng độ PTH biến đổi theo nhịp ngày đêm (cao nhất vào 2h sáng), mẫu nên được lấy vào 8h - 10h sáng.",
+    "testingMethods": "Miễn dịch hóa phát quang (CLIA/ECLIA).",
+    "ref": "📊 **Bình thường:** 10 - 60 pg/mL (hoặc 10 - 60 ng/L).",
+    "alert": "⚠️ **Tuyệt đối không biện luận PTH đơn độc.** Phải luôn đánh giá nồng độ PTH song hành cùng Canxi toàn phần, Canxi ion hóa và Phospho máu. Một mức PTH \"bình thường\" trên một bệnh nhân đang có Canxi máu tăng cao thực chất lại là sự tăng tiết bệnh lý không phù hợp.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng nồng độ PTH:**\n  🔴 Cường cận giáp tiên phát (U tuyến cận giáp) hoặc thứ phát (Suy thận mạn, thiếu hụt Vitamin D).\n  🔴 Sản xuất PTH lạc chỗ (Ung thư biểu mô tế bào vảy của phổi).\n  🔴 Hội chứng Zollinger-Ellison, Còi xương.",
+      "decrease": "🔹 **Giảm nồng độ PTH:**\n  🔴 Suy cận giáp tự miễn, Tổn thương tuyến cận giáp sau phẫu thuật cắt bướu cổ.\n  🔴 Tăng Canxi máu không do cận giáp: Ngộ độc Vitamin D, Bệnh Sarcoidosis, Hội chứng nhiễm kiềm do uống sữa (Milk-alkali syndrome)."
+    },
+    "interferingFactors": "❌ **Nhiễu:** Tan máu, lipemia hoặc dùng chất đồng vị phóng xạ làm sai lệch kết quả.\n💊 **Thuốc làm TĂNG:** Lợi tiểu Furosemid, thuốc chống co giật, Lithium, Rifampin, Isoniazid.\n💊 **Thuốc làm GIẢM:** Cimetidin, Propranolol, Propofol (gây hạ giả tạo).",
+    "clinicalNote": "Trong quản lý Bệnh thận mạn (Theo **KDIGO 2024**), bệnh nhân có mức lọc cầu thận eGFR < 60 mL/phút bắt buộc phải được xét nghiệm bộ ba: Canxi, Phospho và PTH để tầm soát cường cận giáp thứ phát và loạn dưỡng xương do thận."
+  },
+  {
+    "name": "Định lượng Cystatin C [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Cystatin C là một protein trọng lượng phân tử thấp, được sản xuất bởi tất cả các tế bào có nhân trong cơ thể với tốc độ hoàn toàn hằng định. Nó được lọc hoàn toàn qua cầu thận và không bị bài tiết thêm ở ống thận như Creatinin.",
+    "physiology": "📌 **Đặc tính ưu việt:** Khác với Creatinin, nồng độ Cystatin C trong máu **không bị phụ thuộc vào khối lượng cơ bắp, giới tính hay tuổi tác**. Điều này khiến nó trở thành một dấu ấn (marker) nội sinh nhạy bén và chính xác hơn nhiều để đo mức lọc cầu thận (eGFR).",
+    "indication": "🎯 **Thận học:** Đánh giá chính xác chức năng thận, đặc biệt ở \"vùng mù\" của Creatinin (khi chức năng thận mới suy giảm nhẹ). Xác nhận eGFR ở những bệnh nhân có khối lượng cơ bất thường (người teo cơ, cắt cụt chi, béo phì, xơ gan, trẻ em).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh hoặc Huyết tương.\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn khắt khe.",
+    "testingMethods": "Đo độ đục miễn dịch (Immunoturbidimetric) hoặc Nephelometry.",
+    "ref": "📊 **Bình thường:** Khoảng 0.5 - 1.0 mg/L (Phụ thuộc kit thử, thường cao hơn một chút ở người già).",
+    "alert": "⚠️ Dù không bị ảnh hưởng bởi cơ bắp, Cystatin C lại bị thay đổi bởi nồng độ hormon tuyến giáp và Corticosteroid liều cao. Phải thận trọng biện luận khi bệnh nhân có rối loạn các yếu tố này.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Cystatin C (Tương ứng giảm mức lọc cầu thận):**\n  🔴 Suy giảm chức năng lọc của cầu thận (Bệnh thận mạn, Suy thận cấp). Độ nhạy cao hơn Creatinin ở giai đoạn suy thận sớm.\n  🔴 Tăng không do thận: Cường giáp, dùng Corticoid liều cao.",
+      "decrease": "🔹 **Giảm Cystatin C:**\n  🔴 Rối loạn chức năng tuyến giáp (Suy giáp)."
+    },
+    "interferingFactors": "💊 **Thuốc/Bệnh lý:** Corticosteroid liều cao và Cường giáp làm tăng sản xuất Cystatin C (dẫn tới eGFR tính toán bị thấp giả tạo). Suy giáp làm giảm sản xuất Cystatin C (eGFR cao giả tạo).",
+    "clinicalNote": "Theo Hướng dẫn **KDIGO 2024**, phương trình **eGFR CKD-EPI Cystatin C** được khuyến cáo mạnh mẽ để khẳng định chẩn đoán Bệnh thận mạn (CKD) khi eGFR tính theo Creatinin nằm ở ranh giới 45-59 mL/phút mà bệnh nhân không có albumin niệu."
+  },
+  {
+    "name": "Định lượng Cyfra 21-1 [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Cyfra 21-1 là mảnh vỡ của Cytokeratin 19 - một protein khung cấu trúc nằm trong bộ xương của tế bào biểu mô. Khi tế bào biểu mô ác tính phát triển nhanh, hoại tử hoặc chết theo chương trình (apoptosis), các mảnh vỡ Cytokeratin 19 này sẽ được giải phóng ồ ạt vào dòng máu.",
+    "physiology": "📌 **Động học:** Mặc dù Cytokeratin 19 có mặt ở biểu mô lành, nhưng sự biểu hiện và phóng thích của nó đặc biệt mạnh mẽ trong các khối u ác tính, điển hình nhất là **Ung thư phổi không tế bào nhỏ (NSCLC)**.",
+    "indication": "🎯 **Ung bướu / Hô hấp:** Dấu ấn khối u (Tumor marker) hàng đầu để chẩn đoán, theo dõi đáp ứng điều trị và phát hiện tái phát của Ung thư phổi không tế bào nhỏ (đặc biệt là Ung thư biểu mô tế bào vảy).",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn.",
+    "testingMethods": "Miễn dịch hóa phát quang (ECLIA / CLIA).",
+    "ref": "📊 **Bình thường:** < 3.3 ng/mL (hoặc µg/L).",
+    "alert": "⚠️ Giống như mọi chất chỉ điểm khối u khác, Cyfra 21-1 **không dùng để sàng lọc ung thư** trên quần thể người khỏe mạnh không có triệu chứng do có tỷ lệ dương tính giả ở các bệnh phổi lành tính.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng Cyfra 21-1 (> 3.3 ng/mL):**\n  🔴 **Ác tính:** Ung thư phổi không tế bào nhỏ (NSCLC - ưu thế biểu mô vảy), Ung thư bàng quang, Ung thư thực quản, Ung thư cổ tử cung.\n  🔴 **Lành tính (Tăng nhẹ):** Suy thận, Bệnh phổi mô kẽ, Xơ gan, Viêm phế quản mạn tính.",
+      "decrease": "🔹 **Giảm Cyfra 21-1:**\n  🔴 Giảm nhanh về mức bình thường sau khi phẫu thuật cắt bỏ u hoặc sau các đợt hóa/xạ trị phản ánh sự đáp ứng tốt với phác đồ điều trị."
+    },
+    "interferingFactors": "❌ Suy thận làm giảm sự thanh thải của các đoạn Cytokeratin, dẫn đến nồng độ Cyfra 21-1 tăng vọt (dương tính giả) dù bệnh nhân không có ung thư.",
+    "clinicalNote": "Nồng độ Cyfra 21-1 trước điều trị có giá trị tiên lượng mạnh mẽ. Nếu một bệnh nhân Ung thư phổi tế bào vảy có Cyfra 21-1 trước phẫu thuật rất cao, tiên lượng thường xấu. Nếu nồng độ tăng vọt trở lại trong giai đoạn theo dõi, cần nghĩ ngay đến di căn hoặc tái phát khối u."
+  },
+  {
+    "name": "Định lượng SCC (Squamous cell carcinoma antigen) [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Kháng nguyên ung thư biểu mô tế bào vảy (SCC Ag) là một tiểu phân của kháng nguyên TA-4, thuộc nhóm chất ức chế serine protease. Nó được biểu hiện phong phú ở lớp biểu mô vảy (squamous epithelium) bình thường và tăng sinh dữ dội trong các tổ chức ung thư biểu mô vảy.",
+    "physiology": "📌 **Đặc tính:** Vì SCC có nguồn gốc từ biểu mô vảy tự nhiên (như da, cổ tử cung, thực quản, phổi), các tế bào khối u thuộc các cơ quan này khi nhân lên sẽ bài xuất lượng lớn SCC vào dòng tuần hoàn.",
+    "indication": "🎯 **Ung bướu / Sản phụ khoa:** Dấu ấn sinh học cốt lõi để chẩn đoán, đánh giá giai đoạn, tiên lượng và đặc biệt là theo dõi tái phát của **Ung thư cổ tử cung** (thể tế bào vảy), Ung thư thực quản, Ung thư đầu mặt cổ.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh hoặc Huyết tương.\n⚠️ **Đặc biệt lưu ý:** Bệnh phẩm **rất dễ bị nhiễu**. Tránh để da, mồ hôi hoặc nước bọt của người lấy máu/bệnh nhân rơi vào ống nghiệm hoặc nắp đậy.",
+    "testingMethods": "Hóa phát quang miễn dịch (CLIA / ECLIA).",
+    "ref": "📊 **Bình thường:** < 2.0 ng/mL (có thể dao động từ 1.5 - 2.5 tùy sinh phẩm).",
+    "alert": "⚠️ Tế bào biểu bì da của người khỏe mạnh chứa lượng lớn kháng nguyên SCC. Nếu kỹ thuật viên không đeo găng tay, hoặc ho, hắt hơi làm văng giọt bắn vào ống máu, kết quả SCC sẽ tăng vọt giả tạo (lên hàng chục ng/mL) gây hoang mang lớn cho bệnh nhân.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng nồng độ SCC:**\n  🔴 **Ung thư biểu mô vảy (Squamous Cell Carcinoma):** Ung thư cổ tử cung (SCC đặc biệt nhạy với loại này), Ung thư phổi tế bào vảy, Ung thư thực quản, âm đạo, vùng đầu mặt cổ.\n  🔴 **Bệnh lành tính:** Bệnh ngoài da (Vảy nến, Eczema), Suy thận, Bệnh gan, Viêm phổi.",
+      "decrease": "🔹 **Giảm nồng độ SCC:**\n  🔴 Sau khi cắt bỏ tử cung triệt căn hoặc xạ trị, SCC sẽ giảm sâu. Đây là thước đo thành công của quá trình điều trị."
+    },
+    "interferingFactors": "❌ **Dương tính giả:** Nhiễm bẩn từ biểu bì/mồ hôi/nước bọt. Bệnh nhân có các bệnh da liễu toàn thân (vảy nến nặng) SCC cũng sẽ tăng sinh lý.\n❌ Suy thận làm giảm thải trừ SCC gây tăng giả tạo.",
+    "clinicalNote": "Trong quản lý Ung thư cổ tử cung, nếu sau điều trị ổn định nồng độ SCC duy trì < 2.0 ng/mL, bệnh nhân an toàn. Nếu theo dõi định kỳ thấy SCC tăng liên tục trong 2 tháng (dù chưa có triệu chứng), đó là dấu hiệu cảnh báo bệnh tái phát sớm từ 2 đến 6 tháng trước khi phát hiện được trên chẩn đoán hình ảnh (CT/MRI)."
+  },
+  {
+    "name": "Định lượng CA 19-9 (Carbohydrate Antigen 19-9) [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Kháng nguyên ung thư 19-9 (CA 19-9) là một kháng nguyên cấu trúc đường (carbohydrat) có liên quan chặt chẽ với kháng nguyên nhóm máu Lewis. Bình thường, nó được tổng hợp bởi tế bào biểu mô ống tụy và đường mật. Sự phá hủy mô và tăng sinh khối u tại hệ thống tiêu hóa làm tăng nồng độ chất này trong máu.",
+    "physiology": "📌 **Động học:** Trong điều kiện bình thường, CA 19-9 được bài tiết qua dịch mật. Khi đường mật bị tắc nghẽn hoặc khi có tế bào ung thư tăng sinh ồ ạt, CA 19-9 sẽ trào ngược và tích tụ vào dòng máu với nồng độ khổng lồ.",
+    "indication": "🎯 **Tiêu hóa / Gan mật tụy:** Dấu ấn sinh học số 1 dùng để chẩn đoán, đánh giá khả năng phẫu thuật và theo dõi đáp ứng điều trị của **Ung thư Tụy** và **Ung thư đường mật**.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không bắt buộc nhịn ăn.",
+    "testingMethods": "Miễn dịch hóa phát quang (CLIA/ECLIA) hoặc ELISA.",
+    "ref": "📊 **Bình thường:** < 35 U/mL (hoặc < 27 U/mL tùy hệ thống máy, ví dụ tại BV Bạch Mai thường lấy ngưỡng < 27 U/mL).",
+    "alert": "⚠️ **Yếu tố nhóm máu Lewis:** Khoảng 5 - 10% dân số mang nhóm máu Lewis âm tính ($Le^{a-b-}$). Những người này thiếu gen mã hóa enzym tổng hợp CA 19-9. Ở đối tượng này, dù có bị ung thư Tụy giai đoạn cuối, kết quả CA 19-9 vẫn luôn bằng 0 (Âm tính giả tuyệt đối).",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng CA 19-9 (> 35 U/mL):**\n  🔴 **Ác tính:** Ung thư tụy (chiếm 80% độ nhạy, nếu > 1000 U/mL gần như chắc chắn u đã quá chỉ định phẫu thuật), Ung thư đường mật, Ung thư dạ dày, Ung thư đại trực tràng.\n  🔴 **Lành tính (Cần cảnh giác):** Viêm túi mật, Sỏi ống mật chủ gây tắc mật, Viêm gan, Xơ gan, Viêm tụy cấp/mạn.",
+      "decrease": "🔹 **Giảm CA 19-9:**\n  🔴 Bằng chứng của việc điều trị phẫu thuật lấy bỏ hoàn toàn khối u tụy hoặc hóa trị có đáp ứng tốt."
+    },
+    "interferingFactors": "❌ **Dương tính giả cực mạnh:** Bất kỳ nguyên nhân nào gây **tắc mật** (Sỏi mật, viêm đường mật) đều làm CA 19-9 tăng vọt lên hàng nghìn U/mL dù không có ung thư. Sau khi giải quyết thông tắc mật, CA 19-9 sẽ tự động giảm về bình thường.",
+    "clinicalNote": "Không bao giờ dùng CA 19-9 để tầm soát ung thư tụy cho người khỏe mạnh (theo USPSTF) do tỷ lệ dương tính giả quá cao. Khi biện luận CA 19-9, bác sĩ bắt buộc phải nhìn vào chỉ số Bilirubin. Nếu Bilirubin đang tăng rất cao (vàng da tắc mật), việc CA 19-9 tăng theo là điều tất yếu và chưa thể khẳng định là ung thư tụy."
+  },
+  {
+    "name": "Định lượng Kháng thể kháng CCP (Anti-CCP) [máu]",
+    "group": "Miễn Dịch",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Anti-CCP (Cyclic Citrullinated Peptide Antibodies - ACPA) là tự kháng thể do hệ miễn dịch sinh ra để tấn công các protein đã bị biến đổi cấu trúc (quá trình Citrulline hóa) nằm trong màng hoạt dịch của khớp.",
+    "physiology": "📌 **Cơ chế:** Trong Bệnh viêm khớp dạng thấp (RA), hệ miễn dịch bị mất dung nạp và nhận diện nhầm các peptide citrulline là vật thể lạ. Quá trình sản xuất Anti-CCP bắt đầu từ rất sớm, âm thầm phá hủy sụn khớp từ nhiều năm trước khi bệnh nhân xuất hiện triệu chứng sưng đau khớp trên lâm sàng.",
+    "indication": "🎯 **Cơ Xương Khớp / Miễn dịch:** Tiêu chuẩn vàng để chẩn đoán sớm, chẩn đoán phân biệt và đánh giá tiên lượng phá hủy khớp đối với bệnh **Viêm khớp dạng thấp (Rheumatoid Arthritis - RA)**.",
+    "specimenCollection": "💉 **Loại mẫu:** Huyết thanh.\n⏳ **Chuẩn bị:** Không yêu cầu nhịn ăn.",
+    "testingMethods": "Miễn dịch tự động (ECLIA/ELISA).",
+    "ref": "📊 **Bình thường:** Âm tính (Thường < 5 U/mL hoặc < 20 U/mL tùy hóa chất của phòng Lab).",
+    "alert": "⚠️ Mặc dù Yếu tố dạng thấp (RF) là xét nghiệm kinh điển, nhưng RF có độ đặc hiệu kém (tăng trong viêm gan, lao, người già). Anti-CCP khắc phục hoàn toàn nhược điểm này với **độ đặc hiệu lên tới > 95%** chuyên biệt cho Viêm khớp dạng thấp.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Dương tính (Anti-CCP tăng cao):**\n  🔴 **Viêm khớp dạng thấp (RA):** Đặc biệt là các thể bệnh có tiên lượng nặng, phá hủy bào mòn sụn khớp nhanh, và nguy cơ biến dạng khớp cao.\n  🔴 Rất hiếm khi dương tính ở các bệnh tự miễn khác (Lupus, Sjogren) hoặc người bình thường.",
+      "decrease": "🔹 **Âm tính:**\n  🔴 Không loại trừ hoàn toàn viêm khớp dạng thấp (vẫn có khoảng 20-30% bệnh nhân RA có huyết thanh âm tính), nhưng tiên lượng phá hủy xương thường nhẹ hơn."
+    },
+    "interferingFactors": "❌ Rất ít bị nhiễu. Tình trạng tăng Gamma-globulin máu hoặc RF dương tính quá cao có thể gây nhiễu nhẹ nhưng không làm sai lệch ý nghĩa biện luận lâm sàng cốt lõi.",
+    "clinicalNote": "Theo Hướng dẫn cập nhật **EULAR 2025** về quản lý Viêm khớp dạng thấp, nếu một bệnh nhân bị đau cứng khớp buổi sáng và xét nghiệm có Anti-CCP (+), bác sĩ được khuyến cáo mạnh mẽ phải khởi trị ngay lập tức bằng thuốc chống thấp khớp tác dụng cải thiện bệnh (DMARDs, tiêu biểu là Methotrexate) để chặn đứng tổn thương bào mòn khớp không hồi phục."
+  },
+  {
+    "name": "Đo hoạt độ ADA (Adenosine Deaminase) [dịch chọc dò]",
+    "group": "Sinh hóa",
+    "time": "120 phút / 45 phút",
+    "isFeatured": true,
+    "concept": "Adenosine Deaminase (ADA) là một enzym xúc tác quá trình chuyển hóa purine, cần thiết cho sự biệt hóa và phân chia của các tế bào lympho T. Nồng độ ADA tăng vọt trong các khoang dịch cơ thể (màng phổi, màng bụng, dịch não tủy) phản ánh sự kích hoạt miễn dịch qua trung gian tế bào mạnh mẽ.",
+    "physiology": "📌 **Đặc tính:** Khi bị tấn công bởi các vi sinh vật nội bào (điển hình nhất là Vi khuẩn Lao - *Mycobacterium tuberculosis*), hệ miễn dịch huy động đại thực bào và lympho T tới chiến trường. Dòng lympho T này sản xuất và giải phóng ồ ạt enzym ADA vào trong dịch tiết.",
+    "indication": "🎯 **Hô hấp / Truyền nhiễm:** Chẩn đoán phân biệt cực kỳ nhanh chóng và chính xác các nguyên nhân gây tràn dịch màng phổi, tràn dịch ổ bụng hoặc viêm màng não. Xét nghiệm có giá trị sống còn trong chẩn đoán **Lao màng thanh mạc (Lao màng phổi, màng bụng, màng não)**.",
+    "specimenCollection": "💧 **Loại mẫu:** Dịch chọc dò màng phổi, màng bụng, hoặc màng ngoài tim, Dịch não tủy.\n⚠️ **Xử lý:** Ly tâm nhanh để loại bỏ hồng cầu trước khi đo.",
+    "testingMethods": "Phản ứng Enzym so màu (Colorimetric).",
+    "ref": "📊 **Dịch màng phổi / ổ bụng:** Thường < 40 U/L (Ngưỡng chẩn đoán Lao thường là > 40 U/L).\n📊 **Dịch não tủy:** < 10 U/L.",
+    "alert": "⚠️ Trong tràn dịch màng phổi dịch tiết ưu thế tế bào Lympho, một kết quả ADA > 40 U/L ở những quốc gia lưu hành bệnh Lao cao (như Việt Nam) có độ nhạy và độ đặc hiệu > 90% chẩn đoán Lao màng phổi, cho phép khởi trị ngay mà không cần đợi kết quả sinh thiết màng phổi.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Tăng ADA Dịch chọc dò (> 40 U/L):**\n  🔴 **Nhiễm trùng nội bào:** Lao màng phổi, Lao màng bụng, Viêm màng não do Lao (Tăng rất đặc hiệu và ổn định).\n  🔴 **Viêm nhiễm khác (Ít gặp hơn):** Tràn mủ màng phổi do vi khuẩn (Empyema), Tràn dịch màng phổi do Viêm khớp dạng thấp.\n  🔴 **Ung thư máu:** Lymphoma (U lympho) di căn màng thanh mạc.",
+      "decrease": "🔹 **ADA Thấp (< 40 U/L):**\n  🔴 Hầu như loại trừ được chẩn đoán Lao màng phổi.\n  🔴 Các nguyên nhân khác gây tràn dịch: Ung thư di căn (Carcinoma), Tràn dịch màng phổi do Suy tim, Xơ gan (Dịch thấm có ADA rất thấp)."
+    },
+    "interferingFactors": "❌ **Dương tính giả:** Dịch chọc dò có dính máu (chọc chạm mạch) sẽ làm ADA tăng cao do trong hồng cầu của bệnh nhân cũng chứa rất nhiều enzym ADA.",
+    "clinicalNote": "Theo Hướng dẫn chẩn đoán và điều trị bệnh Lao (QĐ 162/QĐ-BYT 2024), việc tìm vi khuẩn Lao trong dịch màng phổi cực kỳ khó (tỷ lệ soi đờm AFB dương tính hoặc nuôi cấy trong dịch chỉ < 5-10%). Vì vậy, hoạt độ ADA dịch màng phổi tăng cao kết hợp với dịch tiết ưu thế Lympho được coi là tiêu chuẩn vàng trên thực hành lâm sàng để quyết định điều trị Lao ngoài phổi."
+  },
+       {
                 name: "Vi khuẩn nuôi cấy và định danh hệ thống tự động", group: "Vi sinh", time: "3 - 5 ngày", ref: "VI KHUẨN KHÔNG MỌC", alert: "",
                 concept: "Phương pháp nuôi cấy mẫu bệnh phẩm trên môi trường thạch để vi khuẩn mọc, sau đó định danh bằng máy tự động.",
                 indication: "Xác định chính xác nguyên nhân gây nhiễm trùng và định hướng điều trị.",
