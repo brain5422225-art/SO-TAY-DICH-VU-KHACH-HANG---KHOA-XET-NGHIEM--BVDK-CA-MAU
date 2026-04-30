@@ -99,3 +99,15 @@
     object-fit: cover;
   }
 }
+
+/* Custom Summary & Details fixes */
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary {
+  list-style: none;
+  outline: none;
+}
+summary:focus {
+  outline: none;
+}

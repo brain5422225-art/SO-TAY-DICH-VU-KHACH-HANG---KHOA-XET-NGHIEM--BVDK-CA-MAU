@@ -2719,225 +2719,226 @@ const labTests: LabTest[] = [
     "interferingFactors": "❌ **Ưu điểm vượt trội:** Khác với test lẩy da Tuberculin (Mantoux), QuantiFERON không bị dương tính giả bởi việc tiêm vắc xin phòng Lao (BCG) trước đó, do kháng nguyên sử dụng hoàn toàn vắng mặt trong chủng BCG.",
     "clinicalNote": "Theo Hướng dẫn EULAR 2024-2025 về quản lý Viêm khớp dạng thấp, trước khi bắt đầu bất kỳ liệu pháp sinh học hoặc thuốc ức chế JAK nào, bệnh nhân có nguy cơ cao tái hoạt động nhiễm trùng tiềm tàng bắt buộc phải được tầm soát Lao. Nếu xét nghiệm QuantiFERON dương tính, bệnh nhân phải được điều trị dự phòng Lao trước khi dùng thuốc ức chế miễn dịch để tránh vi khuẩn Lao bùng phát."
   },
-       {
-                name: "Vi khuẩn nuôi cấy và định danh hệ thống tự động", group: "Vi sinh", time: "3 - 5 ngày", ref: "VI KHUẨN KHÔNG MỌC", alert: "",
-                concept: "Phương pháp nuôi cấy mẫu bệnh phẩm trên môi trường thạch để vi khuẩn mọc, sau đó định danh bằng máy tự động.",
-                indication: "Xác định chính xác nguyên nhân gây nhiễm trùng và định hướng điều trị.",
-                pathologicalMeaning: {
-                    increase: `• VI KHUẨN MỌC: Phát hiện vi khuẩn. Chi tiết từ tài liệu gốc:
+  {
+    name: "Vi khuẩn nuôi cấy và định danh hệ thống tự động", 
+    group: "Vi sinh", 
+    time: "3 - 5 ngày", 
+    ref: "VI KHUẨN KHÔNG MỌC", 
+    alert: "Tiêu chuẩn vàng trong chẩn đoán bệnh lý nhiễm khuẩn.",
+    concept: "Phương pháp nuôi cấy mẫu bệnh phẩm (máu, đờm, nước tiểu, dịch cơ thể) trên môi trường nhân tạo, sau đó định danh tự động dựa trên đặc tính sinh hóa, chuyển hóa và hình thái học.",
+    indication: "Phát hiện, xác định chính xác nguyên nhân vi khuẩn gây nhiễm trùng để có căn cứ làm kháng sinh đồ, định hướng điều trị đặc hiệu.",
+    pathologicalMeaning: {
+      increase: `<div style="margin-bottom:15px; padding:15px; background:#fff3e0; border-radius:20px; border-left:8px solid #ff9800; font-family:'Montserrat', sans-serif; font-weight:700; color:#e65100; font-size:1.1em; line-height:1.4;">
+        ✅ PHÁT HIỆN VI KHUẨN GÂY BỆNH<br/>
+        <span style="font-size:0.85em; font-weight:500; opacity:0.8;">Bác sĩ cần đối chiếu lâm sàng và làm Kháng sinh đồ.</span>
+      </div>
+
+<details style="margin-top:15px; background:white; border-radius:24px; border:3px solid #e3f2fd; overflow:hidden; box-shadow:0 10px 30px rgba(33,150,243,0.1);">
+<summary style="padding:20px; font-weight:900; color:#0d47a1; cursor:pointer; font-size:1.2em; outline:none; font-family:'Montserrat', sans-serif; display:flex; align-items:center; background:#e3f2fd; transition:all 0.3s hover:background:#bbdefb;">
+  <span style="margin-right:12px; font-size:1.4em;">🔵</span> VI KHUẨN GRAM ÂM (Trực khuẩn & Cầu khuẩn)
+</summary>
+<div style="padding:20px; font-size:0.95em; line-height:1.6; color:#2c3e50; border-top:2px border #e3f2fd;">
+
+<div style="background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #d1e9ff; margin-bottom: 12px; position:relative;">
+<div style="position:absolute; top:-10px; left:20px; background:#2196f3; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">01</div>
+<b style="font-size:1.1em; color:#0d47a1; font-family:'Montserrat', sans-serif; display:block; margin-bottom:8px;">Trực khuẩn ruột lên men Lactose (E. coli, Klebsiella, Enterobacter...)</b>
+<span style="color:#2196f3; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Hình thể]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Gram (-), mọc tốt trên MacConkey (khuẩn lạc hồng).</span><br>
+<span style="color:#2196f3; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Gây nhiễm khuẩn tiết niệu, đường ruột, viêm phổi, nhiễm khuẩn huyết.</span>
+</div>
+
+<div style="background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #dcfce7; margin-bottom: 12px; position:relative;">
+<div style="position:absolute; top:-10px; left:20px; background:#4caf50; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">02</div>
+<b style="font-size:1.1em; color:#1b5e20; font-family:'Montserrat', sans-serif; display:block; margin-bottom:8px;">Trực khuẩn ruột KHÔNG lên men Lactose (Proteus, Serratia...)</b>
+<span style="color:#10b981; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Hình thể]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Gram (-), MacConkey không màu. Proteus sinh H2S, Urease (+).</span><br>
+<span style="color:#10b981; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Proteus gây sỏi tiết niệu (kiềm hóa nước tiểu). Serratia gây nhiễm khuẩn cơ hội.</span>
+</div>
+
+<div style="background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #ffedd5; margin-bottom: 12px; position:relative;">
+<div style="position:absolute; top:-10px; left:20px; background:#ff9800; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">03</div>
+<b style="font-size:1.1em; color:#e65100; font-family:'Montserrat', sans-serif; display:block; margin-bottom:8px;">Trực khuẩn Gây bệnh chuyên biệt (Salmonella, Shigella)</b>
+<span style="color:#f59e0b; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Hình thể]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Gram (-). Salmonella sinh H2S (tâm đen), Shigella không.</span><br>
+<span style="color:#f59e0b; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Gây thương hàn, lỵ trực khuẩn, nhiễm độc thức ăn.</span>
+</div>
+
+<div style="background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #ccfbf1; margin-bottom: 12px; position:relative;">
+<div style="position:absolute; top:-10px; left:20px; background:#009688; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">04</div>
+<b style="font-size:1.1em; color:#004d40; font-family:'Montserrat', sans-serif; display:block; margin-bottom:8px;">Nhóm Pseudomonas (Trực khuẩn mủ xanh)</b>
+<span style="color:#0d9488; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Hình thể]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Gram (-), hiếu khí, tiết Pyocyanin (xanh mủ đặc trưng).</span><br>
+<span style="color:#0d9488; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Nhiễm khuẩn vết bỏng, viêm phổi thở máy, đề kháng rất cao.</span>
+</div>
+
+<div style="background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #ddd6fe; margin-bottom: 12px; position:relative;">
+<div style="position:absolute; top:-10px; left:20px; background:#673ab7; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">05</div>
+<b style="font-size:1.1em; color:#311b92; font-family:'Montserrat', sans-serif; display:block; margin-bottom:8px;">Nhóm Acinetobacter & Burkholderia</b>
+<span style="color:#8b5cf6; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Hình thể]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Cầu trực khuẩn Gram (-). A.baumannii (MDR) rất nguy hiểm.</span><br>
+<span style="color:#8b5cf6; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Viêm phổi bệnh viện, Whitmore (do B.pseudomallei).</span>
+</div>
+
+<div style="background: linear-gradient(135deg, #fff1f2 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #fecdd3; margin-bottom: 0; position:relative;">
+<div style="position:absolute; top:-10px; left:20px; background:#e11d48; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">06</div>
+<b style="font-size:1.1em; color:#881337; font-family:'Montserrat', sans-serif; display:block; margin-bottom:8px;">Cầu khuẩn Gram Âm (Neisseria & Moraxella)</b>
+<span style="color:#e11d48; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Hình thể]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Song cầu hình hạt cà phê. N.gonorrhoeae: lậu cầu.</span><br>
+<span style="color:#e11d48; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Bệnh lậu, viêm màng não do não mô cầu (cấp cứu).</span>
+</div>
+
+</div>
+</details>
+
+<details style="margin-top:15px; background:white; border-radius:24px; border:3px solid #fff1f0; overflow:hidden; box-shadow:0 10px 30px rgba(244,67,54,0.1);">
+<summary style="padding:20px; font-weight:900; color:#c62828; cursor:pointer; font-size:1.2em; outline:none; font-family:'Montserrat', sans-serif; display:flex; align-items:center; background:#fff1f0; transition:all 0.3s hover:background:#ffcdd2;">
+  <span style="margin-right:12px; font-size:1.4em;">🔴</span> VI KHUẨN GRAM DƯƠNG (Tụ cầu, Liên cầu, Trực khuẩn)
+</summary>
+<div style="padding:20px; font-size:0.95em; line-height:1.6; color:#2c3e50; border-top:2px border #fff1f0;">
+
+<div style="background: linear-gradient(135deg, #fff1f2 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #fecdd3; margin-bottom: 12px; position:relative;">
+<div style="position:absolute; top:-10px; left:20px; background:#d32f2f; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">01</div>
+<b style="font-size:1.1em; color:#b71c1c; font-family:'Montserrat', sans-serif; display:block; margin-bottom:8px;">Tụ cầu (Staphylococcus aureus, CoNS)</b>
+<span style="color:#f43f5e; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Hình thể]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Cầu khuẩn xếp đám (chùm nho). Coagulase (+): Tụ cầu vàng.</span><br>
+<span style="color:#f43f5e; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Mụn nhọt, áp xe, cốt tủy viêm, nhiễm trùng thiết bị y tế (biofilm).</span>
+</div>
+
+<div style="background: linear-gradient(135deg, #fdf4ff 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #f5d0fe; margin-bottom: 12px; position:relative;">
+<div style="position:absolute; top:-10px; left:20px; background:#9c27b0; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">02</div>
+<b style="font-size:1.1em; color:#4a148c; font-family:'Montserrat', sans-serif; display:block; margin-bottom:8px;">Liên cầu & Tràng cầu (Strepto, Enterococcus)</b>
+<span style="color:#a855f7; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Hình thể]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Cầu khuẩn xếp chuỗi. Tan huyết Beta: Nhóm A (pyogenes), B (agalactiae).</span><br>
+<span style="color:#a855f7; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Viêm họng, sốt thấp khớp, viêm màng não sơ sinh (nhóm B).</span>
+</div>
+
+<div style="background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #dcfce7; margin-bottom: 0; position:relative;">
+<div style="position:absolute; top:-10px; left:20px; background:#16a34a; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">03</div>
+<b style="font-size:1.1em; color:#14532d; font-family:'Montserrat', sans-serif; display:block; margin-bottom:8px;">Trực khuẩn Gram Dương (Bacillus, Clostridium...)</b>
+<span style="color:#22c55e; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Hình thể]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Gram (+), sinh nha bào. Clostridium: yếm khí tuyệt đối.</span><br>
+<span style="color:#22c55e; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Bạch hầu, uốn ván, than, viêm đại tràng giả mạc.</span>
+</div>
+
+</div>
+</details>`,
+      decrease: "• VI KHUẨN KHÔNG MỌC: Không phát hiện vi khuẩn mọc sau thời gian ủ bệnh tiêu chuẩn. (Lưu ý: Có thể do lấy mẫu sai quy trình, bệnh nhân đang dùng kháng sinh, hoặc tác nhân là loại khó mọc/kỵ khí/virus cần phương pháp Sinh học phân tử)."
+    }
+  },
+  {
+    name: "Vi khuẩn kháng thuốc hệ thống tự động (Kháng sinh đồ MIC)", 
+    group: "Vi sinh", 
+    time: "3 - 5 ngày", 
+    ref: "Không áp dụng", 
+    alert: "Vũ khí tối thượng giúp giảm thiểu đề kháng kháng sinh (AMR).",
+    concept: "Thử nghiệm Kháng sinh đồ (AST) tự động hoặc MIC để xác định Nồng độ ức chế tối thiểu, qua đó đánh giá mức độ Nhạy cảm (S), Trung gian (I) hoặc Đề kháng (R) của vi khuẩn theo chuẩn CLSI/EUCAST.",
+    indication: "Cung cấp bằng chứng cho bác sĩ lâm sàng lựa chọn kháng sinh đúng loại, đúng liều lượng, giúp điều trị thành công và hạn chế kháng thuốc.",
+    pathologicalMeaning: {
+      increase: `• DƯƠNG TÍNH: Có vi khuẩn. Chi tiết biện luận Kháng sinh đồ từ dữ liệu mới nhất:
+
 <details style="margin-top:12px; background:#f8fbfe; padding:12px; border-radius:8px; border:1px solid #90caf9;">
-    <summary style="font-weight:900; color:#0d47a1; cursor:pointer; font-size:1.3em; outline:none; font-family:'Inter', sans-serif; letter-spacing: -0.5px; display:flex; align-items:center;">🔵 VI KHUẨN GRAM ÂM (Nguyên bản tài liệu)</summary>
-    <div style="margin-top:10px; font-size:0.95em; line-height:1.6; color:#2c3e50;">
-        <div style="background: linear-gradient(90deg, #e3f2fd 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #2196f3; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#1976d2; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(33,150,243,0.5); text-transform:uppercase; margin-right:10px;">1.</span>
-            <b style="font-size:1.15em; color:#0d47a1; font-family:'Montserrat', sans-serif;">Trực khuẩn ruột lên men Lactose (E. coli, Klebsiella spp., Enterobacter, Citrobacter)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Hình thể & Nuôi cấy]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Trực khuẩn Gram (-), yếm khí tùy ý. Mọc trên thạch MacConkey. Lên men Lactose,. E. coli: Indole (+). Klebsiella: có nang nhầy, Indole (-), không di động.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Cư trú & Gây bệnh]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Hệ vi khuẩn ruột. Gây nhiễm khuẩn tiết niệu (UTI), viêm phổi, nhiễm khuẩn huyết, nhiễm trùng bệnh viện.</span>
-        </div>
+<summary style="font-weight:900; color:#0d47a1; cursor:pointer; font-size:1.3em; outline:none; font-family:'Inter', sans-serif; letter-spacing: -0.5px; display:flex; align-items:center;">🔵 VI KHUẨN GRAM ÂM (Chỉ định Kháng sinh & Cảnh báo kháng thuốc)</summary>
+<div style="margin-top:10px; font-size:0.95em; line-height:1.6; color:#2c3e50;">
 
-        <div style="background: linear-gradient(90deg, #f1f8e9 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #4caf50; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#388e3c; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(76,175,80,0.5); text-transform:uppercase; margin-right:10px;">2.</span>
-            <b style="font-size:1.15em; color:#1b5e20; font-family:'Montserrat', sans-serif;">Trực khuẩn ruột KHÔNG lên men Lactose (Proteus spp., Morganella, Providencia, Serratia)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Hình thể & Nuôi cấy]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Trực khuẩn Gram (-). Không lên men Lactose. Proteus: di động tràn lan (swarming), Urease (+); P. mirabilis Indole (-), P. vulgaris Indole (+),. Serratia: sinh sắc tố đỏ.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Cư trú & Gây bệnh]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Vi khuẩn ruột. Proteus gây nhiễm trùng tiểu, sỏi tiết niệu. Serratia, Morganella gây nhiễm khuẩn cơ hội.</span>
-        </div>
+<div style="background: linear-gradient(90deg, #e3f2fd 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #2196f3; margin-bottom: 8px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#1976d2; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(33,150,243,0.5); text-transform:uppercase; margin-right:10px;">1.</span>
+<b style="font-size:1.15em; color:#0d47a1; font-family:'Montserrat', sans-serif;">Trực khuẩn ruột lên men Lactose (E. coli, Klebsiella spp., Enterobacter, Citrobacter)</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Ampicillin, Cefotaxime, Ceftazidime, Ciprofloxacin, Ertapenem, Imipenem, Meropenem, Pip/Tazo, TMP/SMX.</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ Tỷ lệ tiết men Beta-lactamase phổ rộng (ESBL) tại VN rất cao. Nếu sinh ESBL, các thuốc Penicillin và Cephalosporin đều mất hiệu lực. Cần theo dõi sát các chủng kháng nhóm Carbapenem (CRE). Klebsiella kháng tự nhiên với Ampicillin.</span>
+</div>
 
-        <div style="background: linear-gradient(90deg, #fff3e0 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #ff9800; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#f57c00; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(255,152,0,0.5); text-transform:uppercase; margin-right:10px;">3.</span>
-            <b style="font-size:1.15em; color:#e65100; font-family:'Montserrat', sans-serif;">Trực khuẩn ruột Gây bệnh chuyên biệt (Salmonella, Shigella)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Hình thể & Nuôi cấy]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Trực khuẩn Gram (-). Lên men Glucose, không lên men Lactose. Salmonella: sinh H2S (tâm đen trên thạch), di động,. Shigella: Không sinh H2S, KHÔNG di động.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Cư trú & Gây bệnh]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Ký sinh ở người/động vật. Salmonella gây thương hàn, tiêu chảy. Shigella gây lỵ trực khuẩn.</span>
-        </div>
+<div style="background: linear-gradient(90deg, #f1f8e9 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #4caf50; margin-bottom: 8px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#388e3c; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(76,175,80,0.5); text-transform:uppercase; margin-right:10px;">2.</span>
+<b style="font-size:1.15em; color:#1b5e20; font-family:'Montserrat', sans-serif;">Trực khuẩn ruột KHÔNG lên men Lactose (Proteus spp., Morganella, Providencia, Serratia)</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Tương tự nhóm trên: Cefotaxime, Ciprofloxacin, Ertapenem, Meropenem, Aminoglycoside.</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ P. vulgaris kháng tự nhiên với Ampicillin, Cefuroxime. Serratia kháng tự nhiên với Ampicillin, Macrolide, và Cephalosporin thế hệ 1, 2.</span>
+</div>
 
-        <div style="background: linear-gradient(90deg, #e0f2f1 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #009688; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#00796b; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(0,150,136,0.5); text-transform:uppercase; margin-right:10px;">4.</span>
-            <b style="font-size:1.15em; color:#004d40; font-family:'Montserrat', sans-serif;">Nhóm Pseudomonas (P. aeruginosa, P. fluorescens, P. putida)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Hình thể & Nuôi cấy]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Trực khuẩn Gram (-) thẳng hoặc cong. Hiếu khí tuyệt đối, Oxidase (+). P. aeruginosa: sinh sắc tố xanh (Pyocyanin), có mùi trái cây (nho),,.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Cư trú & Gây bệnh]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Đất, nước, môi trường bệnh viện. Gây viêm phổi thở máy, nhiễm trùng bỏng, nhiễm khuẩn huyết ở người suy giảm miễn dịch,.</span>
-        </div>
+<div style="background: linear-gradient(90deg, #fff3e0 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #ff9800; margin-bottom: 8px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#f57c00; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(255,152,0,0.5); text-transform:uppercase; margin-right:10px;">3.</span>
+<b style="font-size:1.15em; color:#e65100; font-family:'Montserrat', sans-serif;">Trực khuẩn ruột Gây bệnh chuyên biệt (Salmonella, Shigella)</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Cefotaxime, Ceftriaxone, Ciprofloxacin, Meropenem, TMP/SMX.</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ Nhóm Aminoglycoside (như Gentamicin) có thể cho kết quả "Nhạy cảm" (S) in vitro trên máy nhưng KHÔNG có tác dụng in vivo. Tuyệt đối không dùng lâm sàng.</span>
+</div>
 
-        <div style="background: linear-gradient(90deg, #ede7f6 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #673ab7; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#512da8; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(103,58,183,0.5); text-transform:uppercase; margin-right:10px;">5.</span>
-            <b style="font-size:1.15em; color:#311b92; font-family:'Montserrat', sans-serif;">Nhóm Acinetobacter (A. baumannii, A. lwoffii, A. calcoaceticus)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Hình thể & Nuôi cấy]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Cầu trực khuẩn Gram (-) ngắn. Hiếu khí tuyệt đối, Oxidase (-). KHÔNG di động,.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Cư trú & Gây bệnh]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Bề mặt bệnh viện, da người bệnh. Tác nhân hàng đầu gây nhiễm khuẩn bệnh viện đa kháng (viêm phổi, nhiễm khuẩn huyết).</span>
-        </div>
+<div style="background: linear-gradient(90deg, #e0f2f1 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #009688; margin-bottom: 8px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#00796b; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(0,150,136,0.5); text-transform:uppercase; margin-right:10px;">4.</span>
+<b style="font-size:1.15em; color:#004d40; font-family:'Montserrat', sans-serif;">Nhóm Pseudomonas (P. aeruginosa - Trực khuẩn mủ xanh)</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Ceftazidime, Cefepime, Ciprofloxacin, Gentamicin, Imipenem, Meropenem, Pip/Tazo, Colistin.</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ Đa kháng thuốc tự nhiên rất cao. KHÔNG dùng Ertapenem, Ampicillin, Cefotaxime, Tigecycline vì vi khuẩn này có gen kháng bẩm sinh.</span>
+</div>
 
-        <div style="background: linear-gradient(90deg, #fbe9e7 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #ff5722; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#e64a19; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(255,87,34,0.5); text-transform:uppercase; margin-right:10px;">6.</span>
-            <b style="font-size:1.15em; color:#bf360c; font-family:'Montserrat', sans-serif;">Burkholderia & Stenotrophomonas (B. pseudomallei, B. cepacia, S. maltophilia)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Hình thể & Nuôi cấy]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Trực khuẩn Gram (-). Burkholderia: Oxidase (+). Stenotrophomonas: Oxidase (-).</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Cư trú & Gây bệnh]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Đất, nước. B. pseudomallei gây bệnh Whitmore. B. cepacia gây viêm phổi xơ nang. S. maltophilia gây viêm phổi BV.</span>
-        </div>
+<div style="background: linear-gradient(90deg, #ede7f6 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #673ab7; margin-bottom: 8px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#512da8; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(103,58,183,0.5); text-transform:uppercase; margin-right:10px;">5.</span>
+<b style="font-size:1.15em; color:#311b92; font-family:'Montserrat', sans-serif;">Nhóm Acinetobacter (A. baumannii, A. lwoffii)</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Cefotaxime, Ciprofloxacin, Imipenem, Meropenem, Pip/Tazo, Colistin.</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ Đa kháng thuốc (MDR) cực kỳ nghiêm trọng, thách thức lớn cho hồi sức tích cực. Không có chỉ định thử nghiệm Ertapenem.</span>
+</div>
 
-        <div style="background: linear-gradient(90deg, #fffde7 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #fbc02d; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#f9a825; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(251,192,45,0.5); text-transform:uppercase; margin-right:10px;">7.</span>
-            <b style="font-size:1.15em; color:#f57f17; font-family:'Montserrat', sans-serif;">Phẩy khuẩn & Ưa ẩm (Vibrio cholerae, Aeromonas, Campylobacter)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Hình thể & Nuôi cấy]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Trực khuẩn Gram (-) hình dấu phẩy/chữ S, di động rất mạnh. Oxidase (+). Vibrio ưa kiềm (mọc trên thạch TCBS),.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Cư trú & Gây bệnh]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Nước mặn/ngọt, hải sản. Gây bệnh Tả (V. cholerae), nhiễm trùng vết thương (V. vulnificus), tiêu chảy (Aeromonas, Campylobacter),.</span>
-        </div>
+<div style="background: linear-gradient(90deg, #fbe9e7 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #ff5722; margin-bottom: 8px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#e64a19; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(255,87,34,0.5); text-transform:uppercase; margin-right:10px;">6.</span>
+<b style="font-size:1.15em; color:#bf360c; font-family:'Montserrat', sans-serif;">Burkholderia & Stenotrophomonas</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Ceftazidime, TMP/SMX (Bactrim), Levofloxacin.</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ S. maltophilia kháng tự nhiên với nhóm Carbapenem. B. cepacia kháng tự nhiên với Aminoglycoside.</span>
+</div>
 
-        <div style="background: linear-gradient(90deg, #e8f5e9 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #43a047; margin-bottom: 0px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#2e7d32; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(67,160,71,0.5); text-transform:uppercase; margin-right:10px;">8.</span>
-            <b style="font-size:1.15em; color:#1b5e20; font-family:'Montserrat', sans-serif;">Neisseria & Moraxella (Cầu khuẩn Gram Âm)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Hình thể & Nuôi cấy]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Song cầu Gram (-) hình hạt cà phê. Vi hiếu khí, mọc trên thạch Thayer-Martin/Sô-cô-la có CO2.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Cư trú & Gây bệnh]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Mũi họng, sinh dục người. Gây bệnh Lậu, Viêm màng não.</span>
-        </div>
-    </div>
+<div style="background: linear-gradient(90deg, #fffde7 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #fbc02d; margin-bottom: 8px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#f9a825; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(251,192,45,0.5); text-transform:uppercase; margin-right:10px;">7.</span>
+<b style="font-size:1.15em; color:#f57f17; font-family:'Montserrat', sans-serif;">Phẩy khuẩn & Ưa ẩm (Vibrio cholerae, Aeromonas, Campylobacter)</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Ciprofloxacin, Meropenem, Tetracycline, Macrolide (tuỳ loài).</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ Tiêu chảy do Campylobacter ưu tiên dùng Macrolide. Aeromonas thường kháng tự nhiên Ampicillin.</span>
+</div>
+
+<div style="background: linear-gradient(90deg, #e8f5e9 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #43a047; margin-bottom: 0px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#2e7d32; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(67,160,71,0.5); text-transform:uppercase; margin-right:10px;">8.</span>
+<b style="font-size:1.15em; color:#1b5e20; font-family:'Montserrat', sans-serif;">Neisseria & Moraxella (Cầu khuẩn Gram Âm)</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Thường không dùng thẻ tự động chuẩn, ưu tiên xác định MIC bằng dải giấy (E-test). Thuốc: Ceftriaxone, Ciprofloxacin.</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ Lậu cầu (N. gonorrhoeae) đề kháng cao với Penicillin và Tetracycline do thay đổi protein gắn Penicillin (PBP) và đột biến gen kháng thuốc.</span>
+</div>
+</div>
 </details>
 
 <details style="margin-top:12px; background:#fff1f0; padding:12px; border-radius:8px; border:1px solid #ffcdd2;">
-    <summary style="font-weight:900; color:#c62828; cursor:pointer; font-size:1.3em; outline:none; font-family:'Inter', sans-serif; letter-spacing: -0.5px; display:flex; align-items:center;">🔴 VI KHUẨN GRAM DƯƠNG (Nguyên bản tài liệu)</summary>
-    <div style="margin-top:10px; font-size:0.95em; line-height:1.6; color:#2c3e50;">
-        <div style="background: linear-gradient(90deg, #ffebee 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #f44336; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#d32f2f; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(244,67,54,0.5); text-transform:uppercase; margin-right:10px;">1.</span>
-            <b style="font-size:1.15em; color:#b71c1c; font-family:'Montserrat', sans-serif;">Tụ cầu vàng (Staphylococcus aureus)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Dạng & Nuôi cấy]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Cầu khuẩn Gram (+), xếp đám chùm nho. Catalase (+), Coagulase (+). Mọc thạch máu sinh sắc tố vàng, tan huyết Beta.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Cư trú & Gây bệnh]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Da, mũi họng. Tác nhân gây mụn nhọt, áp xe, viêm phổi, nhiễm khuẩn huyết, sốc nhiễm độc.</span>
-        </div>
+<summary style="font-weight:900; color:#c62828; cursor:pointer; font-size:1.3em; outline:none; font-family:'Inter', sans-serif; letter-spacing: -0.5px; display:flex; align-items:center;">🔴 VI KHUẨN GRAM DƯƠNG (Chỉ định Kháng sinh & Cảnh báo kháng thuốc)</summary>
+<div style="margin-top:10px; font-size:0.95em; line-height:1.6; color:#2c3e50;">
 
-        <div style="background: linear-gradient(90deg, #f3e5f5 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #9c27b0; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#7b1fa2; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(156,39,176,0.5); text-transform:uppercase; margin-right:10px;">2.</span>
-            <b style="font-size:1.15em; color:#4a148c; font-family:'Montserrat', sans-serif;">Nhóm Tụ cầu Coagulase âm tính (CoNS)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Dạng & Nuôi cấy]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Cầu khuẩn Gram (+), xếp đám. Catalase (+), Coagulase (-).</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Cư trú & Gây bệnh]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Da. S. epidermidis tiết màng biofilm gây nhiễm trùng thiết bị cấy ghép. S. saprophyticus gây UTI phụ nữ.</span>
-        </div>
+<div style="background: linear-gradient(90deg, #ffebee 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #f44336; margin-bottom: 8px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#d32f2f; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(244,67,54,0.5); text-transform:uppercase; margin-right:10px;">1.</span>
+<b style="font-size:1.15em; color:#b71c1c; font-family:'Montserrat', sans-serif;">Tụ cầu vàng (Staphylococcus aureus)</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Penicillin, Oxacillin, Ciprofloxacin, Clindamycin, Linezolid, Vancomycin, TMP/SMX.</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ Chủng MRSA (Tụ cầu vàng kháng Methicillin) cực kì nguy hiểm do đột biến gen mecA (sinh PBP2a). Kháng lại toàn bộ họ Beta-lactam. Cứu cánh là Vancomycin, Linezolid hoặc Daptomycin. Hiện đã xuất hiện báo cáo VRSA (kháng cả Vancomycin).</span>
+</div>
 
-        <div style="background: linear-gradient(90deg, #e1f5fe 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #03a9f4; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#0288d1; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(3,169,244,0.5); text-transform:uppercase; margin-right:10px;">3.</span>
-            <b style="font-size:1.15em; color:#01579b; font-family:'Montserrat', sans-serif;">Tràng cầu khuẩn (Enterococcus spp.)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Dạng & Nuôi cấy]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Gram (+) xếp đôi/chuỗi ngắn. Catalase (-). Sống được trong mật 40% và NaCl 6.5%.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Cư trú & Gây bệnh]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Ruột. Tác nhân gây nhiễm trùng vết mổ, ống thông tiểu, viêm nội tâm mạc.</span>
-        </div>
+<div style="background: linear-gradient(90deg, #f3e5f5 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #9c27b0; margin-bottom: 8px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#7b1fa2; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(156,39,176,0.5); text-transform:uppercase; margin-right:10px;">2.</span>
+<b style="font-size:1.15em; color:#4a148c; font-family:'Montserrat', sans-serif;">Nhóm Tụ cầu Coagulase âm tính (CoNS)</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Tương tự S. aureus: Ciprofloxacin, Clindamycin, Linezolid, Oxacillin, Vancomycin.</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ Lớp màng sinh học (biofilm) làm giảm nghiêm trọng khả năng khuếch tán của kháng sinh in vivo. Phổ biến tình trạng kháng Methicillin (MRSE).</span>
+</div>
 
-        <div style="background: linear-gradient(90deg, #f1f8e9 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #8bc34a; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#689f38; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(139,195,74,0.5); text-transform:uppercase; margin-right:10px;">4.</span>
-            <b style="font-size:1.15em; color:#33691e; font-family:'Montserrat', sans-serif;">Liên cầu tan huyết Beta (Strep Nhóm A & B)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Dạng & Nuôi cấy]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Gram (+) xếp chuỗi dài. Catalase (-). Tan huyết Beta (vòng sáng).</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Cư trú & Gây bệnh]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Họng, da, âm đạo. Gây viêm họng, sốt thấp khớp, viêm màng não trẻ sơ sinh.</span>
-        </div>
+<div style="background: linear-gradient(90deg, #e1f5fe 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #03a9f4; margin-bottom: 8px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#0288d1; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(3,169,244,0.5); text-transform:uppercase; margin-right:10px;">3.</span>
+<b style="font-size:1.15em; color:#01579b; font-family:'Montserrat', sans-serif;">Tràng cầu khuẩn (Enterococcus spp.)</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Ampicillin, Linezolid, Nitrofurantoin, Vancomycin. Thử nghiệm Gentamicin nồng độ cao (HLG).</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ Kháng tự nhiên với Cephalosporin. Chủng VRE (kháng Vancomycin do thay thế nhóm D-ala-D-ala thành D-ala-D-lac) đang gia tăng. Buộc phải đổi sang Linezolid, Daptomycin.</span>
+</div>
 
-        <div style="background: linear-gradient(90deg, #fffde7 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #fdd835; margin-bottom: 0px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#fbc02d; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(253,216,53,0.5); text-transform:uppercase; margin-right:10px;">5.</span>
-            <b style="font-size:1.15em; color:#f57f17; font-family:'Montserrat', sans-serif;">Phế cầu & Liên cầu Viridans</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Dạng & Nuôi cấy]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Gram (+) song cầu ngọn giáo hoặc chuỗi. Thường tan huyết Alpha (vòng xanh).</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Cư trú & Gây bệnh]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Hô hấp trên, kẽ răng. Gây viêm phổi cộng đồng, viêm nội tâm mạc, áp xe tạng sâu.</span>
-        </div>
-    </div>
+<div style="background: linear-gradient(90deg, #f1f8e9 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #8bc34a; margin-bottom: 8px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#689f38; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(139,195,74,0.5); text-transform:uppercase; margin-right:10px;">4.</span>
+<b style="font-size:1.15em; color:#33691e; font-family:'Montserrat', sans-serif;">Liên cầu khuẩn (Strep Nhóm A & B)</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Ampicillin, Penicillin, Vancomycin, Ceftriaxone.</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ Vẫn giữ được độ nhạy cảm tự nhiên rất tốt với Penicillin G. Cần cảnh giác với hiện tượng kháng Macrolide.</span>
+</div>
+
+<div style="background: linear-gradient(90deg, #fffde7 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #fdd835; margin-bottom: 8px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#fbc02d; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(253,216,53,0.5); text-transform:uppercase; margin-right:10px;">5.</span>
+<b style="font-size:1.15em; color:#f57f17; font-family:'Montserrat', sans-serif;">Phế cầu & Liên cầu Viridans (S. pneumoniae)</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Ceftriaxone, Erythromycin, Levofloxacin, Vancomycin, Penicillin (ưu tiên xác định MIC bằng E-test).</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ Đang gia tăng đề kháng với Penicillin (thay đổi PBP) và Macrolide (Erythromycin/Azithromycin). Bác sĩ phải dựa vào MIC cụ thể để điều chỉnh liều cao.</span>
+</div>
+
+<div style="background: linear-gradient(90deg, #e0f2f1 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #00897b; margin-bottom: 0px;">
+<span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#009688; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(0,150,136,0.5); text-transform:uppercase; margin-right:10px;">6.</span>
+<b style="font-size:1.15em; color:#00695c; font-family:'Montserrat', sans-serif;">Trực khuẩn Gram dương (Listeria, Bacillus, Clostridium)</b><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">💊 Ampicillin, Metronidazole, Vancomycin, Fidaxomicin, Ciprofloxacin.</span><br>
+<span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">⚠️ L. monocytogenes kháng tự nhiên với Cephalosporin, nên viêm màng não phải phối hợp Ampicillin. Viêm đại tràng do C. difficile chỉ được dùng Vancomycin (uống) hoặc Fidaxomicin, Metronidazole.</span>
+</div>
+</div>
 </details>`,
-                    decrease: "• VI KHUẨN KHÔNG MỌC: Không phát hiện vi khuẩn mọc sau thời gian ủ bệnh tiêu chuẩn."
-                }
-            },
-            {
-                name: "Vi khuẩn kháng thuốc hệ thống tự động", group: "Vi sinh", time: "3 - 5 ngày", ref: "Không áp dụng", alert: "",
-                concept: "Thử nghiệm Kháng sinh đồ (AST) để đánh giá mức độ Nhạy cảm (S), Trung gian (I) hoặc Đề kháng (R) của vi khuẩn.",
-                indication: "Giúp bác sĩ lâm sàng lựa chọn kháng sinh điều trị hiệu quả nhất.",
-                pathologicalMeaning: {
-                    increase: `• DƯƠNG TÍNH: Có vi khuẩn. Chi tiết Kháng sinh đồ từ tài liệu gốc:
-<details style="margin-top:12px; background:#f8fbfe; padding:12px; border-radius:8px; border:1px solid #90caf9;">
-    <summary style="font-weight:900; color:#0d47a1; cursor:pointer; font-size:1.3em; outline:none; font-family:'Inter', sans-serif; letter-spacing: -0.5px; display:flex; align-items:center;">🔵 VI KHUẨN GRAM ÂM (Kháng sinh & Lưu ý)</summary>
-    <div style="margin-top:10px; font-size:0.95em; line-height:1.6; color:#2c3e50;">
-        <div style="background: linear-gradient(90deg, #e3f2fd 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #2196f3; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#1976d2; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(33,150,243,0.5); text-transform:uppercase; margin-right:10px;">1.</span>
-            <b style="font-size:1.15em; color:#0d47a1; font-family:'Montserrat', sans-serif;">Trực khuẩn ruột lên men Lactose (E. coli, Klebsiella spp., Enterobacter, Citrobacter)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Ampicillin, Cefotaxime, Ceftazidime, Ciprofloxacin, Ertapenem, Imipenem, Meropenem, Pip/Tazo, TMP/SMX,.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý & Kháng thuốc]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">E. coli & Klebsiella có tỷ lệ sinh ESBL cao (cần thử nghiệm ESBL). Klebsiella kháng tự nhiên với Ampicillin.</span>
-        </div>
-
-        <div style="background: linear-gradient(90deg, #f1f8e9 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #4caf50; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#388e3c; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(76,175,80,0.5); text-transform:uppercase; margin-right:10px;">2.</span>
-            <b style="font-size:1.15em; color:#1b5e20; font-family:'Montserrat', sans-serif;">Trực khuẩn ruột KHÔNG lên men Lactose (Proteus spp., Morganella, Providencia, Serratia)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Tương tự nhóm trên (Cefotaxime, Ciprofloxacin, Ertapenem, Meropenem...).</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý & Kháng thuốc]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">P. vulgaris kháng tự nhiên Ampicillin, Cefuroxime. Serratia kháng tự nhiên Ampicillin, Macrolide, Cefuroxime.</span>
-        </div>
-
-        <div style="background: linear-gradient(90deg, #fff3e0 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #ff9800; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#f57c00; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(255,152,0,0.5); text-transform:uppercase; margin-right:10px;">3.</span>
-            <b style="font-size:1.15em; color:#e65100; font-family:'Montserrat', sans-serif;">Trực khuẩn ruột Gây bệnh chuyên biệt (Salmonella, Shigella)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Cefotaxime, Ceftriaxone, Ciprofloxacin, Meropenem, TMP/SMX.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý & Kháng thuốc]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Thường nhạy cảm nhưng đang gia tăng đề kháng. Aminoglycoside (Gentamicin) có tác dụng in vitro nhưng không hiệu quả in vivo.</span>
-        </div>
-
-        <div style="background: linear-gradient(90deg, #e0f2f1 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #009688; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#00796b; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(0,150,136,0.5); text-transform:uppercase; margin-right:10px;">4.</span>
-            <b style="font-size:1.15em; color:#004d40; font-family:'Montserrat', sans-serif;">Nhóm Pseudomonas (P. aeruginosa, P. fluorescens, P. putida)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Ceftazidime, Cefepime, Ciprofloxacin, Gentamicin, Imipenem, Meropenem, Pip/Tazo.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý & Kháng thuốc]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Đa kháng thuốc tự nhiên rất cao. KHÔNG dùng Ertapenem, Ampicillin, Cefotaxime, Tigecycline,.</span>
-        </div>
-
-        <div style="background: linear-gradient(90deg, #ede7f6 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #673ab7; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#512da8; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(103,58,183,0.5); text-transform:uppercase; margin-right:10px;">5.</span>
-            <b style="font-size:1.15em; color:#311b92; font-family:'Montserrat', sans-serif;">Nhóm Acinetobacter (A. baumannii, A. lwoffii, A. calcoaceticus)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Cefotaxime, Ciprofloxacin, Imipenem, Meropenem, Pip/Tazo.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý & Kháng thuốc]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Đa kháng thuốc (MDR) cực kỳ nghiêm trọng. Không có chỉ định thử nghiệm Ertapenem.</span>
-        </div>
-
-        <div style="background: linear-gradient(90deg, #fbe9e7 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #ff5722; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#e64a19; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(255,87,34,0.5); text-transform:uppercase; margin-right:10px;">6.</span>
-            <b style="font-size:1.15em; color:#bf360c; font-family:'Montserrat', sans-serif;">Burkholderia & Stenotrophomonas</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Ceftazidime, TMP/SMX (Bactrim), Levofloxacin. (Thuốc thử nghiệm tuỳ loài).</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý & Kháng thuốc]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">S. maltophilia kháng Carbapenem. B. cepacia kháng Aminoglycoside.</span>
-        </div>
-
-        <div style="background: linear-gradient(90deg, #fffde7 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #fbc02d; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#f9a825; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(251,192,45,0.5); text-transform:uppercase; margin-right:10px;">7.</span>
-            <b style="font-size:1.15em; color:#f57f17; font-family:'Montserrat', sans-serif;">Phẩy khuẩn & Ưa ẩm (Vibrio cholerae, Aeromonas, Campylobacter)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Ciprofloxacin, Meropenem, Tetracycline, Macrolide (tuỳ loài cụ thể).</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý & Kháng thuốc]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Campylobacter ưu tiên dùng Macrolide. Aeromonas thường kháng tự nhiên Ampicillin.</span>
-        </div>
-
-        <div style="background: linear-gradient(90deg, #e8f5e9 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #43a047; margin-bottom: 0px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#2e7d32; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(67,160,71,0.5); text-transform:uppercase; margin-right:10px;">8.</span>
-            <b style="font-size:1.15em; color:#1b5e20; font-family:'Montserrat', sans-serif;">Neisseria & Moraxella (Cầu khuẩn Gram Âm)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">KHÔNG dùng AST-N428. KS ưu tiên: Ceftriaxone, Ciprofloxacin. Đánh giá bằng E-test.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý & Kháng thuốc]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Lậu cầu đề kháng cao với Penicillin. Moraxella nhạy với Amoxicillin/Clavulanate.</span>
-        </div>
-    </div>
-</details>
-
-<details style="margin-top:12px; background:#fff1f0; padding:12px; border-radius:8px; border:1px solid #ffcdd2;">
-    <summary style="font-weight:900; color:#c62828; cursor:pointer; font-size:1.3em; outline:none; font-family:'Inter', sans-serif; letter-spacing: -0.5px; display:flex; align-items:center;">🔴 VI KHUẨN GRAM DƯƠNG (Kháng sinh & Lưu ý)</summary>
-    <div style="margin-top:10px; font-size:0.95em; line-height:1.6; color:#2c3e50;">
-        <div style="background: linear-gradient(90deg, #ffebee 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #f44336; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#d32f2f; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(244,67,54,0.5); text-transform:uppercase; margin-right:10px;">1.</span>
-            <b style="font-size:1.15em; color:#b71c1c; font-family:'Montserrat', sans-serif;">Tụ cầu vàng (Staphylococcus aureus)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Penicillin, Ciprofloxacin, Linezolid, Vancomycin, TMP/SMX.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Chủng MRSA rất nguy hiểm (tỷ lệ 78% tại VN), buộc dùng Vancomycin hoặc Linezolid.</span>
-        </div>
-
-        <div style="background: linear-gradient(90deg, #f3e5f5 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #9c27b0; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#7b1fa2; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(156,39,176,0.5); text-transform:uppercase; margin-right:10px;">2.</span>
-            <b style="font-size:1.15em; color:#4a148c; font-family:'Montserrat', sans-serif;">Nhóm Tụ cầu Coagulase âm tính (CoNS)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Tương tự S. aureus: Ciprofloxacin, Clindamycin, Linezolid, Oxacillin, Vancomycin.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Lớp màng biofilm làm giảm nghiêm trọng khả năng xâm nhập của kháng sinh.</span>
-        </div>
-
-        <div style="background: linear-gradient(90deg, #e1f5fe 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #03a9f4; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#0288d1; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(3,169,244,0.5); text-transform:uppercase; margin-right:10px;">3.</span>
-            <b style="font-size:1.15em; color:#01579b; font-family:'Montserrat', sans-serif;">Tràng cầu khuẩn (Enterococcus spp.)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Ampicillin, Linezolid, Nitrofurantoin, Vancomycin. Thử nghiệm High Level Gentamicin.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Chủng VRE kháng Vancomycin đang gia tăng (26.2% tại VN). Phải chuyển sang Linezolid.</span>
-        </div>
-
-        <div style="background: linear-gradient(90deg, #f1f8e9 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #8bc34a; margin-bottom: 8px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#689f38; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(139,195,74,0.5); text-transform:uppercase; margin-right:10px;">4.</span>
-            <b style="font-size:1.15em; color:#33691e; font-family:'Montserrat', sans-serif;">Liên cầu khuẩn (Strep Nhóm A & B)</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Ampicillin, Penicillin, Vancomycin. Thường nhạy cảm tự nhiên với Penicillin G.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Penicillin G vẫn là ưu tiên hàng đầu. Chú ý hiện tượng kháng Macrolide.</span>
-        </div>
-
-        <div style="background: linear-gradient(90deg, #fffde7 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #fdd835; margin-bottom: 0px;">
-            <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#fbc02d; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(253,216,53,0.5); text-transform:uppercase; margin-right:10px;">5.</span>
-            <b style="font-size:1.15em; color:#f57f17; font-family:'Montserrat', sans-serif;">Phế cầu & Liên cầu Viridans</b><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Kháng sinh chỉ định]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Ceftriaxone, Erythromycin, Levofloxacin, Vancomycin, Penicillin.</span><br>
-            <span style="color:#000; background:#ccff00; font-weight:900; font-family:'Courier New', Courier, monospace; font-size:1.1em; padding:1px 5px; border-radius:3px; box-shadow: 0 0 5px #ccff00;">[Lưu ý lâm sàng]:</span> <span style="font-family:'Plus Jakarta Sans', sans-serif; font-weight:600; font-size:1.05em; color:#2c3e50;">Đang gia tăng đề kháng với Macrolide. Nên tiêm ngừa vắc-xin Phế cầu.</span>
-        </div>
-    </div>
-</details>`,
-                    decrease: "• KHÔNG ÁP DỤNG."
-                }
-            
-    },
+      decrease: "• KHÔNG ÁP DỤNG."
+    }
+  },
 ];
 
 const testKnowledgeBase: Record<string, TestKnowledge> = {
@@ -4732,7 +4733,7 @@ export default function App() {
                                 </td>
                                 <td className="px-4 sm:px-6 py-4 sm:py-6 text-center">
                                   <div className="flex justify-center">
-                                    <span className={`text-xs sm:text-sm font-black px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-xl uppercase tracking-tight shadow-sm border inline-flex flex-col items-center justify-center text-center leading-[1.15] min-w-[100px] ${
+                                    <span className={`text-xs sm:text-sm font-black px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-xl uppercase tracking-tighter shadow-sm border inline-flex flex-col items-center justify-center text-center leading-[1] min-w-[110px] ${
                                       test.group.toLowerCase() === 'sinh hóa' ? 'bg-blue-100 text-blue-700 border-blue-200' :
                                       test.group.toLowerCase() === 'huyết học' ? 'bg-purple-100 text-purple-700 border-purple-200' :
                                       test.group.toLowerCase() === 'miễn dịch' ? 'bg-orange-100 text-orange-700 border-orange-200' :
@@ -4933,14 +4934,19 @@ export default function App() {
                               )}
 
                               {selectedTest.testingMethods && (
-                                <div className="p-6 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl border border-cyan-100 shadow-sm relative overflow-hidden">
-                                  <div className="absolute top-0 left-0 w-1.5 h-full bg-cyan-400" />
-                                  <h4 className="text-cyan-600 text-xs font-black uppercase tracking-[0.2em] mb-4">Phương pháp xét nghiệm</h4>
-                                  <div className="text-slate-700 text-sm sm:text-base leading-relaxed font-mono font-bold italic space-y-2">
+                                <div className="p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-[2.5rem] border-2 border-white shadow-xl relative overflow-hidden group mb-6">
+                                  <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:rotate-12 transition-transform duration-700">
+                                    <FlaskConical className="w-20 h-20 text-blue-600" />
+                                  </div>
+                                  <h4 className="text-blue-700 text-xs font-black uppercase tracking-widest mb-6 flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                    Phương pháp & Kỹ thuật xét nghiệm
+                                  </h4>
+                                  <div className="text-slate-800 text-base sm:text-lg leading-relaxed font-sans font-bold space-y-4 relative z-10">
                                     {selectedTest.testingMethods.split('\n').filter(line => line.trim()).map((line, i) => (
-                                      <div key={i} className="flex items-start gap-2">
-                                        <span className="text-cyan-500">•</span>
-                                        <span>{line}</span>
+                                      <div key={i} className="flex items-start gap-3">
+                                        <div className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0" />
+                                        <p dangerouslySetInnerHTML={{ __html: line }} />
                                       </div>
                                     ))}
                                   </div>
@@ -4989,33 +4995,52 @@ export default function App() {
                                         <TrendingUp className="w-6 h-6 text-red-600" />
                                       </div>
                                       <div>
-                                        <p className="font-black text-red-600 mb-2 text-xl uppercase tracking-tighter decoration-red-200 decoration-4 underline-offset-4 underline">Tăng nồng độ</p>
+                                        <p className="font-black text-red-600 mb-2 text-xl uppercase tracking-tighter decoration-red-200 decoration-4 underline-offset-4 underline">
+                                          {selectedTest.group === 'Vi sinh' ? 'DƯƠNG TÍNH / VI KHUẨN MỌC' : 'Tăng nồng độ'}
+                                        </p>
                                         <div 
                                           className="text-base sm:text-lg text-slate-800 leading-relaxed text-justify whitespace-pre-wrap font-sans font-medium space-y-3"
                                         >
-                                          <div className="space-y-2 mt-2">
-                                            {(() => {
-                                              let counter = 0;
-                                              const lines = selectedTest.pathologicalMeaning.increase.split('\n').filter(line => line.trim());
-                                              const parentCount = lines.filter(line => line.trim().startsWith('🔹')).length;
-                                              return lines.map((line, i) => {
-                                                const isParent = line.trim().startsWith('🔹');
-                                                if (isParent) counter++;
-                                                return (
-                                                  <div key={i} className={`flex items-start gap-4 ${isParent ? 'p-4 bg-red-50/50 dark:bg-red-900/10 rounded-2xl border border-red-100/50 dark:border-red-800/10 hover:bg-red-100/50' : 'pr-4 py-1'} transition-colors group/item`}>
-                                                    <div className="flex-shrink-0 w-8 flex justify-center">
-                                                      {isParent && parentCount > 1 ? (
-                                                        <span className="w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center text-xs font-black shadow-lg shadow-red-200 group-hover/item:scale-110 transition-transform">
-                                                          {counter}
-                                                        </span>
-                                                      ) : null}
+                                          {selectedTest.pathologicalMeaning.increase.includes('<details') ? (
+                                            <div 
+                                              dangerouslySetInnerHTML={{ __html: selectedTest.pathologicalMeaning.increase }} 
+                                              className="mt-2"
+                                            />
+                                          ) : (
+                                            <div className="space-y-2 mt-2">
+                                              {(() => {
+                                                let counter = 0;
+                                                const lines = selectedTest.pathologicalMeaning.increase.split('\n').filter(line => line.trim());
+                                                const parentCount = lines.filter(line => line.trim().startsWith('🔹')).length;
+                                                return lines.map((line, i) => {
+                                                  const trimmedLine = line.trim();
+                                                  const isParent = trimmedLine.startsWith('🔹');
+                                                  const isChild = trimmedLine.startsWith('🔴');
+                                                  const isGrandChild = trimmedLine.startsWith('▫️');
+                                                  
+                                                  if (isParent) counter++;
+                                                  
+                                                  let containerClass = 'pr-4 py-1';
+                                                  if (isParent) containerClass = 'p-4 bg-red-50/50 dark:bg-red-900/10 rounded-2xl border border-red-100/50 dark:border-red-800/10 hover:bg-red-100/50';
+                                                  if (isChild) containerClass = 'pl-10 pr-4 py-1.5 opacity-90';
+                                                  if (isGrandChild) containerClass = 'pl-16 pr-4 py-1 opacity-80 text-sm italic';
+
+                                                  return (
+                                                    <div key={i} className={`flex items-start gap-4 ${containerClass} transition-colors group/item`}>
+                                                      <div className="flex-shrink-0 w-8 flex justify-center">
+                                                        {isParent && parentCount > 1 ? (
+                                                          <span className="w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center text-xs font-black shadow-lg shadow-red-200 group-hover/item:scale-110 transition-transform">
+                                                            {counter}
+                                                          </span>
+                                                        ) : null}
+                                                      </div>
+                                                      <div dangerouslySetInnerHTML={{ __html: line.replace(/^\d+\.\s*/, '') }} className={`flex-1 text-slate-700 dark:text-slate-300 leading-relaxed ${isParent ? 'font-bold italic' : 'font-medium'}`} />
                                                     </div>
-                                                    <div dangerouslySetInnerHTML={{ __html: line.replace(/^\d+\.\s*/, '') }} className={`flex-1 text-slate-700 dark:text-slate-300 leading-relaxed ${isParent ? 'font-bold italic' : 'font-medium'}`} />
-                                                  </div>
-                                                );
-                                              });
-                                            })()}
-                                          </div>
+                                                  );
+                                                });
+                                              })()}
+                                            </div>
+                                          )}
                                         </div>
                                       </div>
                                     </div>
@@ -5024,33 +5049,52 @@ export default function App() {
                                         <TrendingDown className="w-6 h-6 text-blue-600" />
                                       </div>
                                       <div className="flex-1">
-                                        <p className="font-black text-blue-600 mb-2 text-xl uppercase tracking-tighter decoration-blue-200 decoration-4 underline-offset-4 underline">Giảm nồng độ</p>
+                                        <p className="font-black text-blue-600 mb-2 text-xl uppercase tracking-tighter decoration-blue-200 decoration-4 underline-offset-4 underline">
+                                          {selectedTest.group === 'Vi sinh' ? 'ÂM TÍNH / VI KHUẨN KHÔNG MỌC' : 'Giảm nồng độ'}
+                                        </p>
                                         <div 
                                           className="text-base sm:text-lg text-slate-800 leading-relaxed text-justify whitespace-pre-wrap font-sans font-medium space-y-3"
                                         >
-                                          <div className="space-y-2 mt-2">
-                                            {(() => {
-                                              let counter = 0;
-                                              const lines = selectedTest.pathologicalMeaning.decrease.split('\n').filter(line => line.trim());
-                                              const parentCount = lines.filter(line => line.trim().startsWith('🔹')).length;
-                                              return lines.map((line, i) => {
-                                                const isParent = line.trim().startsWith('🔹');
-                                                if (isParent) counter++;
-                                                return (
-                                                  <div key={i} className={`flex items-start gap-4 ${isParent ? 'p-4 bg-blue-50/50 dark:bg-blue-900/10 rounded-2xl border border-blue-100/50 dark:border-blue-800/10 hover:bg-blue-100/50' : 'pr-4 py-1'} transition-colors group/item`}>
-                                                    <div className="flex-shrink-0 w-8 flex justify-center">
-                                                      {isParent && parentCount > 1 ? (
-                                                        <span className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center text-xs font-black shadow-lg shadow-blue-200 group-hover/item:scale-110 transition-transform">
-                                                          {counter}
-                                                        </span>
-                                                      ) : null}
+                                          {selectedTest.pathologicalMeaning.decrease.includes('<details') ? (
+                                            <div 
+                                              dangerouslySetInnerHTML={{ __html: selectedTest.pathologicalMeaning.decrease }} 
+                                              className="mt-2"
+                                            />
+                                          ) : (
+                                            <div className="space-y-2 mt-2">
+                                              {(() => {
+                                                let counter = 0;
+                                                const lines = selectedTest.pathologicalMeaning.decrease.split('\n').filter(line => line.trim());
+                                                const parentCount = lines.filter(line => line.trim().startsWith('🔹')).length;
+                                                return lines.map((line, i) => {
+                                                  const trimmedLine = line.trim();
+                                                  const isParent = trimmedLine.startsWith('🔹');
+                                                  const isChild = trimmedLine.startsWith('🔴');
+                                                  const isGrandChild = trimmedLine.startsWith('▫️');
+
+                                                  if (isParent) counter++;
+                                                  
+                                                  let containerClass = 'pr-4 py-1';
+                                                  if (isParent) containerClass = 'p-4 bg-blue-50/50 dark:bg-blue-900/10 rounded-2xl border border-blue-100/50 dark:border-blue-800/10 hover:bg-blue-100/50';
+                                                  if (isChild) containerClass = 'pl-10 pr-4 py-1.5 opacity-90';
+                                                  if (isGrandChild) containerClass = 'pl-16 pr-4 py-1 opacity-80 text-sm italic';
+
+                                                  return (
+                                                    <div key={i} className={`flex items-start gap-4 ${containerClass} transition-colors group/item`}>
+                                                      <div className="flex-shrink-0 w-8 flex justify-center">
+                                                        {isParent && parentCount > 1 ? (
+                                                          <span className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center text-xs font-black shadow-lg shadow-blue-200 group-hover/item:scale-110 transition-transform">
+                                                            {counter}
+                                                          </span>
+                                                        ) : null}
+                                                      </div>
+                                                      <div dangerouslySetInnerHTML={{ __html: line.replace(/^\d+\.\s*/, '') }} className={`flex-1 text-slate-700 dark:text-slate-300 leading-relaxed ${isParent ? 'font-bold italic' : 'font-medium'}`} />
                                                     </div>
-                                                    <div dangerouslySetInnerHTML={{ __html: line.replace(/^\d+\.\s*/, '') }} className={`flex-1 text-slate-700 dark:text-slate-300 leading-relaxed ${isParent ? 'font-bold italic' : 'font-medium'}`} />
-                                                  </div>
-                                                );
-                                              });
-                                            })()}
-                                          </div>
+                                                  );
+                                                });
+                                              })()}
+                                            </div>
+                                          )}
                                         </div>
                                       </div>
                                     </div>
