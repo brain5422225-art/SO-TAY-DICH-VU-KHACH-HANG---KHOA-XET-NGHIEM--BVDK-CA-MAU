@@ -2664,7 +2664,7 @@ const labTests: LabTest[] = [
   },
   {
     "name": "Đo hoạt độ ADA (Adenosine Deaminase) [dịch chọc dò]",
-    "group": "Sinh hóa",
+    "group": "Sinh Hóa",
     "time": "120 phút / 45 phút",
     "isFeatured": true,
     "concept": "Adenosine Deaminase (ADA) là một enzym xúc tác quá trình chuyển hóa purine, cần thiết cho sự biệt hóa và phân chia của các tế bào lympho T. Nồng độ ADA tăng vọt trong các khoang dịch cơ thể (màng phổi, màng bụng, dịch não tủy) phản ánh sự kích hoạt miễn dịch qua trung gian tế bào mạnh mẽ.",
@@ -2680,6 +2680,44 @@ const labTests: LabTest[] = [
     },
     "interferingFactors": "❌ **Dương tính giả:** Dịch chọc dò có dính máu (chọc chạm mạch) sẽ làm ADA tăng cao do trong hồng cầu của bệnh nhân cũng chứa rất nhiều enzym ADA.",
     "clinicalNote": "Theo Hướng dẫn chẩn đoán và điều trị bệnh Lao (QĐ 162/QĐ-BYT 2024), việc tìm vi khuẩn Lao trong dịch màng phổi cực kỳ khó (tỷ lệ soi đờm AFB dương tính hoặc nuôi cấy trong dịch chỉ < 5-10%). Vì vậy, hoạt độ ADA dịch màng phổi tăng cao kết hợp với dịch tiết ưu thế Lympho được coi là tiêu chuẩn vàng trên thực hành lâm sàng để quyết định điều trị Lao ngoài phổi."
+  },
+  {
+    "name": "Mycobacterium tuberculosis định danh và kháng RMP (Xpert MTB/RIF)",
+    "group": "Sinh học phân tử",
+    "time": "120 phút",
+    "isFeatured": true,
+    "concept": "Xpert MTB/RIF là xét nghiệm sinh học phân tử tự động (Real-time PCR) mang tính đột phá, cho phép đồng thời xác định sự hiện diện của phức hợp vi khuẩn Lao (Mycobacterium tuberculosis complex) và phát hiện đột biến gen rpoB kháng thuốc Rifampicin chỉ trong vòng 2 giờ.",
+    "physiology": "📌 **Đặc tính:** Vi khuẩn Lao có thời gian nhân lên rất chậm (chu kỳ 20-24 giờ). Nuôi cấy kinh điển mất 2-6 tuần để mọc. Xpert MTB/RIF giải quyết rào cản này bằng cách nhân bản trực tiếp đoạn gen đặc hiệu của vi khuẩn ngay từ bệnh phẩm chưa qua nuôi cấy.",
+    "indication": "🎯 **Truyền nhiễm / Hô hấp:** Chỉ định bắt buộc ở bệnh nhân nghi ngờ mắc Lao nhưng soi đờm AFB âm tính; Sàng lọc lao kháng đa thuốc (MDR-TB); Chẩn đoán lao ở người nhiễm HIV hoặc trẻ em.",
+    "specimenCollection": "💧 **Loại mẫu:** Đờm, dịch rửa phế quản phế nang, dịch não tủy, dịch màng phổi, hoặc bệnh phẩm sinh thiết hạch.",
+    "testingMethods": "Hệ thống PCR tự động hoàn toàn (GeneXpert).",
+    "ref": "📊 **Bình thường:** Âm tính (Không phát hiện thấy vi khuẩn Lao).",
+    "alert": "⚠️ Nếu kết quả Xpert trả về 'MTB Detected, Rifampicin Resistance Detected' (Phát hiện Lao và Kháng Rifampicin), bệnh nhân được chẩn đoán mắc Lao đa kháng thuốc (MDR-TB) và cần phác đồ điều trị chuyên biệt ngay lập tức.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Dương tính (Phát hiện MTB):**\n  🔴 Khẳng định bệnh nhân đang hoặc đã từng mắc bệnh Lao.\n  🔴 **Đánh giá kháng thuốc:** Nếu phát hiện kháng Rifampicin (RMP), bệnh nhân có nguy cơ cao kháng cả Isoniazid, đòi hỏi phác đồ Lao kháng thuốc.",
+      "decrease": "🔹 **Âm tính:** Không phát hiện DNA của vi khuẩn Lao trong mẫu bệnh phẩm (tuy nhiên không loại trừ hoàn toàn 100% nếu tải lượng vi khuẩn quá thấp)."
+    },
+    "interferingFactors": "❌ Xét nghiệm Xpert phát hiện DNA của vi khuẩn, do đó nó không thể phân biệt được vi khuẩn Lao đang sống hay đã chết. Bệnh nhân đã điều trị khỏi Lao vài tháng trước vẫn có thể cho kết quả Xpert dương tính giả (do xác vi khuẩn vẫn còn tồn dư).",
+    "clinicalNote": "Theo Hướng dẫn chẩn đoán bệnh Lao của Bộ Y tế (QĐ 162/QĐ-BYT 2024), Xpert MTB/RIF là xét nghiệm then chốt. Nếu soi đờm AFB âm tính mà hình ảnh X-quang nghi ngờ cao, bác sĩ bắt buộc phải chỉ định GeneXpert để khẳng định bệnh và phát hiện gen kháng thuốc Rifampicin, tránh bỏ sót các ca lao tiềm ẩn hoặc lao kháng thuốc."
+  },
+  {
+    "name": "Định lượng QuantiFERON-TB Gold (IGRA) [máu]",
+    "group": "Sinh học phân tử",
+    "time": "1 - 2 ngày",
+    "isFeatured": true,
+    "concept": "QuantiFERON (QFT) là xét nghiệm đo mức độ giải phóng cytokine Interferon-gamma (IGRA) của tế bào bạch cầu Lympho T trong máu khi chúng được tiếp xúc lại với các kháng nguyên đặc hiệu của vi khuẩn Lao (ESAT-6, CFP-10).",
+    "physiology": "📌 **Cơ chế:** Khi cơ thể từng nhiễm vi khuẩn Lao, các tế bào Lympho T ghi nhớ (Memory T-cells) sẽ lưu lại thông tin. Khi lấy máu bệnh nhân và ủ với kháng nguyên Lao nhân tạo, các tế bào T ghi nhớ này sẽ bị kích hoạt và giải phóng ồ ạt Interferon-gamma (IFN-γ).",
+    "indication": "🎯 **Truyền nhiễm / Cơ xương khớp:** Chẩn đoán nhiễm Lao tiềm ẩn (Latent Tuberculosis Infection - LTBI); Tầm soát bắt buộc trước khi sử dụng các thuốc ức chế miễn dịch sinh học (như bDMARDs, JAKi) hoặc trước ghép tạng.",
+    "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần. Lấy vào 3-4 ống chuyên dụng của bộ Kit QuantiFERON. Lắc đều và ủ ấm 37 độ C theo đúng quy chuẩn.",
+    "testingMethods": "Đo nồng độ Interferon-gamma bằng kỹ thuật miễn dịch gắn men (ELISA) sau khi ủ.",
+    "ref": "📊 **Bình thường:** Âm tính.",
+    "alert": "⚠️ QuantiFERON **không thể** phân biệt được giữa Nhiễm lao tiềm ẩn (vi khuẩn đang ngủ đông) và Bệnh lao hoạt động (vi khuẩn đang sinh sôi phá hủy mô). Phải kết hợp triệu chứng lâm sàng và X-quang phổi để chẩn đoán phân biệt.",
+    "pathologicalMeaning": {
+      "increase": "🔹 **Dương tính (IFN-γ tăng cao):**\n  🔴 Khẳng định bệnh nhân đã từng nhiễm vi khuẩn Lao (Nhiễm lao tiềm ẩn hoặc Lao hoạt động).\n  🔴 Nguy cơ cao bùng phát thành Lao thể hoạt động nếu bệnh nhân bị suy giảm miễn dịch (như nhiễm HIV, hóa trị ung thư, dùng thuốc sinh học).",
+      "decrease": "🔹 **Âm tính:** Không nhiễm vi khuẩn Lao. (Hoặc Âm tính giả do hệ miễn dịch của bệnh nhân quá suy kiệt không thể sản xuất nổi IFN-γ, thường trả về kết quả Không xác định - Indeterminate)."
+    },
+    "interferingFactors": "❌ **Ưu điểm vượt trội:** Khác với test lẩy da Tuberculin (Mantoux), QuantiFERON không bị dương tính giả bởi việc tiêm vắc xin phòng Lao (BCG) trước đó, do kháng nguyên sử dụng hoàn toàn vắng mặt trong chủng BCG.",
+    "clinicalNote": "Theo Hướng dẫn EULAR 2024-2025 về quản lý Viêm khớp dạng thấp, trước khi bắt đầu bất kỳ liệu pháp sinh học hoặc thuốc ức chế JAK nào, bệnh nhân có nguy cơ cao tái hoạt động nhiễm trùng tiềm tàng bắt buộc phải được tầm soát Lao. Nếu xét nghiệm QuantiFERON dương tính, bệnh nhân phải được điều trị dự phòng Lao trước khi dùng thuốc ức chế miễn dịch để tránh vi khuẩn Lao bùng phát."
   },
        {
                 name: "Vi khuẩn nuôi cấy và định danh hệ thống tự động", group: "Vi sinh", time: "3 - 5 ngày", ref: "VI KHUẨN KHÔNG MỌC", alert: "",
