@@ -43,6 +43,7 @@ import {
   HeartHandshake,
   Cpu,
   Glasses,
+  Sparkles,
   Stethoscope as StethoscopeIcon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -2737,16 +2738,14 @@ const labTests: LabTest[] = [
     concept: "Phương pháp nuôi cấy mẫu bệnh phẩm (máu, đờm, nước tiểu, dịch cơ thể) trên môi trường nhân tạo, sau đó định danh tự động dựa trên đặc tính sinh hóa, chuyển hóa và hình thái học.",
     indication: "Phát hiện, xác định chính xác nguyên nhân vi khuẩn gây nhiễm trùng để có căn cứ làm kháng sinh đồ, định hướng điều trị đặc hiệu.",
     pathologicalMeaning: {
-      increase: `<div style="margin-bottom:15px; padding:15px; background:#fff3e0; border-radius:20px; border-left:8px solid #ff9800; font-family:'Montserrat', sans-serif; font-weight:700; color:#e65100; font-size:1.1em; line-height:1.4;">
-        ✅ PHÁT HIỆN VI KHUẨN GÂY BỆNH<br/>
-        <span style="font-size:0.85em; font-weight:500; opacity:0.8;">Bác sĩ cần đối chiếu lâm sàng và làm Kháng sinh đồ.</span>
-      </div>
+      increase: `• DƯƠNG TÍNH: Đã xác định được vi khuẩn gây bệnh. Chi tiết phân loại và hướng dẫn lâm sàng:
 
-<details style="margin-top:15px; background:white; border-radius:24px; border:3px solid #e3f2fd; overflow:hidden; box-shadow:0 10px 30px rgba(33,150,243,0.1);">
-<summary style="padding:20px; font-weight:900; color:#0d47a1; cursor:pointer; font-size:1.2em; outline:none; font-family:'Montserrat', sans-serif; display:flex; align-items:center; background:#e3f2fd; transition:all 0.3s hover:background:#bbdefb;">
-  <span style="margin-right:12px; font-size:1.4em;">🔵</span> VI KHUẨN GRAM ÂM (Trực khuẩn & Cầu khuẩn)
+<details style="margin-top:12px; background:linear-gradient(135deg, #f0f7ff 0%, #e0efff 100%); padding:20px; border-radius:24px; border:2px solid #3b82f6; box-shadow:0 10px 25px -5px rgba(59,130,246,0.1);">
+<summary style="font-weight:900; color:#1e40af; cursor:pointer; font-size:1.25em; outline:none; font-family:'Inter', sans-serif; list-style:none; display:flex; align-items:center; gap:12px; transition:all 0.3s;">
+  <div style="background:#3b82f6; color:white; width:32px; height:32px; border-radius:10px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(59,130,246,0.3);">Â</div>
+  <span>VI KHUẨN GRAM ÂM (Nhấp để xem)</span>
 </summary>
-<div style="padding:20px; font-size:0.95em; line-height:1.6; color:#2c3e50; border-top:2px border #e3f2fd;">
+<div style="margin-top:20px; font-size:0.95em; line-height:1.6; color:#1e293b;">
 
 <div style="background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #d1e9ff; margin-bottom: 12px; position:relative;">
 <div style="position:absolute; top:-10px; left:20px; background:#2196f3; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">01</div>
@@ -2793,11 +2792,12 @@ const labTests: LabTest[] = [
 </div>
 </details>
 
-<details style="margin-top:15px; background:white; border-radius:24px; border:3px solid #fff1f0; overflow:hidden; box-shadow:0 10px 30px rgba(244,67,54,0.1);">
-<summary style="padding:20px; font-weight:900; color:#c62828; cursor:pointer; font-size:1.2em; outline:none; font-family:'Montserrat', sans-serif; display:flex; align-items:center; background:#fff1f0; transition:all 0.3s hover:background:#ffcdd2;">
-  <span style="margin-right:12px; font-size:1.4em;">🔴</span> VI KHUẨN GRAM DƯƠNG (Tụ cầu, Liên cầu, Trực khuẩn)
+<details style="margin-top:12px; background:linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%); padding:20px; border-radius:24px; border:2px solid #ef4444; box-shadow:0 10px 25px -5px rgba(239,68,68,0.1);">
+<summary style="font-weight:900; color:#991b1b; cursor:pointer; font-size:1.25em; outline:none; font-family:'Inter', sans-serif; list-style:none; display:flex; align-items:center; gap:12px; transition:all 0.3s;">
+  <div style="background:#ef4444; color:white; width:32px; height:32px; border-radius:10px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(239,68,68,0.3);">D</div>
+  <span>VI KHUẨN GRAM DƯƠNG (Nhấp để xem)</span>
 </summary>
-<div style="padding:20px; font-size:0.95em; line-height:1.6; color:#2c3e50; border-top:2px border #fff1f0;">
+<div style="margin-top:20px; font-size:0.95em; line-height:1.6; color:#450a0a;">
 
 <div style="background: linear-gradient(135deg, #fff1f2 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #fecdd3; margin-bottom: 12px; position:relative;">
 <div style="position:absolute; top:-10px; left:20px; background:#d32f2f; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">01</div>
@@ -2836,9 +2836,12 @@ const labTests: LabTest[] = [
     pathologicalMeaning: {
       increase: `• DƯƠNG TÍNH: Có vi khuẩn. Chi tiết biện luận Kháng sinh đồ từ dữ liệu mới nhất:
 
-<details style="margin-top:12px; background:#f8fbfe; padding:12px; border-radius:8px; border:1px solid #90caf9;">
-<summary style="font-weight:900; color:#0d47a1; cursor:pointer; font-size:1.3em; outline:none; font-family:'Inter', sans-serif; letter-spacing: -0.5px; display:flex; align-items:center;">🔵 VI KHUẨN GRAM ÂM (Chỉ định Kháng sinh & Cảnh báo kháng thuốc)</summary>
-<div style="margin-top:10px; font-size:0.95em; line-height:1.6; color:#2c3e50;">
+<details style="margin-top:12px; background:linear-gradient(135deg, #f0f7ff 0%, #e0efff 100%); padding:20px; border-radius:24px; border:2px solid #3b82f6; box-shadow:0 10px 25px -5px rgba(59,130,246,0.1);">
+<summary style="font-weight:900; color:#1e40af; cursor:pointer; font-size:1.25em; outline:none; font-family:'Inter', sans-serif; list-style:none; display:flex; align-items:center; gap:12px; transition:all 0.3s;">
+  <div style="background:#3b82f6; color:white; width:32px; height:32px; border-radius:10px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(59,130,246,0.3);">Â</div>
+  <span>VI KHUẨN GRAM ÂM (Nhấp để xem)</span>
+</summary>
+<div style="margin-top:20px; font-size:0.95em; line-height:1.6; color:#1e293b;">
 
 <div style="background: linear-gradient(90deg, #e3f2fd 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #2196f3; margin-bottom: 8px;">
 <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#1976d2; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(33,150,243,0.5); text-transform:uppercase; margin-right:10px;">1.</span>
@@ -2898,9 +2901,12 @@ const labTests: LabTest[] = [
 </div>
 </details>
 
-<details style="margin-top:12px; background:#fff1f0; padding:12px; border-radius:8px; border:1px solid #ffcdd2;">
-<summary style="font-weight:900; color:#c62828; cursor:pointer; font-size:1.3em; outline:none; font-family:'Inter', sans-serif; letter-spacing: -0.5px; display:flex; align-items:center;">🔴 VI KHUẨN GRAM DƯƠNG (Chỉ định Kháng sinh & Cảnh báo kháng thuốc)</summary>
-<div style="margin-top:10px; font-size:0.95em; line-height:1.6; color:#2c3e50;">
+<details style="margin-top:12px; background:linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%); padding:20px; border-radius:24px; border:2px solid #ef4444; box-shadow:0 10px 25px -5px rgba(239,68,68,0.1);">
+<summary style="font-weight:900; color:#991b1b; cursor:pointer; font-size:1.25em; outline:none; font-family:'Inter', sans-serif; list-style:none; display:flex; align-items:center; gap:12px; transition:all 0.3s;">
+  <div style="background:#ef4444; color:white; width:32px; height:32px; border-radius:10px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(239,68,68,0.3);">D</div>
+  <span>VI KHUẨN GRAM DƯƠNG (Nhấp để xem)</span>
+</summary>
+<div style="margin-top:20px; font-size:0.95em; line-height:1.6; color:#450a0a;">
 
 <div style="background: linear-gradient(90deg, #ffebee 0%, #ffffff 100%); padding: 12px; border-radius: 10px; border-left: 6px solid #f44336; margin-bottom: 8px;">
 <span style="font-family:'Oswald', sans-serif; font-size:1.2em; font-weight:900; color:#fff; background:#d32f2f; padding:3px 12px; border-radius:6px; box-shadow: 0 0 10px rgba(244,67,54,0.5); text-transform:uppercase; margin-right:10px;">1.</span>
@@ -4197,13 +4203,16 @@ const KnowledgeCardPopup = ({
             </motion.button>
             <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-4">
-                    <div className="p-3 sm:p-4 bg-white/20 backdrop-blur-md rounded-2xl sm:rounded-[24px]">
-                        <Activity className="w-8 h-8 sm:w-10 h-10" />
+                    <div className="bg-white/20 p-3 sm:p-5 rounded-2xl sm:rounded-[28px] backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_rgba(31,38,135,0.2)]">
+                        <div className="relative">
+                          <Microscope className="w-8 h-8 sm:w-10 h-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] text-white" />
+                          <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-yellow-300 animate-bounce" />
+                        </div>
                     </div>
                     <div>
-                      <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tighter uppercase leading-[0.9] mb-1 drop-shadow-md">{knowledge.name}</h2>
-                      <div className="flex items-center gap-2 text-white/90 font-black text-[10px] sm:text-xs uppercase tracking-[0.2em] bg-white/10 w-fit px-3 py-1 rounded-full backdrop-blur-sm">
-                        <ShieldCheck className="w-3.5 h-3.5" /> Kiến thức xét nghiệm
+                      <h2 className="text-xl sm:text-2xl md:text-3xl font-black tracking-normal uppercase leading-[1.1] mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]">{knowledge.name}</h2>
+                      <div className="flex items-center gap-2 text-white font-black text-[10px] sm:text-xs uppercase tracking-[0.2em] bg-black/20 w-fit px-4 py-1.5 rounded-full backdrop-blur-md border border-white/20">
+                        <Sparkles className="w-3.5 h-3.5 text-yellow-300" /> Kiến thức xét nghiệm
                       </div>
                     </div>
                 </div>
@@ -4316,6 +4325,7 @@ const KnowledgeCardPopup = ({
 
 
 const STAFF_PASSWORD = "Xetnghiem2026"; // <--- BẠN CÓ THỂ THAY ĐỔI PASSWORD TẠI ĐÂY
+const GEMINI_API_KEY = "AIzaSyAiY11EJye93juTFWYMGd3CMmtk6vWvILE";
 
 
 export default function App() {
@@ -4327,12 +4337,96 @@ export default function App() {
   const [passwordInput, setPasswordInput] = useState('');
   const [passwordError, setPasswordError] = useState(false);
   const [patientSubTab, setPatientSubTab] = useState('instructions'); // 'instructions' | 'tests'
-  const [staffSubTab, setStaffSubTab] = useState<'order' | 'collect' | 'policy' | 'dictionary'>('order');
+  const [staffSubTab, setStaffSubTab] = useState<'order' | 'collect' | 'policy' | 'dictionary' | 'ai-assistant'>('order');
   const [selectedGroup, setSelectedGroup] = useState<null | typeof diseaseGroups[0]>(null);
   const [selectedTest, setSelectedTest] = useState<null | LabTest>(null);
   const [selectedKnowledge, setSelectedKnowledge] = useState<null | TestKnowledge>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showGroupFilter, setShowGroupFilter] = useState(false);
+  const [scanningImage, setScanningImage] = useState<string | null>(null);
+  const [aiResult, setAiResult] = useState<string | null>(null);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+
+  const handleScanImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Preview
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setScanningImage(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+
+    setIsAnalyzing(true);
+    setAiResult(null);
+
+    try {
+      if (!GEMINI_API_KEY || GEMINI_API_KEY === "ĐIỀN_API_KEY_CỦA_BẠN_VÀO_ĐÂY") {
+        throw new Error("API Key chưa được cấu hình. Vui lòng kiểm tra lại environment variables.");
+      }
+
+      // Convert to base64 (strip descriptor)
+      const base64Data = await new Promise<string>((resolve) => {
+        const r = new FileReader();
+        r.onloadend = () => {
+          const base64 = (r.result as string).split(',')[1];
+          resolve(base64);
+        };
+        r.readAsDataURL(file);
+      });
+
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [{
+            parts: [
+              { text: `VAI TRÒ: Bạn là một Senior Full-stack Web Developer và Chuyên gia AI Y tế. 
+Nhiệm vụ của bạn là phân tích hình ảnh PHIẾU CHỈ ĐỊNH XÉT NGHIỆM được cung cấp.
+
+YÊU CẦU PHÂN TÍCH:
+1. TRÍCH XUẤT THÔNG TIN: Đọc chuẩn xác Chẩn đoán (bao gồm mã ICD-10 nếu có) và Danh sách các xét nghiệm được chỉ định.
+2. BIỆN LUẬN CHUYÊN SÂU: Dựa trên chẩn đoán và cơ chế sinh lý bệnh học, hãy dự đoán các chỉ số xét nghiệm trên sẽ có xu hướng TĂNG, GIẢM hay BÌNH THƯỜNG. Giải thích cặn kẽ nguyên nhân y khoa (Cơ chế sinh lý) cho từng dự đoán.
+3. TƯ VẤN LÂM SÀNG: Cung cấp các lưu ý quan trọng cho nhân viên y tế khi thực hiện lấy mẫu cho bệnh nhân này dựa trên các chỉ định trên.
+
+ĐỊNH DẠNG PHẢN HỒI (QUAN TRỌNG):
+- Chỉ sử dụng HTML thuần (div, b, span, br, p, table, tr, td, h3).
+- Tuyệt đối KHÔNG dùng Markdown (như #, **, [ ]).
+- Sử dụng CSS inline để tạo giao diện hiện đại, sạch sẽ.
+- Màu nhấn (Accent): #1e40af (Blue 800) và #3b82f6 (Blue 500).
+- Ngôn ngữ: Tiếng Việt chuyên môn lâm sàng.
+- Font chữ hiển thị nội dung y khoa: 'Times New Roman', serif (tạo cảm giác bệnh án chuyên nghiệp).` 
+              },
+              {
+                inline_data: {
+                  mime_type: file.type,
+                  data: base64Data
+                }
+              }
+            ]
+          }]
+        })
+      });
+
+      const data = await response.json();
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (text) {
+        // Clean markdown backticks if AI accidentally included them
+        const cleanedText = text.replace(/```html|```/g, '').trim();
+        setAiResult(cleanedText);
+      } else {
+        setAiResult("<div style='color: #dc2626; padding: 20px; background: #fee2e2; border-radius: 15px; font-weight: bold;'>Xin lỗi, AI không thể phân tích hình ảnh này. Vui lòng chụp ảnh phiếu chỉ định rõ nét hơn, đủ ánh sáng và thử lại.</div>");
+      }
+    } catch (error) {
+      console.error("AI Error:", error);
+      setAiResult(`<div style='color: #dc2626; padding: 20px; background: #fee2e2; border-radius: 15px; font-weight: bold;'>Đã có lỗi xảy ra: ${error instanceof Error ? error.message : "Lỗi kết nối với hệ thống AI"}. Vui lòng kiểm tra lại cấu hình API Key.</div>`);
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
 
   const filteredTests = useMemo(() => {
     let results = labTests.filter(test => 
@@ -4444,7 +4538,7 @@ export default function App() {
               </div>
 
               <AnimatePresence mode="wait">
-                {patientSubTab === 'instructions' ? (
+                {patientSubTab === 'instructions' && (
                   <motion.div
                     key="p-inst"
                     initial={{ opacity: 0, y: 10 }}
@@ -4484,7 +4578,9 @@ export default function App() {
                       ))}
                     </div>
                   </motion.div>
-                ) : (
+                )}
+
+                {patientSubTab === 'tests' && (
                   <motion.div
                     key="p-tests"
                     initial={{ opacity: 0, y: 10 }}
@@ -4674,6 +4770,12 @@ export default function App() {
                       className={`px-4 sm:px-5 py-3 rounded-xl text-sm sm:text-base font-black transition-all border-2 ${staffSubTab === 'dictionary' ? 'bg-amber-600 border-amber-600 text-white shadow-xl scale-105' : 'bg-white/0 text-slate-500 border-transparent hover:text-amber-600'}`}
                     >
                       <Search className="w-4 h-4 sm:w-5 h-5 inline-block mr-1 sm:mr-2" /> Từ điển Xét nghiệm
+                    </button>
+                    <button 
+                      onClick={() => setStaffSubTab('ai-assistant')}
+                      className={`px-4 sm:px-5 py-3 rounded-xl text-sm sm:text-base font-black transition-all border-2 ${staffSubTab === 'ai-assistant' ? 'bg-indigo-700 border-indigo-700 text-white shadow-xl scale-105' : 'bg-white/0 text-slate-500 border-transparent hover:text-indigo-700'}`}
+                    >
+                      <Sparkles className="w-4 h-4 sm:w-5 h-5 inline-block mr-1 sm:mr-2" /> Thư ký xét nghiệm
                     </button>
                 </div>
               </div>
@@ -5082,12 +5184,12 @@ export default function App() {
                                 className="hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-all cursor-pointer border-b border-slate-50 dark:border-slate-800"
                                 onClick={() => setSelectedTest(test)}
                               >
-                                <td className="px-4 sm:px-6 py-4 sm:py-6 font-black text-indigo-900 dark:text-indigo-200 text-sm sm:text-base md:text-lg leading-tight">
+                                <td className="px-3 sm:px-6 py-4 sm:py-6 font-black text-indigo-900 dark:text-indigo-200 text-[10px] sm:text-sm md:text-base lg:text-lg leading-tight break-words">
                                   {test.name}
                                 </td>
-                                <td className="px-4 sm:px-6 py-4 sm:py-6 text-center">
+                                <td className="px-2 sm:px-6 py-4 sm:py-6 text-center">
                                   <div className="flex justify-center">
-                                    <span className={`text-xs sm:text-sm font-black px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-xl uppercase tracking-tighter shadow-sm border inline-flex flex-col items-center justify-center text-center leading-[1] min-w-[110px] ${
+                                    <span className={`text-[8px] sm:text-xs font-black px-2 sm:px-4 py-1 sm:py-2.5 rounded-lg sm:rounded-xl uppercase tracking-tighter shadow-sm border inline-flex flex-col items-center justify-center text-center leading-[1.1] min-w-[80px] sm:min-w-[110px] ${
                                       test.group.toLowerCase() === 'sinh hóa' ? 'bg-blue-100 text-blue-700 border-blue-200' :
                                       test.group.toLowerCase() === 'huyết học' ? 'bg-purple-100 text-purple-700 border-purple-200' :
                                       test.group.toLowerCase() === 'miễn dịch' ? 'bg-orange-100 text-orange-700 border-orange-200' :
@@ -5100,28 +5202,31 @@ export default function App() {
                                     }`}>
                                       {test.group.toLowerCase() === 'nước tiểu & dịch' ? (
                                         <>
-                                          <span>NƯỚC TIỂU</span>
-                                          <span>& DỊCH</span>
+                                          <span className="hidden sm:inline">NƯỚC TIỂU & DỊCH</span>
+                                          <span className="sm:hidden text-[7px]">N.TIỂU&DỊCH</span>
                                         </>
                                       ) : test.group.toLowerCase() === 'sinh học phân tử' ? (
                                         <>
-                                          <span>SINH HỌC</span>
-                                          <span>PHÂN TỬ</span>
+                                          <span className="hidden sm:inline">SINH HỌC PHÂN TỬ</span>
+                                          <span className="sm:hidden text-[7px]">SH PHÂN TỬ</span>
                                         </>
                                       ) : test.group}
                                     </span>
                                   </div>
                                 </td>
-                                <td className="px-6 py-6 text-slate-500 dark:text-slate-400 font-bold text-xs text-center">
-                                  <div className="bg-slate-50 dark:bg-slate-900/50 py-1 rounded-lg border border-slate-100 dark:border-slate-800">
-                                    {test.time}
+                                <td className="px-2 sm:px-6 py-4 sm:py-6 text-center">
+                                  <div className="flex flex-col items-center justify-center">
+                                    <span className="text-[10px] sm:text-base font-black text-slate-800 dark:text-slate-200">{test.time.split(' / ')[0]}</span>
+                                    {test.time.includes(' / ') && (
+                                       <span className="text-[7px] sm:text-[10px] font-black text-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 px-1.5 sm:px-2 py-0.5 rounded-full mt-1">Khẩn: {test.time.split(' / ')[1]}</span>
+                                    )}
                                   </div>
                                 </td>
-                                <td className="px-6 py-6 font-mono text-[10px] font-bold text-slate-800 dark:text-slate-200 whitespace-pre-wrap leading-relaxed tracking-tight">
+                                <td className="px-3 sm:px-6 py-4 sm:py-6 text-[9px] sm:text-xs md:text-sm font-mono font-bold text-slate-800 dark:text-slate-200 whitespace-pre-wrap leading-tight tracking-tight">
                                   {test.ref}
                                 </td>
-                                <td className="px-6 py-6 bg-rose-50/20 dark:bg-rose-950/10">
-                                  <p className="text-[11px] font-bold text-rose-700 dark:text-rose-300 whitespace-pre-wrap leading-relaxed">
+                                <td className="px-3 sm:px-6 py-4 sm:py-6 bg-rose-50/20 dark:bg-rose-950/10">
+                                  <p className="text-[9px] sm:text-xs font-bold text-rose-700 dark:text-rose-300 whitespace-pre-wrap leading-tight">
                                     {test.alert}
                                   </p>
                                 </td>
@@ -5203,27 +5308,26 @@ export default function App() {
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
                             className={`relative w-full max-w-2xl bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700 max-h-[90vh] overflow-y-auto ${selectedTest.isFeatured ? 'ring-8 ring-blue-500/5' : ''}`}
                           >
-                            <div className={`${selectedTest.isFeatured ? 'bg-gradient-to-tr from-[#a18cd1] 0% via-[#fbc2eb] 100% shadow-inner' : 'bg-blue-600'} p-6 sm:p-10 text-white relative overflow-hidden`}>
-                              {/* Soft decorative blur circles for Korean style */}
-                              {selectedTest.isFeatured && (
-                                <>
-                                  <div className="absolute top-[-20%] left-[-10%] w-40 h-40 bg-white/20 rounded-full blur-3xl animate-pulse" />
-                                  <div className="absolute bottom-[-10%] right-[-5%] w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl" />
-                                </>
-                              )}
+                            <div className={`${selectedTest.isFeatured ? 'bg-gradient-to-tr from-[#a18cd1] 0% via-[#fbc2eb] 100% shadow-inner' : 'bg-gradient-to-br from-amber-500 via-orange-500 to-amber-600'} p-6 sm:p-10 text-white relative overflow-hidden`}>
+                              {/* Soft decorative blur circles for Korean style or warm glow */}
+                              <div className="absolute top-[-20%] left-[-10%] w-40 h-40 bg-white/20 rounded-full blur-3xl animate-pulse" />
+                              <div className="absolute bottom-[-10%] right-[-5%] w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl" />
                               
                               <div className="flex justify-between items-start mb-6 relative z-10">
-                                <div className="bg-white/30 p-3 sm:p-4 rounded-2xl backdrop-blur-xl border border-white/40 shadow-xl">
-                                  <FlaskConical className="w-8 h-8 sm:w-10 h-10 drop-shadow-md text-white" />
+                                <div className="bg-white/20 p-3 sm:p-5 rounded-2xl sm:rounded-3xl backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_rgba(31,38,135,0.2)]">
+                                  <div className="relative">
+                                    <Microscope className="w-8 h-8 sm:w-10 h-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] text-white" />
+                                    <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-yellow-300 animate-bounce" />
+                                  </div>
                                 </div>
                                 <button 
                                   onClick={() => setSelectedTest(null)}
-                                  className="p-2 sm:p-3 hover:bg-white/30 rounded-2xl transition-all duration-300 backdrop-blur-md active:scale-90"
+                                  className="p-2 sm:p-3 bg-white/10 hover:bg-white/30 rounded-2xl transition-all duration-300 backdrop-blur-md active:scale-90 border border-white/20"
                                 >
                                   <X className="w-6 h-6 sm:w-7 h-7" />
                                 </button>
                               </div>
-                              <h3 className="text-xl sm:text-2xl md:text-3xl font-black mb-3 tracking-tighter leading-tight uppercase drop-shadow-sm relative z-10 italic">{selectedTest.name}</h3>
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-black mb-4 tracking-normal leading-[1.1] uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)] relative z-10">{selectedTest.name}</h3>
                               <div className="flex items-center gap-3 relative z-10">
                                 <span className="bg-white/40 border border-white/50 px-4 py-1.5 rounded-2xl text-[10px] sm:text-xs font-black backdrop-blur-lg uppercase tracking-widest shadow-sm">
                                   {selectedTest.group}
@@ -5353,7 +5457,7 @@ export default function App() {
                                           {selectedTest.group === 'Vi sinh' ? 'DƯƠNG TÍNH / VI KHUẨN MỌC' : 'Tăng nồng độ'}
                                         </p>
                                         <div 
-                                          className="text-base sm:text-lg text-slate-800 leading-relaxed text-justify whitespace-pre-wrap font-sans font-medium space-y-3"
+                                          className={`text-base sm:text-lg text-slate-800 leading-relaxed text-justify ${selectedTest.pathologicalMeaning.increase.includes('<details') ? '' : 'whitespace-pre-wrap'} font-sans font-medium space-y-3`}
                                         >
                                           {selectedTest.pathologicalMeaning.increase.includes('<details') ? (
                                             <div 
@@ -5407,7 +5511,7 @@ export default function App() {
                                           {selectedTest.group === 'Vi sinh' ? 'ÂM TÍNH / VI KHUẨN KHÔNG MỌC' : 'Giảm nồng độ'}
                                         </p>
                                         <div 
-                                          className="text-base sm:text-lg text-slate-800 leading-relaxed text-justify whitespace-pre-wrap font-sans font-medium space-y-3"
+                                          className={`text-base sm:text-lg text-slate-800 leading-relaxed text-justify ${selectedTest.pathologicalMeaning.decrease.includes('<details') ? '' : 'whitespace-pre-wrap'} font-sans font-medium space-y-3`}
                                         >
                                           {selectedTest.pathologicalMeaning.decrease.includes('<details') ? (
                                             <div 
@@ -5544,6 +5648,121 @@ export default function App() {
                         </div>
                       )}
                     </AnimatePresence>
+                  </motion.div>
+                )}
+
+                {staffSubTab === 'ai-assistant' && (
+                  <motion.div
+                    key="s-ai"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="max-w-4xl mx-auto"
+                  >
+                    <div className="text-center mb-10 sm:mb-16">
+                      <div className="inline-block p-4 bg-indigo-100 dark:bg-indigo-900/30 rounded-3xl mb-6 shadow-xl shadow-indigo-200">
+                        <Sparkles className="w-12 h-12 text-indigo-600" />
+                      </div>
+                      <h2 className="fluid-title font-black text-indigo-900 dark:text-white mb-4 sm:mb-6 uppercase tracking-tight">Thư ký xét nghiệm (AI)</h2>
+                      <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg sm:text-2xl leading-relaxed font-bold italic">
+                        Trợ lý AI chuyên nghiệp giúp bạn đọc mã ICD-10, nhận diện các chỉ số xét nghiệm và dự đoán xu hướng cơ chế sinh lý bệnh từ phiếu chỉ định.
+                      </p>
+                    </div>
+
+                    <div className="bg-white dark:bg-slate-800 rounded-[40px] border-4 border-white dark:border-slate-700 shadow-2xl p-8 sm:p-12 relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full -mr-16 -mt-16 opacity-50" />
+                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-50 rounded-full -ml-12 -mb-12 opacity-50" />
+                      
+                      <div className="flex flex-col items-center gap-8 relative z-10">
+                        {!scanningImage ? (
+                          <label className="w-full max-w-md aspect-video flex flex-col items-center justify-center border-4 border-dashed border-blue-200 rounded-[35px] cursor-pointer hover:bg-blue-50 hover:border-blue-400 transition-all group p-6 text-center">
+                            <div className="bg-blue-600 text-white p-6 rounded-full shadow-xl mb-4 group-hover:rotate-12 group-hover:scale-110 transition-transform">
+                              <Droplet className="w-10 h-10" />
+                            </div>
+                            <span className="text-xl sm:text-2xl font-black text-blue-800 uppercase tracking-tighter">📷 Quét Phiếu Chỉ Định</span>
+                            <span className="text-sm sm:text-base text-slate-400 mt-2 font-bold italic">Dùng camera chụp trực tiếp hoặc tải ảnh</span>
+                            <input 
+                              type="file" 
+                              accept="image/*" 
+                              capture="environment" 
+                              className="hidden" 
+                              onChange={handleScanImage}
+                            />
+                          </label>
+                        ) : (
+                          <div className="w-full space-y-8">
+                            <div className="relative w-full max-w-md mx-auto aspect-video rounded-[30px] overflow-hidden border-8 border-slate-100 shadow-2xl group">
+                              <img src={scanningImage} alt="Preview" className="w-full h-full object-cover" />
+                              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button 
+                                  onClick={() => {
+                                    setScanningImage(null);
+                                    setAiResult(null);
+                                  }}
+                                  className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-2xl font-black shadow-2xl flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all"
+                                >
+                                  <X className="w-6 h-6" /> Hủy ảnh
+                                </button>
+                              </div>
+                            </div>
+
+                            {isAnalyzing ? (
+                              <div className="flex flex-col items-center py-10 bg-blue-50/50 rounded-[35px] border-2 border-white shadow-inner">
+                                <div className="relative">
+                                  <div className="w-20 h-20 border-8 border-blue-100 border-t-blue-600 rounded-full animate-spin" />
+                                  <div className="absolute inset-0 flex items-center justify-center">
+                                    <Sparkles className="w-8 h-8 text-blue-600 animate-pulse" />
+                                  </div>
+                                </div>
+                                <p className="text-2xl sm:text-3xl font-black text-blue-900 animate-pulse mt-8 uppercase tracking-widest drop-shadow-sm">Thư ký AI đang xử lý...</p>
+                                <p className="text-slate-500 mt-2 font-bold italic px-6 text-center">Đang phân tích chẩn đoán ICD-10 và cơ chế bệnh học</p>
+                              </div>
+                            ) : aiResult && (
+                              <div className="space-y-6">
+                                <div className="p-8 sm:p-12 bg-white border-2 border-indigo-100 rounded-[45px] shadow-sm relative overflow-hidden">
+                                  <div className="absolute top-0 left-0 w-3 h-full bg-blue-600" />
+                                  <div className="absolute top-0 right-0 p-6 opacity-5"><Activity className="w-24 h-24 text-blue-900" /></div>
+                                  
+                                  <h4 className="text-blue-800 text-xs sm:text-sm font-black uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
+                                    <div className="w-3 h-3 rounded-full bg-blue-600 animate-pulse" /> 
+                                    KẾT QUẢ PHÂN TÍCH CHUYÊN MÔN
+                                  </h4>
+                                  
+                                  <div 
+                                    className="prose prose-blue max-w-none text-[#1565c0]"
+                                    style={{ fontFamily: "'Times New Roman', Times, serif" }}
+                                  >
+                                    <div 
+                                      className="font-medium text-lg lg:text-xl leading-relaxed space-y-4"
+                                      dangerouslySetInnerHTML={{ __html: aiResult }} 
+                                    />
+                                  </div>
+
+                                  <div className="mt-12 pt-8 border-t border-slate-100">
+                                     <p className="text-red-500 italic text-sm sm:text-base font-bold text-justify leading-relaxed flex items-start gap-4 text-left">
+                                       <span className="text-2xl shrink-0">⚠️</span>
+                                       <span>Lưu ý: Đây là dự đoán sinh lý của AI dựa trên chẩn đoán và cơ chế bệnh học, không thay thế cho kết quả xét nghiệm thực tế. Hình ảnh không được lưu trữ nhằm đảm bảo quyền riêng tư.</span>
+                                     </p>
+                                  </div>
+                                </div>
+
+                                <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
+                                  <button 
+                                    onClick={() => {
+                                      setScanningImage(null);
+                                      setAiResult(null);
+                                    }}
+                                    className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-[25px] font-black text-xl hover:from-blue-700 hover:to-indigo-800 transition-all shadow-2xl flex items-center justify-center gap-3 active:scale-95"
+                                  >
+                                    <Sparkles className="w-6 h-6" /> Quét phiếu mới
+                                  </button>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
