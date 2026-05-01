@@ -5684,7 +5684,7 @@ YÊU CẦU PHÂN TÍCH:
                             <input 
                               type="file" 
                               accept="image/*" 
-                              capture="environment" 
+                              id="uploadImage"
                               className="hidden" 
                               onChange={handleScanImage}
                             />
