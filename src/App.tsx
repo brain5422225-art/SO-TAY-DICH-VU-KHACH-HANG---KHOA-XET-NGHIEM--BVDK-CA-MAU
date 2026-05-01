@@ -37,6 +37,12 @@ import {
   TrendingUp,
   TrendingDown,
   BookOpen,
+  ShieldAlert,
+  Bug,
+  Flame,
+  HeartHandshake,
+  Cpu,
+  Glasses,
   Stethoscope as StethoscopeIcon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -75,6 +81,9 @@ interface TestKnowledge {
   result_meaning: string;
   real_life_example: string;
   note: string;
+  advanced_knowledge?: string;
+  deep_knowledge?: string;
+  patient_advice?: string;
 }
 
 const labTests: LabTest[] = [
@@ -2401,7 +2410,7 @@ const labTests: LabTest[] = [
     "group": "Ký sinh trùng",
     "time": "45 phút",
     "isFeatured": true,
-    "concept": "Xét nghiệm quan sát cặn phân qua kính hiển vi nhằm phát hiện và định danh hình thái cấu trúc vỏ của trứng các loại giun tròn (giun đũa, giun móc, giun tóc, giun kim) và sán (sán lá gan, sán dây) ký sinh trong đường tiêu hóa hay đường mật.",
+    "concept": "Xét nghiệm quan sát cặn phân qua kính hiển vi quang học để tìm các hình thái sinh học (thể hoạt động - trophozoite hoặc thể bào nang - cyst) của các loại ký sinh trùng đơn bào chuyên gây bệnh tại niêm mạc ruột non và đại tràng.",
     "physiology": "📌 **Chu kỳ sinh học:** Các giun sán trưởng thành ký sinh trong cơ thể người sẽ đẻ trứng. Trứng đi theo nhu động ruột và được đào thải ra môi trường qua phân. Mỗi loại giun sán có cấu trúc vỏ, hình dáng (hình bầu dục, hình quả cau có nắp) và kích thước đặc trưng không thể nhầm lẫn.",
     "indication": "🎯 **Khám sức khỏe / Truyền nhiễm:** Sàng lọc bệnh nhân có dấu hiệu suy dinh dưỡng chậm lớn, thiếu máu nhược sắc không rõ nguyên nhân (nghi nhiễm giun móc), đau bụng mạn tính, rối loạn tiêu hóa, hoặc xét nghiệm công thức máu tình cờ thấy tăng vọt Bạch cầu ái toan (Eosinophil).",
     "specimenCollection": "💩 **Loại mẫu:** Phân thu thập ngẫu nhiên vào lọ sạch vô khuẩn.\n⚠️ **Lưu ý đặc biệt:** Đối với Giun kim (Enterobius vermicularis), không dùng mẫu phân. Bắt buộc phải lấy băng keo trong (Scotch tape) dán áp sát vùng nếp nhăn rìa hậu môn vào **sáng sớm lúc trẻ mới thức dậy chưa đi vệ sinh** để tìm trứng.",
@@ -2942,799 +2951,1090 @@ const labTests: LabTest[] = [
 ];
 
 const testKnowledgeBase: Record<string, TestKnowledge> = {
-  "NT-ProBNP": {
+   "NT-ProBNP": {
     "name": "NT-ProBNP",
-    "purpose": "Kiểm tra xem tim có bị suy yếu hay phải làm việc quá sức không.",
-    "when_to_do": "Khi bạn thấy khó thở, mệt mỏi nhiều, sưng phù chân hoặc nghi ngờ mắc bệnh tim.",
-    "how_it_works": "Đo một loại chất đạm do tim tiết ra khi cơ tim bị căng giãn, máu bơm đi khó khăn.",
-    "result_meaning": "Bình thường: Tim khỏe. Cao: Tim đang bị suy hoặc chịu áp lực rất lớn.",
-    "real_life_example": "Một bác lớn tuổi hay bị hụt hơi khi leo cầu thang, đi khám thử máu thấy chỉ số này cao, bác sĩ kết luận bị suy tim.",
-    "note": "Rất quan trọng trong cấp cứu để phân biệt người bệnh khó thở do tim hay do phổi."
+    "purpose": "Đánh giá và chẩn đoán mức độ suy tim, kiểm tra xem cơ tim có bị suy yếu hay phải làm việc quá sức không.",
+    "when_to_do": "Khi bạn thấy khó thở, mệt mỏi nhiều, sưng phù chân hoặc nghi ngờ mắc bệnh tim cấp tính/mạn tính.",
+    "how_it_works": "Đo một loại chất đạm do tâm thất của tim tiết ra khi cơ tim bị căng giãn, giúp phản ánh trung thực áp lực mà tim đang phải chịu đựng.",
+    "result_meaning": "Bình thường: Tim khỏe, loại trừ được nguyên nhân khó thở do tim. Cao: Tim đang bị suy hoặc chịu áp lực rất lớn, mức độ tăng tỷ lệ thuận với độ nặng của bệnh.",
+    "real_life_example": "Một bác lớn tuổi hay bị hụt hơi khi leo cầu thang, đi khám thử máu thấy chỉ số này cao, bác sĩ kết luận bị suy tim thay vì các bệnh lý về phổi.",
+    "note": "Rất quan trọng trong phòng cấp cứu để phân biệt nhanh người bệnh khó thở do tim hay do phổi.",
+    "advanced_knowledge": "Được tích hợp trên thiết bị xét nghiệm tại chỗ (POCT) cầm tay, cho phép phân tích máu và trả kết quả chỉ sau 12 phút ngay tại giường bệnh [1]. Dữ liệu sau đó được hệ thống LAB AI Agent tự động phân tích để cảnh báo sớm [2].",
+    "deep_knowledge": "So với BNP thông thường, NT-ProBNP là đoạn protein không có hoạt tính sinh học nhưng có thời gian bán hủy dài hơn, giúp việc đo lường nồng độ trong máu ổn định và phản ánh chính xác tình trạng căng trướng cơ tim trong khoảng thời gian dài hơn.",
+    "patient_advice": "Nếu bạn đang điều trị suy tim, hãy theo dõi biểu đồ NT-ProBNP qua các lần tái khám. Sự sụt giảm của chỉ số này là minh chứng rõ ràng nhất cho thấy thuốc điều trị đang phát huy tác dụng."
   },
   "Troponin I": {
-    "name": "Troponin I",
-    "purpose": "Phát hiện nhanh tình trạng nhồi máu cơ tim.",
-    "when_to_do": "Khi đột ngột đau thắt ngực dữ dội, cơn đau lan ra cánh tay trái hoặc sau lưng.",
-    "how_it_works": "Tìm kiếm chất đạm đặc biệt chỉ tràn vào máu khi tế bào cơ tim đang bị chết đi hoặc tổn thương.",
-    "result_meaning": "Bình thường: Không sao. Cao: Đang bị nhồi máu cơ tim, vô cùng nguy hiểm.",
-    "real_life_example": "Một người đang ngồi bỗng ôm ngực ngã gục, vào viện thử Troponin I tăng vọt, bác sĩ lập tức đưa đi can thiệp mạch vành.",
-    "note": "Là tiêu chuẩn vàng trong cấp cứu tim mạch, cho kết quả chỉ sau khoảng 10-15 phút."
+    "name": "Troponin I (hoặc hs-Troponin I)",
+    "purpose": "Dấu ấn sinh học đặc hiệu và nhạy bén nhất để phát hiện nhanh tình trạng nhồi máu cơ tim (hoại tử cơ tim).",
+    "when_to_do": "Khi có cơn đột ngột đau thắt ngực dữ dội, cơn đau lan ra cánh tay trái, lên hàm hoặc sau lưng kèm vã mồ hôi, khó thở.",
+    "how_it_works": "Tìm kiếm phức hợp protein Troponin đặc hiệu. Bình thường chúng nằm bên trong tế bào cơ tim, chỉ khi tế bào cơ tim thiếu máu nuôi và chết đi, chúng mới phá vỡ màng tế bào để tràn vào dòng máu.",
+    "result_meaning": "Bình thường: Không có tổn thương cơ tim cấp. Cao: Đang bị nhồi máu cơ tim, cơ tim đang hoại tử, vô cùng nguy hiểm.",
+    "real_life_example": "Một người đang ngồi bỗng ôm ngực ngã gục, vào viện thử Troponin I tăng vọt, hệ thống báo động đỏ được kích hoạt lập tức để đưa đi can thiệp mạch vành.",
+    "note": "Rất quan trọng: Bệnh nhân dùng thực phẩm chức năng chứa Biotin (Vitamin B7) liều lượng cao có thể làm kết quả Troponin bị thấp giả tạo, làm bỏ sót chẩn đoán nhồi máu cơ tim [3].",
+    "advanced_knowledge": "Công nghệ xét nghiệm Troponin siêu nhạy (hs-cTn) kết hợp thuật toán AI hiện nay cho phép loại trừ hoặc khẳng định nhồi máu cơ tim ngay trong phác đồ 1 giờ đầu tiên, thay vì phải chờ đợi 3-6 giờ như các thập kỷ trước.",
+    "deep_knowledge": "Cơ quan Quản lý Dược phẩm và Thực phẩm Hoa Kỳ (FDA) đã cảnh báo nồng độ Biotin bổ sung > 0.03mg/ngày sẽ can thiệp vào cầu nối streptavidin trong công nghệ xét nghiệm miễn dịch, gây âm tính giả đối với xét nghiệm Troponin [3, 9, 10].",
+    "patient_advice": "Bạn cần ngưng uống các viên bổ sung làm đẹp da, tóc, móng chứa Biotin liều cao ít nhất 72 giờ trước khi đi khám sức khỏe. Trong trường hợp cấp cứu, hãy chủ động báo cho bác sĩ nếu bạn đang dùng Biotin [9]."
   },
   "CK-MB": {
     "name": "CK-MB",
-    "purpose": "Đánh giá mức độ tổn thương của cơ tim.",
-    "when_to_do": "Khi có dấu hiệu đau ngực, nghi ngờ nhồi máu cơ tim hoặc viêm cơ tim.",
-    "how_it_works": "Đo nồng độ một loại men nằm trong cơ tim, men này rò rỉ vào máu khi tim bị tổn thương.",
-    "result_meaning": "Bình thường: Tim ổn định. Cao: Cơ tim đang bị viêm hoặc hoại tử.",
-    "real_life_example": "Thanh niên trẻ bị tức ngực sau đợt cảm cúm, xét nghiệm CK-MB cao giúp phát hiện bệnh viêm cơ tim do virus.",
-    "note": "Thường được bác sĩ chỉ định làm cùng với xét nghiệm Troponin để chẩn đoán chắc chắn hơn."
-  },
-  "AST": {
-    "name": "AST",
-    "purpose": "Đánh giá tình trạng tổn thương của tế bào gan.",
-    "when_to_do": "Khi khám sức khỏe định kỳ, hoặc có biểu hiện vàng da, mệt mỏi, chán ăn.",
-    "how_it_works": "Đo lượng men gan AST rò rỉ vào dòng máu khi tế bào gan bị phá hủy.",
-    "result_meaning": "Bình thường: Gan khỏe. Cao: Gan đang bị tổn thương do viêm, xơ gan hoặc uống nhiều rượu bia.",
-    "real_life_example": "Một chú hay nhậu nhẹt đi khám thấy men gan AST tăng gấp 3 lần bình thường, báo hiệu gan đang bị tàn phá do cồn.",
-    "note": "Vì AST cũng có ở cơ bắp, nên bác sĩ thường cho làm thêm xét nghiệm ALT để biết chính xác là do gan."
-  },
-  "LDH": {
-    "name": "LDH",
-    "purpose": "Kiểm tra mức độ tổn thương chung của các mô và tế bào trong cơ thể.",
-    "when_to_do": "Nghi ngờ mắc bệnh lý về máu, tổn thương cơ, gan hoặc bệnh ung thư.",
-    "how_it_works": "Đo lượng men LDH sinh ra khi bất kỳ tế bào nào trong cơ thể bị vỡ hoặc hoại tử.",
-    "result_meaning": "Bình thường: Không có tổn thương lớn. Cao: Các tế bào đang bị phá hủy nhiều (như do ung thư, tan máu).",
-    "real_life_example": "Bệnh nhân mệt mỏi xanh xao, thử máu thấy LDH rất cao, bác sĩ phát hiện ra chứng bệnh hồng cầu bị vỡ nát liên tục.",
-    "note": "Chỉ số này sẽ bị sai lệch nếu lúc y tá lấy máu làm vỡ hồng cầu trong ống nghiệm."
-  },
-  "CRP": {
-    "name": "CRP",
-    "purpose": "Phát hiện tình trạng viêm nhiễm trong cơ thể và đánh giá nguy cơ tim mạch.",
-    "when_to_do": "Khi bị sốt, sưng đau không rõ nguyên nhân hoặc khám tầm soát đột quỵ.",
-    "how_it_works": "Đo một loại protein do gan tạo ra và tống vào máu mỗi khi cơ thể có phản ứng viêm.",
-    "result_meaning": "Bình thường: Không viêm. Cao: Đang bị nhiễm trùng hoặc có rủi ro tắc nghẽn mạch máu.",
-    "real_life_example": "Bé bị sốt cao lừ đừ, xét nghiệm CRP tăng vọt giúp bác sĩ biết bé bị nhiễm vi khuẩn chứ không phải virus thông thường.",
-    "note": "CRP tăng rất nhanh khi cơ thể có viêm và cũng giảm nhanh khi bệnh thuyên giảm."
-  },
-  "Khí máu": {
-    "name": "Khí máu",
-    "purpose": "Đánh giá tình trạng hô hấp và độ cân bằng axit-kiềm trong máu.",
-    "when_to_do": "Khi bệnh nhân khó thở nặng, ngạt thở, suy hô hấp hoặc hôn mê.",
-    "how_it_works": "Lấy mẫu máu ở động mạch để đo trực tiếp lượng Oxy và CO2.",
-    "result_meaning": "Bình thường: Phổi trao đổi khí tốt. Bất thường: Máu bị thiếu oxy trầm trọng hoặc bị nhiễm axit.",
-    "real_life_example": "Người bệnh hen suyễn lên cơn thở dốc tím tái, đo khí máu thấy CO2 ứ đọng nhiều, bác sĩ phải cho thở máy ngay.",
-    "note": "Là xét nghiệm sinh tử tại phòng cấp cứu, lấy máu động mạch sẽ đau hơn lấy máu bình thường."
-  },
-  "Điện giải": {
-    "name": "Điện giải",
-    "purpose": "Kiểm tra lượng muối và các chất khoáng quan trọng trong máu.",
-    "when_to_do": "Khi bị nôn mửa nhiều, tiêu chảy mất nước, tụt huyết áp hoặc yếu cơ.",
-    "how_it_works": "Đo lường các ion khoáng chất có nhiệm vụ giữ nước và duy trì nhịp đập của tim.",
-    "result_meaning": "Bình thường: Đủ nước và khoáng. Bất thường: Mất nước nặng hoặc thận đang bị suy yếu.",
-    "real_life_example": "Người bị ngộ độc thực phẩm tiêu chảy 2 ngày liền tay chân run rẩy, xét nghiệm thấy thiếu Kali nặng phải truyền dịch bù.",
-    "note": "Rối loạn Kali rất nguy hiểm vì có thể gây ngừng tim đột ngột."
+    "purpose": "Đánh giá mức độ tổn thương của cơ tim, đặc biệt hữu ích trong việc phát hiện nhồi máu cơ tim tái phát.",
+    "when_to_do": "Khi có dấu hiệu đau ngực, nghi ngờ viêm cơ tim, hoặc khi bệnh nhân vừa trải qua một đợt nhồi máu cơ tim nay lại xuất hiện cơn đau ngực mới.",
+    "how_it_works": "Đo nồng độ isoenzyme CK-MB tập trung chủ yếu ở cơ tim. Khi cơ tim tổn thương, men này giải phóng ồ ạt vào máu nhưng cũng biến mất rất nhanh.",
+    "result_meaning": "Bình thường: Khối cơ tim ổn định. Cao: Cơ tim đang bị viêm hoặc hoại tử trong khoảng thời gian rất gần.",
+    "real_life_example": "Một bệnh nhân vừa được đặt stent mạch vành 3 ngày trước lại kêu tức ngực. Bác sĩ đo CK-MB thấy tăng vọt trở lại, xác định ngay bệnh nhân bị nhồi máu cơ tim tái phát.",
+    "note": "Do Troponin I tồn tại trong máu rất lâu (lên đến 14 ngày), CK-MB (chỉ tồn tại 48-72 giờ) trở thành thước đo hoàn hảo để bác sĩ nhận biết người bệnh có đang bị nhồi máu cơ tim lần thứ 2 hay không.",
+    "advanced_knowledge": "Hệ thống tự động duyệt kết quả (autoverification) tại các phòng xét nghiệm hiện đại tự động so sánh động học giữa CK-MB và Troponin, hỗ trợ phân loại tổn thương cơ tim cấp cực kỳ nhanh chóng và chính xác [2].",
+    "deep_knowledge": "Hoạt động thể chất gắng sức hoặc các bài tập cường độ cao ngay trước khi lấy máu có thể làm thay đổi tạm thời men cơ (CK toàn phần) [7]. Do đó, tỷ lệ phần trăm giữa CK-MB và CK toàn phần thường được dùng để phân biệt tổn thương này đến từ tim hay từ cơ bắp thông thường.",
+    "patient_advice": "Hãy tránh vận động thể lực cường độ cực cao (như chạy marathon, nâng tạ nặng) ít nhất 24 giờ trước khi thực hiện xét nghiệm này để tránh kết quả bị dương tính giả [7]."
   },
   "Bộ mỡ máu": {
-    "name": "Bộ mỡ máu",
-    "purpose": "Kiểm tra lượng mỡ trong máu để phòng ngừa đột quỵ và nhồi máu cơ tim.",
-    "when_to_do": "Khám sức khỏe tổng quát hoặc ở người béo phì, cao huyết áp, hay nhậu nhẹt.",
-    "how_it_works": "Đo 4 chỉ số chính: mỡ toàn phần, mỡ xấu LDL, mỡ tốt HDL và chất béo trung tính Triglyceride.",
-    "result_meaning": "Bình thường: Mạch máu thông thoáng. Cao: Mỡ đóng cặn gây xơ vữa, hẹp mạch máu.",
-    "real_life_example": "Người đàn ông 45 tuổi đi khám thấy mỡ xấu LDL rất cao, được cảnh báo nếu không ăn kiêng sẽ dễ bị tai biến.",
-    "note": "Phải nhịn ăn hoàn toàn từ 8 đến 12 tiếng trước khi lấy máu để kết quả chính xác."
+    "name": "Bộ mỡ máu chuyên sâu (Cholesterol, Triglyceride, LDL-C, HDL-C và Lipoprotein(a))",
+    "purpose": "Tầm soát toàn diện tình trạng rối loạn lipid máu, đánh giá rủi ro tạo mảng xơ vữa để phòng ngừa nhồi máu cơ tim và đột quỵ [11].",
+    "when_to_do": "Khám sức khỏe tổng quát định kỳ (từ 20 tuổi nên làm 5 năm/lần), hoặc ở người béo phì, cao huyết áp, hút thuốc lá, đái tháo đường [11, 12].",
+    "how_it_works": "Đo 4 chỉ số cơ bản: mỡ toàn phần, mỡ xấu LDL, mỡ tốt HDL, chất béo trung tính Triglyceride. Hiện nay y học kết hợp thêm chỉ số đặc biệt Lipoprotein (a) - ký hiệu là Lp(a) [5].",
+    "result_meaning": "Bình thường: Mạch máu thông thoáng. Cao: Mỡ đóng cặn gây xơ vữa, hẹp mạch máu, nguy cơ thuyên tắc tĩnh mạch và động mạch vành rất lớn [13].",
+    "real_life_example": "Một người đàn ông gầy gò, ăn kiêng tốt nhưng vẫn bị nhồi máu cơ tim. Khi làm bộ mỡ máu chuyên sâu phát hiện chỉ số Lipoprotein (a) cao đột biến do di truyền, giải mã nguyên nhân gây bệnh.",
+    "note": "Với xét nghiệm mỡ máu, nồng độ Triglyceride rất dễ bị ảnh hưởng bởi bữa ăn gần nhất. Do đó, nhịn ăn đúng cách là nguyên tắc vàng để kết quả chính xác.",
+    "advanced_knowledge": "Áp dụng trí tuệ nhân tạo (AI) để tổng hợp các dữ liệu từ bộ mỡ máu, từ đó tính toán và mô phỏng tỷ lệ % nguy cơ đột quỵ hoặc nhồi máu cơ tim của người bệnh trong 10 năm tới [2].",
+    "deep_knowledge": "Lipoprotein (a) có cấu trúc đặc biệt vừa dễ tạo mảng xơ vữa, vừa dễ làm hình thành cục máu đông [5]. Ở những bệnh nhân đái tháo đường type 2, nguy cơ biến cố tim mạch luôn ở mức cao, vì thế các khuyến cáo y khoa luôn yêu cầu sử dụng thuốc nhóm Statin như một nền tảng bắt buộc để kiểm soát mỡ máu lâu dài [14].",
+    "patient_advice": "Bạn bắt buộc phải nhịn ăn từ 9 đến 12 tiếng, không hút thuốc và tránh sử dụng rượu bia ít nhất 24 giờ trước khi xét nghiệm để đảm bảo độ chính xác tuyệt đối [8]. Nếu gia đình có tiền sử bệnh tim mạch sớm, hãy chủ động đề nghị bác sĩ kiểm tra thêm chỉ số Lipoprotein (a) [15, 16]."
   },
   "PT": {
-    "name": "PT",
-    "purpose": "Kiểm tra máu đông có nhanh không và theo dõi thuốc chống đông.",
-    "when_to_do": "Trước khi lên bàn mổ, nhổ răng, hoặc bị chảy máu cam/chảy máu chân răng liên tục.",
-    "how_it_works": "Bác sĩ thêm hóa chất vào máu trong ống nghiệm và bấm giờ xem mất bao lâu để máu đông lại.",
-    "result_meaning": "Bình thường: Khả năng cầm máu tốt. Kéo dài: Máu bị loãng, rủi ro chảy máu không cầm được rất cao.",
-    "real_life_example": "Bệnh nhân chuẩn bị mổ ruột thừa phải làm xét nghiệm này để bác sĩ chắc chắn lúc mổ máu sẽ tự cầm.",
-    "note": "Đặc biệt quan trọng với người già đang uống thuốc làm loãng máu ngừa đột quỵ."
+    "name": "PT / INR (Thời gian Prothrombin)",
+    "purpose": "Đánh giá toàn diện khả năng đông máu theo con đường ngoại sinh và là chỉ số sống còn để theo dõi bệnh nhân dùng thuốc chống đông máu kháng Vitamin K.",
+    "when_to_do": "Kiểm tra trước khi phẫu thuật, nhổ răng, người có biểu hiện chảy máu cam/chân răng liên tục, hoặc lịch khám định kỳ hàng tháng của người uống thuốc loãng máu.",
+    "how_it_works": "Bác sĩ thêm hóa chất (thromboplastin) vào mẫu huyết tương và đo xem mất bao nhiêu giây để hình thành cục máu đông, từ đó quy đổi ra chỉ số quốc tế INR nhằm tạo sự chuẩn hóa.",
+    "result_meaning": "Bình thường (INR ~1.0): Khả năng cầm máu tốt. Kéo dài (INR > 3.0): Máu bị loãng quá mức, rủi ro xuất huyết không cầm được (như chảy máu não, xuất huyết tiêu hóa) rất cao.",
+    "real_life_example": "Một bệnh nhân rung nhĩ đang dùng thuốc chống đông đi tái khám đo INR lên đến 4.5. Bác sĩ lập tức phải giảm liều thuốc loãng máu để cứu bệnh nhân khỏi rủi ro chảy máu não.",
+    "note": "Đặc biệt quan trọng với người thay van tim cơ học hoặc từng bị huyết khối tĩnh mạch sâu.",
+    "advanced_knowledge": "Công nghệ xét nghiệm tại chỗ (POCT) hiện nay cung cấp các thiết bị cầm tay nhỏ gọn, cho phép bệnh nhân chích máu ngón tay tự đo INR tại nhà y hệt như đo đường huyết [17], hỗ trợ kiểm soát bệnh tình cực kỳ hiệu quả mà không cần đến bệnh viện.",
+    "deep_knowledge": "Vì gan là nhà máy sản xuất ra phần lớn các yếu tố đông máu tham gia vào chu trình PT (yếu tố II, VII, IX, X), sự kéo dài bất thường của xét nghiệm PT cũng là một dấu hiệu cảnh báo tình trạng suy giảm chức năng gan cấp tính hoặc xơ gan nặng.",
+    "patient_advice": "Mẫu máu cho xét nghiệm PT/INR bắt buộc phải được thu thập vào ống nghiệm có nắp màu xanh da trời (chứa chất chống đông Natri Citrate) và nhân viên y tế cần đảo ngược ống 3-4 lần [6]. Nếu bạn uống thuốc kháng Vitamin K, hãy giữ thói quen ăn rau xanh (như súp lơ, rau bina) ổn định, không ăn thay đổi lượng ồ ạt để tránh làm chỉ số INR nhảy vọt."
   },
   "APTT": {
-    "name": "APTT",
-    "purpose": "Đánh giá toàn diện hệ thống đông máu bên trong cơ thể.",
-    "when_to_do": "Khám tiền phẫu thuật, hay bị bầm tím trên da mà không rõ lý do đụng dập.",
-    "how_it_works": "Đo thời gian đông máu theo một con đường khác để tìm xem cơ thể có bị thiếu chất đông máu nào không.",
-    "result_meaning": "Bình thường: Hệ thống đông máu ổn. Kéo dài: Có bệnh ưa chảy máu hoặc bệnh gan.",
-    "real_life_example": "Một cậu bé chỉ sờ nhẹ vào tay cũng bị bầm tím mảng lớn, đi xét nghiệm APTT dài bất thường phát hiện bệnh máu khó đông di truyền.",
-    "note": "Luôn được bác sĩ chỉ định đi kèm một cặp với xét nghiệm PT để có bức tranh toàn cảnh."
+    "name": "APTT (Thời gian Thromboplastin một phần hoạt hóa)",
+    "purpose": "Đánh giá toàn diện hệ thống đông máu bên trong cơ thể (con đường nội sinh) và theo dõi bệnh nhân dùng thuốc chống đông.",
+    "when_to_do": "Khám tiền phẫu thuật, hay bị bầm tím trên da mà không rõ lý do đụng dập, chảy máu khó cầm, hoặc đang điều trị bằng thuốc chống đông Heparin.",
+    "how_it_works": "Đo thời gian đông máu theo con đường nội sinh để tìm xem cơ thể có bị thiếu hụt hoặc bất thường các yếu tố đông máu (như yếu tố VIII, IX, XI, XII) hay không.",
+    "result_meaning": "Bình thường: Hệ thống đông máu hoạt động ổn định. Kéo dài: Cảnh báo bệnh ưa chảy máu (Hemophilia), bệnh gan nặng, hoặc cơ thể đang có kháng thể ức chế đông máu.",
+    "real_life_example": "Một cậu bé chỉ sờ nhẹ vào tay cũng bị bầm tím mảng lớn, đi xét nghiệm APTT dài bất thường, bác sĩ phát hiện bệnh máu khó đông di truyền (Hemophilia).",
+    "note": "Luôn được bác sĩ chỉ định đi kèm một cặp với xét nghiệm PT để có bức tranh toàn cảnh về hệ thống đông máu.",
+    "advanced_knowledge": "Các hệ thống phân tích đông máu tự động hiện nay sử dụng công nghệ quang học đa bước sóng kết hợp AI giúp theo dõi sự thay đổi độ đục của cục máu đông theo thời gian thực (real-time clot waveform analysis), phát hiện sớm các rối loạn đông máu vi mô nhất.",
+    "deep_knowledge": "Mẫu máu cho xét nghiệm APTT bắt buộc phải được lấy vào ống nghiệm nắp màu xanh da trời chứa chất chống đông Natri Citrate và nhân viên y tế phải đảo ngược ống đúng 3-4 lần ngay sau khi lấy [1]. Nếu APTT kéo dài bất thường, các phòng lab sẽ tự động thực hiện thử nghiệm trộn (Mixing Study) để phân biệt do thiếu yếu tố đông máu di truyền hay do cơ thể sinh kháng thể kháng đông tự miễn.",
+    "patient_advice": "Hãy thông báo cho bác sĩ nếu bạn đang sử dụng các loại thực phẩm chức năng như dầu cá (Omega-3), bạch quả (Ginkgo Biloba) hoặc liều cao Vitamin E, vì chúng có thể ảnh hưởng đến quá trình cầm máu thực tế của cơ thể dù chỉ số APTT có thể không thay đổi nhiều."
   },
   "D-Dimer": {
     "name": "D-Dimer",
-    "purpose": "Phát hiện xem có cục máu đông nào đang đi lạc trong lòng mạch máu không.",
-    "when_to_do": "Khi tự nhiên sưng to một bên chân, hoặc đau ngực khó thở nghi tắc mạch phổi.",
-    "how_it_works": "Tìm kiếm các mảnh vỡ sinh ra khi một cục máu đông trong cơ thể đang bị tan rã.",
-    "result_meaning": "Bình thường: Ít có khả năng bị huyết khối. Cao: Đang có cục máu đông gây tắc nghẽn mạch máu.",
-    "real_life_example": "Người phụ nữ ngồi máy bay 10 tiếng thấy bắp chân sưng đỏ đau nhức, thử D-Dimer cao giúp bác sĩ chẩn đoán tắc tĩnh mạch chân.",
-    "note": "Là xét nghiệm cực nhạy giúp bác sĩ loại trừ nhanh tình trạng huyết khối nguy hiểm tính mạng."
-  },
-  "AFP": {
-    "name": "AFP",
-    "purpose": "Tầm soát ung thư gan ở người có rủi ro cao.",
-    "when_to_do": "Người bị viêm gan B, viêm gan C, xơ gan đi khám định kỳ mỗi 6 tháng.",
-    "how_it_works": "Đo chất protein AFP, chất này thường được tiết ra rất nhiều khi các tế bào gan bị ung thư.",
-    "result_meaning": "Bình thường: Gan chưa có u ác tính. Tăng cao: Báo động có thể đang có khối u ung thư ở gan.",
-    "real_life_example": "Nam giới 50 tuổi bị viêm gan B mạn tính, đi xét nghiệm thấy AFP tăng vọt, siêu âm phát hiện ngay một khối u nhỏ ở gan.",
-    "note": "Phụ nữ mang thai bình thường chất này cũng tăng, nên không dùng để chẩn đoán u gan cho bà bầu."
-  },
-  "CEA": {
-    "name": "CEA",
-    "purpose": "Tầm soát và theo dõi ung thư đường ruột, dạ dày.",
-    "when_to_do": "Khi đi ngoài ra máu, sụt cân nhanh, hoặc theo dõi sau khi đã mổ cắt khối u ruột.",
-    "how_it_works": "Đo lượng chất CEA trong máu, chất này sinh ra nhiều khi có tế bào ung thư ở đại trực tràng.",
-    "result_meaning": "Bình thường: Nguy cơ ung thư ruột thấp. Tăng: Có thể có ung thư dạ dày, ruột già hoặc tuyến tụy.",
-    "real_life_example": "Bác trai đã mổ ung thư đại tràng 1 năm trước, nay đi xét nghiệm lại thấy CEA thấp nghĩa là bệnh chưa tái phát.",
-    "note": "Người hút thuốc lá lâu năm xét nghiệm này cũng có thể tăng nhẹ dù không bị ung thư."
-  },
-  "PSA": {
-    "name": "PSA",
-    "purpose": "Tầm soát sớm bệnh ung thư tuyến tiền liệt ở nam giới.",
-    "when_to_do": "Nam giới trên 50 tuổi khám định kỳ hoặc có dấu hiệu tiểu buốt, tiểu đêm nhiều lần.",
-    "how_it_works": "Đo nồng độ chất PSA do tuyến tiền liệt tiết ra vào dòng máu.",
-    "result_meaning": "Bình thường: Tuyến tiền liệt ổn định. Cao: Có thể bị viêm, phì đại lành tính hoặc ung thư tuyến tiền liệt.",
-    "real_life_example": "Ông cụ 65 tuổi dạo này tiểu khó phải rặn, thử PSA tăng cao giúp bác sĩ có cơ sở cho đi sinh thiết tìm ung thư.",
-    "note": "Không nên quan hệ tình dục hoặc đạp xe đạp đường dài trước ngày lấy máu vì có thể làm tăng PSA giả mạo."
-  },
-  "CA 15-3": {
-    "name": "CA 15-3",
-    "purpose": "Theo dõi tiến triển và điều trị bệnh ung thư vú.",
-    "when_to_do": "Người đã hoặc đang điều trị ung thư vú cần kiểm tra xem khối u có di căn không.",
-    "how_it_works": "Đo nồng độ kháng nguyên CA 15-3 do các tế bào u vú tiết ra.",
-    "result_meaning": "Bình thường: Bệnh đang được kiểm soát tốt. Tăng dần: Khối u đang phát triển hoặc đã lan sang cơ quan khác.",
-    "real_life_example": "Một cô đang hóa trị ung thư vú, hàng tháng đo CA 15-3 thấy chỉ số giảm dần chứng tỏ thuốc có tác dụng tiêu diệt u tốt.",
-    "note": "Không dùng để khám tầm soát ban đầu cho người khỏe mạnh vì độ nhạy chưa cao, thường chỉ dùng để theo dõi bệnh."
-  },
-  "Tg": {
-    "name": "Tg",
-    "purpose": "Theo dõi bệnh ung thư tuyến giáp sau phẫu thuật.",
-    "when_to_do": "Kiểm tra định kỳ ở người đã bị cắt bỏ tuyến giáp do ung thư.",
-    "how_it_works": "Đo chất Thyroglobulin do tế bào tuyến giáp tiết ra.",
-    "result_meaning": "Bình thường: Đã sạch tế bào ung thư. Tăng cao: Bệnh ung thư tuyến giáp tái phát.",
-    "real_life_example": "Chị gái mổ cắt toàn bộ tuyến giáp 2 năm trước, nay đi thử Tg thấy tăng lại báo hiệu tế bào ung thư mọc lại ở cổ.",
-    "note": "Kết quả chính xác nhất khi được làm cùng với xét nghiệm kháng thể Anti-Tg."
-  },
-  "Tế bào học dịch": {
-    "name": "Tế bào học dịch",
-    "purpose": "Tìm tế bào viêm hoặc tế bào ung thư trong các chất dịch bị ứ đọng của cơ thể.",
-    "when_to_do": "Khi bị trướng bụng trễ nước, tràn dịch màng phổi gây khó thở, hoặc sưng to khớp gối.",
-    "how_it_works": "Bác sĩ dùng kim chọc hút nước dịch ra, đem quay ly tâm và soi dưới kính hiển vi tìm tế bào lạ.",
-    "result_meaning": "Bình thường: Dịch sạch. Bất thường: Có tế bào mủ (nhiễm trùng) hoặc tế bào dị dạng ác tính (ung thư).",
-    "real_life_example": "Người bệnh ho hoài nhức ngực chụp phim thấy phổi có nước, bác sĩ hút nước đó đi soi phát hiện ra vi khuẩn lao.",
-    "note": "Cần bác sĩ có tay nghề chọc hút dịch an toàn trực tiếp trên người bệnh trước khi đem xuống phòng lab."
-  },
-  "Pro-calcitonin": {
-    "name": "Pro-calcitonin",
-    "purpose": "Nhận biết cực nhanh tình trạng nhiễm trùng máu nguy hiểm do vi khuẩn.",
-    "when_to_do": "Khi bệnh nhân sốt rét run lẩy bẩy, tụt huyết áp, nghi ngờ bị sốc nhiễm trùng.",
-    "how_it_works": "Đo nồng độ chất Pro-calcitonin, chất này sẽ tăng dựng đứng khi vi khuẩn xâm nhập sâu vào máu.",
-    "result_meaning": "Bình thường: Không có vi khuẩn. Tăng cao: Nhiễm khuẩn máu nặng, phải dùng kháng sinh liều cao tức khắc.",
-    "real_life_example": "Bé bị sốt li bì, test CRP chỉ tăng nhẹ nhưng Pro-calcitonin cao chót vót, bác sĩ nhận định ngay bé bị nhiễm trùng máu rất nặng.",
-    "note": "Rất có giá trị để phân biệt người bệnh sốt do vi khuẩn (cần kháng sinh) hay do virus (không cần kháng sinh)."
-  },
-  "Interleukin 6": {
-    "name": "Interleukin 6",
-    "purpose": "Đo lường mức độ bùng phát của phản ứng viêm toàn thân.",
-    "when_to_do": "Khi bị viêm phổi nặng, bệnh tự miễn, hoặc cơ thể bị virus tấn công gây suy hô hấp cấp.",
-    "how_it_works": "Đo nồng độ chất trung gian IL-6 do bạch cầu phát ra để gọi hội đến tiêu diệt mầm bệnh.",
-    "result_meaning": "Bình thường: Khỏe mạnh. Tăng rất cao: Hệ miễn dịch đang phản ứng quá mức tự phá hủy cơ thể.",
-    "real_life_example": "Bệnh nhân nhiễm cúm viêm phổi nặng khó thở, đo IL-6 cao vọt cảnh báo phổi đang bị chính hệ miễn dịch phá hủy.",
-    "note": "Được dùng nhiều trong hồi sức cấp cứu để quyết định dùng thuốc ức chế miễn dịch cứu mạng người bệnh."
-  },
-  "WBC": {
-    "name": "WBC (Bạch cầu)",
-    "purpose": "Đánh giá khả năng bảo vệ của cơ thể trước các mầm bệnh.",
-    "when_to_do": "Trong các lần khám sức khỏe thông thường, hoặc khi có sốt, sưng đau tấy đỏ ở bất kỳ đâu.",
-    "how_it_works": "Máy đếm tự động số lượng các chiến binh bạch cầu trong 1 lít máu.",
-    "result_meaning": "Bình thường: Đề kháng tốt. Tăng: Đang có nhiễm trùng vi khuẩn. Giảm: Suy giảm miễn dịch hoặc nhiễm virus.",
-    "real_life_example": "Anh thanh niên đau quặn bụng phải vào viện, thử máu thấy bạch cầu vọt lên 18.000, bác sĩ cho đi mổ ruột thừa ngay lập tức.",
-    "note": "Là một phần trong xét nghiệm công thức máu cơ bản, rẻ tiền nhưng vô cùng quan trọng."
-  },
-  "Máu lắng": {
-    "name": "Máu lắng",
-    "purpose": "Báo động tình trạng viêm mạn tính đang âm ỉ trong cơ thể.",
-    "when_to_do": "Khi hay bị đau nhức xương khớp kéo dài, hoặc sốt nhẹ kéo dài không rõ lý do.",
-    "how_it_works": "Cho máu vào ống nghiệm dọc và đo xem các tế bào hồng cầu rơi xuống đáy ống nhanh hay chậm trong 1 giờ.",
-    "result_meaning": "Bình thường: Hồng cầu lắng chậm. Lắng nhanh: Trong máu có nhiều protein viêm, gợi ý bệnh khớp hoặc lao.",
-    "real_life_example": "Bà cụ đau cứng các khớp ngón tay mỗi sáng, đi đo máu lắng cao giúp bác sĩ chẩn đoán bệnh viêm khớp dạng thấp.",
-    "note": "Không cho biết chính xác viêm ở đâu, chỉ đưa ra tín hiệu báo động đỏ để bác sĩ tìm nguyên nhân."
-  },
-  "Nhuộm AFB tìm Lao": {
-    "name": "Nhuộm AFB tìm Lao",
-    "purpose": "Xác định người bệnh có đang mắc và lây truyền vi khuẩn lao không.",
-    "when_to_do": "Khi ho khạc đờm kéo dài trên 2 tuần, ho ra máu, sốt nhẹ về chiều, sụt cân.",
-    "how_it_works": "Lấy đờm khạc ra bôi lên kính, nhuộm hóa chất đặc biệt và soi tìm hình dáng con vi khuẩn lao.",
-    "result_meaning": "Âm tính: Không thấy vi khuẩn. Dương tính: Chắc chắn mắc bệnh lao phổi và có nguy cơ lây cho người khác.",
-    "real_life_example": "Bác xe ôm ho sụ sụ cả tháng, sụt 5kg, đi khạc đờm xét nghiệm AFB dương tính nên được đưa vào chương trình uống thuốc lao miễn phí.",
-    "note": "Bắt buộc phải khạc đờm sâu từ phổi vào buổi sáng sớm khi mới ngủ dậy mới dễ bắt được vi khuẩn."
-  },
-  "Cấy vi khuẩn": {
-    "name": "Cấy vi khuẩn",
-    "purpose": "Tìm tận gốc mặt mũi con vi khuẩn gây bệnh và thử xem nó sợ loại kháng sinh nào.",
-    "when_to_do": "Khi bị nhiễm trùng nặng, vết thương mưng mủ mãi không lành dù đã uống thuốc.",
-    "how_it_works": "Lấy máu, mủ hoặc dịch bôi lên đĩa thạch dinh dưỡng, ủ ấm vài ngày để vi khuẩn mọc thành cụm.",
-    "result_meaning": "Âm tính: Không có vi khuẩn. Dương tính: Định danh được vi khuẩn và đưa ra bản danh sách kháng sinh tiêu diệt được nó.",
-    "real_life_example": "Một người bị loét bàn chân tiểu đường nhiễm trùng nặng, bác sĩ quệt mủ đi cấy tìm ra vi khuẩn kháng thuốc để đổi thuốc mạnh hơn.",
-    "note": "Phải lấy mẫu đem đi cấy ngay trước khi bệnh nhân bắt đầu uống hoặc tiêm kháng sinh thì vi khuẩn mới mọc được."
-  },
-  "Glucose": {
-    "name": "Glucose",
-    "purpose": "Kiểm tra lượng đường đang lưu thông trong máu tại thời điểm hiện tại.",
-    "when_to_do": "Khám định kỳ, hoặc khi có biểu hiện tiểu nhiều, uống nhiều nước, sụt cân.",
-    "how_it_works": "Đo nồng độ đường trong máu, thường lấy vào buổi sáng khi chưa ăn gì.",
-    "result_meaning": "Bình thường: Đường huyết ổn định. Cao: Dấu hiệu mắc bệnh đái tháo đường.",
-    "real_life_example": "Chú hàng xóm dạo này hay khát nước đi tiểu đêm, sáng ra trạm y tế chích máu ngón tay đo Glucose lên tới 12, bị chẩn đoán tiểu đường.",
-    "note": "Bạn bắt buộc phải nhịn ăn từ 8 đến 10 tiếng đồng hồ thì chỉ số đường huyết lúc đói mới phản ánh đúng."
-  },
-  "HbA1C": {
-    "name": "HbA1C",
-    "purpose": "Đánh giá mức độ kiểm soát đường huyết trung bình trong suốt 3 tháng qua.",
-    "when_to_do": "Dùng để chẩn đoán chính xác tiểu đường hoặc kiểm tra xem người bệnh có ăn kiêng tốt không.",
-    "how_it_works": "Đo tỷ lệ phần trăm lượng đường bám dính chặt vào các tế bào hồng cầu trong máu.",
-    "result_meaning": "Bình thường: Dưới 5.7%. Cao: Mắc bệnh tiểu đường và rủi ro biến chứng cao.",
-    "real_life_example": "Một người bệnh tiểu đường tự tin nói dạo này ăn kiêng tốt, nhưng xét nghiệm HbA1C tới 9% vạch trần việc 3 tháng qua đường vẫn rất cao.",
-    "note": "Xét nghiệm này không cần nhịn ăn, có thể lấy máu vào bất kỳ lúc nào trong ngày."
-  },
-  "Insulin": {
-    "name": "Insulin",
-    "purpose": "Kiểm tra xem tuyến tụy tiết ra được bao nhiêu hormone giúp hạ đường huyết.",
-    "when_to_do": "Khi hay bị bủn rủn tay chân do hạ đường huyết, hoặc để xem tiểu đường thuộc tuýp 1 hay tuýp 2.",
-    "how_it_works": "Đo nồng độ insulin trực tiếp lưu thông trong dòng máu.",
-    "result_meaning": "Thấp: Tuyến tụy bị hỏng (Tiểu đường tuýp 1). Cao: Cơ thể kháng insulin, tụy đang ráng sức làm việc (Tiểu đường tuýp 2).",
-    "real_life_example": "Một thanh niên trẻ gầy ốm bị tiểu đường, xét nghiệm Insulin rất thấp, bác sĩ kết luận tụy đã ngưng làm việc và bắt buộc phải tiêm insulin suốt đời.",
-    "note": "Cần làm chung với xét nghiệm Glucose lúc đói để bác sĩ đối chiếu chéo."
-  },
-  "C-peptid": {
-    "name": "C-peptid",
-    "purpose": "Đo chính xác khả năng tự sản xuất insulin thực tại của tuyến tụy.",
-    "when_to_do": "Rất quan trọng với người đang tiêm insulin ngoài vào, muốn biết tuyến tụy của mình còn sống không.",
-    "how_it_works": "Tụy sinh ra 1 insulin thì sẽ sinh ra 1 C-peptid. Đo chất này sẽ không bị nhầm với insulin tiêm từ ngoài vào.",
-    "result_meaning": "Bình thường: Tuyến tụy khỏe. Rất thấp: Tụy suy kiệt hoàn toàn, không thể tự sinh insulin nữa.",
-    "real_life_example": "Bác sĩ đo C-peptid cho một người bệnh đái tháo đường lâu năm để quyết định xem có thể đổi từ thuốc tiêm sang thuốc uống được không.",
-    "note": "C-peptid là thước đo trung thực nhất phản ánh sức lực của lá lách (tuyến tụy)."
-  },
-  "Acid Uric": {
-    "name": "Acid Uric",
-    "purpose": "Chẩn đoán bệnh Gout và đánh giá nguy cơ sỏi thận.",
-    "when_to_do": "Khi tự nhiên sưng tấy, đỏ ửng và đau nhức dữ dội ở khớp ngón chân cái.",
-    "how_it_works": "Đo lượng chất thải sinh ra sau khi cơ thể tiêu hóa thịt đỏ, hải sản và bia rượu.",
-    "result_meaning": "Bình thường: Thận thải độc tốt. Cao: Acid Uric đọng lại thành tinh thể sắc nhọn đâm vào khớp gây bệnh Gout.",
-    "real_life_example": "Một anh hay đi nhậu hải sản sáng ngủ dậy ngón chân đau điếng không bước nổi, xét nghiệm Acid Uric cao vọt kết luận bị Gout cấp.",
-    "note": "Cần nhịn ăn và tuyệt đối không uống rượu bia trong 24 giờ trước khi đi lấy máu."
-  },
-  "Ceton": {
-    "name": "Ceton",
-    "purpose": "Phát hiện biến chứng cực kỳ nguy hiểm có thể gây hôn mê ở người bệnh tiểu đường.",
-    "when_to_do": "Khi người bệnh tiểu đường bị nôn ói, mệt mỏi lả người, hơi thở có mùi như trái cây lên men.",
-    "how_it_works": "Tìm chất Ceton trong máu hoặc nước tiểu, chất này sinh ra khi cơ thể thiếu đường phải tự đốt mỡ để sống.",
-    "result_meaning": "Âm tính: An toàn. Dương tính: Máu đang bị axit hóa nặng, báo động đỏ cần cấp cứu y tế ngay.",
-    "real_life_example": "Bạn trẻ tiểu đường tuýp 1 bỏ tiêm thuốc vài ngày ngất xỉu, thử nước tiểu có Ceton cấp cứu lập tức để giữ mạng sống.",
-    "note": "Que thử Ceton nước tiểu có thể tự mua ở nhà thuốc để người bệnh tiểu đường tự kiểm tra tại nhà."
-  },
-  "Ure": {
-    "name": "Ure",
-    "purpose": "Đánh giá bước đầu xem thận có đang làm tốt công việc lọc chất thải không.",
-    "when_to_do": "Khám sức khỏe tổng quát, sưng phù mí mắt chân tay, hoặc đi tiểu rắt tiểu ít.",
-    "how_it_works": "Đo nồng độ Ure, một loại rác thải sinh ra sau khi cơ thể tiêu hóa chất đạm.",
-    "result_meaning": "Bình thường: Thận lọc tốt. Cao: Thận yếu, không đẩy được rác ra ngoài, hoặc do ăn quá nhiều thịt.",
-    "real_life_example": "Một người ăn chế độ giàu đạm tập gym đi khám thấy Ure tăng nhẹ, bác sĩ khuyên uống nhiều nước và đối chiếu thêm Creatinin.",
-    "note": "Vì Ure dễ bị ảnh hưởng bởi thức ăn nên bác sĩ không bao giờ chỉ dùng Ure để kết luận suy thận."
-  },
-  "Creatinin": {
-    "name": "Creatinin",
-    "purpose": "Chỉ số vàng, quan trọng nhất để chẩn đoán chính xác bệnh suy thận.",
-    "when_to_do": "Khám định kỳ, hoặc khi uống các loại thuốc tây có hại cho thận, người bị cao huyết áp tiểu đường lâu năm.",
-    "how_it_works": "Đo lượng chất thải sinh ra từ cơ bắp, chất này chỉ được lọc ra ngoài qua một con đường duy nhất là màng lọc thận.",
-    "result_meaning": "Bình thường: Quả thận hoàn toàn khỏe mạnh. Cao: Chắc chắn thận đang bị suy yếu.",
-    "real_life_example": "Cụ ông bị cao huyết áp 10 năm đi xét nghiệm Creatinin tăng gấp đôi, bác sĩ chẩn đoán cụ đã bước sang suy thận giai đoạn 3.",
-    "note": "Chỉ số này được bác sĩ dùng để lắp vào công thức tính ra thận của bạn còn sống được bao nhiêu phần trăm."
-  },
-  "MAU niệu": {
-    "name": "MAU niệu",
-    "purpose": "Bắt mạch tổn thương vi mạch máu ở thận từ giai đoạn cực kỳ sớm.",
-    "when_to_do": "Khám sức khỏe cho người đái tháo đường, cao huyết áp mỗi 6 tháng một lần.",
-    "how_it_works": "Tìm một lượng đạm (Albumin) vô cùng nhỏ rò rỉ qua màng lọc thận rơi vào trong nước tiểu.",
-    "result_meaning": "Bình thường: Màng lọc thận kín. Dương tính: Thận chớm bị tổn thương, cần can thiệp bảo vệ thận ngay.",
-    "real_life_example": "Cô bệnh nhân tiểu đường thử máu Ure Creatinin vẫn tốt, nhưng thử MAU niệu ra dương tính, nhờ vậy bác sĩ cho thuốc cứu thận kịp thời.",
-    "note": "Đây là xét nghiệm tốt nhất để ngăn chặn bệnh nhân tiểu đường tiến triển thành suy thận chạy thận."
-  },
-  "Protein niệu 24h": {
-    "name": "Protein niệu 24h",
-    "purpose": "Đo đếm chính xác xem thận bị lủng màng lọc làm thất thoát bao nhiêu đạm một ngày.",
-    "when_to_do": "Khi bệnh nhân phù toàn thân, tiểu ra bọt trắng xóa lâu tan, hoặc thai phụ bị cao huyết áp.",
-    "how_it_works": "Bệnh nhân phải tiểu và gom toàn bộ nước tiểu trong vòng đúng 24 tiếng đồng hồ vào 1 bình to đem đi đo.",
-    "result_meaning": "Bình thường: Gần như không có đạm. Cao: Hội chứng thận hư hoặc viêm cầu thận, đạm bị vứt ra ngoài quá nhiều.",
-    "real_life_example": "Mẹ bầu tháng thứ 8 bị sưng phù chân ấn lõm, gom nước tiểu 24h đo đạm rất cao, bác sĩ chẩn đoán tiền sản giật phải mổ lấy thai gấp.",
-    "note": "Cần hướng dẫn kỹ cách gom nước tiểu và bảo quản bình nước tiểu ở chỗ mát để không bị hỏng mẫu."
-  },
-  "ALT": {
-    "name": "ALT",
-    "purpose": "Chỉ số nhạy nhất và đặc hiệu nhất để phát hiện gan đang bị viêm.",
-    "when_to_do": "Khi có dấu hiệu mệt mỏi, chán ăn sợ mỡ, da dẻ vàng vọt, mắt vàng.",
-    "how_it_works": "Đo nồng độ enzyme ALT chỉ nằm độc quyền bên trong tế bào gan, khi tế bào gan vỡ nó sẽ tràn ra máu.",
-    "result_meaning": "Bình thường: Lá gan khỏe. Tăng cao: Viêm gan cấp do virus, do ngộ độc thuốc tây hoặc gan nhiễm mỡ.",
-    "real_life_example": "Thanh niên uống liền 10 viên Paracetamol trị sốt, hôm sau thử máu ALT tăng vọt nghìn lần do gan bị ngộ độc phá hủy cấp tính.",
-    "note": "Chỉ số ALT càng cao, tế bào gan đang bị chết đi càng nhiều."
-  },
-  "GGT": {
-    "name": "GGT",
-    "purpose": "Đánh giá tình trạng tổn thương gan do lạm dụng bia rượu hoặc tắc đường mật.",
-    "when_to_do": "Khi cần kiểm tra gan của người nghiện nhậu, hoặc người đau mạn sườn phải nghi sỏi túi mật.",
-    "how_it_works": "Đo men GGT, loại men nhạy cảm cực kỳ với cồn và thường nằm ở ống dẫn mật trong gan.",
-    "result_meaning": "Bình thường: Đường mật thông thoáng. Cao: Gan đang kiệt quệ vì rượu, hoặc có sỏi làm kẹt đường mật.",
-    "real_life_example": "Một bác tài xế nhậu nhẹt liên miên đi khám, các men gan khác bình thường nhưng GGT tăng vọt, bác sĩ khuyên phải cai rượu ngay.",
-    "note": "GGT tăng rất sớm trước cả khi bệnh nhân cảm thấy có triệu chứng đau ốm do rượu."
-  },
-  "Bilirubin": {
-    "name": "Bilirubin",
-    "purpose": "Tìm nguyên nhân gây ra chứng vàng da, vàng mắt ở bệnh nhân.",
-    "when_to_do": "Khi người lớn tự nhiên vàng da tiểu sậm màu, hoặc trẻ sơ sinh bị vàng da nhiều ngày không bớt.",
-    "how_it_works": "Đo lượng sắc tố mật màu vàng sinh ra từ xác của hồng cầu chết, gan có nhiệm vụ dọn dẹp chất này.",
-    "result_meaning": "Bình thường: Gan dọn dẹp rác tốt. Cao: Viêm gan nặng, tắc ống mật hoặc bệnh vỡ hồng cầu hàng loạt.",
-    "real_life_example": "Em bé mới sinh 3 ngày người vàng ươm, thử máu Bilirubin quá cao có nguy cơ thấm vào não nên phải đưa đi chiếu đèn ngay.",
-    "note": "Bác sĩ sẽ chia Bilirubin ra làm 2 loại (trực tiếp và gián tiếp) để biết chính xác bệnh nằm tại gan hay ngoài gan."
-  },
-  "Albumin": {
-    "name": "Albumin",
-    "purpose": "Kiểm tra tình trạng suy dinh dưỡng và khả năng nhà máy gan sản xuất protein.",
-    "when_to_do": "Khi người bệnh bị phù nề tay chân, trướng bụng nước, hay người xơ gan giai đoạn cuối.",
-    "how_it_works": "Đo lượng protein Albumin trong máu, chất này giúp giữ nước lại trong mạch máu không cho tràn ra ngoài.",
-    "result_meaning": "Bình thường: Đủ chất đạm. Thấp: Gan hỏng không làm ra đạm được, hoặc suy thận làm đạm lọt ra nước tiểu.",
-    "real_life_example": "Bệnh nhân xơ gan bụng to như cái trống, thử máu thấy Albumin tụt thê thảm làm nước tràn ra ổ bụng, phải truyền chai Albumin đắt tiền.",
-    "note": "Albumin thấp làm nước thoát khỏi mạch máu gây phù, chứng tỏ gan đã suy kiệt nặng."
-  },
-  "Amylase": {
-    "name": "Amylase",
-    "purpose": "Chẩn đoán nhanh căn bệnh viêm tụy cấp nguy hiểm.",
-    "when_to_do": "Khi tự nhiên đau quặn bụng trên rốn, đau gập người lăn lộn sau một bữa nhậu no say hoặc ăn nhiều dầu mỡ.",
-    "how_it_works": "Đo men tiêu hóa tinh bột do tuyến tụy tiết ra, khi tụy bị viêm, men này ộc vào máu rất nhiều.",
-    "result_meaning": "Bình thường: Tuyến tụy an toàn. Tăng rất cao: Viêm tụy cấp, cần nhập viện điều trị nhịn ăn ngay.",
-    "real_life_example": "Buổi tối đi ăn đồ nướng uống bia, đêm về anh thanh niên ôm bụng rên la, thử máu Amylase tăng gấp 5 lần xác định ngay viêm tụy cấp.",
-    "note": "Amylase cũng tăng khi bị bệnh quai bị (sưng mang tai) nên cần bác sĩ phân biệt rõ."
-  },
-  "Lipase": {
-    "name": "Lipase",
-    "purpose": "Chẩn đoán bệnh viêm tụy cấp một cách chính xác và đặc hiệu hơn Amylase.",
-    "when_to_do": "Làm song song với Amylase khi bệnh nhân có cơn đau bụng cấp cứu.",
-    "how_it_works": "Đo men tiêu hóa chất béo của tuyến tụy. Nó chỉ nằm ở tụy nên độ chính xác cao hơn.",
-    "result_meaning": "Bình thường: Tuyến tụy không viêm. Tăng cao: Khẳng định chắc chắn bệnh nhân bị viêm tụy cấp.",
-    "real_life_example": "Người bệnh đau bụng, Amylase hơi tăng nhẹ khó kết luận, bác sĩ cho làm thêm Lipase thấy tăng cao chót vót, khóa sổ chẩn đoán viêm tụy.",
-    "note": "Lipase ở lại trong máu lâu hơn Amylase nên rất hữu ích nếu bệnh nhân đến viện muộn sau vài ngày đau bụng."
-  },
-  "HBsAg": {
-    "name": "HBsAg",
-    "purpose": "Khẳng định xem bạn có đang mang trong người virus Viêm gan B không.",
-    "when_to_do": "Khám sức khỏe đi làm, phụ nữ trước khi bầu, hoặc chuẩn bị kết hôn.",
-    "how_it_works": "Tìm kiếm lớp vỏ bên ngoài của con virus viêm gan B trôi nổi trong máu.",
-    "result_meaning": "Âm tính: Không mắc bệnh. Dương tính: Đang bị nhiễm Viêm gan B.",
-    "real_life_example": "Một bạn trẻ đi hiến máu nhân đạo bị từ chối và nhận được thư báo kết quả HBsAg dương tính, lúc này mới biết mình mắc bệnh.",
-    "note": "Nếu âm tính, bạn nên đi tiêm ngừa vắc xin viêm gan B ngay để bảo vệ bản thân."
-  },
-  "HCV Ab": {
-    "name": "HCV Ab",
-    "purpose": "Tầm soát xem bạn có từng hoặc đang mắc bệnh Viêm gan C không.",
-    "when_to_do": "Khám sức khỏe tổng quát, người hay xăm hình, dùng chung bơm kim tiêm.",
-    "how_it_works": "Tìm dấu vết kháng thể mà cơ thể tạo ra để đánh lại virus Viêm gan C.",
-    "result_meaning": "Âm tính: Chưa từng nhiễm bệnh. Dương tính: Đang bị viêm gan C hoặc đã từng tự khỏi bệnh trong quá khứ.",
-    "real_life_example": "Đi xăm chân mày mười năm trước, nay đi khám sức khỏe cô gái bàng hoàng khi biết mình bị viêm gan C qua kết quả HCV Ab.",
-    "note": "Nếu dương tính, bắt buộc phải làm thêm xét nghiệm tải lượng virus (HCV-RNA) để xem virus còn sống không."
-  },
-  "Tải lượng HBV": {
-    "name": "Tải lượng HBV",
-    "purpose": "Đếm xem có bao nhiêu virus Viêm gan B đang sống trong máu.",
-    "when_to_do": "Sau khi đã biết mình bị viêm gan B, cần quyết định xem có phải uống thuốc diệt virus không.",
-    "how_it_works": "Dùng máy PCR khuế n đại gen để đếm chính xác số lượng virus trên 1ml máu.",
-    "result_meaning": "Số lượng thấp: Virus đang ngủ, chỉ cần theo dõi. Số lượng cao: Virus đang sinh sôi phá gan, phải uống thuốc ngay.",
-    "real_life_example": "Bệnh nhân viêm gan B đi tái khám đo HBV-DNA lên đến hàng tỷ con, bác sĩ lập tức kê toa thuốc kháng virus để ngừa xơ gan.",
-    "note": "Được dùng để theo dõi xem thuốc trị viêm gan B có đang phát huy tác dụng hay bị lờn thuốc."
-  },
-  "Tải lượng HCV": {
-    "name": "Tải lượng HCV",
-    "purpose": "Đếm chính xác số lượng virus Viêm gan C để điều trị dứt điểm bệnh.",
-    "when_to_do": "Khi test HCV Ab dương tính, cần đếm virus để bắt đầu liệu trình chữa bệnh.",
-    "how_it_works": "Sử dụng công nghệ PCR tìm và đếm lõi gen của virus Viêm gan C.",
-    "result_meaning": "Âm tính: Cơ thể không còn con virus nào. Dương tính: Virus đang phá gan, cần uống thuốc đặc trị.",
-    "real_life_example": "Sau 3 tháng uống thuốc chữa viêm gan C, bệnh nhân làm lại xét nghiệm HCV-RNA thấy âm tính, bác sĩ tuyên bố đã khỏi bệnh hoàn toàn.",
-    "note": "Bệnh viêm gan C hiện nay đã có thuốc chữa khỏi dứt điểm 100% nhờ việc theo dõi chỉ số này."
-  },
-  "Soi phân": {
-    "name": "Soi phân",
-    "purpose": "Tìm kiếm trứng giun sán, vi khuẩn tiêu chảy hoặc dấu vết máu nấp trong phân.",
-    "when_to_do": "Khi hay bị đau quặn bụng, tiêu chảy lâu ngày, đi tiêu ra nhầy máu hoặc nghi ngờ ung thư ruột.",
-    "how_it_works": "Lấy mẫu phân đưa lên kính hiển vi phóng to hoặc dùng hóa chất thử tìm hồng cầu tàng hình.",
-    "result_meaning": "Bình thường: Phân sạch sẽ. Bất thường: Thấy trứng giun đũa, amip hoặc có máu ẩn cảnh báo ung thư đại tràng.",
-    "real_life_example": "Ông chú hay đi cầu lắt nhắt, làm xét nghiệm phân có máu ẩn, bác sĩ cho đi nội soi ruột phát hiện ra khối u ác tính sớm.",
-    "note": "Là xét nghiệm rất rẻ tiền nhưng lại là công cụ vàng để tầm soát ung thư đường ruột."
-  },
-  "Calci toàn phần/ion hóa": {
-    "name": "Calci toàn phần/ion hóa",
-    "purpose": "Kiểm tra cơ thể có đủ canxi để giúp xương chắc khỏe và tim đập tốt không.",
-    "when_to_do": "Khi hay bị chuột rút, tê rần quanh mép miệng, phụ nữ tuổi tiền mãn kinh nghi loãng xương.",
-    "how_it_works": "Đo nồng độ canxi hòa tan trong huyết thanh (toàn phần) và lượng canxi tự do hoạt động (ion hóa).",
-    "result_meaning": "Thấp: Gây co giật, tê tay chân. Cao: Nguy cơ sỏi thận cứng, vôi hóa mạch máu hoặc u tuyến cận giáp.",
-    "real_life_example": "Bà bầu tháng thứ 7 hay bị chuột rút bắp chân ban đêm, thử Calci ion hóa thấp, bác sĩ cho uống viên canxi bổ sung liền hết bệnh.",
-    "note": "Chỉ số Calci ion hóa phản ánh chính xác lượng canxi cơ thể đang thiếu hơn là Calci toàn phần."
-  },
-  "Phospho": {
-    "name": "Phospho",
-    "purpose": "Đánh giá khoáng chất giúp tạo xương, thường đi cặp với canxi.",
-    "when_to_do": "Người bị bệnh suy thận mạn tính, hoặc các bệnh xương thủy tinh, loãng xương.",
-    "how_it_works": "Đo lượng khoáng Phospho trong máu, chất này luôn hoạt động đối nghịch với Canxi.",
-    "result_meaning": "Bình thường: Đủ chất. Cao: Ở bệnh nhân suy thận, thận không vứt Phospho ra ngoài được gây ngứa ngáy toàn thân.",
-    "real_life_example": "Người suy thận chạy thận nhân tạo da dẻ hay bị ngứa gãi sứt sẹo, xét nghiệm Phospho tăng vọt do không lọc được ra ngoài.",
-    "note": "Thường luôn được bác sĩ chỉ định xét nghiệm song song cùng với Canxi và Vitamin D3."
-  },
-  "Tế bào cặn nước tiểu": {
-    "name": "Tế bào cặn nước tiểu",
-    "purpose": "Tìm xem có mủ, máu hay cặn sỏi rơi rớt trong ống tiểu không.",
-    "when_to_do": "Khi đi tiểu rát buốt, tiểu ra máu màu hồng, hoặc đau thắt lưng nghi sỏi thận rớt xuống.",
-    "how_it_works": "Quay ly tâm ống nước tiểu cho cặn lắng xuống đáy, lấy phần cặn đó soi dưới kính hiển vi.",
-    "result_meaning": "Bình thường: Nước tiểu trong vắt. Bất thường: Thấy đầy bạch cầu, hồng cầu hoặc tinh thể sỏi.",
-    "real_life_example": "Chị nhân viên văn phòng hay nhịn tiểu, nay tiểu gắt buốt, soi cặn thấy toàn bạch cầu mủ, chẩn đoán ngay viêm đường tiết niệu.",
-    "note": "Nên rửa sạch vùng kín và bỏ khúc nước tiểu đầu tiên, chỉ hứng khúc giữa để mẫu không bị dính cặn bẩn từ da."
-  },
-  "Cấy vi khuẩn nước tiểu": {
-    "name": "Cấy vi khuẩn nước tiểu",
-    "purpose": "Tróc nã thủ phạm vi khuẩn gây viêm tiểu buốt và chọn đúng thuốc trị nó.",
-    "when_to_do": "Khi uống thuốc kháng sinh vài ngày mà vẫn tiểu buốt, viêm tái đi tái lại nhiều lần.",
-    "how_it_works": "Lấy nước tiểu vô trùng đem nuôi trong đĩa sinh dưỡng xem con vi khuẩn nào mọc lên, rồi thử nhỏ kháng sinh vào xem nó chết không.",
-    "result_meaning": "Âm tính: Sạch vi khuẩn. Dương tính: Tìm ra vi khuẩn kháng thuốc, bác sĩ sẽ cấp cho tờ giấy chỉ dẫn loại kháng sinh mạnh hơn.",
-    "real_life_example": "Bà cụ bị viêm đường tiểu uống kháng sinh cũ không hết, cấy nước tiểu ra con E.coli kháng thuốc, đổi sang thuốc tiêm mới khỏi.",
-    "note": "Bắt buộc phải lấy nước tiểu cho vào lọ vô khuẩn trước khi bạn uống viên thuốc kháng sinh đầu tiên."
-  },
-  "Dengue virus": {
-    "name": "Dengue virus",
-    "purpose": "Phát hiện nhanh bạn có đang bị sốt xuất huyết do muỗi chích không.",
-    "when_to_do": "Khi tự nhiên sốt hầm hập 39-40 độ, đau nhức hốc mắt, vỡ mồ hôi đau mình mẩy trong mùa dịch.",
-    "how_it_works": "Tìm mầm bệnh virus Dengue (NS1) trong 3 ngày đầu, hoặc tìm kháng thể cơ thể chống lại nó ở những ngày sau.",
-    "result_meaning": "Dương tính: Đang mắc bệnh sốt xuất huyết, cần nằm màn và theo dõi tiểu cầu sát sao phòng chảy máu.",
-    "real_life_example": "Con trai sốt cao 2 ngày uống thuốc không hạ, test NS1 sốt xuất huyết lên 2 vạch dương tính, bác sĩ căn dặn cho uống nhiều nước cam, oresol.",
-    "note": "Nếu bạn thử máu quá sớm hoặc quá trễ so với ngày khởi sốt, kết quả có thể âm tính giả dù vẫn đang mắc bệnh."
-  },
-  "HIV": {
-    "name": "HIV",
-    "purpose": "Khẳng định xem cơ thể có bị nhiễm virus suy giảm miễn dịch HIV không.",
-    "when_to_do": "Tầm soát trước kết hôn, phụ nữ mang thai, khám sức khỏe đi nước ngoài, hoặc lo sợ sau khi có hành vi nguy cơ cao.",
-    "how_it_works": "Dùng que test nhanh hoặc máy sinh hóa tìm kháng thể chống HIV và thành phần của virus trong máu.",
-    "result_meaning": "Âm tính: Không mắc bệnh. Có phản ứng: Cần gửi máu lên tuyến trên làm xét nghiệm khẳng định 3 phương pháp mới chắc chắn.",
-    "real_life_example": "Thanh niên có quan hệ không an toàn đi test HIV sau 1 tuần ra âm tính, bác sĩ khuyên 3 tháng sau quay lại test lần nữa cho chắc.",
-    "note": "Virus HIV có thời kỳ cửa sổ (ẩn mình) từ 1 đến 3 tháng đầu, lúc này xét nghiệm vẫn có thể ra âm tính dù đã mang mầm bệnh."
-  },
-  "Sốt rét": {
-    "name": "Sốt rét",
-    "purpose": "Tìm con ký sinh trùng sốt rét trốn trong các tế bào hồng cầu.",
-    "when_to_do": "Khi đi làm rẫy, đi rừng về bị sốt rét run lập cập, đắp mấy cái chăn không ấm, vã mồ hôi theo cơn.",
-    "how_it_works": "Lấy một giọt máu chích từ ngón tay phết lên lam kính soi trực tiếp xem có con ký sinh trùng nằm trong hồng cầu không.",
-    "result_meaning": "Dương tính: Đang bị sốt rét, vi trùng đang phá vỡ hồng cầu gây thiếu máu, phải uống thuốc đặc trị gấp.",
-    "real_life_example": "Anh công nhân làm mỏ ở rừng về sốt rét run đùng đùng, lấy máu soi thấy con Plasmodium falciparum ác tính, cấp cứu ngay.",
-    "note": "Cơ hội bắt được vi trùng cao nhất là lấy máu ngay tại lúc bệnh nhân đang lên cơn rét run."
-  },
-  "Treponema pallidum": {
-    "name": "Treponema pallidum",
-    "purpose": "Chẩn đoán căn bệnh xã hội lây qua đường tình dục là giang mai.",
-    "when_to_do": "Phát hiện vết loét không đau ở vùng kín, hoặc mẹ bầu làm xét nghiệm để phòng lây sang con.",
-    "how_it_works": "Kiểm tra xem trong máu có kháng thể sinh ra để đánh lại xoắn khuẩn giang mai hay không.",
-    "result_meaning": "Âm tính: Không mắc bệnh. Dương tính: Đang bị giang mai hoặc đã từng bị và chữa khỏi nhưng vết sẹo kháng thể vẫn còn.",
-    "real_life_example": "Cô gái sắp cưới đi khám tiền hôn nhân làm xét nghiệm giang mai âm tính, vui vẻ yên tâm tổ chức đám cưới.",
-    "note": "Nếu test nhanh dương tính, bác sĩ sẽ cho làm thêm test RPR định lượng để xem bệnh đang hoạt động mạnh hay yếu."
-  },
-  "Salmonella": {
-    "name": "Salmonella",
-    "purpose": "Kiểm tra xem bệnh nhân có đang bị ngộ độc thương hàn do ăn đồ dơ không.",
-    "when_to_do": "Khi đi ngoài phân lỏng như nước, đau bụng, sốt liên miên lừ đừ nhiều ngày sau khi ăn vỉa hè.",
-    "how_it_works": "Thử máu xem có kháng thể chống lại con vi khuẩn thương hàn (Phản ứng Widal) hoặc cấy phân.",
-    "result_meaning": "Dương tính: Nhiễm vi khuẩn thương hàn từ thực phẩm ôi thiu, cần dùng kháng sinh đường ruột.",
-    "real_life_example": "Chú công nhân ăn hủ tiếu gõ ngoài đường về tiêu chảy sốt cao 3 ngày, thử máu Widal dương tính, bác sĩ cho truyền dịch uống thuốc tiêu chảy.",
-    "note": "Ngoài thử máu, cấy phân tìm vi khuẩn là cách chính xác nhất để bắt tận tay con Salmonella."
-  },
-  "Toxocara": {
-    "name": "Toxocara",
-    "purpose": "Tìm dấu vết ấu trùng giun đũa từ chó mèo đi lạc vào cơ thể người.",
-    "when_to_do": "Khi nuôi chó mèo sờ vuốt nhiều, bỗng hay nổi mề đay dị ứng ngứa ngáy uống thuốc không bớt.",
-    "how_it_works": "Lấy máu tìm xem cơ thể có phản ứng tạo kháng thể chống lại giun sán của chó mèo tiết ra không.",
-    "result_meaning": "Dương tính: Bạn đã vô tình nuốt trứng giun chó mèo vào bụng, chúng đang bò dưới da hoặc gan gây ngứa.",
-    "real_life_example": "Chị gái ôm hôn mèo cưng suốt ngày, dạo này gãi xước cả da tay, thử Toxocara dương tính, uống thuốc tẩy giun sán là dứt ngứa.",
-    "note": "Kể cả khi bạn đã uống thuốc diệt sạch giun, kết quả xét nghiệm này vẫn có thể dương tính thêm vài tháng nữa mới giảm."
-  },
-  "Lactat": {
-    "name": "Lactat",
-    "purpose": "Đo mức độ ngạt thở của tế bào và rủi ro tử vong do sốc bệnh lý.",
-    "when_to_do": "Khi bệnh nhân vào cấp cứu trong tình trạng tụt huyết áp, mất máu nhiều, thở ngáp cá.",
-    "how_it_works": "Đo axit lactic, chất độc sinh ra khi các tế bào phải vùng vẫy tạo năng lượng trong tình trạng không có oxy.",
-    "result_meaning": "Bình thường: Máu lưu thông tốt. Cao: Các nội tạng đang hoại tử dần vì cạn oxy, nguy hiểm chết người.",
-    "real_life_example": "Bệnh nhân bị tai nạn chấn thương nát đùi chảy máu ồ ạt, vào viện đo Lactat cao vọt, bác sĩ lập tức truyền máu xối xả cứu nội tạng.",
-    "note": "Người bệnh khi lấy máu xét nghiệm này tuyệt đối không được gồng siết cơ tay, nếu không chỉ số sẽ tăng giả mạo."
-  },
-  "Ethanol": {
-    "name": "Ethanol",
-    "purpose": "Kiểm tra chính xác có bao nhiêu cồn (rượu bia) đang chạy trong máu.",
-    "when_to_do": "Giám định cho người bị tai nạn giao thông, hoặc khi có người bị ngộ độc sùi bọt mép nghi uống rượu giả.",
-    "how_it_works": "Lấy mẫu máu tĩnh mạch đưa vào máy phân tích nồng độ cồn.",
-    "result_meaning": "Âm tính: Không có cồn. Cao: Bệnh nhân đang say xỉn nặng, nếu quá cao có thể ức chế não gây ngừng thở.",
-    "real_life_example": "Một tài xế đụng xe bất tỉnh, công an yêu cầu lấy máu đo cồn, kết quả Ethanol rất cao chứng tỏ người này đã say xỉn trước khi lái.",
-    "note": "Lúc sát trùng da để chích kim lấy máu, cô y tá bắt buộc phải dùng thuốc đỏ Povidine thay vì dùng cồn để tránh làm sai kết quả."
-  },
-  "Test ma túy": {
-    "name": "Test ma túy",
-    "purpose": "Phát hiện nhanh người có sử dụng các chất kích thích cấm hay không.",
-    "when_to_do": "Khám sức khỏe tài xế lái xe, xin việc làm, hoặc thanh niên có biểu hiện ngáo đá ảo giác ngoài đường.",
-    "how_it_works": "Bệnh nhân tè vào lọ, y tá nhúng que thử nhiều vạch vào nước tiểu để dò tìm heroin, cần sa, thuốc lắc.",
-    "result_meaning": "Âm tính: Sạch sẽ. Dương tính: Đã chơi chất cấm trong khoảng 3 đến 5 ngày trở lại đây.",
-    "real_life_example": "Công ty khám sức khỏe bất chợt cho tài xế xe tải, test nước tiểu ra dương tính ma túy đá, tài xế lập tức bị đình chỉ lái xe.",
-    "note": "Một số loại thuốc tây chữa cảm sổ mũi uống vào cũng có thể làm que thử hiện 2 vạch giả mạo, hãy báo bác sĩ thuốc bạn đang uống."
-  },
-  "Nhóm máu ABO/Rh": {
-    "name": "Nhóm máu ABO/Rh",
-    "purpose": "Xác định nhãn dán nhóm máu của bạn là A, B, AB hay O, và có hiếm không.",
-    "when_to_do": "Khi đi hiến máu, phụ nữ mang thai, chuẩn bị mổ, hoặc làm thẻ căn cước.",
-    "how_it_works": "Trộn máu của bạn với các giọt hóa chất sinh học, xem nó kết tủa với loại nào thì ra nhóm máu đó.",
-    "result_meaning": "Ra được nhóm máu của bạn. Nếu có chữ Rh(-) đi kèm thì bạn thuộc nhóm máu cực kỳ hiếm.",
-    "real_life_example": "Chị gái sinh con lần đầu thử máu ra nhóm O âm (O-), bác sĩ viện sản lập tức phải đặt kho dự trữ máu hiếm phòng hờ lúc sinh băng huyết.",
-    "note": "Nhóm máu là thông tin không bao giờ thay đổi từ lúc sinh ra đến khi chết đi, bạn nên ghi nhớ để dùng lúc nguy cấp."
-  },
-  "Phản ứng hòa hợp": {
-    "name": "Phản ứng hòa hợp",
-    "purpose": "Bước chốt chặn tử thần cuối cùng trước khi cắm bịch máu vào người bệnh nhân.",
-    "when_to_do": "Làm ngay tại phòng xét nghiệm và tại giường bệnh trước khi y tá mở van truyền máu.",
-    "how_it_works": "Lấy một giọt máu trong bịch ni lông trộn với giọt máu của bệnh nhân xem chúng có vón cục đánh nhau không.",
-    "result_meaning": "Hòa hợp: Truyền an toàn. Bất hợp: Không được truyền, nếu truyền vào hồng cầu vỡ tan tành gây sốc chết người.",
-    "real_life_example": "Bệnh nhân cần truyền máu gấp, phòng lab báo phản ứng chéo an toàn, y tá mới tự tin mang bịch máu đỏ tươi gắn vào tay bệnh nhân.",
-    "note": "Dù bệnh nhân đã đeo vòng tay ghi rõ nhóm máu, thì bịch máu cũng phải làm phản ứng hòa hợp này rồi mới được truyền."
-  },
-  "Dịch não tủy": {
-    "name": "Dịch não tủy",
-    "purpose": "Chọc tìm nguyên nhân gây viêm màng não hoặc chảy máu trong não.",
-    "when_to_do": "Khi bệnh nhân đau đầu như búa bổ, cổ cứng ngắc gập không được, nôn vọt, sốt cao co giật.",
-    "how_it_works": "Bác sĩ gây tê và chọc một cây kim dài vào cột sống thắt lưng để lấy vài giọt nước tủy sống đem đo nồng độ đường, đạm và tìm vi khuẩn.",
-    "result_meaning": "Bình thường: Nước trong vắt. Bất thường: Nước đục như nước vo gạo là viêm màng não mủ, nước đỏ là chảy máu não.",
-    "real_life_example": "Em bé 2 tuổi sốt cao cứng cổ, bác sĩ chọc dịch não tủy đục ngầu do vi khuẩn não mô cầu, lập tức cho thuốc đặc trị màng não.",
-    "note": "Đường Glucose trong dịch não tủy giảm mạnh là dấu hiệu đặc trưng của viêm màng não do vi khuẩn."
-  },
-  "Amoniac (NH3)": {
-    "name": "Amoniac (NH3)",
-    "purpose": "Đo nồng độ khí độc ngấm lên não do gan không lọc được.",
-    "when_to_do": "Khi người xơ gan giai đoạn cuối bắt đầu lơ mơ, nói năng lảm nhảm, tay chân run rẩy vỗ cánh.",
-    "how_it_works": "Đo nồng độ NH3 trong máu, một loại khí độc sinh ra từ ruột mà gan hỏng nên không biến nó thành chất vô hại được.",
-    "result_meaning": "Bình thường: Gan giải độc tốt. Cao: Khí độc bay lên não gây ngộ độc hệ thần kinh (Hôn mê gan).",
-    "real_life_example": "Bác trai xơ gan tự nhiên sáng ngủ dậy không nhận ra người nhà, xét nghiệm NH3 cao chót vót, bác sĩ chẩn đoán tiền hôn mê gan.",
-    "note": "Mẫu máu rút ra phải được ướp trong đá lạnh ngay lập tức đem đi chạy máy thì chỉ số NH3 mới không bị sai."
-  },
-  "Vitamin D3": {
-    "name": "Vitamin D3",
-    "purpose": "Kiểm tra xem cơ thể có đủ vitamin để hút canxi vào xương hay không.",
-    "when_to_do": "Trẻ em bị còi xương rụng tóc hình vành khăn, người lớn hay nhức mỏi xương, phụ nữ loãng xương.",
-    "how_it_works": "Đo lượng vitamin D lưu trữ trong máu, loại vitamin được da tổng hợp khi phơi nắng mặt trời.",
-    "result_meaning": "Bình thường: Khung xương được bảo vệ. Thấp: Xương giòn dễ gãy, cơ bắp yếu đuối, hệ miễn dịch kém.",
-    "real_life_example": "Chị nhân viên văn phòng 35 tuổi che nắng kín mít, hay đau mỏi lưng, đo Vitamin D3 rất thấp, uống canxi mãi không ngấm được vào xương.",
-    "note": "Nếu bạn thiếu Vitamin D3, dù bạn có uống cả ký Canxi thì nó cũng trôi ra ngoài qua đường tiêu tiểu hết."
-  },
-  "RF": {
-    "name": "RF",
-    "purpose": "Truy tìm căn bệnh viêm khớp dạng thấp tự miễn tàn phá khớp.",
-    "when_to_do": "Khi sáng ngủ dậy tay chân cứng đơ khó cử động, các khớp ngón tay sưng đỏ đối xứng 2 bên.",
-    "how_it_works": "Tìm một loại kháng thể bị lỗi do cơ thể tự sinh ra quay ngược lại cắn xé các sụn khớp của chính mình.",
-    "result_meaning": "Âm tính: Khó mắc bệnh. Dương tính: Chắc chắn bị viêm khớp dạng thấp, lâu dài khớp sẽ bị biến dạng cong vẹo.",
-    "real_life_example": "Bà cụ các đốt ngón tay sưng to đau nhức bóp méo, đi xét nghiệm RF dương tính, bác sĩ cho uống thuốc ức chế miễn dịch làm chậm hư khớp.",
-    "note": "Ở người già khỏe mạnh đôi khi xét nghiệm này cũng dương tính nhẹ mà không có bệnh, cần bác sĩ khớp khám trực tiếp."
-  },
-  "ASO": {
-    "name": "ASO",
-    "purpose": "Phát hiện dấu vết con vi khuẩn ăn thịt người (Liên cầu khuẩn) gây hỏng van tim.",
-    "when_to_do": "Trẻ em sau đợt viêm họng mủ đau họng sưng to, nay tự nhiên sưng đau đầu gối, mệt tim.",
-    "how_it_works": "Đo nồng độ kháng thể mà cơ thể sinh ra để diệt độc tố của con vi khuẩn liên cầu nhóm A.",
-    "result_meaning": "Bình thường: Không nhiễm vi khuẩn. Cao: Vi khuẩn đã vào máu, nguy cơ cắn đứt sụn khớp, màng lọc thận và hỏng van tim.",
-    "real_life_example": "Bé trai 8 tuổi viêm họng tuần trước, nay kêu đau cổ chân, thử ASO tăng vọt, bác sĩ cho tiêm phòng thấp tim để cứu lấy trái tim bé.",
-    "note": "Con vi khuẩn này có biệt danh là 'liếm khớp đớp tim', nếu viêm họng liên cầu phải uống kháng sinh đủ liều 10 ngày để diệt cỏ tận gốc."
-  },
-  "Sắt huyết thanh": {
-    "name": "Sắt huyết thanh",
-    "purpose": "Đo lượng sắt đang đi lông nhông trên các chuyến xe trong máu.",
-    "when_to_do": "Khi nhợt nhạt, hoa mắt chóng mặt khi đứng lên ngồi xuống, tóc rụng da khô móng tay gãy.",
-    "how_it_works": "Đo lường trực tiếp khoáng chất sắt có mặt trong huyết thanh ở thời điểm rút máu.",
-    "result_meaning": "Thấp: Mắc bệnh thiếu máu do thiếu sắt. Cao: Bị ngộ độc sắt làm đen da, hỏng gan thận.",
-    "real_life_example": "Bà bầu tháng thứ 4 xanh xao hay xây xẩm mặt mày, đi đo sắt huyết thanh thấy thấp chạm đáy, bác sĩ kê ngay viên sắt và dặn ăn nhiều thịt bò.",
-    "note": "Nên lấy máu vào buổi sáng và không uống viên sắt trước ngày xét nghiệm để số đo không bị nhiễu."
-  },
-  "Ferritin": {
-    "name": "Ferritin",
-    "purpose": "Đo xem kho dự trữ sắt cất giấu sâu trong gan và tủy xương còn đầy hay đã cạn.",
-    "when_to_do": "Làm cùng xét nghiệm sắt huyết thanh để biết chắc chắn bạn thiếu máu lâu ngày chưa.",
-    "how_it_works": "Đo một cái bao tải protein tên là Ferritin, nhiệm vụ của nó là ôm giữ sắt cất đi để xài dần.",
-    "result_meaning": "Thấp: Kho đã cạn sạch, cơ thể đói sắt trầm trọng. Cao: Đang có viêm nhiễm hoặc mắc bệnh dư thừa sắt di truyền.",
-    "real_life_example": "Một cô gái ăn kiêng giảm cân, sắt máu bình thường nhưng Ferritin rất thấp, báo hiệu kho dự trữ đã cạn, sắp sửa bị thiếu máu nặng.",
-    "note": "Ferritin là bộ xét nghiệm trung thực nhất, chỉ cần nó thấp thì 100% bạn đang thiếu sắt."
-  },
-  "Folate": {
-    "name": "Folate",
-    "purpose": "Đánh giá lượng vitamin B9 giúp tạo máu và chống dị tật não cho thai nhi.",
-    "when_to_do": "Người có hồng cầu to bất thường, mẹ bầu đi khám thai những tháng đầu tiên.",
-    "how_it_works": "Đo nồng độ Folate trong máu, vi chất này thường có nhiều trong rau xanh ăn lá.",
-    "result_meaning": "Thấp: Gây bệnh thiếu máu hồng cầu to, phụ nữ mang thai thiếu chất này con sinh ra dễ bị dị tật nứt đốt sống lưng.",
-    "real_life_example": "Vợ chồng chuẩn bị có con đi khám tiền thai sản, bác sĩ khuyên vợ uống bổ sung axit folic liên tục 3 tháng trước khi bầu.",
-    "note": "Cần nhịn ăn sáng trước khi lấy máu để kết quả vitamin B9 không bị tăng giả tạo do bữa ăn."
-  },
-  "Vitamin B12": {
-    "name": "Vitamin B12",
-    "purpose": "Kiểm tra vitamin giúp bảo vệ dây thần kinh và sản xuất hồng cầu.",
-    "when_to_do": "Người già hay bị tê rần châm chích bàn chân bàn tay, hay quên, người ăn chay trường kỳ.",
-    "how_it_works": "Đo lượng vitamin B12 trong máu, vi chất này chỉ có trong thịt động vật, không có trong thực vật.",
-    "result_meaning": "Thấp: Gây suy nhược thần kinh, thiếu máu ác tính, đi lại chao đảo loạng choạng.",
-    "real_life_example": "Cụ ông bị viêm loét dạ dày lâu năm hay bị tê tay, khám đo B12 thấp do dạ dày hỏng không hút được vitamin từ thịt cá.",
-    "note": "Nếu bạn ăn chay trường nhiều năm, bạn bắt buộc phải uống viên bổ sung B12 để không bị hỏng hệ thần kinh."
-  },
-  "UIBC": {
-    "name": "UIBC",
-    "purpose": "Kiểm tra xem các cỗ xe chở sắt trong máu Transferrin còn trống bao nhiêu chỗ.",
-    "when_to_do": "Được làm gộp chung trong bộ kiểm tra thiếu máu, thừa sắt cùng với Sắt và Ferritin.",
-    "how_it_works": "Đo công suất còn lại của các protein vận chuyển sắt chưa bị chiếm dụng.",
-    "result_meaning": "Cao: Xe trống rỗng quá nhiều chứng tỏ bạn đang thiếu sắt. Thấp: Xe chở quá tải chứng tỏ ngộ độc sắt.",
-    "real_life_example": "Cô gái thiếu máu, đo Sắt thấp nhưng UIBC lại tăng cao, chứng tỏ cơ thể đang khát sắt, xe ra bến đón mà không có sắt để chở.",
-    "note": "Cộng UIBC với Sắt huyết thanh sẽ ra chỉ số TIBC (Sức chứa sắt tổng cộng của cơ thể)."
-  },
-  "Phết máu ngoại biên": {
-    "name": "Phết máu ngoại biên",
-    "purpose": "Quan sát tận mắt hình dáng, màu sắc và cấu trúc của các tế bào máu.",
-    "when_to_do": "Khi máy đếm công thức máu tự động báo lỗi có tế bào lạ, nghi ngờ ung thư máu hoặc sốt rét.",
-    "how_it_works": "Nhỏ một giọt máu dàn mỏng tang lên tấm kính thủy tinh, nhuộm màu cho nổi bật rồi đưa lên kính hiển vi soi mắt thường.",
-    "result_meaning": "Thấy được hồng cầu bị cắn vỡ, hồng cầu hình bia bắn, hoặc thấy các bạch cầu non non nớt tràn ngập do ung thư tủy.",
-    "real_life_example": "Em bé xanh xao sốt dai dẳng, máy đếm bạch cầu cao bất thường, bác sĩ soi kính hiển vi thấy toàn bạch cầu ác tính chẩn đoán ung thư máu cấp.",
-    "note": "Đây là xét nghiệm thủ công, kết quả phụ thuộc 100% vào cặp mắt nhà nghề của bác sĩ chuyên khoa huyết học."
-  },
-  "Hồng cầu lưới": {
-    "name": "Hồng cầu lưới",
-    "purpose": "Kiểm tra xem nhà máy tủy xương có đang sản xuất đủ hồng cầu mới ra lò không.",
-    "when_to_do": "Sau đợt xuất huyết rỉ máu rỉ rả, hoặc đang uống thuốc sắt xem thuốc có hiệu quả không.",
-    "how_it_works": "Đếm tỷ lệ những tế bào hồng cầu non trẻ mới ra lò so với tổng số hồng cầu trưởng thành trong máu.",
-    "result_meaning": "Cao: Nhà máy tủy xương đang hoạt động hết công suất để bù đắp máu mất. Thấp: Tủy xương bị hỏng, suy tủy không đẻ được máu.",
-    "real_life_example": "Chị bị trĩ nội chảy máu rỉ rả, được truyền máu và uống sắt 1 tuần, xét nghiệm thấy hồng cầu lưới tăng vọt chứng tỏ tủy xương đang phục hồi tốt.",
-    "note": "Chỉ số này là cách tuyệt vời nhất để bác sĩ biết tủy xương của bạn còn sống khỏe hay đã teo tóp."
-  },
-  "FT3": {
-    "name": "FT3",
-    "purpose": "Đánh giá mức độ làm việc của tuyến giáp ở vùng cổ.",
-    "when_to_do": "Khi hay bị trống ngực hồi hộp, sụt cân nhanh dù ăn rất nhiều, tay run rẩy bần bật (Cường giáp).",
-    "how_it_works": "Đo nồng độ hormone T3 tự do, đây là loại hormone có sức công phá cực mạnh do tuyến giáp tiết ra.",
-    "result_meaning": "Cao: Tuyến giáp hoạt động quá mức. Thấp: Tuyến giáp lười biếng, làm cơ thể mập ú ù lì.",
-    "real_life_example": "Cô gái trẻ hay cáu gắt, lồi mắt, tim đập thình thịch 120 nhịp/phút, thử FT3 tăng rất cao xác định mắc chứng Cường giáp.",
-    "note": "Dù lượng FT3 trong máu rất nhỏ so với FT4, nhưng nó lại là kẻ quyết định tốc độ tiêu hao năng lượng của cơ thể."
-  },
-  "FT4": {
-    "name": "FT4",
-    "purpose": "Công cụ chính xác nhất để chẩn đoán bệnh bướu cổ tuyến giáp.",
-    "when_to_do": "Đi kèm thành bộ 3 hoàn hảo với FT3 và TSH khi khám sức khỏe bướu cổ.",
-    "how_it_works": "Đo nồng độ hormone T4 tự do trong máu. T4 giống như một kho dự trữ, khi cần sẽ biến thành FT3 để xài.",
-    "result_meaning": "Bình thường: Tuyến giáp hiền hòa. Cao: Bệnh cường giáp. Thấp: Tuyến giáp bị suy yếu không sinh đủ hormone.",
-    "real_life_example": "Bà mẹ sau sinh người mệt mỏi phù nề, ăn ít vẫn mập, đo FT4 thấp tè, bác sĩ cho uống viên bù hormone tuyến giáp liền khỏe lại ngay.",
-    "note": "Bác sĩ ưu tiên đo FT4 (tự do) thay vì T4 (toàn phần) vì nó không bị ảnh hưởng sai lệch do các protein trong máu."
-  },
-  "TSH": {
-    "name": "TSH",
-    "purpose": "Chỉ số trinh sát nhạy bén nhất để tầm soát mọi vấn đề về tuyến giáp.",
-    "when_to_do": "Là xét nghiệm đầu tiên được bác sĩ chỉ định khi bạn có bướu to ở cổ hoặc nghi ngờ bệnh tuyến giáp.",
-    "how_it_works": "Đo hormone TSH từ tuyến yên trên não tiết ra. Não dùng TSH để ra lệnh cho tuyến giáp làm việc.",
-    "result_meaning": "Thấp: Tuyến giáp đang sản xuất quá mức (Cường giáp). Cao: Tuyến giáp bị yếu nên não phải thúc ép liên tục (Suy giáp).",
-    "real_life_example": "Kết quả xét nghiệm FT3 FT4 bình thường nhưng TSH tăng cao, bác sĩ kết luận đây là suy giáp tiềm ẩn sớm, chuẩn bị cho uống thuốc.",
-    "note": "TSH luôn đi ngược chiều với FT3 và FT4. Nó là chỉ số thay đổi sớm nhất khi tuyến giáp mới chớm có vấn đề."
-  },
-  "Testosteron": {
-    "name": "Testosteron",
-    "purpose": "Đánh giá phong độ sinh lý, ham muốn và cơ bắp ở nam giới.",
-    "when_to_do": "Nam giới rụng tóc hói đầu, yếu sinh lý liệt dương, hoặc nữ giới mọc ria mép nổi mụn đầy mặt.",
-    "how_it_works": "Đo lượng hormone nam tính lưu thông trong máu.",
-    "result_meaning": "Thấp ở nam: Mãn dục nam, yếu sinh lý, vô sinh. Cao ở nữ: Bệnh buồng trứng đa nang gây rối loạn kinh nguyệt.",
-    "real_life_example": "Chú 50 tuổi than vãn không còn hứng thú chuyện vợ chồng, đo Testosteron sụt thê thảm, được bác sĩ cho uống bổ sung hormone lấy lại phong độ.",
-    "note": "Bắt buộc phải đi lấy máu vào buổi sáng sớm vì đây là lúc hormone sinh dục nam dâng trào cao nhất trong ngày."
-  },
-  "Cortisol": {
-    "name": "Cortisol",
-    "purpose": "Đo lường mức độ stress căng thẳng của cơ thể và chức năng tuyến thượng thận.",
-    "when_to_do": "Người hay tự mua thuốc khớp đông y uống, dạo này mặt sưng tròn như mặt trăng, chân tay teo tóp.",
-    "how_it_works": "Đo hormone Cortisol do tuyến thượng thận tiết ra mỗi khi bạn bị áp lực, đói, sợ hãi.",
-    "result_meaning": "Cao: Mắc bệnh u tuyến thượng thận hoặc do lạm dụng thuốc corticoid. Thấp: Suy tuyến thượng thận.",
-    "real_life_example": "Cô bán hàng uống thuốc tễ trị nhức mỏi nửa năm nay, giờ mặt béo phị mọc lông, thử Cortisol rối loạn do ngộ độc corticoid trộn trong thuốc tễ.",
-    "note": "Cortisol tăng cao vọt lúc sáng sớm khi mới ngủ dậy và thấp dần về chiều tối, nên y tá sẽ dặn bạn lấy máu đúng 8 giờ sáng."
-  },
+    "purpose": "Phát hiện nhanh sự hiện diện của cục máu đông đang hình thành và tan rã bất thường trong lòng mạch máu, giúp loại trừ các bệnh lý huyết khối.",
+    "when_to_do": "Khi tự nhiên sưng to và đau nhức một bên bắp chân (nghi huyết khối tĩnh mạch sâu), hoặc đau thắt ngực, khó thở dữ dội (nghi tắc mạch phổi).",
+    "how_it_works": "Tìm kiếm các mảnh vỡ protein đặc trưng (D-Dimer) được sinh ra khi cơ thể kích hoạt hệ thống tiêu sợi huyết để dọn dẹp và làm tan một cục máu đông.",
+    "result_meaning": "Bình thường (Âm tính): Gần như loại trừ 100% khả năng bị huyết khối cấp tính. Tăng cao: Có sự hiện diện của cục máu đông, hoặc đang có phản ứng viêm nhiễm, chấn thương mạnh, phụ nữ có thai.",
+    "real_life_example": "Người phụ nữ ngồi máy bay 10 tiếng thấy bắp chân sưng đỏ đau nhức, vào viện thử D-Dimer cao giúp bác sĩ có cơ sở chẩn đoán tắc tĩnh mạch chân và cho siêu âm Doppler xác định.",
+    "note": "D-Dimer có độ nhạy cực cao nhưng độ đặc hiệu thấp (tức là có thể tăng trong nhiều bệnh lý khác ngoài huyết khối). Do đó, giá trị lớn nhất của xét nghiệm này là dùng để 'loại trừ' bệnh chứ không phải để 'khẳng định' bệnh.",
+    "advanced_knowledge": "Xét nghiệm D-Dimer nay đã được tích hợp vào các thiết bị xét nghiệm tại chỗ (POCT) cầm tay chuyên dụng về tim mạch (như hệ thống cobas h 232). Thiết bị này cho phép bác sĩ cấp cứu thực hiện phân tích và nhận kết quả loại trừ huyết khối tĩnh mạch sâu hoặc tắc mạch phổi chỉ trong vòng 8 phút ngay tại giường bệnh của bệnh nhân [2-4].",
+    "deep_knowledge": "Tuổi tác làm D-Dimer tăng một cách tự nhiên. Hiện nay, các phần mềm trí tuệ nhân tạo (như LAB AI Agent [5, 6]) đã tự động thiết lập và áp dụng 'ngưỡng D-Dimer hiệu chỉnh theo tuổi' (Age-adjusted cutoff = Tuổi x 10 µg/L cho người trên 50 tuổi). Điều này giúp giảm đáng kể tỷ lệ báo động giả và các chỉ định chụp CT/siêu âm không cần thiết cho người cao tuổi.",
+    "patient_advice": "Nếu bạn có kết quả D-Dimer tăng nhẹ sau khi vừa phẫu thuật, bị chấn thương, mắc bệnh lý viêm nhiễm hoặc đang mang thai, đừng quá hốt hoảng vì đây là phản ứng sinh lý bình thường của cơ thể. Hãy cung cấp đầy đủ thông tin y tế để bác sĩ kết hợp với thang điểm đánh giá lâm sàng nhằm đưa ra kết luận chính xác nhất."
+  },
+   "AST": {
+      "name": "AST (SGOT)",
+      "purpose": "Đánh giá tình trạng tổn thương của tế bào gan và một số cơ quan khác như cơ tim, cơ xương.",
+      "when_to_do": "Khi khám sức khỏe định kỳ, hoặc có biểu hiện vàng da, mệt mỏi, chán ăn, hoặc đang dùng thuốc có nguy cơ gây độc cho gan.",
+      "how_it_works": "Đo lượng men gan AST rò rỉ vào dòng máu khi tế bào gan hoặc tế bào cơ bị phá hủy.",
+      "result_meaning": "Bình thường: Gan khỏe. Cao: Gan đang bị tổn thương do viêm, xơ gan, nhồi máu cơ tim hoặc uống nhiều rượu bia [1, 2].",
+      "real_life_example": "Một chú hay nhậu nhẹt đi khám thấy men gan AST tăng gấp 3 lần bình thường, báo hiệu gan đang bị tàn phá do cồn.",
+      "note": "Vì AST cũng có ở cơ bắp, nên bác sĩ thường cho làm thêm xét nghiệm ALT để biết chính xác là do gan.",
+      "advanced_knowledge": "Tích hợp trên các hệ thống sinh hóa tự động thế hệ mới có sử dụng phần mềm LAB AI Agent, giúp tự động cảnh báo mức độ suy gan hoặc tổn thương cơ tim chéo dựa trên tỷ lệ AST/ALT (De Ritis ratio) ngay khi có kết quả [1, 3].",
+      "deep_knowledge": "AST không chỉ đặc hiệu cho gan mà còn phân bố nhiều ở cơ tim và cơ vân. Tỷ lệ AST cao hơn ALT thường gợi ý tổn thương gan do rượu, xơ gan, hoặc thậm chí là nhồi máu cơ tim. Ngược lại, ALT cao hơn AST lại đặc trưng hơn cho viêm gan virus hoặc gan nhiễm mỡ [2].",
+      "patient_advice": "Tuyệt đối không lạm dụng các thuốc giảm đau chứa Paracetamol, vì ngộ độc Paracetamol là nguyên nhân hàng đầu gây hoại tử tế bào gan cấp tính làm AST/ALT tăng vọt [2]. Hãy báo cho bác sĩ nếu bạn vừa tập thể dục cường độ cao vì có thể làm tăng AST giả tạo do tổn thương cơ bắp."
+    },
+    "ALT": {
+      "name": "ALT (SGPT)",
+      "purpose": "Chỉ số nhạy nhất và đặc hiệu nhất để phát hiện tổn thương và viêm tại gan [1].",
+      "when_to_do": "Khi có dấu hiệu mệt mỏi, chán ăn sợ mỡ, da dẻ vàng vọt, mắt vàng, hoặc để theo dõi bệnh nhân viêm gan virus B, C.",
+      "how_it_works": "Đo nồng độ enzyme ALT chỉ nằm độc quyền bên trong bào tương của tế bào gan, khi tế bào gan vỡ nó sẽ tràn ồ ạt ra máu.",
+      "result_meaning": "Bình thường: Lá gan khỏe. Tăng cao: Viêm gan cấp do virus, do ngộ độc thuốc tây hoặc gan nhiễm mỡ.",
+      "real_life_example": "Thanh niên tự ý uống liền 10 viên Paracetamol trị sốt, hôm sau thử máu ALT tăng vọt nghìn lần do gan bị ngộ độc phá hủy cấp tính.",
+      "note": "Chỉ số ALT càng cao, tế bào gan đang bị chết đi càng nhiều.",
+      "advanced_knowledge": "Các thiết bị POCT hiện đại cho phép đo ALT chỉ từ một giọt máu mao mạch, trả kết quả trong vài phút, kết hợp với AI để dự báo rủi ro tiến triển thành xơ gan trong tương lai [3, 4].",
+      "deep_knowledge": "ALT đặc hiệu cho tế bào gan hơn AST. Khi tế bào gan bị tổn thương màng, ALT sẽ lập tức rò rỉ ra ngoài. Sự gia tăng ALT đột biến (có thể >1000 U/L) thường do viêm gan virus cấp, thiếu máu cục bộ tại gan hoặc ngộ độc thuốc nghiêm trọng [1, 2].",
+      "patient_advice": "Bạn nên thực hiện xét nghiệm vào buổi sáng. Hãy hạn chế sử dụng rượu bia và tuyệt đối không tự ý uống các loại thuốc nam, thuốc bắc không rõ nguồn gốc vì chúng chính là 'sát thủ thầm lặng' gây viêm gan nhiễm độc, tàn phá tế bào gan của bạn."
+    },
+    "GGT": {
+      "name": "GGT (Gamma-Glutamyl Transferase)",
+      "purpose": "Đánh giá tình trạng ứ mật và tổn thương gan do lạm dụng bia rượu hoặc độc chất [1].",
+      "when_to_do": "Khi cần kiểm tra mức độ tổn thương gan của người nghiện nhậu, hoặc người đau mạn sườn phải nghi sỏi tắc đường mật.",
+      "how_it_works": "Đo men GGT, loại men nhạy cảm cực kỳ với cồn và các loại thuốc, thường nằm ở màng tế bào biểu mô ống mật trong gan.",
+      "result_meaning": "Bình thường: Đường mật thông thoáng. Cao: Gan đang kiệt quệ vì rượu, hoặc có sỏi/khối u làm kẹt tắc đường mật [5].",
+      "real_life_example": "Một bác tài xế nhậu nhẹt liên miên đi khám, các men gan AST/ALT bình thường nhưng GGT tăng vọt, bác sĩ khuyên phải cai rượu ngay lập tức.",
+      "note": "GGT tăng rất sớm trước cả khi bệnh nhân cảm thấy có triệu chứng đau ốm do rượu.",
+      "advanced_knowledge": "Dữ liệu GGT hiện được AI phân tích chéo cùng với MCV (thể tích hồng cầu) để xác định chính xác người bệnh có đang khai báo trung thực về thói quen uống rượu của mình hay không, từ đó hỗ trợ cai nghiện rượu hiệu quả [1, 3].",
+      "deep_knowledge": "GGT là một enzyme màng tế bào tham gia vào chuyển hóa glutathione. Nó cực kỳ nhạy cảm với sự cảm ứng enzyme do rượu và một số loại thuốc (như thuốc chống động kinh). GGT tăng cao kết hợp với ALP (Alkaline Phosphatase) tăng là dấu hiệu kinh điển đặc trưng của tắc mật [1, 5].",
+      "patient_advice": "GGT mất khoảng 2-6 tuần để trở về mức bình thường sau khi ngừng uống rượu hoàn toàn. Do đó, cai rượu tuyệt đối là cách duy nhất và hữu hiệu nhất để đưa chỉ số này về ngưỡng an toàn và cứu lấy lá gan."
+    },
+    "Bilirubin": {
+      "name": "Bilirubin (Toàn phần, Trực tiếp, Gián tiếp)",
+      "purpose": "Tìm nguyên nhân gây ra chứng vàng da, vàng mắt và phân biệt giữa tắc mật, tổn thương gan hay vỡ hồng cầu (tan máu) [1].",
+      "when_to_do": "Khi người lớn tự nhiên vàng da, tiểu sậm màu như nước trà, phân bạc màu, hoặc trẻ sơ sinh bị vàng da nhiều ngày không bớt.",
+      "how_it_works": "Đo lượng sắc tố mật màu vàng sinh ra từ xác của hồng cầu bị chết. Gan có nhiệm vụ xử lý (liên hợp) chất này để thải ra ngoài qua đường phân và nước tiểu.",
+      "result_meaning": "Bình thường: Gan dọn dẹp rác tốt. Cao: Viêm gan nặng, tắc ống mật (tăng Bilirubin trực tiếp) hoặc bệnh vỡ hồng cầu hàng loạt (tăng Bilirubin gián tiếp) [6].",
+      "real_life_example": "Em bé mới sinh 3 ngày người vàng ươm, thử máu Bilirubin gián tiếp quá cao có nguy cơ thấm vào não nên phải đưa đi chiếu đèn ngay.",
+      "note": "Bác sĩ sẽ chia Bilirubin ra làm 2 loại (trực tiếp và gián tiếp) để biết chính xác bệnh nằm tại gan (viêm gan), trước gan (tan máu) hay sau gan (tắc mật).",
+      "advanced_knowledge": "Các máy phân tích sinh hóa tích hợp công nghệ đo quang phổ đa bước sóng tự động loại trừ nhiễu do tán huyết hoặc mỡ máu cao. Hệ thống cảnh báo LAB AI tự động báo động đỏ khi Bilirubin của trẻ sơ sinh chạm ngưỡng đe dọa tổn thương não [1, 3].",
+      "deep_knowledge": "Bilirubin gián tiếp (chưa liên hợp) không tan trong nước và rất độc cho thần kinh, đặc biệt ở trẻ sơ sinh do hàng rào máu não chưa hoàn thiện. Trong khi đó, Bilirubin trực tiếp (đã liên hợp) tan được trong nước; khi ống mật bị tắc, nó sẽ tràn ngược vào máu và bị lọc qua thận, làm nước tiểu có màu vàng sậm [1, 6].",
+      "patient_advice": "Mẫu máu đo Bilirubin rất nhạy cảm với ánh sáng. Mẫu sau khi rút bắt buộc phải được nhân viên y tế bọc giấy bạc hoặc dùng ống tối màu để tránh tia UV phá hủy sắc tố làm kết quả bị thấp giả tạo [7]. Bạn nên nhịn ăn từ 4-8 giờ trước khi lấy máu."
+    },
+    "Albumin": {
+      "name": "Albumin",
+      "purpose": "Kiểm tra tình trạng suy dinh dưỡng và khả năng 'nhà máy' gan tổng hợp ra các protein quan trọng [1].",
+      "when_to_do": "Khi người bệnh bị phù nề tay chân, trướng bụng đầy nước, tiểu ít nhiều bọt, hoặc để đánh giá người bị xơ gan giai đoạn cuối.",
+      "how_it_works": "Đo lượng protein Albumin trong máu, chất này giúp tạo áp suất thẩm thấu keo, giữ nước lại trong lòng mạch máu không cho tràn ra ngoài tổ chức.",
+      "result_meaning": "Bình thường: Đủ chất đạm, gan khỏe. Thấp: Gan hỏng không tổng hợp được đạm, hoặc thận bị suy/viêm làm đạm lọt ra nước tiểu (hội chứng thận hư) [8].",
+      "real_life_example": "Bệnh nhân xơ gan bụng to như cái trống, thử máu thấy Albumin tụt thê thảm làm nước thoát ra ổ bụng, phải truyền chai đạm Albumin đắt tiền để rút nước lại.",
+      "note": "Albumin thấp làm nước thoát khỏi mạch máu gây phù toàn thân, chứng tỏ gan đã suy kiệt nặng hoặc màng lọc thận đang bị rò rỉ lớn.",
+      "advanced_knowledge": "Phần mềm AI hiện nay theo dõi động học của Albumin kết hợp với chỉ số đông máu (PT/INR) để tự động tính toán điểm số Child-Pugh hoặc MELD, giúp bác sĩ tiên lượng chính xác tỷ lệ sống còn của bệnh nhân xơ gan hoặc chỉ định ghép gan [3, 9].",
+      "deep_knowledge": "Gan là cơ quan duy nhất trong cơ thể sản xuất Albumin. Vì thời gian bán hủy của Albumin trong máu khá dài (khoảng 20 ngày), nên sự sụt giảm của nó thường phản ánh một tổn thương mạn tính (như xơ gan hoặc suy dinh dưỡng trường kỳ) chứ ít khi thay đổi ngay lập tức trong viêm gan cấp tính [1, 8].",
+      "patient_advice": "Nếu chỉ số Albumin của bạn thấp, đừng chỉ lo truyền đạm tạm thời. Bạn cần phối hợp với bác sĩ để tìm nguyên nhân gốc rễ (do gan không sản xuất được, do thận để lọt mất qua nước tiểu, hay do đường tiêu hóa kém hấp thu) để điều trị tận gốc căn bệnh."
+    },
+    "Amylase": {
+      "name": "Amylase",
+      "purpose": "Chẩn đoán nhanh căn bệnh viêm tụy cấp nguy hiểm đe dọa tính mạng.",
+      "when_to_do": "Khi tự nhiên đau quặn thắt dữ dội vùng bụng trên rốn, đau lan ra sau lưng, đau gập người lăn lộn sau một bữa nhậu no say hoặc ăn nhiều mỡ.",
+      "how_it_works": "Đo enzyme tiêu hóa tinh bột do tuyến tụy (và tuyến nước bọt) tiết ra. Khi tụy bị viêm tấy hoặc tắc nghẽn, men này sẽ ộc vào máu với lượng rất lớn.",
+      "result_meaning": "Bình thường: Tuyến tụy an toàn. Tăng rất cao (gấp 3 lần bình thường trở lên): Viêm tụy cấp, cần nhập viện điều trị cấp cứu và nhịn ăn ngay [10].",
+      "real_life_example": "Buổi tối đi ăn đồ nướng uống nhiều bia, nửa đêm anh thanh niên ôm bụng rên la, thử máu Amylase tăng gấp 5 lần giúp bác sĩ cấp cứu chẩn đoán ngay viêm tụy cấp.",
+      "note": "Amylase cũng có thể tăng khi bị bệnh quai bị (sưng tuyến nước bọt mang tai), thủng dạ dày, hoặc tắc ruột cấp tính [10].",
+      "advanced_knowledge": "Công nghệ POCT tiên tiến cho phép đo ngay Amylase và các men tiêu hóa tại phòng cấp cứu, trả kết quả chỉ trong vài phút, giúp bác sĩ có quyết định can thiệp sớm, tránh để viêm tụy cấp tiến triển thành hoại tử tụy [4].",
+      "deep_knowledge": "Amylase máu bắt đầu tăng sau 2 đến 12 giờ kể từ khi xuất hiện cơn đau viêm tụy cấp và thường nhanh chóng đào thải qua nước tiểu, trở về bình thường sau 3 đến 5 ngày [10]. Do đó, nếu bệnh nhân đến viện muộn, Amylase có thể đã hạ, lúc này bác sĩ bắt buộc phải dựa vào xét nghiệm Lipase máu.",
+      "patient_advice": "Hãy hạn chế rượu bia và tránh các bữa ăn nạp vào quá nhiều dầu mỡ (thịt mỡ, nội tạng động vật) cùng lúc, vì đây là 'mồi lửa' thường gặp nhất kích hoạt các đợt viêm tụy cấp. Tuyệt đối không tự mua thuốc giảm đau uống ở nhà khi bị đau bụng dữ dội mà chưa rõ nguyên nhân."
+    },
+    "Lipase": {
+      "name": "Lipase",
+      "purpose": "Chẩn đoán bệnh viêm tụy cấp một cách chính xác, chuyên sâu và đặc hiệu hơn rất nhiều so với Amylase.",
+      "when_to_do": "Làm song song với Amylase khi bệnh nhân có cơn đau bụng cấp cứu, đặc biệt có giá trị cao khi bệnh nhân đến viện muộn sau vài ngày đau.",
+      "how_it_works": "Đo enzyme tiêu hóa chất béo của tuyến tụy. Khác với Amylase có ở tuyến nước bọt và ruột, Lipase hầu như chỉ được sản xuất độc quyền tại tụy nên độ đặc hiệu chẩn đoán cực kỳ cao.",
+      "result_meaning": "Bình thường: Tuyến tụy không viêm. Tăng cao: Khẳng định gần như chắc chắn bệnh nhân bị viêm tụy cấp.",
+      "real_life_example": "Người bệnh đau bụng 3 ngày nay mới đi khám, Amylase đã hạ chỉ hơi tăng nhẹ khó kết luận, bác sĩ cho làm thêm xét nghiệm Lipase thấy vẫn tăng cao chót vót, khóa sổ chẩn đoán viêm tụy.",
+      "note": "Lipase tồn tại trong dòng máu lâu hơn Amylase (kéo dài tới 8-14 ngày) nên rất hữu ích trong trường hợp bệnh nhân chẩn đoán muộn.",
+      "advanced_knowledge": "Hệ thống tự động xác nhận (autoverification) tại các phòng lab trang bị AI sẽ tự động đối chiếu chéo chỉ số Lipase và Triglyceride. Nếu phát hiện Lipase tăng cùng Triglyceride > 1000 mg/dL, AI sẽ gửi cảnh báo khẩn nguyên nhân viêm tụy là do rối loạn mỡ máu cực kỳ nguy hiểm [11, 12].",
+      "deep_knowledge": "Hoạt độ Lipase thường tăng gấp 5 đến 10 lần giá trị tham chiếu trong bệnh cảnh viêm tụy cấp. Nhờ tính đặc hiệu cao, Lipase hiện được các hướng dẫn lâm sàng quốc tế (Guidelines) ưu tiên hàng đầu để thay thế hoặc kết hợp với Amylase trong chẩn đoán và theo dõi bệnh viêm tụy [9].",
+      "patient_advice": "Nếu bạn từng có tiền sử viêm tụy cấp, hãy nghiêm ngặt tuân thủ chế độ ăn ít chất béo và kiểm tra mỡ máu định kỳ. Khi có chỉ định làm xét nghiệm Lipase, thông thường bác sĩ sẽ yêu cầu bạn nhịn ăn từ 8-12 tiếng trước khi lấy máu."
+    },
+    "Amoniac": {
+      "name": "Amoniac (NH3)",
+      "purpose": "Đo nồng độ khí độc ngấm lên não do lá gan đã suy kiệt không còn khả năng thanh lọc.",
+      "when_to_do": "Khi người bệnh xơ gan giai đoạn cuối bắt đầu có dấu hiệu lơ mơ, mất phương hướng, ngủ gà ngủ gật, lảm nhảm, tay chân run rẩy vỗ cánh.",
+      "how_it_works": "Đo nồng độ NH3 trong máu. Amoniac là khí độc sinh ra từ ruột do vi khuẩn phân hủy protein. Gan khỏe sẽ biến NH3 thành Ure vô hại đào thải qua thận. Khi gan hỏng, NH3 trôi nổi trong máu và ngấm trực tiếp vào não.",
+      "result_meaning": "Bình thường: Gan giải độc tốt. Cao: Khí độc bay lên não gây ngộ độc hệ thần kinh trung ương (Hôn mê gan hay Bệnh lý não gan).",
+      "real_life_example": "Bác trai bị xơ gan tự nhiên sáng ngủ dậy không nhận ra người nhà, quậy phá, xét nghiệm NH3 cao chót vót, bác sĩ chẩn đoán tiền hôn mê gan, lập tức cho dùng thuốc thụt tháo ruột để tống khí độc.",
+      "note": "Mẫu máu rút ra phải được ướp ngay trong đá lạnh và đem đi chạy máy trong vòng 15-20 phút thì chỉ số NH3 mới không bị sai lệch do tăng giả tạo.",
+      "advanced_knowledge": "Với sự phát triển của y học chính xác, việc xét nghiệm NH3 được kết hợp với các bài test nhận thức thần kinh bằng AI trên máy tính bảng giúp phát hiện tình trạng bệnh lý não gan tiềm ẩn (minimal hepatic encephalopathy) ngay cả khi người bệnh chưa biểu hiện lú lẫn rõ rệt [3, 13].",
+      "deep_knowledge": "Amoniac cực kỳ độc cho các tế bào sao (astrocytes) trong não bộ, khiến chúng bị sưng phồng và gây phù não [13]. Bệnh nhân xơ gan nếu bị chảy máu dạ dày hoặc ăn quá nhiều thịt đỏ sẽ cung cấp nguồn protein khổng lồ cho vi khuẩn ruột lên men, sinh ra lượng lớn NH3 và kích hoạt ngay cơn hôn mê gan cấp tính.",
+      "patient_advice": "Đối với bệnh nhân xơ gan nặng, việc đi đại tiện được mỗi ngày (để tống chất thải và vi khuẩn ra ngoài) là mang tính sống còn. Hãy hạn chế ăn đạm động vật nguyên miếng nhiều mỡ, chuyển sang dùng đạm thực vật hoặc các gói đạm chuyên dụng để tránh tạo ra quá nhiều NH3. Tuyệt đối tránh để bị táo bón."
+    },
+     "Ure": {
+      "name": "Ure (Blood Urea Nitrogen - BUN)",
+      "purpose": "Đánh giá bước đầu xem thận có đang làm tốt công việc lọc chất thải không và theo dõi mức độ ure huyết.",
+      "when_to_do": "Khám sức khỏe tổng quát, sưng phù mí mắt chân tay, đi tiểu rắt tiểu ít, hoặc bệnh nhân đang lọc máu (chạy thận).",
+      "how_it_works": "Đo nồng độ Ure, một loại rác thải sinh ra sau khi cơ thể chuyển hóa protein ở gan và được đưa đến đào thải qua màng lọc thận.",
+      "result_meaning": "Bình thường: Thận lọc tốt. Cao: Chức năng thận suy giảm, cơ thể bị mất nước, hoặc do chế độ ăn dung nạp quá nhiều đạm.",
+      "real_life_example": "Một người ăn chế độ giàu thịt (Keto/Carnivore) tập gym đi khám thấy Ure tăng nhẹ, bác sĩ khuyên uống nhiều nước và đối chiếu thêm Creatinin để loại trừ nguyên nhân bệnh thận.",
+      "note": "Vì Ure rất dễ bị ảnh hưởng bởi thức ăn (thịt đỏ) và tình trạng mất nước, nên bác sĩ không bao giờ dùng chỉ số Ure đứng độc lập để kết luận bạn bị suy thận.",
+      "advanced_knowledge": "Hệ thống AI phân tích động học Ure kết hợp với điện giải đồ để tự động phân biệt chẩn đoán giữa suy thận cấp trước thận (do thiếu hụt thể tích tuần hoàn) và tổn thương tại thận, trả cảnh báo trực tiếp về máy tính của bác sĩ lâm sàng.",
+      "deep_knowledge": "Tỷ lệ BUN/Creatinin (BUN/Creatinine Ratio) thường được các thuật toán y khoa hiện đại tự động tính toán. Nếu tỷ lệ này > 20:1, nguyên nhân Ure tăng thường do giảm dòng máu tưới đến thận (như sốc, mất nước, suy tim) chứ không phải do thận đã bị hỏng.",
+      "patient_advice": "Trước khi làm xét nghiệm, hãy duy trì chế độ ăn uống bình thường. Đừng ăn một bữa quá no chứa toàn thịt bò, hải sản hay uống bột Whey protein liều cao vào tối hôm trước vì có thể làm Ure tăng vọt gây báo động giả."
+    },
+    "Creatinin": {
+      "name": "Creatinin (Độ lọc cầu thận eGFR)",
+      "purpose": "Chỉ số vàng, quan trọng và phổ biến nhất để chẩn đoán mức độ suy thận, tính toán độ lọc cầu thận (eGFR) để chỉnh liều thuốc.",
+      "when_to_do": "Khám định kỳ, trước khi chụp cắt lớp (CT) có tiêm thuốc cản quang, bệnh nhân đang dùng thuốc có độc tính trên thận, hoặc tầm soát biến chứng tiểu đường/cao huyết áp.",
+      "how_it_works": "Đo lượng chất thải sinh ra từ sự thoái hóa creatine tự nhiên trong cơ bắp. Chất này hòa vào máu và chỉ được lọc ra ngoài một cách cực kỳ ổn định thông qua cầu thận.",
+      "result_meaning": "Bình thường: Quả thận hoàn toàn khỏe mạnh. Cao: Chức năng màng lọc thận suy giảm, cầu thận đang bị tổn thương.",
+      "real_life_example": "Cụ ông bị cao huyết áp 10 năm nay không uống thuốc đều, đi xét nghiệm thấy Creatinin tăng gấp đôi, bác sĩ chẩn đoán cụ đã bước sang suy thận mạn giai đoạn 3.",
+      "note": "Creatinin máu không đứng một mình mà sẽ được phần mềm xét nghiệm tự động đưa vào công thức toán học để tính ra chỉ số eGFR (thận của bạn mỗi phút lọc được bao nhiêu ml máu).",
+      "advanced_knowledge": "Các hệ thống quản lý phòng Lab hiện nay sử dụng công thức tính eGFR thế hệ mới không bị phụ thuộc vào chủng tộc (CKD-EPI 2021). Đồng thời, AI học máy sẽ vẽ biểu đồ dự báo sự suy giảm chức năng thận trong 5 năm tới của bệnh nhân dựa trên lịch sử dữ liệu.",
+      "deep_knowledge": "Khoảng 50% chức năng mô thận thực sự có thể đã bị phá hủy trước khi nồng độ Creatinin trong máu bắt đầu tăng lên vượt ngưỡng bình thường (nguyên lý dự trữ thận). Do đó, ngày nay Creatinin không còn được coi là chỉ số phát hiện suy thận 'sớm' nữa.",
+      "patient_advice": "Hãy tránh tập thể hình với cường độ cực cao hoặc nâng tạ nặng trong vòng 48 giờ trước khi xét nghiệm. Nếu bạn có lượng cơ bắp cuồn cuộn hoặc ngược lại, bị teo cơ do lớn tuổi, hãy đề nghị bác sĩ kiểm tra thêm chỉ số Cystatin C để đánh giá thận chính xác hơn."
+    },
+    "Cystatin C": {
+      "name": "Cystatin C",
+      "purpose": "Dấu ấn sinh học siêu nhạy giúp phát hiện tổn thương chức năng thận ở giai đoạn sớm nhất, khắc phục được mọi nhược điểm của Creatinin.",
+      "when_to_do": "Khi nghi ngờ suy thận ở giai đoạn sớm, bệnh nhân có khối lượng cơ bắp bất thường (vận động viên, người suy kiệt, teo cơ), thai phụ nghi tiền sản giật.",
+      "how_it_works": "Đo nồng độ protein Cystatin C được sản xuất bởi hầu hết các tế bào có nhân trong cơ thể với một tốc độ hoàn toàn hằng định, và chỉ được đào thải duy nhất qua thận.",
+      "result_meaning": "Bình thường: Màng lọc thận hoạt động hoàn hảo. Cao: Chức năng thận đang bắt đầu suy giảm từ những dấu hiệu vi mô nhất.",
+      "real_life_example": "Người tập thể hình có Creatinin hơi cao do cơ bắp quá to, bác sĩ cho thử Cystatin C ra kết quả bình thường để khẳng định quả thận anh ta vẫn hoàn toàn khỏe mạnh, không hề bị suy.",
+      "note": "Kết quả Cystatin C phản ánh đúng chất lượng quả thận mà không hề bị nhiễu bởi việc bạn ăn nhiều thịt hay cơ bắp bạn to hay nhỏ.",
+      "advanced_knowledge": "Cystatin C đã được Hiệp hội Thận học Quốc tế đưa vào xét nghiệm thường quy tuyến đầu nhờ công nghệ phân tích miễn dịch quang học tốc độ cao ra đời, giúp hạ giá thành và thay thế dần Creatinin ở các nhóm đối tượng đặc biệt.",
+      "deep_knowledge": "Cystatin C là 'người soi đường' tuyệt vời ở vùng mù của thận (blind area). Khi độ lọc cầu thận eGFR giảm từ 90 xuống 60 ml/phút (chớm suy thận), Creatinin máu thường vẫn nằm trong mức bình thường, nhưng Cystatin C thì đã tăng rõ rệt, giúp bác sĩ can thiệp cứu thận kịp thời.",
+      "patient_advice": "Đây là xét nghiệm có độ chính xác và ổn định cực cao. Bạn có thể đến cơ sở y tế thực hiện xét nghiệm này vào bất kỳ lúc nào trong ngày mà không cần thiết phải nhịn ăn nghiêm ngặt."
+    },
+    "MAU niệu": {
+      "name": "MAU niệu (Microalbumin niệu)",
+      "purpose": "Bắt mạch và phát hiện sự tổn thương vi mạch máu ở màng lọc thận từ giai đoạn cực kỳ sớm.",
+      "when_to_do": "Khám sức khỏe bắt buộc mỗi 6 tháng/lần cho bệnh nhân đái tháo đường, cao huyết áp lâu năm, hoặc phụ nữ mang thai tầm soát tiền sản giật.",
+      "how_it_works": "Truy tìm một lượng đạm Albumin vô cùng nhỏ (Micro) rò rỉ qua các lỗ hổng siêu nhỏ ở màng lọc thận rơi vào trong nước tiểu, ở mức độ mà que thử nước tiểu thông thường không thể nhận ra.",
+      "result_meaning": "Bình thường (Âm tính): Màng lọc thận khép kín tốt. Dương tính: Thận chớm bị rách màng lọc, cần dùng thuốc bảo vệ thận lập tức.",
+      "real_life_example": "Cô bệnh nhân tiểu đường thử máu Ure Creatinin vẫn rất tốt, nhưng thử MAU niệu ra dương tính. Bác sĩ cho dùng ngay thuốc ức chế SGLT2i kịp thời trám lấp màng lọc, cứu cô khỏi án chạy thận trong tương lai.",
+      "note": "Đây là xét nghiệm quan trọng bậc nhất, là cơ hội cuối cùng để ngăn chặn bệnh nhân tiểu đường trượt dài vào suy thận giai đoạn cuối.",
+      "advanced_knowledge": "Ứng dụng AI phân tích quang phổ vi chất lỏng ngay trên điện thoại thông minh (Smartphone-based urinalysis). Người bệnh tiểu đường có thể tự test MAU niệu tại nhà bằng bộ kit kết nối Bluetooth, dữ liệu được đẩy thẳng lên hồ sơ bệnh án điện tử để bác sĩ từ xa giám sát.",
+      "deep_knowledge": "MAU niệu dương tính không chỉ đơn thuần là dấu hiệu thận đang hỏng. Trong y khoa, nó còn được xem là chiếc 'loa báo động' chứng tỏ toàn bộ hệ thống biểu mô vi mạch máu trên toàn cơ thể (bao gồm cả mạch vành ở tim và mạch máu não) đang bị tổn thương, gia tăng rủi ro đột quỵ.",
+      "patient_advice": "Không nên thực hiện xét nghiệm này khi bạn đang bị sốt cao, có viêm nhiễm đường tiểu, phụ nữ đang hành kinh hoặc vừa tập thể dục thể thao quá sức. Những yếu tố này có thể gây rò rỉ đạm sinh lý tạm thời, dẫn đến kết quả dương tính giả."
+    },
+    "Protein niệu 24h": {
+      "name": "Tỷ số Protein/Creatinin niệu (Thay thế Protein niệu 24h)",
+      "purpose": "Đo đếm chính xác tổng khối lượng đạm bị thất thoát qua thận để chẩn đoán Hội chứng thận hư hoặc Viêm cầu thận mạn.",
+      "when_to_do": "Khi bệnh nhân bị sưng phù toàn thân, tiểu ra bọt trắng xóa như xà phòng và lâu tan, hoặc thai phụ bị cao huyết áp thai kỳ.",
+      "how_it_works": "Truyền thống: Phải đi tiểu và gom toàn bộ nước tiểu trong đúng 24 tiếng. Hiện đại (2026): Chỉ cần lấy 1 mẫu nước tiểu bất kỳ, máy sẽ đo tỷ lệ Protein/Creatinin (UPCR) để ước tính khối lượng đạm thất thoát.",
+      "result_meaning": "Bình thường: Gần như không có đạm. Cao: Màng lọc thận bị tổn thương nặng, đạm bị vứt ra ngoài quá nhiều làm cơ thể suy kiệt đạm và tích nước gây phù nề.",
+      "real_life_example": "Mẹ bầu tháng thứ 8 bị sưng phù chân ấn lõm, đo huyết áp cao vọt, xét nghiệm đạm niệu tăng cấp số nhân. Bác sĩ chẩn đoán tiền sản giật nặng, phải nhập viện theo dõi mổ lấy thai khẩn cấp.",
+      "note": "Ngày nay, phương pháp gom nước tiểu 24h phiền phức đang dần bị loại bỏ, thay bằng xét nghiệm đo tỷ số đạm/creatinin niệu (UPCR) cực kỳ tiện lợi và chính xác tương đương.",
+      "advanced_knowledge": "Chấm dứt cảnh ôm bình gom nước tiểu 24 giờ dễ sai sót. Các hệ thống phần mềm phòng Lab hiện nay dùng thuật toán nội suy đo tỷ số UPCR trên một mẫu nước tiểu duy nhất lúc sáng sớm, AI sẽ ước tính chính xác lượng đạm thất thoát trong 24 giờ với sai số cực thấp.",
+      "deep_knowledge": "Khi Protein niệu rò rỉ ở mức ngưỡng thận hư (> 3.5g/ngày), cơ thể không chỉ mất đi nguồn đạm dinh dưỡng Albumin, mà còn đánh mất luôn cả các protein miễn dịch và protein chống đông máu (Antithrombin III), khiến người bệnh có rủi ro cực cao bị nhiễm trùng nặng hoặc cục máu đông làm tắc tĩnh mạch.",
+      "patient_advice": "Mẫu nước tiểu buổi sáng sớm ngay khi vừa thức dậy là mẫu mang lại kết quả chính xác nhất. Hãy bỏ đi phần nước tiểu đầu tiên, chỉ hứng lấy phần 'nước tiểu giữa bãi' vào lọ vô khuẩn để tránh mẫu bị lẫn cặn bẩn và vi khuẩn sinh dục bên ngoài."
+    },
+    "Tế bào cặn nước tiểu": {
+      "name": "Tế bào cặn nước tiểu (Soi cặn lắng tự động)",
+      "purpose": "Truy tìm sự xuất hiện của tế bào máu, mủ, trụ niệu hay các tinh thể sỏi rơi rớt trong đường tiết niệu để định vị tổn thương.",
+      "when_to_do": "Khi đi tiểu rát buốt, tiểu lắt nhắt, nước tiểu đổi màu hồng/đỏ đục, đau thắt lưng nghi sỏi thận rớt xuống niệu quản.",
+      "how_it_works": "Đưa mẫu nước tiểu vào hệ thống máy phân tích quang học để tự động chụp ảnh, nhận diện và phân loại các thành phần cặn lơ lửng trong nước tiểu.",
+      "result_meaning": "Bình thường: Nước tiểu trong vắt không có tế bào lạ. Bất thường: Thấy hồng cầu (chảy máu), bạch cầu (nhiễm trùng có mủ), hoặc các trụ niệu/tinh thể (cảnh báo sỏi hoặc viêm cầu thận).",
+      "real_life_example": "Chị nhân viên văn phòng có thói quen nhịn tiểu, nay đi tiểu gắt buốt ớn lạnh, máy soi cặn báo có hàng nghìn bạch cầu dày đặc. Bác sĩ chẩn đoán ngay viêm bàng quang cấp do nhiễm khuẩn.",
+      "note": "Nước tiểu mang đi xét nghiệm phải được phân tích sớm trong vòng 1-2 giờ sau khi lấy, nếu để quá lâu ở nhiệt độ phòng, vi khuẩn sẽ sinh sôi và tế bào cặn sẽ bị biến dạng hoặc phân hủy.",
+      "advanced_knowledge": "Đã qua rồi thời kỹ thuật viên soi kính hiển vi thủ công bằng mắt người. Hệ thống máy phân tích dòng chảy tế bào (Flow cytometry) kết hợp AI nhận diện hình thái (ví dụ dòng Sysmex UF) tự động chụp và đếm hàng nghìn tế bào/giây với độ chuẩn xác tuyệt đối.",
+      "deep_knowledge": "AI phân tích hình thái có khả năng phân biệt rõ ràng hồng cầu nguyên vẹn (chảy máu do sỏi hoặc u bàng quang) và hồng cầu biến dạng/méo mó (do bị ép vắt qua màng lọc cầu thận bị viêm). Đây là chìa khóa vàng không xâm lấn giúp bác sĩ nội khoa chẩn đoán nhanh bệnh viêm cầu thận cấp.",
+      "patient_advice": "Bắt buộc phải vệ sinh sạch sẽ bộ phận sinh dục bằng nước sạch (không dùng xà phòng hay dung dịch sát khuẩn) và lau khô trước khi lấy tiểu. Chỉ hứng khúc nước tiểu giữa dòng để đảm bảo mẫu không bị dính tế bào sừng và hệ vi sinh vật trên da thịt."
+    },
+    "Cấy vi khuẩn nước tiểu": {
+      "name": "Nuôi cấy, định danh và Kháng sinh đồ",
+      "purpose": "Bắt tận tay thủ phạm vi khuẩn gây viêm đường tiết niệu và lập danh sách chi tiết các loại kháng sinh có thể tiêu diệt được chúng.",
+      "when_to_do": "Khi uống thuốc kháng sinh thông thường vài ngày mà vẫn không hết tiểu buốt, hoặc tình trạng viêm nhiễm đường tiểu tái đi tái lại nhiều lần.",
+      "how_it_works": "Mẫu nước tiểu vô khuẩn được đưa vào nuôi cấy hoặc phân tích quang phổ để định danh vi khuẩn, sau đó vi khuẩn được thử nghiệm mức độ nhạy cảm hoặc đề kháng với hàng loạt các loại thuốc kháng sinh.",
+      "result_meaning": "Âm tính: Nước tiểu vô khuẩn. Dương tính: Định danh được chủng vi khuẩn (ví dụ E.coli kháng thuốc) và in ra bảng kết quả kháng sinh đồ để bác sĩ đổi thuốc.",
+      "real_life_example": "Bà cụ bị viêm đường tiểu rỉ rả, uống kháng sinh cũ bác sĩ tuyến dưới kê không hết. Khi cấy nước tiểu phát hiện ra con E.coli sinh men kháng thuốc (ESBL), bác sĩ phải đổi sang kháng sinh dạng tiêm truyền mới chữa khỏi.",
+      "note": "Bắt buộc phải lấy nước tiểu cho vào lọ vô khuẩn TRƯỚC KHI bạn uống hoặc tiêm liều thuốc kháng sinh đầu tiên của đợt bệnh mới, nếu không vi khuẩn sẽ bị ức chế không mọc được.",
+      "advanced_knowledge": "Sự kết hợp giữa kỹ thuật khối phổ MALDI-TOF và công nghệ giải trình tự gen NGS được ứng dụng rộng rãi giúp định danh vi khuẩn và phát hiện gen kháng thuốc trực tiếp từ nước tiểu chỉ trong 3 đến 4 giờ, xóa bỏ hoàn toàn thời gian chờ đợi 48-72 giờ nuôi cấy truyền thống.",
+      "deep_knowledge": "Rất nhiều trường hợp người già có xét nghiệm cấy dương tính ra vi khuẩn nhưng lại không hề có triệu chứng tiểu buốt (gọi là vi khuẩn niệu không triệu chứng). Khuyến cáo y khoa quốc tế cấm dùng kháng sinh cho nhóm này trừ khi đó là thai phụ hoặc người chuẩn bị phẫu thuật nội soi niệu quản, việc lạm dụng kháng sinh ở đây sẽ sinh ra siêu vi khuẩn kháng thuốc.",
+      "patient_advice": "Khi mở nắp lọ đựng nước tiểu vô trùng do y tá cấp, hãy để nắp ngửa lên trên để tránh nhiễm bẩn mép nắp. Hứng chính xác dòng nước tiểu giữa bãi vào lọ, tuyệt đối không để ngón tay hay vùng kín chạm vào vành miệng của lọ."
+    },
+    "Điện giải": {
+      "name": "Điện giải đồ máu (Na+, K+, Cl-, Ca2+)",
+      "purpose": "Kiểm tra mức độ cân bằng nước, lượng muối khoáng thiết yếu và chức năng điều hòa môi trường nội môi của hai quả thận.",
+      "when_to_do": "Khi bệnh nhân bị tiêu chảy cấp, nôn mửa nhiều, tụt huyết áp, yếu cơ liệt 2 chi dưới, cấp cứu hôn mê hoặc bệnh nhân suy thận mạn tính.",
+      "how_it_works": "Đo lường nồng độ các ion khoáng chất mang điện tích lưu thông trong huyết thanh. Những ion này nắm giữ vai trò sống còn trong việc giữ nước, duy trì nhịp đập của tim và co bóp cơ bắp.",
+      "result_meaning": "Bình thường: Đủ nước và khoáng chất. Bất thường: Rối loạn toan kiềm, cơ thể mất nước nặng, hoặc thận đã hỏng không bài tiết được Kali ra ngoài.",
+      "real_life_example": "Người suy thận giai đoạn cuối mất chức năng tiểu tiện nên thường bị ứ đọng Kali. Khi thử máu thấy Kali vọt lên trên 6.5 mmol/L, màng cơ tim sẽ bị ức chế, nhịp tim có thể rối loạn và ngừng đập bất cứ lúc nào, phải chuyển đi lọc máu cấp cứu ngay lập tức.",
+      "note": "Rối loạn nồng độ Kali (dù cực cao hay cực thấp) luôn được đánh dấu sao đỏ vì đây là tình trạng cấp cứu y khoa đe dọa sinh mạng.",
+      "advanced_knowledge": "Hệ thống thiết bị xét nghiệm khí máu và điện giải tại giường (POCT Blood Gas Analyzers) cung cấp kết quả sinh tồn chỉ trong 30 giây từ một giọt máu. Thuật toán AI liên kết với monitor theo dõi bệnh nhân sẽ tiên đoán rủi ro loạn nhịp tim trước 30 phút dựa trên xu hướng dao động điện giải.",
+      "deep_knowledge": "Quá trình lấy máu nếu garo (buộc dây thun) quá chặt, quá lâu, hoặc kim tiêm làm vỡ hồng cầu (tán huyết) sẽ khiến lượng lớn Kali từ bên trong tế bào hồng cầu vỡ tràn ra ngoài huyết thanh, gây hiện tượng 'tăng Kali máu giả tạo' cực kỳ phổ biến. Các phòng Lab hiện nay có phần mềm AI nhận diện chỉ số HIL sẽ đánh dấu mẫu tán huyết và tự động hủy kết quả, yêu cầu rút máu lại.",
+      "patient_advice": "Khi điều dưỡng tiến hành lấy máu cho bạn, hãy thả lỏng cánh tay tự nhiên. Tuyệt đối không gồng siết cơ bắp hay cử động bóp nhả nắm tay liên tục, vì các thao tác co cơ cơ học này sẽ giải phóng một lượng lớn Kali cục bộ vào mạch máu, làm sai lệch hoàn toàn kết quả chẩn đoán."
+    },
+    "Glucose": {
+      "name": "Glucose (Đường huyết lúc đói / ngẫu nhiên)",
+      "purpose": "Đánh giá lượng đường lưu thông trong máu, là nền tảng trong việc tầm soát và theo dõi bệnh đái tháo đường [1, 2].",
+      "when_to_do": "Trong khám sức khỏe tổng quát, có triệu chứng mệt mỏi, tiểu nhiều, khát nước, hoặc phụ nữ mang thai cần tầm soát đái tháo đường thai kỳ [1-3].",
+      "how_it_works": "Đo nồng độ đường glucose tự do lưu thông trong máu tại thời điểm lấy mẫu [1, 2].",
+      "result_meaning": "Bình thường (Đường đói < 5.6 mmol/L): Khỏe mạnh [3]. Cao: Cảnh báo rối loạn dung nạp đường hoặc mắc bệnh tiểu đường [2, 3].",
+      "real_life_example": "Một bệnh nhân hay khát nước, tiểu đêm, đi xét nghiệm Glucose đói ra 8.0 mmol/L, phần mềm LAB AI Agent lập tức cảnh báo nguy cơ đái tháo đường [4, 5].",
+      "note": "Chỉ số Glucose máu lúc đói yêu cầu người bệnh phải nhịn ăn ít nhất 8 tiếng trước khi lấy mẫu để kết quả chính xác nhất [1, 2].",
+      "advanced_knowledge": "Ứng dụng thiết bị xét nghiệm tại chỗ (POCT) cầm tay cho phép thực hiện xét nghiệm đường huyết ngay tại giường bệnh hoặc tự theo dõi liên tục tại nhà để kịp thời điều chỉnh chế độ ăn uống và thuốc men [6, 7].",
+      "deep_knowledge": "Nồng độ glucose phản ánh trực tiếp sự cân bằng giữa các hormone tuyến tụy. Sự dư thừa glucose kéo dài sẽ kích hoạt quá trình oxy hóa, gây tổn thương hệ thống vi mạch toàn thân.",
+      "patient_advice": "Bạn bắt buộc phải nhịn ăn qua đêm ít nhất 8 tiếng, chỉ được uống nước lọc trước khi đo đường huyết lúc đói [1, 2]. Đừng nhịn quá lâu vì có thể gây rối loạn chuyển hóa làm sai lệch kết quả."
+    },
+    "HbA1C": {
+      "name": "HbA1C (Glycated Hemoglobin)",
+      "purpose": "Đánh giá mức độ kiểm soát đường huyết trung bình trong vòng 2-3 tháng qua, là tiêu chuẩn vàng để tiên lượng và đánh giá nguy cơ biến chứng tiểu đường [1, 2].",
+      "when_to_do": "Dùng để chẩn đoán xác định đái tháo đường, hoặc kiểm tra định kỳ xem bệnh nhân có tuân thủ chế độ ăn kiêng và điều trị tốt không [1, 2].",
+      "how_it_works": "Phản ánh lượng đường liên kết bền vững với phân tử hemoglobin của hồng cầu [1, 2].",
+      "result_meaning": "Bình thường (< 5.7%): An toàn [3]. Cao: Lượng đường trong máu đã ở mức cao trong một thời gian dài, làm tăng nguy cơ tổn thương thần kinh và tim mạch [2, 3].",
+      "real_life_example": "Một bệnh nhân tiểu đường đo Glucose đói sáng nay bình thường, nhưng HbA1C cao vọt, vạch trần việc 3 tháng qua người này thường xuyên không kiểm soát tốt đường huyết.",
+      "note": "Vì hồng cầu sống khoảng 120 ngày nên xét nghiệm này phản ánh đúng 'lịch sử' đường huyết của bạn trong suốt một quý [1, 2].",
+      "advanced_knowledge": "Các giải pháp POCT hàng đầu (như hệ thống cobas b 101) cung cấp khả năng xét nghiệm HbA1C nhanh chóng ngay tại điểm chăm sóc thay vì gửi mẫu về phòng thí nghiệm trung tâm [8, 9].",
+      "deep_knowledge": "Vì xét nghiệm đo lượng đường gắn trên hồng cầu, nên ở những bệnh nhân bị thiếu máu tán huyết, mang thai, hoặc truyền máu nhiều lần, chỉ số HbA1C có thể bị sai lệch.",
+      "patient_advice": "Không giống như xét nghiệm Glucose máu lúc đói, bạn có thể lấy mẫu máu để đo HbA1C vào bất cứ thời điểm nào trong ngày mà không cần thiết phải nhịn ăn."
+    },
+    "Insulin": {
+      "name": "Insulin (Định lượng Insulin máu)",
+      "purpose": "Đánh giá khả năng sản xuất hormone của tuyến tụy, xác định tình trạng kháng insulin và hỗ trợ phân biệt đái tháo đường type 1 hay type 2.",
+      "when_to_do": "Khi có triệu chứng hạ đường huyết không rõ nguyên nhân, hoặc đánh giá tình trạng lờn insulin ở người béo phì, hội chứng buồng trứng đa nang.",
+      "how_it_works": "Đo nồng độ hormone insulin trực tiếp trong huyết thanh, loại hormone đóng vai trò như 'chìa khóa' mở cửa tế bào để đưa glucose vào trong tạo năng lượng.",
+      "result_meaning": "Thấp: Tuyến tụy bị tổn thương không sản xuất đủ insulin (Đái tháo đường type 1). Cao: Cơ thể bị kháng insulin, ép tuyến tụy phải hoạt động quá sức tiết ra nhiều hơn (Tiền đái tháo đường, Đái tháo đường type 2).",
+      "real_life_example": "Bệnh nhân bị thừa cân phát hiện đường huyết cao, định lượng Insulin cũng rất cao. Bác sĩ giải thích các mô đang 'kháng' insulin, yêu cầu giảm cân khẩn cấp để bảo vệ tuyến tụy.",
+      "note": "Thường được chỉ định cùng lúc với xét nghiệm Glucose đói để bác sĩ tính toán chỉ số đánh giá kháng Insulin (HOMA-IR).",
+      "advanced_knowledge": "Áp dụng trí tuệ nhân tạo (AI) trong phân tích tự động, hệ thống sẽ tự thiết lập bản đồ nhạy cảm Insulin cho từng cá nhân, dự báo thời điểm tuyến tụy suy kiệt nếu không can thiệp thay đổi lối sống [5, 10].",
+      "deep_knowledge": "Insulin có thời gian bán hủy trong máu cực ngắn và bị gan lọc sạch đáng kể trong vòng tuần hoàn đầu tiên. Do đó, insulin máu ngoại vi không phản ánh tuyệt đối lượng insulin thực sự mà tụy vừa tổng hợp.",
+      "patient_advice": "Nếu bạn đang sử dụng các loại thuốc điều trị tiểu đường dạng tiêm (Insulin nhân tạo) hoặc thuốc viên kích thích tuyến tụy, bạn phải nói với bác sĩ vì chúng sẽ làm sai lệch hoàn toàn kết quả nội sinh."
+    },
+    "C-peptid": {
+      "name": "C-peptid",
+      "purpose": "Thước đo trung thực và chính xác nhất để đánh giá khả năng sản xuất insulin nội sinh (tự nhiên) của lá lách (tuyến tụy).",
+      "when_to_do": "Khi bệnh nhân đang tiêm insulin nhân tạo từ ngoài vào và bác sĩ muốn biết tuyến tụy của người bệnh còn tự làm việc được không, từ đó điều chỉnh phác đồ.",
+      "how_it_works": "Khi tuyến tụy tổng hợp phân tử Insulin, nó đồng thời cắt và giải phóng một đoạn phân tử C-peptid vào máu. Đo C-peptid giúp bác sĩ không bị nhầm lẫn với insulin được tiêm từ ngoài vào.",
+      "result_meaning": "Thấp: Tuyến tụy đã suy kiệt, không thể tự sinh insulin (gặp ở tiểu đường type 1). Cao: Tuyến tụy vẫn hoạt động mạnh nhưng cơ thể đang kháng insulin.",
+      "real_life_example": "Bác sĩ đo C-peptid cho một bệnh nhân tiểu đường lâu năm đang dùng thuốc tiêm. Thấy C-peptid vẫn còn khá tốt, bác sĩ quyết định cho bệnh nhân chuyển dần sang thuốc viên uống.",
+      "note": "C-peptid có thời gian tồn tại trong máu dài hơn Insulin rất nhiều nên đo nó cho kết quả ổn định và đáng tin cậy hơn.",
+      "advanced_knowledge": "Hệ thống AI chuyên gia như LAB AI Agent có khả năng tổng hợp chỉ số C-peptid cùng các dấu ấn sinh học khác để hỗ trợ phân biệt các thể đái tháo đường phức tạp [4, 5].",
+      "deep_knowledge": "Khác với Insulin bị gan dọn dẹp rất nhanh, C-peptid phần lớn được đào thải qua thận. Do vậy, ở những bệnh nhân có chức năng thận suy giảm, C-peptid trong máu có thể bị tích tụ và tăng cao giả tạo.",
+      "patient_advice": "Hãy uống đủ nước lọc. Bạn không cần phải ngưng các mũi tiêm insulin nhân tạo hằng ngày của mình vì xét nghiệm này chỉ đo lường sản phẩm do chính cơ thể bạn tự tạo ra."
+    },
+    "Ceton": {
+      "name": "Ketone niệu / Ceton máu",
+      "purpose": "Phát hiện tình trạng nhiễm toan ceton (DKA) - một biến chứng cấp tính cực kỳ nguy hiểm đe dọa tính mạng ở người bệnh tiểu đường [11].",
+      "when_to_do": "Khi người bệnh đái tháo đường có mức đường huyết quá cao, nôn mửa, lú lẫn, hơi thở có mùi trái cây lên men, hoặc khi nhịn đói kéo dài [11].",
+      "how_it_works": "Đo lường nồng độ ketone, sản phẩm sinh ra phản ánh quá trình đốt cháy chất béo ồ ạt để tạo năng lượng khi tế bào bị thiếu hụt đường glucose trầm trọng [11].",
+      "result_meaning": "Bình thường (Âm tính): Cơ thể an toàn. Dương tính/Cao: Máu đang bị axit hóa nặng do bệnh tiểu đường không được kiểm soát, cần cấp cứu y tế lập tức [11].",
+      "real_life_example": "Một bệnh nhân tiểu đường type 1 bỏ tiêm insulin vài ngày rồi ngất xỉu. Vào cấp cứu thử Ketone niệu dương tính cực mạnh, bác sĩ chẩn đoán nhiễm toan ceton và lập tức cho hồi sức tích cực [11].",
+      "note": "Người khỏe mạnh đang ăn kiêng theo chế độ nhịn ăn gián đoạn hoặc Keto gắt gao (cắt giảm hoàn toàn tinh bột) cũng có thể làm chỉ số Ketone niệu tăng [11].",
+      "advanced_knowledge": "Sự phát triển của công nghệ xét nghiệm tại chỗ (POCT) cho phép kiểm tra ketone ngay tại giường bệnh hoặc bằng các thiết bị cầm tay tự theo dõi liên tục tại nhà, giúp can thiệp xử trí ngay trước khi rơi vào hôn mê [6, 7].",
+      "deep_knowledge": "Beta-hydroxybutyrate là dạng ketone chính lưu thông trong máu khi bị nhiễm toan DKA. Các xét nghiệm máu hiện đại thường nhắm trực tiếp vào phân tử này để cho độ nhạy và độ đặc hiệu chẩn đoán cao hơn so với que thử nước tiểu thông thường.",
+      "patient_advice": "Nếu bạn bị đái tháo đường type 1, hãy tự trang bị sẵn que thử ketone tại nhà. Ngay khi đường huyết lên quá cao kèm theo mệt mỏi nôn ói, hãy tự kiểm tra ngay lập tức. Tuyệt đối không tập thể dục khi đường huyết đang cao kèm ketone dương tính."
+    },
+     "FT3": {
+      "name": "FT3 (Triiodothyronine tự do)",
+      "purpose": "Đánh giá mức độ hoạt động thực tế của tuyến giáp, giúp chẩn đoán và theo dõi điều trị bệnh cường giáp hoặc suy giáp.",
+      "when_to_do": "Khi hay bị trống ngực hồi hộp, sụt cân nhanh dù ăn rất nhiều, tay run rẩy bần bật, lồi mắt (Cường giáp) hoặc khi TSH bất thường.",
+      "how_it_works": "Đo nồng độ hormone T3 ở dạng 'tự do' (không bị gắn kết với protein). Đây là loại hormone có hoạt tính sinh học mạnh nhất, trực tiếp tạo ra sức công phá và kích thích chuyển hóa tế bào.",
+      "result_meaning": "Cao: Tuyến giáp hoạt động quá mức (Cường giáp). Thấp: Tuyến giáp lười biếng, làm cơ thể mập ú, ù lì, sợ lạnh (Suy giáp).",
+      "real_life_example": "Cô gái trẻ hay cáu gắt, lồi mắt, tim đập thình thịch 120 nhịp/phút, thử FT3 tăng rất cao xác định mắc chứng Basedow (Cường giáp tự miễn).",
+      "note": "Dù lượng FT3 trong máu rất nhỏ so với FT4 (chỉ chiếm khoảng 20%), nhưng nó lại là kẻ quyết định tốc độ tiêu hao năng lượng chính của cơ thể.",
+      "advanced_knowledge": "Hệ thống AI phân tích dữ liệu tuyến giáp hiện đại tự động tính toán tỷ lệ FT3/FT4. Nếu tỷ lệ này thay đổi, AI sẽ cảnh báo bác sĩ về tình trạng cơ thể người bệnh đang bị rối loạn quá trình chuyển hóa từ T4 sang T3 ở gan và mô ngoại vi.",
+      "deep_knowledge": "Xét nghiệm FT3 sử dụng cơ chế miễn dịch cạnh tranh cho phân tử nhỏ. Theo Cảnh giác dược, việc bệnh nhân sử dụng Biotin (Vitamin B7) ngoại sinh liều cao sẽ tương tác với cầu nối streptavidin trong thuốc thử, gây ra kết quả FT3 tăng giả tạo, khiến bác sĩ dễ chẩn đoán nhầm là cường giáp [1].",
+      "patient_advice": "Nếu bạn đang uống các viên uống làm đẹp da, móng, tóc có chứa Biotin, bạn bắt buộc phải ngưng uống ít nhất 3 ngày (72 giờ) trước khi đi rút máu xét nghiệm tuyến giáp để tránh kết quả bị sai lệch hoàn toàn [1]."
+    },
+    "FT4": {
+      "name": "FT4 (Thyroxine tự do)",
+      "purpose": "Công cụ chính xác và ổn định nhất để chẩn đoán bệnh lý bướu cổ tuyến giáp, thường làm thành bộ xét nghiệm chuẩn cùng TSH.",
+      "when_to_do": "Khám sức khỏe định kỳ tuyến giáp, phụ nữ mang thai 3 tháng đầu (để đảm bảo đủ hormone cho não thai nhi phát triển), người đang uống thuốc trị tuyến giáp.",
+      "how_it_works": "Đo nồng độ hormone T4 tự do trong máu. T4 giống như một kho dự trữ lưu động, khi đến các mô cơ quan, nó sẽ tự động lột xác biến thành FT3 để cơ thể sử dụng.",
+      "result_meaning": "Bình thường: Tuyến giáp hiền hòa. Cao: Bệnh cường giáp, viêm tuyến giáp cấp. Thấp: Tuyến giáp bị suy yếu không sinh đủ hormone.",
+      "real_life_example": "Bà mẹ sau sinh người mệt mỏi phù nề, ăn ít vẫn mập, đo FT4 thấp tè, bác sĩ cho uống viên bù hormone tuyến giáp liền khỏe lại ngay.",
+      "note": "Bác sĩ luôn ưu tiên đo FT4 (tự do) thay vì T4 (toàn phần) vì FT4 phản ánh đúng lượng hormone thực tế đang làm việc, không bị nhiễu bởi các protein vận chuyển trong máu.",
+      "advanced_knowledge": "Công nghệ phân tích quang hóa phát quang siêu nhạy thế hệ mới giúp định lượng FT4 chính xác ở mức độ picomol/L. Đồng thời, phần mềm quản lý (LAB AI Agent) tự động đối chiếu chéo FT4 và TSH để loại trừ ngay lập tức các trường hợp lỗi máy hoặc nhiễu mẫu.",
+      "deep_knowledge": "Ở phụ nữ mang thai hoặc người dùng thuốc tránh thai, lượng protein gắn kết thyroxine (TBG) tăng vọt làm T4 toàn phần tăng rất cao. Nếu chỉ đo T4 toàn phần sẽ bị chẩn đoán nhầm là cường giáp. Đo FT4 giúp loại bỏ hoàn toàn sự nhiễu loạn này. Tuy nhiên, FT4 cũng bị ảnh hưởng sai lệch (tăng giả) bởi viên uống làm đẹp chứa Biotin [1].",
+      "patient_advice": "Nếu bạn đang trong quá trình uống thuốc điều trị suy giáp (như Levothyroxine), sáng ngày đi khám bạn không được uống thuốc. Hãy để y tá rút máu xong rồi mới uống liều của ngày hôm đó, nếu uống trước khi lấy máu, FT4 sẽ tăng vọt giả tạo."
+    },
+    "TSH": {
+      "name": "TSH (Hormone kích thích tuyến giáp)",
+      "purpose": "Chỉ số trinh sát nhạy bén nhất, là xét nghiệm đầu tay (First-line) để tầm soát và phát hiện sớm mọi vấn đề về tuyến giáp.",
+      "when_to_do": "Là xét nghiệm đầu tiên được bác sĩ chỉ định khi bạn có bướu to ở cổ, nghi ngờ bệnh tuyến giáp, hoặc tầm soát suy giáp bẩm sinh ở trẻ sơ sinh.",
+      "how_it_works": "Đo hormone TSH do tuyến yên trên não bộ tiết ra. Bộ não đóng vai trò như 'tổng chỉ huy', dùng TSH làm tín hiệu để ra lệnh và thúc ép tuyến giáp ở cổ sản xuất hormone.",
+      "result_meaning": "Thấp: Tuyến giáp đang sản xuất quá mức khiến não phải ngắt lệnh (Cường giáp). Cao: Tuyến giáp bị yếu, lười biếng nên não phải tiết ra nhiều TSH để thúc ép liên tục (Suy giáp).",
+      "real_life_example": "Kết quả xét nghiệm FT3 FT4 bình thường nhưng TSH tăng cao, bác sĩ kết luận đây là 'suy giáp cận lâm sàng' (giai đoạn bệnh còn đang tiềm ẩn), đưa vào diện theo dõi chuẩn bị uống thuốc.",
+      "note": "TSH luôn chạy ngược chiều với FT3 và FT4. TSH là một chỉ số cực kỳ nhạy cảm, nó sẽ thay đổi đầu tiên, rất lâu trước khi tuyến giáp thực sự có biểu hiện hỏng hóc.",
+      "advanced_knowledge": "Máy miễn dịch thế hệ thứ 4 có thể đo TSH ở nồng độ cực thấp (lên tới 0.001 mIU/L), giúp bác sĩ phân biệt rõ ràng giữa cường giáp thực sự và tình trạng ức chế TSH do các bệnh lý ngoài tuyến giáp.",
+      "deep_knowledge": "Khác với FT3/FT4, TSH là phân tử có kích thước lớn nên sử dụng cơ chế xét nghiệm miễn dịch kiểu 'bánh sandwich' (không cạnh tranh). Vì vậy, nếu bệnh nhân đang dùng Biotin làm đẹp, Biotin sẽ cản trở kháng thể gắn kết, làm cho tín hiệu bị rửa trôi, dẫn đến kết quả TSH bị giảm giả tạo. Điều này tạo ra một bức tranh giả: TSH thấp, FT4 cao y hệt như bệnh Cường giáp [1].",
+      "patient_advice": "Tuyệt đối ngưng các thực phẩm chức năng mọc tóc, chống rụng tóc, làm đẹp da chứa Biotin (Vitamin B7/Vitamin H) trước khi làm xét nghiệm [1]. TSH tuân theo nhịp sinh học, tăng cao nhất vào ban đêm và thấp nhất vào buổi chiều, do đó bạn nên đi lấy máu cố định vào buổi sáng (7h - 9h)."
+    },
+    "Testosteron": {
+      "name": "Testosteron (Định lượng Testosteron toàn phần)",
+      "purpose": "Đánh giá phong độ sinh lý, ham muốn, chức năng sinh sản ở nam giới và kiểm tra tình trạng nam hóa bất thường ở nữ giới.",
+      "when_to_do": "Nam giới rụng tóc hói đầu, mệt mỏi, rối loạn cương dương, vô sinh [2]. Nữ giới mọc ria mép, rậm lông, nổi mụn đầy mặt, kinh nguyệt thưa thớt.",
+      "how_it_works": "Đo lượng hormone nam tính lưu thông trong dòng máu, phần lớn do tinh hoàn (ở nam) và buồng trứng/tuyến thượng thận (ở nữ) tiết ra.",
+      "result_meaning": "Thấp ở nam: Mãn dục nam, suy sinh dục, liệt dương, vô sinh [2]. Cao ở nữ: Cảnh báo bệnh buồng trứng đa nang (PCOS) hoặc u tuyến thượng thận.",
+      "real_life_example": "Chú 50 tuổi than vãn không còn hứng thú chuyện vợ chồng, đo Testosteron sụt thê thảm chỉ còn 150 ng/dL, được bác sĩ cho liệu pháp bổ sung hormone lấy lại phong độ [2].",
+      "note": "Ở nam giới trưởng thành bình thường, nồng độ dao động từ 300 - 1.000 ng/dL. Chỉ số này suy giảm tự nhiên theo độ tuổi (khoảng 1% mỗi năm sau tuổi 30) [2].",
+      "advanced_knowledge": "Công nghệ đo khối phổ sắc ký lỏng siêu nhạy (LC-MS/MS) kết hợp thuật toán AI hiện được coi là 'tiêu chuẩn vàng' để đo Testosteron ở nữ giới và trẻ em, vượt qua điểm yếu đo sai số của các máy miễn dịch thông thường khi nồng độ hormone ở mức quá thấp.",
+      "deep_knowledge": "Testosteron trong máu đa phần (khoảng 98%) bị 'trói chặt' bởi protein SHBG và Albumin nên không hoạt động. Chỉ có 2% là Testosteron tự do có khả năng tạo ra sinh lý nam. Ở người béo phì hoặc tiểu đường, SHBG giảm làm Testosteron toàn phần giảm theo, nhưng Testosteron tự do vẫn có thể bình thường. Lúc này, bác sĩ sẽ phải dùng AI để tính toán chỉ số Testosteron tự do ước tính (cFT).",
+      "patient_advice": "Testosteron tuân theo nhịp điệu ngày đêm, đạt đỉnh cao nhất vào buổi sáng và tụt dốc vào buổi chiều. Bắt buộc bạn phải lấy máu vào lúc 7:00 đến 10:00 sáng và phải nhịn ăn, ngủ đủ giấc đêm hôm trước để có kết quả phản ánh đúng sinh lý nhất [2]."
+    },
+    "Cortisol": {
+      "name": "Cortisol (Hormone chống Stress)",
+      "purpose": "Đo lường mức độ phản ứng với stress căng thẳng của cơ thể và đánh giá chức năng của tuyến thượng thận.",
+      "when_to_do": "Người hay tự mua thuốc khớp đông y uống, dạo này mặt sưng tròn béo phị như mặt trăng, tay chân teo tóp, rạn da bụng màu tím đỏ, huyết áp tăng.",
+      "how_it_works": "Đo hormone Cortisol do tuyến thượng thận tiết ra. Đây là hormone sinh tồn, giúp cơ thể chống lại áp lực, chống viêm và duy trì đường huyết khi bị đói, sợ hãi.",
+      "result_meaning": "Cao: Mắc bệnh u tuyến thượng thận, u tuyến yên (Hội chứng Cushing) hoặc do ngộ độc thuốc corticoid. Thấp: Suy tuyến thượng thận (Bệnh Addison), cơ thể kiệt quệ, tụt huyết áp.",
+      "real_life_example": "Cô bán hàng uống 'thuốc tễ' trị nhức mỏi xương khớp nửa năm nay, giờ mặt béo phị mọc lông, thử Cortisol sáng ra mức 0 do tuyến thượng thận đã bị teo liệt vì ngộ độc corticoid trộn lén trong thuốc tễ.",
+      "note": "Được mệnh danh là 'Hormone thức giấc', Cortisol tăng cao vọt lúc sáng sớm khi mới mở mắt và thấp dần, cạn kiệt về nửa đêm.",
+      "advanced_knowledge": "Thay vì chỉ lấy máu, công nghệ y học hiện nay bắt đầu áp dụng cảm biến vi mô (biosensors) dán trên da phân tích Cortisol qua mồ hôi theo thời gian thực (Real-time). AI sẽ gửi dữ liệu về điện thoại để cảnh báo khi cơ thể đang ở trạng thái 'stress mạn tính' báo động đỏ.",
+      "deep_knowledge": "Việc sử dụng các thuốc chứa Corticoid (như Dexamethason, Prednisolone) dùng đường uống, tiêm khớp, hay thậm chí là thuốc xịt hen suyễn, kem bôi da liều cao dài ngày đều sẽ đánh lừa não bộ, khiến não ngắt lệnh tuyến thượng thận làm tuyến này teo lại và mất khả năng tự sản sinh Cortisol nội sinh.",
+      "patient_advice": "Vì nhịp sinh học của Cortisol thay đổi theo giờ, y tá sẽ dặn bạn bắt buộc phải lấy máu đúng 8 giờ sáng (giờ đỉnh điểm). Trước khi rút máu, bạn cần ngồi nghỉ ngơi thả lỏng hoàn toàn 30 phút. Nếu bạn đi cầu thang bộ mệt nhọc hoặc đang cãi nhau, giận dữ, Cortisol sẽ tăng vọt giả tạo do stress cấp tính."
+    },
+    "PTH": {
+      "name": "PTH (Hormone tuyến cận giáp - Parathyroid Hormone)",
+      "purpose": "Đánh giá chức năng của 4 hạt tuyến cận giáp nằm ẩn ở cổ, tìm nguyên nhân sâu xa của các rối loạn Canxi máu và bệnh loãng xương.",
+      "when_to_do": "Khi xét nghiệm máu thấy Canxi quá cao hoặc quá thấp, người bệnh bị sỏi thận tái phát liên tục, đau nhức xương khớp mạn tính, loãng xương nặng dù ăn uống đủ chất.",
+      "how_it_works": "Đo lượng hormone PTH do tuyến cận giáp tiết ra. PTH có nhiệm vụ giống như 'kẻ trộm', khi máu thiếu Canxi, nó sẽ rút Canxi từ trong xương tống ra máu để cứu nguy nhịp tim.",
+      "result_meaning": "Bình thường: Cân bằng Canxi tốt. Cao: Cường cận giáp (do u tuyến cận giáp hoặc do suy thận làm rút hết Canxi khỏi xương). Thấp: Suy tuyến cận giáp (thường do biến chứng cắt trúng tuyến này khi mổ bướu cổ).",
+      "real_life_example": "Một bệnh nhân liên tục bị sỏi thận 2 bên và chụp X-quang thấy xương rỗ như tổ ong, thử máu Canxi cao, PTH cao vọt giúp bác sĩ siêu âm phát hiện ra ngay khối u tuyến cận giáp.",
+      "note": "Luôn luôn phải được bác sĩ chỉ định làm cùng một lúc với xét nghiệm Canxi máu (Ion hóa) và Vitamin D3 thì mới chẩn đoán ra bệnh.",
+      "advanced_knowledge": "Công nghệ xét nghiệm nhanh tại chỗ (Intraoperative POCT PTH) được đưa thẳng vào phòng phẫu thuật. Trong lúc mổ cắt u tuyến cận giáp, bác sĩ sẽ rút máu đo PTH, máy trả kết quả chỉ sau 10 phút. Nếu PTH tụt giảm mạnh (>50%), bác sĩ biết chắc chắn đã cắt sạch khối u và yên tâm đóng vết mổ.",
+      "deep_knowledge": "Hormone PTH nguyên vẹn (Intact PTH) có thời gian bán hủy trong máu cực kỳ ngắn, chỉ khoảng 3 đến 5 phút. Khi thận bị suy, thận không thể kích hoạt Vitamin D, dẫn đến ruột không hấp thu được Canxi. Máu thiếu Canxi kích thích tuyến cận giáp phì đại và tiết PTH điên cuồng, gọi là Cường cận giáp thứ phát do bệnh thận mạn.",
+      "patient_advice": "Bạn cần nhịn ăn từ 8-10 tiếng trước khi lấy máu để chỉ số Canxi đi kèm không bị ảnh hưởng bởi bữa ăn. Mẫu máu đo PTH rất dễ bị hỏng ở nhiệt độ phòng, y tá sẽ phải ướp ống máu vào đá lạnh ngay lập tức sau khi rút khỏi tay bạn để gửi xuống phòng lab."
+    },
+    "Acid Uric": {
+      "name": "Acid Uric",
+      "purpose": "Chẩn đoán các bệnh lý gây biến đổi nồng độ acid uric như bệnh Gout, sỏi thận và theo dõi hóa trị liệu ung thư [4].",
+      "when_to_do": "Khi có cơn đau quặn thận, sưng đỏ và đau nhức dữ dội ở khớp (đặc biệt là ngón chân cái), thận ứ nước hoặc theo dõi suy thận [5].",
+      "how_it_works": "Đo lượng chất thải sinh ra sau quá trình thoái giáng nhân purin từ thực phẩm (như thịt đỏ, hải sản) hoặc sự phân hủy tế bào trong cơ thể [4, 5].",
+      "result_meaning": "Bình thường ở nam khoảng 180-420 mmol/l và nữ là 150-360 mmol/l [6]. Nồng độ tăng cao phản ánh bệnh Gout, suy thận, vảy nến, đa hồng cầu hoặc hội chứng ly giải khối u [5, 6].",
+      "real_life_example": "Một anh hay đi nhậu hải sản sáng ngủ dậy ngón chân đau điếng, xét nghiệm Acid Uric cao vọt kết luận bị Gout cấp tính do tinh thể urat đọng lại tại khớp [4].",
+      "note": "Một số thuốc có thể làm tăng acid uric máu (như thuốc lợi tiểu thiazid, aspirin liều thấp, thuốc hóa trị) hoặc làm giảm acid uric (như allopurinol, corticosteroid) [5].",
+      "advanced_knowledge": "Máy đo acid uric cầm tay tại nhà (POCT) tích hợp AI hiện nay có thể dự đoán được rủi ro bùng phát cơn đau Gout cấp trong 48 giờ tới dựa trên nồng độ đo được và lịch sử ăn uống của người bệnh.",
+      "deep_knowledge": "Tình trạng thoái giáng nhanh acid uric thường xảy ra ở bệnh nhân có khối u đang điều trị bằng hóa trị (hội chứng ly giải khối u), khi đó mẫu máu cần được đặt ngay vào túi đá lạnh để bảo quản [4, 5]. Mức acid uric giảm có thể gặp trong hội chứng Fanconi hoặc bệnh Wilson [6].",
+      "patient_advice": "Bệnh nhân thường được yêu cầu nhịn ăn từ 4 đến 8 giờ trước khi lấy mẫu máu tĩnh mạch hoặc làm xét nghiệm nước tiểu 24h [4]."
+    },
+    "Calci": {
+      "name": "Calci (Toàn phần và Ion hóa)",
+      "purpose": "Kiểm tra cơ thể có đủ canxi để giúp xương chắc khỏe, phát hiện rối loạn tuyến cận giáp và các bệnh lý về xương [7].",
+      "when_to_do": "Khi hay bị chuột rút, tê rần tay chân, phụ nữ tiền mãn kinh nghi loãng xương, hoặc bệnh nhân có biểu hiện sỏi thận.",
+      "how_it_works": "Đo nồng độ canxi hòa tan gắn với protein (toàn phần) và lượng canxi tự do hoạt động (ion hóa) lưu thông trong máu.",
+      "result_meaning": "Canxi toàn phần bình thường khoảng 2.2 - 2.7 mmol/l [7]. Tăng trong đa u tủy, loãng xương, cường tuyến cận giáp [7]. Giảm trong còi xương, thiểu năng tuyến giáp, hội chứng thận hư [7].",
+      "real_life_example": "Bà bầu hay bị chuột rút bắp chân ban đêm, thử Calci ion hóa thấp, bác sĩ cho uống viên canxi bổ sung liền hết triệu chứng co cơ.",
+      "note": "Canxi ion hóa (Ca++) là dạng hoạt động sinh lý, phản ánh tình trạng thực sự của canxi trong cơ thể chính xác hơn canxi toàn phần [8].",
+      "advanced_knowledge": "Các hệ thống phân tích khí máu và điện giải tại giường bệnh (POCT) hiện đại cho kết quả Canxi ion hóa (Ca++) sinh tồn chỉ trong 30 giây từ một giọt máu [9].",
+      "deep_knowledge": "Khoảng 50% canxi trong máu gắn với protein, chủ yếu là albumin [7, 10]. Do đó, bệnh lý làm giảm albumin (như xơ gan, thận hư) sẽ làm giảm canxi toàn phần nhưng canxi ion hóa tự do có thể vẫn bình thường.",
+      "patient_advice": "Khi đi lấy máu xét nghiệm điện giải, bạn nên thả lỏng cánh tay tự nhiên, tuyệt đối không gồng siết cơ bắp hay cử động bóp nhả nắm tay liên tục vì sẽ làm sai lệch kết quả ion trong máu [9]."
+    },
+    "Phospho": {
+      "name": "Phospho",
+      "purpose": "Đánh giá khoáng chất giúp tạo xương, thường đi cặp với canxi và liên quan mật thiết đến chức năng thận [11].",
+      "when_to_do": "Người bị bệnh suy thận mạn tính, rối loạn tuyến cận giáp, hoặc các bệnh liên quan đến loãng xương.",
+      "how_it_works": "Đo lượng khoáng Phospho trong máu, chất này thường có mối quan hệ nghịch đảo với Canxi dưới sự điều hòa của hormone tuyến cận giáp (PTH).",
+      "result_meaning": "Bình thường: Đủ chất. Cao: Ở bệnh nhân suy thận, thận không đào thải được Phospho ra ngoài gây tích tụ làm ngứa ngáy toàn thân và vôi hóa mạch máu.",
+      "real_life_example": "Người bệnh suy thận mạn đang lọc máu da dẻ hay bị ngứa gãi sứt sẹo, xét nghiệm Phospho tăng vọt do không lọc được ra ngoài.",
+      "note": "Thường luôn được bác sĩ chỉ định xét nghiệm thành bộ cùng với Canxi toàn phần, Canxi ion hóa và Vitamin D3 [11].",
+      "advanced_knowledge": "Hệ thống AI phòng lab tự động phân tích tỷ lệ Canxi/Phospho để cảnh báo sớm nguy cơ vôi hóa mô mềm ở bệnh nhân suy thận mạn tính.",
+      "deep_knowledge": "Sự tích tụ Phospho ở bệnh nhân bệnh thận mạn (CKD) là nguyên nhân chính kích hoạt cường tuyến cận giáp thứ phát, dẫn đến việc rút canxi ồ ạt từ xương ra máu gây gãy xương bệnh lý.",
+      "patient_advice": "Nếu bạn bị suy thận mạn tính, bạn cần kiêng khem nghiêm ngặt các thực phẩm chứa nhiều phospho công nghiệp như nước ngọt có ga, thịt chế biến sẵn và đồ hộp."
+    },
+    "Vitamin D3": {
+      "name": "25-OH Vitamin D",
+      "purpose": "Kiểm tra tình trạng xương, hệ miễn dịch và khả năng cơ thể hấp thu canxi [12].",
+      "when_to_do": "Trẻ em bị còi xương, người lớn nhức mỏi xương khớp mạn tính, bệnh nhân bệnh tự miễn hoặc nghi ngờ suy giảm miễn dịch.",
+      "how_it_works": "Đo nồng độ 25-hydroxyvitamin D trong máu, đây là dạng dự trữ chính của vitamin D phản ánh nguồn cung cấp từ cả ánh nắng mặt trời và thực phẩm [13].",
+      "result_meaning": "Chỉ số bình thường nằm trong khoảng 30 - 150 ng/mL [13]. Thấp: Nguy cơ loãng xương cao, hệ miễn dịch suy yếu dễ mắc các bệnh nhiễm trùng.",
+      "real_life_example": "Chị nhân viên văn phòng 35 tuổi che nắng kín mít, hay đau mỏi lưng, đo Vitamin D3 rất thấp nên uống canxi mãi không ngấm được vào xương.",
+      "note": "Vitamin D có vai trò sống còn như một cỗ xe vận chuyển, nếu thiếu nó thì cơ thể không thể hấp thu được canxi từ ruột vào máu [12].",
+      "advanced_knowledge": "Sử dụng công nghệ khối phổ LC-MS/MS độ nhạy cực cao để phân biệt rõ ràng giữa Vitamin D2 (từ thực vật) và Vitamin D3 (từ động vật/da tổng hợp), hỗ trợ bác sĩ kê đơn bổ sung chính xác.",
+      "deep_knowledge": "Bản chất Vitamin D hoạt động như một hormone nội tiết hơn là một vitamin đơn thuần. Nó kiểm soát hơn 200 gen trong cơ thể và sự thiếu hụt trầm trọng có liên quan đến rủi ro mắc các bệnh ung thư và rối loạn chuyển hóa.",
+      "patient_advice": "Bạn không cần nhịn ăn trước khi xét nghiệm Vitamin D. Nếu kết quả cho thấy bạn thiếu hụt nặng, hãy tăng cường phơi nắng buổi sáng sớm và tuân thủ liều lượng vitamin D bổ sung do bác sĩ kê đơn."
+    },
+    "Yếu tố dạng thấp": {
+      "name": "Yếu tố dạng thấp (RF)",
+      "purpose": "Truy tìm và hỗ trợ chẩn đoán bệnh viêm khớp dạng thấp cùng các hội chứng tự miễn dịch khác.",
+      "when_to_do": "Khi sáng ngủ dậy tay chân cứng đơ khó cử động kéo dài trên 1 giờ, các khớp ngón tay sưng đỏ đối xứng hai bên.",
+      "how_it_works": "Tìm một loại kháng thể tự sinh (thường là IgM) do cơ thể tự tạo ra do lỗi hệ miễn dịch, kháng thể này quay lại tấn công phần Fc của kháng thể IgG của chính người bệnh.",
+      "result_meaning": "Âm tính: Khó mắc bệnh. Dương tính: Tăng nguy cơ bị viêm khớp dạng thấp, lâu dài có thể gây biến dạng khớp tàn phế.",
+      "real_life_example": "Bà cụ các đốt ngón tay sưng to đau nhức bóp méo, đi xét nghiệm RF dương tính, bác sĩ cho dùng thuốc ức chế miễn dịch làm chậm quá trình hư khớp.",
+      "note": "Xét nghiệm RF không hoàn toàn đặc hiệu, ở một số người già khỏe mạnh hoặc người mắc bệnh nhiễm trùng mạn tính (như viêm gan C, lao), chỉ số này cũng có thể dương tính giả.",
+      "advanced_knowledge": "Được chạy trên hệ thống miễn dịch tự động công suất lớn, phần mềm LAB AI Agent tự động kết hợp kết quả RF, Anti-CCP và CRP để đưa ra kết luận mức độ viêm khớp hiện tại [14].",
+      "deep_knowledge": "Mặc dù là tiêu chuẩn kinh điển, nhưng khoảng 20-30% bệnh nhân thực sự mắc viêm khớp dạng thấp lại có kết quả RF âm tính (viêm khớp dạng thấp huyết thanh âm tính). Do đó, bác sĩ luôn phải đánh giá kết hợp với lâm sàng.",
+      "patient_advice": "Nếu xét nghiệm RF của bạn dương tính nhẹ nhưng bạn không hề đau khớp, đừng quá hốt hoảng. Hãy đến khám trực tiếp với bác sĩ chuyên khoa Cơ xương khớp để được đánh giá toàn diện."
+    },
+    "Anti-CCP": {
+      "name": "Anti-CCP",
+      "purpose": "Chẩn đoán bệnh viêm khớp dạng thấp ở giai đoạn rất sớm với độ chính xác và đặc hiệu cao hơn nhiều so với RF.",
+      "when_to_do": "Khi bị đau cứng các khớp nhỏ (ngón tay, cổ tay) vào buổi sáng, sưng đau kéo dài mà xét nghiệm RF âm tính.",
+      "how_it_works": "Tìm kiếm các tự kháng thể kháng lại chuỗi peptide chứa citrulline vòng, loại kháng thể này tấn công trực tiếp vào màng hoạt dịch của khớp.",
+      "result_meaning": "Âm tính: Khả năng cao không mắc bệnh. Dương tính: Gần như chắc chắn bị viêm khớp dạng thấp và bệnh có nguy cơ tiến triển phá hủy sụn khớp rất nặng.",
+      "real_life_example": "Một phụ nữ trẻ đau khớp cổ tay, test yếu tố dạng thấp (RF) âm tính nhưng Anti-CCP dương tính mạnh, giúp phát hiện bệnh từ rất sớm trước khi khớp bị phá hủy.",
+      "note": "Anti-CCP có thể xuất hiện trong máu nhiều năm trước khi bệnh nhân có biểu hiện đau khớp đầu tiên trên lâm sàng.",
+      "advanced_knowledge": "Công nghệ xét nghiệm vi dịch (microfluidics) cho phép định lượng chính xác Anti-CCP từ một giọt máu mao mạch, đồng thời thuật toán học máy (Machine Learning) dự đoán xác suất khớp sẽ bị biến dạng trong 5 năm tới.",
+      "deep_knowledge": "Khác với RF có thể dương tính trong nhiều bệnh khác, Anti-CCP có độ đặc hiệu cho viêm khớp dạng thấp lên đến 95%. Kháng thể này có mối liên hệ mật thiết với thói quen hút thuốc lá ở những người mang gen nhạy cảm HLA-DRB1.",
+      "patient_advice": "Nếu bạn có tiền sử gia đình bị viêm khớp dạng thấp và kết quả Anti-CCP dương tính, bạn tuyệt đối phải tránh hút thuốc lá vì khói thuốc là chất xúc tác mạnh nhất kích hoạt căn bệnh tự miễn này bùng phát."
+    },
+    "ASO": {
+      "name": "ASO (Anti-streptolysin O)",
+      "purpose": "Phát hiện dấu vết nhiễm liên cầu khuẩn tan huyết nhóm A (vi khuẩn ăn thịt người) có thể gây biến chứng hỏng van tim và sụn khớp.",
+      "when_to_do": "Trẻ em sau một đợt viêm họng mủ sưng to, nay tự nhiên sưng đau đầu gối tấy đỏ, mệt tim, hồi hộp, nghi ngờ sốt thấp khớp.",
+      "how_it_works": "Đo nồng độ kháng thể mà cơ thể sinh ra để đánh lại độc tố Streptolysin O của con vi khuẩn liên cầu nhóm A.",
+      "result_meaning": "Bình thường: Không nhiễm. Tăng cao: Vi khuẩn đã từng vào cơ thể, nguy cơ xảy ra phản ứng chéo cắn đứt sụn khớp, màng lọc thận và van tim (thấp tim).",
+      "real_life_example": "Bé trai 8 tuổi bị viêm họng 2 tuần trước uống thuốc không đủ liều, nay kêu đau cổ chân, thử ASO tăng vọt. Bác sĩ cho tiêm phòng thấp tim ngay lập tức để cứu lấy van tim của bé.",
+      "note": "Vi khuẩn này có biệt danh 'liếm khớp đớp tim'. ASO chỉ cho biết bạn đã từng nhiễm vi khuẩn này trong vòng vài tuần đến vài tháng qua, chứ không phản ánh tình trạng nhiễm trùng đang diễn ra ngay hiện tại.",
+      "advanced_knowledge": "Hệ thống tự động theo dõi động học ASO, biểu đồ AI sẽ xác định đỉnh kháng thể để phân biệt giữa một nhiễm trùng liên cầu trong quá khứ đã an toàn và một nhiễm trùng mới bùng phát đe dọa biến chứng.",
+      "deep_knowledge": "Sự nguy hiểm của liên cầu A nằm ở chỗ vỏ của vi khuẩn này có cấu trúc protein (protein M) gần giống hệt với cấu trúc cơ tim và sụn khớp của người. Do đó, kháng thể sinh ra diệt vi khuẩn sẽ tiêu diệt nhầm luôn cả màng tim và sụn khớp (cơ chế tự miễn).",
+      "patient_advice": "Nếu con bạn bị viêm họng do liên cầu khuẩn (xác định qua phết họng), bắt buộc phải cho trẻ uống kháng sinh đủ liều đúng 10 ngày dù trẻ đã hết sốt, để diệt vi khuẩn tận gốc và ngăn ngừa biến chứng thấp tim tàn phế suốt đời."
+    },
+    "AFP": {
+      "name": "AFP (Alpha-Fetoprotein)",
+      "purpose": "Tầm soát và theo dõi điều trị ung thư gan nguyên phát, ung thư tế bào mầm ở tinh hoàn hoặc buồng trứng [15, 16].",
+      "when_to_do": "Người có rủi ro cao như viêm gan B, C, xơ gan đi khám định kỳ mỗi 6 tháng, hoặc để theo dõi bệnh nhân ung thư gan sau điều trị [15].",
+      "how_it_works": "Đo nồng độ protein AFP trong máu. Chất này bình thường chỉ có nhiều ở thai nhi, nhưng tế bào gan bị ung thư sẽ sản xuất và giải phóng chúng ồ ạt [15, 16].",
+      "result_meaning": "Mức bình thường ≤ 8.78 ng/mL [17]. Tăng cao báo động nguy cơ có khối u ác tính ở gan, hoặc bệnh đang tái phát [15, 16]. AFP cũng tăng nhẹ trong viêm gan, xơ gan [15, 16].",
+      "real_life_example": "Nam giới 50 tuổi bị viêm gan B mạn tính đi xét nghiệm thấy AFP tăng vọt, siêu âm phát hiện ngay một khối u nhỏ ở gan và được phẫu thuật sớm [15].",
+      "note": "Xét nghiệm dấu ấn ung thư không thể khẳng định 100% bệnh, vì AFP có thể dương tính giả trong các bệnh gan lành tính, hoặc phụ nữ mang thai bình thường [15, 18]. Cần kết hợp chẩn đoán hình ảnh [19].",
+      "advanced_knowledge": "Việc tầm soát ung thư hiện nay được kết hợp mạnh mẽ với công nghệ giải trình tự gen thế hệ mới (NGS) và AI (như xét nghiệm SPOT-MAS 10) để phân tích DNA tự do của khối u (cfDNA), giúp phát hiện ung thư từ khi khối u còn vi mô [2, 20].",
+      "deep_knowledge": "AFP-L3 là một tiểu phân đoạn đặc hiệu của AFP. Việc tính toán tỷ lệ %AFP-L3/AFP tổng số thông qua hệ thống miễn dịch hóa phát quang giúp phân biệt cực kỳ rõ ràng giữa viêm gan mạn tính lành tính và ung thư biểu mô tế bào gan (HCC).",
+      "patient_advice": "Nếu bạn bị viêm gan B hoặc xơ gan, bạn thuộc nhóm nguy cơ cực cao. Việc xét nghiệm máu đo AFP và siêu âm gan mỗi 6 tháng là bắt buộc để giữ lấy mạng sống."
+    },
+    "CEA": {
+      "name": "CEA (Carcinoembryonic Antigen)",
+      "purpose": "Tầm soát, đánh giá hiệu quả điều trị và theo dõi tái phát của ung thư đường tiêu hóa (đại trực tràng, dạ dày, tụy), ung thư vú và ung thư phổi [15, 16, 21].",
+      "when_to_do": "Khi đi ngoài ra máu, sụt cân nhanh, hoặc định kỳ theo dõi ở bệnh nhân đã mổ cắt khối u ruột/phổi [15, 21].",
+      "how_it_works": "Đo lượng kháng nguyên phôi CEA trong máu, một loại protein sinh ra nhiều khi có sự tăng sinh của tế bào ung thư biểu mô tuyến [15].",
+      "result_meaning": "Bình thường ≤ 5 ng/mL [17]. Tăng cao có thể do ung thư dạ dày, ruột già, tuyến tụy, vú hoặc phổi [15, 16]. CEA cũng tăng không nhiều trong polyp đại tràng, viêm tụy, viêm ruột non [15].",
+      "real_life_example": "Bác trai đã mổ ung thư đại tràng 1 năm trước, nay đi xét nghiệm lại thấy CEA duy trì mức thấp nghĩa là bệnh đang được kiểm soát, chưa tái phát [15].",
+      "note": "Người hút thuốc lá lâu năm xét nghiệm này cũng có thể tăng nhẹ gây dương tính giả, CEA không dùng để chẩn đoán xác định mà dùng để theo dõi tiến triển bệnh [15, 22].",
+      "advanced_knowledge": "Hệ thống LAB AI Agent tự động vẽ biểu đồ xu hướng (trend analysis) nồng độ CEA sau phẫu thuật của bệnh nhân, báo động khẩn cấp cho bác sĩ điều trị ngay khi có sự nhích lên vi mô cảnh báo ung thư di căn sớm [14].",
+      "deep_knowledge": "Vì CEA chuyển hóa chủ yếu qua gan, ở những bệnh nhân bị xơ gan hoặc viêm gan, nồng độ CEA trong máu có thể tăng lên do gan không dọn dẹp kịp, dễ gây nhầm lẫn với ung thư di căn [15].",
+      "patient_advice": "Hãy ngừng hút thuốc lá vì khói thuốc làm tăng chỉ số CEA của bạn một cách vô cớ, khiến bác sĩ khó khăn trong việc đánh giá nguy cơ ung thư thực sự."
+    },
+    "PSA": {
+      "name": "PSA (Prostate-Specific Antigen)",
+      "purpose": "Tầm soát sớm và phát hiện bệnh ung thư tuyến tiền liệt ở nam giới [16, 21, 23].",
+      "when_to_do": "Nam giới trên 50 tuổi khám định kỳ hoặc có dấu hiệu tiểu buốt, tiểu khó, tiểu đêm nhiều lần [23].",
+      "how_it_works": "Đo nồng độ chất PSA do tế bào biểu mô của tuyến tiền liệt tiết ra vào dòng máu [23].",
+      "result_meaning": "Bình thường ≤ 4 ng/mL [17]. Cao: Cảnh báo có thể bị viêm, phì đại lành tính tuyến tiền liệt hoặc ung thư tuyến tiền liệt [16, 23].",
+      "real_life_example": "Ông cụ 65 tuổi dạo này tiểu khó phải rặn, thử PSA tăng cao giúp bác sĩ có cơ sở cho đi sinh thiết tìm thấy tế bào ung thư tiền liệt tuyến ở giai đoạn sớm [23].",
+      "note": "PSA có thể tăng trong các trường hợp lành tính, do đó bác sĩ thường chỉ định làm thêm PSA tự do (Free PSA) để tính tỷ lệ Free PSA/Total PSA giúp chẩn đoán phân biệt khối u ác tính [24].",
+      "advanced_knowledge": "Thuật toán AI thế hệ mới kết hợp chỉ số PSA máu, độ tuổi, thể tích tuyến tiền liệt trên siêu âm và MRI đa thông số để tính toán chính xác xác suất ung thư, giúp nam giới tránh bị sinh thiết mù không cần thiết.",
+      "deep_knowledge": "Mọi tác động cơ học lên vùng chậu đều làm nồng độ PSA trong máu tăng vọt giả tạo. Các hành động này bao gồm đạp xe đạp, quan hệ tình dục, hoặc việc bác sĩ thăm khám trực tràng bằng tay.",
+      "patient_advice": "Để kết quả PSA hoàn toàn chính xác, nam giới tuyệt đối kiêng quan hệ tình dục (không xuất tinh) và không đạp xe đạp đường dài ít nhất 48 giờ trước ngày đi lấy máu xét nghiệm."
+    },
+    "CA 15-3": {
+      "name": "CA 15-3",
+      "purpose": "Theo dõi tiến trình bệnh và đánh giá hiệu quả điều trị ở bệnh nhân ung thư vú, phát hiện ung thư di căn [16, 25].",
+      "when_to_do": "Người đã hoặc đang điều trị ung thư vú cần kiểm tra xem khối u có đáp ứng với hóa trị hoặc có di căn xương/gan không [25].",
+      "how_it_works": "Đo nồng độ kháng nguyên carbohydrate CA 15-3 do các tế bào biểu mô u vú tiết ra [25].",
+      "result_meaning": "Bình thường từ 0-32 U/ml [25]. Tăng dần: Khối u đang phát triển, không đáp ứng thuốc hoặc đã lan sang cơ quan khác [25].",
+      "real_life_example": "Một bệnh nhân nữ đang hóa trị ung thư vú, hàng tháng đo CA 15-3 thấy chỉ số giảm dần chứng tỏ phác đồ hóa chất đang phát huy tác dụng tiêu diệt tế bào ung thư tốt [25].",
+      "note": "Xét nghiệm này có độ nhạy thấp khi ung thư vú ở giai đoạn đầu chưa di căn, nên không dùng để khám tầm soát ban đầu cho phụ nữ khỏe mạnh [25]. Nó cũng có thể tăng trong viêm gan, viêm tụy, u vú lành tính [25].",
+      "advanced_knowledge": "Tích hợp công nghệ điện hóa phát quang tự động đa kênh, máy phân tích thế hệ mới phát hiện CA 15-3 đồng thời với chụp nhũ ảnh AI (AI Mammography) để lập bản đồ theo dõi khối u vú toàn diện 3D.",
+      "deep_knowledge": "Kháng nguyên CA 15-3 thực chất là một dạng glycoprotein MUC1. Sự gia tăng liên tục của CA 15-3 sau phẫu thuật hoặc xạ trị có thể xuất hiện trước khi di căn được phát hiện trên phim chụp cắt lớp (CT) từ 3 đến 6 tháng.",
+      "patient_advice": "Bạn không nên dùng xét nghiệm máu CA 15-3 để tự tầm soát ung thư vú tại nhà vì rất dễ bị âm tính giả. Thay vào đó, siêu âm vú và chụp nhũ ảnh (Mammography) định kỳ mới là phương pháp tầm soát ung thư vú chuẩn mực."
+    },
+    "Tg": {
+      "name": "Tg (Thyroglobulin)",
+      "purpose": "Theo dõi và phát hiện sự tái phát của bệnh ung thư tuyến giáp sau khi đã phẫu thuật cắt bỏ tuyến giáp [26].",
+      "when_to_do": "Kiểm tra định kỳ ở người đã bị phẫu thuật cắt toàn bộ tuyến giáp và điều trị I-ốt phóng xạ do ung thư biểu mô tuyến giáp [26].",
+      "how_it_works": "Đo protein Thyroglobulin do tế bào biểu mô tuyến giáp tiết ra. Khi tuyến giáp đã bị cắt sạch, lượng Tg trong máu phải bằng 0 [26].",
+      "result_meaning": "Bình thường (khi đã cắt giáp): Bằng 0, tức là đã sạch tế bào ung thư [26]. Tăng cao trở lại: Cảnh báo tế bào ung thư tuyến giáp đang mọc lại ở cổ hoặc đã di căn [26].",
+      "real_life_example": "Chị gái mổ cắt toàn bộ tuyến giáp 2 năm trước, nay đi thử máu định kỳ thấy Tg tăng lại, báo hiệu tế bào ung thư tái phát, bác sĩ cho chụp xạ hình để lên phác đồ uống I-ốt tiêu diệt tiếp.",
+      "note": "Nếu bạn chưa cắt tuyến giáp, chất này có thể tăng trong u lành tuyến giáp [26]. Tg luôn phải được làm cùng với xét nghiệm kháng thể Anti-Tg để tránh kết quả bị sai lệch.",
+      "advanced_knowledge": "Ứng dụng phương pháp khối phổ LC-MS/MS giúp định lượng Tg chính xác ở nồng độ cực nhỏ mà không bị can nhiễu bởi các tự kháng thể Anti-Tg trong máu người bệnh, giải quyết triệt để nỗi ám ảnh âm tính giả ở các xét nghiệm miễn dịch cũ.",
+      "deep_knowledge": "Rất nhiều bệnh nhân ung thư tuyến giáp có hệ miễn dịch sinh ra kháng thể Anti-Tg chống lại chính Thyroglobulin. Các kháng thể này sẽ 'nuốt chửng' Tg, làm cho các máy miễn dịch thông thường không đo được Tg, dẫn đến kết quả Tg bằng 0 (âm tính giả) dù ung thư đang tái phát bùng nổ.",
+      "patient_advice": "Nếu bác sĩ yêu cầu bạn ngừng thuốc hormone tuyến giáp (Levothyroxine) trước khi xét nghiệm Tg, bạn sẽ cảm thấy rất mệt mỏi, phù nề, sợ lạnh (triệu chứng suy giáp). Hãy thông báo ngay cho bác sĩ để được dùng mũi tiêm TSH tái tổ hợp thay thế, giúp bạn không phải chịu đựng cơn suy giáp hành hạ."
+    },
+    "CA 19-9": {
+      "name": "CA 19-9",
+      "purpose": "Hỗ trợ chẩn đoán, phát hiện sớm tái phát và theo dõi hiệu quả điều trị bệnh ung thư tuyến tụy, đường mật và đường tiêu hóa [16, 27].",
+      "when_to_do": "Khi bệnh nhân có dấu hiệu vàng da tắc mật, đau tức vùng bụng trên, sụt cân nhanh không rõ nguyên nhân [27].",
+      "how_it_works": "Đo nồng độ kháng nguyên CA 19-9 sinh ra nhiều khi có sự phát triển khối u ở đường tiêu hóa, đặc biệt là sự ác tính hóa ở tuyến tụy [27].",
+      "result_meaning": "Bình thường từ 0-33 U/ml [27]. Tăng cao chót vót: Nguy cơ rất lớn bị ung thư tuyến tụy hoặc ung thư đường mật [27].",
+      "real_life_example": "Bác trai đau bụng sụt cân, siêu âm nghi u tụy, xét nghiệm CA 19-9 tăng vọt lên hàng nghìn đơn vị giúp bác sĩ củng cố chẩn đoán ung thư tụy và chỉ định chụp CT [27].",
+      "note": "CA 19-9 cũng có thể tăng trong các bệnh lành tính như viêm gan, xơ gan, viêm tụy, đái tháo đường hoặc tắc nghẽn ống mật do sỏi [27].",
+      "advanced_knowledge": "AI chẩn đoán hình ảnh (Radiomics) được kết hợp đồng bộ với biểu đồ biến thiên nồng độ CA 19-9 trong máu để cá thể hóa phác đồ hóa trị nhắm đích cho bệnh nhân ung thư tụy, tăng tỷ lệ sống còn đáng kể.",
+      "deep_knowledge": "Kháng nguyên CA 19-9 liên quan chặt chẽ đến nhóm máu Lewis. Khoảng 5-10% dân số mang nhóm máu Lewis âm tính (Le a- b-) không có khả năng sinh tổng hợp kháng nguyên CA 19-9 về mặt di truyền. Do đó, dù họ có bị ung thư tụy giai đoạn cuối thì chỉ số CA 19-9 vẫn luôn bằng 0.",
+      "patient_advice": "Nếu bạn được chẩn đoán tắc mật do sỏi, nồng độ CA 19-9 có thể tăng rất cao do ứ đọng mật chứ không phải do ung thư. Sau khi lấy sỏi và thông ống mật, chỉ số này sẽ tự động sụt giảm về bình thường."
+    },
+    "Cyfra 21-1": {
+      "name": "Cyfra 21-1",
+      "purpose": "Hỗ trợ chẩn đoán, đánh giá đáp ứng điều trị và theo dõi ung thư phổi, đặc biệt là ung thư phổi không tế bào nhỏ và ung thư bàng quang [28, 29].",
+      "when_to_do": "Khi chụp X-quang hoặc CT thấy có khối u ở phổi, ho ra máu kéo dài, hoặc để theo dõi bệnh nhân đang điều trị ung thư phổi [28].",
+      "how_it_works": "Đo nồng độ một mảnh vỡ protein cấu trúc (cytokeratin 19) bị giải phóng ồ ạt vào dòng máu khi các tế bào ung thư biểu mô phổi phát triển và hoại tử [28].",
+      "result_meaning": "Mức bình thường từ 0 - 3.3 U/L [28]. Tăng cao: Cảnh báo bệnh ung thư phổi tế bào không nhỏ đang tiến triển ác tính [28, 29].",
+      "real_life_example": "Bệnh nhân nam hút thuốc lá 30 năm bị u phổi, xét nghiệm Cyfra 21-1 tăng cao liên tục giúp đánh giá khối u đang lan rộng, không đáp ứng thuốc [28].",
+      "note": "Thường được làm thành bộ kết hợp với CEA, SCC và Pro GRP để tăng tối đa độ chính xác trong việc truy tìm các loại ung thư phổi khác nhau [24]. Nó cũng có thể tăng nhẹ trong bệnh thận hoặc bệnh phổi lành tính [28].",
+      "advanced_knowledge": "Máy xét nghiệm miễn dịch tự động công suất lớn tích hợp phần mềm LAB AI Agent [14, 30], đưa ra cảnh báo sớm di căn màng phổi thông qua sự thay đổi cực nhỏ của Cyfra 21-1 so với giá trị nền (baseline) ban đầu của người bệnh.",
+      "deep_knowledge": "Sự bài tiết của Cyfra 21-1 tỷ lệ thuận trực tiếp với khối lượng hoại tử của khối u phổi. Khi bệnh nhân được hóa trị hoặc xạ trị thành công, tế bào u bị tiêu diệt hàng loạt khiến Cyfra 21-1 có thể tăng vọt tạm thời (hiện tượng bùng phát - flare up) trước khi giảm sâu xuống mức an toàn.",
+      "patient_advice": "Xét nghiệm Cyfra 21-1 không chịu ảnh hưởng bởi việc bạn ăn uống. Tuy nhiên, nếu bạn đang bị suy thận mạn, chỉ số này sẽ bị tích tụ và tăng cao giả tạo, bạn phải báo cho bác sĩ ung bướu biết về bệnh nền thận của mình."
+    },
+    "SCC": {
+      "name": "SCC (Squamous Cell Carcinoma Antigen)",
+      "purpose": "Theo dõi tiến trình bệnh, đánh giá mức độ lan rộng và phát hiện tái phát của ung thư biểu mô tế bào vảy (ung thư cổ tử cung, thực quản, phổi, vòm họng) [24, 31].",
+      "when_to_do": "Người có rủi ro cao hoặc bệnh nhân sau khi đã phẫu thuật, hóa xạ trị ung thư cổ tử cung, ung thư thực quản cần tái khám định kỳ [31].",
+      "how_it_works": "Đo lượng kháng nguyên SCC, một loại protein glycoprotein đặc trưng được tế bào biểu mô vảy ở màng nhầy tiết ra vào máu [31].",
+      "result_meaning": "Giới hạn bình thường từ 0 - 3 µg/L [31]. Tăng cao: Bệnh ung thư tế bào vảy đang phát triển mạnh hoặc khối u ác tính tái phát [31].",
+      "real_life_example": "Bệnh nhân nữ sau phẫu thuật ung thư cổ tử cung đi tái khám định kỳ, đo SCC thấy giảm mạnh về mức an toàn chứng tỏ ca phẫu thuật đã gọt sạch tế bào ác tính [31].",
+      "note": "Độ nhạy không cao để dùng tầm soát bệnh ở cộng đồng. SCC cũng có thể tăng trong các bệnh lành tính gây viêm da bong vảy như tắc nghẽn phổi, hen phế quản, vảy nến, chàm [31].",
+      "advanced_knowledge": "Phương pháp khối phổ chuyên sâu cho phép phân lập vi mô thành phần kháng nguyên SCC trực tiếp từ mẫu dịch phết cổ tử cung (chứ không chỉ rút máu) cùng với kỹ thuật AI nhận diện tế bào bất thường [32], giúp chẩn đoán ung thư cổ tử cung với độ chính xác đạt tới 99.8%.",
+      "deep_knowledge": "Kháng nguyên SCC được tìm thấy với nồng độ cao trong nước bọt, mồ hôi và các biểu mô niêm mạc. Việc y tá hoặc kỹ thuật viên lấy máu không mang găng tay, để rơi vãi nước bọt hoặc tế bào da bong tróc vào ống xét nghiệm sẽ gây ra kết quả SCC máu tăng giả tạo trầm trọng do mẫu bị ngoại nhiễm.",
+      "patient_advice": "Do SCC rất nhạy cảm với các bệnh lý da liễu, nếu bạn đang bị viêm da cơ địa dị ứng, nổi mề đay diện rộng hoặc hen suyễn bùng phát, hãy thông báo cho bác sĩ vì các bệnh này sẽ làm tăng chỉ số SCC một cách vô tình [31]."
+    },
+    "HBsAg": {
+      "name": "HBsAg (Kháng nguyên bề mặt virus Viêm gan B)",
+      "purpose": "Xét nghiệm đầu tay (First-line) để khẳng định cơ thể có đang nhiễm virus Viêm gan B (HBV) hay không [14, 33].",
+      "when_to_do": "Khám sức khỏe đi làm định kỳ, tầm soát trước khi mang thai, khám tiền hôn nhân, hoặc khi có dấu hiệu vàng da, mệt mỏi, chán ăn [33, 34].",
+      "how_it_works": "Tìm kiếm trực tiếp sự hiện diện của các protein lớp vỏ bao bọc bên ngoài con virus Viêm gan B đang trôi nổi lưu thông trong dòng máu bệnh nhân [33].",
+      "result_meaning": "Âm tính (Negative): Không nhiễm virus. Có phản ứng/Dương tính (Positive): Đang bị nhiễm Viêm gan B cấp tính hoặc mạn tính, virus đang có trong cơ thể [33].",
+      "real_life_example": "Một bạn trẻ tham gia hiến máu nhân đạo nhận được thư báo viện huyết học từ chối do mẫu máu có kết quả HBsAg dương tính, lúc này mới biết bản thân mắc bệnh viêm gan B lây từ mẹ sang con.",
+      "note": "HBsAg dương tính chỉ xác nhận bạn mắc bệnh, bác sĩ sẽ phải cho làm thêm xét nghiệm tải lượng virus (HBV-DNA) để biết virus đang ngủ yên hay đang sinh sôi tàn phá gan.",
+      "advanced_knowledge": "Sử dụng thiết bị xét nghiệm nhanh đa mồi (POCT) tích hợp AI tự động hóa kết hợp với cơ sở dữ liệu dịch tễ. Ngay khi có mẫu HBsAg dương tính, phần mềm LAB AI Agent tự động lên phác đồ tầm soát cho các thành viên trong cùng gia đình bệnh nhân [14, 30].",
+      "deep_knowledge": "Việc HBsAg dương tính tồn tại liên tục vượt quá 6 tháng được định nghĩa là nhiễm viêm gan B mạn tính. Một khi virus đã chèn đoạn mã di truyền (cccDNA) của nó vào nhân tế bào gan người, bệnh nhân sẽ mang virus suốt đời và có nguy cơ tiến triển thành xơ gan, ung thư gan cao gấp 100 lần người bình thường [33].",
+      "patient_advice": "Nếu kết quả HBsAg của bạn là Âm tính, bạn nên thực hiện tiếp xét nghiệm kháng thể Anti-HBs. Nếu chưa có kháng thể bảo vệ, bạn cần đi tiêm phòng vắc-xin viêm gan B đủ 3 mũi ngay lập tức để tạo lá chắn an toàn suốt đời."
+    },
+    "HCV Ab": {
+      "name": "HCV Ab (Kháng thể kháng virus Viêm gan C)",
+      "purpose": "Tầm soát và sàng lọc xem cơ thể đã từng tiếp xúc hoặc đang mắc căn bệnh 'sát thủ thầm lặng' Viêm gan C hay không [33].",
+      "when_to_do": "Khám sức khỏe tổng quát, người có tiền sử xăm hình, tiêm chích ma túy, chạy thận nhân tạo hoặc có men gan tăng cao không rõ nguyên nhân [33].",
+      "how_it_works": "Tìm dấu vết kháng thể đặc hiệu do hệ miễn dịch của cơ thể sinh ra để chống lại sự tấn công của virus Viêm gan C [33].",
+      "result_meaning": "Âm tính: Chưa từng nhiễm virus. Dương tính: Đang bị viêm gan C, hoặc đã từng bị nhiễm và tự khỏi bệnh trong quá khứ nhưng sẹo kháng thể vẫn còn.",
+      "real_life_example": "Cô gái đi xăm chân mày mười năm trước ở tiệm không vô trùng, nay đi khám sức khỏe bàng hoàng khi biết mình bị viêm gan C qua kết quả HCV Ab dương tính dù không có triệu chứng gì.",
+      "note": "Khác với viêm gan B, viêm gan C hiện chưa có vắc-xin phòng ngừa. Nếu test HCV Ab dương tính, bạn bắt buộc phải làm tiếp xét nghiệm đo tải lượng virus HCV-RNA [33].",
+      "advanced_knowledge": "Xét nghiệm HCV Ab miễn dịch tự động (ECLIA) cho độ nhạy cực cao [33]. Hệ thống y tế liên thông hồ sơ điện tử tự động chuyển bệnh nhân có kết quả dương tính thẳng đến phòng khám chuyên khoa gan mật ảo (Telemedicine) để theo dõi.",
+      "deep_knowledge": "Khoảng 15-25% bệnh nhân nhiễm viêm gan C cấp tính hệ miễn dịch có khả năng tự đánh bật và dọn dẹp sạch virus khỏi cơ thể mà không cần điều trị. Tuy nhiên, kháng thể HCV Ab của họ sẽ vẫn tồn tại vĩnh viễn và cho kết quả dương tính trong suốt phần đời còn lại.",
+      "patient_advice": "Nếu bạn nhận kết quả HCV Ab dương tính, đừng tuyệt vọng. Viêm gan C hiện nay không còn là 'bản án tử hình'. Y học đã có các loại thuốc kháng virus tác dụng trực tiếp (DAAs) giúp chữa khỏi dứt điểm 100% căn bệnh này chỉ trong 12 tuần uống thuốc."
+    },
+    "Tải lượng HBV": {
+      "name": "HBV-DNA (Tải lượng virus Viêm gan B)",
+      "purpose": "Đếm chính xác số lượng vi hạt virus Viêm gan B đang nhân lên trong máu, quyết định việc dùng thuốc kháng virus và theo dõi sự kháng thuốc.",
+      "when_to_do": "Sau khi đã chẩn đoán mắc viêm gan B (HBsAg dương tính) và men gan AST/ALT tăng [33, 35]. Được xét nghiệm định kỳ 3-6 tháng/lần với người đang uống thuốc trị bệnh.",
+      "how_it_works": "Dùng công nghệ sinh học phân tử hiện đại (Real-time PCR) khuếch đại gen để tìm và đếm số lượng đoạn DNA của virus trên 1 mililit máu.",
+      "result_meaning": "Tải lượng thấp (hoặc dưới ngưỡng phát hiện): Virus đang bị ức chế, ngủ yên, bệnh ổn định. Tải lượng cao (lên tới hàng triệu/tỷ copies): Virus đang nhân lên điên cuồng, phá hủy tế bào gan ồ ạt, bắt buộc phải dùng thuốc ngay.",
+      "real_life_example": "Bệnh nhân viêm gan B đi tái khám đo HBV-DNA lên đến hàng tỷ copies, men gan tăng vọt, bác sĩ lập tức kê toa thuốc kháng virus đặc trị ức chế men sao chép ngược để cứu gan khỏi xơ hóa.",
+      "note": "Đây là tiêu chuẩn vàng để bác sĩ chẩn đoán viêm gan B thể hoạt động, đánh giá hiệu quả của viên thuốc kháng virus bạn đang uống mỗi ngày [36, 37].",
+      "advanced_knowledge": "Máy PCR siêu nhạy tự động hoàn toàn chiết xuất DNA và chạy chu kỳ nhiệt, kết hợp AI phát hiện tự động sớm các biến chủng gen đột biến kháng thuốc của virus (drug-resistance mutation), hỗ trợ đổi phác đồ ngay lập tức [38, 39].",
+      "deep_knowledge": "Mục tiêu tối thượng của việc điều trị viêm gan B mạn tính không phải là loại bỏ hoàn toàn virus (vì cccDNA nằm sâu trong nhân tế bào gan), mà là ép tải lượng virus HBV-DNA xuống dưới ngưỡng đo được (undetectable) liên tục, nhằm chặn đứng quá trình dẫn tới ung thư biểu mô tế bào gan (HCC).",
+      "patient_advice": "Tuyệt đối không bao giờ được tự ý bỏ uống thuốc kháng virus (như Tenofovir, Entecavir) dù chỉ 1 ngày, ngay cả khi kết quả HBV-DNA của bạn đã về mức 0. Việc tự ý ngưng thuốc sẽ làm virus bùng phát trở lại dữ dội và gây đợt viêm gan kịch phát tử vong."
+    },
+    "Tải lượng HCV": {
+      "name": "HCV-RNA (Tải lượng virus Viêm gan C)",
+      "purpose": "Đếm số lượng lõi RNA của virus Viêm gan C để bắt đầu phác đồ điều trị dứt điểm và xác nhận bệnh đã khỏi hoàn toàn [36, 37].",
+      "when_to_do": "Làm ngay sau khi test tầm soát HCV Ab dương tính, và làm định kỳ trong và sau 12 tuần điều trị thuốc kháng virus [33].",
+      "how_it_works": "Sử dụng công nghệ sinh học phân tử PCR để truy tìm và đếm trực tiếp các chuỗi gen RNA của virus Viêm gan C trong huyết thanh [36, 37].",
+      "result_meaning": "Dưới ngưỡng phát hiện (Âm tính): Cơ thể hoàn toàn không có virus. Số lượng cao: Virus đang sống và phá hủy gan, cần uống thuốc đặc trị thế hệ mới.",
+      "real_life_example": "Sau 3 tháng uống thuốc kháng virus trực tiếp DAAs, bệnh nhân xét nghiệm lại HCV-RNA thấy âm tính, bác sĩ tuyên bố bệnh nhân đã khỏi bệnh hoàn toàn (đạt SVR12).",
+      "note": "Không giống như viêm gan B chỉ ức chế được virus, viêm gan C hoàn toàn có thể được quét sạch khỏi cơ thể nhờ dựa vào việc theo dõi chỉ số HCV-RNA bằng PCR [37].",
+      "advanced_knowledge": "Các hệ thống giải trình tự gen thế hệ mới (NGS) cho phép không chỉ đếm HCV-RNA mà còn định typ chính xác (Genotype 1 đến 6) trong cùng một chu trình test, tiết kiệm thời gian chọn thuốc trị liệu tối ưu [38].",
+      "deep_knowledge": "Đạt được SVR12 (Sustained Virologic Response) - nghĩa là tải lượng HCV-RNA dưới ngưỡng phát hiện sau 12 tuần ngưng thuốc - đồng nghĩa với việc chữa khỏi bệnh viêm gan C về mặt vi sinh học, giảm triệt để tỷ lệ ung thư gan.",
+      "patient_advice": "Rất nhiều bệnh nhân tưởng nhầm mình vẫn còn mang bệnh do xét nghiệm HCV Ab còn dương tính suốt đời. Chỉ có kết quả đo tải lượng HCV-RNA âm tính mới là giấy chứng nhận 'đã sạch mầm bệnh' cho bạn."
+    },
+    "Dengue virus": {
+      "name": "Sốt xuất huyết Dengue (NS1 Ag, IgM, IgG)",
+      "purpose": "Phát hiện nhanh bạn có đang bị nhiễm virus sốt xuất huyết Dengue do muỗi vằn chích truyền mầm bệnh không.",
+      "when_to_do": "Khi tự nhiên sốt hầm hập liên tục 39-40 độ C, đau nhức hốc mắt dữ dội, vã mồ hôi, đau mình mẩy, phát ban đỏ trong mùa dịch.",
+      "how_it_works": "Tìm kháng nguyên vỏ virus Dengue (kháng nguyên NS1) rụng vào máu trong 3 ngày đầu sốt, hoặc tìm kháng thể IgM/IgG cơ thể sản xuất ra để chống dịch ở những ngày sau.",
+      "result_meaning": "Dương tính: Đang mắc bệnh sốt xuất huyết, cần nghỉ ngơi, chườm mát, truyền dịch và theo dõi sát sao biểu đồ tiểu cầu phòng nguy cơ chảy máu ồ ạt do vỡ mạch [40].",
+      "real_life_example": "Con trai sốt cao 2 ngày uống thuốc hạ sốt paracetamol không hạ, cha đưa đi test NS1 sốt xuất huyết lên 2 vạch dương tính, bác sĩ căn dặn cho uống nhiều oresol và theo dõi xuất huyết dưới da [35, 41].",
+      "note": "Thời điểm làm xét nghiệm quyết định loại test. Test NS1 chỉ dương tính trong 1-4 ngày đầu. Từ ngày thứ 5 trở đi phải thử kháng thể IgM/IgG mới ra bệnh.",
+      "advanced_knowledge": "Các test nhanh (Rapid test) POCT thế hệ mới sử dụng hạt nano huỳnh quang, kết hợp trí tuệ nhân tạo đọc kết quả bằng app điện thoại để báo cáo dữ liệu dịch tễ thẳng lên Cục Y tế dự phòng [42].",
+      "deep_knowledge": "Virus Dengue có 4 type huyết thanh (D1-D4). Kháng thể IgG dương tính ở đợt nhiễm thứ hai có vai trò tồi tệ là làm tăng cường sự xâm nhập của virus vào đại thực bào (hiện tượng ADE), gây ra thể sốt xuất huyết sốc, tràn dịch và xuất huyết nội tạng nặng nề hơn lần nhiễm đầu rất nhiều.",
+      "patient_advice": "Nếu bạn đang nghi ngờ bị sốt xuất huyết, tuyệt đối KHÔNG ĐƯỢC uống thuốc hạ sốt, giảm đau có chứa Aspirin hoặc Ibuprofen vì chúng ức chế kết tập tiểu cầu, gây chảy máu dạ dày ồ ạt dẫn đến tử vong [43, 44]. Hãy chỉ dùng Paracetamol với liều lượng an toàn [35, 41]."
+    },
+    "HIV": {
+      "name": "HIV Ag/Ab (Kháng nguyên/Kháng thể HIV)",
+      "purpose": "Khẳng định xem cơ thể có bị lây nhiễm virus suy giảm miễn dịch HIV (gây bệnh AIDS) hay không [14, 30].",
+      "when_to_do": "Tầm soát trước kết hôn, phụ nữ mang thai [45, 46], khám sức khỏe đi nước ngoài, hoặc lo sợ sau khi có hành vi nguy cơ cao (quan hệ không an toàn, dẫm kim tiêm).",
+      "how_it_works": "Dùng test nhanh miễn dịch hoặc máy sinh hóa tự động (phương pháp Combo bậc 4) tìm đồng thời kháng nguyên p24 của lõi virus và kháng thể kháng HIV sinh ra trong máu [14, 45].",
+      "result_meaning": "Âm tính: Không mắc bệnh tại thời điểm hiện tại. Có phản ứng: Nghi ngờ nhiễm virus, bắt buộc phải gửi mẫu lên tuyến trung ương làm xét nghiệm khẳng định (3 phương pháp sinh học phân tử) mới được quyền kết luận [45].",
+      "real_life_example": "Thanh niên có quan hệ không an toàn đi test HIV sau 1 tuần ra âm tính, bác sĩ giải thích đây là giai đoạn cửa sổ, khuyên 3 tháng sau quay lại test lại để có kết quả chính xác.",
+      "note": "Virus HIV có 'thời kỳ cửa sổ' tàng hình. Nếu làm xét nghiệm kháng thể thông thường trong 1-3 tháng đầu từ khi phơi nhiễm, kết quả vẫn có thể ra âm tính giả dù mầm bệnh đã ẩn trong máu.",
+      "advanced_knowledge": "Phần mềm LAB AI Agent tự động giải thích kết quả xét nghiệm test nhanh HIV với sự bảo mật thông tin tuyệt đối bằng blockchain, hỗ trợ liên kết giấu tên bệnh nhân tới các chương trình tư vấn điều trị ARV dự phòng trước/sau phơi nhiễm (PrEP/PEP) [14].",
+      "deep_knowledge": "Xét nghiệm Combo HIV Ag/Ab thế hệ thứ 4 có khả năng phát hiện kháng nguyên p24 của lõi virus rất sớm, rút ngắn thời kỳ cửa sổ xuống chỉ còn từ 14 đến 21 ngày sau hành vi nguy cơ, thay vì phải chờ ròng rã 3 tháng như các thế hệ test cũ.",
+      "patient_advice": "HIV hiện nay được xem là một bệnh mạn tính có thể kiểm soát hoàn toàn bằng thuốc kháng virus ARV. Phát hiện bệnh càng sớm, uống thuốc ức chế tải lượng virus về mức 0, bạn hoàn toàn có thể sống khỏe mạnh, kết hôn và sinh con khỏe mạnh mà không lây bệnh cho ai (Nguyên tắc Không phát hiện = Không lây truyền K=K)."
+    },
+    "Sốt rét": {
+      "name": "Ký sinh trùng Sốt rét (Malaria smear/RDTs)",
+      "purpose": "Truy tìm mầm bệnh con ký sinh trùng sốt rét Plasmodium lây qua muỗi Anophen cắn nấp trong các tế bào hồng cầu [36, 47].",
+      "when_to_do": "Khi đi làm rẫy, công tác vùng rừng núi về bị sốt rét run lập cập, đắp chăn không ấm, vã mồ hôi ướt đẫm theo cơn chu kỳ [36, 47].",
+      "how_it_works": "Lấy một giọt máu chích từ ngón tay phết dày lên lam kính thủy tinh, nhuộm màu Giemsa rồi soi trực tiếp dưới kính hiển vi quang học tìm hình thái con vi trùng nằm trong hồng cầu [48].",
+      "result_meaning": "Dương tính: Đang bị sốt rét, vi trùng đang đục khoét phá vỡ hồng cầu gây thiếu máu tán huyết, bắt buộc phải dùng thuốc đặc trị sốt rét gấp [49].",
+      "real_life_example": "Anh kỹ sư cầu đường làm việc ở rừng sâu về bị sốt rét run đùng đùng, lấy máu ngoại vi phết lam kính soi thấy con Plasmodium falciparum ác tính, được vào viện cấp cứu ngay [48].",
+      "note": "Cơ hội bắt được vi trùng cao nhất, độ nhạy cao nhất là khi nhân viên y tế lấy máu ngay tại thời điểm bệnh nhân đang lên cơn sốt rét run.",
+      "advanced_knowledge": "Máy đếm tế bào dòng chảy kết hợp với hệ thống kính hiển vi điện tử tự động (Digital Morphology) tích hợp trí tuệ nhân tạo (AI) quét toàn bộ lam kính, tự động nhận diện và đếm chính xác ký sinh trùng sốt rét ác tính trong vòng 3 phút [48].",
+      "deep_knowledge": "Plasmodium falciparum là chủng nguy hiểm nhất vì nó làm các tế bào hồng cầu dính chùm vào nhau và bám vào thành mạch, gây tắc nghẽn vi mạch máu ở não (sốt rét não ác tính) dẫn tới hôn mê và tử vong nhanh chóng.",
+      "patient_advice": "Bạn không cần nhịn ăn trước khi thử máu sốt rét [45]. Tuy nhiên, nếu bạn từng uống các loại thuốc tự mua như chloroquin hoặc thuốc hạ sốt trước đó, hình thái vi khuẩn có thể bị biến dạng làm bác sĩ khó soi ra, bạn cần khai báo trung thực các thuốc đã uống."
+    },
+    "Treponema pallidum": {
+      "name": "Treponema pallidum (Giang mai - RPR, TPHA, Syphilis test)",
+      "purpose": "Chẩn đoán sớm căn bệnh xã hội lây truyền qua đường tình dục nguy hiểm - bệnh Giang mai, để ngừa tàn phế thần kinh [45].",
+      "when_to_do": "Phát hiện có vết loét hình tròn không ngứa không đau (Săng giang mai) ở vùng kín, ban đỏ lòng bàn tay chân, hoặc mẹ bầu làm xét nghiệm sàng lọc để không lây mù lòa/điếc cho thai nhi [45, 46].",
+      "how_it_works": "Kiểm tra xem trong huyết thanh có kháng thể không đặc hiệu (test RPR/VDRL) và kháng thể đặc hiệu (TPHA/Syphilis) sinh ra để đánh lại xoắn khuẩn giang mai hay không [50].",
+      "result_meaning": "Âm tính: Không mắc bệnh [50]. Dương tính: Đang mắc giang mai hoặc đã từng bị bệnh và chữa khỏi trong quá khứ nhưng hệ miễn dịch vẫn lưu lại vết sẹo kháng thể TPHA suốt đời.",
+      "real_life_example": "Cô gái sắp cưới đi khám tiền hôn nhân làm xét nghiệm giang mai test nhanh âm tính, vui vẻ yên tâm tiến tới tổ chức đám cưới.",
+      "note": "Bộ Y tế cấm dùng 1 xét nghiệm duy nhất để kết luận bệnh. Phải kết hợp một test sàng lọc độ nhạy cao (Syphilis test nhanh/TPHA) và một test định lượng (RPR) để xác định bệnh đang diễn tiến mạnh hay yếu [45].",
+      "advanced_knowledge": "Phương pháp miễn dịch hóa phát quang tự động (CLIA) độ nhạy cao được sử dụng thường quy. AI trên hệ thống LIS/HIS sẽ tự động phân tích tỷ giá hiệu giá kháng thể RPR giữa các lần tái khám để báo cho bác sĩ biết bệnh nhân có đáp ứng với mũi tiêm kháng sinh hay không [51].",
+      "deep_knowledge": "Hiện tượng Prozone (dương tính giả âm) có thể xảy ra ở bệnh nhân giang mai giai đoạn 2 có nồng độ kháng thể cao khủng khiếp, làm lấp kín tất cả kháng nguyên thử nghiệm, dẫn đến máy chạy ra kết quả RPR âm tính một cách sai lệch. Các phòng lab tiên tiến khắc phục bằng cách pha loãng mẫu tự động.",
+      "patient_advice": "Bệnh giang mai hoàn toàn chữa khỏi dễ dàng bằng kháng sinh Penicillin nếu phát hiện ở giai đoạn 1 và 2. Bạn nên rủ bạn tình/vợ chồng đi làm xét nghiệm chung để cắt đứt chuỗi lây nhiễm 'ping-pong' qua lại."
+    },
+    "Salmonella": {
+      "name": "Salmonella (Phản ứng Widal / Cấy phân)",
+      "purpose": "Chẩn đoán bệnh thương hàn, phó thương hàn và nhiễm độc thức ăn do vi khuẩn đường ruột nguy hiểm [52, 53].",
+      "when_to_do": "Khi đi ngoài phân lỏng như nước, đau bụng dữ dội, sốt cao liên miên lừ đừ, mạch đập chậm nhiều ngày sau khi ăn vỉa hè không đảm bảo vệ sinh.",
+      "how_it_works": "Lấy máu tìm xem có kháng thể ngưng kết với các kháng nguyên O và H của vi khuẩn thương hàn không (Phản ứng Widal), hoặc lấy phân đem cấy trên đĩa thạch để bắt tận tay vi khuẩn [52, 53].",
+      "result_meaning": "Dương tính (Hiệu giá kháng thể tăng cao): Đang bị nhiễm khuẩn thương hàn từ thực phẩm ôi thiu, xâm nhập vào máu. Cần điều trị kháng sinh đường ruột dài ngày.",
+      "real_life_example": "Bác xe ôm ăn hủ tiếu gõ ngoài đường về tiêu chảy sốt cao 4 ngày, thử máu Widal dương tính mạnh, cấy phân ra vi khuẩn Salmonella, bác sĩ cho truyền dịch bù nước và tiêm thuốc kháng sinh.",
+      "note": "Xét nghiệm Widal máu có thể dương tính chéo giả mạo nếu bạn từng tiêm vắc-xin thương hàn hoặc bị sốt rét [52]. Nuôi cấy phân tìm vi khuẩn là phương pháp tiêu chuẩn vàng [53].",
+      "advanced_knowledge": "Công nghệ khối phổ MALDI-TOF MS (Matrix-Assisted Laser Desorption/Ionization Time-of-Flight) kết hợp với giải trình tự gen NGS định danh chính xác vi khuẩn Salmonella trong mẫu phân chỉ trong vòng 3-4 giờ, thay vì chờ đợi 48-72 giờ nuôi cấy truyền thống [54, 55].",
+      "deep_knowledge": "Vi khuẩn Salmonella typhi có khả năng tàng hình trốn vào sống ký sinh dai dẳng bên trong túi mật của người bệnh. Những 'người mang trùng lành mạnh' này không có triệu chứng nhưng thải vi khuẩn ra phân liên tục, lây lan dịch bệnh ra cộng đồng qua đường ăn uống.",
+      "patient_advice": "Nếu bạn được bác sĩ cho lọ để tự lấy mẫu phân tại nhà, hãy dùng muỗng nhựa nhỏ lấy một phần phân có nhầy, mủ hoặc máu, cho vào lọ và đậy kín. Bệnh phẩm phân phải được mang ngay tới phòng xét nghiệm trong vòng 2 giờ để vi khuẩn không bị chết hoặc biến đổi [56, 57]."
+    },
+    "Toxocara": {
+      "name": "Toxocara canis/cati (Giun đũa chó mèo)",
+      "purpose": "Tìm dấu vết ấu trùng giun sán từ chó mèo đi lạc vào máu và các nội tạng của cơ thể người [58].",
+      "when_to_do": "Khi nuôi chó mèo sờ vuốt nhiều, bỗng hay nổi mề đay, mẩn ngứa da mạn tính uống thuốc dị ứng không bớt, hoặc trẻ em hay nghịch đất cát phình bụng, đau mắt [58].",
+      "how_it_works": "Lấy máu huyết thanh tìm xem hệ thống miễn dịch có sinh ra các kháng thể (IgG) để phản ứng chống lại kháng nguyên ngoại tiết của ấu trùng giun đũa chó mèo không [58].",
+      "result_meaning": "Dương tính: Bạn đã vô tình nuốt trứng giun chó mèo vào bụng, ấu trùng đang bò dưới da, gan, mắt hoặc não gây phản ứng dị ứng ngứa ngáy [58].",
+      "real_life_example": "Chị gái ôm hôn mèo cưng suốt ngày, dạo này gãi xước cả da tay do nổi mẩn ngứa, xét nghiệm Toxocara dương tính, uống đủ một đợt thuốc tẩy giun sán đặc trị là dứt ngay cơn ngứa [58].",
+      "note": "Kể cả khi bạn đã uống thuốc diệt sạch ấu trùng giun, lượng kháng thể IgG trong máu vẫn có thể tồn tại và cho kết quả dương tính thêm vài năm nữa, đó là vết sẹo miễn dịch chứ không phải bạn vẫn đang mắc bệnh [58].",
+      "advanced_knowledge": "Kỹ thuật miễn dịch Enzyme đa mồi kết hợp AI (LAB AI Agent) tự động đối chiếu chéo chỉ số Toxocara dương tính với chỉ số bạch cầu ái toan (Eosinophil) trong công thức máu [59]. Nếu cả hai cùng tăng cao, hệ thống sẽ chẩn đoán xác định nhiễm ký sinh trùng hoạt động, tránh lạm dụng thuốc tẩy giun [60, 61].",
+      "deep_knowledge": "Khi con người nuốt phải trứng Toxocara từ phân chó mèo lẫn trong rau sống hoặc đất, ấu trùng nở ra ở ruột nhưng không thể phát triển thành giun trưởng thành (vì người không phải là vật chủ tự nhiên). Chúng sẽ trở thành các ấu trùng di chuyển nội tạng (VLM) lang thang khắp gan, phổi, não, kích hoạt phản ứng viêm và bạch cầu ái toan.",
+      "patient_advice": "Bạn không cần nhịn ăn trước khi lấy máu làm xét nghiệm tìm ký sinh trùng giun đũa chó mèo [45]. Để phòng bệnh, hãy xổ giun định kỳ cho thú cưng và rửa tay xà phòng kỹ trước khi ăn, đặc biệt sau khi dọn khay cát cho mèo."
+    },
+    "CRP": {
+      "name": "CRP & hs-CRP (C-Reactive Protein)",
+      "purpose": "Phát hiện tình trạng viêm nhiễm cấp tính trong cơ thể và đánh giá rủi ro mảng xơ vữa động mạch gây nhồi máu cơ tim [9, 62].",
+      "when_to_do": "Khi bị sốt, sưng đau tấy đỏ, nghi ngờ viêm phổi, nhiễm trùng xương khớp hoặc khám sức khỏe tầm soát rủi ro đột quỵ ở người mỡ máu cao [62].",
+      "how_it_works": "Đo nồng độ protein C-phản ứng do gan sản xuất và tống ồ ạt vào máu mỗi khi có phản ứng viêm, chấn thương mô hay nhiễm khuẩn [62].",
+      "result_meaning": "Bình thường: Thường dưới 5 mg/L [9]. Tăng cao vọt: Đang bị nhiễm khuẩn cấp tính (tăng cao hơn rất nhiều so với nhiễm virus). hs-CRP tăng: Cơ thể có phản ứng viêm vi mô ẩn trong mạch máu, nguy cơ tim mạch rất cao [9, 62].",
+      "real_life_example": "Em bé sốt cao lừ đừ, bạch cầu tăng nhẹ nhưng CRP tăng vọt lên 80 mg/L, bác sĩ chẩn đoán bé bị nhiễm vi khuẩn chứ không phải siêu vi thông thường, chỉ định dùng kháng sinh ngay [49, 62].",
+      "note": "CRP thay đổi cực kỳ nhanh, tăng vọt sau 6 giờ viêm nhiễm và cũng tụt xuống nhanh chóng ngay khi mầm bệnh bị tiêu diệt, là công cụ hoàn hảo để theo dõi đáp ứng thuốc kháng sinh [62].",
+      "advanced_knowledge": "Máy sinh hóa miễn dịch tự động (như dòng Cobas thế hệ mới) cho phép đo hs-CRP siêu nhạy đồng thời cùng bộ mỡ máu, AI lập tức tính toán thang điểm ASCVD rủi ro nhồi máu cơ tim trong 10 năm của bệnh nhân [50, 62].",
+      "deep_knowledge": "Nhiều nghiên cứu y khoa chứng minh rằng mảng xơ vữa mạch vành không chỉ do mỡ máu bám vào, mà bản chất là một quá trình viêm mạn tính ở nội mạc mạch máu. hs-CRP siêu nhạy sẽ bắt được tín hiệu viêm này, giúp bác sĩ phòng ngừa đột quỵ ngay cả khi nồng độ cholesterol của bệnh nhân chưa ở mức báo động đỏ [62].",
+      "patient_advice": "Khi đi kiểm tra sức khỏe tim mạch với chỉ số hs-CRP, bạn cần đảm bảo cơ thể mình đang khỏe mạnh hoàn toàn. Nếu bạn đang bị cảm cúm, nhổ răng, hay viêm họng rát cổ, CRP sẽ tăng cao do viêm cục bộ làm sai lệch việc đánh giá tim mạch."
+    },
+    "Pro-calcitonin": {
+      "name": "Pro-calcitonin (PCT)",
+      "purpose": "Chỉ dấu sinh học sắc bén nhất để nhận diện nhanh chóng tình trạng nhiễm trùng máu nguy hiểm tính mạng do vi khuẩn (Sepsis) [63].",
+      "when_to_do": "Khi bệnh nhân cấp cứu sốt rét run lẩy bẩy, tụt huyết áp, nhịp tim nhanh, lơ mơ nghi ngờ bị sốc nhiễm khuẩn toàn thân [63].",
+      "how_it_works": "Đo nồng độ Procalcitonin - tiền chất của hormone calcitonin. Bình thường nó chỉ tiết ra ở tuyến giáp với lượng vô cùng nhỏ, nhưng khi độc tố vi khuẩn tràn vào máu, tất cả tế bào trong cơ thể sẽ bị kích hoạt sản xuất PCT ồ ạt [64].",
+      "result_meaning": "Bình thường: Ít khả năng nhiễm vi khuẩn huyết. Tăng cao dựng đứng: Cảnh báo đỏ nhiễm khuẩn máu nặng, sốc nhiễm trùng, tính mạng ngàn cân treo sợi tóc, phải dùng kháng sinh liều cực mạnh phổ rộng ngay tắp lự.",
+      "real_life_example": "Bệnh nhân cao tuổi sốt viêm phổi, test CRP tăng nhẹ nhưng Pro-calcitonin máu nhảy vọt lên 10 ng/mL, bác sĩ khoa ICU nhận định ngay bệnh nhân bị nhiễm trùng máu lan tỏa, lập tức chuyển thở máy và cấy máu [42].",
+      "note": "Pro-calcitonin đặc hiệu tuyệt vời để phân biệt giữa nhiễm vi khuẩn (làm PCT tăng vọt) và nhiễm virus (chỉ làm PCT tăng nhẹ hoặc không tăng). Hữu ích vô cùng để bác sĩ ra quyết định 'Có kê đơn kháng sinh hay không?'",
+      "advanced_knowledge": "Được đưa vào các dòng máy xét nghiệm tại giường (POCT) dùng trong xe cứu thương hoặc khoa hồi sức cấp cứu (ICU). Chỉ với một giọt máu chích từ tay, máy trả kết quả rủi ro sốc nhiễm trùng trong vòng 15 phút, giúp rút ngắn thời gian cứu mạng vàng (Golden Hour) [42, 63].",
+      "deep_knowledge": "Kể từ ngày thứ 2 đến thứ 3 trở đi sau khi dùng đúng loại thuốc kháng sinh tiêu diệt được vi khuẩn, nồng độ PCT sẽ tụt dốc thê thảm theo chu kỳ bán hủy 24h của nó. Nhờ theo dõi biểu đồ PCT hạ nhiệt, bác sĩ có thể quyết định cho bệnh nhân ngừng kháng sinh sớm một cách tự tin, giảm thiểu tình trạng kháng thuốc.",
+      "patient_advice": "Nếu bạn bị sốt xuất huyết hoặc sốt siêu vi, con số này thường sẽ âm tính. Việc không kê kháng sinh cho bạn lúc này là một quyết định y khoa chính xác của bác sĩ, bạn không nên đòi hỏi phải truyền kháng sinh."
+    },
+    "Interleukin 6": {
+      "name": "Interleukin 6 (IL-6)",
+      "purpose": "Đo lường mức độ bùng phát khủng khiếp của phản ứng viêm toàn thân và 'cơn bão cytokine' [64, 65].",
+      "when_to_do": "Khi bị viêm phổi cấp tính nặng (như nhiễm COVID-19, cúm ác tính), bệnh tự miễn bùng phát, hoặc bệnh nhân hồi sức cấp cứu bị suy hô hấp cấp (ARDS) [65].",
+      "how_it_works": "Đo nồng độ chất trung gian hóa học IL-6 do đại thực bào và tế bào lympho tiết ra. IL-6 có nhiệm vụ truyền tin gọi hàng triệu tế bào miễn dịch khác tụ tập lại ổ viêm để tiêu diệt mầm bệnh [65].",
+      "result_meaning": "Bình thường: Hệ miễn dịch êm dịu. Tăng rất cao: Hệ miễn dịch đang hoảng loạn, phản ứng phòng vệ quá mức (Cơn bão cytokine) và đang quay ra tự phá hủy cấu trúc phổi, mạch máu nội tạng của chính cơ thể [65].",
+      "real_life_example": "Bệnh nhân nhiễm cúm A biến chứng viêm phổi nặng, khó thở tím tái, đo IL-6 cao vọt. Bác sĩ cảnh báo phổi đang bị viêm tấy do chính hệ miễn dịch đánh quá tay, phải lọc máu và tiêm thuốc ức chế miễn dịch (như Tocilizumab) để cứu mạng.",
+      "note": "IL-6 là kẻ châm ngòi nổ cho việc gan sản xuất ra CRP [65]. Do đó IL-6 tăng sớm hơn CRP rất nhiều, đưa ra tín hiệu báo cháy sớm nhất cho các bác sĩ hồi sức.",
+      "advanced_knowledge": "Kỹ thuật miễn dịch điện hóa phát quang (ECLIA) vi mô kết hợp với thuật toán AI dự báo diễn tiến ARDS. Phần mềm LAB AI tự động kích hoạt giao thức hội chẩn từ xa (Tele-ICU) khi phát hiện đường cong IL-6 của bệnh nhân vào mức báo động đỏ [14].",
+      "deep_knowledge": "Interleukin-6 là một 'con dao hai lưỡi'. Ở lượng nhỏ, nó giúp cơ thể chống lại vi khuẩn và sửa chữa mô tổn thương. Ở lượng lớn, nó gây rò rỉ dịch từ mao mạch (tràn dịch màng phổi, sốc trụy mạch) và khởi động quá trình đông máu lan tỏa trong lòng mạch (DIC) tàn phá đa tạng.",
+      "patient_advice": "IL-6 là một xét nghiệm chuyên sâu kỹ thuật cao dành cho bệnh nhân nặng nằm viện. Tuy nhiên, tình trạng căng thẳng mạn tính, thiếu ngủ triền miên và béo phì cũng làm nồng độ IL-6 nền trong máu bạn luôn ở mức râm ran, đẩy nhanh sự già nua của cơ thể."
+    },
+    "Bạch cầu": {
+      "name": "Bạch cầu (White Blood Cells - WBC)",
+      "purpose": "Đánh giá chức năng của đội quân bảo vệ miễn dịch của cơ thể, phát hiện viêm nhiễm, dị ứng hoặc bệnh máu ác tính [64, 66].",
+      "when_to_do": "Trong các lần khám sức khỏe thông thường định kỳ, khám cấp cứu khi có sốt, viêm họng, đau quặn bụng tấy đỏ ở bất kỳ đâu [64, 67].",
+      "how_it_works": "Máy huyết học sẽ hút mẫu máu, dùng tia laser và dòng chảy (Flow cytometry) tự động đếm số lượng các chiến binh bạch cầu trong 1 thể tích máu, chia ra 5 loại binh chủng khác nhau (NEU, LYM, MONO, EOS, BASO) [59, 66, 68-70].",
+      "result_meaning": "Bình thường từ 4 - 10 G/L (tỷ tế bào/lít) [70]. Tăng cao trên 10 G/L: Đang có nhiễm khuẩn cấp, viêm ruột thừa, áp xe tấy mủ hoặc ung thư máu ác tính (leukemia) [64, 68]. Giảm thấp: Suy giảm miễn dịch (như HIV), nhiễm trùng do virus nặng, hóa trị ung thư hoặc suy tủy [64, 69, 71].",
+      "real_life_example": "Anh thanh niên đau quặn quanh rốn rồi lan sang bụng phải, buồn nôn, thử máu công thức thấy bạch cầu (WBC) vọt lên 18.000 (18 G/L) và bạch cầu trung tính (NEU) chiếm 85% [68]. Bác sĩ chẩn đoán viêm ruột thừa cấp, đưa đi mổ cắt ruột thừa ngay lập tức.",
+      "note": "Bạch cầu là một phần không thể tách rời trong xét nghiệm tổng phân tích tế bào máu ngoại vi (CBC), một xét nghiệm rẻ tiền, làm nhanh trong vài phút nhưng đem lại thông tin sống còn [64, 72, 73]. Việc nhịn ăn là không bắt buộc với chỉ số bạch cầu [45].",
+      "advanced_knowledge": "Công nghệ phân tích hình thái tế bào kỹ thuật số tự động (Digital Cell Morphology) sử dụng AI quét và phân loại hàng triệu tế bào máu. Trí tuệ nhân tạo (như LAB AI Agent) có khả năng tự động phát hiện và cảnh báo các tế bào bạch cầu non bất thường (Blast cells) cảnh báo ung thư tủy sống mà không cần soi kính hiển vi bằng mắt người mỏi mệt [48, 74].",
+      "deep_knowledge": "Mỗi binh chủng bạch cầu có chuyên môn khác nhau: Neutrophil (NEU) như lính thủy đánh bộ xông pha ăn vi khuẩn sinh ra mủ xanh mủ vàng [68, 71]. Lymphocyte (LYM) như sĩ quan tình báo sản xuất kháng thể diệt virus và ung thư [69, 71]. Eosinophil (EOS) như đội chống hóa học chuyên xịt độc chất diệt ký sinh trùng giun sán [59, 75].",
+      "patient_advice": "Tình trạng lo âu quá mức, la khóc nhiều ở trẻ em khi lấy máu, hoặc việc bạn vừa tập thể dục thể thao gắng sức có thể làm bạch cầu vọt ra từ mép mạch máu, làm kết quả tăng lên giả tạo. Hãy nghỉ ngơi, hít thở sâu tĩnh tâm 15 phút trước khi rút máu [76]."
+    },
+    "Máu lắng": {
+      "name": "Máu lắng (Erythrocyte Sedimentation Rate - ESR / VS)",
+      "purpose": "Báo động tình trạng viêm nhiễm mạn tính đang âm ỉ cháy trong cơ thể, hỗ trợ chẩn đoán lao, bệnh tự miễn như viêm khớp dạng thấp [77, 78].",
+      "when_to_do": "Khi hay bị đau nhức xương khớp sưng đỏ kéo dài, cơ thể sốt nhẹ mệt mỏi giảm cân không rõ lý do âm ỉ từ tháng này qua tháng khác [78].",
+      "how_it_works": "Cho máu chưa đông vào một ống nghiệm dựng dọc hẹp và dài, sau đó canh đồng hồ đo xem quãng đường các tế bào hồng cầu rơi lắng xuống đáy ống là bao nhiêu milimet trong 1 giờ [77].",
+      "result_meaning": "Bình thường: Hồng cầu rơi lắng rất chậm. Lắng nhanh (Chỉ số cao mm/giờ): Trong máu đang chứa rất nhiều các protein viêm kết dính (như fibrinogen), khiến hồng cầu bị bết dính vào nhau thành chuỗi như chồng tiền xu, làm chúng nặng hơn và rơi xuống đáy nhanh hơn [77].",
+      "real_life_example": "Bà cụ đau cứng các khớp ngón tay mỗi sáng ngủ dậy kéo dài hàng tháng, làm xét nghiệm đo máu lắng (ESR) cao lên tới 80 mm/h. Kết hợp với Anti-CCP dương tính, bác sĩ chẩn đoán bệnh viêm khớp dạng thấp đang hoạt động mạnh.",
+      "note": "Xét nghiệm máu lắng rất kém đặc hiệu, nó không chỉ điểm chính xác tình trạng viêm nằm ở gan, thận hay khớp nào, nó chỉ như một chiếc đèn báo cháy cho toàn cơ thể [77]. Thường được làm song song với CRP.",
+      "advanced_knowledge": "Công nghệ phân tích quang học tự động (như dòng Alifax) thay thế cho ống thủy tinh Westergren truyền thống cổ lỗ sĩ. Máy có khả năng đo động lực học ngưng kết hồng cầu và trả kết quả máu lắng cực kỳ chuẩn xác trong thời gian chưa đầy 20 giây (thay vì phải ngồi chờ 1 giờ đồng hồ như y học thế kỷ 20).",
+      "deep_knowledge": "Máu lắng (ESR) không bao giờ tăng nhanh ngay lập tức trong nhiễm khuẩn cấp như CRP. Nó thường phản ứng chậm chạp và ở lại lâu trong máu (có thể mất cả tháng để về bình thường). Sự tăng vọt bất thường của máu lắng (trên 100 mm/h) thường là tín hiệu kinh điển của bệnh đau tủy xương (đa u tủy) hoặc lao tiến triển.",
+      "patient_advice": "Chỉ số máu lắng ở phụ nữ mang thai bình thường hoặc người già cũng thường cao hơn một chút so với người trẻ do sinh lý tự nhiên. Bạn không cần phải quá hoang mang nếu nó chỉ tăng nhẹ vài milimet."
+    },
+    "Lactat": {
+      "name": "Lactate (Axit Lactic)",
+      "purpose": "Đo mức độ 'ngạt thở' thiếu oxy cục bộ của tế bào, chẩn đoán nguy cơ nhiễm toan máu và rủi ro tử vong do các trạng thái sốc (Sốc nhiễm khuẩn, sốc mất máu) [54].",
+      "when_to_do": "Khi bệnh nhân được chuyển vào khoa cấp cứu trong tình trạng tụt huyết áp tay chân lạnh ngắt, mất máu ồ ạt, thở ngáp cá, lơ mơ khó thở (Suy hô hấp) [54, 63].",
+      "how_it_works": "Đo nồng độ Axit lactic trong máu - một chất cặn bã độc hại sinh ra khi các tế bào cơ thể bị đói oxy nhưng vẫn phải vùng vẫy chuyển hóa yếm khí (chuyển hóa kỵ khí) để cố tạo ra chút năng lượng sinh tồn [54, 63].",
+      "result_meaning": "Bình thường: Máu lưu thông bơm oxy tốt cho toàn bộ tế bào. Tăng cao (>2 mmol/L): Tế bào các nội tạng (gan, thận, não) đang thiếu máu tưới, sắp hoại tử hoại tử vì cạn kiệt oxy. Nguy hiểm chết người, tiên lượng rất tồi tệ.",
+      "real_life_example": "Bệnh nhân bị tai nạn giao thông chấn thương gãy xương đùi chảy máu ồ ạt 2 lít, vào viện đo Lactate máu cao vọt lên 5 mmol/L. Bác sĩ khoa hồi sức cấp cứu lập tức mở hai đường truyền máu đỏ xối xả và truyền dịch để tăng tưới máu não cứu bệnh nhân khỏi chết não.",
+      "note": "Thường được lấy cùng lúc với mẫu máu làm xét nghiệm Khí máu động mạch (ABG) tại phòng ICU bằng cách chọc kim sâu vào động mạch quay ở cổ tay [79].",
+      "advanced_knowledge": "Thiết bị xét nghiệm tại chỗ (POCT) cầm tay sử dụng chip vi lỏng (microfluidic chip) được trang bị ngay trên các xe cứu thương, giúp điều dưỡng đo Lactate tại hiện trường tai nạn chỉ trong 10 giây. AI gửi tín hiệu từ xa để bệnh viện chuẩn bị sẵn máu nhóm O truyền ngay khi xe tới cổng [42, 63].",
+      "deep_knowledge": "Sự thanh thải Lactate (Lactate clearance) là một chỉ số sinh tồn. Gan và thận là nhà máy dọn dẹp Lactate chính. Khi hồi sức truyền dịch mà thấy nồng độ Lactate giảm được trên 10% sau 2 giờ, đó là dấu hiệu vàng chứng tỏ cơ thể đã thoát án tử hình, máu đã bơm tới các tạng trở lại.",
+      "patient_advice": "Với người bình thường, nếu bạn vận động tập gym nâng tạ cực nặng hoặc chạy kiệt sức, Lactate trong cơ bắp cũng sẽ tăng ồ ạt gây cảm giác rã rời, đau nhức cơ vắt kiệt. Y tá sẽ dặn bạn lấy máu xét nghiệm Lactate phải tuyệt đối thả lỏng, không được gồng siết tay thắt garo lâu, nếu không nồng độ này sẽ bị cao giả tạo do co cơ [54]."
+    },
+    "Nhuộm AFB tìm Lao": {
+      "name": "Nhuộm AFB (Kháng cồn kháng toan) tìm vi khuẩn Lao",
+      "purpose": "Xác định sự hiện diện của vi khuẩn lao (Mycobacterium tuberculosis) trong đờm hoặc dịch tiết, đánh giá mức độ lây nhiễm.",
+      "when_to_do": "Khi ho khạc đờm kéo dài trên 2 tuần, ho ra máu, sốt nhẹ về chiều, sụt cân, đổ mồ hôi trộm ban đêm.",
+      "how_it_works": "Lấy mẫu đờm bôi lên lam kính, nhuộm bằng hóa chất đặc biệt (Ziehl-Neelsen). Vi khuẩn lao có lớp vỏ sáp lipid dày nên sẽ giữ lại màu đỏ hồng (kháng cồn toan) nổi bật trên nền xanh khi soi dưới kính hiển vi.",
+      "result_meaning": "Âm tính: Không thấy vi khuẩn (nhưng chưa loại trừ hoàn toàn). Dương tính: Chắc chắn mắc lao phổi thể hoạt động, nguy cơ lây lan cho cộng đồng rất cao.",
+      "real_life_example": "Bác xe ôm ho sụ sụ cả tháng, sụt 5kg, đi khạc đờm xét nghiệm AFB dương tính mức độ 3+, lập tức được đưa vào chương trình uống thuốc lao miễn phí và cách ly tại nhà.",
+      "note": "Xét nghiệm này có nhược điểm là độ nhạy không cao, cần mật độ vi khuẩn khá lớn (khoảng 10.000 con/ml đờm) mới có thể soi thấy bằng mắt thường.",
+      "advanced_knowledge": "Các phòng lab tiên tiến hiện sử dụng Kính hiển vi huỳnh quang LED quét tự động kết hợp thuật toán AI nhận diện hình ảnh, giúp phát hiện vi khuẩn lao nhanh gấp 4 lần và tăng độ nhạy lên 20% so với soi kính quang học bằng mắt người.",
+      "deep_knowledge": "Lớp vỏ Mycolic acid của vi khuẩn lao khiến chúng không bắt màu nhuộm Gram thông thường. Nhuộm AFB dương tính không chỉ là vi khuẩn lao (M. tuberculosis) mà còn có thể là nhóm NTM (Lao không điển hình), cần nuôi cấy hoặc chạy PCR để phân biệt chính xác.",
+      "patient_advice": "Bắt buộc phải khạc đờm sâu từ tận đáy phổi vào buổi sáng sớm khi mới thức dậy. Tuyệt đối không lấy nước bọt trong miệng vì nước bọt không chứa vi khuẩn lao, làm kết quả bị âm tính giả."
+    },
+    "Xpert MTB/RIF": {
+      "name": "Xpert MTB/RIF (GeneXpert)",
+      "purpose": "Phát hiện cực nhanh vi khuẩn lao và đồng thời xác định ngay vi khuẩn có mang gen kháng thuốc Rifampicin hay không.",
+      "when_to_do": "Người nghi ngờ mắc lao phổi, lao ngoài phổi (lao màng não, hạch), bệnh nhân HIV nghi nhiễm lao, hoặc người tiếp xúc với nguồn lây lao kháng thuốc.",
+      "how_it_works": "Sử dụng công nghệ sinh học phân tử Real-time PCR trong một hệ thống đóng kín tự động hóa hoàn toàn. Máy sẽ phá vỡ tế bào vi khuẩn, khuếch đại và nhận diện đoạn gen rpoB đặc trưng của vi khuẩn lao.",
+      "result_meaning": "Âm tính: Không có DNA vi khuẩn lao. Dương tính: Đang mắc bệnh lao. Máy sẽ báo thêm chữ 'Kháng Rifampicin' nếu vi khuẩn đã đột biến không còn sợ thuốc này.",
+      "real_life_example": "Bệnh nhân ho ra máu nhưng soi đờm AFB 3 lần đều âm tính. Bác sĩ cho chạy Xpert MTB/RIF thì bắt được ngay DNA vi khuẩn lao ẩn nấp và may mắn là vi khuẩn chưa kháng thuốc.",
+      "note": "Đây là xét nghiệm mang tính cách mạng do WHO khuyến cáo, cho kết quả chỉ sau 2 giờ thay vì phải đợi cấy đờm hàng tháng trời.",
+      "advanced_knowledge": "Thế hệ Xpert MTB/RIF Ultra ra đời với độ nhạy được đẩy lên mức tối đa, có thể phát hiện vi khuẩn lao ngay cả khi mật độ chỉ có vỏn vẹn 16 con/ml đờm, đặc biệt xuất sắc trong việc tìm lao ở trẻ em và người nhiễm HIV.",
+      "deep_knowledge": "Xpert phát hiện DNA (vật liệu di truyền) của vi khuẩn, do đó nó có thể phát hiện cả vi khuẩn lao đã chết. Vì vậy, xét nghiệm này không được dùng để theo dõi xem người bệnh đã khỏi bệnh hay chưa sau khi đã uống thuốc lao.",
+      "patient_advice": "Dù chi phí xét nghiệm này khá cao, nhưng nó là 'tiêu chuẩn vàng' hiện đại. Nếu bạn bị chẩn đoán lao, hãy yêu cầu được làm xét nghiệm này để đảm bảo phác đồ thuốc bạn sắp uống trong 6 tháng tới thực sự có hiệu quả."
+    },
+    "QuantiFERON-TB": {
+      "name": "QuantiFERON-TB Gold Plus (IGRA)",
+      "purpose": "Phát hiện tình trạng nhiễm vi khuẩn lao tiềm ẩn trong cơ thể (Lao ngủ đông) thông qua phản ứng miễn dịch đặc hiệu.",
+      "when_to_do": "Người khỏe mạnh nhưng có tiếp xúc gần với bệnh nhân lao, nhân viên y tế, khám sức khỏe đi định cư nước ngoài, hoặc bệnh nhân chuẩn bị dùng thuốc ức chế miễn dịch/sinh học.",
+      "how_it_works": "Lấy máu tĩnh mạch và ủ với các kháng nguyên peptide đặc hiệu của vi khuẩn lao. Nếu cơ thể đã từng tiếp xúc với lao, các tế bào lympho T (T-cells) sẽ tiết ra chất Interferon-gamma (IFN-g) và máy sẽ đo nồng độ chất này.",
+      "result_meaning": "Âm tính: Không nhiễm vi khuẩn lao. Dương tính: Chắc chắn đang mang vi khuẩn lao trong người dù chưa ốm đau (Lao tiềm ẩn) hoặc đang bị lao hoạt động.",
+      "real_life_example": "Một bác sĩ xương khớp chuẩn bị tiêm thuốc sinh học cho bệnh nhân viêm khớp dạng thấp. Kết quả QuantiFERON dương tính, bệnh nhân phải uống thuốc dự phòng lao 3 tháng trước khi tiêm để tránh vi khuẩn lao bùng phát tàn phá phổi.",
+      "note": "Xét nghiệm này không bị dương tính giả (nhiễu) bởi mũi tiêm phòng vắc-xin lao (BCG) lúc nhỏ như phương pháp test da Mantoux (TST).",
+      "advanced_knowledge": "Công nghệ phân tích miễn dịch tự động công suất lớn (CLIA) nay được áp dụng cho IGRA, giúp xử lý hàng trăm mẫu máu cùng lúc với độ nhạy 98%, hỗ trợ tầm soát lao cộng đồng quy mô lớn.",
+      "deep_knowledge": "Chỉ số QuantiFERON chỉ trả lời câu hỏi 'Có nhiễm hay không?', chứ không thể phân biệt được bạn đang bị lao tiềm ẩn hay lao đang hoạt động. Phải luôn kết hợp với chụp X-quang phổi và triệu chứng lâm sàng để ra quyết định điều trị.",
+      "patient_advice": "Đây là xét nghiệm máu, bạn không cần nhịn ăn. Ống máu sau khi lấy cần được giữ ở nhiệt độ phòng và đưa ngay vào tủ ủ ấm 37 độ C trong vòng 16 giờ, tuyệt đối không được để ống máu vào tủ lạnh."
+    },
+    "Khí máu": {
+      "name": "Khí máu động mạch (ABG - Arterial Blood Gas)",
+      "purpose": "Đánh giá chính xác tình trạng trao đổi oxy/CO2 của phổi và độ cân bằng axit-kiềm (pH) sống còn trong máu.",
+      "when_to_do": "Khi bệnh nhân khó thở dữ dội, tím tái ngạt thở, suy hô hấp nặng, hen phế quản ác tính, suy thận cấp, hoặc bệnh nhân đang hôn mê, thở máy.",
+      "how_it_works": "Đâm kim thẳng vào động mạch (thường ở cổ tay hoặc nếp gấp bẹn) để lấy dòng máu đỏ tươi vừa từ tim bơm ra. Đo lường trực tiếp pH, phân áp Oxy (pO2), phân áp Carbon dioxide (pCO2) và Bicarbonate (HCO3-).",
+      "result_meaning": "Bình thường (pH 7.35 - 7.45): Trao đổi khí và chuyển hóa ổn định. Bất thường: Máu bị thiếu oxy trầm trọng (Hypoxemia), nhiễm toan (Axit hóa) hoặc nhiễm kiềm, tính mạng đang bị đe dọa nghiêm trọng.",
+      "real_life_example": "Người bệnh phổi tắc nghẽn mạn tính (COPD) lên cơn khó thở kịch phát lơ mơ, đo khí máu thấy pCO2 ứ đọng lên 80 mmHg (gấp đôi bình thường), máu nhiễm toan nặng. Bác sĩ lập tức đặt ống nội khí quản cho thở máy.",
+      "note": "Đây là xét nghiệm sinh tử tại phòng cấp cứu. Lấy máu động mạch đâm sâu hơn và sẽ đau tức hơn rất nhiều so với lấy máu tĩnh mạch ở nếp gấp tay thông thường.",
+      "advanced_knowledge": "Hệ thống thiết bị xét nghiệm khí máu tại giường (POCT) nay chỉ cần 1 giọt máu (100 µL) và cho ra trọn bộ kết quả sinh tồn cùng với điện giải đồ (Na, K, Ca, Lactate) chỉ trong vòng 30 đến 45 giây [3].",
+      "deep_knowledge": "Việc máu lẫn bọt khí từ bên ngoài hoặc mẫu máu để quá 30 phút ở nhiệt độ phòng (không ướp đá) sẽ làm bạch cầu tiêu thụ mất oxy, khiến kết quả pO2 bị tụt giảm giả tạo. Ống tiêm lấy khí máu bắt buộc phải được tráng chất chống đông Heparin chuyên dụng [4].",
+      "patient_advice": "Khi chích máu động mạch ở cổ tay sẽ có cảm giác buốt thấu. Sau khi rút kim, bạn hoặc người nhà phải dùng 3 ngón tay đè chặt, miết mạnh vào vị trí chích liên tục trong 5 - 10 phút. Nếu buông ra sớm, áp lực động mạch sẽ bơm máu phụt ra ngoài gây khối máu tụ sưng to."
+    },
+    "Cấy vi khuẩn": {
+      "name": "Nuôi cấy vi khuẩn & Kháng sinh đồ (Culture & Susceptibility)",
+      "purpose": "Định danh chính xác mặt mũi chủng loại vi khuẩn đang gây bệnh và thử nghiệm trực tiếp xem chúng bị tiêu diệt bởi loại kháng sinh nào.",
+      "when_to_do": "Khi bị nhiễm trùng nặng, nhiễm trùng huyết, vết thương mưng mủ mãi không lành, viêm đường tiết niệu tái phát nhiều lần uống thuốc không bớt.",
+      "how_it_works": "Lấy mẫu bệnh phẩm (máu, mủ, nước tiểu, dịch não tủy) cấy lên các đĩa thạch dinh dưỡng chuyên dụng, ủ ấm mô phỏng cơ thể người. Sau khi vi khuẩn mọc thành khóm, chúng sẽ được cho đối đầu với các viên giấy tẩm kháng sinh.",
+      "result_meaning": "Âm tính: Không có vi khuẩn mọc. Dương tính: Gọi tên được vi khuẩn (VD: E.coli, Tụ cầu vàng) và in ra bảng Kháng sinh đồ (Nhạy cảm: thuốc có tác dụng; Kháng thuốc: thuốc đã bị vô hiệu hóa).",
+      "real_life_example": "Bà cụ bị loét bàn chân tiểu đường nhiễm trùng thối rữa, bác sĩ quệt mủ đi cấy tìm ra con vi khuẩn Pseudomonas aeruginosa đa kháng thuốc, lập tức đổi phác đồ sang dùng kháng sinh dạng truyền tĩnh mạch thế hệ mới để cứu bàn chân khỏi bị cưa cụt.",
+      "note": "Để kết quả chính xác 100%, mẫu bệnh phẩm bắt buộc phải được lấy TRƯỚC KHI bệnh nhân uống hoặc tiêm liều thuốc kháng sinh đầu tiên của đợt bệnh.",
+      "advanced_knowledge": "Công nghệ khối phổ MALDI-TOF MS kết hợp giải trình tự gen (NGS) hiện đại đã phá vỡ rào cản thời gian. Thay vì chờ đợi 48-72 giờ như trước, vi khuẩn nay được định danh và phát hiện gen kháng thuốc chỉ trong vòng 3 đến 6 giờ.",
+      "deep_knowledge": "Kháng sinh đồ sẽ cung cấp giá trị MIC (Nồng độ ức chế tối thiểu). Chỉ số MIC càng thấp nghĩa là kháng sinh đó càng mạnh và càng dễ tiêu diệt vi khuẩn. Bác sĩ dược lâm sàng sẽ dựa vào MIC để tính toán liều lượng thuốc vừa đủ diệt khuẩn mà không làm hại thận của bệnh nhân.",
+      "patient_advice": "Nếu bạn được yêu cầu lấy mẫu nước tiểu đi cấy, hãy rửa sạch vùng kín bằng nước, thấm khô, và chỉ hứng lấy đoạn 'nước tiểu giữa dòng' vào lọ vô khuẩn. Tuyệt đối không để ngón tay chạm vào lòng trong của nắp lọ để tránh vi khuẩn từ tay rơi vào làm hỏng mẫu [5]."
+    },
+    "Dịch não tủy": {
+      "name": "Xét nghiệm Dịch não tủy (CSF Analysis)",
+      "purpose": "Chọc tìm nguyên nhân gây viêm màng não, viêm não, xuất huyết dưới nhện hoặc các bệnh lý thoái hóa thần kinh trung ương.",
+      "when_to_do": "Khi bệnh nhân có hội chứng màng não: Đau đầu dữ dội như búa bổ, cứng gáy (cổ không gập được xuống ngực), nôn vọt, sợ ánh sáng, sốt cao, co giật hoặc lơ mơ.",
+      "how_it_works": "Bác sĩ thực hiện thủ thuật chọc dò tủy sống thắt lưng (Lumbar Puncture) để hút ra vài mililit nước dịch não tủy. Mẫu dịch được đem đi đếm tế bào, đo lượng đường (Glucose), Đạm (Protein) và nhuộm cấy tìm vi khuẩn/virus.",
+      "result_meaning": "Bình thường: Dịch trong vắt như nước mưa. Bất thường: Dịch đục ngầu như nước vo gạo, đường giảm sâu, đạm tăng vọt là dấu hiệu kinh điển của Viêm màng não mủ do vi khuẩn. Dịch có máu không đông là chảy máu não.",
+      "real_life_example": "Em bé 2 tuổi sốt cao cứng cổ li bì, bác sĩ chọc dịch não tủy đục ngầu, xét nghiệm PCR bắt được vi khuẩn Não mô cầu (Neisseria meningitidis), lập tức cho thuốc đặc trị và cách ly chống dịch.",
+      "note": "Xét nghiệm này mang tính khẩn cấp sinh tử. Nếu đường (Glucose) trong dịch não tủy sụt giảm xuống dưới 1/2 so với đường trong máu tĩnh mạch, đó là bằng chứng vi khuẩn đang ăn đường trong não.",
+      "advanced_knowledge": "Các hệ thống PCR đa mồi tự động (Multiplex PCR Syndromic panels) cho phép quét cùng một lúc 14 loại vi khuẩn, virus và nấm gây viêm màng não trực tiếp từ mẫu dịch não tủy, trả kết quả chẩn đoán chính xác tuyệt đối chỉ sau 1 giờ đồng hồ.",
+      "deep_knowledge": "Sự xuất hiện của dải Oligoclonal bands (OCB) trong điện di protein dịch não tủy là một dấu ấn sinh học đặc trưng, giúp các bác sĩ thần kinh chẩn đoán bệnh Xơ cứng rải rác (Multiple Sclerosis) - một căn bệnh tự miễn phá hủy màng bọc dây thần kinh.",
+      "patient_advice": "Thủ thuật chọc dò tủy sống rất an toàn, kim chỉ chọc ở vùng thắt lưng thấp nơi tủy sống đã kết thúc nên không gây liệt. Sau khi chọc xong, bạn BẮT BUỘC phải nằm nằm sấp hoặc nằm ngửa đầu bằng tuyệt đối (không kê gối) trong 4-6 tiếng để tránh biến chứng tụt áp lực nội sọ gây đau đầu dữ dội."
+    },
+    "Sắt huyết thanh": {
+      "name": "Sắt huyết thanh (Serum Iron)",
+      "purpose": "Đo lường lượng sắt đang lưu thông (trôi nổi) trong máu, bước đầu chẩn đoán bệnh thiếu máu thiếu sắt hoặc hội chứng ứ đọng sắt.",
+      "when_to_do": "Khi có biểu hiện xanh xao, nhợt nhạt, móng tay giòn dễ gãy, rụng tóc, hoa mắt chóng mặt khi thay đổi tư thế, hoặc làm bộ xét nghiệm khám sức khỏe tổng quát.",
+      "how_it_works": "Đo nồng độ khoáng chất sắt (Fe3+) đang gắn kết với protein vận chuyển Transferrin trong huyết thanh tại thời điểm lấy máu.",
+      "result_meaning": "Thấp: Gợi ý bệnh thiếu máu do đói sắt, mất máu rỉ rả (như trĩ, rong kinh), hoặc khả năng hấp thu kém. Cao: Truyền máu quá nhiều, ngộ độc sắt, hoặc bệnh di truyền ứ sắt Hemochromatosis làm đen da, hỏng gan.",
+      "real_life_example": "Cô sinh viên hay bị xây xẩm mặt mày, đi đo sắt huyết thanh thấy thấp chạm đáy, MCV hồng cầu nhỏ xíu. Bác sĩ kê ngay viên sắt và dặn ăn nhiều thịt bò, rau chân vịt.",
+      "note": "Lượng sắt lưu thông trong máu dao động rất dữ dội trong ngày, không ổn định, nên không bao giờ được dùng đơn độc để kết luận bệnh mà phải kết hợp với Ferritin.",
+      "advanced_knowledge": "Hệ thống AI tự động cảnh báo tương tác chéo (Cross-check): Nếu bệnh nhân đang bị viêm nhiễm nặng (CRP tăng cao), máy sẽ tự động ghi chú kết quả Sắt huyết thanh có thể bị sụt giảm giả tạo do phản ứng viêm cấp tính phong tỏa sắt trong đại thực bào.",
+      "deep_knowledge": "Hầu hết lượng sắt trong cơ thể đều nằm an toàn trong hồng cầu (Hemoglobin) hoặc cất trong kho (Ferritin). Lượng sắt huyết thanh đo được thực chất chỉ chiếm chưa tới 1% tổng lượng sắt toàn cơ thể. Thuốc tránh thai đường uống có thể làm tăng lượng Transferrin, kéo theo sự gia tăng giả tạo của sắt huyết thanh.",
+      "patient_advice": "Sắt trong máu tuân theo nhịp sinh học, tăng cao nhất vào buổi sáng và giảm sâu vào buổi chiều tối. Bạn BẮT BUỘC phải đi lấy máu xét nghiệm vào buổi sáng sớm, lúc đói. Tuyệt đối ngừng uống viên bổ sung sắt ít nhất 24 đến 48 giờ trước khi chích máu để kết quả không bị sai lệch."
+    },
+    "Ferritin": {
+      "name": "Ferritin (Dự trữ sắt)",
+      "purpose": "Đo xem kho dự trữ sắt cất giấu sâu trong tủy xương, gan và lá lách còn đầy hay đã cạn kiệt.",
+      "when_to_do": "Làm cùng xét nghiệm Sắt huyết thanh để khẳng định 100% người bệnh có đang bị cạn kiệt sắt hay không, hoặc để theo dõi bệnh nhân viêm gan, xơ gan ứ sắt.",
+      "how_it_works": "Đo một loại cấu trúc protein đặc biệt mang tên Ferritin. Nó giống như một 'chiếc két sắt' có khả năng nhốt giữ hàng nghìn phân tử sắt bên trong để cơ thể xài dần, ngăn sắt tự do gây độc cho mô.",
+      "result_meaning": "Thấp: Kho dự trữ đã cạn sạch, đây là bằng chứng thép khẳng định thiếu máu thiếu sắt. Cao: Đang có viêm nhiễm cấp tính, bệnh lý gan hoặc mắc chứng rối loạn ứ sắt (Hemochromatosis).",
+      "real_life_example": "Một bệnh nhân nam xét nghiệm sắt huyết thanh bình thường nhưng Ferritin lại cực thấp. Bác sĩ cảnh báo kho sắt đã cạn kiệt, vài tuần nữa sẽ chuyển thành thiếu máu nặng nếu không nội soi dạ dày tìm ổ chảy máu ẩn.",
+      "note": "Ferritin là bộ xét nghiệm trung thực và chính xác nhất. Nếu Ferritin thấp, 100% bạn đang thiếu sắt. Nhưng nếu Ferritin bình thường hoặc cao, bạn vẫn có thể thiếu sắt nếu cơ thể đang bị viêm.",
+      "advanced_knowledge": "Việc định lượng Ferritin bằng công nghệ miễn dịch điện hóa phát quang (ECLIA) nay được AI tích hợp vào bộ theo dõi hội chứng chuyển hóa và gan nhiễm mỡ không do rượu (NAFLD), vì Ferritin tăng cao liên quan mật thiết đến sự kháng insulin.",
+      "deep_knowledge": "Ferritin là một 'protein phản ứng pha cấp' (Acute Phase Reactant). Điều này có nghĩa là khi bạn bị cảm cúm, sốt, mắc COVID-19, viêm khớp, hoặc ung thư, nồng độ Ferritin sẽ tự động tăng vọt lên để phản ứng với bệnh tật, làm che lấp đi tình trạng thiếu máu thiếu sắt thực sự. Bác sĩ giỏi sẽ luôn cho thử kèm CRP để loại trừ nhiễu viêm.",
+      "patient_advice": "Xét nghiệm Ferritin không yêu cầu nhịn ăn khắt khe, nhưng nếu bạn đang bị ốm, sốt, hay viêm họng, hãy nói với bác sĩ, vì kết quả Ferritin lúc này sẽ cao giả tạo, không phản ánh đúng lượng sắt thực tế trong kho của bạn."
+    },
+    "Vitamin B12": {
+      "name": "Vitamin B12 (Cobalamin)",
+      "purpose": "Đánh giá tình trạng thiếu hụt vitamin tạo máu, chẩn đoán nguyên nhân bệnh thiếu máu hồng cầu to và các tổn thương thoái hóa thần kinh.",
+      "when_to_do": "Người già hay bị tê rần châm chích bàn chân tay, suy giảm trí nhớ, đi đứng loạng choạng, người ăn chay trường kỳ, hoặc bệnh nhân cắt dạ dày.",
+      "how_it_works": "Đo lượng vitamin B12 trong huyết thanh. Đây là vi chất tối quan trọng để sản xuất vỏ bọc myelin bảo vệ dây thần kinh và tham gia vào quá trình phân chia nhân tế bào hồng cầu.",
+      "result_meaning": "Bình thường: Đủ chất. Thấp: Gây bệnh thiếu máu ác tính (Pernicious anemia), mệt mỏi, suy nhược thần kinh, trầm cảm, tê liệt tay chân.",
+      "real_life_example": "Cụ ông bị viêm teo niêm mạc dạ dày lâu năm hay bị tê buốt ngón chân, đo B12 thấp thê thảm. Bác sĩ cho tiêm B12 trực tiếp vào bắp cơ, triệu chứng thần kinh cải thiện rõ rệt.",
+      "note": "Vitamin B12 chỉ tồn tại duy nhất trong thực phẩm có nguồn gốc động vật (thịt, cá, trứng, sữa), hoàn toàn không có trong thực vật.",
+      "advanced_knowledge": "Thay vì chỉ đo lượng B12 toàn phần (trong đó 80% là ở dạng không hoạt động), các labo sinh hóa hiện đại sử dụng xét nghiệm đo Holotranscobalamin (Active B12 - B12 hoạt động). Đây là thước đo siêu nhạy, phát hiện cạn kiệt B12 ngay từ khi cơ thể chưa có triệu chứng.",
+      "deep_knowledge": "Dạ dày con người phải tiết ra một chất gọi là 'Yếu tố nội tại' (Intrinsic Factor) thì ruột non mới có thể hút được Vitamin B12 từ thức ăn vào máu. Do đó, người bị viêm loét dạ dày, uống thuốc kháng acid (Omeprazole) lâu ngày, hoặc đã phẫu thuật cắt dạ dày sẽ bị thiếu B12 trầm trọng dù họ có ăn rất nhiều thịt.",
+      "patient_advice": "Nếu bạn là người ăn chay trường (Vegan), bạn thuộc nhóm rủi ro cực cao. Bắt buộc phải uống viên bổ sung B12 hoặc đi chích B12 định kỳ để bảo vệ bộ não và tủy sống khỏi các tổn thương vĩnh viễn, không thể đảo ngược."
+    },
+    "Phết máu ngoại biên": {
+      "name": "Phết máu ngoại biên (Peripheral Blood Smear)",
+      "purpose": "Quan sát tận mắt hình thái, kích thước, màu sắc và cấu trúc bên trong của các tế bào máu để chẩn đoán các bệnh lý huyết học phức tạp.",
+      "when_to_do": "Khi máy đếm công thức máu tự động báo lỗi hoặc có bất thường (thiếu máu nặng, bạch cầu tăng quá cao, tiểu cầu giảm sâu), nghi ngờ ung thư máu, hoặc tìm ký sinh trùng sốt rét.",
+      "how_it_works": "Nhỏ một giọt máu lên phiến kính, dàn mỏng thành một lớp tế bào duy nhất, nhuộm màu Giemsa rồi đưa lên kính hiển vi để chuyên gia huyết học soi trực tiếp.",
+      "result_meaning": "Cho biết chi tiết tình trạng bệnh lý: Thấy hồng cầu hình bia bắn (bệnh Thalassemia), hồng cầu vỡ nát mảnh vụn (tán huyết do cục máu đông nhỏ), hoặc thấy tràn ngập bạch cầu non/ác tính (ung thư tủy).",
+      "real_life_example": "Em bé xanh xao, sốt dai dẳng, máy đếm bạch cầu cao bất thường. Bác sĩ soi phết máu ngoại biên thấy vô số tế bào 'Blast' (bạch cầu non bất thường chưa trưởng thành), lập tức chẩn đoán bạch cầu cấp (ung thư máu) và chuyển qua khoa huyết học.",
+      "note": "Đây là tiêu chuẩn vàng. Không một cỗ máy đếm tự động đắt tiền nào có thể thay thế hoàn toàn được cặp mắt tinh tường của bác sĩ huyết học khi nhìn vào hình thái tế bào máu [1].",
+      "advanced_knowledge": "Công nghệ Kính hiển vi kỹ thuật số (Digital Cell Morphology) ứng dụng Trí tuệ nhân tạo (AI) đã tạo ra cuộc cách mạng [1]. Hệ thống tự động quét lam kính, chụp ảnh hàng nghìn tế bào sắc nét, AI sẽ phân loại trước các tế bào lạ (như Blast cells, Schistocytes) để bác sĩ duyệt lại trên màn hình máy tính, loại bỏ sự mỏi mắt và yếu tố chủ quan [1].",
+      "deep_knowledge": "Sự xuất hiện của các tế bào hồng cầu bị cắt xén, vỡ vụn (Schistocytes) trên lam kính là dấu hiệu cấp cứu y khoa (Red Flag), chỉ điểm hội chứng đông máu rải rác nội mạch (DIC) hoặc ban xuất huyết giảm tiểu cầu huyết khối (TTP), đe dọa sinh mạng từng giờ.",
+      "patient_advice": "Xét nghiệm này dùng chính mẫu máu ở ống xét nghiệm Công thức máu (ống nắp màu tím có chất chống đông EDTA) của bạn [4]. Việc để ống máu quá lâu ngoài nhiệt độ phòng trước khi phết lam sẽ làm bạch cầu bị thoái hóa, biến dạng hình thái thùy, gây khó khăn lớn cho bác sĩ khi soi kính."
+    },
+    "Hồng cầu lưới": {
+      "name": "Hồng cầu lưới (Reticulocyte Count)",
+      "purpose": "Đánh giá khả năng và tốc độ sản xuất máu mới của 'nhà máy' tủy xương để đáp ứng với tình trạng thiếu máu.",
+      "when_to_do": "Khi bị thiếu máu chưa rõ nguyên nhân, sau các đợt chảy máu cấp tính, hoặc để theo dõi xem tủy xương có phục hồi tốt không sau khi bệnh nhân uống thuốc bổ sung sắt/B12 hoặc sau hóa trị ung thư.",
+      "how_it_works": "Dùng hóa chất nhuộm đặc biệt hoặc máy phân tích dòng chảy (Flow cytometry) để đếm tỷ lệ những tế bào hồng cầu non trẻ mới ra lò (vẫn còn tàn dư mạng lưới ARN bên trong) so với hồng cầu trưởng thành.",
+      "result_meaning": "Tăng cao: Tủy xương đang sống khỏe, hoạt động hết công suất đẩy máu mới ra ngoại vi để bù đắp sự thiếu hụt do chảy máu hoặc tan máu. Giảm thấp: Tủy xương bị hỏng, suy tủy, thiếu nguyên liệu (sắt, B12), tủy không đẻ được máu.",
+      "real_life_example": "Bệnh nhân bị loét dạ dày chảy máu rỉ rả, được truyền máu và uống sắt 1 tuần. Đi xét nghiệm thấy tỷ lệ hồng cầu lưới tăng vọt từ 1% lên 8%, chứng tỏ thuốc sắt đã ngấm và tủy xương đang nỗ lực đẻ máu tuyệt vời.",
+      "note": "Chỉ số này là chiếc gương phản chiếu trung thực nhất sức sống của tủy xương bạn.",
+      "advanced_knowledge": "Máy huyết học tự động hiện đại sử dụng tia laser phân tích huỳnh quang RNA, không chỉ đếm số lượng hồng cầu lưới mà còn đo lượng Hemoglobin bên trong hồng cầu lưới (RET-He). RET-He là chỉ số cực nhạy để phát hiện sớm tình trạng thiếu sắt ngay cả khi sắt huyết thanh chưa có biến đổi rõ rệt.",
+      "deep_knowledge": "Hồng cầu bình thường sống được 120 ngày. Hồng cầu lưới là những tế bào vừa mới thoát ra khỏi tủy xương và sẽ trưởng thành hoàn toàn chỉ sau 1-2 ngày trôi nổi trong máu ngoại vi. Tỷ lệ hồng cầu lưới phải được hiệu chỉnh theo chỉ số HCT của bệnh nhân (Chỉ số hồng cầu lưới hiệu chỉnh - CRC) mới đánh giá đúng được phản ứng của tủy xương.",
+      "patient_advice": "Bạn không cần chuẩn bị gì đặc biệt hay nhịn ăn cho xét nghiệm này. Nếu bạn đang điều trị thiếu máu bằng thuốc, bác sĩ sẽ luôn dùng chỉ số hồng cầu lưới để quyết định xem có nên tiếp tục dùng loại thuốc đó hay phải đổi phác đồ khác."
+    },
+    "Nhóm máu ABO/Rh": {
+      "name": "Nhóm máu ABO và Rh (Blood Typing)",
+      "purpose": "Xác định chính xác nhãn dán định danh nhóm máu của bạn là A, B, AB hay O, và yếu tố Rhesus là Dương (+) hay Âm (-), phục vụ cho truyền máu an toàn.",
+      "when_to_do": "Khi đi hiến máu nhân đạo, phụ nữ mang thai, chuẩn bị mổ phẫu thuật, cấp cứu mất máu, hoặc làm hồ sơ sức khỏe cá nhân.",
+      "how_it_works": "Trộn hồng cầu của bạn với các kháng thể chuẩn (Anti-A, Anti-B, Anti-D) trong ống nghiệm hoặc khuyếch đại gel. Nếu máu bị ngưng kết (vón cục chìm xuống) ở loại kháng thể nào thì sẽ xác định được nhóm máu tương ứng.",
+      "result_meaning": "Kết quả sẽ cho ra một trong 4 nhóm máu chính (O, A, B, AB) kèm theo Rh. Nếu kết quả là Rh(-), bạn thuộc nhóm máu hiếm, chỉ có thể nhận máu từ người Rh(-).",
+      "real_life_example": "Chị gái sinh con lần đầu thử máu ra nhóm O âm (O-). Bác sĩ viện sản lập tức ghi chú hồ sơ nguy cơ cao, báo kho máu dự trữ sẵn máu O âm phòng hờ lúc sinh bị băng huyết, đồng thời lên kế hoạch tiêm Anti-D bảo vệ thai nhi.",
+      "note": "Nhóm máu là thông tin cấu trúc di truyền không bao giờ thay đổi từ lúc sinh ra đến khi chết đi. Truyền nhầm nhóm máu (đặc biệt là hệ ABO) là tai biến y khoa thảm khốc gây vỡ hồng cầu hàng loạt, suy thận cấp và tử vong.",
+      "advanced_knowledge": "Công nghệ xác định nhóm máu bằng sinh học phân tử (Genotyping) giải mã toàn bộ bản đồ gen của các kháng nguyên trên màng hồng cầu, tự động phát hiện các biến thể nhóm máu phụ cực kỳ hiếm gặp (như Bombay, Rh-null) mà phương pháp ngưng kết truyền thống có thể bỏ sót.",
+      "deep_knowledge": "Bất đồng nhóm máu Rh giữa mẹ và thai nhi: Nếu mẹ mang nhóm máu Rh(-) mang thai con Rh(+) (nhận gen từ bố), cơ thể mẹ sẽ sinh ra kháng thể xuyên qua nhau thai bắn phá và tiêu diệt tan nát hồng cầu của thai nhi ở lần mang thai thứ hai, gây phù thai, chết lưu. Việc tiêm dự phòng globulin miễn dịch (Anti-D) cho mẹ là bắt buộc.",
+      "patient_advice": "Bạn hãy ghi nhớ nhóm máu của mình, dán trên mặt sau điện thoại hoặc thẻ căn cước. Nếu bạn thuộc nhóm máu hiếm Rh(-), hãy chủ động tham gia vào Câu lạc bộ máu hiếm địa phương để có người hỗ trợ hiến máu ngay khi bạn gặp tai nạn cấp cứu."
+    },
+    "Phản ứng hòa hợp": {
+      "name": "Phản ứng hòa hợp chéo (Cross-matching)",
+      "purpose": "Bước chốt chặn an toàn cuối cùng và quan trọng nhất trước khi cắm bịch máu vào người bệnh nhân để đảm bảo cơ thể người nhận không đào thải máu người cho.",
+      "when_to_do": "Thực hiện ngay tại phòng xét nghiệm huyết học và làm lại một lần nữa tại giường bệnh trước khi y tá mở van truyền máu.",
+      "how_it_works": "Trộn huyết thanh của người bệnh với hồng cầu lấy từ bịch máu dự định truyền (Major crossmatch) và ủ ở nhiệt độ cơ thể. Quan sát hiện tượng ngưng kết (vón cục) hoặc tán huyết (vỡ hồng cầu).",
+      "result_meaning": "Tương thích (Âm tính): Máu hòa quyện êm ái, an toàn để truyền. Bất tương thích (Dương tính): Máu vón cục đánh nhau, không được truyền, nếu truyền vào sẽ gây sốc phản vệ, tử vong tức khắc.",
+      "real_life_example": "Bệnh nhân tai nạn cần truyền máu gấp, dù bịch máu lấy từ kho cùng là nhóm A+, nhưng phòng lab báo phản ứng chéo dương tính do trong máu bệnh nhân có kháng thể bất thường từ lần truyền máu năm ngoái. Lab lập tức đổi bịch máu khác an toàn hơn.",
+      "note": "Dù bệnh nhân đã biết chắc chắn nhóm máu và bịch máu cũng ghi cùng nhóm máu, thì quy định của Bộ Y tế BẮT BUỘC vẫn phải làm phản ứng hòa hợp này rồi mới được truyền.",
+      "advanced_knowledge": "Hệ thống điện toán hóa truyền máu (Electronic Crossmatching - EXM) sử dụng mã vạch barcode, RFID và AI tự động đối chiếu cơ sở dữ liệu ngầm. Máy tính sẽ khóa lệnh xuất kho máu nếu phát hiện bất kỳ sự bất đồng kháng nguyên vi mô nào, loại bỏ hoàn toàn sai sót do con người.",
+      "deep_knowledge": "Phản ứng chéo ống nghiệm có thể bị nhiễu (dương tính giả) nếu người bệnh đang bị bệnh tự miễn (tự sinh kháng thể chống lại máu mình) hoặc máu có quá nhiều protein viêm làm hồng cầu dính dạng chuỗi tiền (Rouleaux formation). Máy ly tâm gel-card hiện hành giúp tách biệt rõ ràng các hiện tượng này.",
+      "patient_advice": "Khi y tá mang bịch máu đỏ tươi đến giường bệnh của bạn, hãy phối hợp cùng y tá đọc thật to, rõ ràng Họ tên, Năm sinh và Nhóm máu của bạn để đối chiếu với thông tin in trên bịch máu. Đây là quyền lợi sống còn của bạn."
+    },
+    "LDH": {
+      "name": "LDH (Lactate Dehydrogenase)",
+      "purpose": "Kiểm tra và đánh giá mức độ tổn thương, hoại tử chung của các mô tế bào trong cơ thể, hoặc hỗ trợ theo dõi diễn tiến của một số loại ung thư.",
+      "when_to_do": "Nghi ngờ mắc bệnh thiếu máu tán huyết (hồng cầu bị vỡ), tổn thương cơ bắp lan rộng, nhồi máu phổi, hoặc theo dõi bệnh nhân ung thư lympho, ung thư tinh hoàn.",
+      "how_it_works": "Đo lượng enzyme LDH lưu thông trong máu. Đây là men chuyển hóa năng lượng nằm sâu bên trong bào tương của tất cả các tế bào sống. Khi bất kỳ tế bào nào bị vỡ hoặc hoại tử chết đi, LDH sẽ ộc ra dòng máu.",
+      "result_meaning": "Bình thường: Không có tổn thương mô diện rộng. Tăng cao: Các tế bào đang bị phá hủy ồ ạt do thiếu máu cục bộ, nhồi máu cơ tim, vỡ hồng cầu, tổn thương gan, hoặc tế bào ung thư đang phân chia nhanh.",
+      "real_life_example": "Bệnh nhân mệt mỏi xanh xao, mắt vàng, thử máu thấy LDH cao vọt lên hàng nghìn đơn vị. Bác sĩ huyết học xác định bệnh nhân đang bị hội chứng tan máu tự miễn (hồng cầu vỡ nát liên tục trong mạch máu).",
+      "note": "LDH là một chỉ số không đặc hiệu (Nó tăng trong cả bệnh tim, gan, cơ, ung thư). Nó chỉ báo động có sự phá hủy tế bào đang xảy ra, bác sĩ sẽ phải làm thêm xét nghiệm isoenzyme (tách 5 phân nhóm LDH) để xác định chính xác cơ quan nào đang bị bệnh.",
+      "advanced_knowledge": "Máy hóa sinh ứng dụng AI sẽ tự động lập tỷ số LDH/AST và LDH/Procalcitonin để giúp bác sĩ hồi sức (ICU) phân biệt nhanh tổn thương gan cấp tính do hoại tử thiếu oxy với viêm gan nhiễm trùng máu ngay tại giường bệnh.",
+      "deep_knowledge": "Bên trong tế bào hồng cầu chứa lượng LDH cao gấp 150 lần so với trong huyết thanh. Nếu quá trình lấy máu bằng kim quá nhỏ, bơm rút máu quá mạnh, hoặc hệ thống vận chuyển bằng ống khí (pneumatic tube) làm rung lắc vỡ hồng cầu (Tán huyết cơ học), LDH sẽ rò rỉ ra ngoài gây kết quả tăng cao giả tạo cực kỳ nghiêm trọng [2].",
+      "patient_advice": "Nếu kết quả LDH của bạn cao mà bác sĩ yêu cầu lấy máu lại, đừng phàn nàn. Có thể do lúc rút máu tay bạn vận động mạnh làm vỡ hồng cầu trong ống nghiệm. Lần chích máu sau, hãy buông lỏng tay hoàn toàn, không nắm chặt nắm đấm [6]."
+    },
+    "Soi phân": {
+      "name": "Soi phân và Máu ẩn trong phân (FOBT / FIT)",
+      "purpose": "Tìm kiếm trứng giun sán, vi khuẩn, nấm gây tiêu chảy, và đặc biệt là công cụ vàng để tầm soát ung thư đại trực tràng thông qua dấu vết máu ẩn tàng hình.",
+      "when_to_do": "Khi bị đau quặn bụng, tiêu chảy mạn tính, đi tiêu có nhầy máu, hoặc khám tầm soát ung thư ruột định kỳ hàng năm cho người trên 40 tuổi.",
+      "how_it_works": "Bệnh phẩm phân được soi dưới kính hiển vi điện tử tìm cấu trúc trứng giun, amip. Đồng thời dùng test sinh hóa (FOBT) hoặc miễn dịch (FIT) để dò tìm các phân tử Hemoglobin (hồng cầu) li ti trộn lẫn trong phân mà mắt thường không thấy.",
+      "result_meaning": "Âm tính: Phân sạch, ruột khỏe. Dương tính với máu ẩn: Báo động có tổn thương chảy máu rỉ rả trong lòng ruột do polyp, viêm loét hoặc khối u ung thư ác tính cọ xát vào phân.",
+      "real_life_example": "Ông chú 50 tuổi hoàn toàn khỏe mạnh, đi khám sức khỏe làm test FIT phân thấy dương tính. Nội soi đại tràng phát hiện ra ngay 2 polyp tuyến có nguy cơ ung thư cao và cắt bỏ ngay lập tức.",
+      "note": "Đây là xét nghiệm không xâm lấn, cực kỳ rẻ tiền nhưng lại là phao cứu sinh ngăn chặn sớm án tử ung thư đại tràng.",
+      "advanced_knowledge": "Công nghệ xét nghiệm Cologuard thế hệ mới kết hợp xét nghiệm miễn dịch máu ẩn (FIT) với xét nghiệm DNA khối u (cfDNA) tách chiết trực tiếp từ mẫu phân, nâng độ nhạy tầm soát ung thư ruột lên tới 95%, giảm tỷ lệ dương tính giả.",
+      "deep_knowledge": "Test FOBT hóa học cũ (Guaiac test) bị phản ứng chéo với máu động vật, khiến bệnh nhân ăn thịt bò, tiết canh cũng bị dương tính giả ung thư ruột. Test FIT miễn dịch (Fecal Immunochemical Test) tiên tiến sử dụng kháng thể chỉ phản ứng đặc hiệu với Hemoglobin người (Human globin), loại bỏ hoàn toàn nhược điểm phải ăn kiêng thịt trước khi xét nghiệm.",
+      "patient_advice": "Tuyệt đối không lấy mẫu phân đi xét nghiệm nếu bạn đang trong kỳ kinh nguyệt, đang bị chảy máu búi trĩ, hoặc chảy máu cam (vì máu mũi nuốt xuống dạ dày sẽ làm dương tính giả). Dùng thìa nhựa xúc phần phân có nhầy nhớt hoặc màu đen bất thường cho vào lọ và gửi đến phòng khám trong vòng 2 giờ [5]."
+    },
+    "Ethanol": {
+      "name": "Ethanol máu (Đo Nồng độ Cồn)",
+      "purpose": "Đo lường chính xác, mang tính pháp lý về hàm lượng cồn (rượu, bia) đang lưu thông trong máu, hoặc cấp cứu bệnh nhân ngộ độc cấp.",
+      "when_to_do": "Giám định pháp y cho người bị tai nạn giao thông, thanh niên hôn mê sùi bọt mép co giật sau chầu nhậu nghi ngộ độc rượu giả (Methanol/Ethanol).",
+      "how_it_works": "Sử dụng công nghệ sắc ký khí (Gas Chromatography) hoặc phản ứng enzyme (Alcohol Dehydrogenase) để tách và đo nồng độ phân tử Ethanol (C2H5OH) trong huyết thanh.",
+      "result_meaning": "Âm tính (0 mg/dL): Sạch cồn. Cao: Bệnh nhân say xỉn, suy giảm phản xạ, mất kiểm soát thần kinh. Cực cao (>300 mg/dL): Nguy cơ ức chế trung tâm hô hấp trên não, ngừng thở, tử vong.",
+      "real_life_example": "Một tài xế gây tai nạn bất tỉnh, công an yêu cầu lấy máu đo cồn. Kết quả Ethanol máu lên tới 150 mg/dL, bằng chứng thép vi phạm nồng độ cồn kịch khung.",
+      "note": "Mức độ say xỉn không chỉ phụ thuộc vào nồng độ cồn mà còn tùy thuộc vào 'tửu lượng' (khả năng sinh men chuyển hóa ở gan) của từng người. Gan khỏe chuyển hóa cồn với tốc độ khoảng 15-20 mg/dL mỗi giờ.",
+      "advanced_knowledge": "Máy quang phổ hồng ngoại POCT tại phòng cấp cứu phân biệt ngay lập tức trong 2 phút giữa ngộ độc cồn sinh học (Ethanol) và cồn công nghiệp chết người (Methanol), giúp bác sĩ ra quyết định cho chạy lọc máu cấp cứu bảo vệ não bệnh nhân.",
+      "deep_knowledge": "Khi lấy máu đo Ethanol mang tính giám định pháp y pháp luật, mọi quy trình phải được niêm phong kỹ lưỡng (Chain of Custody). Ống máu phải được đóng nắp chặt ngay sau khi rút để tránh cồn bốc hơi làm giảm nồng độ [2].",
+      "patient_advice": "Nguyên tắc sinh tử của y tá: Khi sát trùng vùng da cánh tay để đâm kim lấy máu đo cồn, tuyệt đối KHÔNG ĐƯỢC dùng cồn y tế (Alcohol 70 độ) để lau da, vì cồn sát trùng sẽ hòa lẫn vào mũi kim gây ra kết quả oan sai cho người bệnh. Y tá bắt buộc phải dùng thuốc đỏ Povidine-Iodine hoặc xà phòng để sát trùng."
+    },
+    "Test ma túy": {
+      "name": "Test Ma túy & Độc chất (Drugs of Abuse Screen)",
+      "purpose": "Phát hiện sự có mặt của các chất kích thích, chất gây nghiện bất hợp pháp hoặc thuốc an thần gây ngủ trong cơ thể.",
+      "when_to_do": "Khám sức khỏe làm bằng lái xe, tuyển dụng việc làm, kiểm tra đột xuất đối tượng cai nghiện, hoặc bệnh nhân cấp cứu trong tình trạng ảo giác, hoang tưởng, ngáo đá, suy hô hấp.",
+      "how_it_works": "Dùng panel que thử miễn dịch nhanh (nhúng vào nước tiểu) hoặc hệ thống phân tích sinh hóa máu để dò tìm hàng loạt gốc hóa học của Morphine, Heroin, Cần sa (THC), Ma túy đá (Methamphetamine), Thuốc lắc (MDMA), và Barbiturate.",
+      "result_meaning": "Âm tính: Không có chất cấm. Dương tính: Trong vòng vài ngày qua (hoặc vài tuần đối với cần sa), cơ thể đã tiếp nhận và đào thải chất gây nghiện.",
+      "real_life_example": "Thanh niên lảm nhảm leo lên nóc nhà nghi ngáo đá được công an đưa vào viện. Test nhanh 4 chân nước tiểu lên 2 vạch ở ô MET (Methamphetamine dương tính), xác nhận sử dụng ma túy đá gây loạn thần.",
+      "note": "Nước tiểu là mẫu bệnh phẩm tốt nhất để test ma túy vì chất độc tồn lưu ở đây lâu hơn và cô đặc hơn trong máu rất nhiều.",
+      "advanced_knowledge": "Các máy phân tích sắc ký khối phổ (LC-MS/MS) hiện nay có khả năng phân tách và bắt được các hợp chất ma túy tổng hợp thế hệ mới (cỏ Mỹ, muối tắm) được giới tội phạm liên tục biến đổi cấu trúc hóa học để lách luật, thứ mà que test thông thường bị mù.",
+      "deep_knowledge": "Test ma túy có ngưỡng cắt (Cut-off level). Nồng độ dưới ngưỡng được coi là âm tính. Rất nhiều thuốc tây y thông thường (như thuốc chống ngạt mũi Pseudoephedrine, thuốc giảm cân, thuốc ho) có cấu trúc gốc amphetamine, sẽ gây ra phản ứng chéo làm que test ma túy lên 2 vạch (dương tính giả). Cần xét nghiệm khẳng định (Confirmatory test) bằng sắc ký khí để kết luận pháp lý.",
+      "patient_advice": "Nếu bạn bị yêu cầu test ma túy nhưng bạn đang phải uống thuốc tây chữa cảm cúm sổ mũi hay thuốc viêm khớp, hãy mang theo vỉ thuốc và khai báo rõ với bác sĩ, nhân viên y tế. Điều này sẽ cứu bạn khỏi những rắc rối hành chính nếu que test vô tình bị dương tính giả."
+    },
 };
 
 const diseaseGroups = [
   {
-    title: 'Tim mạch & Đột quỵ',
+    title: 'Tim mạch & Đông máu',
     img: 'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800&q=80',
     icon: <Heart className="text-red-500" />,
-    tests: ['NT-ProBNP', 'Troponin I', 'CK-MB', 'AST', 'LDH', 'CRP', 'Khí máu', 'Điện giải', 'Bộ mỡ máu', 'PT', 'APTT', 'D-Dimer'],
-    description: 'Hỗ trợ chẩn đoán cấp cứu nhồi máu cơ tim, suy tim, đột quỵ.',
-    meaning: 'Hỗ trợ chẩn đoán cấp cứu nhồi máu cơ tim, suy tim, đột quỵ. Tầm soát rối loạn mỡ máu và theo dõi tình trạng huyết khối.'
+    tests: ['NT-ProBNP', 'Troponin I', 'CK-MB', 'Bộ mỡ máu', 'PT', 'APTT', 'D-Dimer'],
+    description: 'Hỗ trợ chẩn đoán cấp cứu nhồi máu cơ tim, suy tim và kiểm tra hệ thống đông máu.',
+    meaning: 'Giúp phát hiện sớm các cơn nhồi máu cơ tim cấp, đánh giá chức năng bơm máu của tim. Đồng thời tầm soát rối loạn mỡ máu để ngăn ngừa tắc nghẽn mạch máu, đột quỵ và kiểm tra tình trạng huyết khối (cục máu đông) trước phẫu thuật.'
   },
-  {
-    title: 'Ung bướu (Ung thư)',
-    img: 'https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=800&q=80',
-    icon: <Microscope className="text-purple-500" />,
-    tests: ['AFP', 'CEA', 'PSA', 'CA 15-3', 'Tg', 'Tế bào học dịch'],
-    description: 'Tầm soát sớm, chẩn đoán và theo dõi đáp ứng điều trị các loại ung thư phổ biến.',
-    meaning: 'Tầm soát sớm, chẩn đoán và theo dõi đáp ứng điều trị các loại ung thư phổ biến. Tìm tế bào ác tính trong dịch cơ thể.'
-  },
-  {
-    title: 'Hô hấp (Phổi, Lao)',
-    img: 'https://images.unsplash.com/photo-1551076805-e1869033e561?w=400&q=70',
-    icon: <Wind className="text-blue-400" />,
-    tests: ['Khí máu', 'CRP', 'Pro-calcitonin', 'Interleukin 6', 'WBC', 'Máu lắng', 'Nhuộm AFB tìm Lao', 'Cấy vi khuẩn'],
-    description: 'Đánh giá mức độ suy hô hấp và chẩn đoán các bệnh lý nhiễm trùng phổi.',
-    meaning: 'Đánh giá mức độ suy hô hấp. Tìm nguyên nhân viêm phổi cấp do vi khuẩn/virus và chẩn đoán đặc thù bệnh lao phổi.'
-  },
-  {
-    title: 'Chuyển hóa & Tiểu đường',
-    img: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80',
-    icon: <Droplet className="text-orange-500" />,
-    tests: ['Glucose', 'HbA1C', 'Insulin', 'C-peptid', 'Acid Uric', 'Ceton', 'Ure', 'Creatinin', 'MAU niệu', 'Protein niệu 24h'],
-    description: 'Chẩn đoán, theo dõi kiểm soát đường huyết và biến chứng thận.',
-    meaning: 'Chẩn đoán, theo dõi kiểm soát đường huyết. Phát hiện sớm biến chứng thận của tiểu đường và theo dõi bệnh Gout.'
-  },
-  {
-    title: 'Gan mật & Tiêu hóa',
+   {
+    title: 'Gan mật & Tuyến tụy',
     img: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80',
-    icon: <Activity className="text-green-600" />,
-    tests: ['AST', 'ALT', 'GGT', 'Bilirubin', 'Albumin', 'Amylase', 'Lipase', 'HBsAg', 'HCV Ab', 'Tải lượng HBV','Tải lượng HCV', 'Soi phân'],
-    description: 'Đánh giá mức độ tổn thương gan, viêm tụy cấp và viêm gan siêu vi.',
-    meaning: 'Đánh giá mức độ tổn thương gan, viêm tụy cấp. Tầm soát viêm gan siêu vi B, C và tìm nguyên nhân xuất huyết tiêu hóa.'
+    icon: <Activity className="text-orange-500" />,
+    tests: ['AST', 'ALT', 'GGT', 'Bilirubin', 'Albumin', 'Amylase', 'Lipase', 'Amoniac'],
+    description: 'Đánh giá chức năng gan, mật và phát hiện sớm các tổn thương ở tuyến tụy.',
+    meaning: 'Kiểm tra tình trạng viêm gan do virus, ngộ độc thuốc hay rượu bia; chẩn đoán nguyên nhân gây vàng da, sỏi mật, xơ gan. Nhóm này cũng mang tính sinh tử trong việc cấp cứu và chẩn đoán bệnh viêm tụy cấp nguy hiểm.'
   },
   {
-    title: 'Thận - Tiết niệu',
+    title: 'Thận & Tiết niệu',
     img: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80',
-    icon: <Stethoscope className="text-blue-600" />,
-    tests: ['Ure', 'Creatinin', 'Điện giải', 'Calci', 'Phospho', 'Protein niệu 24h', 'Tế bào cặn nước tiểu', 'Cấy vi khuẩn nước tiểu'],
-    description: 'Đánh giá chức năng lọc của thận và nhiễm trùng đường tiết niệu.',
-    meaning: 'Đánh giá chức năng lọc của thận, rối loạn cân bằng điện giải. Chẩn đoán các tình trạng nhiễm trùng đường tiết niệu.'
+    icon: <Droplet className="text-blue-500" />,
+    tests: ['Ure', 'Creatinin', 'Cystatin C', 'MAU niệu', 'Protein niệu 24h', 'Tế bào cặn nước tiểu', 'Cấy vi khuẩn nước tiểu', 'Điện giải'],
+    description: 'Đánh giá khả năng lọc chất thải của thận và phát hiện viêm nhiễm đường tiết niệu.',
+    meaning: 'Phát hiện sớm tình trạng suy thận ngay từ giai đoạn chưa có triệu chứng lâm sàng (đặc biệt ở người tiểu đường, huyết áp cao). Giúp tìm ra vi khuẩn gây tiểu buốt, tiểu rắt để bác sĩ kê đúng loại kháng sinh cần thiết.'
   },
   {
-    title: 'Truyền nhiễm & Ký sinh trùng',
-    img: 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=400&q=70',
-    icon: <Thermometer className="text-red-600" />,
-    tests: ['Dengue virus', 'HIV', 'Sốt rét', 'Treponema pallidum', 'Salmonella', 'Toxocara'],
-    description: 'Chẩn đoán các bệnh dịch truyền nhiễm nhiệt đới và giun sán.',
-    meaning: 'Chẩn đoán các bệnh dịch truyền nhiễm nhiệt đới nguy hiểm và xác định gánh nặng bệnh lý do giun sán lây nhiễm.'
-  },
-  {
-    title: 'Chấn thương & Cấp cứu',
-    img: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&q=80',
-    icon: <Zap className="text-yellow-500" />,
-    tests: ['Khí máu', 'Lactat', 'Ethanol', 'Test ma túy', 'Nhóm máu ABO/Rh', 'Phản ứng hòa hợp'],
-    description: 'Đánh giá hồi sức tích cực và chuẩn bị an toàn truyền máu.',
-    meaning: 'Đánh giá tình trạng hồi sức tích cực đa chấn thương. Tầm soát nguyên nhân tai nạn do rượu/ma túy và chuẩn bị an toàn truyền máu.'
-  },
-  {
-    title: 'Tâm thần & Thần kinh',
-    img: 'https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=800&q=80',
-    icon: <Brain className="text-pink-500" />,
-    tests: ['Dịch não tủy', 'Ethanol', 'Amoniac (NH3)', 'AST', 'ALT', 'GGT'],
-    description: 'Tìm nguyên nhân viêm màng não và đánh giá tổn thương thần kinh.',
-    meaning: 'Tìm nguyên nhân viêm màng não/viêm não. Đánh giá tổn thương gan và thần kinh do tình trạng lạm dụng rượu/chất kích thích.'
-  },
-  {
-    title: 'Cơ xương khớp',
-    img: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=600&q=80',
-    icon: <Bone className="text-slate-500" />,
-    tests: ['Acid Uric', 'Calci toàn phần/ion hóa', 'Phospho', 'Vitamin D3', 'RF', 'ASO', 'CRP', 'Máu lắng'],
-    description: 'Tầm soát bệnh lý tự miễn và loãng xương.',
-    meaning: 'Tầm soát các bệnh lý tự miễn, đánh giá tình trạng loãng xương ở người lớn tuổi và tình trạng viêm nhiễm cấp/mãn tính tại khớp.'
-  },
-  {
-    title: 'Dinh dưỡng & Thiếu máu',
-    img: 'https://images.unsplash.com/photo-1576086476234-1103be98f096?w=400&q=70',
-    icon: <Scale className="text-green-500" />,
-    tests: ['Sắt huyết thanh', 'Ferritin', 'Folate', 'Vitamin B12', 'UIBC', 'Phết máu ngoại biên', 'Hồng cầu lưới'],
-    description: 'Chẩn đoán nguyên nhân thiếu máu và thiếu hụt vi chất.',
-    meaning: 'Chẩn đoán phân biệt các nguyên nhân gây thiếu máu. Tầm soát thiếu hụt vi chất dinh dưỡng ở trẻ em và phụ nữ mang thai.'
+    title: 'Đái tháo đường & Chuyển hóa',
+    img: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80',
+    icon: <Flame className="text-yellow-500" />,
+    tests: ['Glucose', 'HbA1C', 'Insulin', 'C-peptid', 'Ceton'],
+    description: 'Tầm soát, chẩn đoán bệnh tiểu đường và đánh giá mức độ kiểm soát đường huyết.',
+    meaning: 'Chẩn đoán chính xác bạn mắc tiểu đường type 1 hay type 2'
   },
   {
     title: 'Tuyến giáp & Nội tiết',
     img: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80',
-    icon: <Activity className="text-cyan-500" />,
-    tests: ['FT3', 'FT4', 'TSH', 'Testosteron', 'Cortisol'],
-    description: 'Kiểm tra chức năng tuyến giáp và hormone sinh dục.',
-    meaning: 'Chẩn đoán các hội chứng cường giáp/suy giáp, đánh giá chức năng tuyến thượng thận và tình trạng suy giảm hormone sinh dục.'
-  }
-];
+    icon: <Activity className="text-blue-500" />,
+    tests: ['FT3', 'FT4', 'TSH', 'Testosteron', 'Cortisol', 'PTH'],
+    description: 'Đánh giá chức năng hoạt động của tuyến giáp, tuyến thượng thận và các hormone sinh dục.',
+    meaning: 'Phát hiện sớm các rối loạn nội tiết như cường/suy giáp, mãn dục nam, hoặc u tuyến thượng thận.'
+  },
+  {
+    title: 'Xương khớp & Tự miễn',
+    img: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=600&q=80',
+    icon: <Bone className="text-gray-500" />,
+    tests: ['Acid Uric', 'Calci', 'Phospho', 'Vitamin D3', 'Yếu tố dạng thấp', 'Anti-CCP', 'ASO'],
+    description: 'Kiểm tra tình trạng xương khớp, mức độ thiếu hụt khoáng chất và các bệnh lý tự miễn dịch.',
+    meaning: 'Chẩn đoán chính xác bệnh Gout, loãng xương và tình trạng viêm khớp dạng thấp.'
+  },
+    {
+    title: 'Tầm soát Ung thư',
+    img: 'https://images.unsplash.com/photo-1576086476234-1103be98f096?w=400&q=70',
+    icon: <ShieldAlert className="text-purple-500" />,
+    tests: ['AFP', 'CEA', 'PSA', 'CA 15-3', 'Tg', 'CA 19-9', 'Cyfra 21-1', 'SCC'],
+    description: 'Đo lường các dấu ấn ung thư trong máu để phát hiện sớm các khối u ác tính trong cơ thể.',
+    meaning: 'Giúp tầm soát, phát hiện từ giai đoạn sớm và theo dõi mức độ đáp ứng điều trị ung thư.'
+  },
+  {
+    title: 'Truyền nhiễm & Ký sinh trùng',
+    img: 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=400&q=70',
+    icon: <Bug className="text-green-500" />,
+    tests: ['HBsAg', 'HCV Ab', 'Tải lượng HBV', 'Tải lượng HCV', 'Dengue virus', 'HIV', 'Sốt rét', 'Treponema pallidum', 'Salmonella', 'Toxocara'],
+    description: 'Tìm kiếm sự hiện diện của virus, vi khuẩn hoặc ký sinh trùng gây ra các bệnh lây nhiễm.',
+    meaning: 'Khẳng định tình trạng nhiễm bệnh (Viêm gan, HIV, Giang mai, Sốt xuất huyết...) để điều trị kịp thời.'
+  },
+  {
+    title: 'Viêm & Nhiễm trùng máu',
+    img: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&q=80',
+    icon: <Thermometer className="text-red-500" />,
+    tests: ['CRP', 'Pro-calcitonin', 'Interleukin 6', 'Bạch cầu', 'Máu lắng', 'Lactat'],
+    description: 'Đánh giá mức độ viêm nhiễm, phản ứng của hệ miễn dịch và tình trạng nhiễm trùng toàn thân.',
+    meaning: 'Cảnh báo nhanh tình trạng nhiễm trùng máu nguy hiểm và sốc bệnh lý để cấp cứu tức khắc.'
+  },
+  {
+    title: 'Hô hấp, Lao & Vi sinh',
+    img: 'https://images.unsplash.com/photo-1551076805-e1869033e561?w=400&q=70',
+    icon: <Wind className="text-teal-500" />,
+    tests: ['Nhuộm AFB tìm Lao', 'Xpert MTB/RIF', 'QuantiFERON-TB', 'Đo hoạt độ ADA', 'Khí máu', 'Cấy vi khuẩn', 'Tế bào học dịch', 'Dịch não tủy'],
+    description: 'Xét nghiệm chuyên sâu chẩn đoán các bệnh đường hô hấp, bệnh Lao và phân tích các loại dịch tiết.',
+    meaning: 'Xác định chính xác vi khuẩn gây bệnh và mức độ kháng thuốc để đưa ra phác đồ kháng sinh hiệu quả.'
+  },
+  {
+    title: 'Huyết học & Tạo máu',
+    img: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&q=80',
+    icon: <Droplet className="text-red-600" />,
+    tests: ['Sắt huyết thanh', 'Ferritin', 'Folate', 'Vitamin B12', 'UIBC', 'Phết máu ngoại biên', 'Hồng cầu lưới', 'Nhóm máu ABO/Rh', 'Phản ứng hòa hợp'],
+    description: 'Đánh giá chất lượng tế bào máu, dự trữ sắt, vitamin tạo máu và xét nghiệm truyền máu.',
+    meaning: 'Chẩn đoán các loại bệnh thiếu máu, ung thư máu và bảo đảm an toàn tuyệt đối khi truyền máu.'
+  },
+{
+    title: 'Xét nghiệm Khác & Độc chất',
+    img: 'https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=800&q=80',
+    icon: <FlaskConical className="text-orange-500" />,
+    tests: ['LDH', 'Soi phân', 'Ethanol', 'Test ma túy'],
+    description: 'Nhóm xét nghiệm phân tích độc chất, kiểm tra tổn thương mô chung và các mẫu bệnh phẩm phân.',
+    meaning: 'Phát hiện nhanh tình trạng ngộ độc cồn, sử dụng chất cấm hoặc các tổn thương tế bào lan tỏa.'
+  },
+ ];
 
 const patientInstructions = [
   {
@@ -3836,20 +4136,20 @@ const Header = ({
         </div>
         <div>
           <h1 className="fluid-title font-bold tracking-tight text-blue-900 leading-none">KHOA XÉT NGHIỆM</h1>
-          <p className="text-[8px] sm:text-[10px] uppercase font-semibold text-blue-600 tracking-[0.1em] sm:tracking-widest mt-0.5 sm:mt-1">BVĐK CÀ MAU</p>
+          <p className="text-[10px] sm:text-xs uppercase font-semibold text-blue-600 tracking-[0.1em] sm:tracking-widest mt-0.5 sm:mt-1">BVĐK CÀ MAU</p>
         </div>
       </div>
       
-      <div className="flex items-center gap-4 sm:gap-12 text-sm sm:text-xl font-black uppercase tracking-tight text-slate-500">
+      <div className="flex items-center gap-4 sm:gap-6 md:gap-12 text-sm sm:text-lg md:text-xl font-black uppercase tracking-tight text-slate-500">
         <button 
           onClick={() => setActiveTab('patients')}
-          className={`transition-all pb-1 sm:pb-2 border-b-2 sm:border-b-4 ${activeTab === 'patients' ? 'text-blue-700 border-blue-700 scale-105 sm:scale-110' : 'border-transparent hover:text-blue-600 cursor-pointer'}`}
+          className={`transition-all pb-1 sm:pb-2 border-b-2 sm:border-b-4 ${activeTab === 'patients' ? 'text-blue-700 border-blue-700 scale-105 md:scale-110' : 'border-transparent hover:text-blue-600 cursor-pointer'}`}
         >
           Bệnh nhân
         </button>
         <button 
           onClick={() => setActiveTab('staff')}
-          className={`transition-all pb-1 sm:pb-2 border-b-2 sm:border-b-4 ${activeTab === 'staff' ? 'text-blue-700 border-blue-700 scale-105 sm:scale-110' : 'border-transparent hover:text-blue-600 cursor-pointer'}`}
+          className={`transition-all pb-1 sm:pb-2 border-b-2 sm:border-b-4 ${activeTab === 'staff' ? 'text-blue-700 border-blue-700 scale-105 md:scale-110' : 'border-transparent hover:text-blue-600 cursor-pointer'}`}
         >
           Nhân viên
         </button>
@@ -3877,80 +4177,134 @@ const KnowledgeCardPopup = ({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="absolute inset-0 bg-slate-900/40 backdrop-blur-md"
+        className="absolute inset-0 bg-slate-900/60 backdrop-blur-xl"
       />
       <motion.div 
         initial={{ opacity: 0, scale: 0.9, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-        className="relative w-full max-w-lg bg-white dark:bg-slate-800 rounded-[30px] sm:rounded-[40px] shadow-2xl overflow-hidden border-4 border-white mx-auto"
+        className="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-[30px] sm:rounded-[45px] shadow-[0_32px_64px_-16px_rgba(245,158,11,0.25)] overflow-hidden border-[6px] border-white dark:border-slate-800 mx-auto"
       >
-        <div className="bg-gradient-to-br from-blue-600 to-indigo-700 p-6 sm:p-10 text-white relative">
-            <button 
+        {/* Header - Amber Gradient (Umbre Style) */}
+        <div className="bg-gradient-to-br from-amber-400 via-orange-500 to-amber-600 p-6 sm:p-8 md:p-12 text-white relative">
+            <motion.button 
+                whileHover={{ rotate: 90 }}
+                whileActive={{ scale: 0.9 }}
                 onClick={onClose}
-                className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 bg-white/20 hover:bg-white/40 rounded-xl transition-all"
+                className="absolute top-6 right-6 sm:top-8 sm:right-8 p-3 bg-white/20 hover:bg-white/40 rounded-2xl transition-all"
             >
-                <X className="w-5 h-5 sm:w-6 h-6" />
-            </button>
-            <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
-                <div className="p-2 sm:p-3 bg-white/20 rounded-xl sm:rounded-2xl">
-                    <Database className="w-6 h-6 sm:w-8 h-8" />
+                <X className="w-6 h-6" />
+            </motion.button>
+            <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-4">
+                    <div className="p-3 sm:p-4 bg-white/20 backdrop-blur-md rounded-2xl sm:rounded-[24px]">
+                        <Activity className="w-8 h-8 sm:w-10 h-10" />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tighter uppercase leading-[0.9] mb-1 drop-shadow-md">{knowledge.name}</h2>
+                      <div className="flex items-center gap-2 text-white/90 font-black text-[10px] sm:text-xs uppercase tracking-[0.2em] bg-white/10 w-fit px-3 py-1 rounded-full backdrop-blur-sm">
+                        <ShieldCheck className="w-3.5 h-3.5" /> Kiến thức xét nghiệm
+                      </div>
+                    </div>
                 </div>
-                <h2 className="text-2xl sm:text-4xl font-black tracking-tighter uppercase leading-tight">{knowledge.name}</h2>
             </div>
-            <p className="text-blue-100 text-sm sm:text-lg font-medium italic opacity-90 leading-tight">Thông tin cơ bản cần biết dành cho bệnh nhân</p>
         </div>
         
-        <div className="p-6 sm:p-10 space-y-6 sm:space-y-8 overflow-y-auto max-h-[60vh] sm:max-h-[70vh]">
+        <div className="p-4 sm:p-10 md:p-12 space-y-6 sm:space-y-10 md:space-y-12 overflow-y-auto max-h-[60vh] sm:max-h-[70vh] custom-scrollbar">
+            {/* 1. Purpose */}
             <section>
-                <h3 className="flex items-center gap-2 text-blue-600 font-black text-[10px] sm:text-sm uppercase tracking-widest mb-2 sm:mb-3">
-                    <Activity className="w-4 h-4" /> Mục đích xét nghiệm
+                <h3 className="flex items-center gap-2 text-orange-600 font-extrabold text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-2 sm:mb-4">
+                    <Activity className="w-4 h-4" /> Mục tiêu & Chỉ định
                 </h3>
-                <p className="text-slate-800 dark:text-slate-200 text-lg sm:text-xl font-bold leading-relaxed">{knowledge.purpose}</p>
+                <p className="text-slate-900 dark:text-white text-lg sm:text-2xl font-black leading-[1.3]">{knowledge.purpose}</p>
             </section>
 
-            <section className="bg-amber-50 p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-amber-100">
-                <h3 className="flex items-center gap-2 text-amber-700 font-black text-[10px] sm:text-sm uppercase tracking-widest mb-2 sm:mb-3">
-                    <Clock className="w-4 h-4" /> Khi nào cần thực hiện?
+            {/* 2. When to do & How it works - Two Column Grid on Desktop */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <section className="bg-amber-50 dark:bg-amber-950/20 p-6 rounded-[28px] border border-amber-100 dark:border-amber-900/30">
+                    <h3 className="flex items-center gap-2 text-amber-700 dark:text-amber-400 font-black text-[10px] sm:text-xs uppercase tracking-widest mb-3">
+                        <Clock className="w-4 h-4" /> Khi nào cần làm?
+                    </h3>
+                    <p className="text-slate-800 dark:text-slate-200 font-bold leading-relaxed text-sm sm:text-base italic">{knowledge.when_to_do}</p>
+                </section>
+
+                <section className="bg-blue-50 dark:bg-blue-950/20 p-6 rounded-[28px] border border-blue-100 dark:border-blue-900/30">
+                    <h3 className="flex items-center gap-2 text-blue-700 dark:text-blue-400 font-black text-[10px] sm:text-xs uppercase tracking-widest mb-3">
+                        <Zap className="w-4 h-4" /> Cơ chế sinh học
+                    </h3>
+                    <p className="text-slate-700 dark:text-slate-300 font-semibold leading-relaxed text-sm sm:text-base">{knowledge.how_it_works}</p>
+                </section>
+            </div>
+
+            {/* 3. Result Meaning */}
+            <section className="bg-emerald-50 dark:bg-emerald-950/20 p-6 sm:p-8 rounded-[32px] border-2 border-dashed border-emerald-200 dark:border-emerald-800/40">
+                <h3 className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-black text-[10px] sm:text-xs uppercase tracking-widest mb-4">
+                    <TrendingUp className="w-4 h-4" /> Giải mã kết quả
                 </h3>
-                <p className="text-slate-700 font-bold leading-relaxed italic text-sm sm:text-base">{knowledge.when_to_do}</p>
+                <p className="text-emerald-900 dark:text-emerald-200 font-black leading-relaxed text-sm sm:text-lg">{knowledge.result_meaning}</p>
             </section>
 
-            <section>
-                <h3 className="flex items-center gap-2 text-indigo-600 font-black text-[10px] sm:text-sm uppercase tracking-widest mb-2 sm:mb-3">
-                    <Zap className="w-4 h-4" /> Nguyên lý đơn giản
+            {/* 4. Real Life Example */}
+            <section className="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-[32px] border border-slate-100 dark:border-slate-700/50 relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                    <Glasses className="w-16 h-16" />
+                </div>
+                <h3 className="flex items-center gap-2 text-slate-500 dark:text-slate-400 font-black text-[10px] sm:text-xs uppercase tracking-widest mb-4">
+                    <BookOpen className="w-4 h-4" /> Câu chuyện lâm sàng
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed text-sm sm:text-base">{knowledge.how_it_works}</p>
+                <p className="text-slate-700 dark:text-slate-300 font-medium text-sm sm:text-base leading-relaxed italic">"{knowledge.real_life_example}"</p>
             </section>
 
-            <section className="bg-emerald-50 p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-emerald-100">
-                <h3 className="flex items-center gap-2 text-emerald-700 font-black text-[10px] sm:text-sm uppercase tracking-widest mb-2 sm:mb-3">
-                    <TrendingUp className="w-4 h-4" /> Ý nghĩa kết quả
-                </h3>
-                <p className="text-emerald-900 font-black leading-relaxed text-sm sm:text-base">{knowledge.result_meaning}</p>
-            </section>
+            {/* 5. Advanced Knowledge */}
+            {knowledge.advanced_knowledge && (
+                <section className="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/20 dark:to-blue-950/20 p-8 rounded-[32px] border border-blue-100 dark:border-blue-900/30">
+                    <h3 className="flex items-center gap-2 text-indigo-700 dark:text-indigo-400 font-black text-[10px] sm:text-xs uppercase tracking-widest mb-4">
+                        <Cpu className="w-4 h-4" /> Công nghệ Y tế thông minh
+                    </h3>
+                    <p className="text-slate-800 dark:text-slate-200 font-bold leading-relaxed text-sm sm:text-base">{knowledge.advanced_knowledge}</p>
+                </section>
+            )}
 
-            <section className="bg-slate-50 p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-100 italic">
-                <h3 className="flex items-center gap-2 text-slate-500 font-black text-[10px] sm:text-sm uppercase tracking-widest mb-2 sm:mb-3">
-                    <ShieldCheck className="w-4 h-4" /> Ví dụ thực tế
-                </h3>
-                <p className="text-slate-600 font-medium text-sm sm:text-base">{knowledge.real_life_example}</p>
-            </section>
+            {/* 6. Deep Knowledge */}
+            {knowledge.deep_knowledge && (
+                <section className="bg-orange-50 dark:bg-orange-950/20 p-8 rounded-[32px] border border-orange-100 dark:border-orange-900/30">
+                    <h3 className="flex items-center gap-2 text-orange-700 dark:text-orange-400 font-black text-[10px] sm:text-xs uppercase tracking-widest mb-4">
+                        <Glasses className="w-4 h-4" /> Góc chuyên sâu
+                    </h3>
+                    <p className="text-slate-800 dark:text-slate-200 font-medium leading-relaxed text-sm sm:text-base">{knowledge.deep_knowledge}</p>
+                </section>
+            )}
 
+            {/* 7. Patient Advice */}
+            {knowledge.patient_advice && (
+                <section className="bg-rose-50 dark:bg-rose-950/20 p-8 rounded-[32px] border-2 border-rose-200 dark:border-rose-800/40">
+                    <h3 className="flex items-center gap-2 text-rose-700 dark:text-rose-400 font-black text-[10px] sm:text-xs uppercase tracking-widest mb-4">
+                        <HeartHandshake className="w-4 h-4" /> Lời khuyên cho bạn
+                    </h3>
+                    <p className="text-rose-900 dark:text-rose-200 font-extrabold leading-relaxed text-base sm:text-lg">{knowledge.patient_advice}</p>
+                </section>
+            )}
+
+            {/* 8. Note */}
             {knowledge.note && (
-                <div className="bg-blue-50 p-4 sm:p-6 rounded-2xl sm:rounded-3xl border-l-[6px] sm:border-l-8 border-blue-600">
-                    <p className="text-blue-900 font-black text-base sm:text-lg">💡 Lưu ý: {knowledge.note}</p>
+                <div className="bg-amber-500/10 dark:bg-amber-500/5 p-6 rounded-[28px] border-l-[8px] border-amber-500">
+                    <p className="text-amber-900 dark:text-amber-200 font-black text-base sm:text-lg leading-tight">
+                      <span className="bg-amber-500 text-white px-2 py-0.5 rounded-md text-xs uppercase mr-2">Cảnh báo</span>
+                      {knowledge.note}
+                    </p>
                 </div>
             )}
         </div>
 
-        <div className="p-6 sm:p-8 bg-slate-50 flex justify-center">
-            <button 
+        <div className="p-8 sm:p-10 bg-slate-50 dark:bg-slate-950/50 flex justify-center border-t border-slate-100 dark:border-slate-800">
+            <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileActive={{ scale: 0.95 }}
                 onClick={onClose}
-                className="px-8 py-3 sm:px-10 sm:py-4 bg-slate-900 text-white rounded-xl sm:rounded-2xl font-black text-lg sm:text-xl hover:bg-black transition-all shadow-xl active:scale-95"
+                className="w-full sm:w-auto px-12 py-5 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-2xl sm:rounded-3xl font-black text-lg hover:shadow-[0_20px_40px_-10px_rgba(245,158,11,0.5)] transition-all"
             >
-                Đã Hiểu
-            </button>
+                TÔI ĐÃ HIỂU
+            </motion.button>
         </div>
       </motion.div>
     </div>
@@ -4076,13 +4430,13 @@ export default function App() {
                 <div className="inline-flex flex-wrap justify-center p-1 bg-white/50 dark:bg-slate-800/50 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
                   <button 
                     onClick={() => setPatientSubTab('instructions')}
-                    className={`px-4 sm:px-10 py-3 sm:py-4 rounded-[20px] sm:rounded-[25px] text-base sm:text-xl font-black transition-all ${patientSubTab === 'instructions' ? 'bg-blue-600 text-white shadow-xl scale-105' : 'text-slate-500 hover:text-blue-600'}`}
+                    className={`px-4 sm:px-6 md:px-10 py-3 sm:py-4 rounded-[20px] sm:rounded-[25px] text-sm sm:text-lg md:text-xl font-black transition-all ${patientSubTab === 'instructions' ? 'bg-blue-600 text-white shadow-xl scale-105' : 'text-slate-500 hover:text-blue-600'}`}
                   >
                     <FlaskConical className="w-4 h-4 sm:w-5 h-5 inline-block mr-2 sm:mr-3" /> Hướng dẫn lấy Mẫu
                   </button>
                   <button 
                     onClick={() => setPatientSubTab('tests')}
-                    className={`px-4 sm:px-10 py-3 sm:py-4 rounded-[20px] sm:rounded-[25px] text-base sm:text-xl font-black transition-all ${patientSubTab === 'tests' ? 'bg-blue-600 text-white shadow-xl scale-105' : 'text-slate-500 hover:text-blue-600'}`}
+                    className={`px-4 sm:px-6 md:px-10 py-3 sm:py-4 rounded-[20px] sm:rounded-[25px] text-sm sm:text-lg md:text-xl font-black transition-all ${patientSubTab === 'tests' ? 'bg-blue-600 text-white shadow-xl scale-105' : 'text-slate-500 hover:text-blue-600'}`}
                   >
                     <Search className="w-4 h-4 sm:w-5 h-5 inline-block mr-2 sm:mr-3" /> Tham khảo Xét nghiệm
                   </button>
@@ -4121,8 +4475,8 @@ export default function App() {
                           <div className="space-y-6 sm:space-y-8">
                             {inst.steps.map((step, sidx) => (
                               <div key={sidx} className="relative pl-6 sm:pl-8 border-l-4 border-white">
-                                <h4 className="font-black text-blue-700 dark:text-blue-400 text-lg sm:text-xl mb-1 sm:mb-2 uppercase tracking-wide">{step.title}</h4>
-                                <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-base sm:text-lg font-bold" dangerouslySetInnerHTML={{ __html: step.desc }} />
+                                <h4 className="font-black text-blue-700 dark:text-blue-400 text-base sm:text-lg mb-1 sm:mb-2 uppercase tracking-wide">{step.title}</h4>
+                                <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base font-bold" dangerouslySetInnerHTML={{ __html: step.desc }} />
                               </div>
                             ))}
                           </div>
@@ -4167,7 +4521,7 @@ export default function App() {
                             </div>
                           </div>
                           <div className="p-6 sm:p-8 flex-1 flex flex-col bg-sky-50/30">
-                            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 mb-4 sm:mb-6 line-clamp-2 italic font-medium leading-relaxed">
+                            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 mb-4 sm:mb-6 line-clamp-4 italic font-medium leading-relaxed">
                               {group.description}
                             </p>
                             <div className="mt-auto">
@@ -4225,20 +4579,20 @@ export default function App() {
                                 <div className="bg-white p-3 sm:p-5 rounded-2xl sm:rounded-[28px] shadow-2xl hidden sm:block">
                                   {React.cloneElement(selectedGroup.icon as React.ReactElement, { size: 32 })}
                                 </div>
-                                <h3 className="text-2xl sm:text-5xl font-black text-white uppercase tracking-tighter leading-none shadow-sm">{selectedGroup.title}</h3>
+                                <h3 className="text-2xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tighter leading-none shadow-sm">{selectedGroup.title}</h3>
                               </div>
                             </div>
                             
                             <div className="p-6 sm:p-12 space-y-8 sm:space-y-12">
                               <div>
-                                <h4 className="text-blue-600 dark:text-blue-400 text-xs sm:text-lg font-black uppercase tracking-widest mb-4 sm:mb-6 border-b-4 border-blue-100 w-fit pb-1">Vai trò & Ý nghĩa lâm sàng</h4>
-                                <p className="text-lg sm:text-3xl leading-relaxed font-serif italic font-medium bg-blue-50/50 p-6 sm:p-8 rounded-[25px] sm:rounded-[35px] border-2 border-blue-50">
+                                <h4 className="text-blue-600 dark:text-blue-400 text-[10px] sm:text-sm md:text-base font-black uppercase tracking-widest mb-4 sm:mb-6 border-b-4 border-blue-100 w-fit pb-1">Vai trò & Ý nghĩa lâm sàng</h4>
+                                <p className="text-base sm:text-xl md:text-2xl leading-relaxed font-serif italic font-medium bg-blue-50/50 p-6 sm:p-8 rounded-[25px] sm:rounded-[35px] border-2 border-blue-50">
                                   "{selectedGroup.meaning}"
                                 </p>
                               </div>
                               
                               <div>
-                                <h4 className="text-blue-600 dark:text-blue-400 text-xs sm:text-lg font-black uppercase tracking-widest mb-4 sm:mb-8 border-b-4 border-blue-100 w-fit pb-1">Các xét nghiệm tiêu biểu</h4>
+                                <h4 className="text-blue-600 dark:text-blue-400 text-[10px] sm:text-sm md:text-base font-black uppercase tracking-widest mb-4 sm:mb-8 border-b-4 border-blue-100 w-fit pb-1">Các xét nghiệm tiêu biểu</h4>
                                 <div className="flex flex-wrap gap-2 sm:gap-4">
                                   {selectedGroup.tests.map((testName, idx) => (
                                     <button 
@@ -4257,7 +4611,7 @@ export default function App() {
                                           }
                                         }
                                       }}
-                                      className="bg-slate-50 hover:bg-blue-600 hover:text-white border-2 border-slate-100 px-4 sm:px-8 py-3 sm:py-5 rounded-xl sm:rounded-[25px] text-base sm:text-xl font-black text-slate-800 flex items-center gap-2 sm:gap-4 transition-all shadow-sm active:scale-95 group/btn"
+                                      className="bg-slate-50 hover:bg-blue-600 hover:text-white border-2 border-slate-100 px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-[25px] text-sm sm:text-base md:text-lg font-black text-slate-800 flex items-center gap-2 sm:gap-3 transition-all shadow-sm active:scale-95 group/btn"
                                     >
                                       <div className="w-2 h-2 sm:w-3.5 h-3.5 rounded-full bg-blue-500 group-hover/btn:bg-white transition-colors" />
                                       {testName}
@@ -4270,7 +4624,7 @@ export default function App() {
                             <div className="bg-slate-50 dark:bg-slate-900 px-6 sm:px-12 py-6 sm:py-8 flex justify-end">
                               <button 
                                 onClick={() => setSelectedGroup(null)}
-                                className="w-full sm:w-auto px-12 py-4 sm:py-5 bg-blue-600 text-white rounded-xl sm:rounded-[25px] text-xl sm:text-2xl font-black hover:bg-blue-700 transition-all shadow-2xl active:scale-95"
+                                className="w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-5 bg-blue-600 text-white rounded-xl sm:rounded-[25px] text-lg sm:text-xl font-black hover:bg-blue-700 transition-all shadow-2xl active:scale-95"
                               >
                                 Đóng Cửa Sổ
                               </button>
@@ -4351,17 +4705,17 @@ export default function App() {
                             { num: 6, type: 'EDTA (Nắp Xanh dương)', color: 'Xanh dương', colorClass: 'bg-blue-600', textClass: 'text-blue-800 dark:text-blue-300', tests: 'Công thức máu, HbA1c', vol: '2 ml', mix: '5 - 8 lần' },
                           ].map((row, i) => (
                             <tr key={i} className={`hover:bg-blue-50/50 dark:hover:bg-slate-900/50 transition-all ${row.textClass}`}>
-                              <td className="px-4 sm:px-8 py-4 sm:py-8 text-xl sm:text-3xl font-black">{row.num}</td>
+                              <td className="px-4 sm:px-8 py-4 sm:py-8 text-lg sm:text-2xl font-black">{row.num}</td>
                               <td className="px-4 sm:px-8 py-4 sm:py-8">
-                                <div className="text-lg sm:text-2xl font-black leading-tight mb-2">{row.type}</div>
+                                <div className="text-base sm:text-xl font-black leading-tight mb-2">{row.type}</div>
                                 <div className="flex items-center gap-2 sm:gap-4">
                                   <div className={`w-12 sm:w-20 h-4 sm:h-6 rounded-lg border-2 border-slate-300 shadow-sm ${row.colorClass}`} />
                                   <span className="text-[10px] sm:text-sm uppercase font-black tracking-widest opacity-80">{row.color}</span>
                                 </div>
                               </td>
-                              <td className="px-4 sm:px-8 py-4 sm:py-8 text-base sm:text-xl font-bold">{row.tests}</td>
-                              <td className="px-4 sm:px-8 py-4 sm:py-8 text-lg sm:text-2xl font-black text-indigo-700 dark:text-indigo-400">{row.vol}</td>
-                              <td className="px-4 sm:px-8 py-4 sm:py-8 text-base sm:text-xl font-bold">{row.mix}</td>
+                              <td className="px-4 sm:px-8 py-4 sm:py-8 text-sm sm:text-lg font-bold">{row.tests}</td>
+                              <td className="px-4 sm:px-8 py-4 sm:py-8 text-base sm:text-xl font-black text-indigo-700 dark:text-indigo-400">{row.vol}</td>
+                              <td className="px-4 sm:px-8 py-4 sm:py-8 text-sm sm:text-lg font-bold">{row.mix}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -4383,8 +4737,8 @@ export default function App() {
                           <div className="flex items-center gap-4 mb-4">
                             <div className={`w-12 h-12 rounded-xl border-2 border-slate-200 shadow-inner ${row.colorClass}`} />
                             <div>
-                              <h3 className="text-xl font-black text-slate-800 dark:text-slate-100">{row.type}</h3>
-                              <p className="text-xs uppercase font-bold tracking-widest text-slate-400">{row.color}</p>
+                              <h3 className="text-lg font-black text-slate-800 dark:text-slate-100">{row.type}</h3>
+                              <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400">{row.color}</p>
                             </div>
                           </div>
                           <div className="space-y-4 pt-4 border-t border-slate-50 dark:border-slate-700">
@@ -4437,12 +4791,12 @@ export default function App() {
                             { type: 'Phân / Đàm', container: 'Lọ nhựa sạch', notes: 'Lấy vùng nhầy máu / Đàm đặc sáng sớm.', vol: '5g / Đủ XN', time: '< 30p', reject: 'Lấy nhầm nước bọt' },
                           ].map((row, i) => (
                             <tr key={i} className="hover:bg-blue-50/50 transition-all">
-                              <td className="px-4 sm:px-6 py-6 sm:py-8 text-lg sm:text-2xl font-black text-slate-900 dark:text-slate-100 leading-tight">{row.type}</td>
-                              <td className="px-4 sm:px-6 py-6 sm:py-8 text-base sm:text-xl font-bold text-indigo-700 dark:text-indigo-400">{row.container}</td>
-                              <td className="px-4 sm:px-6 py-6 sm:py-8 text-sm sm:text-lg font-medium text-slate-600 dark:text-slate-400 italic leading-relaxed">{row.notes}</td>
-                              <td className="px-4 sm:px-6 py-6 sm:py-8 text-base sm:text-xl font-black text-slate-800 dark:text-slate-200">{row.vol}</td>
-                              <td className="px-4 sm:px-6 py-6 sm:py-8 text-base sm:text-xl font-black text-blue-700 dark:text-blue-400">{row.time}</td>
-                              <td className="px-4 sm:px-6 py-6 sm:py-8 text-sm sm:text-lg font-black text-red-600 dark:text-red-400">{row.reject}</td>
+                              <td className="px-4 sm:px-6 py-6 sm:py-8 text-base sm:text-xl font-black text-slate-900 dark:text-slate-100 leading-tight">{row.type}</td>
+                              <td className="px-4 sm:px-6 py-6 sm:py-8 text-sm sm:text-lg font-bold text-indigo-700 dark:text-indigo-400">{row.container}</td>
+                              <td className="px-4 sm:px-6 py-6 sm:py-8 text-xs sm:text-base font-medium text-slate-600 dark:text-slate-400 italic leading-relaxed">{row.notes}</td>
+                              <td className="px-4 sm:px-6 py-6 sm:py-8 text-sm sm:text-lg font-black text-slate-800 dark:text-slate-200">{row.vol}</td>
+                              <td className="px-4 sm:px-6 py-6 sm:py-8 text-sm sm:text-lg font-black text-blue-700 dark:text-blue-400">{row.time}</td>
+                              <td className="px-4 sm:px-6 py-6 sm:py-8 text-xs sm:text-base font-black text-red-600 dark:text-red-400">{row.reject}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -4462,7 +4816,7 @@ export default function App() {
                       ].map((row, i) => (
                         <div key={i} className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-xl border border-slate-100 dark:border-slate-700">
                           <div className="flex justify-between items-start mb-6">
-                            <h3 className="text-xl font-black text-blue-900 dark:text-blue-400 uppercase leading-none">{row.type}</h3>
+                            <h3 className="text-lg font-black text-blue-900 dark:text-blue-400 uppercase leading-none">{row.type}</h3>
                             <span className="text-[10px] font-black px-3 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 rounded-lg">{row.container}</span>
                           </div>
                           <div className="space-y-4">
@@ -4495,10 +4849,10 @@ export default function App() {
                     <h2 className="text-2xl sm:text-4xl font-black text-blue-900 dark:text-white mb-6 sm:mb-10 border-l-[6px] sm:border-l-8 border-blue-600 pl-4 sm:pl-6 uppercase tracking-tight">Tiêu Chuẩn Chấp Nhận & Từ Chối Mẫu</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
                       <div className="glass dark:bg-slate-800 p-6 sm:p-10 rounded-[30px] sm:rounded-[40px] border-l-[12px] sm:border-l-[16px] border-green-500 shadow-2xl hover:scale-[1.02] transition-transform">
-                        <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-green-800 dark:text-green-400 font-black text-xl sm:text-2xl uppercase tracking-tighter">
+                        <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-green-800 dark:text-green-400 font-black text-lg sm:text-xl uppercase tracking-tighter">
                           <CheckCircle2 className="w-6 h-6 sm:w-8 h-8" /> 1. Chấp nhận chung
                         </div>
-                        <ul className="space-y-3 sm:space-y-4 text-slate-700 dark:text-slate-300 text-base sm:text-xl font-bold leading-relaxed">
+                        <ul className="space-y-3 sm:space-y-4 text-slate-700 dark:text-slate-300 text-sm sm:text-lg font-bold leading-relaxed">
                           <li>• Phiếu chỉ định đầy đủ thông tin (Họ tên, năm sinh, địa chỉ, chẩn đoán, mã code).</li>
                           <li>• Thông tin SID, tên, năm sinh trên phiếu và ống mẫu <strong className="text-green-600">khớp nhau tuyệt đối</strong>.</li>
                           <li>• Đúng loại mẫu, đủ lượng, đúng dụng cụ, không vi phạm bảo quản.</li>
@@ -4506,10 +4860,10 @@ export default function App() {
                       </div>
 
                       <div className="glass dark:bg-slate-800 p-6 sm:p-10 rounded-[30px] sm:rounded-[40px] border-l-[12px] sm:border-l-[16px] border-red-500 shadow-2xl hover:scale-[1.02] transition-transform">
-                        <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-red-800 dark:text-red-400 font-black text-xl sm:text-2xl uppercase tracking-tighter">
+                        <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-red-800 dark:text-red-400 font-black text-lg sm:text-xl uppercase tracking-tighter">
                           <XCircle className="w-6 h-6 sm:w-8 h-8" /> 2. Mẫu <span className="text-white bg-red-600 px-2 rounded-lg mx-1">KHÔNG</span> Đạt
                         </div>
-                        <ul className="space-y-3 sm:space-y-4 text-slate-700 dark:text-slate-300 text-base sm:text-xl font-bold leading-relaxed">
+                        <ul className="space-y-3 sm:space-y-4 text-slate-700 dark:text-slate-300 text-sm sm:text-lg font-bold leading-relaxed">
                           <li>• Khoa Xét Nghiệm <strong className="text-red-600">từ chối nhận mẫu</strong>.</li>
                           <li>• Thông báo lý do từ chối và hướng xử lý (lấy lại, bổ sung lại tin).</li>
                           <li>• Ghi nhận sự việc vào công cụ theo dõi <span className="underline decoration-4 decoration-red-400">"Sổ từ chối mẫu"</span>.</li>
@@ -4517,11 +4871,11 @@ export default function App() {
                       </div>
 
                       <div className="glass dark:bg-slate-800 p-6 sm:p-10 rounded-[30px] sm:rounded-[40px] border-l-[12px] sm:border-l-[16px] border-orange-500 shadow-2xl hover:scale-[1.02] transition-transform">
-                        <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-orange-800 dark:text-orange-400 font-black text-xl sm:text-2xl uppercase tracking-tighter">
+                        <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-orange-800 dark:text-orange-400 font-black text-lg sm:text-xl uppercase tracking-tighter">
                           <AlertCircle className="w-6 h-6 sm:w-8 h-8" /> 3. KHÔNG đạt (Khó lấy lại)
                         </div>
-                        <p className="mb-4 sm:mb-6 text-orange-600 dark:text-orange-400 font-black text-lg sm:text-2xl italic">Dịch não tủy, Dịch khớp...</p>
-                        <ul className="space-y-3 sm:space-y-4 text-slate-700 dark:text-slate-300 text-base sm:text-xl font-bold leading-relaxed">
+                        <p className="mb-4 sm:mb-6 text-orange-600 dark:text-orange-400 font-black text-base sm:text-xl italic">Dịch não tủy, Dịch khớp...</p>
+                        <ul className="space-y-3 sm:space-y-4 text-slate-700 dark:text-slate-300 text-sm sm:text-lg font-bold leading-relaxed">
                           <li>• Bác sĩ phải <strong className="text-orange-600 uppercase">ghi rõ lý do và ký xác nhận</strong> vào phiếu.</li>
                           <li>• KXN xử lý và ghi chú tình trạng mẫu lên phiếu KQ.</li>
                           <li>• Kết quả chỉ trả khi nhận đủ phiếu chỉ định đúng chuẩn.</li>
@@ -4529,10 +4883,10 @@ export default function App() {
                       </div>
 
                       <div className="glass dark:bg-slate-800 p-6 sm:p-10 rounded-[30px] sm:rounded-[40px] border-l-[12px] sm:border-l-[16px] border-blue-500 shadow-2xl hover:scale-[1.02] transition-transform">
-                        <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-blue-800 dark:text-blue-400 font-black text-xl sm:text-2xl uppercase tracking-tighter">
+                        <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 text-blue-800 dark:text-blue-400 font-black text-lg sm:text-xl uppercase tracking-tighter">
                           <Zap className="w-6 h-6 sm:w-8 h-8" /> 4. Cấp cứu / Khẩn
                         </div>
-                        <ul className="space-y-3 sm:space-y-4 text-slate-700 dark:text-slate-300 text-base sm:text-xl font-bold leading-relaxed">
+                        <ul className="space-y-3 sm:space-y-4 text-slate-700 dark:text-slate-300 text-sm sm:text-lg font-bold leading-relaxed">
                           <li>• Vẫn tiến hành làm xét nghiệm dù thiếu phiếu chuẩn.</li>
                           <li>• Trả kết quả qua điện thoại nếu rơi vào <strong className="text-red-600 animate-pulse">ngưỡng báo động</strong>.</li>
                           <li>• Bản giấy chỉ trả khi nhận được phiếu chỉ định chuẩn.</li>
@@ -4728,7 +5082,7 @@ export default function App() {
                                 className="hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-all cursor-pointer border-b border-slate-50 dark:border-slate-800"
                                 onClick={() => setSelectedTest(test)}
                               >
-                                <td className="px-4 sm:px-6 py-4 sm:py-6 font-black text-indigo-900 dark:text-indigo-200 text-lg sm:text-xl leading-tight">
+                                <td className="px-4 sm:px-6 py-4 sm:py-6 font-black text-indigo-900 dark:text-indigo-200 text-sm sm:text-base md:text-lg leading-tight">
                                   {test.name}
                                 </td>
                                 <td className="px-4 sm:px-6 py-4 sm:py-6 text-center">
@@ -4787,7 +5141,7 @@ export default function App() {
                           className="bg-white dark:bg-slate-800 rounded-3xl p-6 border border-slate-100 dark:border-slate-700 shadow-xl active:scale-95 transition-all"
                         >
                           <div className="flex justify-between items-start mb-4">
-                            <h3 className="text-xl font-black text-indigo-900 dark:text-indigo-200 leading-tight">{test.name}</h3>
+                            <h3 className="text-lg font-black text-indigo-900 dark:text-indigo-200 leading-tight">{test.name}</h3>
                             <span className={`text-[10px] font-black px-3 py-1.5 rounded-xl uppercase border text-center inline-flex flex-col items-center justify-center leading-[1.15] min-w-[70px] ${
                               test.group.toLowerCase() === 'sinh hóa' ? 'bg-blue-50 text-blue-600 border-blue-100' :
                               test.group.toLowerCase() === 'huyết học' ? 'bg-purple-50 text-purple-600 border-purple-100' :
@@ -4869,7 +5223,7 @@ export default function App() {
                                   <X className="w-6 h-6 sm:w-7 h-7" />
                                 </button>
                               </div>
-                              <h3 className="text-2xl sm:text-4xl font-black mb-3 tracking-tighter leading-tight uppercase drop-shadow-sm relative z-10 italic">{selectedTest.name}</h3>
+                              <h3 className="text-xl sm:text-2xl md:text-3xl font-black mb-3 tracking-tighter leading-tight uppercase drop-shadow-sm relative z-10 italic">{selectedTest.name}</h3>
                               <div className="flex items-center gap-3 relative z-10">
                                 <span className="bg-white/40 border border-white/50 px-4 py-1.5 rounded-2xl text-[10px] sm:text-xs font-black backdrop-blur-lg uppercase tracking-widest shadow-sm">
                                   {selectedTest.group}
