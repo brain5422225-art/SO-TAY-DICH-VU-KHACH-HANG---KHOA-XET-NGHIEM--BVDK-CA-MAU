@@ -4327,10 +4327,6 @@ const KnowledgeCardPopup = ({
 
 const STAFF_PASSWORD = "Xetnghiem2026"; // <--- BẠN CÓ THỂ THAY ĐỔI PASSWORD TẠI ĐÂY
 
-const getGeminiKey = () => {
-  return localStorage.getItem('gemini_api_key');
-};
-
 export default function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [darkMode, setDarkMode] = useState(false);
@@ -4356,12 +4352,6 @@ export default function App() {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const apiKey = getGeminiKey();
-    if (!apiKey) {
-      alert("⚠️ Bạn chưa cài đặt API Key. Vui lòng nhấn nút '⚙️ Cài đặt API Key'.");
-      return;
-    }
-
     setIsLoadingExtract(true);
     setAiResult(null);
 
@@ -4373,26 +4363,26 @@ export default function App() {
         r.readAsDataURL(file);
       });
 
-      // SỬ DỤNG V1 VÀ CAMELCASE ĐỂ ĐẢM BẢO TƯƠNG THÍCH CAO NHẤT THEO DOCUMENTATION
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+      // Gọi máy chủ trung gian của chúng ta (với action: 'extract')
+      const response = await fetch('/api/gemini', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [{
-            parts: [
-              { text: "Bạn là một thư ký y khoa chuyên nghiệp. Hãy đọc hình ảnh phiếu chỉ định này và trích xuất dữ liệu. Trả về đúng định dạng JSON có 2 trường: 'chan_doan' (text) và 'chi_dinh' (text, liệt kê các xét nghiệm). Nếu không thấy dữ liệu, hãy để trống. Không trả về gì ngoài JSON." },
-              { inlineData: { mimeType: file.type, data: base64Data } }
-            ]
-          }],
-          generationConfig: {
-            responseMimeType: "application/json"
+          action: 'extract',
+          payload: {
+            contents: [{
+              parts: [
+                { text: "Bạn là một thư ký y khoa chuyên nghiệp. Hãy đọc hình ảnh phiếu chỉ định này và trích xuất dữ liệu. Trả về đúng định dạng JSON có 2 trường: 'chan_doan' (text) và 'chi_dinh' (text, liệt kê các xét nghiệm). Nếu không thấy dữ liệu, hãy để trống. Không trả về gì ngoài JSON." },
+                { inline_data: { mime_type: file.type, data: base64Data } }
+              ]
+            }]
           }
         })
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error?.message || `Lỗi API (${response.status})`);
+        throw new Error(errorData.error || `Lỗi API (${response.status})`);
       }
 
       const data = await response.json();
@@ -4414,12 +4404,6 @@ export default function App() {
   };
 
   const handleAnalyze = async () => {
-    const apiKey = getGeminiKey();
-    if (!apiKey) {
-      alert("⚠️ Bạn chưa cài đặt API Key.");
-      return;
-    }
-
     if (!boxChanDoan && !boxChiDinh) {
       alert("⚠️ Vui lòng nhập dữ liệu hoặc Quét ảnh trước.");
       return;
@@ -4436,7 +4420,7 @@ export default function App() {
         c: t.clinicalNote
       }));
 
-      const prompt = `Bạn đóng vai là một chuyên gia xét nghiệm y khoa lâu năm. Dưới đây là thông tin bệnh nhân:
+      const finalPrompt = `Bạn đóng vai là một chuyên gia xét nghiệm y khoa lâu năm. Dưới đây là thông tin bệnh nhân:
       - Chẩn đoán: ${boxChanDoan}
       - Các xét nghiệm chỉ định: ${boxChiDinh}
 
@@ -4451,22 +4435,23 @@ export default function App() {
       4. Tuyệt đối KHÔNG sử dụng Markdown (không được có \`\`\`html, không #, không *).
       5. Phân tích phải cực kỳ chuyên sâu, biện luận sắc bén như một chuyên gia đầu ngành.`;
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+      // Gọi máy chủ trung gian của chúng ta (với action: 'analyze')
+      const response = await fetch('/api/gemini', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [{
-            parts: [{ text: prompt }]
-          }],
-          generationConfig: {
-            responseMimeType: "text/plain"
+          action: 'analyze',
+          payload: {
+            contents: [{
+              parts: [{ text: finalPrompt }]
+            }]
           }
         })
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error?.message || `Lỗi API (${response.status})`);
+        throw new Error(errorData.error || `Lỗi API (${response.status})`);
       }
 
       const data = await response.json();
@@ -5727,18 +5712,6 @@ export default function App() {
                           </h2>
                           <p className="text-slate-500 font-medium mt-2">Trợ lý AI chuyên nghiệp phân tích phiếu chỉ định</p>
                         </div>
-                        <button 
-                          onClick={() => {
-                            const newKey = prompt("⚙️ Nhập Google Gemini API Key của bạn:");
-                            if (newKey) {
-                              localStorage.setItem('gemini_api_key', newKey);
-                              alert("✅ Đã lưu API Key thành công!");
-                            }
-                          }}
-                          className="flex items-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-2xl transition-all active:scale-95"
-                        >
-                          ⚙️ Cài đặt API Key
-                        </button>
                       </div>
 
                       <div className="grid grid-cols-1 gap-8 mb-12">
