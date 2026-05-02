@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react';
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { 
   Activity, 
   Search, 
@@ -4327,22 +4326,9 @@ const KnowledgeCardPopup = ({
 
 
 const STAFF_PASSWORD = "Xetnghiem2026"; // <--- BẠN CÓ THỂ THAY ĐỔI PASSWORD TẠI ĐÂY
-const HARDCODED_GEMINI_API_KEY = ""; // <--- BẠN CÓ THỂ DÁN API KEY VÀO ĐÂY ĐỂ DÙNG CỐ ĐỊNH
 
 const getGeminiKey = () => {
-  let key = localStorage.getItem('gemini_api_key');
-  if (!key) {
-    key = prompt("Lần đầu sử dụng: Vui lòng nhập Google Gemini API Key của bạn để kích hoạt AI:");
-    if (key) {
-      localStorage.setItem('gemini_api_key', key);
-    }
-  }
-  return key;
-};
-
-// Cấu hình AI SDK
-const getAIClient = (key: string) => {
-  return new GoogleGenerativeAI(key);
+  return localStorage.getItem('gemini_api_key');
 };
 
 export default function App() {
@@ -4363,34 +4349,31 @@ export default function App() {
   const [boxChanDoan, setBoxChanDoan] = useState('');
   const [boxChiDinh, setBoxChiDinh] = useState('');
   const [aiResult, setAiResult] = useState<string | null>(null);
-  const [isExtracting, setIsExtracting] = useState(false);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [isLoadingExtract, setIsLoadingExtract] = useState(false);
+  const [isLoadingAnalyze, setIsLoadingAnalyze] = useState(false);
 
-  const handleExtractData = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleExtract = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
     const apiKey = getGeminiKey();
     if (!apiKey) {
-      alert("Bạn chưa nhập API Key. Vui lòng nhấn nút 'Đổi API Key' để nhập.");
+      alert("⚠️ Bạn chưa cài đặt API Key. Vui lòng nhấn nút '⚙️ Cài đặt API Key'.");
       return;
     }
 
-    setIsExtracting(true);
+    setIsLoadingExtract(true);
     setAiResult(null);
 
     try {
       const base64Data = await new Promise<string>((resolve, reject) => {
         const r = new FileReader();
-        r.onloadend = () => {
-          const base64 = (r.result as string).split(',')[1];
-          resolve(base64);
-        };
-        r.onerror = () => reject(new Error("Không thể đọc tệp ảnh."));
+        r.onloadend = () => resolve((r.result as string).split(',')[1]);
+        r.onerror = () => reject(new Error("Lỗi đọc file ảnh."));
         r.readAsDataURL(file);
       });
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${apiKey}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -4415,71 +4398,63 @@ export default function App() {
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
       
       if (text) {
-        try {
-          const parsed = JSON.parse(text);
-          setBoxChanDoan(parsed.chan_doan || '');
-          setBoxChiDinh(parsed.chi_dinh || '');
-        } catch (e) {
-          const cleanedJson = text.replace(/```json|```/g, '').trim();
-          const parsed = JSON.parse(cleanedJson);
-          setBoxChanDoan(parsed.chan_doan || '');
-          setBoxChiDinh(parsed.chi_dinh || '');
-        }
-      } else {
-        throw new Error("AI không trích xuất được thông tin. Vui lòng chụp ảnh rõ hơn.");
+        const parsed = JSON.parse(text);
+        setBoxChanDoan(parsed.chan_doan || '');
+        setBoxChiDinh(parsed.chi_dinh || '');
       }
     } catch (error: any) {
-      console.error("Extraction Error:", error);
-      alert(`[AI ERROR] ${error.message || "Lỗi khi trích xuất hoặc API Key không hợp lệ."}`);
+      console.error("Extract Error:", error);
+      alert(`[AI ERROR] ${error.message || "Lỗi khi trích xuất dữ liệu."}`);
     } finally {
-      setIsExtracting(false);
+      setIsLoadingExtract(false);
       e.target.value = '';
     }
   };
 
-  const handleAnalyzeDeeply = async () => {
-    if (!boxChanDoan && !boxChiDinh) {
-      alert("Vui lòng nhập hoặc Quét ảnh để có dữ liệu Chẩn đoán & Chỉ định.");
-      return;
-    }
-
+  const handleAnalyze = async () => {
     const apiKey = getGeminiKey();
     if (!apiKey) {
-      alert("Bạn chưa nhập API Key.");
+      alert("⚠️ Bạn chưa cài đặt API Key.");
       return;
     }
 
-    setIsAnalyzing(true);
+    if (!boxChanDoan && !boxChiDinh) {
+      alert("⚠️ Vui lòng nhập dữ liệu hoặc Quét ảnh trước.");
+      return;
+    }
+
+    setIsLoadingAnalyze(true);
     setAiResult(null);
 
     try {
-      const simplifiedLabData = labTests.map(t => ({
+      const simplifiedData = labTests.slice(0, 150).map(t => ({
         n: t.name,
         i: t.indication,
         p: t.pathologicalMeaning,
-        note: t.clinicalNote
-      })).slice(0, 150);
+        c: t.clinicalNote
+      }));
 
-      const finalPrompt = `Dưới đây là một tình huống lâm sàng:
+      const prompt = `Bạn đóng vai là một chuyên gia xét nghiệm y khoa lâu năm. Dưới đây là thông tin bệnh nhân:
       - Chẩn đoán: ${boxChanDoan}
-      - Các xét nghiệm được chỉ định: ${boxChiDinh}
+      - Các xét nghiệm chỉ định: ${boxChiDinh}
 
-      Sử dụng kiến thức y khoa chuyên sâu và tham khảo dữ liệu 'Từ điển xét nghiệm' sau:
-      ${JSON.stringify(simplifiedLabData)}
+      Dựa trên 150 mục xét nghiệm tham khảo sau:
+      ${JSON.stringify(simplifiedData)}
 
+      Hãy thực hiện phân tích sinh lý bệnh chuyên sâu. Dự đoán xu hướng Tăng/Giảm của các chỉ số xét nghiệm dựa trên chẩn đoán lâm sàng. 
       YÊU CẦU:
-      1. Phân tích cơ chế bệnh sinh: Tại sao các xét nghiệm này lại được chỉ định cho bệnh nhân này?
-      2. Dự đoán xu hướng: Các chỉ số này sẽ Tăng/Giảm như thế nào? Giải thích ngắn gọn dựa trên y học.
-      3. Trình bày đẹp bằng HTML (Dùng <div>, <p>, <b>, <ul>, <li>, <span>, emoji).
-      4. Màu sắc: Dùng các class Tailwind cơ bản để làm nổi bật kết quả (Ví dụ: text-blue-600 cho Tăng, text-red-600 cho báo động...).
-      5. Lưu ý: Không dùng Markdown. Phân tích chuyên sâu như một chuyên gia xét nghiệm.`;
+      1. Trình bày bằng mã HTML đẹp mắt (sử dụng div, p, b, ul, li, span, các class Tailwind cơ bản).
+      2. Tông màu: Hiện đại, chuyên nghiệp. Sử dụng class 'text-blue-600' cho xu hướng tăng, 'text-red-600' cho báo động hoặc giảm nghiêm trọng.
+      3. Sử dụng các icon y tế (emoji).
+      4. Tuyệt đối KHÔNG sử dụng Markdown (không được có \`\`\`html, không #, không *).
+      5. Phân tích phải cực kỳ chuyên sâu, biện luận sắc bén như một chuyên gia đầu ngành.`;
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${apiKey}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{
-            parts: [{ text: finalPrompt }]
+            parts: [{ text: prompt }]
           }]
         })
       });
@@ -4496,16 +4471,14 @@ export default function App() {
         const cleanedText = text.replace(/```html|```/g, '').trim();
         setAiResult(cleanedText);
         setTimeout(() => {
-          document.getElementById('result-div')?.scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('ai-result-display')?.scrollIntoView({ behavior: 'smooth' });
         }, 300);
-      } else {
-        throw new Error("AI không trả về nội dung phân tích.");
       }
     } catch (error: any) {
-      console.error("Deep Analysis Error:", error);
+      console.error("Analyze Error:", error);
       alert(`[AI ERROR] ${error.message || "Lỗi khi phân tích chuyên sâu."}`);
     } finally {
-      setIsAnalyzing(false);
+      setIsLoadingAnalyze(false);
     }
   };
 
@@ -5735,139 +5708,134 @@ export default function App() {
                 {staffSubTab === 'ai-assistant' && (
                   <motion.div
                     key="s-ai"
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
                     className="max-w-5xl mx-auto px-4 pb-20"
                   >
-                    {/* Secretary View Container */}
-                    <div 
-                      id="secretary-view" 
-                      className="rounded-[30px] p-8 sm:p-12 shadow-[10px_10px_20px_#bebebe,-10px_-10px_20px_#ffffff] dark:shadow-none"
-                      style={{ background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)' }}
-                    >
-                      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
-                        <h2 className="text-2xl sm:text-3xl font-black text-blue-800 dark:text-blue-900 flex items-center gap-3">
-                          📋 Thư ký xét nghiệm (AI Assistant)
-                        </h2>
+                    <div className="bg-white rounded-[40px] p-8 sm:p-12 shadow-2xl border border-slate-100">
+                      <div className="flex flex-col sm:flex-row justify-between items-center gap-6 mb-12">
+                        <div>
+                          <h2 className="text-3xl sm:text-4xl font-black text-slate-800 flex items-center gap-4">
+                            <Brain className="w-10 h-10 text-indigo-600" />
+                            Thư ký Xét nghiệm
+                          </h2>
+                          <p className="text-slate-500 font-medium mt-2">Trợ lý AI chuyên nghiệp phân tích phiếu chỉ định</p>
+                        </div>
                         <button 
                           onClick={() => {
-                            const newKey = prompt("Nhập Google Gemini API Key mới:");
+                            const newKey = prompt("⚙️ Nhập Google Gemini API Key của bạn:");
                             if (newKey) {
                               localStorage.setItem('gemini_api_key', newKey);
-                              alert("Đã cập nhật API Key thành công!");
-                              window.location.reload();
+                              alert("✅ Đã lưu API Key thành công!");
                             }
                           }}
-                          className="flex items-center gap-2 text-slate-600 hover:text-blue-700 font-bold transition-colors text-sm sm:text-base border-b border-dashed border-slate-400"
+                          className="flex items-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-2xl transition-all active:scale-95"
                         >
-                          ⚙️ Đổi API Key
+                          ⚙️ Cài đặt API Key
                         </button>
                       </div>
 
-                      <div className="space-y-8">
-                        {/* Hộp 1: Chẩn đoán */}
-                        <div className="flex flex-col gap-3">
-                          <label className="font-black text-slate-700 flex items-center gap-2">
-                            <Activity className="w-5 h-5 text-blue-600" /> 🏥 Chẩn đoán lâm sàng:
+                      <div className="grid grid-cols-1 gap-8 mb-12">
+                        <div className="space-y-3">
+                          <label className="text-lg font-black text-slate-700 flex items-center gap-2">
+                            <Stethoscope className="w-6 h-6 text-indigo-500" />
+                            1. Chẩn đoán lâm sàng
                           </label>
                           <textarea 
-                            id="box-chan-doan"
                             value={boxChanDoan}
                             onChange={(e) => setBoxChanDoan(e.target.value)}
-                            placeholder="Kết quả quét chẩn đoán sẽ hiện ở đây..." 
-                            className="w-full h-32 border-none rounded-[20px] p-5 font-medium text-lg text-slate-800 shadow-[inset_5px_5px_10px_#e0e0e0,inset_-5px_-5px_10px_#ffffff] outline-none focus:ring-4 focus:ring-blue-200 transition-all resize-none"
+                            placeholder="Nhập chẩn đoán hoặc dùng nút '📷 Quét ảnh'..." 
+                            className="w-full h-32 p-6 bg-slate-50 rounded-[25px] border-2 border-transparent focus:border-indigo-500 focus:bg-white transition-all text-lg font-medium text-slate-800 outline-none resize-none shadow-inner"
                           />
                         </div>
 
-                        {/* Hộp 2: Chỉ định */}
-                        <div className="flex flex-col gap-3">
-                          <label className="font-black text-slate-700 flex items-center gap-2">
-                            <ClipboardList className="w-5 h-5 text-purple-600" /> 🧪 Danh sách xét nghiệm chỉ định:
+                        <div className="space-y-3">
+                          <label className="text-lg font-black text-slate-700 flex items-center gap-2">
+                            <ClipboardList className="w-6 h-6 text-purple-500" />
+                            2. Danh sách xét nghiệm
                           </label>
                           <textarea 
-                            id="box-chi-dinh"
                             value={boxChiDinh}
                             onChange={(e) => setBoxChiDinh(e.target.value)}
-                            placeholder="Danh sách xét nghiệm sẽ hiện ở đây..." 
-                            className="w-full h-40 border-none rounded-[20px] p-5 font-medium text-lg text-slate-800 shadow-[inset_5px_5px_10px_#e0e0e0,inset_-5px_-5px_10px_#ffffff] outline-none focus:ring-4 focus:ring-purple-200 transition-all resize-none"
+                            placeholder="Nhập tên các xét nghiệm chỉ định..." 
+                            className="w-full h-40 p-6 bg-slate-50 rounded-[25px] border-2 border-transparent focus:border-purple-500 focus:bg-white transition-all text-lg font-medium text-slate-800 outline-none resize-none shadow-inner"
                           />
-                        </div>
-
-                        {/* Nút bấm */}
-                        <div className="grid sm:grid-cols-2 gap-6">
-                          <label className="flex-1 group">
-                            <div className={`h-16 flex items-center justify-center gap-3 rounded-full font-black text-lg cursor-pointer transition-all active:scale-95 shadow-[5px_5px_10px_#b1b1b1,-5px_-5px_10px_#ffffff] ${isExtracting ? 'bg-slate-200 text-slate-400' : 'bg-[#bbdefb] text-[#1565c0] hover:bg-[#90caf9]'}`}>
-                              {isExtracting ? (
-                                <div className="w-6 h-6 border-4 border-slate-300 border-t-blue-600 rounded-full animate-spin" />
-                              ) : (
-                                <Camera className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-                              )}
-                              {isExtracting ? 'Đang đọc phiếu...' : '📷 Quét ảnh lấy dữ liệu'}
-                            </div>
-                            <input 
-                              type="file" 
-                              id="upload-image"
-                              accept="image/*" 
-                              className="hidden" 
-                              onChange={handleExtractData}
-                              disabled={isExtracting}
-                            />
-                          </label>
-
-                          <button 
-                            onClick={handleAnalyzeDeeply}
-                            disabled={isAnalyzing || isExtracting || (!boxChanDoan && !boxChiDinh)}
-                            className="flex-1 h-16 bg-[#1565c0] text-white rounded-full font-black text-lg transition-all shadow-[5px_5px_10px_#b1b1b1,-5px_-5px_10px_#ffffff] flex items-center justify-center gap-3 active:scale-95 hover:bg-[#0d47a1] disabled:opacity-50 disabled:grayscale"
-                          >
-                            {isAnalyzing ? (
-                              <div className="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin" />
-                            ) : (
-                              <Sparkles className="w-6 h-6" />
-                            )}
-                            {isAnalyzing ? 'Đang phân tích...' : '🧠 Phân tích chuyên sâu'}
-                          </button>
                         </div>
                       </div>
 
-                      {/* Hiển thị Trạng thái Loading */}
-                      {(isExtracting || isAnalyzing) && (
-                        <div className="mt-8 text-center animate-pulse">
-                          <div className="inline-block w-8 h-8 border-4 border-blue-200 border-t-blue-700 rounded-full animate-spin mb-2"></div>
-                          <p className="text-blue-800 font-bold">
-                            {isExtracting ? "Đang đọc nội dung phiếu chỉ định..." : "Đang phân tích xu hướng bệnh học..."}
-                          </p>
-                        </div>
-                      )}
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        <label className="relative group cursor-pointer">
+                          <div className={`h-20 flex items-center justify-center gap-4 rounded-3xl font-black text-xl transition-all active:scale-95 shadow-lg ${isLoadingExtract ? 'bg-slate-200 text-slate-400' : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100'}`}>
+                            {isLoadingExtract ? (
+                              <div className="w-8 h-8 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin" />
+                            ) : (
+                              <Camera className="w-8 h-8 transform group-hover:rotate-12 transition-transform" />
+                            )}
+                            {isLoadingExtract ? 'Đang quét...' : '📷 Quét ảnh'}
+                          </div>
+                          <input 
+                            type="file" 
+                            accept="image/*" 
+                            className="hidden" 
+                            onChange={handleExtract}
+                            disabled={isLoadingExtract}
+                          />
+                        </label>
 
-                      {/* Hiển thị kết quả */}
+                        <button 
+                          onClick={handleAnalyze}
+                          disabled={isLoadingAnalyze || isLoadingExtract || (!boxChanDoan && !boxChiDinh)}
+                          className="h-20 bg-indigo-600 text-white rounded-3xl font-black text-xl flex items-center justify-center gap-4 transition-all hover:bg-indigo-700 shadow-lg shadow-indigo-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                          {isLoadingAnalyze ? (
+                            <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+                          ) : (
+                            <Sparkles className="w-8 h-8" />
+                          )}
+                          {isLoadingAnalyze ? 'Đang phân tích...' : '🧠 Phân tích'}
+                        </button>
+                      </div>
+
                       <AnimatePresence>
-                        {aiResult && !isAnalyzing && (
+                        {aiResult && !isLoadingAnalyze && (
                           <motion.div
-                            id="result-div"
-                            initial={{ opacity: 0, y: 30 }}
+                            id="ai-result-display"
+                            initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="mt-10 rounded-[25px] overflow-hidden shadow-2xl"
+                            className="mt-16 rounded-[40px] overflow-hidden shadow-2xl relative"
                           >
-                            <div className="p-8 sm:p-12 text-left" style={{ background: 'linear-gradient(135deg, #1a237e 0%, #4a148c 100%)' }}>
-                              <div className="flex items-center gap-4 mb-8 border-b border-white/10 pb-6">
-                                <div className="p-3 bg-white/20 rounded-2xl">
-                                  <Sparkles className="w-8 h-8 text-yellow-300" />
+                            <div 
+                              className="p-10 sm:p-14 text-left relative z-10" 
+                              style={{ background: 'linear-gradient(135deg, #0f172a 0%, #312e81 50%, #4c1d95 100%)' }}
+                            >
+                              <div className="flex items-center gap-5 mb-10 border-b border-white/10 pb-8">
+                                <div className="p-4 bg-white/10 rounded-3xl backdrop-blur-md">
+                                  <Activity className="w-10 h-10 text-cyan-400" />
                                 </div>
-                                <h3 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">KẾT QUẢ BIỆN LUẬN CHUYÊN MÔN</h3>
+                                <div>
+                                  <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tight">KẾT QUẢ BIỆN LUẬN</h3>
+                                  <p className="text-indigo-200 font-bold opacity-80 uppercase text-sm tracking-widest mt-1">Medical AI Analysis • Pro Version</p>
+                                </div>
                               </div>
 
                               <div 
-                                className="prose prose-invert max-w-none text-blue-50"
-                                style={{ fontFamily: "'Times New Roman', Times, serif" }}
+                                className="prose prose-invert max-w-none text-blue-50/90 text-lg sm:text-xl leading-relaxed"
+                                style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
                                 dangerouslySetInnerHTML={{ __html: aiResult }} 
                               />
 
-                              <div className="mt-10 pt-8 border-t border-white/10 text-red-300 italic text-sm font-bold flex items-start gap-4 bg-black/20 p-6 rounded-2xl">
-                                <span className="text-2xl">⚠️</span>
-                                <span>Lưu ý quan trọng: Đây là phân tích hỗ trợ dựa trên AI. Mọi quyết định lâm sàng cuối cùng cần được xem xét và ký duyệt bởi Bác sĩ chuyên môn.</span>
+                              <div className="mt-12 p-8 bg-black/30 backdrop-blur-xl rounded-3xl border border-white/5 flex items-start gap-4">
+                                <div className="text-3xl">⚠️</div>
+                                <p className="text-red-200 font-medium text-base leading-relaxed italic">
+                                  Lưu ý: Đây là phân tích hỗ trợ dựa trên mô hình AI Gemini 2.0 Flash của Google. Kết quả này mang tính chất tham khảo học thuật, bác sĩ cần đối chiếu thực tế lâm sàng trước khi ra quyết định.
+                                </p>
                               </div>
                             </div>
+                            
+                            {/* Decorative elements */}
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[100px] -mr-32 -mt-32"></div>
+                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 blur-[100px] -ml-32 -mb-32"></div>
                           </motion.div>
                         )}
                       </AnimatePresence>
