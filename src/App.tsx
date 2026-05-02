@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { 
   Activity, 
   Search, 
@@ -44,6 +45,7 @@ import {
   Cpu,
   Glasses,
   Sparkles,
+  Camera,
   Stethoscope as StethoscopeIcon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -2074,7 +2076,7 @@ const labTests: LabTest[] = [
     "indication": "🎯 **Huyết học:** \n- Chẩn đoán phân biệt nguyên nhân gây Thiếu máu: Do tại nhà máy (Suy tủy) hay do mất mát ở ngoại vi (Chảy máu, Tan máu).\n- Đánh giá đáp ứng sớm với các phác đồ điều trị thiếu máu (bù Sắt, Vitamin B12, hoặc tiêm EPO).",
     "specimenCollection": "💉 **Loại mẫu:** Máu toàn phần (EDTA).",
     "testingMethods": "Nhuộm xanh cresyl rực rỡ (brilliant cresyl blue) đếm thủ công, hoặc đo bằng máy huyết học dùng công nghệ laser.",
-    "ref": "📊 **Bình thường:** 0,5% - 1,5% (hoặc $25 - 75 \\times 10^9/L$).\n*(Lưu ý: Ở trẻ sơ sinh tỷ lệ này thường cao hơn, khoảng 2-6%).*",
+    "ref": "📊 **Bình thường:** 0,5% - 1,5%.\n*(Lưu ý: Ở trẻ sơ sinh tỷ lệ này thường cao hơn, khoảng 2% - 6%).*",
     "alert": "⚠️ Nếu bệnh nhân đang bị thiếu máu rất nặng (HGB < 7 g/dL) mà tỷ lệ Hồng cầu lưới vẫn lẹt đẹt < 0,5%, điều này chứng tỏ \"nhà máy\" tủy xương đã bị suy kiệt, bại liệt hoàn toàn hoặc không có vật liệu để sản xuất.",
     "pathologicalMeaning": {
       "increase": "🔹 **Tăng Hồng cầu lưới (Tủy xương phản ứng tốt bù trừ):**\n  🔴 **Mất máu hoặc Phá hủy ngoại vi:**\n    ▫️ Thiếu máu do tan máu (Hemolytic anemia), sốt rét, Thalassemia.\n    ▫️ Tình trạng chảy máu rỉ rả kéo dài hoặc vừa mất máu cấp tính.\n  🔴 **Đáp ứng với điều trị (Tin vui):**\n    ▫️ Ngày thứ 5-7 sau khi bắt đầu truyền bù Sắt, B12, Folate (chứng tỏ tủy đã nhận được nguyên liệu và sản xuất ồ ạt).",
@@ -4325,8 +4327,15 @@ const KnowledgeCardPopup = ({
 
 
 const STAFF_PASSWORD = "Xetnghiem2026"; // <--- BẠN CÓ THỂ THAY ĐỔI PASSWORD TẠI ĐÂY
-const GEMINI_API_KEY = "AIzaSyAiY11EJye93juTFWYMGd3CMmtk6vWvILE";
 
+const getGeminiKey = () => {
+  let key = localStorage.getItem('gemini_api_key');
+  if (!key) {
+    key = prompt('Vui lòng nhập Google Gemini API Key để kích hoạt Trợ lý AI:');
+    if (key) localStorage.setItem('gemini_api_key', key);
+  }
+  return key;
+};
 
 export default function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -4343,86 +4352,149 @@ export default function App() {
   const [selectedKnowledge, setSelectedKnowledge] = useState<null | TestKnowledge>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showGroupFilter, setShowGroupFilter] = useState(false);
-  const [scanningImage, setScanningImage] = useState<string | null>(null);
+  const [boxChanDoan, setBoxChanDoan] = useState('');
+  const [boxChiDinh, setBoxChiDinh] = useState('');
   const [aiResult, setAiResult] = useState<string | null>(null);
+  const [isExtracting, setIsExtracting] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
-  const handleScanImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleExtractData = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Preview
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setScanningImage(reader.result as string);
-    };
-    reader.readAsDataURL(file);
+    const apiKey = getGeminiKey();
+    if (!apiKey) {
+      alert("Bạn chưa nhập API Key. Vui lòng nhập để sử dụng tính năng AI.");
+      return;
+    }
 
-    setIsAnalyzing(true);
+    setIsExtracting(true);
     setAiResult(null);
 
     try {
-      if (!GEMINI_API_KEY || GEMINI_API_KEY === "ĐIỀN_API_KEY_CỦA_BẠN_VÀO_ĐÂY") {
-        throw new Error("API Key chưa được cấu hình. Vui lòng kiểm tra lại environment variables.");
-      }
-
-      // Convert to base64 (strip descriptor)
-      const base64Data = await new Promise<string>((resolve) => {
+      const base64Data = await new Promise<string>((resolve, reject) => {
         const r = new FileReader();
         r.onloadend = () => {
           const base64 = (r.result as string).split(',')[1];
           resolve(base64);
         };
+        r.onerror = () => reject(new Error("Không thể đọc tệp ảnh."));
         r.readAsDataURL(file);
       });
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{
             parts: [
-              { text: `VAI TRÒ: Bạn là một Senior Full-stack Web Developer và Chuyên gia AI Y tế. 
-Nhiệm vụ của bạn là phân tích hình ảnh PHIẾU CHỈ ĐỊNH XÉT NGHIỆM được cung cấp.
-
-YÊU CẦU PHÂN TÍCH:
-1. TRÍCH XUẤT THÔNG TIN: Đọc chuẩn xác Chẩn đoán (bao gồm mã ICD-10 nếu có) và Danh sách các xét nghiệm được chỉ định.
-2. BIỆN LUẬN CHUYÊN SÂU: Dựa trên chẩn đoán và cơ chế sinh lý bệnh học, hãy dự đoán các chỉ số xét nghiệm trên sẽ có xu hướng TĂNG, GIẢM hay BÌNH THƯỜNG. Giải thích cặn kẽ nguyên nhân y khoa (Cơ chế sinh lý) cho từng dự đoán.
-3. TƯ VẤN LÂM SÀNG: Cung cấp các lưu ý quan trọng cho nhân viên y tế khi thực hiện lấy mẫu cho bệnh nhân này dựa trên các chỉ định trên.
-
-ĐỊNH DẠNG PHẢN HỒI (QUAN TRỌNG):
-- Chỉ sử dụng HTML thuần (div, b, span, br, p, table, tr, td, h3).
-- Tuyệt đối KHÔNG dùng Markdown (như #, **, [ ]).
-- Sử dụng CSS inline để tạo giao diện hiện đại, sạch sẽ.
-- Màu nhấn (Accent): #1e40af (Blue 800) và #3b82f6 (Blue 500).
-- Ngôn ngữ: Tiếng Việt chuyên môn lâm sàng.
-- Font chữ hiển thị nội dung y khoa: 'Times New Roman', serif (tạo cảm giác bệnh án chuyên nghiệp).` 
-              },
-              {
-                inline_data: {
-                  mime_type: file.type,
-                  data: base64Data
-                }
-              }
+              { text: "Bạn là một thư ký y khoa chuyên nghiệp. Hãy đọc hình ảnh phiếu chỉ định này và trích xuất dữ liệu. Trả về đúng định dạng JSON có 2 trường: 'chan_doan' (text) và 'chi_dinh' (text, liệt kê các xét nghiệm). Nếu không thấy dữ liệu, hãy để trống. Không trả về gì ngoài JSON." },
+              { inline_data: { mime_type: file.type, data: base64Data } }
             ]
+          }],
+          generationConfig: {
+            response_mime_type: "application/json"
+          }
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error?.message || `Lỗi kết nối API (HTTP ${response.status})`);
+      }
+
+      const data = await response.json();
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      
+      if (text) {
+        try {
+          const parsed = JSON.parse(text);
+          setBoxChanDoan(parsed.chan_doan || '');
+          setBoxChiDinh(parsed.chi_dinh || '');
+        } catch (e) {
+          const cleanedJson = text.replace(/```json|```/g, '').trim();
+          const parsed = JSON.parse(cleanedJson);
+          setBoxChanDoan(parsed.chan_doan || '');
+          setBoxChiDinh(parsed.chi_dinh || '');
+        }
+      } else {
+        throw new Error("AI không trích xuất được thông tin. Vui lòng chụp ảnh rõ hơn.");
+      }
+    } catch (error: any) {
+      console.error("Extraction Error:", error);
+      alert(`[AI ERROR] ${error.message || "Vui lòng thử lại với ảnh rõ nét hơn."}`);
+    } finally {
+      setIsExtracting(false);
+      e.target.value = '';
+    }
+  };
+
+  const handleAnalyzeDeeply = async () => {
+    if (!boxChanDoan && !boxChiDinh) {
+      alert("Vui lòng nhập hoặc Quét ảnh để có dữ liệu Chẩn đoán & Chỉ định.");
+      return;
+    }
+
+    const apiKey = getGeminiKey();
+    if (!apiKey) {
+      alert("Bạn chưa nhập API Key.");
+      return;
+    }
+
+    setIsAnalyzing(true);
+    setAiResult(null);
+
+    try {
+      // Rút gọn dữ liệu labTests để gửi vào prompt (chỉ lấy các trường quan trọng)
+      const simplifiedLabData = labTests.map(t => ({
+        n: t.name,
+        i: t.indication,
+        p: t.pathologicalMeaning,
+        note: t.clinicalNote
+      })).slice(0, 150);
+
+      const finalPrompt = `Dưới đây là một tình huống lâm sàng:
+      - Chẩn đoán: ${boxChanDoan}
+      - Các xét nghiệm được chỉ định: ${boxChiDinh}
+
+      Sử dụng kiến thức y khoa chuyên sâu và tham khảo dữ liệu 'Từ điển xét nghiệm' sau:
+      ${JSON.stringify(simplifiedLabData)}
+
+      YÊU CẦU:
+      1. Phân tích cơ chế bệnh sinh: Tại sao các xét nghiệm này lại được chỉ định cho bệnh nhân này?
+      2. Dự đoán xu hướng: Các chỉ số này sẽ Tăng/Giảm như thế nào? Giải thích ngắn gọn dựa trên y học.
+      3. Trình bày đẹp bằng HTML (Dùng <div>, <p>, <b>, <ul>, <li>, <span>, emoji).
+      4. Màu sắc: Dùng các class Tailwind cơ bản để làm nổi bật kết quả (Ví dụ: text-blue-600 cho Tăng, text-red-600 cho báo động...).
+      5. Lưu ý: Không dùng Markdown. Phân tích chuyên sâu như một chuyên gia xét nghiệm.`;
+
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{ text: finalPrompt }]
           }]
         })
       });
 
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error?.message || "Lỗi API");
+      }
+
       const data = await response.json();
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
       if (text) {
-        // Clean markdown backticks if AI accidentally included them
         const cleanedText = text.replace(/```html|```/g, '').trim();
         setAiResult(cleanedText);
-      } else {
-        setAiResult("<div style='color: #dc2626; padding: 20px; background: #fee2e2; border-radius: 15px; font-weight: bold;'>Xin lỗi, AI không thể phân tích hình ảnh này. Vui lòng chụp ảnh phiếu chỉ định rõ nét hơn, đủ ánh sáng và thử lại.</div>");
+        setTimeout(() => {
+          document.getElementById('result-div')?.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
       }
-    } catch (error) {
-      console.error("AI Error:", error);
-      setAiResult(`<div style='color: #dc2626; padding: 20px; background: #fee2e2; border-radius: 15px; font-weight: bold;'>Đã có lỗi xảy ra: ${error instanceof Error ? error.message : "Lỗi kết nối với hệ thống AI"}. Vui lòng kiểm tra lại cấu hình API Key.</div>`);
+    } catch (error: any) {
+      console.error("Deep Analysis Error:", error);
+      alert(`Lỗi khi phân tích chuyên sâu: ${error.message || "Vui lòng kiểm tra kết nối mạng hoặc API Key."}`);
     } finally {
       setIsAnalyzing(false);
     }
@@ -5654,114 +5726,134 @@ YÊU CẦU PHÂN TÍCH:
                 {staffSubTab === 'ai-assistant' && (
                   <motion.div
                     key="s-ai"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="max-w-4xl mx-auto"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    className="max-w-5xl mx-auto px-4 pb-20"
                   >
-                    <div className="text-center mb-10 sm:mb-16">
-                      <div className="inline-block p-4 bg-indigo-100 dark:bg-indigo-900/30 rounded-3xl mb-6 shadow-xl shadow-indigo-200">
-                        <Sparkles className="w-12 h-12 text-indigo-600" />
+                    <div className="text-center mb-12">
+                      <div className="inline-block p-5 bg-gradient-to-tr from-indigo-500 to-purple-600 rounded-full mb-6 shadow-[0_20px_50px_rgba(79,70,229,0.3)]">
+                        <Sparkles className="w-10 h-10 text-white" />
                       </div>
-                      <h2 className="fluid-title font-black text-indigo-900 dark:text-white mb-4 sm:mb-6 uppercase tracking-tight">Thư ký xét nghiệm (AI)</h2>
-                      <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg sm:text-2xl leading-relaxed font-bold italic">
-                        Trợ lý AI chuyên nghiệp giúp bạn đọc mã ICD-10, nhận diện các chỉ số xét nghiệm và dự đoán xu hướng cơ chế sinh lý bệnh từ phiếu chỉ định.
+                      <h2 className="text-3xl sm:text-4xl font-black text-indigo-900 dark:text-white uppercase tracking-tight mb-4 text-center">Thư ký xét nghiệm (AI)</h2>
+                      <p className="text-slate-600 dark:text-slate-400 text-lg sm:text-xl font-medium max-w-2xl mx-auto text-center leading-relaxed">
+                        Trợ lý thông minh giúp trích xuất thông tin phiếu và biện luận xu hướng cận lâm sàng dựa trên sinh lý bệnh.
                       </p>
                     </div>
 
-                    <div className="bg-white dark:bg-slate-800 rounded-[40px] border-4 border-white dark:border-slate-700 shadow-2xl p-8 sm:p-12 relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full -mr-16 -mt-16 opacity-50" />
-                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-50 rounded-full -ml-12 -mb-12 opacity-50" />
-                      
-                      <div className="flex flex-col items-center gap-8 relative z-10">
-                        {!scanningImage ? (
-                          <label className="w-full max-w-md aspect-video flex flex-col items-center justify-center border-4 border-dashed border-blue-200 rounded-[35px] cursor-pointer hover:bg-blue-50 hover:border-blue-400 transition-all group p-6 text-center">
-                            <div className="bg-blue-600 text-white p-6 rounded-full shadow-xl mb-4 group-hover:rotate-12 group-hover:scale-110 transition-transform">
-                              <Droplet className="w-10 h-10" />
-                            </div>
-                            <span className="text-xl sm:text-2xl font-black text-blue-800 uppercase tracking-tighter">📷 Quét Phiếu Chỉ Định</span>
-                            <span className="text-sm sm:text-base text-slate-400 mt-2 font-bold italic">Dùng camera chụp trực tiếp hoặc tải ảnh</span>
-                            <input 
-                              type="file" 
-                              accept="image/*" 
-                              id="uploadImage"
-                              className="hidden" 
-                              onChange={handleScanImage}
-                            />
-                          </label>
-                        ) : (
-                          <div className="w-full space-y-8">
-                            <div className="relative w-full max-w-md mx-auto aspect-video rounded-[30px] overflow-hidden border-8 border-slate-100 shadow-2xl group">
-                              <img src={scanningImage} alt="Preview" className="w-full h-full object-cover" />
-                              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <button 
-                                  onClick={() => {
-                                    setScanningImage(null);
-                                    setAiResult(null);
-                                  }}
-                                  className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-2xl font-black shadow-2xl flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all"
-                                >
-                                  <X className="w-6 h-6" /> Hủy ảnh
-                                </button>
-                              </div>
-                            </div>
-
-                            {isAnalyzing ? (
-                              <div className="flex flex-col items-center py-10 bg-blue-50/50 rounded-[35px] border-2 border-white shadow-inner">
-                                <div className="relative">
-                                  <div className="w-20 h-20 border-8 border-blue-100 border-t-blue-600 rounded-full animate-spin" />
-                                  <div className="absolute inset-0 flex items-center justify-center">
-                                    <Sparkles className="w-8 h-8 text-blue-600 animate-pulse" />
-                                  </div>
-                                </div>
-                                <p className="text-2xl sm:text-3xl font-black text-blue-900 animate-pulse mt-8 uppercase tracking-widest drop-shadow-sm">Thư ký AI đang xử lý...</p>
-                                <p className="text-slate-500 mt-2 font-bold italic px-6 text-center">Đang phân tích chẩn đoán ICD-10 và cơ chế bệnh học</p>
-                              </div>
-                            ) : aiResult && (
-                              <div className="space-y-6">
-                                <div className="p-8 sm:p-12 bg-white border-2 border-indigo-100 rounded-[45px] shadow-sm relative overflow-hidden">
-                                  <div className="absolute top-0 left-0 w-3 h-full bg-blue-600" />
-                                  <div className="absolute top-0 right-0 p-6 opacity-5"><Activity className="w-24 h-24 text-blue-900" /></div>
-                                  
-                                  <h4 className="text-blue-800 text-xs sm:text-sm font-black uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
-                                    <div className="w-3 h-3 rounded-full bg-blue-600 animate-pulse" /> 
-                                    KẾT QUẢ PHÂN TÍCH CHUYÊN MÔN
-                                  </h4>
-                                  
-                                  <div 
-                                    className="prose prose-blue max-w-none text-[#1565c0]"
-                                    style={{ fontFamily: "'Times New Roman', Times, serif" }}
-                                  >
-                                    <div 
-                                      className="font-medium text-lg lg:text-xl leading-relaxed space-y-4"
-                                      dangerouslySetInnerHTML={{ __html: aiResult }} 
-                                    />
-                                  </div>
-
-                                  <div className="mt-12 pt-8 border-t border-slate-100">
-                                     <p className="text-red-500 italic text-sm sm:text-base font-bold text-justify leading-relaxed flex items-start gap-4 text-left">
-                                       <span className="text-2xl shrink-0">⚠️</span>
-                                       <span>Lưu ý: Đây là dự đoán sinh lý của AI dựa trên chẩn đoán và cơ chế bệnh học, không thay thế cho kết quả xét nghiệm thực tế. Hình ảnh không được lưu trữ nhằm đảm bảo quyền riêng tư.</span>
-                                     </p>
-                                  </div>
-                                </div>
-
-                                <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
-                                  <button 
-                                    onClick={() => {
-                                      setScanningImage(null);
-                                      setAiResult(null);
-                                    }}
-                                    className="px-10 py-5 bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-[25px] font-black text-xl hover:from-blue-700 hover:to-indigo-800 transition-all shadow-2xl flex items-center justify-center gap-3 active:scale-95"
-                                  >
-                                    <Sparkles className="w-6 h-6" /> Quét phiếu mới
-                                  </button>
-                                </div>
-                              </div>
-                            )}
+                    <div className="bg-white dark:bg-slate-800 rounded-[50px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] border-4 border-white dark:border-slate-700 p-6 sm:p-14 transition-all hover:shadow-[0_40px_120px_-20px_rgba(79,70,229,0.15)]">
+                      <div className="grid lg:grid-cols-2 gap-10 mb-12">
+                        {/* Hộp 1: Chẩn đoán */}
+                        <div className="space-y-4 text-left">
+                          <div className="flex items-center justify-between px-2">
+                            <label className="flex items-center gap-2 text-indigo-900 dark:text-indigo-200 font-black uppercase text-sm tracking-widest">
+                              <Activity className="w-5 h-5 text-indigo-500" /> Chẩn đoán lâm sàng
+                            </label>
+                            <span className="text-[10px] bg-indigo-100 text-indigo-600 px-2 py-0.5 rounded-full font-bold">BẮT BUỘC</span>
                           </div>
-                        )}
+                          <textarea 
+                            id="box-chan-doan"
+                            value={boxChanDoan}
+                            onChange={(e) => setBoxChanDoan(e.target.value)}
+                            placeholder="Ví dụ: Theo dõi Xơ gan, Viêm gan B mạn tính..."
+                            className="w-full h-56 sm:h-72 p-7 bg-slate-50 dark:bg-slate-900/50 rounded-[35px] border-2 border-slate-100 dark:border-slate-700 focus:border-indigo-500 focus:ring-8 focus:ring-indigo-500/5 transition-all font-medium text-lg text-slate-800 dark:text-slate-100 resize-none outline-none shadow-inner leading-relaxed"
+                          />
+                        </div>
+
+                        {/* Hộp 2: Danh sách xét nghiệm */}
+                        <div className="space-y-4 text-left">
+                          <div className="flex items-center justify-between px-2">
+                            <label className="flex items-center gap-2 text-indigo-900 dark:text-indigo-200 font-black uppercase text-sm tracking-widest">
+                              <ClipboardList className="w-5 h-5 text-purple-500" /> Danh sách xét nghiệm chỉ định
+                            </label>
+                            <span className="text-[10px] bg-purple-100 text-purple-600 px-2 py-0.5 rounded-full font-bold">DANH SÁCH</span>
+                          </div>
+                          <textarea 
+                            id="box-chi-dinh"
+                            value={boxChiDinh}
+                            onChange={(e) => setBoxChiDinh(e.target.value)}
+                            placeholder="Ví dụ: AST, ALT, GGT, Bilirubin, Albumin..."
+                            className="w-full h-56 sm:h-72 p-7 bg-slate-50 dark:bg-slate-900/50 rounded-[35px] border-2 border-slate-100 dark:border-slate-700 focus:border-indigo-500 focus:ring-8 focus:ring-purple-500/5 transition-all font-medium text-lg text-slate-800 dark:text-slate-100 resize-none outline-none shadow-inner leading-relaxed"
+                          />
+                        </div>
                       </div>
+
+                      {/* Các nút điều khiển */}
+                      <div className="grid sm:grid-cols-2 gap-8">
+                        <label className="relative group cursor-pointer">
+                          <div className={`h-22 flex items-center justify-center gap-4 rounded-[30px] font-black text-xl transition-all shadow-xl active:scale-95 border-4 ${isExtracting ? 'bg-slate-100 border-slate-200 text-slate-300' : 'bg-white border-blue-600 text-blue-600 hover:bg-blue-50 hover:shadow-blue-200/50'}`}>
+                            {isExtracting ? (
+                              <div className="w-8 h-8 border-4 border-slate-300 border-t-blue-600 rounded-full animate-spin" />
+                            ) : (
+                              <Camera className="w-8 h-8 group-hover:rotate-12 transition-transform" />
+                            )}
+                            {isExtracting ? 'Đang đọc phiếu...' : '📷 Quét ảnh lấy dữ liệu'}
+                          </div>
+                          <input 
+                            type="file" 
+                            accept="image/*" 
+                            id="upload-image"
+                            className="hidden" 
+                            onChange={handleExtractData}
+                            disabled={isExtracting}
+                          />
+                        </label>
+
+                        <button 
+                          onClick={handleAnalyzeDeeply}
+                          disabled={isAnalyzing || isExtracting || (!boxChanDoan && !boxChiDinh)}
+                          className="h-22 bg-gradient-to-br from-indigo-600 to-purple-800 text-white rounded-[30px] font-black text-xl shadow-2xl hover:shadow-indigo-500/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-4 active:scale-95 disabled:opacity-50 disabled:grayscale"
+                        >
+                          {isAnalyzing ? (
+                            <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+                          ) : (
+                            <Sparkles className="w-8 h-8 animate-pulse" />
+                          )}
+                          {isAnalyzing ? 'Đang phân tích...' : '🧠 Phân tích chuyên sâu'}
+                        </button>
+                      </div>
+
+                      {/* Hiển thị kết quả */}
+                      <AnimatePresence>
+                        {aiResult && (
+                          <motion.div
+                            id="result-div"
+                            initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
+                            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                            className="mt-16 text-left"
+                          >
+                            <div className="p-1 w-full rounded-[50px] bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 shadow-[0_50px_100px_-20px_rgba(79,70,229,0.4)] overflow-hidden">
+                              <div className="bg-slate-900/40 backdrop-blur-3xl rounded-[48px] p-8 sm:p-14">
+                                <div className="flex items-center gap-5 mb-10 border-b border-white/20 pb-8">
+                                  <div className="p-5 bg-white/10 rounded-3xl shadow-inner">
+                                    <Sparkles className="w-9 h-9 text-yellow-300" />
+                                  </div>
+                                  <div>
+                                    <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white mb-1">Biện luận y khoa AI</h3>
+                                    <p className="text-indigo-200 text-base sm:text-lg font-bold italic mb-0">Cơ chế bệnh học & Xu hướng xét nghiệm 🩺</p>
+                                  </div>
+                                </div>
+
+                                <div 
+                                  className="prose prose-invert max-w-none"
+                                >
+                                  <div 
+                                    className="text-slate-50 leading-relaxed font-medium space-y-8 text-lg sm:text-xl"
+                                    dangerouslySetInnerHTML={{ __html: aiResult }} 
+                                  />
+                                </div>
+
+                                <div className="mt-14 pt-10 border-t border-white/10 flex items-start gap-5 p-8 bg-white/5 rounded-[35px] border border-white/5">
+                                  <span className="text-4xl">⚠️</span>
+                                  <p className="text-red-300 text-sm sm:text-base font-black italic shadow-sm tracking-wide leading-tight uppercase mb-0">
+                                    Đây là thông tin hỗ trợ từ Trí tuệ nhân tạo (AI). Mọi chẩn đoán và điều trị cuối cùng phải được thực hiện và quyết định bởi Bác sĩ lâm sàng.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   </motion.div>
                 )}
