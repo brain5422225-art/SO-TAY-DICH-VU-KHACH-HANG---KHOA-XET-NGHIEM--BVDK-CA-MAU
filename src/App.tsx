@@ -4338,10 +4338,16 @@ const getGeminiKey = () => {
   // 2. Nếu không có trong code, lấy từ localStorage
   let key = localStorage.getItem('gemini_api_key');
   if (!key) {
-    key = prompt('Vui lòng nhập Google Gemini API Key để kích hoạt Trợ lý AI:');
-    if (key) localStorage.setItem('gemini_api_key', key);
+    // Không dùng prompt ở đây để tránh làm phiền người dùng lúc runtime, 
+    // thay vào đó sẽ thông báo khi bấm nút nếu chưa có key.
+    return null;
   }
   return key;
+};
+
+// Cấu hình AI SDK
+const getAIClient = (key: string) => {
+  return new GoogleGenerativeAI(key);
 };
 
 export default function App() {
@@ -4371,7 +4377,7 @@ export default function App() {
 
     const apiKey = getGeminiKey();
     if (!apiKey) {
-      alert("Bạn chưa nhập API Key. Vui lòng nhập để sử dụng tính năng AI.");
+      alert("Bạn chưa nhập API Key. Vui lòng nhấn nút 'Đổi API Key' để nhập.");
       return;
     }
 
@@ -4389,29 +4395,26 @@ export default function App() {
         r.readAsDataURL(file);
       });
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{
-            parts: [
-              { text: "Bạn là một thư ký y khoa chuyên nghiệp. Hãy đọc hình ảnh phiếu chỉ định này và trích xuất dữ liệu. Trả về đúng định dạng JSON có 2 trường: 'chan_doan' (text) và 'chi_dinh' (text, liệt kê các xét nghiệm). Nếu không thấy dữ liệu, hãy để trống. Không trả về gì ngoài JSON." },
-              { inline_data: { mime_type: file.type, data: base64Data } }
-            ]
-          }],
-          generationConfig: {
-            response_mime_type: "application/json"
-          }
-        })
+      const genAI = getAIClient(apiKey);
+      // Sử dụng gemini-1.5-flash là model ổn định nhất cho vision
+      const model = genAI.getGenerativeModel({ 
+        model: "gemini-1.5-flash",
+        generationConfig: { responseMimeType: "application/json" }
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error?.message || `Lỗi kết nối API (HTTP ${response.status})`);
-      }
+      const promptText = "Bạn là một thư ký y khoa chuyên nghiệp. Hãy đọc hình ảnh phiếu chỉ định này và trích xuất dữ liệu. Trả về đúng định dạng JSON có 2 trường: 'chan_doan' (text) và 'chi_dinh' (text, liệt kê các xét nghiệm). Nếu không thấy dữ liệu, hãy để trống. Không trả về gì ngoài JSON.";
 
-      const data = await response.json();
-      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      const result = await model.generateContent([
+        promptText,
+        {
+          inlineData: {
+            mimeType: file.type,
+            data: base64Data
+          }
+        }
+      ]);
+
+      const text = result.response.text();
       
       if (text) {
         try {
@@ -4429,7 +4432,7 @@ export default function App() {
       }
     } catch (error: any) {
       console.error("Extraction Error:", error);
-      alert(`[AI ERROR] ${error.message || "Vui lòng thử lại với ảnh rõ nét hơn."}`);
+      alert(`[AI ERROR] ${error.message || "Lỗi khi trích xuất hoặc API Key không hợp lệ."}`);
     } finally {
       setIsExtracting(false);
       e.target.value = '';
@@ -4452,7 +4455,6 @@ export default function App() {
     setAiResult(null);
 
     try {
-      // Rút gọn dữ liệu labTests để gửi vào prompt (chỉ lấy các trường quan trọng)
       const simplifiedLabData = labTests.map(t => ({
         n: t.name,
         i: t.indication,
@@ -4474,23 +4476,11 @@ export default function App() {
       4. Màu sắc: Dùng các class Tailwind cơ bản để làm nổi bật kết quả (Ví dụ: text-blue-600 cho Tăng, text-red-600 cho báo động...).
       5. Lưu ý: Không dùng Markdown. Phân tích chuyên sâu như một chuyên gia xét nghiệm.`;
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{ text: finalPrompt }]
-          }]
-        })
-      });
+      const genAI = getAIClient(apiKey);
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error?.message || "Lỗi API");
-      }
-
-      const data = await response.json();
-      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      const result = await model.generateContent(finalPrompt);
+      const text = result.response.text();
 
       if (text) {
         const cleanedText = text.replace(/```html|```/g, '').trim();
@@ -4498,10 +4488,12 @@ export default function App() {
         setTimeout(() => {
           document.getElementById('result-div')?.scrollIntoView({ behavior: 'smooth' });
         }, 300);
+      } else {
+        throw new Error("AI không trả về nội dung phân tích.");
       }
     } catch (error: any) {
       console.error("Deep Analysis Error:", error);
-      alert(`Lỗi khi phân tích chuyên sâu: ${error.message || "Vui lòng kiểm tra kết nối mạng hoặc API Key."}`);
+      alert(`[AI ERROR] ${error.message || "Lỗi khi phân tích chuyên sâu."}`);
     } finally {
       setIsAnalyzing(false);
     }
