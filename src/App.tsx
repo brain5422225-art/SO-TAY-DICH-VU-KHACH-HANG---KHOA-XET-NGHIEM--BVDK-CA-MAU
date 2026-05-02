@@ -4327,8 +4327,15 @@ const KnowledgeCardPopup = ({
 
 
 const STAFF_PASSWORD = "Xetnghiem2026"; // <--- BẠN CÓ THỂ THAY ĐỔI PASSWORD TẠI ĐÂY
+const HARDCODED_GEMINI_API_KEY = "AIzaSyAZ_Rgj2UHJwXJNlIFH17tjq_THyj0CARc"; // <--- BẠN CÓ THỂ DÁN API KEY VÀO ĐÂY ĐỂ DÙNG CỐ ĐỊNH
 
 const getGeminiKey = () => {
+  // 1. Ưu tiên key trong code nếu có
+  if (HARDCODED_GEMINI_API_KEY && HARDCODED_GEMINI_API_KEY !== "") {
+    return HARDCODED_GEMINI_API_KEY;
+  }
+  
+  // 2. Nếu không có trong code, lấy từ localStorage
   let key = localStorage.getItem('gemini_api_key');
   if (!key) {
     key = prompt('Vui lòng nhập Google Gemini API Key để kích hoạt Trợ lý AI:');
@@ -5726,129 +5733,137 @@ export default function App() {
                 {staffSubTab === 'ai-assistant' && (
                   <motion.div
                     key="s-ai"
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
                     className="max-w-5xl mx-auto px-4 pb-20"
                   >
-                    <div className="text-center mb-12">
-                      <div className="inline-block p-5 bg-gradient-to-tr from-indigo-500 to-purple-600 rounded-full mb-6 shadow-[0_20px_50px_rgba(79,70,229,0.3)]">
-                        <Sparkles className="w-10 h-10 text-white" />
+                    {/* Secretary View Container */}
+                    <div 
+                      id="secretary-view" 
+                      className="rounded-[30px] p-8 sm:p-12 shadow-[10px_10px_20px_#bebebe,-10px_-10px_20px_#ffffff] dark:shadow-none"
+                      style={{ background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)' }}
+                    >
+                      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
+                        <h2 className="text-2xl sm:text-3xl font-black text-blue-800 dark:text-blue-900 flex items-center gap-3">
+                          📋 Thư ký xét nghiệm (AI Assistant)
+                        </h2>
+                        <button 
+                          onClick={() => {
+                            const newKey = prompt("Nhập Google Gemini API Key mới:");
+                            if (newKey) {
+                              localStorage.setItem('gemini_api_key', newKey);
+                              alert("Đã cập nhật API Key thành công!");
+                              window.location.reload();
+                            }
+                          }}
+                          className="flex items-center gap-2 text-slate-600 hover:text-blue-700 font-bold transition-colors text-sm sm:text-base border-b border-dashed border-slate-400"
+                        >
+                          ⚙️ Đổi API Key
+                        </button>
                       </div>
-                      <h2 className="text-3xl sm:text-4xl font-black text-indigo-900 dark:text-white uppercase tracking-tight mb-4 text-center">Thư ký xét nghiệm (AI)</h2>
-                      <p className="text-slate-600 dark:text-slate-400 text-lg sm:text-xl font-medium max-w-2xl mx-auto text-center leading-relaxed">
-                        Trợ lý thông minh giúp trích xuất thông tin phiếu và biện luận xu hướng cận lâm sàng dựa trên sinh lý bệnh.
-                      </p>
-                    </div>
 
-                    <div className="bg-white dark:bg-slate-800 rounded-[50px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] border-4 border-white dark:border-slate-700 p-6 sm:p-14 transition-all hover:shadow-[0_40px_120px_-20px_rgba(79,70,229,0.15)]">
-                      <div className="grid lg:grid-cols-2 gap-10 mb-12">
+                      <div className="space-y-8">
                         {/* Hộp 1: Chẩn đoán */}
-                        <div className="space-y-4 text-left">
-                          <div className="flex items-center justify-between px-2">
-                            <label className="flex items-center gap-2 text-indigo-900 dark:text-indigo-200 font-black uppercase text-sm tracking-widest">
-                              <Activity className="w-5 h-5 text-indigo-500" /> Chẩn đoán lâm sàng
-                            </label>
-                            <span className="text-[10px] bg-indigo-100 text-indigo-600 px-2 py-0.5 rounded-full font-bold">BẮT BUỘC</span>
-                          </div>
+                        <div className="flex flex-col gap-3">
+                          <label className="font-black text-slate-700 flex items-center gap-2">
+                            <Activity className="w-5 h-5 text-blue-600" /> 🏥 Chẩn đoán lâm sàng:
+                          </label>
                           <textarea 
                             id="box-chan-doan"
                             value={boxChanDoan}
                             onChange={(e) => setBoxChanDoan(e.target.value)}
-                            placeholder="Ví dụ: Theo dõi Xơ gan, Viêm gan B mạn tính..."
-                            className="w-full h-56 sm:h-72 p-7 bg-slate-50 dark:bg-slate-900/50 rounded-[35px] border-2 border-slate-100 dark:border-slate-700 focus:border-indigo-500 focus:ring-8 focus:ring-indigo-500/5 transition-all font-medium text-lg text-slate-800 dark:text-slate-100 resize-none outline-none shadow-inner leading-relaxed"
+                            placeholder="Kết quả quét chẩn đoán sẽ hiện ở đây..." 
+                            className="w-full h-32 border-none rounded-[20px] p-5 font-medium text-lg text-slate-800 shadow-[inset_5px_5px_10px_#e0e0e0,inset_-5px_-5px_10px_#ffffff] outline-none focus:ring-4 focus:ring-blue-200 transition-all resize-none"
                           />
                         </div>
 
-                        {/* Hộp 2: Danh sách xét nghiệm */}
-                        <div className="space-y-4 text-left">
-                          <div className="flex items-center justify-between px-2">
-                            <label className="flex items-center gap-2 text-indigo-900 dark:text-indigo-200 font-black uppercase text-sm tracking-widest">
-                              <ClipboardList className="w-5 h-5 text-purple-500" /> Danh sách xét nghiệm chỉ định
-                            </label>
-                            <span className="text-[10px] bg-purple-100 text-purple-600 px-2 py-0.5 rounded-full font-bold">DANH SÁCH</span>
-                          </div>
+                        {/* Hộp 2: Chỉ định */}
+                        <div className="flex flex-col gap-3">
+                          <label className="font-black text-slate-700 flex items-center gap-2">
+                            <ClipboardList className="w-5 h-5 text-purple-600" /> 🧪 Danh sách xét nghiệm chỉ định:
+                          </label>
                           <textarea 
                             id="box-chi-dinh"
                             value={boxChiDinh}
                             onChange={(e) => setBoxChiDinh(e.target.value)}
-                            placeholder="Ví dụ: AST, ALT, GGT, Bilirubin, Albumin..."
-                            className="w-full h-56 sm:h-72 p-7 bg-slate-50 dark:bg-slate-900/50 rounded-[35px] border-2 border-slate-100 dark:border-slate-700 focus:border-indigo-500 focus:ring-8 focus:ring-purple-500/5 transition-all font-medium text-lg text-slate-800 dark:text-slate-100 resize-none outline-none shadow-inner leading-relaxed"
+                            placeholder="Danh sách xét nghiệm sẽ hiện ở đây..." 
+                            className="w-full h-40 border-none rounded-[20px] p-5 font-medium text-lg text-slate-800 shadow-[inset_5px_5px_10px_#e0e0e0,inset_-5px_-5px_10px_#ffffff] outline-none focus:ring-4 focus:ring-purple-200 transition-all resize-none"
                           />
+                        </div>
+
+                        {/* Nút bấm */}
+                        <div className="grid sm:grid-cols-2 gap-6">
+                          <label className="flex-1 group">
+                            <div className={`h-16 flex items-center justify-center gap-3 rounded-full font-black text-lg cursor-pointer transition-all active:scale-95 shadow-[5px_5px_10px_#b1b1b1,-5px_-5px_10px_#ffffff] ${isExtracting ? 'bg-slate-200 text-slate-400' : 'bg-[#bbdefb] text-[#1565c0] hover:bg-[#90caf9]'}`}>
+                              {isExtracting ? (
+                                <div className="w-6 h-6 border-4 border-slate-300 border-t-blue-600 rounded-full animate-spin" />
+                              ) : (
+                                <Camera className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+                              )}
+                              {isExtracting ? 'Đang đọc phiếu...' : '📷 Quét ảnh lấy dữ liệu'}
+                            </div>
+                            <input 
+                              type="file" 
+                              id="upload-image"
+                              accept="image/*" 
+                              className="hidden" 
+                              onChange={handleExtractData}
+                              disabled={isExtracting}
+                            />
+                          </label>
+
+                          <button 
+                            onClick={handleAnalyzeDeeply}
+                            disabled={isAnalyzing || isExtracting || (!boxChanDoan && !boxChiDinh)}
+                            className="flex-1 h-16 bg-[#1565c0] text-white rounded-full font-black text-lg transition-all shadow-[5px_5px_10px_#b1b1b1,-5px_-5px_10px_#ffffff] flex items-center justify-center gap-3 active:scale-95 hover:bg-[#0d47a1] disabled:opacity-50 disabled:grayscale"
+                          >
+                            {isAnalyzing ? (
+                              <div className="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+                            ) : (
+                              <Sparkles className="w-6 h-6" />
+                            )}
+                            {isAnalyzing ? 'Đang phân tích...' : '🧠 Phân tích chuyên sâu'}
+                          </button>
                         </div>
                       </div>
 
-                      {/* Các nút điều khiển */}
-                      <div className="grid sm:grid-cols-2 gap-8">
-                        <label className="relative group cursor-pointer">
-                          <div className={`h-22 flex items-center justify-center gap-4 rounded-[30px] font-black text-xl transition-all shadow-xl active:scale-95 border-4 ${isExtracting ? 'bg-slate-100 border-slate-200 text-slate-300' : 'bg-white border-blue-600 text-blue-600 hover:bg-blue-50 hover:shadow-blue-200/50'}`}>
-                            {isExtracting ? (
-                              <div className="w-8 h-8 border-4 border-slate-300 border-t-blue-600 rounded-full animate-spin" />
-                            ) : (
-                              <Camera className="w-8 h-8 group-hover:rotate-12 transition-transform" />
-                            )}
-                            {isExtracting ? 'Đang đọc phiếu...' : '📷 Quét ảnh lấy dữ liệu'}
-                          </div>
-                          <input 
-                            type="file" 
-                            accept="image/*" 
-                            id="upload-image"
-                            className="hidden" 
-                            onChange={handleExtractData}
-                            disabled={isExtracting}
-                          />
-                        </label>
-
-                        <button 
-                          onClick={handleAnalyzeDeeply}
-                          disabled={isAnalyzing || isExtracting || (!boxChanDoan && !boxChiDinh)}
-                          className="h-22 bg-gradient-to-br from-indigo-600 to-purple-800 text-white rounded-[30px] font-black text-xl shadow-2xl hover:shadow-indigo-500/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-4 active:scale-95 disabled:opacity-50 disabled:grayscale"
-                        >
-                          {isAnalyzing ? (
-                            <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin" />
-                          ) : (
-                            <Sparkles className="w-8 h-8 animate-pulse" />
-                          )}
-                          {isAnalyzing ? 'Đang phân tích...' : '🧠 Phân tích chuyên sâu'}
-                        </button>
-                      </div>
+                      {/* Hiển thị Trạng thái Loading */}
+                      {(isExtracting || isAnalyzing) && (
+                        <div className="mt-8 text-center animate-pulse">
+                          <div className="inline-block w-8 h-8 border-4 border-blue-200 border-t-blue-700 rounded-full animate-spin mb-2"></div>
+                          <p className="text-blue-800 font-bold">
+                            {isExtracting ? "Đang đọc nội dung phiếu chỉ định..." : "Đang phân tích xu hướng bệnh học..."}
+                          </p>
+                        </div>
+                      )}
 
                       {/* Hiển thị kết quả */}
                       <AnimatePresence>
-                        {aiResult && (
+                        {aiResult && !isAnalyzing && (
                           <motion.div
                             id="result-div"
-                            initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
-                            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                            className="mt-16 text-left"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mt-10 rounded-[25px] overflow-hidden shadow-2xl"
                           >
-                            <div className="p-1 w-full rounded-[50px] bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-700 shadow-[0_50px_100px_-20px_rgba(79,70,229,0.4)] overflow-hidden">
-                              <div className="bg-slate-900/40 backdrop-blur-3xl rounded-[48px] p-8 sm:p-14">
-                                <div className="flex items-center gap-5 mb-10 border-b border-white/20 pb-8">
-                                  <div className="p-5 bg-white/10 rounded-3xl shadow-inner">
-                                    <Sparkles className="w-9 h-9 text-yellow-300" />
-                                  </div>
-                                  <div>
-                                    <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white mb-1">Biện luận y khoa AI</h3>
-                                    <p className="text-indigo-200 text-base sm:text-lg font-bold italic mb-0">Cơ chế bệnh học & Xu hướng xét nghiệm 🩺</p>
-                                  </div>
+                            <div className="p-8 sm:p-12 text-left" style={{ background: 'linear-gradient(135deg, #1a237e 0%, #4a148c 100%)' }}>
+                              <div className="flex items-center gap-4 mb-8 border-b border-white/10 pb-6">
+                                <div className="p-3 bg-white/20 rounded-2xl">
+                                  <Sparkles className="w-8 h-8 text-yellow-300" />
                                 </div>
+                                <h3 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">KẾT QUẢ BIỆN LUẬN CHUYÊN MÔN</h3>
+                              </div>
 
-                                <div 
-                                  className="prose prose-invert max-w-none"
-                                >
-                                  <div 
-                                    className="text-slate-50 leading-relaxed font-medium space-y-8 text-lg sm:text-xl"
-                                    dangerouslySetInnerHTML={{ __html: aiResult }} 
-                                  />
-                                </div>
+                              <div 
+                                className="prose prose-invert max-w-none text-blue-50"
+                                style={{ fontFamily: "'Times New Roman', Times, serif" }}
+                                dangerouslySetInnerHTML={{ __html: aiResult }} 
+                              />
 
-                                <div className="mt-14 pt-10 border-t border-white/10 flex items-start gap-5 p-8 bg-white/5 rounded-[35px] border border-white/5">
-                                  <span className="text-4xl">⚠️</span>
-                                  <p className="text-red-300 text-sm sm:text-base font-black italic shadow-sm tracking-wide leading-tight uppercase mb-0">
-                                    Đây là thông tin hỗ trợ từ Trí tuệ nhân tạo (AI). Mọi chẩn đoán và điều trị cuối cùng phải được thực hiện và quyết định bởi Bác sĩ lâm sàng.
-                                  </p>
-                                </div>
+                              <div className="mt-10 pt-8 border-t border-white/10 text-red-300 italic text-sm font-bold flex items-start gap-4 bg-black/20 p-6 rounded-2xl">
+                                <span className="text-2xl">⚠️</span>
+                                <span>Lưu ý quan trọng: Đây là phân tích hỗ trợ dựa trên AI. Mọi quyết định lâm sàng cuối cùng cần được xem xét và ký duyệt bởi Bác sĩ chuyên môn.</span>
                               </div>
                             </div>
                           </motion.div>
