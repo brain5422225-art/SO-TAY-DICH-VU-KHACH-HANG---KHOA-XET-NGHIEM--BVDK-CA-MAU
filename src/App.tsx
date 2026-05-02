@@ -4327,20 +4327,15 @@ const KnowledgeCardPopup = ({
 
 
 const STAFF_PASSWORD = "Xetnghiem2026"; // <--- BẠN CÓ THỂ THAY ĐỔI PASSWORD TẠI ĐÂY
-const HARDCODED_GEMINI_API_KEY = "AIzaSyDL_BQ_fAQRV_PwGtAimcXOE_0SwQ9-ZaY"; // <--- BẠN CÓ THỂ DÁN API KEY VÀO ĐÂY ĐỂ DÙNG CỐ ĐỊNH
+const HARDCODED_GEMINI_API_KEY = ""; // <--- BẠN CÓ THỂ DÁN API KEY VÀO ĐÂY ĐỂ DÙNG CỐ ĐỊNH
 
 const getGeminiKey = () => {
-  // 1. Ưu tiên key trong code nếu có
-  if (HARDCODED_GEMINI_API_KEY && HARDCODED_GEMINI_API_KEY !== "") {
-    return HARDCODED_GEMINI_API_KEY;
-  }
-  
-  // 2. Nếu không có trong code, lấy từ localStorage
   let key = localStorage.getItem('gemini_api_key');
   if (!key) {
-    // Không dùng prompt ở đây để tránh làm phiền người dùng lúc runtime, 
-    // thay vào đó sẽ thông báo khi bấm nút nếu chưa có key.
-    return null;
+    key = prompt("Lần đầu sử dụng: Vui lòng nhập Google Gemini API Key của bạn để kích hoạt AI:");
+    if (key) {
+      localStorage.setItem('gemini_api_key', key);
+    }
   }
   return key;
 };
@@ -4395,7 +4390,7 @@ export default function App() {
         r.readAsDataURL(file);
       });
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -4479,7 +4474,7 @@ export default function App() {
       4. Màu sắc: Dùng các class Tailwind cơ bản để làm nổi bật kết quả (Ví dụ: text-blue-600 cho Tăng, text-red-600 cho báo động...).
       5. Lưu ý: Không dùng Markdown. Phân tích chuyên sâu như một chuyên gia xét nghiệm.`;
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
