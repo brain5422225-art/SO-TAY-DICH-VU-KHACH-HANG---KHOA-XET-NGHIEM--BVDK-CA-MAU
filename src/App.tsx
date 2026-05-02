@@ -4373,7 +4373,7 @@ export default function App() {
         r.readAsDataURL(file);
       });
 
-      // SỬ DỤNG V1 VÀ CAMELCASE ĐỂ ĐẢM BẢO TƯƠNG THÍCH CAO NHẤT
+      // SỬ DỤNG V1 VÀ SNAKE_CASE ĐỂ ĐẢM BẢO TƯƠNG THÍCH VỚI REST API
       const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -4381,11 +4381,11 @@ export default function App() {
           contents: [{
             parts: [
               { text: "Bạn là một thư ký y khoa chuyên nghiệp. Hãy đọc hình ảnh phiếu chỉ định này và trích xuất dữ liệu. Trả về đúng định dạng JSON có 2 trường: 'chan_doan' (text) và 'chi_dinh' (text, liệt kê các xét nghiệm). Nếu không thấy dữ liệu, hãy để trống. Không trả về gì ngoài JSON." },
-              { inlineData: { mimeType: file.type, data: base64Data } }
+              { inline_data: { mime_type: file.type, data: base64Data } }
             ]
           }],
-          generationConfig: {
-            responseMimeType: "application/json"
+          generation_config: {
+            response_mime_type: "application/json"
           }
         })
       });
@@ -4458,8 +4458,8 @@ export default function App() {
           contents: [{
             parts: [{ text: prompt }]
           }],
-          generationConfig: {
-            responseMimeType: "text/plain"
+          generation_config: {
+            response_mime_type: "text/plain"
           }
         })
       });
