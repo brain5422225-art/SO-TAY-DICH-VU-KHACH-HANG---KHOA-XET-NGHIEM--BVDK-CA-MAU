@@ -4373,7 +4373,8 @@ export default function App() {
         r.readAsDataURL(file);
       });
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+      // SỬ DỤNG V1 VÀ CAMELCASE ĐỂ ĐẢM BẢO TƯƠNG THÍCH CAO NHẤT
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -4450,7 +4451,7 @@ export default function App() {
       4. Tuyệt đối KHÔNG sử dụng Markdown (không được có \`\`\`html, không #, không *).
       5. Phân tích phải cực kỳ chuyên sâu, biện luận sắc bén như một chuyên gia đầu ngành.`;
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
