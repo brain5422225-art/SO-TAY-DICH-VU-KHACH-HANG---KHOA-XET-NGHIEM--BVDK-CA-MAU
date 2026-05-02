@@ -4382,7 +4382,7 @@ export default function App() {
         r.readAsDataURL(file);
       });
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -4467,7 +4467,7 @@ export default function App() {
       4. Màu sắc: Dùng các class Tailwind cơ bản để làm nổi bật kết quả (Ví dụ: text-blue-600 cho Tăng, text-red-600 cho báo động...).
       5. Lưu ý: Không dùng Markdown. Phân tích chuyên sâu như một chuyên gia xét nghiệm.`;
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
