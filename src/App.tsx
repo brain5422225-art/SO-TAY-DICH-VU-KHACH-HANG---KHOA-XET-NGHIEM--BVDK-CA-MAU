@@ -4427,20 +4427,24 @@ export default function App() {
         c: t.clinicalNote
       }));
 
-      const finalPrompt = `Bạn đóng vai là một chuyên gia xét nghiệm y khoa lâu năm. Dưới đây là thông tin bệnh nhân:
+      const finalPrompt = `Bạn là một CHUYÊN GIA BIỆN LUẬN XÉT NGHIỆM ĐẦU NGÀNH. Hãy phân tích trường hợp này.
       - Chẩn đoán: ${boxChanDoan}
       - Các xét nghiệm chỉ định: ${boxChiDinh}
 
-      Dựa trên 150 mục xét nghiệm tham khảo sau:
+      Dựa trên kiến thức y khoa và 150 mục xét nghiệm tham chiếu:
       ${JSON.stringify(simplifiedData)}
 
-      Hãy thực hiện phân tích sinh lý bệnh chuyên sâu. Dự đoán xu hướng Tăng/Giảm của các chỉ số xét nghiệm dựa trên chẩn đoán lâm sàng. 
-      YÊU CẦU:
-      1. Trình bày bằng mã HTML đẹp mắt (sử dụng div, p, b, ul, li, span, các class Tailwind cơ bản).
-      2. Tông màu: Hiện đại, chuyên nghiệp. Sử dụng class 'text-blue-600' cho xu hướng tăng, 'text-red-600' cho báo động hoặc giảm nghiêm trọng.
-      3. Sử dụng các icon y tế (emoji).
-      4. Tuyệt đối KHÔNG sử dụng Markdown (không được có \`\`\`html, không #, không *).
-      5. Phân tích phải cực kỳ chuyên sâu, biện luận sắc bén như một chuyên gia đầu ngành.`;
+      YÊU CẦU TRÌNH BÀY (BẮT BUỘC):
+      Mô phỏng phong cách 'Từ điển xét nghiệm' với giao diện 'Thẻ Khoa Học' (Scientific Cards):
+      1. SỬ DỤNG MÃ HTML TRỰC TIẾP (div, p, b, span, br, class Tailwind).
+      2. CẤU TRÚC GỒM 4 KHỐI CHÍNH:
+         - KHỐI 1: TỔNG QUAN SINH LÝ BỆNH (Nền xanh nhạt, Icon 🧠, Tiêu đề Indigo). Giải thích cơ chế vì sao chẩn đoán này dẫn tới các thay đổi xét nghiệm.
+         - KHỐI 2: DỰ ĐOÁN XU HƯỚNG (Nền trắng, border-left Indigo đậm, Icon 📊). Liệt kê từng chỉ số, dự đoán Tăng/Giảm kèm giải thích sắc bén. Dùng màu sắc: text-blue-600 cho Tăng, text-rose-600 cho Giảm.
+         - KHỐI 3: CẢNH BÁO & GIÁ TRỊ TỚI HẠN (Nền đỏ nhạt, Icon ⚠️). Các giá trị cần báo động ngay cho lâm sàng.
+         - KHỐI 4: BIỆN LUẬN CHUYÊN SÂU (Nền vàng nhạt, Icon 💡). Lời khuyên vàng cho bác sĩ điều trị.
+      3. ICON Y TẾ: Sử dụng Emoji phù hợp (💉, 🩸, 🧪, 🚑, 🏥).
+      4. THIẾT KẾ: Sử dụng các class: mb-6 (margin bottom), p-6 (padding), rounded-3xl (bo góc), shadow-md (đổ bóng).
+      5. TUYỆT ĐỐI: Không dùng Markdown (#, **, \`\`\`). Trả về HTML nguyên bản.`;
 
       // Gọi máy chủ trung gian của chúng ta (với action: 'analyze')
       const response = await fetch('/api/gemini', {
@@ -5793,41 +5797,54 @@ export default function App() {
                         {aiResult && !isLoadingAnalyze && (
                           <motion.div
                             id="ai-result-display"
-                            initial={{ opacity: 0, y: 40 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mt-16 rounded-[40px] overflow-hidden shadow-2xl relative"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="mt-16 rounded-[50px] overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.1)] border-8 border-white bg-white relative"
                           >
-                            <div 
-                              className="p-10 sm:p-14 text-left relative z-10" 
-                              style={{ background: 'linear-gradient(135deg, #0f172a 0%, #312e81 50%, #4c1d95 100%)' }}
-                            >
-                              <div className="flex items-center gap-5 mb-10 border-b border-white/10 pb-8">
-                                <div className="p-4 bg-white/10 rounded-3xl backdrop-blur-md">
-                                  <Activity className="w-10 h-10 text-cyan-400" />
-                                </div>
-                                <div>
-                                  <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tight">KẾT QUẢ BIỆN LUẬN</h3>
-                                  <p className="text-indigo-200 font-bold opacity-80 uppercase text-sm tracking-widest mt-1">Medical AI Analysis • Pro Version</p>
-                                </div>
-                              </div>
+                            <div className="p-1 sm:p-2 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600">
+                               <div className="bg-white rounded-[45px] p-8 sm:p-14">
+                                  <div className="flex flex-col sm:flex-row items-center gap-6 mb-12 border-b border-slate-100 pb-10">
+                                    <div className="w-20 h-20 bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-indigo-200 rotate-3 group-hover:rotate-0 transition-transform">
+                                      <Activity className="w-10 h-10 text-white animate-pulse" />
+                                    </div>
+                                    <div className="text-center sm:text-left">
+                                      <h3 className="text-3xl sm:text-4xl font-black text-slate-800 tracking-tighter uppercase">Biện luận chuyên sâu</h3>
+                                      <div className="flex items-center gap-2 mt-2 justify-center sm:justify-start">
+                                        <span className="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-black rounded-full uppercase tracking-widest">Medical AI Pro v2.5</span>
+                                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                                        <span className="text-slate-400 text-xs font-bold uppercase tracking-tighter">Real-time Clinical Analysis</span>
+                                      </div>
+                                    </div>
+                                  </div>
 
-                              <div 
-                                className="prose prose-invert max-w-none text-blue-50/90 text-lg sm:text-xl leading-relaxed"
-                                style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
-                                dangerouslySetInnerHTML={{ __html: aiResult }} 
-                              />
+                                  <div 
+                                    className="prose prose-slate max-w-none text-slate-700 text-lg sm:text-xl leading-relaxed space-y-6"
+                                    style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
+                                    dangerouslySetInnerHTML={{ __html: aiResult }} 
+                                  />
 
-                              <div className="mt-12 p-8 bg-black/30 backdrop-blur-xl rounded-3xl border border-white/5 flex items-start gap-4">
-                                <div className="text-3xl">⚠️</div>
-                                <p className="text-red-200 font-medium text-base leading-relaxed italic">
-                                  Lưu ý: Đây là phân tích hỗ trợ dựa trên mô hình AI Gemini 2.0 Flash của Google. Kết quả này mang tính chất tham khảo học thuật, bác sĩ cần đối chiếu thực tế lâm sàng trước khi ra quyết định.
-                                </p>
-                              </div>
+                                  <div className="mt-16 p-10 bg-gradient-to-br from-slate-900 to-indigo-950 rounded-[35px] border-4 border-white shadow-2xl relative overflow-hidden group">
+                                    <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-125 transition-transform duration-1000">
+                                      <ShieldAlert className="w-24 h-24 text-white" />
+                                    </div>
+                                    <div className="flex items-start gap-6 relative z-10">
+                                      <div className="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-red-500/20">
+                                         <AlertCircle className="w-7 h-7 text-white" />
+                                      </div>
+                                      <div>
+                                        <h4 className="text-white font-black text-xl mb-2 uppercase tracking-wide">Trách nhiệm pháp lý & Chuyên môn</h4>
+                                        <p className="text-indigo-100/80 font-medium text-base sm:text-lg leading-relaxed italic">
+                                          Đây là phân tích hỗ trợ bởi thuật toán **Gemini 2.5 Flash** dựa trên dữ liệu đào tạo y khoa. Kết quả mang tính chất tham khảo, tư vấn học thuật. Bác sĩ lâm sàng là người chịu trách nhiệm cuối cùng trong việc đưa ra chẩn đoán và điều trị thực tế.
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                               </div>
                             </div>
                             
-                            {/* Decorative elements */}
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[100px] -mr-32 -mt-32"></div>
-                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 blur-[100px] -ml-32 -mb-32"></div>
+                            {/* Decorative elements for the "Bright" look */}
+                            <div className="absolute top-20 right-20 w-80 h-80 bg-blue-400/10 blur-[120px] rounded-full pointer-events-none"></div>
+                            <div className="absolute bottom-40 left-20 w-80 h-80 bg-purple-400/5 blur-[100px] rounded-full pointer-events-none"></div>
                           </motion.div>
                         )}
                       </AnimatePresence>
