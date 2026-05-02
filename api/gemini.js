@@ -1,44 +1,43 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
 export default async function handler(req, res) {
-  // Chỉ chấp nhận yêu cầu gửi dữ liệu (POST)
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Chỉ chấp nhận phương thức POST' });
+    return res.status(405).json({ error: 'Chỉ hỗ trợ phương thức POST' });
   }
 
   try {
     const { action, payload } = req.body;
-    
-    // Lấy API Key từ "Két sắt" môi trường (Vercel Environment Variables)
-    const apiKey = process.env.GEMINI_API_KEY?.trim();
+    const apiKey = process.env.GEMINI_API_KEY; 
 
     if (!apiKey) {
-      return res.status(500).json({ error: "Không tìm thấy API Key trên máy chủ!" });
+      return res.status(500).json({ error: 'Máy chủ chưa được cấu hình API Key' });
     }
 
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const modelName = action === 'extract' ? 'gemini-1.5-flash' : 'gemini-1.5-pro';
-    const model = genAI.getGenerativeModel({ model: modelName });
+    // Tự động chuyển đổi Model miễn phí dựa trên hành động
+    let apiUrl = '';
+    if (action === 'extract') {
+      // Dùng 1.5 Flash (Miễn phí) để quét ảnh nhanh
+      apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    } else if (action === 'analyze') {
+      // Dùng 1.5 Pro (Miễn phí) để phân tích y khoa chuyên sâu
+      apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent?key=${apiKey}`;
+    } else {
+      return res.status(400).json({ error: 'Hành động không hợp lệ' });
+    }
 
-    const result = await model.generateContent({
-      contents: payload.contents,
-      generationConfig: payload.generationConfig
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     });
-    
-    const response = await result.response;
-    const text = response.text();
 
-    // Trả kết quả về cho Frontend theo định dạng REST tương thích
-    res.status(200).json({
-      candidates: [{
-        content: {
-          parts: [{ text }]
-        }
-      }]
-    });
-    
+    const data = await response.json();
+
+    if (!response.ok) {
+      return res.status(response.status).json({ error: data.error?.message || 'Lỗi từ Google AI' });
+    }
+
+    res.status(200).json(data);
   } catch (error) {
-    console.error("Vercel Serverless Error:", error);
-    res.status(500).json({ error: error.message || "Lỗi khi xử lý yêu cầu AI" });
+    console.error("Lỗi Serverless:", error);
+    res.status(500).json({ error: 'Lỗi hệ thống máy chủ nội bộ' });
   }
 }
