@@ -13,32 +13,38 @@ async function startServer() {
 
   app.use(express.json({ limit: '10mb' }));
 
-  // API Route for Gemini Proxy
+  // API Route for Gemini Proxy (Vercel-style)
   app.post("/api/gemini", async (req, res) => {
-    console.log(`[API] Received request for ${req.body.action}`);
     try {
-      const { action, payload, apiKey: clientApiKey } = req.body;
-      const apiKey = clientApiKey || process.env.GEMINI_API_KEY;
+      const { action, payload } = req.body;
+      const apiKey = process.env.GEMINI_API_KEY?.trim();
 
       if (!apiKey) {
-        console.error("[API] GEMINI_API_KEY is missing");
-        return res.status(500).json({ error: "Chưa cấu hình API Key. Vui lòng kiểm tra Settings hoặc gửi key từ client." });
+        console.error("[API Error] GEMINI_API_KEY is missing");
+        return res.status(500).json({ error: "Chưa cấu hình GEMINI_API_KEY trên máy chủ. Vui lòng cài đặt trong Settings." });
       }
+
+      const maskedKey = apiKey.length > 8 
+        ? `${apiKey.substring(0, 4)}...${apiKey.substring(apiKey.length - 4)}`
+        : "****";
+      console.log(`[API] Proxying ${action} using key: ${maskedKey}`);
 
       const genAI = new GoogleGenerativeAI(apiKey);
       const modelName = action === 'extract' ? 'gemini-1.5-flash' : 'gemini-1.5-pro';
       const model = genAI.getGenerativeModel({ model: modelName });
 
-      // Convert request payload to SDK calls
+      // The payload from client is already in the form { contents: [...] }
       const contents = payload.contents;
+      
       const result = await model.generateContent({
         contents,
         generationConfig: payload.generationConfig
       });
+      
       const response = await result.response;
       const text = response.text();
 
-      // Return in a format similar to what the client expects (REST API format)
+      // Return in a format compatible with how the client expects it (REST-like)
       res.status(200).json({
         candidates: [{
           content: {
@@ -47,8 +53,8 @@ async function startServer() {
         }]
       });
     } catch (error: any) {
-      console.error("[API] Server Proxy Error:", error);
-      res.status(500).json({ error: error.message });
+      console.error("[API Error] SDK Error:", error);
+      res.status(500).json({ error: error.message || "Lỗi khi xử lý yêu cầu AI" });
     }
   });
 

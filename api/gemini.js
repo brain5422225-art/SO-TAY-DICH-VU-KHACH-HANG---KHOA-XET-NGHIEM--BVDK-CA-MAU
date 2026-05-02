@@ -1,5 +1,4 @@
-// File: api/gemini.js
-// Đây là máy chủ trung gian. File này chạy ngầm trên Vercel, không lộ ra ngoài web.
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export default async function handler(req, res) {
   // Chỉ chấp nhận yêu cầu gửi dữ liệu (POST)
@@ -10,43 +9,36 @@ export default async function handler(req, res) {
   try {
     const { action, payload } = req.body;
     
-    // Lấy API Key từ "Két sắt" của Vercel
-    const apiKey = process.env.GEMINI_API_KEY;
+    // Lấy API Key từ "Két sắt" môi trường (Vercel Environment Variables)
+    const apiKey = process.env.GEMINI_API_KEY?.trim();
 
     if (!apiKey) {
-      throw new Error("Không tìm thấy API Key trên máy chủ!");
+      return res.status(500).json({ error: "Không tìm thấy API Key trên máy chủ!" });
     }
 
-    // Xác định đang gọi AI nào dựa vào action của Frontend
-    let apiUrl = '';
-    if (action === 'extract') {
-      // Dùng 1.5 Flash cho việc đọc ảnh
-      apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-    } else if (action === 'analyze') {
-      // Dùng 1.5 Pro cho việc phân tích y khoa chuyên sâu
-      apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent?key=${apiKey}`;
-    } else {
-      throw new Error("Hành động không hợp lệ.");
-    }
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const modelName = action === 'extract' ? 'gemini-1.5-flash' : 'gemini-1.5-pro';
+    const model = genAI.getGenerativeModel({ model: modelName });
 
-    // Thay mặt web gửi yêu cầu lên Google
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+    const result = await model.generateContent({
+      contents: payload.contents,
+      generationConfig: payload.generationConfig
     });
-
-    const data = await response.json();
     
-    if (!response.ok) {
-      throw new Error(data.error?.message || 'Lỗi từ Google AI');
-    }
+    const response = await result.response;
+    const text = response.text();
 
-    // Trả kết quả về cho điện thoại người dùng
-    res.status(200).json(data);
+    // Trả kết quả về cho Frontend theo định dạng REST tương thích
+    res.status(200).json({
+      candidates: [{
+        content: {
+          parts: [{ text }]
+        }
+      }]
+    });
     
   } catch (error) {
-    console.error("Serverless Error:", error);
-    res.status(500).json({ error: error.message });
+    console.error("Vercel Serverless Error:", error);
+    res.status(500).json({ error: error.message || "Lỗi khi xử lý yêu cầu AI" });
   }
 }
