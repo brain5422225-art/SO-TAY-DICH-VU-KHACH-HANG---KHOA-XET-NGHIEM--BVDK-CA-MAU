@@ -4380,7 +4380,7 @@ export default function App() {
           contents: [{
             parts: [
               { text: "Bạn là một thư ký y khoa chuyên nghiệp. Hãy đọc hình ảnh phiếu chỉ định này và trích xuất dữ liệu. Trả về đúng định dạng JSON có 2 trường: 'chan_doan' (text) và 'chi_dinh' (text, liệt kê các xét nghiệm). Nếu không thấy dữ liệu, hãy để trống. Không trả về gì ngoài JSON." },
-              { inline_data: { mime_type: file.type, data: base64Data } }
+              { inlineData: { mimeType: file.type, data: base64Data } }
             ]
           }],
           generationConfig: {
@@ -4398,7 +4398,8 @@ export default function App() {
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
       
       if (text) {
-        const parsed = JSON.parse(text);
+        const cleanedJson = text.replace(/```json|```/g, '').trim();
+        const parsed = JSON.parse(cleanedJson);
         setBoxChanDoan(parsed.chan_doan || '');
         setBoxChiDinh(parsed.chi_dinh || '');
       }
@@ -4455,7 +4456,10 @@ export default function App() {
         body: JSON.stringify({
           contents: [{
             parts: [{ text: prompt }]
-          }]
+          }],
+          generationConfig: {
+            responseMimeType: "text/plain"
+          }
         })
       });
 
