@@ -4395,26 +4395,29 @@ export default function App() {
         r.readAsDataURL(file);
       });
 
-      const genAI = getAIClient(apiKey);
-      // Chuyển sang dùng apiVersion v1 để ổn định hơn
-      const model = genAI.getGenerativeModel(
-        { model: "gemini-1.5-flash" },
-        { apiVersion: "v1" }
-      );
-
-      const promptText = "Bạn là một thư ký y khoa chuyên nghiệp. Hãy đọc hình ảnh phiếu chỉ định này và trích xuất dữ liệu. Trả về đúng định dạng JSON có 2 trường: 'chan_doan' (text) và 'chi_dinh' (text, liệt kê các xét nghiệm). Nếu không thấy dữ liệu, hãy để trống. Không trả về gì ngoài JSON.";
-
-      const result = await model.generateContent([
-        promptText,
-        {
-          inlineData: {
-            mimeType: file.type,
-            data: base64Data
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{
+            parts: [
+              { text: "Bạn là một thư ký y khoa chuyên nghiệp. Hãy đọc hình ảnh phiếu chỉ định này và trích xuất dữ liệu. Trả về đúng định dạng JSON có 2 trường: 'chan_doan' (text) và 'chi_dinh' (text, liệt kê các xét nghiệm). Nếu không thấy dữ liệu, hãy để trống. Không trả về gì ngoài JSON." },
+              { inline_data: { mime_type: file.type, data: base64Data } }
+            ]
+          }],
+          generationConfig: {
+            response_mime_type: "application/json"
           }
-        }
-      ]);
+        })
+      });
 
-      const text = result.response.text();
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error?.message || `Lỗi API (${response.status})`);
+      }
+
+      const data = await response.json();
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
       
       if (text) {
         try {
@@ -4476,14 +4479,23 @@ export default function App() {
       4. Màu sắc: Dùng các class Tailwind cơ bản để làm nổi bật kết quả (Ví dụ: text-blue-600 cho Tăng, text-red-600 cho báo động...).
       5. Lưu ý: Không dùng Markdown. Phân tích chuyên sâu như một chuyên gia xét nghiệm.`;
 
-      const genAI = getAIClient(apiKey);
-      const model = genAI.getGenerativeModel(
-        { model: "gemini-1.5-flash" },
-        { apiVersion: "v1" }
-      );
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{ text: finalPrompt }]
+          }]
+        })
+      });
 
-      const result = await model.generateContent(finalPrompt);
-      const text = result.response.text();
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error?.message || `Lỗi API (${response.status})`);
+      }
+
+      const data = await response.json();
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
       if (text) {
         const cleanedText = text.replace(/```html|```/g, '').trim();
