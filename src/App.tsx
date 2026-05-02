@@ -4384,7 +4384,7 @@ export default function App() {
             ]
           }],
           generationConfig: {
-            response_mime_type: "application/json"
+            responseMimeType: "application/json"
           }
         })
       });
