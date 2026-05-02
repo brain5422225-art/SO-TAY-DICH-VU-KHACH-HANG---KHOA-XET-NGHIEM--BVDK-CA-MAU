@@ -4373,18 +4373,18 @@ export default function App() {
         r.readAsDataURL(file);
       });
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{
             parts: [
               { text: "Bạn là một thư ký y khoa chuyên nghiệp. Hãy đọc hình ảnh phiếu chỉ định này và trích xuất dữ liệu. Trả về đúng định dạng JSON có 2 trường: 'chan_doan' (text) và 'chi_dinh' (text, liệt kê các xét nghiệm). Nếu không thấy dữ liệu, hãy để trống. Không trả về gì ngoài JSON." },
-              { inline_data: { mime_type: file.type, data: base64Data } }
+              { inlineData: { mimeType: file.type, data: base64Data } }
             ]
           }],
-          generation_config: {
-            response_mime_type: "application/json"
+          generationConfig: {
+            responseMimeType: "application/json"
           }
         })
       });
@@ -4450,15 +4450,15 @@ export default function App() {
       4. Tuyệt đối KHÔNG sử dụng Markdown (không được có \`\`\`html, không #, không *).
       5. Phân tích phải cực kỳ chuyên sâu, biện luận sắc bén như một chuyên gia đầu ngành.`;
 
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{
             parts: [{ text: prompt }]
           }],
-          generation_config: {
-            response_mime_type: "text/plain"
+          generationConfig: {
+            responseMimeType: "text/plain"
           }
         })
       });
