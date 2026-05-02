@@ -4380,12 +4380,19 @@ export default function App() {
         })
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || `Lỗi API (${response.status})`);
+      const responseText = await response.text();
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (e) {
+        console.error("Non-JSON response:", responseText);
+        throw new Error(`Lỗi phản hồi (${response.status}): ${responseText.substring(0, 100)}...`);
       }
 
-      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || `Lỗi API (${response.status})`);
+      }
+
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
       
       if (text) {
@@ -4449,12 +4456,19 @@ export default function App() {
         })
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || `Lỗi API (${response.status})`);
+      const responseText = await response.text();
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (e) {
+        console.error("Non-JSON response:", responseText);
+        throw new Error(`Lỗi phản hồi (${response.status}): ${responseText.substring(0, 100)}...`);
       }
 
-      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || `Lỗi API (${response.status})`);
+      }
+
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
       if (text) {
