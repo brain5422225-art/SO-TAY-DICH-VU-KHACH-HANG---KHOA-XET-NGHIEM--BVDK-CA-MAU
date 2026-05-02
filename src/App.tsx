@@ -4380,11 +4380,11 @@ export default function App() {
           contents: [{
             parts: [
               { text: "Bạn là một thư ký y khoa chuyên nghiệp. Hãy đọc hình ảnh phiếu chỉ định này và trích xuất dữ liệu. Trả về đúng định dạng JSON có 2 trường: 'chan_doan' (text) và 'chi_dinh' (text, liệt kê các xét nghiệm). Nếu không thấy dữ liệu, hãy để trống. Không trả về gì ngoài JSON." },
-              { inlineData: { mimeType: file.type, data: base64Data } }
+              { inline_data: { mime_type: file.type, data: base64Data } }
             ]
           }],
-          generationConfig: {
-            responseMimeType: "application/json"
+          generation_config: {
+            response_mime_type: "application/json"
           }
         })
       });
@@ -4457,8 +4457,8 @@ export default function App() {
           contents: [{
             parts: [{ text: prompt }]
           }],
-          generationConfig: {
-            responseMimeType: "text/plain"
+          generation_config: {
+            response_mime_type: "text/plain"
           }
         })
       });
