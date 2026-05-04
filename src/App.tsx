@@ -4482,15 +4482,13 @@ NHIỆM VỤ:
         return;
       }
 
-      const finalPrompt = aiMode === 'predict' 
-        ? `Dựa trên Chẩn đoán: ${boxChanDoan} và Chỉ định: ${dataInput}. Hãy dự đoán xu hướng kết quả. Trả về định dạng HTML <ol><li>.`
-        : `Bạn là Hội đồng Cố vấn Y khoa Đa chuyên khoa (Nội, Ngoại, Sản, Nhi, Lão, Dược lý lâm sàng).
-- Dữ liệu: Tuổi ${patientContext.age || 'Chưa rõ'}, Giới tính ${patientContext.gender || 'Chưa rõ'}, Chẩn đoán ${boxChanDoan}, Kết quả ${dataInput}.
-- QUY TẮC ĐỌC KẾT QUẢ TỪ FILE: 
-  + Huyết học: Chỉ trích xuất 10 chỉ số cốt lõi (WBC, NEU, LYM, MONO, EOS, BASO, RBC, HGB, HCT, PLT). Các chỉ số phụ khác CHỈ trích xuất khi BẤT THƯỜNG.
-  + DANH PHÁP MÁU: Mọi sản phẩm hoặc chỉ số liên quan đến khối tiểu cầu phải được nhận diện và định danh chuẩn là KTCPOOL hoặc KTCKIT (Tuyệt đối không viết tắt là TC).
-- NHIỆM VỤ BIỆN LUẬN: Đánh giá tổng quan. Biện luận sinh lý bệnh & dược lý cho các chỉ số BẤT THƯỜNG (bắt buộc trích dẫn lại số liệu trong câu). Đề xuất lâm sàng cá thể hóa.
-- ĐỊNH DẠNG XUẤT RA: HTML thuần (div, h3, p). Dùng class text-red-600 cho báo động đỏ.`;
+      const finalPrompt = `Bạn là Hội đồng Cố vấn Y khoa gồm chuyên gia Xét nghiệm, Dược lý lâm sàng và Bác sĩ chuyên khoa tương ứng với bệnh cảnh (Nhi, Sản, Lão, Nội...).
+Dữ liệu: Tuổi ${patientContext.age || 'Chưa rõ'}, Giới tính ${patientContext.gender || 'Chưa rõ'}, Chẩn đoán ${boxChanDoan}, Kết quả ${dataInput}.
+NHIỆM VỤ BIỆN LUẬN:
+1. Đánh giá sự phù hợp của kết quả với chẩn đoán và độ tuổi.
+2. Biện luận Sinh lý bệnh & Dược lý: Giải thích cơ chế các chỉ số BẤT THƯỜNG dựa trên Chẩn đoán, Diễn tiến sinh lý theo độ tuổi, và tác động của các thuốc điều trị bệnh đó. 
+3. Khuyến cáo lâm sàng cá thể hóa.
+4. Định dạng HTML: Sử dụng div, h3, p, ul, li. Dùng class 'text-red-600' cho báo động đỏ, 'text-amber-600' cho bất thường. Bọc các phần trong các div bo góc, đổ bóng nhẹ.`;
 
       const parts: any[] = [{ text: finalPrompt }];
       selectedFiles.forEach(f => {
@@ -5787,7 +5785,7 @@ NHIỆM VỤ:
                       </div>
                     </div>
 
-                    <div className="bg-gradient-to-br from-sky-50 via-white to-indigo-50 rounded-[50px] p-8 sm:p-14 shadow-[0_30px_100px_rgba(0,0,0,0.05)] border border-sky-50">
+                    <div className="bg-white rounded-[50px] p-8 sm:p-14 shadow-[0_30px_100px_rgba(0,0,0,0.05)] border border-sky-50">
                       {/* Patient Context Input */}
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
                         <div className="md:col-span-1">
@@ -5814,11 +5812,12 @@ NHIỆM VỤ:
                         </div>
                         <div className="col-span-2">
                           <label className="block text-sky-900 font-black text-sm uppercase tracking-widest mb-3 ml-4">Chẩn đoán lâm sàng (ICD-10)</label>
-                          <textarea 
+                          <input 
+                            type="text" 
                             value={boxChanDoan}
                             onChange={(e) => setBoxChanDoan(e.target.value)}
                             placeholder="Nhập chẩn đoán hoặc mã ICD-10..." 
-                            className="w-full p-6 bg-sky-50/50 rounded-3xl border-2 border-transparent focus:border-blue-400 focus:bg-white outline-none transition-all font-bold text-xl text-sky-900 shadow-inner min-h-[100px] h-auto resize-none break-words whitespace-normal"
+                            className="w-full p-6 bg-sky-50/50 rounded-3xl border-2 border-transparent focus:border-blue-400 focus:bg-white outline-none transition-all font-bold text-xl text-sky-900 shadow-inner"
                           />
                         </div>
                       </div>
@@ -5875,30 +5874,17 @@ NHIỆM VỤ:
                                   </div>
                                 </motion.div>
                               ))}
-                              <div className="flex flex-col gap-6">
-                                <label className="aspect-square flex flex-col items-center justify-center gap-4 rounded-[30px] bg-sky-50 border-4 border-dashed border-sky-100 text-sky-400 hover:border-blue-400 hover:text-blue-500 transition-all cursor-pointer group hover:bg-white shadow-inner">
-                                  <Plus className="w-12 h-12 group-hover:rotate-90 transition-transform duration-500" />
-                                  <span className="text-xs font-black uppercase tracking-widest text-center">Tải lên file/PDF</span>
-                                  <input 
-                                    type="file" 
-                                    multiple 
-                                    accept="image/*, .pdf, application/pdf" 
-                                    className="hidden" 
-                                    onChange={handleFileSelect}
-                                  />
-                                </label>
-                                <label className="aspect-square flex flex-col items-center justify-center gap-4 rounded-[30px] bg-white border-4 border-dashed border-sky-200 text-blue-600 hover:border-blue-500 hover:bg-sky-50 transition-all cursor-pointer group shadow-xl">
-                                  <Camera className="w-12 h-12 group-hover:scale-110 transition-transform duration-500" />
-                                  <span className="text-xs font-black uppercase tracking-widest text-center">Quét dữ liệu</span>
-                                  <input 
-                                    type="file" 
-                                    accept="image/*" 
-                                    capture="environment"
-                                    className="hidden" 
-                                    onChange={handleFileSelect}
-                                  />
-                                </label>
-                              </div>
+                              <label className="aspect-square flex flex-col items-center justify-center gap-4 rounded-[30px] bg-sky-50 border-4 border-dashed border-sky-100 text-sky-400 hover:border-blue-400 hover:text-blue-500 transition-all cursor-pointer group hover:bg-white shadow-inner">
+                                <Plus className="w-12 h-12 group-hover:rotate-90 transition-transform duration-500" />
+                                <span className="text-xs font-black uppercase tracking-widest">Thêm ảnh</span>
+                                <input 
+                                  type="file" 
+                                  multiple 
+                                  accept="image/*, .pdf, application/pdf" 
+                                  className="hidden" 
+                                  onChange={handleFileSelect}
+                                />
+                              </label>
                            </div>
                         </div>
                       </div>
@@ -5959,7 +5945,8 @@ NHIỆM VỤ:
                               </div>
 
                               <div 
-                                className="prose prose-slate max-w-none text-sky-900/90 text-xl md:text-3xl leading-[1.6] space-y-12 font-serif font-['Times_New_Roman']"
+                                className="prose prose-slate max-w-none text-sky-900/90 text-xl md:text-3xl leading-[1.6] space-y-12"
+                                style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
                                 dangerouslySetInnerHTML={{ __html: aiResult }} 
                               />
                               
