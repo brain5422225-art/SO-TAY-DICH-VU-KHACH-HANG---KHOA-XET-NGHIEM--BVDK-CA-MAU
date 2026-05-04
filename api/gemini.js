@@ -18,6 +18,9 @@ export default async function handler(req, res) {
     } else if (action === 'analyze') {
       // Phân tích bệnh học sâu sắc bằng 2.5 Flash (Miễn phí 10 lượt/phút)
       apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+    } else if (action === 'reason') {
+      // TÍNH NĂNG MỚI: Biện luận kết quả (Dùng 2.5 Flash để đọc nhiều ảnh/PDF và biện luận sâu)
+      apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
     } else {
       return res.status(400).json({ error: 'Hành động không hợp lệ' });
     }

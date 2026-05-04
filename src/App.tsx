@@ -34,6 +34,9 @@ import {
   CheckCircle2,
   XCircle,
   X,
+  Plus,
+  Trash2,
+  FileSearch,
   TrendingUp,
   TrendingDown,
   BookOpen,
@@ -4347,72 +4350,111 @@ export default function App() {
   const [aiResult, setAiResult] = useState<string | null>(null);
   const [isLoadingExtract, setIsLoadingExtract] = useState(false);
   const [isLoadingAnalyze, setIsLoadingAnalyze] = useState(false);
+  
+  // States nâng cấp cho Thư ký Xét nghiệm (AI Secretary v4.0 PRO)
+  const [aiMode, setAiMode] = useState<'predict' | 'reason'>('predict');
+  const [patientContext, setPatientContext] = useState({ age: '', gender: '' });
+  const [boxKetQua, setBoxKetQua] = useState(''); // Cho Reason mode
+  const [selectedFiles, setSelectedFiles] = useState<{id: string, name: string, data: string, type: string, preview: string}[]>([]);
 
-  const handleExtract = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  // Hàm chọn file nâng cao với Preview
+  const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files) return;
+
+    const newFiles = await Promise.all(
+      Array.from(files).map(async (file: File) => {
+        return new Promise<{id: string, name: string, data: string, type: string, preview: string}>((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            const fullBase64 = reader.result as string;
+            resolve({
+              id: Math.random().toString(36).substr(2, 9),
+              name: file.name,
+              data: fullBase64.split(',')[1],
+              type: file.type,
+              preview: fullBase64
+            });
+          };
+          reader.readAsDataURL(file);
+        });
+      })
+    );
+    setSelectedFiles(prev => [...prev, ...newFiles]);
+    e.target.value = '';
+  };
+
+  const removeFile = (id: string) => {
+    setSelectedFiles(prev => prev.filter(f => f.id !== id));
+  };
+
+  // 1. LOGIC TRÍCH XUẤT THÔNG MINH (ACTION: 'extract') - Trả về JSON ĐỈNH CAO
+  const handleExtractSmart = async () => {
+    if (selectedFiles.length === 0) {
+      alert("⚠️ Vui lòng chọn ảnh trước khi quét.");
+      return;
+    }
 
     setIsLoadingExtract(true);
     setAiResult(null);
 
     try {
-      const base64Data = await new Promise<string>((resolve, reject) => {
-        const r = new FileReader();
-        r.onloadend = () => resolve((r.result as string).split(',')[1]);
-        r.onerror = () => reject(new Error("Lỗi đọc file ảnh."));
-        r.readAsDataURL(file);
+      const modePrompt = aiMode === 'predict' 
+        ? "Phiếu CHỈ ĐỊNH. Trích xuất JSON: { 'tuoi': '', 'gioi_tinh': '', 'chan_doan': '', 'chi_dinh': '' }" 
+        : "Phiếu KẾT QUẢ. Trích xuất JSON: { 'tuoi': '', 'gioi_tinh': '', 'chan_doan_icd': '', 'ket_qua': [{'ten': '', 'gia_tri': '', 'don_vi': '', 'khoang_tham_chieu': '', 'danh_gia': ''}] }";
+
+      const parts: any[] = [
+        { text: `Bạn là trợ lý y khoa số hóa dữ liệu. Hãy đọc ảnh phiếu và trả về CHỈ JSON theo cấu trúc sau (không viết gì thêm): 
+        ${modePrompt}` }
+      ];
+
+      selectedFiles.forEach(f => {
+        parts.push({ inline_data: { mime_type: f.type, data: f.data } });
       });
 
-      // Gọi máy chủ trung gian của chúng ta (với action: 'extract')
       const response = await fetch('/api/gemini', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           action: 'extract',
-          payload: {
-            contents: [{
-              parts: [
-                { text: "Bạn là một thư ký y khoa chuyên nghiệp. Hãy đọc hình ảnh phiếu chỉ định này và trích xuất dữ liệu. Trả về đúng định dạng JSON có 2 trường: 'chan_doan' (text) và 'chi_dinh' (text, liệt kê các xét nghiệm). Nếu không thấy dữ liệu, hãy để trống. Không trả về gì ngoài JSON." },
-                { inline_data: { mime_type: file.type, data: base64Data } }
-              ]
-            }]
-          }
+          payload: { contents: [{ parts }] }
         })
       });
 
-      const responseText = await response.text();
-      let data;
-      try {
-        data = JSON.parse(responseText);
-      } catch (e) {
-        console.error("Non-JSON response:", responseText);
-        throw new Error(`Lỗi phản hồi (${response.status}): ${responseText.substring(0, 100)}...`);
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Lỗi trích xuất");
+
+      const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+      const jsonStr = rawText.replace(/```json|```/g, '').trim();
+      const result = JSON.parse(jsonStr);
+
+      // Tự động điền dữ liệu
+      setPatientContext({
+        age: result.tuoi || patientContext.age,
+        gender: result.gioi_tinh || patientContext.gender
+      });
+
+      if (aiMode === 'predict') {
+        setBoxChanDoan(result.chan_doan || "");
+        setBoxChiDinh(result.chi_dinh || "");
+      } else {
+        setBoxChanDoan(result.chan_doan_icd || "");
+        // Convert array results to a readable string for analysis
+        setBoxKetQua(Array.isArray(result.ket_qua) ? JSON.stringify(result.ket_qua, null, 2) : (typeof result.ket_qua === 'string' ? result.ket_qua : ""));
       }
 
-      if (!response.ok) {
-        throw new Error(data.error || `Lỗi API (${response.status})`);
-      }
-
-      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-      
-      if (text) {
-        const cleanedJson = text.replace(/```json|```/g, '').trim();
-        const parsed = JSON.parse(cleanedJson);
-        setBoxChanDoan(parsed.chan_doan || '');
-        setBoxChiDinh(parsed.chi_dinh || '');
-      }
     } catch (error: any) {
       console.error("Extract Error:", error);
-      alert(`[AI ERROR] ${error.message || "Lỗi khi trích xuất dữ liệu."}`);
+      alert(`[TRÍCH XUẤT THẤT BẠI] ${error.message}`);
     } finally {
       setIsLoadingExtract(false);
-      e.target.value = '';
     }
   };
 
-  const handleAnalyze = async () => {
-    if (!boxChanDoan && !boxChiDinh) {
-      alert("⚠️ Vui lòng nhập dữ liệu hoặc Quét ảnh trước.");
+  // 2. LOGIC BIỆN LUẬN LÂM SÀNG SÂU (GIÁO SƯ AI)
+  const handleClinicalAnalysis = async () => {
+    if (!boxChanDoan) {
+      alert("⚠️ Vui lòng nhập chẩn đoán lâm sàng để AI có cơ sở biện luận.");
       return;
     }
 
@@ -4420,71 +4462,50 @@ export default function App() {
     setAiResult(null);
 
     try {
-      const simplifiedData = labTests.slice(0, 150).map(t => ({
-        n: t.name,
-        i: t.indication,
-        p: t.pathologicalMeaning,
-        c: t.clinicalNote
-      }));
+      const dataInput = aiMode === 'predict' ? boxChiDinh : boxKetQua;
+      if (!dataInput) {
+        alert("⚠️ Vui lòng nhập danh sách chỉ định hoặc kết quả xét nghiệm.");
+        setIsLoadingAnalyze(false);
+        return;
+      }
 
-      const finalPrompt = `Bạn là một CHUYÊN GIA BIỆN LUẬN XÉT NGHIỆM ĐẦU NGÀNH. Hãy phân tích trường hợp này.
-      - Chẩn đoán: ${boxChanDoan}
-      - Các xét nghiệm chỉ định: ${boxChiDinh}
+      const finalPrompt = `Bạn là Giáo sư chuyên gia Hóa sinh, Huyết học, miễn dịch, vi sinh lâm sàng ĐẦU NGÀNH.
+      BỆNH NHÂN: ${patientContext.age || 'Chưa rõ'} tuổi, Giới tính: ${patientContext.gender || 'Chưa rõ'}.
+      CHẨN ĐOÁN (ICD): ${boxChanDoan}.
+      DỮ LIỆU CUNG CẤP (${aiMode === 'predict' ? 'CHỈ ĐỊNH' : 'KẾT QUẢ'}): ${dataInput}.
 
-      Dựa trên kiến thức y khoa và 150 mục xét nghiệm tham chiếu:
-      ${JSON.stringify(simplifiedData)}
+      NHIỆM VỤ:
+      1. ĐỐI CHIẾU: Đối chiếu kết quả với khoảng tham chiếu trên phiếu (nếu có) hoặc tiêu chuẩn y khoa quốc tế.
+      2. TÍNH PHÙ HỢP: Kết quả này CÓ PHÙ HỢP với diễn tiến của chẩn đoán lâm sàng không?
+      3. BIỆN LUẬN CHUYÊN SÂU: Biện luận CƠ CHẾ SINH LÝ BỆNH chi tiết cho các chỉ số BẤT THƯỜNG (bỏ qua bình thường). Bắt buộc trích dẫn lại giá trị bất thường kèm đơn vị vào câu văn để KTV đối chiếu.
+      4. ĐỀ XUẤT: Cần làm thêm XN gì để chẩn đoán phân biệt? Cảnh báo nguy cơ tử vong/biến chứng nếu có chỉ số Nguy kịch (Critical value).
+      5. TRÌNH BÀY: HTML chuẩn semantic, phong cách Scientific Card chuyên nghiệp. 
+         - Nổi bật chỉ số báo động bằng class 'text-red-600 font-bold'.
+         - Phân tích cực kỳ sắc bén như một chuyên gia thực thụ.
+      TUYỆT ĐỐI không dùng Markdown (#, **).`;
 
-      YÊU CẦU TRÌNH BÀY (BẮT BUỘC):
-      Mô phỏng phong cách 'Từ điển xét nghiệm' với giao diện 'Thẻ Khoa Học' (Scientific Cards):
-      1. SỬ DỤNG MÃ HTML TRỰC TIẾP (div, p, b, span, br, class Tailwind).
-      2. CẤU TRÚC GỒM 4 KHỐI CHÍNH:
-         - KHỐI 1: TỔNG QUAN SINH LÝ BỆNH (Nền xanh nhạt, Icon 🧠, Tiêu đề Indigo). Giải thích cơ chế vì sao chẩn đoán này dẫn tới các thay đổi xét nghiệm.
-         - KHỐI 2: DỰ ĐOÁN XU HƯỚNG (Nền trắng, border-left Indigo đậm, Icon 📊). Liệt kê từng chỉ số, dự đoán Tăng/Giảm kèm giải thích sắc bén. Dùng màu sắc: text-blue-600 cho Tăng, text-rose-600 cho Giảm.
-         - KHỐI 3: CẢNH BÁO & GIÁ TRỊ TỚI HẠN (Nền đỏ nhạt, Icon ⚠️). Các giá trị cần báo động ngay cho lâm sàng.
-         - KHỐI 4: BIỆN LUẬN CHUYÊN SÂU (Nền vàng nhạt, Icon 💡). Lời khuyên vàng cho bác sĩ điều trị.
-      3. ICON Y TẾ: Sử dụng Emoji phù hợp (💉, 🩸, 🧪, 🚑, 🏥).
-      4. THIẾT KẾ: Sử dụng các class: mb-6 (margin bottom), p-6 (padding), rounded-3xl (bo góc), shadow-md (đổ bóng).
-      5. TUYỆT ĐỐI: Không dùng Markdown (#, **, \`\`\`). Trả về HTML nguyên bản.`;
-
-      // Gọi máy chủ trung gian của chúng ta (với action: 'analyze')
       const response = await fetch('/api/gemini', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          action: 'analyze',
-          payload: {
-            contents: [{
-              parts: [{ text: finalPrompt }]
-            }]
-          }
+          action: aiMode === 'predict' ? 'analyze' : 'reason',
+          payload: { contents: [{ parts: [{ text: finalPrompt }] }] }
         })
       });
 
-      const responseText = await response.text();
-      let data;
-      try {
-        data = JSON.parse(responseText);
-      } catch (e) {
-        console.error("Non-JSON response:", responseText);
-        throw new Error(`Lỗi phản hồi (${response.status}): ${responseText.substring(0, 100)}...`);
-      }
-
-      if (!response.ok) {
-        throw new Error(data.error || `Lỗi API (${response.status})`);
-      }
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Lỗi AI");
 
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-
       if (text) {
-        const cleanedText = text.replace(/```html|```/g, '').trim();
-        setAiResult(cleanedText);
+        setAiResult(text.replace(/```html|```/g, '').trim());
         setTimeout(() => {
-          document.getElementById('ai-result-display')?.scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('analysis-result')?.scrollIntoView({ behavior: 'smooth' });
         }, 300);
       }
     } catch (error: any) {
-      console.error("Analyze Error:", error);
-      alert(`[AI ERROR] ${error.message || "Lỗi khi phân tích chuyên sâu."}`);
+      console.error("Analysis Error:", error);
+      alert(`[AI ERROR] ${error.message}`);
     } finally {
       setIsLoadingAnalyze(false);
     }
@@ -5716,135 +5737,222 @@ export default function App() {
                 {staffSubTab === 'ai-assistant' && (
                   <motion.div
                     key="s-ai"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                    className="max-w-5xl mx-auto px-4 pb-20"
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    className="max-w-6xl mx-auto px-4 pb-20"
                   >
-                    <div className="bg-white rounded-[40px] p-8 sm:p-12 shadow-2xl border border-slate-100">
-                      <div className="flex flex-col sm:flex-row justify-between items-center gap-6 mb-12">
-                        <div>
-                          <h2 className="text-3xl sm:text-4xl font-black text-slate-800 flex items-center gap-4">
-                            <Brain className="w-10 h-10 text-indigo-600" />
-                            Thư ký Xét nghiệm
+                    {/* Header Section: 3D Pastel Style */}
+                    <div className="bg-sky-50 rounded-[40px] p-8 sm:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-white mb-10 overflow-hidden relative group">
+                      <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-200/20 blur-[100px] rounded-full -mr-40 -mt-40 animate-pulse"></div>
+                      <div className="flex flex-col md:flex-row justify-between items-center gap-10 relative z-10">
+                        <div className="text-center md:text-left">
+                          <h2 className="text-4xl sm:text-6xl font-black text-sky-900 tracking-tighter flex flex-col md:flex-row items-center gap-6">
+                            <div className="p-5 bg-white rounded-[35px] shadow-2xl shadow-sky-200/50 transform -rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                              <Brain className="w-12 h-12 text-blue-600" />
+                            </div>
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-900 via-blue-800 to-indigo-900">Thư ký Xét nghiệm</span>
                           </h2>
-                          <p className="text-slate-500 font-medium mt-2">Trợ lý AI chuyên nghiệp phân tích phiếu chỉ định</p>
+                          <p className="text-sky-600/80 font-black text-xl mt-6 md:ml-24 uppercase tracking-[0.2em]">Medical AI Secretary Pro • v4.0</p>
+                        </div>
+
+                        {/* 3D Mode Toggle */}
+                        <div className="flex p-2 bg-white/60 backdrop-blur-xl rounded-[30px] shadow-inner border border-white w-full md:w-auto">
+                          <button 
+                            onClick={() => { setAiMode('predict'); setAiResult(null); }}
+                            className={`flex-1 md:flex-none px-8 py-5 rounded-[25px] text-lg font-black transition-all flex items-center justify-center gap-3 ${aiMode === 'predict' ? 'bg-blue-600 text-white shadow-xl shadow-blue-200 scale-105' : 'text-sky-400 hover:text-blue-600'}`}
+                          >
+                            <Stethoscope className="w-6 h-6" /> Dự đoán
+                          </button>
+                          <button 
+                            onClick={() => { setAiMode('reason'); setAiResult(null); }}
+                            className={`flex-1 md:flex-none px-8 py-5 rounded-[25px] text-lg font-black transition-all flex items-center justify-center gap-3 ${aiMode === 'reason' ? 'bg-blue-600 text-white shadow-xl shadow-blue-200 scale-105' : 'text-sky-400 hover:text-blue-600'}`}
+                          >
+                            <Microscope className="w-6 h-6" /> Biện luận
+                          </button>
                         </div>
                       </div>
+                    </div>
 
-                      <div className="grid grid-cols-1 gap-8 mb-12">
-                        <div className="space-y-3">
-                          <label className="text-lg font-black text-slate-700 flex items-center gap-2">
-                            <Stethoscope className="w-6 h-6 text-indigo-500" />
-                            1. Chẩn đoán lâm sàng
-                          </label>
-                          <textarea 
+                    <div className="bg-white rounded-[50px] p-8 sm:p-14 shadow-[0_30px_100px_rgba(0,0,0,0.05)] border border-sky-50">
+                      {/* Patient Context Input */}
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                        <div className="md:col-span-1">
+                          <label className="block text-sky-900 font-black text-sm uppercase tracking-widest mb-3 ml-4">Tuổi</label>
+                          <input 
+                            type="number" 
+                            value={patientContext.age}
+                            onChange={(e) => setPatientContext(prev => ({...prev, age: e.target.value}))}
+                            placeholder="Tuổi..." 
+                            className="w-full p-6 bg-sky-50/50 rounded-3xl border-2 border-transparent focus:border-blue-400 focus:bg-white outline-none transition-all font-bold text-xl text-sky-900 shadow-inner"
+                          />
+                        </div>
+                        <div className="md:col-span-1">
+                          <label className="block text-sky-900 font-black text-sm uppercase tracking-widest mb-3 ml-4">Giới tính</label>
+                          <select 
+                            value={patientContext.gender}
+                            onChange={(e) => setPatientContext(prev => ({...prev, gender: e.target.value}))}
+                            className="w-full p-6 bg-sky-50/50 rounded-3xl border-2 border-transparent focus:border-blue-400 focus:bg-white outline-none transition-all font-bold text-xl text-sky-900 shadow-inner appearance-none"
+                          >
+                            <option value="">Chọn...</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                          </select>
+                        </div>
+                        <div className="col-span-2">
+                          <label className="block text-sky-900 font-black text-sm uppercase tracking-widest mb-3 ml-4">Chẩn đoán lâm sàng (ICD-10)</label>
+                          <input 
+                            type="text" 
                             value={boxChanDoan}
                             onChange={(e) => setBoxChanDoan(e.target.value)}
-                            placeholder="Nhập chẩn đoán hoặc dùng nút '📷 Quét ảnh'..." 
-                            className="w-full h-32 p-6 bg-slate-50 rounded-[25px] border-2 border-transparent focus:border-indigo-500 focus:bg-white transition-all text-lg font-medium text-slate-800 outline-none resize-none shadow-inner"
-                          />
-                        </div>
-
-                        <div className="space-y-3">
-                          <label className="text-lg font-black text-slate-700 flex items-center gap-2">
-                            <ClipboardList className="w-6 h-6 text-purple-500" />
-                            2. Danh sách xét nghiệm
-                          </label>
-                          <textarea 
-                            value={boxChiDinh}
-                            onChange={(e) => setBoxChiDinh(e.target.value)}
-                            placeholder="Nhập tên các xét nghiệm chỉ định..." 
-                            className="w-full h-40 p-6 bg-slate-50 rounded-[25px] border-2 border-transparent focus:border-purple-500 focus:bg-white transition-all text-lg font-medium text-slate-800 outline-none resize-none shadow-inner"
+                            placeholder="Nhập chẩn đoán hoặc mã ICD-10..." 
+                            className="w-full p-6 bg-sky-50/50 rounded-3xl border-2 border-transparent focus:border-blue-400 focus:bg-white outline-none transition-all font-bold text-xl text-sky-900 shadow-inner"
                           />
                         </div>
                       </div>
 
-                      <div className="grid sm:grid-cols-2 gap-6">
-                        <label className="relative group cursor-pointer">
-                          <div className={`h-20 flex items-center justify-center gap-4 rounded-3xl font-black text-xl transition-all active:scale-95 shadow-lg ${isLoadingExtract ? 'bg-slate-200 text-slate-400' : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100'}`}>
-                            {isLoadingExtract ? (
-                              <div className="w-8 h-8 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin" />
-                            ) : (
-                              <Camera className="w-8 h-8 transform group-hover:rotate-12 transition-transform" />
-                            )}
-                            {isLoadingExtract ? 'Đang quét...' : '📷 Quét ảnh'}
-                          </div>
-                          <input 
-                            type="file" 
-                            accept="image/*" 
-                            className="hidden" 
-                            onChange={handleExtract}
-                            disabled={isLoadingExtract}
+                      {/* Main Dynamic Input Area */}
+                      <div className="space-y-10 mb-14">
+                        <div className="space-y-4">
+                          <label className="text-xl font-black text-sky-900 flex items-center gap-3 ml-4">
+                            <div className="w-4 h-10 bg-blue-500 rounded-2xl shadow-lg shadow-blue-200" /> 
+                            {aiMode === 'predict' ? 'Danh sách Xét nghiệm Chỉ định' : 'Danh sách Kết quả Xét nghiệm'}
+                          </label>
+                          <textarea 
+                            value={aiMode === 'predict' ? boxChiDinh : boxKetQua}
+                            onChange={(e) => aiMode === 'predict' ? setBoxChiDinh(e.target.value) : setBoxKetQua(e.target.value)}
+                            placeholder={aiMode === 'predict' ? "Liệt kê các xét nghiệm bác sĩ đã chỉ định..." : "Nhập kết quả xét nghiệm (Ví dụ: Glucose 6.5 mmol/L, ALT 50 U/L...)"}
+                            className={`w-full ${aiMode === 'predict' ? 'h-52' : 'h-64'} p-8 bg-sky-50/30 rounded-[40px] border-4 border-transparent focus:border-blue-200 focus:bg-white transition-all text-xl font-bold text-sky-900 outline-none resize-none shadow-inner`}
                           />
-                        </label>
+                        </div>
+
+                        {/* File Preview Area */}
+                        <div className="space-y-6">
+                           <label className="text-xl font-black text-sky-900 flex items-center gap-3 ml-4">
+                             <div className="w-4 h-10 bg-cyan-500 rounded-2xl shadow-lg shadow-cyan-200" /> 
+                             Dữ liệu ảnh phiếu xét nghiệm
+                           </label>
+                           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                              {selectedFiles.map((file) => (
+                                <motion.div 
+                                  layout
+                                  initial={{ scale: 0.8, opacity: 0 }}
+                                  animate={{ scale: 1, opacity: 1 }}
+                                  key={file.id} 
+                                  className="relative aspect-square rounded-[30px] overflow-hidden shadow-xl border-4 border-white group"
+                                >
+                                  <img 
+                                    src={file.preview} 
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                                    alt="preview"
+                                  />
+                                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <button 
+                                      onClick={() => removeFile(file.id)}
+                                      className="p-4 bg-red-500 text-white rounded-2xl shadow-xl hover:scale-110 active:scale-95 transition-all"
+                                    >
+                                      <Trash2 size={24} />
+                                    </button>
+                                  </div>
+                                </motion.div>
+                              ))}
+                              <label className="aspect-square flex flex-col items-center justify-center gap-4 rounded-[30px] bg-sky-50 border-4 border-dashed border-sky-100 text-sky-400 hover:border-blue-400 hover:text-blue-500 transition-all cursor-pointer group hover:bg-white shadow-inner">
+                                <Plus className="w-12 h-12 group-hover:rotate-90 transition-transform duration-500" />
+                                <span className="text-xs font-black uppercase tracking-widest">Thêm ảnh</span>
+                                <input 
+                                  type="file" 
+                                  multiple 
+                                  accept="image/*" 
+                                  className="hidden" 
+                                  onChange={handleFileSelect}
+                                />
+                              </label>
+                           </div>
+                        </div>
+                      </div>
+
+                      {/* 3D Action Buttons */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <button 
+                          onClick={handleExtractSmart}
+                          disabled={isLoadingExtract || selectedFiles.length === 0}
+                          className="h-28 bg-white text-blue-600 rounded-[35px] font-black text-2xl flex items-center justify-center gap-4 transition-all border-b-[8px] border-sky-100 hover:bg-sky-50 active:border-b-0 active:translate-y-[8px] shadow-2xl disabled:opacity-50 disabled:active:translate-y-0 disabled:border-b-8 disabled:shadow-none"
+                        >
+                          {isLoadingExtract ? (
+                            <div className="w-12 h-12 border-4 border-sky-200 border-t-blue-600 rounded-full animate-spin" />
+                          ) : (
+                            <Camera className="w-12 h-12" />
+                          )}
+                          {isLoadingExtract ? 'Đang trích xuất JSON...' : 'Quét & Nhập dữ liệu'}
+                        </button>
 
                         <button 
-                          onClick={handleAnalyze}
-                          disabled={isLoadingAnalyze || isLoadingExtract || (!boxChanDoan && !boxChiDinh)}
-                          className="h-20 bg-indigo-600 text-white rounded-3xl font-black text-xl flex items-center justify-center gap-4 transition-all hover:bg-indigo-700 shadow-lg shadow-indigo-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                          onClick={handleClinicalAnalysis}
+                          disabled={isLoadingAnalyze || isLoadingExtract || (!boxChanDoan && (!boxChiDinh && !boxKetQua))}
+                          className="h-28 bg-blue-600 text-white rounded-[35px] font-black text-2xl flex items-center justify-center gap-4 transition-all border-b-[8px] border-blue-900 hover:bg-blue-700 active:border-b-0 active:translate-y-[8px] shadow-2xl shadow-blue-500/30 disabled:opacity-50 disabled:active:translate-y-0 disabled:border-b-8 disabled:shadow-none"
                         >
                           {isLoadingAnalyze ? (
-                            <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+                            <div className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin" />
                           ) : (
-                            <Sparkles className="w-8 h-8" />
+                            <Sparkles className="w-12 h-12 animate-pulse" />
                           )}
-                          {isLoadingAnalyze ? 'Đang phân tích...' : '🧠 Phân tích'}
+                          {isLoadingAnalyze ? 'Đang biện luận...' : (aiMode === 'predict' ? 'Phân tích Chỉ định' : 'Biện luận Kết quả')}
                         </button>
                       </div>
 
+                      {/* Result Display Section */}
                       <AnimatePresence>
                         {aiResult && !isLoadingAnalyze && (
                           <motion.div
-                            id="ai-result-display"
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="mt-16 rounded-[50px] overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.1)] border-8 border-white bg-white relative"
+                            id="analysis-result"
+                            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            className="mt-20 rounded-[60px] overflow-hidden shadow-[0_50px_150px_rgba(37,99,235,0.15)] border-[16px] border-sky-50 bg-white relative"
                           >
-                            <div className="p-1 sm:p-2 bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600">
-                               <div className="bg-white rounded-[45px] p-8 sm:p-14">
-                                  <div className="flex flex-col sm:flex-row items-center gap-6 mb-12 border-b border-slate-100 pb-10">
-                                    <div className="w-20 h-20 bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-indigo-200 rotate-3 group-hover:rotate-0 transition-transform">
-                                      <Activity className="w-10 h-10 text-white animate-pulse" />
-                                    </div>
-                                    <div className="text-center sm:text-left">
-                                      <h3 className="text-3xl sm:text-4xl font-black text-slate-800 tracking-tighter uppercase">Biện luận chuyên sâu</h3>
-                                      <div className="flex items-center gap-2 mt-2 justify-center sm:justify-start">
-                                        <span className="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-black rounded-full uppercase tracking-widest">Medical AI Pro v2.5</span>
-                                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                                        <span className="text-slate-400 text-xs font-bold uppercase tracking-tighter">Real-time Clinical Analysis</span>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div 
-                                    className="prose prose-slate max-w-none text-slate-700 text-lg sm:text-xl leading-relaxed space-y-6"
-                                    style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
-                                    dangerouslySetInnerHTML={{ __html: aiResult }} 
-                                  />
-
-                                  <div className="mt-16 p-10 bg-gradient-to-br from-slate-900 to-indigo-950 rounded-[35px] border-4 border-white shadow-2xl relative overflow-hidden group">
-                                    <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-125 transition-transform duration-1000">
-                                      <ShieldAlert className="w-24 h-24 text-white" />
-                                    </div>
-                                    <div className="flex items-start gap-6 relative z-10">
-                                      <div className="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-red-500/20">
-                                         <AlertCircle className="w-7 h-7 text-white" />
-                                      </div>
-                                      <div>
-                                        <h4 className="text-white font-black text-xl mb-2 uppercase tracking-wide">Trách nhiệm pháp lý & Chuyên môn</h4>
-                                        <p className="text-indigo-100/80 font-medium text-base sm:text-lg leading-relaxed italic">
-                                          Đây là phân tích hỗ trợ bởi thuật toán **Gemini 2.5 Flash** dựa trên dữ liệu đào tạo y khoa. Kết quả mang tính chất tham khảo, tư vấn học thuật. Bác sĩ lâm sàng là người chịu trách nhiệm cuối cùng trong việc đưa ra chẩn đoán và điều trị thực tế.
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                               </div>
+                            <div className="absolute top-0 right-0 p-10 pointer-events-none opacity-5">
+                               <FlaskConical size={300} textAnchor="blue" />
                             </div>
-                            
-                            {/* Decorative elements for the "Bright" look */}
-                            <div className="absolute top-20 right-20 w-80 h-80 bg-blue-400/10 blur-[120px] rounded-full pointer-events-none"></div>
-                            <div className="absolute bottom-40 left-20 w-80 h-80 bg-purple-400/5 blur-[100px] rounded-full pointer-events-none"></div>
+                            <div className="p-8 sm:p-20 relative z-10">
+                              <div className="flex flex-col md:flex-row items-center gap-10 mb-20 border-b-4 border-sky-50 pb-16">
+                                <div className="w-32 h-32 bg-gradient-to-tr from-blue-600 to-indigo-700 rounded-[45px] flex items-center justify-center shadow-2xl shadow-blue-500/40 rotate-6 hover:rotate-0 transition-transform duration-700">
+                                  <Activity className="w-16 h-16 text-white animate-pulse" />
+                                </div>
+                                <div className="text-center md:text-left">
+                                  <h3 className="text-4xl sm:text-6xl font-black text-sky-950 tracking-tighter uppercase mb-2">Báo cáo Biện luận</h3>
+                                  <div className="flex flex-wrap items-center gap-4 mt-4 justify-center md:justify-start">
+                                    <span className="px-6 py-2 bg-blue-50 text-blue-700 text-sm font-black rounded-full uppercase tracking-widest border border-blue-100">Deep Medical Analysis</span>
+                                    <span className="px-6 py-2 bg-purple-50 text-purple-700 text-sm font-black rounded-full uppercase tracking-widest border border-purple-100">Patient Case Study</span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div 
+                                className="prose prose-slate max-w-none text-sky-900/90 text-xl md:text-3xl leading-[1.6] space-y-12"
+                                style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
+                                dangerouslySetInnerHTML={{ __html: aiResult }} 
+                              />
+                              
+                              {/* Legal Policy Card */}
+                              <div className="mt-24 p-14 bg-gradient-to-br from-sky-900 to-indigo-950 rounded-[50px] shadow-3xl relative overflow-hidden group">
+                                 <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:scale-125 transition-transform duration-1000">
+                                   <ShieldAlert className="w-40 h-40 text-white" />
+                                 </div>
+                                 <div className="flex flex-col md:flex-row items-center md:items-start gap-10 relative z-10 text-center md:text-left">
+                                   <div className="w-20 h-20 bg-red-500 rounded-[25px] flex items-center justify-center shrink-0 shadow-2xl shadow-red-500/30">
+                                      <Zap className="w-10 h-10 text-white" />
+                                   </div>
+                                   <div>
+                                     <h4 className="text-white font-black text-3xl mb-4 uppercase tracking-tighter">Cam kết Trách nhiệm Chuyên môn</h4>
+                                     <p className="text-sky-100/70 font-bold text-xl md:text-2xl italic leading-relaxed break-words whitespace-normal">
+                                        Mọi phân tích từ AI chỉ mang tính chất tham khảo, tư vấn học thuật cho Kỹ thuật viên & Bác sĩ. Kết quả cuối cùng phải được đối chứng bởi Bác sĩ lâm sàng dựa trên nền tảng thăm khám thực tế.
+                                     </p>
+                                   </div>
+                                 </div>
+                              </div>
+                            </div>
+
+                            {/* Finishing decorative edge */}
+                            <div className="h-6 w-full bg-gradient-to-r from-blue-600 via-sky-400 to-indigo-600"></div>
                           </motion.div>
                         )}
                       </AnimatePresence>
