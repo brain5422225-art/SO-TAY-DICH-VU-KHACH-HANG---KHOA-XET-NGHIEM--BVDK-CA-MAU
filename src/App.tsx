@@ -4399,13 +4399,21 @@ export default function App() {
     setAiResult(null);
 
     try {
-      const modePrompt = aiMode === 'predict' 
-        ? "Phiếu CHỈ ĐỊNH. Trích xuất JSON: { 'tuoi': '', 'gioi_tinh': '', 'chan_doan': '', 'chi_dinh': '' }" 
-        : "Phiếu KẾT QUẢ. Trích xuất JSON: { 'tuoi': '', 'gioi_tinh': '', 'chan_doan_icd': '', 'ket_qua': [{'ten': '', 'gia_tri': '', 'don_vi': '', 'khoang_tham_chieu': '', 'danh_gia': ''}] }";
+      const promptText = `Bạn là hệ thống trích xuất dữ liệu cận lâm sàng tự động. Tệp đầu vào có thể là ảnh hoặc PDF nhiều trang.
+NHIỆM VỤ TỐI THƯỢNG:
+1. Quét TOÀN BỘ các trang. Bỏ qua các thông tin rác lặp lại (tên bệnh viện, mã vạch, chân trang, người ký).
+2. Trích xuất chính xác: Tuổi (chỉ lấy số), Giới tính, Chẩn đoán và Mã ICD.
+3. LỌC THÔNG MINH (SMART FILTER) CHO HUYẾT HỌC: Với nhóm Tổng phân tích tế bào máu, BẮT BUỘC trích xuất 10 chỉ số cốt lõi: WBC, Neu, Lym, Mono, Eos, Baso, RBC, HGB, HCT, PLT. Với các chỉ số phụ (MCV, MCH, MCHC, RDW, MPV, PDW, PCT...), CHỈ trích xuất nếu chúng BẤT THƯỜNG (Tăng/Giảm). BỎ QUA nếu bình thường.
+4. Trả về DUY NHẤT JSON hợp lệ (không Markdown):
+{
+  "tuoi": "", "gioi_tinh": "", "chan_doan_icd": "",
+  "ket_qua": [
+    { "ten": "", "gia_tri": "", "don_vi": "", "khoang_tham_chieu": "", "danh_gia": "Tăng/Giảm/Bình thường" }
+  ]
+}`;
 
       const parts: any[] = [
-        { text: `Bạn là trợ lý y khoa số hóa dữ liệu. Hãy đọc ảnh phiếu và trả về CHỈ JSON theo cấu trúc sau (không viết gì thêm): 
-        ${modePrompt}` }
+        { text: promptText }
       ];
 
       selectedFiles.forEach(f => {
@@ -4469,27 +4477,32 @@ export default function App() {
         return;
       }
 
-      const finalPrompt = `Bạn là Giáo sư chuyên gia Hóa sinh, Huyết học, miễn dịch, vi sinh lâm sàng ĐẦU NGÀNH.
-      BỆNH NHÂN: ${patientContext.age || 'Chưa rõ'} tuổi, Giới tính: ${patientContext.gender || 'Chưa rõ'}.
-      CHẨN ĐOÁN (ICD): ${boxChanDoan}.
-      DỮ LIỆU CUNG CẤP (${aiMode === 'predict' ? 'CHỈ ĐỊNH' : 'KẾT QUẢ'}): ${dataInput}.
+      const finalPrompt = `Bạn đang đóng vai là một Hội đồng Cố vấn Y khoa cấp cao, bao gồm chuyên gia Xét nghiệm, Dược lý lâm sàng, và BÁC SĨ CHUYÊN KHOA TƯƠNG ỨNG với tình trạng bệnh nhân.
+Thông tin bệnh nhân: Tuổi ${patientContext.age || 'Chưa rõ'}, Giới tính ${patientContext.gender || 'Chưa rõ'}. Chẩn đoán/ICD: ${boxChanDoan}.
+Danh sách kết quả: ${dataInput}.
 
-      NHIỆM VỤ:
-      1. ĐỐI CHIẾU: Đối chiếu kết quả với khoảng tham chiếu trên phiếu (nếu có) hoặc tiêu chuẩn y khoa quốc tế.
-      2. TÍNH PHÙ HỢP: Kết quả này CÓ PHÙ HỢP với diễn tiến của chẩn đoán lâm sàng không?
-      3. BIỆN LUẬN CHUYÊN SÂU: Biện luận CƠ CHẾ SINH LÝ BỆNH chi tiết cho các chỉ số BẤT THƯỜNG (bỏ qua bình thường). Bắt buộc trích dẫn lại giá trị bất thường kèm đơn vị vào câu văn để KTV đối chiếu.
-      4. ĐỀ XUẤT: Cần làm thêm XN gì để chẩn đoán phân biệt? Cảnh báo nguy cơ tử vong/biến chứng nếu có chỉ số Nguy kịch (Critical value).
-      5. TRÌNH BÀY: HTML chuẩn semantic, phong cách Scientific Card chuyên nghiệp. 
-         - Nổi bật chỉ số báo động bằng class 'text-red-600 font-bold'.
-         - Phân tích cực kỳ sắc bén như một chuyên gia thực thụ.
-      TUYỆT ĐỐI không dùng Markdown (#, **).`;
+YÊU CẦU BIỆN LUẬN CHUYÊN SÂU:
+1. Đánh giá tổng quan: Kết quả này CÓ PHÙ HỢP với chẩn đoán hiện tại không?
+2. Chọn lăng kính chuyên khoa (Dynamic Specialty): Dựa vào Tuổi, Giới tính và Chẩn đoán, tự động áp dụng tư duy của chuyên khoa lâm sàng phù hợp nhất (VD: Nhi khoa, Sản khoa, Lão khoa, Hồi sức...).
+3. Biện luận Sinh lý bệnh & Dược lý: Lọc ra CÁC CHỈ SỐ BẤT THƯỜNG. Giải thích cơ chế bất thường dưới góc nhìn của chuyên khoa đã chọn. Phân tích thêm tác động của Dược lý lâm sàng (tương tác/tác dụng phụ của thuốc thường dùng cho bệnh này) nếu có. BẮT BUỘC trích dẫn lại [giá trị đo được] vào câu.
+4. Khuyến cáo Lâm sàng Cá thể hóa: Đề xuất xét nghiệm bổ sung hoặc hướng xử trí phù hợp với thể trạng đặc thù của bệnh nhân.
+5. XUẤT RA MÃ HTML: (Không dùng Markdown)
+- Dùng thẻ <div>, <h3>, <h4>, <p>, <ul>, <li>.
+- Bọc nhóm Đánh giá tổng quan bằng: <div class="mb-6 bg-sky-50/50 p-5 rounded-2xl border border-sky-100">
+- Bọc từng nhóm biện luận bằng: <div class="bg-white p-5 rounded-2xl border-l-4 border-amber-500 shadow-sm mb-4">
+- Bôi đậm các chỉ số và dùng màu class "text-red-600" cho chỉ số nguy hiểm, "text-amber-600" cho bất thường nhẹ.`;
+
+      const parts: any[] = [{ text: finalPrompt }];
+      selectedFiles.forEach(f => {
+        parts.push({ inline_data: { mime_type: f.type, data: f.data } });
+      });
 
       const response = await fetch('/api/gemini', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           action: aiMode === 'predict' ? 'analyze' : 'reason',
-          payload: { contents: [{ parts: [{ text: finalPrompt }] }] }
+          payload: { contents: [{ parts }] }
         })
       });
 
@@ -5841,11 +5854,18 @@ export default function App() {
                                   key={file.id} 
                                   className="relative aspect-square rounded-[30px] overflow-hidden shadow-xl border-4 border-white group"
                                 >
-                                  <img 
-                                    src={file.preview} 
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                                    alt="preview"
-                                  />
+                                  {file.type === 'application/pdf' ? (
+                                    <div className="w-full h-full bg-sky-100 flex flex-col items-center justify-center p-4 text-sky-600">
+                                      <FlaskConical className="w-12 h-12 mb-2" />
+                                      <span className="text-[10px] font-black uppercase text-center truncate w-full">{file.name}</span>
+                                    </div>
+                                  ) : (
+                                    <img 
+                                      src={file.preview} 
+                                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                                      alt="preview"
+                                    />
+                                  )}
                                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                     <button 
                                       onClick={() => removeFile(file.id)}
@@ -5862,7 +5882,7 @@ export default function App() {
                                 <input 
                                   type="file" 
                                   multiple 
-                                  accept="image/*" 
+                                  accept="image/*, application/pdf" 
                                   className="hidden" 
                                   onChange={handleFileSelect}
                                 />
