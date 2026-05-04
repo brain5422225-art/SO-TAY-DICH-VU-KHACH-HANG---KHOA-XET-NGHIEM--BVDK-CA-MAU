@@ -4406,19 +4406,24 @@ export default function App() {
     setAiResult(null);
 
     try {
+      const modeSpecificInstructions = aiMode === 'predict' 
+        ? "Đây là phiếu CHỈ ĐỊNH (Indications). Hãy trích xuất danh sách tên các xét nghiệm được bác sĩ yêu cầu. Với chế độ này, các trường 'gia_tri', 'don_vi', 'danh_gia' hãy để trống hoặc bỏ qua."
+        : "Đây là phiếu KẾT QUẢ (Results). Hãy trích xuất tên xét nghiệm kèm giá trị đo được, đơn vị và đánh giá (Tăng/Giảm).";
+
       const promptText = `Bạn là hệ thống trích xuất dữ liệu cận lâm sàng tự động. Tệp đầu vào có thể là ảnh hoặc PDF nhiều trang.
-NHIỆM VỤ TỐI THƯỢNG:
-1. Quét TOÀN BỘ các trang. Bỏ qua các thông tin rác lặp lại (tên bệnh viện, mã vạch, chân trang, người ký).
+NHIỆM VỤ: ${modeSpecificInstructions}
+
+1. Quét TOÀN BỘ các trang. Bỏ qua các thông tin rác (tên bệnh viện, mã vạch, chân trang).
 2. Trích xuất chính xác: Tuổi (chỉ lấy số), Giới tính, Chẩn đoán và Mã ICD.
-3. LỌC THÔNG MINH (SMART FILTER) CHO HUYẾT HỌC: 
-   - Với Huyết học: Luôn hiển thị 10 chỉ số cốt lõi (WBC, NEU, LYM, MONO, EOS, BASO, RBC, HGB, HCT, PLT). 
-   - DANH PHÁP MÁU: Mọi sản phẩm hoặc chỉ số liên quan đến khối tiểu cầu phải được nhận diện và định danh chuẩn là KTCPOOL hoặc KTCKIT (Tuyệt đối không viết tắt là TC).
-   - Các chỉ số phụ khác (MCV, RDW, PDW...): CHỈ trích xuất nếu chúng BẤT THƯỜNG.
-4. Trả về DUY NHẤT JSON hợp lệ (không Markdown):
+3. LỌC THÔNG MINH CHO HUYẾT HỌC: 
+   - Huyết học: Luôn hiển thị 10 chỉ số cốt lõi (WBC, NEU, LYM, MONO, EOS, BASO, RBC, HGB, HCT, PLT). 
+   - ĐỊNH DANH MÁU: Tiểu cầu phải ghi rõ là KTCPOOL hoặc KTCKIT. Không viết tắt là TC.
+   - Các chỉ số phụ (MCV, RDW...): CHỈ trích xuất nếu chúng BẤT THƯỜNG.
+4. Trả về DUY NHẤT JSON (Không Markdown):
 {
   "tuoi": "", "gioi_tinh": "", "chan_doan_icd": "",
   "ket_qua": [
-    { "ten": "", "gia_tri": "", "don_vi": "", "khoang_tham_chieu": "", "danh_gia": "Tăng/Giảm/Bình thường" }
+    { "ten": "Tên xét nghiệm cụ thể", "gia_tri": "", "don_vi": "", "khoang_tham_chieu": "", "danh_gia": "" }
   ]
 }`;
 
@@ -4454,9 +4459,21 @@ NHIỆM VỤ TỐI THƯỢNG:
 
       setBoxChanDoan(result.chan_doan_icd || result.chan_doan || "");
       
-      const formattedResults = Array.isArray(result.ket_qua) 
-        ? result.ket_qua.map((k: any) => `${k.ten}: ${k.gia_tri} ${k.don_vi} (${k.danh_gia})`).join('\n')
-        : "";
+      let formattedResults = "";
+      if (Array.isArray(result.ket_qua)) {
+        if (aiMode === 'predict') {
+          // Chỉ lấy tên các xét nghiệm chỉ định, loại bỏ null/dư thừa
+          formattedResults = result.ket_qua
+            .map((k: any, idx: number) => `${idx + 1}. ${k.ten}`)
+            .join('\n');
+        } else {
+          // Chế độ biện luận: Lấy đầy đủ thông số
+          formattedResults = result.ket_qua
+            .map((k: any) => `${k.ten}: ${k.gia_tri || ''} ${k.don_vi || ''} ${k.danh_gia ? `(${k.danh_gia})` : ''}`.replace(/\s+/g, ' ').trim())
+            .filter(str => str.length > 5)
+            .join('\n');
+        }
+      }
 
       if (aiMode === 'predict') {
         setBoxChiDinh(formattedResults);
