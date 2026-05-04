@@ -4368,12 +4368,19 @@ export default function App() {
           const reader = new FileReader();
           reader.onloadend = () => {
             const fullBase64 = reader.result as string;
+            let mimeType = file.type;
+            if (!mimeType) {
+              const extension = file.name.split('.').pop()?.toLowerCase();
+              if (extension === 'pdf') mimeType = 'application/pdf';
+              else if (['jpg', 'jpeg', 'png', 'webp'].includes(extension || '')) mimeType = `image/${extension === 'jpg' ? 'jpeg' : extension}`;
+              else mimeType = 'image/jpeg'; // fallback
+            }
             resolve({
               id: Math.random().toString(36).substr(2, 9),
               name: file.name,
               data: fullBase64.split(',')[1],
-              type: file.type,
-              preview: fullBase64
+              type: mimeType,
+              preview: mimeType === 'application/pdf' ? '' : fullBase64
             });
           };
           reader.readAsDataURL(file);
@@ -4391,7 +4398,7 @@ export default function App() {
   // 1. LOGIC TRÍCH XUẤT THÔNG MINH (ACTION: 'extract') - Trả về JSON ĐỈNH CAO
   const handleExtractSmart = async () => {
     if (selectedFiles.length === 0) {
-      alert("⚠️ Vui lòng chọn ảnh trước khi quét.");
+      alert("⚠️ Vui lòng chọn ảnh hoặc PDF trước khi quét.");
       return;
     }
 
@@ -4399,18 +4406,13 @@ export default function App() {
     setAiResult(null);
 
     try {
-      const promptText = `Bạn là hệ thống trích xuất dữ liệu cận lâm sàng tự động. Tệp đầu vào có thể là ảnh hoặc PDF nhiều trang.
-NHIỆM VỤ TỐI THƯỢNG:
-1. Quét TOÀN BỘ các trang. Bỏ qua các thông tin rác lặp lại (tên bệnh viện, mã vạch, chân trang, người ký).
-2. Trích xuất chính xác: Tuổi (chỉ lấy số), Giới tính, Chẩn đoán và Mã ICD.
-3. LỌC THÔNG MINH (SMART FILTER) CHO HUYẾT HỌC: Với nhóm Tổng phân tích tế bào máu, BẮT BUỘC trích xuất 10 chỉ số cốt lõi: WBC, Neu, Lym, Mono, Eos, Baso, RBC, HGB, HCT, PLT. Với các chỉ số phụ (MCV, MCH, MCHC, RDW, MPV, PDW, PCT...), CHỈ trích xuất nếu chúng BẤT THƯỜNG (Tăng/Giảm). BỎ QUA nếu bình thường.
-4. Trả về DUY NHẤT JSON hợp lệ (không Markdown):
-{
-  "tuoi": "", "gioi_tinh": "", "chan_doan_icd": "",
-  "ket_qua": [
-    { "ten": "", "gia_tri": "", "don_vi": "", "khoang_tham_chieu": "", "danh_gia": "Tăng/Giảm/Bình thường" }
-  ]
-}`;
+      const promptText = `Bạn là chuyên gia trích xuất dữ liệu y khoa. Hãy quét TOÀN BỘ các trang của tài liệu (Ảnh/PDF). 
+NHIỆM VỤ:
+1. Trích xuất: Tuổi, Giới tính, Chẩn đoán/ICD.
+2. TRÍCH XUẤT KẾT QUẢ & BỘ LỌC HUYẾT HỌC: 
+   - Với Huyết học: Luôn hiển thị 11 chỉ số (WBC, NEU, LYM, MONO, EOS, BASO, RBC, HGB, HCT, MCHC, PLT). 
+   - Các chỉ số khác (MCV, RDW, PDW...): CHỈ trích xuất nếu chúng BẤT THƯỜNG.
+3. Trả về JSON: {"tuoi": "", "gioi_tinh": "", "chan_doan_icd": "", "ket_qua": [{"ten": "", "gia_tri": "", "don_vi": "", "khoang_tham_chieu": "", "danh_gia": ""}]}`;
 
       const parts: any[] = [
         { text: promptText }
@@ -4442,13 +4444,16 @@ NHIỆM VỤ TỐI THƯỢNG:
         gender: result.gioi_tinh || patientContext.gender
       });
 
+      setBoxChanDoan(result.chan_doan_icd || result.chan_doan || "");
+      
+      const formattedResults = Array.isArray(result.ket_qua) 
+        ? result.ket_qua.map((k: any) => `${k.ten}: ${k.gia_tri} ${k.don_vi} (${k.danh_gia})`).join('\n')
+        : "";
+
       if (aiMode === 'predict') {
-        setBoxChanDoan(result.chan_doan || "");
-        setBoxChiDinh(result.chi_dinh || "");
+        setBoxChiDinh(formattedResults);
       } else {
-        setBoxChanDoan(result.chan_doan_icd || "");
-        // Convert array results to a readable string for analysis
-        setBoxKetQua(Array.isArray(result.ket_qua) ? JSON.stringify(result.ket_qua, null, 2) : (typeof result.ket_qua === 'string' ? result.ket_qua : ""));
+        setBoxKetQua(formattedResults);
       }
 
     } catch (error: any) {
@@ -4477,20 +4482,13 @@ NHIỆM VỤ TỐI THƯỢNG:
         return;
       }
 
-      const finalPrompt = `Bạn đang đóng vai là một Hội đồng Cố vấn Y khoa cấp cao, bao gồm chuyên gia Xét nghiệm, Dược lý lâm sàng, và BÁC SĨ CHUYÊN KHOA TƯƠNG ỨNG với tình trạng bệnh nhân.
-Thông tin bệnh nhân: Tuổi ${patientContext.age || 'Chưa rõ'}, Giới tính ${patientContext.gender || 'Chưa rõ'}. Chẩn đoán/ICD: ${boxChanDoan}.
-Danh sách kết quả: ${dataInput}.
-
-YÊU CẦU BIỆN LUẬN CHUYÊN SÂU:
-1. Đánh giá tổng quan: Kết quả này CÓ PHÙ HỢP với chẩn đoán hiện tại không?
-2. Chọn lăng kính chuyên khoa (Dynamic Specialty): Dựa vào Tuổi, Giới tính và Chẩn đoán, tự động áp dụng tư duy của chuyên khoa lâm sàng phù hợp nhất (VD: Nhi khoa, Sản khoa, Lão khoa, Hồi sức...).
-3. Biện luận Sinh lý bệnh & Dược lý: Lọc ra CÁC CHỈ SỐ BẤT THƯỜNG. Giải thích cơ chế bất thường dưới góc nhìn của chuyên khoa đã chọn. Phân tích thêm tác động của Dược lý lâm sàng (tương tác/tác dụng phụ của thuốc thường dùng cho bệnh này) nếu có. BẮT BUỘC trích dẫn lại [giá trị đo được] vào câu.
-4. Khuyến cáo Lâm sàng Cá thể hóa: Đề xuất xét nghiệm bổ sung hoặc hướng xử trí phù hợp với thể trạng đặc thù của bệnh nhân.
-5. XUẤT RA MÃ HTML: (Không dùng Markdown)
-- Dùng thẻ <div>, <h3>, <h4>, <p>, <ul>, <li>.
-- Bọc nhóm Đánh giá tổng quan bằng: <div class="mb-6 bg-sky-50/50 p-5 rounded-2xl border border-sky-100">
-- Bọc từng nhóm biện luận bằng: <div class="bg-white p-5 rounded-2xl border-l-4 border-amber-500 shadow-sm mb-4">
-- Bôi đậm các chỉ số và dùng màu class "text-red-600" cho chỉ số nguy hiểm, "text-amber-600" cho bất thường nhẹ.`;
+      const finalPrompt = `Bạn là Hội đồng Cố vấn Y khoa gồm chuyên gia Xét nghiệm, Dược lý lâm sàng và Bác sĩ chuyên khoa tương ứng với bệnh cảnh (Nhi, Sản, Lão, Nội...).
+Dữ liệu: Tuổi ${patientContext.age || 'Chưa rõ'}, Giới tính ${patientContext.gender || 'Chưa rõ'}, Chẩn đoán ${boxChanDoan}, Kết quả ${dataInput}.
+NHIỆM VỤ BIỆN LUẬN:
+1. Đánh giá sự phù hợp của kết quả với chẩn đoán và độ tuổi.
+2. Biện luận Sinh lý bệnh & Dược lý: Giải thích cơ chế các chỉ số BẤT THƯỜNG dựa trên Chẩn đoán, Diễn tiến sinh lý theo độ tuổi, và tác động của các thuốc điều trị bệnh đó. 
+3. Khuyến cáo lâm sàng cá thể hóa.
+4. Định dạng HTML: Sử dụng div, h3, p, ul, li. Dùng class 'text-red-600' cho báo động đỏ, 'text-amber-600' cho bất thường. Bọc các phần trong các div bo góc, đổ bóng nhẹ.`;
 
       const parts: any[] = [{ text: finalPrompt }];
       selectedFiles.forEach(f => {
@@ -5882,7 +5880,7 @@ YÊU CẦU BIỆN LUẬN CHUYÊN SÂU:
                                 <input 
                                   type="file" 
                                   multiple 
-                                  accept="image/*, application/pdf" 
+                                  accept="image/*, .pdf, application/pdf" 
                                   className="hidden" 
                                   onChange={handleFileSelect}
                                 />
