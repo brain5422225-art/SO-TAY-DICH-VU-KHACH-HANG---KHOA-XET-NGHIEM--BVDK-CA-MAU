@@ -54,13 +54,13 @@ import { motion, AnimatePresence } from 'motion/react';
 
 // --- THIẾT LẬP API POOL TRỰC TIẾP TRÊN FRONTEND (Bypass Vercel Timeout) ---
 const callGeminiDirect = async (action: string, payload: any) => {
-  // Lấy danh sách Key từ biến môi trường Client (VITE_)
-  const apiKeys = [
-    import.meta.env.VITE_GEMINI_API_KEY_1 || import.meta.env.VITE_GEMINI_API_KEY,
-    import.meta.env.VITE_GEMINI_API_KEY_2,
-    import.meta.env.VITE_GEMINI_API_KEY_3,
-    import.meta.env.VITE_GEMINI_API_KEY_4
-  ].filter(Boolean);
+  // TẠO KHO CHÌA KHÓA TRÊN FRONTEND (CÚ PHÁP CHUẨN VITE)
+    const apiKeys = [
+      import.meta.env.VITE_GEMINI_API_KEY_1,
+      import.meta.env.VITE_GEMINI_API_KEY_2,
+      import.meta.env.VITE_GEMINI_API_KEY_3,
+      import.meta.env.VITE_GEMINI_API_KEY_4
+    ].filter(Boolean); // filter(Boolean) giúp loại bỏ những key bị undefined hoặc rỗng
 
   if (apiKeys.length === 0) {
     throw new Error("LỖI CẤU HÌNH: Không tìm thấy API Key Gemini nào trong biến môi trường (VITE_GEMINI_API_KEY_x).");
