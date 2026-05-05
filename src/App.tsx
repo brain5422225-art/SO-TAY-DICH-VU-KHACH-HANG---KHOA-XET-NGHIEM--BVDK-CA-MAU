@@ -4508,30 +4508,41 @@ NHIỆM VỤ: ${modeSpecificInstructions}
       }
 
       const finalPrompt = aiMode === 'predict' 
-        ? `Dựa trên Chẩn đoán: ${boxChanDoan} và Chỉ định: ${dataInput}. Hãy dự đoán xu hướng kết quả. 
-           YÊU CẦU TRÌNH BÀY (SCIENTIFIC CARDS):
-           1. 🧠 Tổng quan sinh lý bệnh: <div class="bg-sky-50/50 p-8 rounded-[40px] border border-sky-100 mb-10">Giải thích cơ chế bệnh lý liên quan đến chẩn đoán.</div>
-           2. 📊 Dự đoán xu hướng: <div class="mb-10">Danh sách các xét nghiệm chỉ định (ol list-decimal). Với mỗi xét nghiệm, dự đoán xu hướng Tăng <span class="text-blue-600">(↑)</span> hoặc Giảm <span class="text-red-600">(↓)</span> và giải thích tại sao.</div>
-           3. ⚠️ Giá trị tới hạn: <div class="bg-amber-50/50 p-8 rounded-[40px] border border-amber-100 mb-10 text-amber-900">Cảnh báo các mức độ nguy hiểm hoặc lưu ý đặc biệt.</div>
-           4. 💡 Biện luận chuyên sâu: Lời khuyên lâm sàng cá thể hóa.
-           
-           QUY ĐỊNH CHUNG:
-           - KHÔNG sử dụng bảng (table).
-           - MỌI con số phải được bọc trong <span class="font-serif font-['Times_New_Roman'] font-bold">.
-           - Font chữ Inter cho văn bản, tăng khoảng cách dòng.`
+        ? `Bạn là chuyên gia chẩn đoán và dự đoán cận lâm sàng. 
+           - Chẩn đoán lâm sàng: ${boxChanDoan} 
+           - Chỉ định xét nghiệm: ${dataInput}.
+           - TỪ ĐIỂN XÉT NGHIỆM THAM CHIẾU (BẮT BUỘC SỬ DỤNG): ${labTests.filter(t => dataInput.toLowerCase().includes(t.name.toLowerCase().substring(0, 5))).map(t => t.name + ": " + (t.concept || t.indication)).join('; ')}
+
+           NHIỆM VỤ: Hãy đối chiếu các chỉ định với Từ điển xét nghiệm để dự đoán xu hướng kết quả và bất thường sinh lý bệnh.
+           YÊU CẦU TRÌNH BÀY (BẮT BUỘC):
+           Mô phỏng phong cách 'Từ điển xét nghiệm' với giao diện 'Thẻ Khoa Học' (Scientific Cards):
+           1. SỬ DỤNG MÃ HTML TRỰC TIẾP (div, p, b, span, br, class Tailwind). Tuyệt đối không dùng Markdown.
+           2. CẤU TRÚC GỒM 4 KHỐI CHÍNH (Mobile-first, responsive tuyệt đối):
+              - KHỐI 1: TỔNG QUAN SINH LÝ BỆNH (Dùng class: bg-blue-50/50 p-6 rounded-3xl shadow-md mb-6). Bắt đầu bằng Icon 🧠 và Tiêu đề Indigo (text-indigo-900 font-bold). Giải thích cơ chế vì sao chẩn đoán này dẫn tới các thay đổi xét nghiệm.
+              - KHỐI 2: DỰ ĐOÁN XU HƯỚNG (Dùng class: bg-white shadow-xl border-l-4 border-indigo-600 p-6 mb-6). Bắt đầu bằng Icon 📊. Liệt kê từng chỉ số bằng danh sách, dự đoán Tăng/Giảm sắc bén dựa trên chuẩn của Từ điển.
+              - KHỐI 3: CẢNH BÁO TỚI HẠN (Dùng class: bg-red-50/50 p-6 rounded-3xl mb-6). Bắt đầu bằng Icon ⚠️ và Tiêu đề Đỏ (text-red-900). Các rủi ro cần báo động ngay cho lâm sàng.
+              - KHỐI 4: LỜI KHUYÊN (Dùng class: bg-amber-50/50 p-6 rounded-3xl mb-6). Bắt đầu bằng Icon 💡 và Tiêu đề Vàng (text-amber-900). Lời khuyên vàng cho bác sĩ điều trị.
+           3. QUY CHUẨN SỐ LIỆU: Bọc tất cả các chữ số dự đoán trong thẻ <span class="font-serif font-['Times_New_Roman'] text-lg">. Đảm bảo padding/gap hợp lý để số liệu không chồng chéo.
+           4. KHÔNG SỬ DỤNG Markdown. Trả về HTML tinh khiết.`
         : `Bạn là Hội đồng Cố vấn Y khoa Đa chuyên khoa. 
-           Dữ liệu: Tuổi ${patientContext.age || 'Chưa rõ'}, Giới tính ${patientContext.gender || 'Chưa rõ'}, Chẩn đoán: ${boxChanDoan}, Kết quả: ${dataInput}.
-           
-           YÊU CẦU TRÌNH BÀY (SCIENTIFIC CARDS):
-           1. 🧠 Tổng quan sinh lý bệnh: <div class="bg-sky-50/50 p-8 rounded-[40px] border border-sky-100 mb-10">Phân tích cơ chế dựa trên chẩn đoán và kết quả thực tế.</div>
-           2. 📊 Biện luận kết quả: <div class="mb-10 overflow-x-auto text-xl">Bảng kết quả chuyên nghiệp. Các con số bất thường bôi đỏ/vàng.</div>
-           3. ⚠️ Giá trị tới hạn: <div class="bg-red-50/50 p-8 rounded-[40px] border border-red-100 mb-10 text-red-900 font-bold">Cảnh báo các chỉ số nguy kịch (nếu có).</div>
-           4. 💡 Biện luận chuyên sâu: <div class="bg-white p-8 rounded-[40px] border-l-8 border-indigo-500 shadow-sm mb-10 text-xl font-medium">Lời khuyên lâm sàng cá thể hóa và hướng xử trí tiếp theo.</div>
-           
-           QUY ĐỊNH CHUNG:
-           - DANH PHÁP MÁU: KTCPOOL hoặc KTCKIT (Tuyệt đối không TC).
-           - MỌI con số phải được bọc trong <span class="font-serif font-['Times_New_Roman'] font-bold">.
-           - Font chữ Inter, typography thoáng đạt, dễ đọc.`;
+           - Dữ liệu bệnh nhân: Tuổi ${patientContext.age || 'Chưa rõ'}, Giới tính ${patientContext.gender || 'Chưa rõ'}, Chẩn đoán ${boxChanDoan}
+           - Kết quả thực tế: ${dataInput}.
+           - TỪ ĐIỂN XÉT NGHIỆM THAM CHIẾU (BẮT BUỘC SỬ DỤNG LÀM CHUẨN): ${labTests.filter(t => dataInput.toLowerCase().includes(t.name.toLowerCase().substring(0, 5))).map(t => t.name + ": " + (t.concept || t.indication) + " [Tham chiếu: " + (t.ref || "Theo lab") + "]").join('; ')}
+
+           NHIỆM VỤ: 
+           Tuyệt đối sử dụng khoảng tham chiếu từ Từ điển trên để đối chiếu với Kết quả bệnh nhân nhằm xác định chính xác mức độ Tăng/Giảm. Sau đó, tiến hành biện luận đa chuyên khoa.
+
+           YÊU CẦU TRÌNH BÀY (BẮT BUỘC):
+           Mô phỏng giao diện 'Thẻ Khoa Học' (Scientific Cards):
+           1. SỬ DỤNG MÃ HTML TRỰC TIẾP (div, p, b, span, br, class Tailwind). Tuyệt đối không dùng Markdown và KHÔNG SỬ DỤNG BẢNG (Table).
+           2. CẤU TRÚC GỒM 4 KHỐI CHÍNH:
+              - KHỐI 1: ĐÁNH GIÁ TỔNG QUAN (Dùng class: bg-blue-50/50 p-6 rounded-3xl shadow-md mb-6). Icon 🎯. Sự phù hợp của kết quả với bệnh cảnh.
+              - KHỐI 2: BIỆN LUẬN CHỈ SỐ BẤT THƯỜNG (Dùng class: bg-white shadow-xl border-t-4 border-indigo-600 p-6 mb-6). Icon 🔬. Liệt kê các chỉ số bất thường dưới dạng danh sách (ul/li). Giải thích cơ chế sinh lý bệnh và dược lý lâm sàng.
+              - KHỐI 3: CẢNH BÁO NGUY HIỂM (Dùng class: bg-red-50/50 p-6 rounded-3xl mb-6). Icon ⚠️.
+              - KHỐI 4: KHUYẾN CÁO CÁ THỂ HÓA (Dùng class: bg-amber-50/50 p-6 rounded-3xl mb-6). Icon 💡. Hướng xử trí theo đúng độ tuổi và chuyên khoa.
+           3. QUY CHUẨN SỐ LIỆU: Bắt buộc trích dẫn lại giá trị kết quả vào câu biện luận. Mọi chữ số phải được bọc bằng <span class="font-serif font-['Times_New_Roman'] text-red-600 font-bold"> (nếu nguy hiểm) hoặc <span class="font-serif font-['Times_New_Roman'] text-amber-600 font-bold"> (nếu bất thường). Trình bày rộng rãi, dứt khoát không để đè chữ.
+           4. DANH PHÁP MÁU: KTCPOOL hoặc KTCKIT. Không viết tắt là TC.
+           5. KHÔNG DÙNG Markdown. Trả về HTML tinh khiết.`;
 
       const parts: any[] = [{ text: finalPrompt }];
       selectedFiles.forEach(f => {
