@@ -58,9 +58,9 @@ export default async function handler(req, res) {
           return res.status(200).json(data);
         }
 
-        // 🟡 LỖI QUÁ TẢI (429): Lẳng lặng bỏ qua và thử Key tiếp theo
-        if (response.status === 429) {
-          console.warn(`⚠️ Key ${keyIndex + 1} hết Quota cho model ${currentModel}. Lẳng lặng thử Key tiếp theo...`);
+        // 🟡 LỖI QUÁ TẢI (429) HOẶC NGHẼN SERVER (503): Lẳng lặng bỏ qua và thử Key/Model tiếp theo
+        if (response.status === 429 || response.status === 503) {
+          console.warn(`⚠️ Key ${keyIndex + 1} gặp lỗi ${response.status} cho model ${currentModel}. Đang chuyển hướng...`);
           continue; 
         }
 
