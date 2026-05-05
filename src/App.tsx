@@ -54,8 +54,7 @@ import { motion, AnimatePresence } from 'motion/react';
 
 // --- THIẾT LẬP API POOL TRỰC TIẾP TRÊN FRONTEND (Bypass Vercel Timeout) ---
 const callGeminiDirect = async (action: string, payload: any) => {
-  // Xóa bỏ hoàn toàn import.meta.env hay process.env phức tạp
-  // Dán trực tiếp các mã Key thật vào đây để đảm bảo độ ổn định tuyệt đối
+  // 1. DÁN 4 KEY CỦA BẠN VÀO ĐÂY
   const apiKeys = [
     "AlzaSyBXgkvR_1CRGyDQb9-laYTXICtt9RglxV8",
     "AlzaSyC4CIOQeF-OF1YzCfGSMnhlqiRESLAUBN",
@@ -63,66 +62,61 @@ const callGeminiDirect = async (action: string, payload: any) => {
     "AIzaSyB2CVr9JMfyKUyOYWHoSkMWLwrvuFBjeIk"
   ].filter(Boolean);
 
-  if (apiKeys.length === 0) {
-    throw new Error("LỖI CẤU HÌNH: Không tìm thấy API Key.");
+  let lastErrorDetails = "";
+  const payloadString = JSON.stringify(payload);
+
+  // 2. RADAR KIỂM TRA DUNG LƯỢNG (Ngăn chặn Sát thủ số 1)
+  const payloadSizeMB = (new Blob([payloadString]).size) / (1024 * 1024);
+  if (payloadSizeMB > 3.5) {
+    throw new Error(`Dữ liệu quá nặng (${payloadSizeMB.toFixed(1)}MB). Lõi Google API JSON chỉ nhận tối đa 4MB. Vui lòng giảm số trang PDF hoặc nén file trước khi quét.`);
   }
 
-  // Ma trận hạ cấp Model để đảm bảo luôn có phản hồi
-  const modelTiers = [
-    'gemini-1.5-flash', // Ưu tiên Flash vì tốc độ cực nhanh cho trải nghiệm người dùng
-    'gemini-1.5-pro'    // Dự phòng khi Flash quá tải
-  ];
+  // 3. VÒNG LẶP CHIẾN THUẬT CÓ ĐỘ TRỄ (Ngăn chặn Sát thủ số 2)
+  for (let i = 0; i < apiKeys.length; i++) {
+    try {
+      const currentKey = apiKeys[i];
+      // Luôn dùng 1.5-flash cho mượt, vì 2.5 đôi khi siết rate-limit rất chặt
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${currentKey}`;
 
-  for (let tierIndex = 0; tierIndex < modelTiers.length; tierIndex++) {
-    const currentModel = modelTiers[tierIndex];
-    for (let keyIndex = 0; keyIndex < apiKeys.length; keyIndex++) {
-      const currentKey = apiKeys[keyIndex];
-      const apiVersion = currentModel.startsWith('gemini-2') ? 'v1' : 'v1beta';
-      const apiUrl = `https://generativelanguage.googleapis.com/${apiVersion}/models/${currentModel}:generateContent?key=${currentKey}`;
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: payloadString
+      });
 
-      try {
-        const response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
+      const data = await response.json();
 
-        const data = await response.json();
+      // 🟢 THÀNH CÔNG: Thoát ngay
+      if (response.ok) return data;
 
-        // 🟢 THÀNH CÔNG
-        if (response.ok) {
-          console.log(`✅ Gemini [${currentModel}] - Key ${keyIndex + 1} - OK`);
-          return data;
-        }
-
-        // 🟡 LỖI TẠM THỜI (429/503): Thử Key tiếp theo
-        if (response.status === 429 || response.status === 503) {
-          console.warn(`⚠️ Gemini [${currentModel}] - Key ${keyIndex + 1} lỗi ${response.status}. Đang đổi Key...`);
-          continue;
-        }
-
-        // 🔴 LỖI DỮ LIỆU HOẶC KEY CHẾT (400)
-        if (response.status === 400) {
-          const msg = data.error?.message || "";
-          if (msg.includes("API key not valid")) {
-            console.warn(`🗑️ Key ${keyIndex + 1} bị vô hiệu hóa. Chuyển Key...`);
-            continue;
-          }
-          throw new Error(msg || "Dữ liệu đầu vào không hợp lệ");
-        }
-
-        throw new Error(data.error?.message || `Lỗi Google API (${response.status})`);
-      } catch (err: any) {
-        // Nếu là lỗi logic hoặc lỗi đã quăng ở trên thì quăng tiếp
-        if (err.message.includes("Dữ liệu đầu vào") || err.message.includes("Lỗi Google API")) throw err;
-        
-        console.error(`❌ Lỗi kết nối Key ${keyIndex + 1}:`, err);
-        // Lỗi mạng hoặc lỗi không xác định -> Thử Key tiếp theo
-        continue;
+      // 🟡 LỖI QUÁ TẢI (429/503): Giảm tốc độ, đổi Key
+      if (response.status === 429 || response.status === 503) {
+        console.warn(`[Chuyển Key] Key số ${i+1} quá tải. Đang nghỉ 1.5 giây để tránh Firewall Google...`);
+        // Bắt buộc phải Delay 1.5 giây để Google không block IP
+        await new Promise(resolve => setTimeout(resolve, 1500)); 
+        continue; 
       }
+
+      // 🔴 LỖI DỮ LIỆU (400): Không phải do Quota! Dừng ngay lập tức!
+      if (response.status === 400) {
+        throw new Error(`Google từ chối file. Lỗi gốc: ${data.error?.message}. (Kiểm tra lại PDF hoặc Prompt)`);
+      }
+
+      // Lưu lại lỗi khác nếu có
+      lastErrorDetails = data.error?.message || `Mã lỗi: ${response.status}`;
+
+    } catch (error: any) {
+      // 🔵 LỖI MẠNG / CORS: Dừng cuộc chơi
+      if (error.message.includes("Google từ chối file") || error.message.includes("Dữ liệu quá nặng")) {
+        throw error; // Quăng lỗi chuẩn xác ra màn hình
+      }
+      console.error(`Lỗi kết nối mạng ở Key ${i+1}:`, error);
+      lastErrorDetails = error.message;
     }
   }
-  throw new Error("TẤT CẢ API KEY ĐÃ CẠN KIỆT QUOTA. Vui lòng quay lại sau 1-2 phút.");
+
+  // Nếu chạy hết 4 Key mà tới được dòng này, mới THỰC SỰ là hết Quota
+  throw new Error(`[THẤT BẠI] Hệ thống không thể xử lý. Lỗi cuối cùng ghi nhận được: ${lastErrorDetails}`);
 };
 
 // --- TYPES & DATA ---
