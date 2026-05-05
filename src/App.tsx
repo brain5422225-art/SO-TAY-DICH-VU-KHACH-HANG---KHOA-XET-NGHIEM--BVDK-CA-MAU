@@ -4509,31 +4509,29 @@ NHIỆM VỤ: ${modeSpecificInstructions}
 
       const finalPrompt = aiMode === 'predict' 
         ? `Dựa trên Chẩn đoán: ${boxChanDoan} và Chỉ định: ${dataInput}. Hãy dự đoán xu hướng kết quả. 
-           YÊU CẦU TRÌNH BÀY:
-           1. Danh sách chỉ định trả về PHẢI là danh sách liệt kê đánh số thứ tự 1,2,3.. Chỉ lấy đúng tên xét nghiệm.
-           2. Sử dụng thẻ <ol class="list-decimal list-inside space-y-2">. 
-           3. KHÔNG sử dụng bảng (table). 
-           4. Đưa ra dự đoán xu hướng kết quả (Tăng/Giảm/Bình thường) cho từng loại.
-           5. MỌI con số phải được bọc trong <span class="font-serif font-['Times_New_Roman'] font-bold">.
-           6. Trình bày theo phong cách Scientific Card: 
-              - 🧠 Tổng quan sinh lý bệnh: Nền xanh nhạt.
-              - 📊 Dự đoán xu hướng.
-              - ⚠️ Giá trị tới hạn.
-              - 💡 Biện luận chuyên sâu.`
-        : `Bạn là Hội đồng Cố vấn Y khoa Đa chuyên khoa (Nội, Ngoại, Sản, Nhi, Lão, Dược lý lâm sàng).
+           YÊU CẦU TRÌNH BÀY (SCIENTIFIC CARDS):
+           1. 🧠 Tổng quan sinh lý bệnh: <div class="bg-sky-50/50 p-8 rounded-[40px] border border-sky-100 mb-10">Giải thích cơ chế bệnh lý liên quan đến chẩn đoán.</div>
+           2. 📊 Dự đoán xu hướng: <div class="mb-10">Danh sách các xét nghiệm chỉ định (ol list-decimal). Với mỗi xét nghiệm, dự đoán xu hướng Tăng <span class="text-blue-600">(↑)</span> hoặc Giảm <span class="text-red-600">(↓)</span> và giải thích tại sao.</div>
+           3. ⚠️ Giá trị tới hạn: <div class="bg-amber-50/50 p-8 rounded-[40px] border border-amber-100 mb-10 text-amber-900">Cảnh báo các mức độ nguy hiểm hoặc lưu ý đặc biệt.</div>
+           4. 💡 Biện luận chuyên sâu: Lời khuyên lâm sàng cá thể hóa.
+           
+           QUY ĐỊNH CHUNG:
+           - KHÔNG sử dụng bảng (table).
+           - MỌI con số phải được bọc trong <span class="font-serif font-['Times_New_Roman'] font-bold">.
+           - Font chữ Inter cho văn bản, tăng khoảng cách dòng.`
+        : `Bạn là Hội đồng Cố vấn Y khoa Đa chuyên khoa. 
            Dữ liệu: Tuổi ${patientContext.age || 'Chưa rõ'}, Giới tính ${patientContext.gender || 'Chưa rõ'}, Chẩn đoán: ${boxChanDoan}, Kết quả: ${dataInput}.
-           NHIỆM VỤ BIỆN LUẬN:
-           1. Đánh giá tổng quan sự phù hợp của kết quả với chẩn đoán và độ tuổi.
-           2. Biện luận Sinh lý bệnh & Dược lý: Giải thích cơ chế các chỉ số BẤT THƯỜNG (bắt buộc trích dẫn lại số liệu [giá trị] trong câu).
-           3. Đề xuất lâm sàng cá thể hóa.
-           4. DANH PHÁP MÁU: KTCPOOL hoặc KTCKIT (Tuyệt đối không viết tắt là TC).
-           5. ĐỊNH DẠNG XUẤT RA: HTML thuần (div, h3, p, table, ul, li). 
-           6. QUY ĐỊNH FONT: MỌI con số phải được bọc trong <span class="font-serif font-['Times_New_Roman'] font-bold">.
-           7. Trình bày theo phong cách Scientific Card:
-              - 🧠 Tổng quan sinh lý bệnh: <div class="bg-blue-50/50 p-6 rounded-3xl border border-blue-100 mb-6">...</div>
-              - 📊 Biện luận kết quả: Bảng kết quả chuyên nghiệp, responsive.
-              - ⚠️ Giá trị tới hạn & Cảnh báo: <span class="text-red-600">...</span>
-              - 💡 Lời khuyên lâm sàng.`;
+           
+           YÊU CẦU TRÌNH BÀY (SCIENTIFIC CARDS):
+           1. 🧠 Tổng quan sinh lý bệnh: <div class="bg-sky-50/50 p-8 rounded-[40px] border border-sky-100 mb-10">Phân tích cơ chế dựa trên chẩn đoán và kết quả thực tế.</div>
+           2. 📊 Biện luận kết quả: <div class="mb-10 overflow-x-auto text-xl">Bảng kết quả chuyên nghiệp. Các con số bất thường bôi đỏ/vàng.</div>
+           3. ⚠️ Giá trị tới hạn: <div class="bg-red-50/50 p-8 rounded-[40px] border border-red-100 mb-10 text-red-900 font-bold">Cảnh báo các chỉ số nguy kịch (nếu có).</div>
+           4. 💡 Biện luận chuyên sâu: <div class="bg-white p-8 rounded-[40px] border-l-8 border-indigo-500 shadow-sm mb-10 text-xl font-medium">Lời khuyên lâm sàng cá thể hóa và hướng xử trí tiếp theo.</div>
+           
+           QUY ĐỊNH CHUNG:
+           - DANH PHÁP MÁU: KTCPOOL hoặc KTCKIT (Tuyệt đối không TC).
+           - MỌI con số phải được bọc trong <span class="font-serif font-['Times_New_Roman'] font-bold">.
+           - Font chữ Inter, typography thoáng đạt, dễ đọc.`;
 
       const parts: any[] = [{ text: finalPrompt }];
       selectedFiles.forEach(f => {
@@ -5967,55 +5965,61 @@ NHIỆM VỤ: ${modeSpecificInstructions}
                       </div>
 
                       {/* Result Display Section */}
-                      <AnimatePresence>
+                      {/* Result Display Section: White Card Scientific Pro */}
+                      <AnimatePresence mode="wait">
                         {aiResult && !isLoadingAnalyze && (
                           <motion.div
                             id="analysis-result"
-                            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+                            initial={{ opacity: 0, scale: 0.95, y: 40 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
-                            className="mt-20 rounded-[50px] overflow-hidden shadow-2xl border-[12px] border-white/50 bg-white relative outline outline-4 outline-offset-[-16px] outline-sky-100"
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                            className="mt-24 rounded-[60px] overflow-hidden shadow-[0_50px_200px_rgba(0,0,0,0.1)] border-[1px] border-sky-100 bg-white relative group"
                           >
-                            <div className="absolute top-0 right-0 p-10 pointer-events-none opacity-[0.03]">
-                               <FlaskConical size={300} />
-                            </div>
-                            <div className="p-8 sm:p-16 relative z-10">
-                              <div className="flex flex-col md:flex-row items-center gap-10 mb-16 border-b-2 border-sky-50 pb-12">
-                                <div className="w-24 h-24 bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 rounded-[35px] flex items-center justify-center shadow-2xl shadow-blue-500/30 rotate-3">
-                                  <Activity className="w-12 h-12 text-white animate-pulse" />
-                                </div>
-                                <div className="text-center md:text-left">
-                                  <h3 className="text-3xl sm:text-5xl font-black text-sky-950 tracking-tighter uppercase mb-2">Báo cáo Khoa học</h3>
-                                  <div className="flex flex-wrap items-center gap-3 mt-2 justify-center md:justify-start">
-                                    <span className="px-4 py-1 bg-blue-50 text-blue-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-blue-100">Medical AI Expert</span>
-                                    <span className="px-4 py-1 bg-sky-50 text-sky-600 text-[10px] font-black rounded-full uppercase tracking-widest border border-sky-100">Validated Source</span>
+                             {/* Gradient Border Accent Overlay */}
+                             <div className="absolute inset-0 p-[2px] rounded-[60px] bg-gradient-to-tr from-blue-500 via-purple-500 to-indigo-500 -z-10 opacity-20 pointer-events-none group-hover:opacity-30 transition-opacity"></div>
+                             
+                             <div className="p-10 sm:p-20 relative z-10">
+                                <div className="flex flex-col md:flex-row items-center gap-12 mb-20 border-b-2 border-sky-50 pb-16">
+                                  <div className="w-32 h-32 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-[45px] flex items-center justify-center shadow-2xl shadow-blue-500/40 rotate-6 hover:rotate-0 transition-all duration-700">
+                                    <Activity className="w-16 h-16 text-white animate-pulse" />
+                                  </div>
+                                  <div className="text-center md:text-left">
+                                    <div className="flex flex-wrap items-center gap-4 mb-4 justify-center md:justify-start">
+                                      <span className="px-5 py-2 bg-blue-50 text-blue-700 text-[10px] font-black rounded-full uppercase tracking-[0.2em] border border-blue-100">Scientific Report</span>
+                                      <span className="px-5 py-2 bg-sky-50 text-sky-600 text-[10px] font-black rounded-full uppercase tracking-[0.2em] border border-sky-100">AI Verified v4.0</span>
+                                    </div>
+                                    <h3 className="text-4xl sm:text-7xl font-black text-sky-950 tracking-tighter uppercase leading-none">Biện luận Khoa học</h3>
                                   </div>
                                 </div>
-                              </div>
 
-                              <div 
-                                className="prose prose-slate max-w-none text-sky-900/90 text-lg md:text-2xl leading-relaxed space-y-10"
-                                style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
-                                dangerouslySetInnerHTML={{ __html: aiResult }} 
-                              />
-                              
-                              <div className="mt-20 p-12 bg-slate-900 rounded-[40px] shadow-3xl text-white relative overflow-hidden group">
-                                 <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:scale-125 transition-transform duration-1000">
-                                   <ShieldAlert className="w-32 h-32" />
-                                 </div>
-                                 <div className="flex flex-col md:flex-row items-center md:items-start gap-8 relative z-10">
-                                   <div className="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center shrink-0 shadow-2xl shadow-red-500/40">
-                                      <AlertCircle className="w-10 h-10 text-white" />
+                                <div 
+                                  className="prose prose-slate max-w-none text-sky-900/90 text-xl md:text-3xl leading-[1.8] space-y-12"
+                                  style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
+                                  dangerouslySetInnerHTML={{ __html: aiResult }} 
+                                />
+                                
+                                {/* Legal Policy Luxury Frame (Dark) */}
+                                <div className="mt-28 p-16 bg-slate-900 rounded-[55px] shadow-3xl text-white relative overflow-hidden group/legal">
+                                   <div className="absolute top-0 right-0 p-12 opacity-5 scale-150 pointer-events-none group-hover/legal:scale-175 transition-transform duration-1000">
+                                      <ShieldAlert size={280} />
                                    </div>
-                                   <div>
-                                     <h4 className="font-black text-2xl mb-3 uppercase tracking-tight">Cam kết Trách nhiệm Lâm sàng</h4>
-                                     <p className="text-slate-400 font-bold text-base md:text-lg italic leading-relaxed break-words whitespace-normal">
-                                        Mọi phân tích từ AI chỉ mang tính chất tham khảo học thuật. Kết quả cuối cùng phải được đối chứng và ký duyệt bởi Bác sĩ lâm sàng.
-                                     </p>
+                                   <div className="flex flex-col md:flex-row items-center md:items-start gap-12 relative z-10">
+                                      <div className="w-24 h-24 bg-red-500 rounded-3xl flex items-center justify-center shrink-0 shadow-2xl shadow-red-500/50">
+                                         <AlertCircle className="w-12 h-12 text-white" />
+                                      </div>
+                                      <div className="flex-1">
+                                         <h4 className="font-black text-3xl mb-5 uppercase tracking-tighter text-white">Cam kết Trách nhiệm Chuyên môn</h4>
+                                         <p className="text-slate-400 font-bold text-lg md:text-2xl italic leading-relaxed break-words whitespace-normal text-slate-300">
+                                            Mọi phân tích từ AI được hỗ trợ bởi Gemini v2.5 Flash chỉ mang tính chất tham khảo, tư vấn học thuật. Kết quả cuối cùng phải được đối chứng bởi Bác sĩ lâm sàng dựa trên nền tảng thăm khám thực tế.
+                                         </p>
+                                      </div>
                                    </div>
-                                 </div>
-                              </div>
-                            </div>
-                            <div className="h-4 bg-gradient-to-r from-blue-600 via-purple-500 to-sky-400"></div>
+                                </div>
+                             </div>
+                             
+                             {/* Bottom Visual Bar (Indigo Gradient) */}
+                             <div className="h-6 w-full bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-600"></div>
                           </motion.div>
                         )}
                       </AnimatePresence>
