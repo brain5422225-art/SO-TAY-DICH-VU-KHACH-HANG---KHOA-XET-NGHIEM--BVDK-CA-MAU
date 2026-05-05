@@ -1,3 +1,9 @@
+// Thêm dòng này để xin Vercel gia hạn thời gian sống lên 60 giây (Tối đa của gói Free)
+export const maxDuration = 60; 
+
+export default async function handler(req, res) {
+   // ... toàn bộ đoạn code ma trận giữ nguyên ở dưới ...
+}
 // File: api/gemini.js
 // Kiến trúc Tối hậu: Ma trận Quét ngang (Horizontal Scan) & Hạ cấp sâu (Deep Degradation)
 
