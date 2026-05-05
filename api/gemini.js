@@ -58,17 +58,28 @@ export default async function handler(req, res) {
           return res.status(200).json(data);
         }
 
-        // 🟡 LỖI QUÁ TẢI (429) HOẶC NGHẼN SERVER (503): Lẳng lặng bỏ qua và thử Key/Model tiếp theo
+        // 🟡 LỖI QUÁ TẢI (429) HOẶC NGHẼN SERVER (503): Đổi Key/Model
         if (response.status === 429 || response.status === 503) {
           console.warn(`⚠️ Key ${keyIndex + 1} gặp lỗi ${response.status} cho model ${currentModel}. Đang chuyển hướng...`);
           continue; 
         }
 
-        // 🔴 LỖI CÚ PHÁP/DỮ LIỆU TỪ LÂM SÀNG (400, v.v.): 
-        // Lỗi này không phải do Quota, có thử Key khác cũng vậy. Báo lỗi thẳng về màn hình!
+        // 🔴 LỖI 400 (BAD REQUEST) - PHÂN LOẠI LỖI
+        if (response.status === 400) {
+          const errorMsg = data.error?.message || '';
+          // Nếu lỗi 400 là do API Key bị sai, copy thiếu, hoặc chết -> Bỏ qua Key này, thử Key tiếp theo!
+          if (errorMsg.includes('API key not valid')) {
+            console.warn(`🗑️ Key ${keyIndex + 1} bị lỗi Invalid (Sai mã). Đang vứt bỏ và thử Key tiếp theo...`);
+            continue;
+          }
+          // Nếu lỗi 400 là do cái khác (ảnh hỏng, file PDF lỗi) thì mới báo về màn hình
+          console.error(`🚨 Lỗi Dữ liệu (${response.status}):`, data);
+          return res.status(400).json({ error: errorMsg || 'Dữ liệu đầu vào không hợp lệ' });
+        }
+
+        // Các lỗi hệ thống khác từ Google (500, v.v.)
         console.error(`🚨 Lỗi Google API (${response.status}):`, data);
-        return res.status(response.status).json({ error: data.error?.message || 'Lỗi từ Google AI' });
-      }
+        return res.status(response.status).json({ error: data.error?.message || 'Lỗi máy chủ Google AI' });
 
       // Nếu đã quét sạch 4 Key mà vẫn bị lỗi 429 -> Kích hoạt Hạ Cấp Sâu!
       console.warn(`⬇️ Đã cạn kiệt 4 Key cho ${currentModel}. Lẳng lặng hạ cấp xuống ${modelTiers[tierIndex + 1] || 'Hết Model'}...`);
