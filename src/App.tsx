@@ -52,6 +52,78 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
+// --- THIẾT LẬP API POOL TRỰC TIẾP TRÊN FRONTEND (Bypass Vercel Timeout) ---
+const callGeminiDirect = async (action: string, payload: any) => {
+  // Lấy danh sách Key từ biến môi trường Client (VITE_)
+  const apiKeys = [
+    import.meta.env.VITE_GEMINI_API_KEY_1 || import.meta.env.VITE_GEMINI_API_KEY,
+    import.meta.env.VITE_GEMINI_API_KEY_2,
+    import.meta.env.VITE_GEMINI_API_KEY_3,
+    import.meta.env.VITE_GEMINI_API_KEY_4
+  ].filter(Boolean);
+
+  if (apiKeys.length === 0) {
+    throw new Error("LỖI CẤU HÌNH: Không tìm thấy API Key Gemini nào trong biến môi trường (VITE_GEMINI_API_KEY_x).");
+  }
+
+  // Ma trận hạ cấp Model để đảm bảo luôn có phản hồi
+  const modelTiers = [
+    'gemini-1.5-flash', // Ưu tiên Flash vì tốc độ cực nhanh cho trải nghiệm người dùng
+    'gemini-1.5-pro'    // Dự phòng khi Flash quá tải
+  ];
+
+  for (let tierIndex = 0; tierIndex < modelTiers.length; tierIndex++) {
+    const currentModel = modelTiers[tierIndex];
+    for (let keyIndex = 0; keyIndex < apiKeys.length; keyIndex++) {
+      const currentKey = apiKeys[keyIndex];
+      const apiVersion = currentModel.startsWith('gemini-2') ? 'v1' : 'v1beta';
+      const apiUrl = `https://generativelanguage.googleapis.com/${apiVersion}/models/${currentModel}:generateContent?key=${currentKey}`;
+
+      try {
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        // 🟢 THÀNH CÔNG
+        if (response.ok) {
+          console.log(`✅ Gemini [${currentModel}] - Key ${keyIndex + 1} - OK`);
+          return data;
+        }
+
+        // 🟡 LỖI TẠM THỜI (429/503): Thử Key tiếp theo
+        if (response.status === 429 || response.status === 503) {
+          console.warn(`⚠️ Gemini [${currentModel}] - Key ${keyIndex + 1} lỗi ${response.status}. Đang đổi Key...`);
+          continue;
+        }
+
+        // 🔴 LỖI DỮ LIỆU HOẶC KEY CHẾT (400)
+        if (response.status === 400) {
+          const msg = data.error?.message || "";
+          if (msg.includes("API key not valid")) {
+            console.warn(`🗑️ Key ${keyIndex + 1} bị vô hiệu hóa. Chuyển Key...`);
+            continue;
+          }
+          throw new Error(msg || "Dữ liệu đầu vào không hợp lệ");
+        }
+
+        throw new Error(data.error?.message || `Lỗi Google API (${response.status})`);
+      } catch (err: any) {
+        // Nếu là lỗi logic hoặc lỗi đã quăng ở trên thì quăng tiếp
+        if (err.message.includes("Dữ liệu đầu vào") || err.message.includes("Lỗi Google API")) throw err;
+        
+        console.error(`❌ Lỗi kết nối Key ${keyIndex + 1}:`, err);
+        // Lỗi mạng hoặc lỗi không xác định -> Thử Key tiếp theo
+        continue;
+      }
+    }
+  }
+  throw new Error("TẤT CẢ API KEY ĐÃ CẠN KIỆT QUOTA. Vui lòng quay lại sau 1-2 phút.");
+};
+
 // --- TYPES & DATA ---
 
 interface LabTest {
@@ -4470,17 +4542,8 @@ NHIỆM VỤ: ${modeSpecificInstructions}
         ...selectedFiles.map(f => ({ inline_data: { mime_type: f.type, data: f.data } }))
       ];
 
-      const response = await fetch('/api/gemini', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'extract',
-          payload: { contents: [{ parts }] }
-        })
-      });
-
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "Lỗi trích xuất");
+      // GỌI TRỰC TIẾP GEMINI (Bypass Proxy)
+      const data = await callGeminiDirect('extract', { contents: [{ parts }] });
 
       const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
       const jsonStr = rawText.replace(/```json|```/g, '').trim();
@@ -4566,17 +4629,8 @@ NHIỆM VỤ: ${modeSpecificInstructions}
         parts.push({ inline_data: { mime_type: f.type, data: f.data } });
       });
 
-      const response = await fetch('/api/gemini', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: aiMode === 'predict' ? 'analyze' : 'reason',
-          payload: { contents: [{ parts }] }
-        })
-      });
-
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "Lỗi AI");
+      // GỌI TRỰC TIẾP GEMINI (Bypass Proxy)
+      const data = await callGeminiDirect(aiMode === 'predict' ? 'analyze' : 'reason', { contents: [{ parts }] });
 
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
       if (text) {
