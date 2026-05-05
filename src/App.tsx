@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Activity, 
   Search, 
@@ -2790,60 +2790,15 @@ const labTests: LabTest[] = [
 <div style="position:absolute; top:-10px; left:20px; background:#e11d48; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">06</div>
 <b style="font-size:1.1em; color:#881337; font-family:'Montserrat', sans-serif; display:block; margin-bottom:8px;">Cầu khuẩn Gram Âm (Neisseria & Moraxella)</b>
 <span style="color:#e11d48; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Hình thể]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Song cầu hình hạt cà phê. N.gonorrhoeae: lậu cầu.</span><br>
-<span style="color:#e11d48; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Bệnh lậu, viêm màng não do não mô cầu (cấp cứu).</span>
+<span style="color:#e11d48; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Lậu, viêm màng não, viêm đường hô hấp (Moraxella).</span>
 </div>
-
 </div>
 </details>
 
-<details style="margin-top:12px; background:linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%); padding:20px; border-radius:24px; border:2px solid #ef4444; box-shadow:0 10px 25px -5px rgba(239,68,68,0.1);">
-<summary style="font-weight:900; color:#991b1b; cursor:pointer; font-size:1.25em; outline:none; font-family:'Inter', sans-serif; list-style:none; display:flex; align-items:center; gap:12px; transition:all 0.3s;">
-  <div style="background:#ef4444; color:white; width:32px; height:32px; border-radius:10px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(239,68,68,0.3);">D</div>
-  <span>VI KHUẨN GRAM DƯƠNG (Nhấp để xem)</span>
-</summary>
-<div style="margin-top:20px; font-size:0.95em; line-height:1.6; color:#450a0a;">
-
-<div style="background: linear-gradient(135deg, #fff1f2 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #fecdd3; margin-bottom: 12px; position:relative;">
-<div style="position:absolute; top:-10px; left:20px; background:#d32f2f; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">01</div>
-<b style="font-size:1.1em; color:#b71c1c; font-family:'Montserrat', sans-serif; display:block; margin-bottom:8px;">Tụ cầu (Staphylococcus aureus, CoNS)</b>
-<span style="color:#f43f5e; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Hình thể]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Cầu khuẩn xếp đám (chùm nho). Coagulase (+): Tụ cầu vàng.</span><br>
-<span style="color:#f43f5e; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Mụn nhọt, áp xe, cốt tủy viêm, nhiễm trùng thiết bị y tế (biofilm).</span>
-</div>
-
-<div style="background: linear-gradient(135deg, #fdf4ff 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #f5d0fe; margin-bottom: 12px; position:relative;">
-<div style="position:absolute; top:-10px; left:20px; background:#9c27b0; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">02</div>
-<b style="font-size:1.1em; color:#4a148c; font-family:'Montserrat', sans-serif; display:block; margin-bottom:8px;">Liên cầu & Tràng cầu (Strepto, Enterococcus)</b>
-<span style="color:#a855f7; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Hình thể]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Cầu khuẩn xếp chuỗi. Tan huyết Beta: Nhóm A (pyogenes), B (agalactiae).</span><br>
-<span style="color:#a855f7; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Viêm họng, sốt thấp khớp, viêm màng não sơ sinh (nhóm B).</span>
-</div>
-
-<div style="background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%); padding: 18px; border-radius: 18px; border: 1px solid #dcfce7; margin-bottom: 0; position:relative;">
-<div style="position:absolute; top:-10px; left:20px; background:#16a34a; color:white; font-family:'Oswald', sans-serif; font-size:0.9em; padding:2px 10px; border-radius:20px; font-weight:900;">03</div>
-<b style="font-size:1.1em; color:#14532d; font-family:'Montserrat', sans-serif; display:block; margin-bottom:8px;">Trực khuẩn Gram Dương (Bacillus, Clostridium...)</b>
-<span style="color:#22c55e; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Hình thể]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Gram (+), sinh nha bào. Clostridium: yếm khí tuyệt đối.</span><br>
-<span style="color:#22c55e; font-weight:900; font-family:'JetBrains Mono', monospace; font-size:0.9em; text-transform:uppercase;">[Lâm sàng]:</span> <span style="font-family:'Inter', sans-serif; font-weight:500; color:#475569;">Bạch hầu, uốn ván, than, viêm đại tràng giả mạc.</span>
-</div>
-
-</div>
-</details>`,
-      decrease: "• VI KHUẨN KHÔNG MỌC: Không phát hiện vi khuẩn mọc sau thời gian ủ bệnh tiêu chuẩn. (Lưu ý: Có thể do lấy mẫu sai quy trình, bệnh nhân đang dùng kháng sinh, hoặc tác nhân là loại khó mọc/kỵ khí/virus cần phương pháp Sinh học phân tử)."
-    }
-  },
-  {
-    name: "Vi khuẩn kháng thuốc hệ thống tự động (Kháng sinh đồ MIC)", 
-    group: "Vi sinh", 
-    time: "3 - 5 ngày", 
-    ref: "Không áp dụng", 
-    alert: "Vũ khí tối thượng giúp giảm thiểu đề kháng kháng sinh (AMR).",
-    concept: "Thử nghiệm Kháng sinh đồ (AST) tự động hoặc MIC để xác định Nồng độ ức chế tối thiểu, qua đó đánh giá mức độ Nhạy cảm (S), Trung gian (I) hoặc Đề kháng (R) của vi khuẩn theo chuẩn CLSI/EUCAST.",
-    indication: "Cung cấp bằng chứng cho bác sĩ lâm sàng lựa chọn kháng sinh đúng loại, đúng liều lượng, giúp điều trị thành công và hạn chế kháng thuốc.",
-    pathologicalMeaning: {
-      increase: `• DƯƠNG TÍNH: Có vi khuẩn. Chi tiết biện luận Kháng sinh đồ từ dữ liệu mới nhất:
-
-<details style="margin-top:12px; background:linear-gradient(135deg, #f0f7ff 0%, #e0efff 100%); padding:20px; border-radius:24px; border:2px solid #3b82f6; box-shadow:0 10px 25px -5px rgba(59,130,246,0.1);">
-<summary style="font-weight:900; color:#1e40af; cursor:pointer; font-size:1.25em; outline:none; font-family:'Inter', sans-serif; list-style:none; display:flex; align-items:center; gap:12px; transition:all 0.3s;">
-  <div style="background:#3b82f6; color:white; width:32px; height:32px; border-radius:10px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(59,130,246,0.3);">Â</div>
-  <span>VI KHUẨN GRAM ÂM (Nhấp để xem)</span>
+<details style="margin-top:12px; background:linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); padding:20px; border-radius:24px; border:2px solid #f59e0b; box-shadow:0 10px 25px -5px rgba(245,158,11,0.1);">
+<summary style="font-weight:900; color:#9a3412; cursor:pointer; font-size:1.25em; outline:none; font-family:'Inter', sans-serif; list-style:none; display:flex; align-items:center; gap:12px; transition:all 0.3s;">
+  <div style="background:#f59e0b; color:white; width:32px; height:32px; border-radius:10px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(245,158,11,0.3);">R</div>
+  <span>KHÁNG SINH ĐỒ THAM CHIẾU (Nhấp để xem)</span>
 </summary>
 <div style="margin-top:20px; font-size:0.95em; line-height:1.6; color:#1e293b;">
 
@@ -2961,6 +2916,42 @@ const labTests: LabTest[] = [
 ];
 
 const testKnowledgeBase: Record<string, TestKnowledge> = {
+    "Vitamin D3": {
+      "name": "Vitamin D3 (25-OH Vitamin D)",
+      "purpose": "Đánh giá nồng độ Vitamin D trong cơ thể, hỗ trợ chẩn đoán các bệnh lý về xương và tình trạng thiếu hụt vitamin.",
+      "when_to_do": "Trẻ em bị còi xương, người lớn nhức mỏi xương khớp mạn tính, loãng xương, hoặc kiểm tra khả năng phục hồi sau phẫu thuật xương [13].",
+      "how_it_works": "Đo nồng độ 25-hydroxyvitamin D lưu thông trong máu, đây là dạng lưu trữ vitamin D chính xác nhất trong cơ thể.",
+      "result_meaning": "Bình thường > 30 ng/ml. Thấp: Nguy cơ còi xương, nhuyễn xương và suy giảm hệ miễn dịch [13]. Cao: Ngộ độc vitamin D (hiếm gặp).",
+      "real_life_example": "Bé trai lười ra nắng, xét nghiệm Vitamin D3 thấp kỷ lục, bác sĩ cho uống bổ sung kết hợp tắm nắng hàng ngày.",
+      "note": "Vitamin D còn được gọi là 'vitamin mặt trời' vì cơ thể tự tổng hợp được dưới tác động của tia UVB.",
+      "advanced_knowledge": "Công nghệ xét nghiệm máu khô (DBS) hiện nay cho phép đo nồng độ Vitamin D3 từ một giọt máu ở đầu ngón tay thấm lên giấy thấm chuyên dụng, gửi bưu điện tới phòng lab, vô cùng tiện lợi cho tầm soát cộng đồng.",
+      "deep_knowledge": "Khoảng 80-90% lượng Vitamin D trong cơ thể được tổng hợp qua da, chỉ 10-20% từ thực phẩm. Ở người béo phì, vitamin D bị 'nhốt' trong các mô mỡ, dẫn đến nồng độ trong máu luôn ở mức thấp dù cơ thể có bổ sung nhiều.",
+      "patient_advice": "Thời điểm lấy máu xét nghiệm Vitamin D tốt nhất là buổi sáng. Bạn cũng nên tắm nắng sớm khoảng 15-20 phút mỗi ngày để cơ thể tự sản sinh vitamin D tự nhiên tốt nhất."
+    },
+    "Yếu tố dạng thấp": {
+      "name": "RF (Rheumatoid Factor)",
+      "purpose": "Xét nghiệm tìm kiếm kháng thể tự miễn giúp chẩn đoán bệnh viêm khớp dạng thấp và các bệnh rối loạn mô liên kết khác.",
+      "when_to_do": "Khi các khớp ngón tay, cổ tay bị sưng đau, có hiện tượng cứng khớp buổi sáng kéo dài trên 1 giờ.",
+      "how_it_works": "Phát hiện sự hiện diện của kháng thể RF (thường là loại IgM) tấn công nhầm vào chính các mô khỏe mạnh của cơ thể.",
+      "result_meaning": "Dương tính: Có nguy cơ cao mắc viêm khớp dạng thấp. Tuy nhiên, 20% bệnh nhân viêm khớp vẫn có RF âm tính (gọi là viêm khớp dạng thấp huyết thanh âm tính).",
+      "real_life_example": "Người phụ nữ 40 tuổi sưng đau khớp đối xứng hai bên, xét nghiệm RF dương tính mạnh giúp bác sĩ khẳng định bệnh viêm khớp dạng thấp giai đoạn tiến triển.",
+      "note": "RF cũng có thể dương tính trong một số bệnh khác như nhiễm trùng mạn tính, xơ gan, hoặc ở một ít người cao tuổi khỏe mạnh.",
+      "advanced_knowledge": "Các phòng lab hiện nay đang chuyển dịch sang định lượng RF bằng phương pháp đo độ đục miễn dịch (immunoturbidimetry) cho độ nhạy và độ đặc hiệu cao hơn hẳn phương pháp test nhanh ngưng kết latex cổ điển.",
+      "deep_knowledge": "Yếu tố dạng thấp thực chất là một tự kháng thể chống lại đoạn Fc của phân tử IgG. Khi nồng độ RF tăng quá cao, chúng kết hợp với IgG tạo thành các phức hợp miễn dịch lắng đọng tại màng hoạt dịch khớp, gây ra phản ứng viêm phá hủy sụn xương.",
+      "patient_advice": "Nếu khớp bạn đang sưng nóng đỏ đau cấp tính, bác sĩ có thể cho làm thêm xét nghiệm CRP hoặc lắng máu (VS) để đánh giá mức độ viêm phối hợp cùng với chỉ số RF này."
+    },
+    "Anti-CCP": {
+      "name": "Anti-CCP (Anticyclic Citrullinated Peptide)",
+      "purpose": "Một xét nghiệm vô cùng hiện đại, là 'vũ khí sắc bén' để chẩn đoán xác định bệnh viêm khớp dạng thấp ngay từ giai đoạn sơ khai.",
+      "when_to_do": "Khi bạn bị đau khớp nhưng xét nghiệm RF (Yếu tố dạng thấp) vẫn âm tính, bác sĩ cần bằng chứng đanh thép hơn để chẩn đoán bệnh viêm khớp rất nặng.",
+      "how_it_works": "Phát hiện các kháng thể tự miễn chống lại các peptide vòng citrulline hóa, một quá trình thay đổi protein xảy ra trong viêm khớp dạng thấp.",
+      "result_meaning": "Âm tính < 20 U/mL (bình thường). Dương tính > 20 U/mL (nguy cơ cao mắc viêm khớp dạng thấp với độ đặc hiệu 95-98%).",
+      "real_life_example": "Một phụ nữ trẻ đau khớp cổ tay, test yếu tố dạng thấp (RF) âm tính nhưng Anti-CCP dương tính mạnh, giúp phát hiện bệnh từ rất sớm trước khi khớp bị phá hủy.",
+      "note": "Anti-CCP có thể xuất hiện trong máu nhiều năm trước khi bệnh nhân có biểu hiện đau khớp đầu tiên trên lâm sàng.",
+      "advanced_knowledge": "Công nghệ xét nghiệm vi dịch (microfluidics) cho phép định lượng chính xác Anti-CCP từ một giọt máu mao mạch, đồng thời thuật toán học máy (Machine Learning) dự đoán xác suất khớp sẽ bị biến dạng trong 5 năm tới.",
+      "deep_knowledge": "Khác với RF có thể dương tính trong nhiều bệnh khác, Anti-CCP có độ đặc hiệu cho viêm khớp dạng thấp lên đến 95%. Kháng thể này có mối liên hệ mật thiết với thói quen hút thuốc lá ở những người mang gen nhạy cảm HLA-DRB1.",
+      "patient_advice": "Nếu bạn có tiền sử gia đình bị viêm khớp dạng thấp và kết quả Anti-CCP dương tính, bạn tuyệt đối phải tránh hút thuốc lá vì khói thuốc là chất xúc tác mạnh nhất kích hoạt căn bệnh tự miễn này bùng phát."
+    },
    "NT-ProBNP": {
     "name": "NT-ProBNP",
     "purpose": "Đánh giá và chẩn đoán mức độ suy tim, kiểm tra xem cơ tim có bị suy yếu hay phải làm việc quá sức không.",
@@ -3404,42 +3395,6 @@ const testKnowledgeBase: Record<string, TestKnowledge> = {
       "advanced_knowledge": "Hệ thống AI phòng lab tự động phân tích tỷ lệ Canxi/Phospho để cảnh báo sớm nguy cơ vôi hóa mô mềm ở bệnh nhân suy thận mạn tính.",
       "deep_knowledge": "Sự tích tụ Phospho ở bệnh nhân bệnh thận mạn (CKD) là nguyên nhân chính kích hoạt cường tuyến cận giáp thứ phát, dẫn đến việc rút canxi ồ ạt từ xương ra máu gây gãy xương bệnh lý.",
       "patient_advice": "Nếu bạn bị suy thận mạn tính, bạn cần kiêng khem nghiêm ngặt các thực phẩm chứa nhiều phospho công nghiệp như nước ngọt có ga, thịt chế biến sẵn và đồ hộp."
-    },
-    "Vitamin D3": {
-      "name": "25-OH Vitamin D",
-      "purpose": "Kiểm tra tình trạng xương, hệ miễn dịch và khả năng cơ thể hấp thu canxi [12].",
-      "when_to_do": "Trẻ em bị còi xương, người lớn nhức mỏi xương khớp mạn tính, bệnh nhân bệnh tự miễn hoặc nghi ngờ suy giảm miễn dịch.",
-      "how_it_works": "Đo nồng độ 25-hydroxyvitamin D trong máu, đây là dạng dự trữ chính của vitamin D phản ánh nguồn cung cấp từ cả ánh nắng mặt trời và thực phẩm [13].",
-      "result_meaning": "Chỉ số bình thường nằm trong khoảng 30 - 150 ng/mL [13]. Thấp: Nguy cơ loãng xương cao, hệ miễn dịch suy yếu dễ mắc các bệnh nhiễm trùng.",
-      "real_life_example": "Chị nhân viên văn phòng 35 tuổi che nắng kín mít, hay đau mỏi lưng, đo Vitamin D3 rất thấp nên uống canxi mãi không ngấm được vào xương.",
-      "note": "Vitamin D có vai trò sống còn như một cỗ xe vận chuyển, nếu thiếu nó thì cơ thể không thể hấp thu được canxi từ ruột vào máu [12].",
-      "advanced_knowledge": "Sử dụng công nghệ khối phổ LC-MS/MS độ nhạy cực cao để phân biệt rõ ràng giữa Vitamin D2 (từ thực vật) và Vitamin D3 (từ động vật/da tổng hợp), hỗ trợ bác sĩ kê đơn bổ sung chính xác.",
-      "deep_knowledge": "Bản chất Vitamin D hoạt động như một hormone nội tiết hơn là một vitamin đơn thuần. Nó kiểm soát hơn 200 gen trong cơ thể và sự thiếu hụt trầm trọng có liên quan đến rủi ro mắc các bệnh ung thư và rối loạn chuyển hóa.",
-      "patient_advice": "Bạn không cần nhịn ăn trước khi xét nghiệm Vitamin D. Nếu kết quả cho thấy bạn thiếu hụt nặng, hãy tăng cường phơi nắng buổi sáng sớm và tuân thủ liều lượng vitamin D bổ sung do bác sĩ kê đơn."
-    },
-    "Yếu tố dạng thấp": {
-      "name": "Yếu tố dạng thấp (RF)",
-      "purpose": "Truy tìm và hỗ trợ chẩn đoán bệnh viêm khớp dạng thấp cùng các hội chứng tự miễn dịch khác.",
-      "when_to_do": "Khi sáng ngủ dậy tay chân cứng đơ khó cử động kéo dài trên 1 giờ, các khớp ngón tay sưng đỏ đối xứng hai bên.",
-      "how_it_works": "Tìm một loại kháng thể tự sinh (thường là IgM) do cơ thể tự tạo ra do lỗi hệ miễn dịch, kháng thể này quay lại tấn công phần Fc của kháng thể IgG của chính người bệnh.",
-      "result_meaning": "Âm tính: Khó mắc bệnh. Dương tính: Tăng nguy cơ bị viêm khớp dạng thấp, lâu dài có thể gây biến dạng khớp tàn phế.",
-      "real_life_example": "Bà cụ các đốt ngón tay sưng to đau nhức bóp méo, đi xét nghiệm RF dương tính, bác sĩ cho dùng thuốc ức chế miễn dịch làm chậm quá trình hư khớp.",
-      "note": "Xét nghiệm RF không hoàn toàn đặc hiệu, ở một số người già khỏe mạnh hoặc người mắc bệnh nhiễm trùng mạn tính (như viêm gan C, lao), chỉ số này cũng có thể dương tính giả.",
-      "advanced_knowledge": "Được chạy trên hệ thống miễn dịch tự động công suất lớn, phần mềm LAB AI Agent tự động kết hợp kết quả RF, Anti-CCP và CRP để đưa ra kết luận mức độ viêm khớp hiện tại [14].",
-      "deep_knowledge": "Mặc dù là tiêu chuẩn kinh điển, nhưng khoảng 20-30% bệnh nhân thực sự mắc viêm khớp dạng thấp lại có kết quả RF âm tính (viêm khớp dạng thấp huyết thanh âm tính). Do đó, bác sĩ luôn phải đánh giá kết hợp với lâm sàng.",
-      "patient_advice": "Nếu xét nghiệm RF của bạn dương tính nhẹ nhưng bạn không hề đau khớp, đừng quá hốt hoảng. Hãy đến khám trực tiếp với bác sĩ chuyên khoa Cơ xương khớp để được đánh giá toàn diện."
-    },
-    "Anti-CCP": {
-      "name": "Anti-CCP",
-      "purpose": "Chẩn đoán bệnh viêm khớp dạng thấp ở giai đoạn rất sớm với độ chính xác và đặc hiệu cao hơn nhiều so với RF.",
-      "when_to_do": "Khi bị đau cứng các khớp nhỏ (ngón tay, cổ tay) vào buổi sáng, sưng đau kéo dài mà xét nghiệm RF âm tính.",
-      "how_it_works": "Tìm kiếm các tự kháng thể kháng lại chuỗi peptide chứa citrulline vòng, loại kháng thể này tấn công trực tiếp vào màng hoạt dịch của khớp.",
-      "result_meaning": "Âm tính: Khả năng cao không mắc bệnh. Dương tính: Gần như chắc chắn bị viêm khớp dạng thấp và bệnh có nguy cơ tiến triển phá hủy sụn khớp rất nặng.",
-      "real_life_example": "Một phụ nữ trẻ đau khớp cổ tay, test yếu tố dạng thấp (RF) âm tính nhưng Anti-CCP dương tính mạnh, giúp phát hiện bệnh từ rất sớm trước khi khớp bị phá hủy.",
-      "note": "Anti-CCP có thể xuất hiện trong máu nhiều năm trước khi bệnh nhân có biểu hiện đau khớp đầu tiên trên lâm sàng.",
-      "advanced_knowledge": "Công nghệ xét nghiệm vi dịch (microfluidics) cho phép định lượng chính xác Anti-CCP từ một giọt máu mao mạch, đồng thời thuật toán học máy (Machine Learning) dự đoán xác suất khớp sẽ bị biến dạng trong 5 năm tới.",
-      "deep_knowledge": "Khác với RF có thể dương tính trong nhiều bệnh khác, Anti-CCP có độ đặc hiệu cho viêm khớp dạng thấp lên đến 95%. Kháng thể này có mối liên hệ mật thiết với thói quen hút thuốc lá ở những người mang gen nhạy cảm HLA-DRB1.",
-      "patient_advice": "Nếu bạn có tiền sử gia đình bị viêm khớp dạng thấp và kết quả Anti-CCP dương tính, bạn tuyệt đối phải tránh hút thuốc lá vì khói thuốc là chất xúc tác mạnh nhất kích hoạt căn bệnh tự miễn này bùng phát."
     },
     "ASO": {
       "name": "ASO (Anti-streptolysin O)",
@@ -4350,6 +4305,16 @@ export default function App() {
   const [aiResult, setAiResult] = useState<string | null>(null);
   const [isLoadingExtract, setIsLoadingExtract] = useState(false);
   const [isLoadingAnalyze, setIsLoadingAnalyze] = useState(false);
+  const [aiCache, setAiCache] = useState<Record<string, string>>(() => {
+    try {
+      const saved = localStorage.getItem('ai_clinical_cache');
+      return saved ? JSON.parse(saved) : {};
+    } catch { return {}; }
+  });
+
+  useEffect(() => {
+    localStorage.setItem('ai_clinical_cache', JSON.stringify(aiCache));
+  }, [aiCache]);
   
   // States nâng cấp cho Thư ký Xét nghiệm (AI Secretary v4.0 PRO)
   const [aiMode, setAiMode] = useState<'predict' | 'reason'>('predict');
@@ -4395,7 +4360,7 @@ export default function App() {
     setSelectedFiles(prev => prev.filter(f => f.id !== id));
   };
 
-  // 1. LOGIC TRÍCH XUẤT THÔNG MINH (ACTION: 'extract') - Trả về JSON ĐỈNH CAO
+  // 1. LOGIC TRÍCH XUẤT THÔNG MINH (ACTION: 'extract') - HỖ TRỢ CHUYẾN XE (BATCH)
   const handleExtractSmart = async () => {
     if (selectedFiles.length === 0) {
       alert("⚠️ Vui lòng chọn ảnh hoặc PDF trước khi quét.");
@@ -4406,84 +4371,85 @@ export default function App() {
     setAiResult(null);
 
     try {
-      const modeSpecificInstructions = aiMode === 'predict' 
-        ? "Đây là phiếu CHỈ ĐỊNH (Indications). Hãy trích xuất danh sách tên các xét nghiệm được bác sĩ yêu cầu. Với chế độ này, các trường 'gia_tri', 'don_vi', 'danh_gia' hãy để trống hoặc bỏ qua."
-        : "Đây là phiếu KẾT QUẢ (Results). Hãy trích xuất tên xét nghiệm kèm giá trị đo được, đơn vị và đánh giá (Tăng/Giảm).";
+      // GỘP CHUYẾN XE (BATCH PROCESSING): Chia nhỏ file để trích xuất chính xác hơn nếu có quá nhiều trang
+      const batchSize = 4;
+      const batches = [];
+      for (let i = 0; i < selectedFiles.length; i += batchSize) {
+        batches.push(selectedFiles.slice(i, i + batchSize));
+      }
 
-      const promptText = `Bạn là hệ thống trích xuất dữ liệu cận lâm sàng tự động. Tệp đầu vào có thể là ảnh hoặc PDF nhiều trang.
+      let finalResult = { tuoi: "", gioi_tinh: "", chan_doan_icd: "", ket_qua: [] as any[] };
+
+      for (const batchFiles of batches) {
+        const modeSpecificInstructions = aiMode === 'predict' 
+          ? "Phiếu CHỈ ĐỊNH (Indications). Hãy trích xuất danh sách tên các xét nghiệm được yêu cầu. Bỏ qua giá trị."
+          : "Phiếu KẾT QUẢ (Results). Hãy trích xuất tên XN kèm giá trị đo được, đơn vị và đánh giá (Tăng/Giảm).";
+
+        const promptText = `Bạn là hệ thống trích xuất dữ liệu y tế chuyên nghiệp.
 NHIỆM VỤ: ${modeSpecificInstructions}
-
-1. Quét TOÀN BỘ các trang. Bỏ qua các thông tin rác (tên bệnh viện, mã vạch, chân trang).
-2. Trích xuất chính xác: Tuổi (chỉ lấy số), Giới tính, Chẩn đoán và Mã ICD.
-3. LỌC THÔNG MINH CHO HUYẾT HỌC: 
-   - Huyết học: Luôn hiển thị 10 chỉ số cốt lõi (WBC, NEU, LYM, MONO, EOS, BASO, RBC, HGB, HCT, PLT). 
-   - ĐỊNH DANH MÁU: Tiểu cầu phải ghi rõ là KTCPOOL hoặc KTCKIT. Không viết tắt là TC.
-   - Các chỉ số phụ (MCV, RDW...): CHỈ trích xuất nếu chúng BẤT THƯỜNG.
-4. Trả về DUY NHẤT JSON (Không Markdown):
-{
-  "tuoi": "", "gioi_tinh": "", "chan_doan_icd": "",
-  "ket_qua": [
-    { "ten": "Tên xét nghiệm cụ thể", "gia_tri": "", "don_vi": "", "khoang_tham_chieu": "", "danh_gia": "" }
-  ]
+1. Trích xuất chính xác: Tuổi (số), Giới tính, Chẩn đoán/Mã ICD.
+2. HUYẾT HỌC: Luôn trích xuất 10 chỉ số cốt lõi (WBC, NEU, LYM, MONO, EOS, BASO, RBC, HGB, HCT, PLT). Ghi rõ KTCPOOL hoặc KTCKIT.
+3. TRẢ VỀ DUY NHẤT JSON:
+{ 
+  "tuoi": "", "gioi_tinh": "", "chan_doan_icd": "", 
+  "ket_qua": [ { "ten": "", "gia_tri": "", "don_vi": "", "danh_gia": "" } ] 
 }`;
 
-      const parts: any[] = [
-        { text: promptText }
-      ];
+        const parts: any[] = [{ text: promptText }];
+        batchFiles.forEach(f => {
+          parts.push({ inline_data: { mime_type: f.type, data: f.data } });
+        });
 
-      selectedFiles.forEach(f => {
-        parts.push({ inline_data: { mime_type: f.type, data: f.data } });
-      });
+        const response = await fetch('/api/gemini', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'extract', payload: { contents: [{ parts }] } })
+        });
 
-      const response = await fetch('/api/gemini', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'extract',
-          payload: { contents: [{ parts }] }
-        })
-      });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Lỗi trích xuất batch");
 
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "Lỗi trích xuất");
+        const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+        const jsonStr = rawText.replace(/```json|```/g, '').trim();
+        const batchJson = JSON.parse(jsonStr);
 
-      const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
-      const jsonStr = rawText.replace(/```json|```/g, '').trim();
-      const result = JSON.parse(jsonStr);
-
-      // Tự động điền dữ liệu
-      setPatientContext({
-        age: result.tuoi || patientContext.age,
-        gender: result.gioi_tinh || patientContext.gender
-      });
-
-      setBoxChanDoan(result.chan_doan_icd || result.chan_doan || "");
-      
-      let formattedResults = "";
-      if (Array.isArray(result.ket_qua)) {
-        if (aiMode === 'predict') {
-          // Chỉ lấy tên các xét nghiệm chỉ định, loại bỏ null/dư thừa
-          formattedResults = result.ket_qua
-            .map((k: any, idx: number) => `${idx + 1}. ${k.ten}`)
-            .join('\n');
-        } else {
-          // Chế độ biện luận: Lấy đầy đủ thông số
-          formattedResults = result.ket_qua
-            .map((k: any) => `${k.ten}: ${k.gia_tri || ''} ${k.don_vi || ''} ${k.danh_gia ? `(${k.danh_gia})` : ''}`.replace(/\s+/g, ' ').trim())
-            .filter(str => str.length > 5)
-            .join('\n');
+        // Merge dữ liệu từ các batch
+        if (!finalResult.tuoi && batchJson.tuoi) finalResult.tuoi = batchJson.tuoi;
+        if (!finalResult.gioi_tinh && batchJson.gioi_tinh) finalResult.gioi_tinh = batchJson.gioi_tinh;
+        if (!finalResult.chan_doan_icd && batchJson.chan_doan_icd) finalResult.chan_doan_icd = batchJson.chan_doan_icd;
+        if (Array.isArray(batchJson.ket_qua)) {
+          finalResult.ket_qua = [...finalResult.ket_qua, ...batchJson.ket_qua];
         }
       }
 
+      // Loại bỏ trùng lặp xét nghiệm
+      const uniqueResults = Array.from(new Map(finalResult.ket_qua.map(item => [item.ten.toLowerCase(), item])).values());
+      finalResult.ket_qua = uniqueResults;
+
+      // Cập nhật UI
+      setPatientContext({
+        age: finalResult.tuoi || patientContext.age,
+        gender: finalResult.gioi_tinh || patientContext.gender
+      });
+
+      setBoxChanDoan(finalResult.chan_doan_icd || "");
+      
+      let formattedResults = "";
       if (aiMode === 'predict') {
-        setBoxChiDinh(formattedResults);
+        formattedResults = finalResult.ket_qua.map((k, idx) => `${idx + 1}. ${k.ten}`).join('\n');
       } else {
-        setBoxKetQua(formattedResults);
+        formattedResults = finalResult.ket_qua
+          .map(k => `${k.ten}: ${k.gia_tri || ''} ${k.don_vi || ''} ${k.danh_gia ? `(${k.danh_gia})` : ''}`.trim())
+          .filter(str => str.length > 5)
+          .join('\n');
       }
+
+      if (aiMode === 'predict') setBoxChiDinh(formattedResults);
+      else setBoxKetQua(formattedResults);
 
     } catch (error: any) {
       console.error("Extract Error:", error);
-      alert(`[TRÍCH XUẤT THẤT BẠI] ${error.message}`);
+      alert(`[ERROR] ${error.message}`);
     } finally {
       setIsLoadingExtract(false);
     }
@@ -4496,53 +4462,63 @@ NHIỆM VỤ: ${modeSpecificInstructions}
       return;
     }
 
+    const dataInput = aiMode === 'predict' ? boxChiDinh : boxKetQua;
+    if (!dataInput) {
+      alert("⚠️ Vui lòng nhập danh sách chỉ định hoặc kết quả xét nghiệm.");
+      return;
+    }
+
+    // --- CHECK CACHE ---
+    const cacheKey = `${aiMode}_${boxChanDoan}_${dataInput}`.substring(0, 500);
+    if (aiCache[cacheKey]) {
+      setAiResult(aiCache[cacheKey]);
+      setTimeout(() => {
+        document.getElementById('analysis-result')?.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+      return;
+    }
+
     setIsLoadingAnalyze(true);
     setAiResult(null);
 
     try {
-      const dataInput = aiMode === 'predict' ? boxChiDinh : boxKetQua;
-      if (!dataInput) {
-        alert("⚠️ Vui lòng nhập danh sách chỉ định hoặc kết quả xét nghiệm.");
-        setIsLoadingAnalyze(false);
-        return;
-      }
-
       const finalPrompt = aiMode === 'predict' 
-        ? `Bạn là chuyên gia chẩn đoán và dự đoán cận lâm sàng. 
-           - Chẩn đoán lâm sàng: ${boxChanDoan} 
-           - Chỉ định xét nghiệm: ${dataInput}.
+        ? `Bạn là CHUYÊN GIA ĐẦU NGÀNH về chẩn đoán và dự đoán cận lâm sàng. 
+           - CHẨN ĐOÁN LÂM SÀNG: ${boxChanDoan} 
+           - CHỈ ĐỊNH XÉT NGHIỆM: ${dataInput}.
            - TỪ ĐIỂN XÉT NGHIỆM THAM CHIẾU (BẮT BUỘC SỬ DỤNG): ${labTests.filter(t => dataInput.toLowerCase().includes(t.name.toLowerCase().substring(0, 5))).map(t => t.name + ": " + (t.concept || t.indication)).join('; ')}
 
-           NHIỆM VỤ: Hãy đối chiếu các chỉ định với Từ điển xét nghiệm để dự đoán xu hướng kết quả và bất thường sinh lý bệnh.
-           YÊU CẦU TRÌNH BÀY (BẮT BUỘC):
+           NHIỆM VỤ CỰC HẠN: Đối chiếu các chỉ định với Từ điển xét nghiệm để dự đoán xu hướng kết quả và bất thường sinh lý bệnh.
+           YÊU CẦU TRÌNH BÀY (KHOA HỌC & ĐẲNG CẤP):
            Mô phỏng phong cách 'Từ điển xét nghiệm' với giao diện 'Thẻ Khoa Học' (Scientific Cards):
-           1. SỬ DỤNG MÃ HTML TRỰC TIẾP (div, p, b, span, br, class Tailwind). Tuyệt đối không dùng Markdown.
+           1. SỬ DỤNG MÃ HTML TRỰC TIẾP (div, p, b, span, br, class Tailwind). TUYỆT ĐỐI KHÔNG DÙNG Markdown.
            2. CẤU TRÚC GỒM 4 KHỐI CHÍNH (Mobile-first, responsive tuyệt đối):
-              - KHỐI 1: TỔNG QUAN SINH LÝ BỆNH (Dùng class: bg-blue-50/50 p-6 rounded-3xl shadow-md mb-6). Bắt đầu bằng Icon 🧠 và Tiêu đề Indigo (text-indigo-900 font-bold). Giải thích cơ chế vì sao chẩn đoán này dẫn tới các thay đổi xét nghiệm.
-              - KHỐI 2: DỰ ĐOÁN XU HƯỚNG (Dùng class: bg-white shadow-xl border-l-4 border-indigo-600 p-6 mb-6). Bắt đầu bằng Icon 📊. Liệt kê từng chỉ số bằng danh sách, dự đoán Tăng/Giảm sắc bén dựa trên chuẩn của Từ điển.
-              - KHỐI 3: CẢNH BÁO TỚI HẠN (Dùng class: bg-red-50/50 p-6 rounded-3xl mb-6). Bắt đầu bằng Icon ⚠️ và Tiêu đề Đỏ (text-red-900). Các rủi ro cần báo động ngay cho lâm sàng.
-              - KHỐI 4: LỜI KHUYÊN (Dùng class: bg-amber-50/50 p-6 rounded-3xl mb-6). Bắt đầu bằng Icon 💡 và Tiêu đề Vàng (text-amber-900). Lời khuyên vàng cho bác sĩ điều trị.
-           3. QUY CHUẨN SỐ LIỆU: Bọc tất cả các chữ số dự đoán trong thẻ <span class="font-serif font-['Times_New_Roman'] text-lg">. Đảm bảo padding/gap hợp lý để số liệu không chồng chéo.
-           4. KHÔNG SỬ DỤNG Markdown. Trả về HTML tinh khiết.`
-        : `Bạn là Hội đồng Cố vấn Y khoa Đa chuyên khoa. 
-           - Dữ liệu bệnh nhân: Tuổi ${patientContext.age || 'Chưa rõ'}, Giới tính ${patientContext.gender || 'Chưa rõ'}, Chẩn đoán ${boxChanDoan}
-           - Kết quả thực tế: ${dataInput}.
+              - KHỐI 1: TỔNG QUAN SINH LÝ BỆNH (Dùng class: bg-blue-50/70 p-8 rounded-[40px] shadow-sm mb-8 border border-blue-100). Icon 🧠. Phân tích sâu sắc sự liên quan giữa chẩn đoán và các chỉ định. Tiêu đề: text-indigo-900 font-black text-2xl mb-4.
+              - KHỐI 2: DỰ ĐOÁN XU HƯỚNG (Dùng class: bg-white shadow-2xl rounded-[40px] border-l-[12px] border-indigo-600 p-8 mb-8). Icon 📊. Dự đoán kết quả Tăng/Giảm với độ chính xác chuyên gia. Tiêu đề: text-indigo-800 font-extrabold text-2xl mb-6.
+              - KHỐI 3: CẢNH BÁO TỚI HẠN (Dùng class: bg-red-50/70 p-8 rounded-[40px] mb-8 border border-red-100). Icon ⚠️. Tầm soát các biến chứng nặng. Tiêu đề: text-red-900 font-black text-2xl mb-4.
+              - KHỐI 4: LỜI KHUYÊN (Dùng class: bg-amber-50/70 p-8 rounded-[40px] mb-8 border border-amber-100). Icon 💡. Hướng xử trí tiếp theo. Tiêu đề: text-amber-900 font-black text-2xl mb-4.
+           3. QUY CHUẨN SỐ LIỆU: Mọi chữ số/thông số kỹ thuật phải bọc trong thẻ <span class="font-serif font-['Times_New_Roman'] text-xl font-bold px-1">.
+           4. TUYỆT ĐỐI KHÔNG DÙNG Markdown.`
+        : `Bạn là HỘI ĐỒNG CỐ VẤN Y KHOA TỐI CAO ĐA CHUYÊN KHOA. 
+           - THÔNG TIN BỆNH NHÂN: Tuổi ${patientContext.age || 'Chưa rõ'}, Giới tính ${patientContext.gender || 'Chưa rõ'}, Chẩn đoán ${boxChanDoan}
+           - KẾT QUẢ XÉT NGHIỆM THỰC TẾ: ${dataInput}.
            - TỪ ĐIỂN XÉT NGHIỆM THAM CHIẾU (BẮT BUỘC SỬ DỤNG LÀM CHUẨN): ${labTests.filter(t => dataInput.toLowerCase().includes(t.name.toLowerCase().substring(0, 5))).map(t => t.name + ": " + (t.concept || t.indication) + " [Tham chiếu: " + (t.ref || "Theo lab") + "]").join('; ')}
 
-           NHIỆM VỤ: 
-           Tuyệt đối sử dụng khoảng tham chiếu từ Từ điển trên để đối chiếu với Kết quả bệnh nhân nhằm xác định chính xác mức độ Tăng/Giảm. Sau đó, tiến hành biện luận đa chuyên khoa.
+           NHIỆM VỤ CỰC HẠN: 
+           Sử dụng khoảng tham chiếu từ Từ điển để đối chiếu với Kết quả bệnh nhân, xác định mức độ Tăng/Giảm. Sau đó, tiến hành biện luận đa chuyên khoa.
 
-           YÊU CẦU TRÌNH BÀY (BẮT BUỘC):
+           YÊU CẦU TRÌNH BÀY (ĐẲNG CẤP):
            Mô phỏng giao diện 'Thẻ Khoa Học' (Scientific Cards):
-           1. SỬ DỤNG MÃ HTML TRỰC TIẾP (div, p, b, span, br, class Tailwind). Tuyệt đối không dùng Markdown và KHÔNG SỬ DỤNG BẢNG (Table).
+           1. SỬ DỤNG MÃ HTML TRỰC TIẾP (div, p, b, span, br, class Tailwind). TUYỆT ĐỐI KHÔNG DÙNG Markdown và KHÔNG SỬ DỤNG BẢNG.
            2. CẤU TRÚC GỒM 4 KHỐI CHÍNH:
-              - KHỐI 1: ĐÁNH GIÁ TỔNG QUAN (Dùng class: bg-blue-50/50 p-6 rounded-3xl shadow-md mb-6). Icon 🎯. Sự phù hợp của kết quả với bệnh cảnh.
-              - KHỐI 2: BIỆN LUẬN CHỈ SỐ BẤT THƯỜNG (Dùng class: bg-white shadow-xl border-t-4 border-indigo-600 p-6 mb-6). Icon 🔬. Liệt kê các chỉ số bất thường dưới dạng danh sách (ul/li). Giải thích cơ chế sinh lý bệnh và dược lý lâm sàng.
-              - KHỐI 3: CẢNH BÁO NGUY HIỂM (Dùng class: bg-red-50/50 p-6 rounded-3xl mb-6). Icon ⚠️.
-              - KHỐI 4: KHUYẾN CÁO CÁ THỂ HÓA (Dùng class: bg-amber-50/50 p-6 rounded-3xl mb-6). Icon 💡. Hướng xử trí theo đúng độ tuổi và chuyên khoa.
-           3. QUY CHUẨN SỐ LIỆU: Bắt buộc trích dẫn lại giá trị kết quả vào câu biện luận. Mọi chữ số phải được bọc bằng <span class="font-serif font-['Times_New_Roman'] text-red-600 font-bold"> (nếu nguy hiểm) hoặc <span class="font-serif font-['Times_New_Roman'] text-amber-600 font-bold"> (nếu bất thường). Trình bày rộng rãi, dứt khoát không để đè chữ.
-           4. DANH PHÁP MÁU: KTCPOOL hoặc KTCKIT. Không viết tắt là TC.
-           5. KHÔNG DÙNG Markdown. Trả về HTML tinh khiết.`;
+              - KHỐI 1: ĐÁNH GIÁ TỔNG QUAN (Dùng class: bg-sky-50/80 p-8 rounded-[45px] shadow-sm mb-10 border border-sky-100). Icon 🎯. Nhận định độ tương thích kết quả/lâm sàng.
+              - KHỐI 2: BIỆN LUẬN CHỈ SỐ BẤT THƯỜNG (Dùng class: bg-white shadow-2xl rounded-[45px] border-t-[12px] border-indigo-600 p-8 mb-10). Icon 🔬. Phân tích chi tiết từng bất thường.
+              - KHỐI 3: CẢNH BÁO NGUY HIỂM (Dùng class: bg-red-50/80 p-8 rounded-[45px] mb-10 border border-red-100). Icon ⚠️. Các chỉ số chạm ngưỡng Critical.
+              - KHỐI 4: KHUYẾN CÁO CÁ THỂ HÓA (Dùng class: bg-amber-50/80 p-8 rounded-[45px] mb-10 border border-amber-100). Icon 💡. Chiến lược điều trị cá thể hóa.
+           3. QUY CHUẨN SỐ LIỆU: Bọc các số bằng:
+              - <span class="font-serif font-['Times_New_Roman'] text-red-600 font-bold text-xl px-1"> (Nếu giá trị Nguy cấp)
+              - <span class="font-serif font-['Times_New_Roman'] text-amber-600 font-bold text-xl px-1"> (Nếu giá trị Bất thường/Thay đổi nhẹ)
+           4. TUYỆT ĐỐI KHÔNG DÙNG Markdown. Trả về HTML sắc nét.`;
 
       const parts: any[] = [{ text: finalPrompt }];
       selectedFiles.forEach(f => {
@@ -4553,24 +4529,30 @@ NHIỆM VỤ: ${modeSpecificInstructions}
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          action: aiMode === 'predict' ? 'analyze' : 'reason',
+          action: 'analyze',
           payload: { contents: [{ parts }] }
         })
       });
 
       const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "Lỗi AI");
+      if (!response.ok) throw new Error(data.error || "Lỗi phân tích AI");
 
-      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-      if (text) {
-        setAiResult(text.replace(/```html|```/g, '').trim());
-        setTimeout(() => {
-          document.getElementById('analysis-result')?.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
-      }
+      const result = data.candidates?.[0]?.content?.parts?.[0]?.text || "Không có kết quả.";
+      setAiResult(result);
+
+      // --- SAVE TO CACHE ---
+      setAiCache(prev => ({
+        ...prev,
+        [cacheKey]: result
+      }));
+
+      setTimeout(() => {
+        document.getElementById('analysis-result')?.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+
     } catch (error: any) {
       console.error("Analysis Error:", error);
-      alert(`[AI ERROR] ${error.message}`);
+      setAiResult(`<div class="p-4 bg-red-50 text-red-600 rounded-xl">❌ Lỗi AI: ${error.message}</div>`);
     } finally {
       setIsLoadingAnalyze(false);
     }
