@@ -3411,84 +3411,30 @@ const testKnowledgeBase: Record<string, TestKnowledge> = {
       "when_to_do": "Trẻ em bị còi xương, người lớn nhức mỏi xương khớp mạn tính, bệnh nhân bệnh tự miễn hoặc nghi ngờ suy giảm miễn dịch.",
       "how_it_works": "Đo nồng độ 25-hydroxyvitamin D trong máu, đây là dạng dự trữ chính của vitamin D phản ánh nguồn cung cấp từ cả ánh nắng mặt trời và thực phẩm [13].",
       "result_meaning": "Chỉ số bình thường nằm trong khoảng 30 - 150 ng/mL [13]. Thấp: Nguy cơ loãng xương cao, hệ miễn dịch suy yếu dễ mắc các bệnh nhiễm trùng.",
-      "real_life_example"      const finalPrompt = aiMode === 'predict' 
-        ? `Bạn là chuyên gia chẩn đoán và dự đoán cận lâm sàng ĐẦU NGÀNH. 
-           - Chẩn đoán lâm sàng: ${boxChanDoan} 
-           - Chỉ định xét nghiệm: ${dataInput}.
-           - TỪ ĐIỂN XÉT NGHIỆM THAM CHIẾU (BẮT BUỘC SỬ DỤNG): ${labTests.filter(t => dataInput.toLowerCase().includes(t.name.toLowerCase().substring(0, 5))).map(t => t.name + ": " + (t.concept || t.indication)).join('; ')}
-
-           NHIỆM VỤ: Hãy đối chiếu các chỉ định với Từ điển xét nghiệm để dự đoán xu hướng kết quả và bất thường sinh lý bệnh.
-           YÊU CẦU TRÌNH BÀY (SCIENTIFIC LUXURY CARDS - BẮT BUỘC):
-           Mô phỏng phong cách 'White Card Luxury Edition' với giao diện thẻ trắng cao cấp, sử dụng mã HTML trực tiếp (div, p, b, span, br, class Tailwind). Tuyệt đối không dùng Markdown.
-           
-           1. 🧠 TỔNG QUAN SINH LÝ BỆNH: 
-              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-10 rounded-[45px] border border-blue-100 mb-12 shadow-inner">
-                <h4 class="text-indigo-900 font-black text-4xl mb-6">🧠 TỔNG QUAN SINH LÝ BỆNH</h4>
-                <p class="text-2xl leading-relaxed text-slate-700 font-medium">Giải thích cơ chế y khoa sâu sắc vì sao chẩn đoán này dẫn tới các thay đổi xét nghiệm.</p>
-              </div>
-
-           2. 📊 DỰ ĐOÁN XU HƯỚNG: 
-              <div class="bg-white shadow-[0_40px_100px_rgba(79,70,229,0.1)] border-l-[20px] border-indigo-600 p-12 rounded-[50px] mb-12 relative overflow-hidden">
-                <h4 class="text-indigo-950 font-black text-4xl mb-10 flex items-center gap-4">📊 DỰ ĐOÁN XU HƯỚNG</h4>
-                <div class="space-y-8">
-                  <!-- Sử dụng Card-list thay vì Table -->
-                  <div class="p-8 bg-slate-50 rounded-[40px] border border-slate-100 shadow-sm">
-                    <p class="text-3xl font-black text-slate-800 mb-4">[Tên xét nghiệm]</p>
-                    <p class="text-2xl leading-loose">Dự đoán: <span class="font-serif font-['Times_New_Roman'] text-4xl text-blue-600 font-black px-3 bg-blue-100/50 rounded-xl italic">↑ TĂNG</span> hoặc <span class="font-serif font-['Times_New_Roman'] text-4xl text-rose-600 font-black px-3 bg-rose-100/50 rounded-xl italic">↓ GIẢM</span>. Giải thích cơ chế sắc bén dựa trên chuẩn của Từ điển.</p>
-                  </div>
-                </div>
-              </div>
-
-           3. ⚠️ GIÁ TRỊ TỚI HẠN: 
-              <div class="bg-gradient-to-r from-rose-500 via-rose-600 to-pink-600 p-12 rounded-[50px] mb-12 shadow-2xl animate-pulse text-white border-b-[12px] border-rose-800">
-                <h4 class="font-black text-4xl mb-6 flex items-center gap-4">⚠️ CẢNH BÁO NGUY HIỂM</h4>
-                <p class="text-2xl font-black leading-relaxed">Cảnh báo các ngưỡng báo động đỏ hoặc rủi ro lâm sàng cần can thiệp ngay lập tức.</p>
-              </div>
-
-           4. 💡 KHUYẾN CÁO CÁ THỂ HÓA: 
-              <div class="bg-gradient-to-br from-amber-400 via-yellow-500 to-orange-500 p-12 rounded-[55px] mb-12 shadow-[0_30px_80px_rgba(245,158,11,0.3)] border-t-[10px] border-white/30">
-                <h4 class="text-amber-950 font-black text-4xl mb-6">💡 KHUYẾN CÁO CHIẾN THUẬT</h4>
-                <p class="text-2xl font-black text-amber-900 leading-relaxed italic shadow-sm bg-white/40 p-8 rounded-[40px]">Hướng xử trí và lời khuyên vàng cho bác sĩ điều trị.</p>
-              </div>
-
-           QUY CHUẨN SỐ LIỆU: MỌI chữ số phải được bọc trong <span class="font-serif font-['Times_New_Roman'] font-black">. Font chữ Inter thoáng đạt. Tuyệt đối không dùng CHARTS/TABLES.`
-        : `Bạn là Hội đồng Cố vấn Y khoa Đa chuyên khoa (Luxury Digital Edition). 
-           - Dữ liệu: Tuổi ${patientContext.age || 'Chưa rõ'}, Giới tính ${patientContext.gender || 'Chưa rõ'}, Chẩn đoán ${boxChanDoan}
-           - Kết quả bệnh nhân: ${dataInput}.
-           - TỪ ĐIỂN THAM CHIẾU (CHUẨN): ${labTests.filter(t => dataInput.toLowerCase().includes(t.name.toLowerCase().substring(0, 5))).map(t => t.name + ": [Khoảng tham chiếu: " + (t.ref || "Theo lab") + "]").join('; ')}
-
-           NHIỆM VỤ: Biện luận cực hạn dựa trên khoảng tham chiếu của Từ điển.
-           YÊU CẦU TRÌNH BÀY (SCIENTIFIC LUXURY CARDS - BẮT BUỘC):
-           
-           1. 🎯 ĐÁNH GIÁ TỔNG QUAN: 
-              <div class="bg-gradient-to-br from-blue-50 to-sky-100 p-12 rounded-[50px] border border-blue-200 mb-14 shadow-inner">
-                <h4 class="text-blue-900 font-extrabold text-4xl mb-6">🎯 ĐÁNH GIÁ TỔNG QUAN</h4>
-                <p class="text-2xl font-black text-slate-800 leading-relaxed">Đánh giá sự phù hợp của kết quả với bệnh cảnh lâm sàng hiện tại.</p>
-              </div>
-
-           2. 🔬 BIỆN LUẬN CHỈ SỐ BẤT THƯỜNG: 
-              <div class="bg-white shadow-[0_60px_150px_rgba(30,58,138,0.1)] border-l-[25px] border-indigo-700 p-14 rounded-[55px] mb-14">
-                <h4 class="text-indigo-950 font-black text-4xl mb-12">🔬 PHÂN TÍCH CHỈ SỐ BẤT THƯỜNG</h4>
-                <!-- Sử dụng Card-list linh hoạt, không dùng Table -->
-                <div class="mb-8 p-10 bg-slate-50/80 rounded-[45px] border border-slate-100 hover:bg-white transition-all shadow-sm">
-                   <p class="text-3xl font-black text-indigo-900 mb-4">[Tên chỉ số]</p>
-                   <p class="text-2xl leading-loose">Giá trị: <span class="font-serif font-['Times_New_Roman'] text-red-600 font-black text-5xl bg-red-100 px-4 py-1 rounded-2xl">[giá trị]</span>. Giải thích cơ chế sinh lý bệnh và dược lý lâm sàng so với Từ điển tham chiếu.</p>
-                </div>
-              </div>
-
-           3. ⚠️ CẢNH BÁO NGUY HIỂM: 
-              <div class="bg-gradient-to-tr from-rose-600 to-pink-700 p-12 rounded-[50px] mb-14 shadow-2xl animate-pulse text-white border-r-[15px] border-white/20">
-                <h4 class="font-black text-4xl mb-6">⚠️ CẢNH BÁO NGUY HIỂM</h4>
-                <p class="text-2xl font-black">Các chỉ chỉ số đe dọa tính mạng hoặc cần báo động ngay.</p>
-              </div>
-
-           4. 💡 KHUYẾN CÁO CÁ THỂ HÓA: 
-              <div class="bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 p-14 rounded-[60px] shadow-3xl border-t-[10px] border-white/40">
-                <h4 class="text-amber-950 font-black text-4xl mb-8">💡 ĐỀ XUẤT LÂM SÀNG CÁ THỂ HÓA</h4>
-                <p class="text-2xl font-black text-amber-900 leading-relaxed italic bg-white/50 p-10 rounded-[50px]">Hướng xử trí dứt khoát theo đúng độ tuổi và chuyên khoa.</p>
-              </div>
-
-           QUY CHUẨN: Không Table. Toàn bộ con số bọc trong <span class="font-serif font-['Times_New_Roman'] font-black">. Font Inter cho text.`;�n khớp rất nặng.",
+      "real_life_example": "Chị nhân viên văn phòng 35 tuổi che nắng kín mít, hay đau mỏi lưng, đo Vitamin D3 rất thấp nên uống canxi mãi không ngấm được vào xương.",
+      "note": "Vitamin D có vai trò sống còn như một cỗ xe vận chuyển, nếu thiếu nó thì cơ thể không thể hấp thu được canxi từ ruột vào máu [12].",
+      "advanced_knowledge": "Sử dụng công nghệ khối phổ LC-MS/MS độ nhạy cực cao để phân biệt rõ ràng giữa Vitamin D2 (từ thực vật) và Vitamin D3 (từ động vật/da tổng hợp), hỗ trợ bác sĩ kê đơn bổ sung chính xác.",
+      "deep_knowledge": "Bản chất Vitamin D hoạt động như một hormone nội tiết hơn là một vitamin đơn thuần. Nó kiểm soát hơn 200 gen trong cơ thể và sự thiếu hụt trầm trọng có liên quan đến rủi ro mắc các bệnh ung thư và rối loạn chuyển hóa.",
+      "patient_advice": "Bạn không cần nhịn ăn trước khi xét nghiệm Vitamin D. Nếu kết quả cho thấy bạn thiếu hụt nặng, hãy tăng cường phơi nắng buổi sáng sớm và tuân thủ liều lượng vitamin D bổ sung do bác sĩ kê đơn."
+    },
+    "Yếu tố dạng thấp": {
+      "name": "Yếu tố dạng thấp (RF)",
+      "purpose": "Truy tìm và hỗ trợ chẩn đoán bệnh viêm khớp dạng thấp cùng các hội chứng tự miễn dịch khác.",
+      "when_to_do": "Khi sáng ngủ dậy tay chân cứng đơ khó cử động kéo dài trên 1 giờ, các khớp ngón tay sưng đỏ đối xứng hai bên.",
+      "how_it_works": "Tìm một loại kháng thể tự sinh (thường là IgM) do cơ thể tự tạo ra do lỗi hệ miễn dịch, kháng thể này quay lại tấn công phần Fc của kháng thể IgG của chính người bệnh.",
+      "result_meaning": "Âm tính: Khó mắc bệnh. Dương tính: Tăng nguy cơ bị viêm khớp dạng thấp, lâu dài có thể gây biến dạng khớp tàn phế.",
+      "real_life_example": "Bà cụ các đốt ngón tay sưng to đau nhức bóp méo, đi xét nghiệm RF dương tính, bác sĩ cho dùng thuốc ức chế miễn dịch làm chậm quá trình hư khớp.",
+      "note": "Xét nghiệm RF không hoàn toàn đặc hiệu, ở một số người già khỏe mạnh hoặc người mắc bệnh nhiễm trùng mạn tính (như viêm gan C, lao), chỉ số này cũng có thể dương tính giả.",
+      "advanced_knowledge": "Được chạy trên hệ thống miễn dịch tự động công suất lớn, phần mềm LAB AI Agent tự động kết hợp kết quả RF, Anti-CCP và CRP để đưa ra kết luận mức độ viêm khớp hiện tại [14].",
+      "deep_knowledge": "Mặc dù là tiêu chuẩn kinh điển, nhưng khoảng 20-30% bệnh nhân thực sự mắc viêm khớp dạng thấp lại có kết quả RF âm tính (viêm khớp dạng thấp huyết thanh âm tính). Do đó, bác sĩ luôn phải đánh giá kết hợp với lâm sàng.",
+      "patient_advice": "Nếu xét nghiệm RF của bạn dương tính nhẹ nhưng bạn không hề đau khớp, đừng quá hốt hoảng. Hãy đến khám trực tiếp với bác sĩ chuyên khoa Cơ xương khớp để được đánh giá toàn diện."
+    },
+    "Anti-CCP": {
+      "name": "Anti-CCP",
+      "purpose": "Chẩn đoán bệnh viêm khớp dạng thấp ở giai đoạn rất sớm với độ chính xác và đặc hiệu cao hơn nhiều so với RF.",
+      "when_to_do": "Khi bị đau cứng các khớp nhỏ (ngón tay, cổ tay) vào buổi sáng, sưng đau kéo dài mà xét nghiệm RF âm tính.",
+      "how_it_works": "Tìm kiếm các tự kháng thể kháng lại chuỗi peptide chứa citrulline vòng, loại kháng thể này tấn công trực tiếp vào màng hoạt dịch của khớp.",
+      "result_meaning": "Âm tính: Khả năng cao không mắc bệnh. Dương tính: Gần như chắc chắn bị viêm khớp dạng thấp và bệnh có nguy cơ tiến triển phá hủy sụn khớp rất nặng.",
       "real_life_example": "Một phụ nữ trẻ đau khớp cổ tay, test yếu tố dạng thấp (RF) âm tính nhưng Anti-CCP dương tính mạnh, giúp phát hiện bệnh từ rất sớm trước khi khớp bị phá hủy.",
       "note": "Anti-CCP có thể xuất hiện trong máu nhiều năm trước khi bệnh nhân có biểu hiện đau khớp đầu tiên trên lâm sàng.",
       "advanced_knowledge": "Công nghệ xét nghiệm vi dịch (microfluidics) cho phép định lượng chính xác Anti-CCP từ một giọt máu mao mạch, đồng thời thuật toán học máy (Machine Learning) dự đoán xác suất khớp sẽ bị biến dạng trong 5 năm tới.",
