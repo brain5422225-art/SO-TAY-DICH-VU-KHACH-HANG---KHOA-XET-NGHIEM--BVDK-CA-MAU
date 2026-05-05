@@ -62,6 +62,10 @@ const callGeminiDirect = async (action: string, payload: any) => {
     "AIzaSyB2CVr9JMfyKUyOYWHoSkMWLwrvuFBjeIk"
   ].filter(Boolean);
 
+  console.log("Số lượng Key tìm thấy:", apiKeys.length);
+  // Dòng dưới này sẽ hiện 4 ký tự đầu của Key để bạn đối soát mà không làm lộ Key hoàn toàn
+  apiKeys.forEach((k, i) => console.log(`Key ${i+1} bắt đầu bằng:`, k?.substring(0, 6)));
+
   let lastErrorDetails = "";
   const payloadString = JSON.stringify(payload);
 
