@@ -52,77 +52,6 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-// --- THIẾT LẬP API POOL TRỰC TIẾP TRÊN FRONTEND (Bypass Vercel Timeout) ---
-const callGeminiDirect = async (action: string, payload: any) => {
-  // 1. DÁN 4 KEY CỦA BẠN VÀO ĐÂY
-  const apiKeys = [
-    "AlzaSyBXgkvR_1CRGyDQb9-laYTXICtt9RglxV8",
-    "AlzaSyC4CIOQeF-OF1YzCfGSMnhlqiRESLAUBN",
-    "AlzaSyAdT3KSX_AiK8s4MgcJeL5IRMDtNIUW_Q",
-    "AIzaSyB2CVr9JMfyKUyOYWHoSkMWLwrvuFBjeIk"
-  ].filter(Boolean);
-
-  console.log("Số lượng Key tìm thấy:", apiKeys.length);
-  // Dòng dưới này sẽ hiện 4 ký tự đầu của Key để bạn đối soát mà không làm lộ Key hoàn toàn
-  apiKeys.forEach((k, i) => console.log(`Key ${i+1} bắt đầu bằng:`, k?.substring(0, 6)));
-
-  let lastErrorDetails = "";
-  const payloadString = JSON.stringify(payload);
-
-  // 2. RADAR KIỂM TRA DUNG LƯỢNG (Ngăn chặn Sát thủ số 1)
-  const payloadSizeMB = (new Blob([payloadString]).size) / (1024 * 1024);
-  if (payloadSizeMB > 3.5) {
-    throw new Error(`Dữ liệu quá nặng (${payloadSizeMB.toFixed(1)}MB). Lõi Google API JSON chỉ nhận tối đa 4MB. Vui lòng giảm số trang PDF hoặc nén file trước khi quét.`);
-  }
-
-  // 3. VÒNG LẶP CHIẾN THUẬT CÓ ĐỘ TRỄ (Ngăn chặn Sát thủ số 2)
-  for (let i = 0; i < apiKeys.length; i++) {
-    try {
-      const currentKey = apiKeys[i];
-      // Luôn dùng 1.5-flash cho mượt, vì 2.5 đôi khi siết rate-limit rất chặt
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${currentKey}`;
-
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: payloadString
-      });
-
-      const data = await response.json();
-
-      // 🟢 THÀNH CÔNG: Thoát ngay
-      if (response.ok) return data;
-
-      // 🟡 LỖI QUÁ TẢI (429/503): Giảm tốc độ, đổi Key
-      if (response.status === 429 || response.status === 503) {
-        console.warn(`[Chuyển Key] Key số ${i+1} quá tải. Đang nghỉ 1.5 giây để tránh Firewall Google...`);
-        // Bắt buộc phải Delay 1.5 giây để Google không block IP
-        await new Promise(resolve => setTimeout(resolve, 1500)); 
-        continue; 
-      }
-
-      // 🔴 LỖI DỮ LIỆU (400): Không phải do Quota! Dừng ngay lập tức!
-      if (response.status === 400) {
-        throw new Error(`Google từ chối file. Lỗi gốc: ${data.error?.message}. (Kiểm tra lại PDF hoặc Prompt)`);
-      }
-
-      // Lưu lại lỗi khác nếu có
-      lastErrorDetails = data.error?.message || `Mã lỗi: ${response.status}`;
-
-    } catch (error: any) {
-      // 🔵 LỖI MẠNG / CORS: Dừng cuộc chơi
-      if (error.message.includes("Google từ chối file") || error.message.includes("Dữ liệu quá nặng")) {
-        throw error; // Quăng lỗi chuẩn xác ra màn hình
-      }
-      console.error(`Lỗi kết nối mạng ở Key ${i+1}:`, error);
-      lastErrorDetails = error.message;
-    }
-  }
-
-  // Nếu chạy hết 4 Key mà tới được dòng này, mới THỰC SỰ là hết Quota
-  throw new Error(`[THẤT BẠI] Hệ thống không thể xử lý. Lỗi cuối cùng ghi nhận được: ${lastErrorDetails}`);
-};
-
 // --- TYPES & DATA ---
 
 interface LabTest {
@@ -3482,30 +3411,84 @@ const testKnowledgeBase: Record<string, TestKnowledge> = {
       "when_to_do": "Trẻ em bị còi xương, người lớn nhức mỏi xương khớp mạn tính, bệnh nhân bệnh tự miễn hoặc nghi ngờ suy giảm miễn dịch.",
       "how_it_works": "Đo nồng độ 25-hydroxyvitamin D trong máu, đây là dạng dự trữ chính của vitamin D phản ánh nguồn cung cấp từ cả ánh nắng mặt trời và thực phẩm [13].",
       "result_meaning": "Chỉ số bình thường nằm trong khoảng 30 - 150 ng/mL [13]. Thấp: Nguy cơ loãng xương cao, hệ miễn dịch suy yếu dễ mắc các bệnh nhiễm trùng.",
-      "real_life_example": "Chị nhân viên văn phòng 35 tuổi che nắng kín mít, hay đau mỏi lưng, đo Vitamin D3 rất thấp nên uống canxi mãi không ngấm được vào xương.",
-      "note": "Vitamin D có vai trò sống còn như một cỗ xe vận chuyển, nếu thiếu nó thì cơ thể không thể hấp thu được canxi từ ruột vào máu [12].",
-      "advanced_knowledge": "Sử dụng công nghệ khối phổ LC-MS/MS độ nhạy cực cao để phân biệt rõ ràng giữa Vitamin D2 (từ thực vật) và Vitamin D3 (từ động vật/da tổng hợp), hỗ trợ bác sĩ kê đơn bổ sung chính xác.",
-      "deep_knowledge": "Bản chất Vitamin D hoạt động như một hormone nội tiết hơn là một vitamin đơn thuần. Nó kiểm soát hơn 200 gen trong cơ thể và sự thiếu hụt trầm trọng có liên quan đến rủi ro mắc các bệnh ung thư và rối loạn chuyển hóa.",
-      "patient_advice": "Bạn không cần nhịn ăn trước khi xét nghiệm Vitamin D. Nếu kết quả cho thấy bạn thiếu hụt nặng, hãy tăng cường phơi nắng buổi sáng sớm và tuân thủ liều lượng vitamin D bổ sung do bác sĩ kê đơn."
-    },
-    "Yếu tố dạng thấp": {
-      "name": "Yếu tố dạng thấp (RF)",
-      "purpose": "Truy tìm và hỗ trợ chẩn đoán bệnh viêm khớp dạng thấp cùng các hội chứng tự miễn dịch khác.",
-      "when_to_do": "Khi sáng ngủ dậy tay chân cứng đơ khó cử động kéo dài trên 1 giờ, các khớp ngón tay sưng đỏ đối xứng hai bên.",
-      "how_it_works": "Tìm một loại kháng thể tự sinh (thường là IgM) do cơ thể tự tạo ra do lỗi hệ miễn dịch, kháng thể này quay lại tấn công phần Fc của kháng thể IgG của chính người bệnh.",
-      "result_meaning": "Âm tính: Khó mắc bệnh. Dương tính: Tăng nguy cơ bị viêm khớp dạng thấp, lâu dài có thể gây biến dạng khớp tàn phế.",
-      "real_life_example": "Bà cụ các đốt ngón tay sưng to đau nhức bóp méo, đi xét nghiệm RF dương tính, bác sĩ cho dùng thuốc ức chế miễn dịch làm chậm quá trình hư khớp.",
-      "note": "Xét nghiệm RF không hoàn toàn đặc hiệu, ở một số người già khỏe mạnh hoặc người mắc bệnh nhiễm trùng mạn tính (như viêm gan C, lao), chỉ số này cũng có thể dương tính giả.",
-      "advanced_knowledge": "Được chạy trên hệ thống miễn dịch tự động công suất lớn, phần mềm LAB AI Agent tự động kết hợp kết quả RF, Anti-CCP và CRP để đưa ra kết luận mức độ viêm khớp hiện tại [14].",
-      "deep_knowledge": "Mặc dù là tiêu chuẩn kinh điển, nhưng khoảng 20-30% bệnh nhân thực sự mắc viêm khớp dạng thấp lại có kết quả RF âm tính (viêm khớp dạng thấp huyết thanh âm tính). Do đó, bác sĩ luôn phải đánh giá kết hợp với lâm sàng.",
-      "patient_advice": "Nếu xét nghiệm RF của bạn dương tính nhẹ nhưng bạn không hề đau khớp, đừng quá hốt hoảng. Hãy đến khám trực tiếp với bác sĩ chuyên khoa Cơ xương khớp để được đánh giá toàn diện."
-    },
-    "Anti-CCP": {
-      "name": "Anti-CCP",
-      "purpose": "Chẩn đoán bệnh viêm khớp dạng thấp ở giai đoạn rất sớm với độ chính xác và đặc hiệu cao hơn nhiều so với RF.",
-      "when_to_do": "Khi bị đau cứng các khớp nhỏ (ngón tay, cổ tay) vào buổi sáng, sưng đau kéo dài mà xét nghiệm RF âm tính.",
-      "how_it_works": "Tìm kiếm các tự kháng thể kháng lại chuỗi peptide chứa citrulline vòng, loại kháng thể này tấn công trực tiếp vào màng hoạt dịch của khớp.",
-      "result_meaning": "Âm tính: Khả năng cao không mắc bệnh. Dương tính: Gần như chắc chắn bị viêm khớp dạng thấp và bệnh có nguy cơ tiến triển phá hủy sụn khớp rất nặng.",
+      "real_life_example"      const finalPrompt = aiMode === 'predict' 
+        ? `Bạn là chuyên gia chẩn đoán và dự đoán cận lâm sàng ĐẦU NGÀNH. 
+           - Chẩn đoán lâm sàng: ${boxChanDoan} 
+           - Chỉ định xét nghiệm: ${dataInput}.
+           - TỪ ĐIỂN XÉT NGHIỆM THAM CHIẾU (BẮT BUỘC SỬ DỤNG): ${labTests.filter(t => dataInput.toLowerCase().includes(t.name.toLowerCase().substring(0, 5))).map(t => t.name + ": " + (t.concept || t.indication)).join('; ')}
+
+           NHIỆM VỤ: Hãy đối chiếu các chỉ định với Từ điển xét nghiệm để dự đoán xu hướng kết quả và bất thường sinh lý bệnh.
+           YÊU CẦU TRÌNH BÀY (SCIENTIFIC LUXURY CARDS - BẮT BUỘC):
+           Mô phỏng phong cách 'White Card Luxury Edition' với giao diện thẻ trắng cao cấp, sử dụng mã HTML trực tiếp (div, p, b, span, br, class Tailwind). Tuyệt đối không dùng Markdown.
+           
+           1. 🧠 TỔNG QUAN SINH LÝ BỆNH: 
+              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-10 rounded-[45px] border border-blue-100 mb-12 shadow-inner">
+                <h4 class="text-indigo-900 font-black text-4xl mb-6">🧠 TỔNG QUAN SINH LÝ BỆNH</h4>
+                <p class="text-2xl leading-relaxed text-slate-700 font-medium">Giải thích cơ chế y khoa sâu sắc vì sao chẩn đoán này dẫn tới các thay đổi xét nghiệm.</p>
+              </div>
+
+           2. 📊 DỰ ĐOÁN XU HƯỚNG: 
+              <div class="bg-white shadow-[0_40px_100px_rgba(79,70,229,0.1)] border-l-[20px] border-indigo-600 p-12 rounded-[50px] mb-12 relative overflow-hidden">
+                <h4 class="text-indigo-950 font-black text-4xl mb-10 flex items-center gap-4">📊 DỰ ĐOÁN XU HƯỚNG</h4>
+                <div class="space-y-8">
+                  <!-- Sử dụng Card-list thay vì Table -->
+                  <div class="p-8 bg-slate-50 rounded-[40px] border border-slate-100 shadow-sm">
+                    <p class="text-3xl font-black text-slate-800 mb-4">[Tên xét nghiệm]</p>
+                    <p class="text-2xl leading-loose">Dự đoán: <span class="font-serif font-['Times_New_Roman'] text-4xl text-blue-600 font-black px-3 bg-blue-100/50 rounded-xl italic">↑ TĂNG</span> hoặc <span class="font-serif font-['Times_New_Roman'] text-4xl text-rose-600 font-black px-3 bg-rose-100/50 rounded-xl italic">↓ GIẢM</span>. Giải thích cơ chế sắc bén dựa trên chuẩn của Từ điển.</p>
+                  </div>
+                </div>
+              </div>
+
+           3. ⚠️ GIÁ TRỊ TỚI HẠN: 
+              <div class="bg-gradient-to-r from-rose-500 via-rose-600 to-pink-600 p-12 rounded-[50px] mb-12 shadow-2xl animate-pulse text-white border-b-[12px] border-rose-800">
+                <h4 class="font-black text-4xl mb-6 flex items-center gap-4">⚠️ CẢNH BÁO NGUY HIỂM</h4>
+                <p class="text-2xl font-black leading-relaxed">Cảnh báo các ngưỡng báo động đỏ hoặc rủi ro lâm sàng cần can thiệp ngay lập tức.</p>
+              </div>
+
+           4. 💡 KHUYẾN CÁO CÁ THỂ HÓA: 
+              <div class="bg-gradient-to-br from-amber-400 via-yellow-500 to-orange-500 p-12 rounded-[55px] mb-12 shadow-[0_30px_80px_rgba(245,158,11,0.3)] border-t-[10px] border-white/30">
+                <h4 class="text-amber-950 font-black text-4xl mb-6">💡 KHUYẾN CÁO CHIẾN THUẬT</h4>
+                <p class="text-2xl font-black text-amber-900 leading-relaxed italic shadow-sm bg-white/40 p-8 rounded-[40px]">Hướng xử trí và lời khuyên vàng cho bác sĩ điều trị.</p>
+              </div>
+
+           QUY CHUẨN SỐ LIỆU: MỌI chữ số phải được bọc trong <span class="font-serif font-['Times_New_Roman'] font-black">. Font chữ Inter thoáng đạt. Tuyệt đối không dùng CHARTS/TABLES.`
+        : `Bạn là Hội đồng Cố vấn Y khoa Đa chuyên khoa (Luxury Digital Edition). 
+           - Dữ liệu: Tuổi ${patientContext.age || 'Chưa rõ'}, Giới tính ${patientContext.gender || 'Chưa rõ'}, Chẩn đoán ${boxChanDoan}
+           - Kết quả bệnh nhân: ${dataInput}.
+           - TỪ ĐIỂN THAM CHIẾU (CHUẨN): ${labTests.filter(t => dataInput.toLowerCase().includes(t.name.toLowerCase().substring(0, 5))).map(t => t.name + ": [Khoảng tham chiếu: " + (t.ref || "Theo lab") + "]").join('; ')}
+
+           NHIỆM VỤ: Biện luận cực hạn dựa trên khoảng tham chiếu của Từ điển.
+           YÊU CẦU TRÌNH BÀY (SCIENTIFIC LUXURY CARDS - BẮT BUỘC):
+           
+           1. 🎯 ĐÁNH GIÁ TỔNG QUAN: 
+              <div class="bg-gradient-to-br from-blue-50 to-sky-100 p-12 rounded-[50px] border border-blue-200 mb-14 shadow-inner">
+                <h4 class="text-blue-900 font-extrabold text-4xl mb-6">🎯 ĐÁNH GIÁ TỔNG QUAN</h4>
+                <p class="text-2xl font-black text-slate-800 leading-relaxed">Đánh giá sự phù hợp của kết quả với bệnh cảnh lâm sàng hiện tại.</p>
+              </div>
+
+           2. 🔬 BIỆN LUẬN CHỈ SỐ BẤT THƯỜNG: 
+              <div class="bg-white shadow-[0_60px_150px_rgba(30,58,138,0.1)] border-l-[25px] border-indigo-700 p-14 rounded-[55px] mb-14">
+                <h4 class="text-indigo-950 font-black text-4xl mb-12">🔬 PHÂN TÍCH CHỈ SỐ BẤT THƯỜNG</h4>
+                <!-- Sử dụng Card-list linh hoạt, không dùng Table -->
+                <div class="mb-8 p-10 bg-slate-50/80 rounded-[45px] border border-slate-100 hover:bg-white transition-all shadow-sm">
+                   <p class="text-3xl font-black text-indigo-900 mb-4">[Tên chỉ số]</p>
+                   <p class="text-2xl leading-loose">Giá trị: <span class="font-serif font-['Times_New_Roman'] text-red-600 font-black text-5xl bg-red-100 px-4 py-1 rounded-2xl">[giá trị]</span>. Giải thích cơ chế sinh lý bệnh và dược lý lâm sàng so với Từ điển tham chiếu.</p>
+                </div>
+              </div>
+
+           3. ⚠️ CẢNH BÁO NGUY HIỂM: 
+              <div class="bg-gradient-to-tr from-rose-600 to-pink-700 p-12 rounded-[50px] mb-14 shadow-2xl animate-pulse text-white border-r-[15px] border-white/20">
+                <h4 class="font-black text-4xl mb-6">⚠️ CẢNH BÁO NGUY HIỂM</h4>
+                <p class="text-2xl font-black">Các chỉ chỉ số đe dọa tính mạng hoặc cần báo động ngay.</p>
+              </div>
+
+           4. 💡 KHUYẾN CÁO CÁ THỂ HÓA: 
+              <div class="bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 p-14 rounded-[60px] shadow-3xl border-t-[10px] border-white/40">
+                <h4 class="text-amber-950 font-black text-4xl mb-8">💡 ĐỀ XUẤT LÂM SÀNG CÁ THỂ HÓA</h4>
+                <p class="text-2xl font-black text-amber-900 leading-relaxed italic bg-white/50 p-10 rounded-[50px]">Hướng xử trí dứt khoát theo đúng độ tuổi và chuyên khoa.</p>
+              </div>
+
+           QUY CHUẨN: Không Table. Toàn bộ con số bọc trong <span class="font-serif font-['Times_New_Roman'] font-black">. Font Inter cho text.`;�n khớp rất nặng.",
       "real_life_example": "Một phụ nữ trẻ đau khớp cổ tay, test yếu tố dạng thấp (RF) âm tính nhưng Anti-CCP dương tính mạnh, giúp phát hiện bệnh từ rất sớm trước khi khớp bị phá hủy.",
       "note": "Anti-CCP có thể xuất hiện trong máu nhiều năm trước khi bệnh nhân có biểu hiện đau khớp đầu tiên trên lâm sàng.",
       "advanced_knowledge": "Công nghệ xét nghiệm vi dịch (microfluidics) cho phép định lượng chính xác Anti-CCP từ một giọt máu mao mạch, đồng thời thuật toán học máy (Machine Learning) dự đoán xác suất khớp sẽ bị biến dạng trong 5 năm tới.",
@@ -4473,43 +4456,6 @@ export default function App() {
       return;
     }
 
-    // --- TỐI ƯU 2: BỘ NHỚ ĐỆM (LOCAL CACHING) ---
-    const cacheInput = selectedFiles.map(f => f.name + f.data.length).join('|') + aiMode;
-    const cacheKey = `extract_${cacheInput}`;
-    const cachedResponse = sessionStorage.getItem(cacheKey);
-
-    const applyResult = (result: any) => {
-      setPatientContext(prev => ({
-        age: result.tuoi || prev.age,
-        gender: result.gioi_tinh || prev.gender
-      }));
-      setBoxChanDoan(result.chan_doan_icd || result.chan_doan || "");
-      
-      let formattedResults = "";
-      if (Array.isArray(result.ket_qua)) {
-        if (aiMode === 'predict') {
-          formattedResults = result.ket_qua
-            .map((k: any, idx: number) => `${idx + 1}. ${k.ten}`)
-            .join('\n');
-        } else {
-          formattedResults = result.ket_qua
-            .map((k: any) => `${k.ten}: ${k.gia_tri || ''} ${k.don_vi || ''} ${k.danh_gia ? `(${k.danh_gia})` : ''}`.replace(/\s+/g, ' ').trim())
-            .filter(str => str.length > 5)
-            .join('\n');
-        }
-      }
-
-      if (aiMode === 'predict') setBoxChiDinh(formattedResults);
-      else setBoxKetQua(formattedResults);
-    };
-
-    if (cachedResponse) {
-      console.log("🚀 [CACHE HIT] Trích xuất từ bộ nhớ đệm.");
-      applyResult(JSON.parse(cachedResponse));
-      return;
-    }
-    // ------------------------------------------
-
     setIsLoadingExtract(true);
     setAiResult(null);
 
@@ -4535,22 +4481,59 @@ NHIỆM VỤ: ${modeSpecificInstructions}
   ]
 }`;
 
-      // --- TỐI ƯU 1: GỘP CHUYẾN XE (BATCH PROCESSING) ---
       const parts: any[] = [
-        { text: promptText },
-        ...selectedFiles.map(f => ({ inline_data: { mime_type: f.type, data: f.data } }))
+        { text: promptText }
       ];
 
-      // GỌI TRỰC TIẾP GEMINI (Bypass Proxy)
-      const data = await callGeminiDirect('extract', { contents: [{ parts }] });
+      selectedFiles.forEach(f => {
+        parts.push({ inline_data: { mime_type: f.type, data: f.data } });
+      });
+
+      const response = await fetch('/api/gemini', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'extract',
+          payload: { contents: [{ parts }] }
+        })
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Lỗi trích xuất");
 
       const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
       const jsonStr = rawText.replace(/```json|```/g, '').trim();
       const result = JSON.parse(jsonStr);
 
-      // Lưu Cache trước khi áp dụng
-      sessionStorage.setItem(cacheKey, JSON.stringify(result));
-      applyResult(result);
+      // Tự động điền dữ liệu
+      setPatientContext({
+        age: result.tuoi || patientContext.age,
+        gender: result.gioi_tinh || patientContext.gender
+      });
+
+      setBoxChanDoan(result.chan_doan_icd || result.chan_doan || "");
+      
+      let formattedResults = "";
+      if (Array.isArray(result.ket_qua)) {
+        if (aiMode === 'predict') {
+          // Chỉ lấy tên các xét nghiệm chỉ định, loại bỏ null/dư thừa
+          formattedResults = result.ket_qua
+            .map((k: any, idx: number) => `${idx + 1}. ${k.ten}`)
+            .join('\n');
+        } else {
+          // Chế độ biện luận: Lấy đầy đủ thông số
+          formattedResults = result.ket_qua
+            .map((k: any) => `${k.ten}: ${k.gia_tri || ''} ${k.don_vi || ''} ${k.danh_gia ? `(${k.danh_gia})` : ''}`.replace(/\s+/g, ' ').trim())
+            .filter(str => str.length > 5)
+            .join('\n');
+        }
+      }
+
+      if (aiMode === 'predict') {
+        setBoxChiDinh(formattedResults);
+      } else {
+        setBoxKetQua(formattedResults);
+      }
 
     } catch (error: any) {
       console.error("Extract Error:", error);
@@ -4567,82 +4550,81 @@ NHIỆM VỤ: ${modeSpecificInstructions}
       return;
     }
 
-    const dataInput = aiMode === 'predict' ? boxChiDinh : boxKetQua;
-    if (!dataInput) {
-      alert("⚠️ Vui lòng nhập danh sách chỉ định hoặc kết quả xét nghiệm.");
-      return;
-    }
-
-    // --- TỐI ƯU 2: BỘ NHỚ ĐỆM (LOCAL CACHING) ---
-    const cacheKey = `analyze_${aiMode}_${boxChanDoan}_${dataInput}_${patientContext.age}_${patientContext.gender}`;
-    const cachedResult = sessionStorage.getItem(cacheKey);
-
-    if (cachedResult) {
-       console.log("🚀 [CACHE HIT] Biện luận từ bộ nhớ đệm.");
-       setAiResult(cachedResult);
-       // Cuộn xuống kết quả
-       setTimeout(() => {
-         document.getElementById('analysis-result')?.scrollIntoView({ behavior: 'smooth' });
-       }, 100);
-       return;
-    }
-    // ------------------------------------------
-
     setIsLoadingAnalyze(true);
     setAiResult(null);
 
     try {
+      const dataInput = aiMode === 'predict' ? boxChiDinh : boxKetQua;
+      if (!dataInput) {
+        alert("⚠️ Vui lòng nhập danh sách chỉ định hoặc kết quả xét nghiệm.");
+        setIsLoadingAnalyze(false);
+        return;
+      }
+
       const finalPrompt = aiMode === 'predict' 
-        ? `Bạn là chuyên gia chẩn đoán và dự đoán cận lâm sàng cấp cao. 
+        ? `Bạn là chuyên gia chẩn đoán và dự đoán cận lâm sàng. 
            - Chẩn đoán lâm sàng: ${boxChanDoan} 
            - Chỉ định xét nghiệm: ${dataInput}.
-           - TỪ ĐIỂN XÉT NGHIỆM THAM CHIẾU: ${labTests.filter(t => dataInput.toLowerCase().includes(t.name.toLowerCase().substring(0, 5))).map(t => t.name + ": " + (t.concept || t.indication)).join('; ')}
+           - TỪ ĐIỂN XÉT NGHIỆM THAM CHIẾU (BẮT BUỘC SỬ DỤNG): ${labTests.filter(t => dataInput.toLowerCase().includes(t.name.toLowerCase().substring(0, 5))).map(t => t.name + ": " + (t.concept || t.indication)).join('; ')}
 
-           NHIỆM VỤ: Hãy đối chiếu các chỉ định với Từ điển xét nghiệm để dự đoán xu hướng kết quả với giao diện LỘNG LẪY, TRỰC QUAN NHẤT.
-           
-           YÊU CẦU TRÌNH BÀY (SCIENTIFIC LUXURY CARDS):
-           1. KHỐI 1: TỔNG QUAN SINH LÝ BỆNH: <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-10 rounded-[50px] border-2 border-blue-100 mb-12 shadow-inner"><h4 class="text-indigo-900 font-black text-3xl mb-6">🧠 TỔNG QUAN SINH LÝ</h4><p class="text-2xl leading-relaxed text-indigo-950/80">Giải giải thích cơ chế vì sao chẩn đoán này dẫn tới các thay đổi xét nghiệm.</p></div>
-           2. KHỐI 2: DỰ ĐOÁN XU HƯỚNG: <div class="bg-white p-10 rounded-[50px] border-l-[16px] border-indigo-600 shadow-[0_30px_100px_rgba(0,0,0,0.08)] mb-12"><h4 class="text-indigo-900 font-black text-3xl mb-8">📊 DỰ ĐOÁN XU HƯỚNG</h4><ul class="space-y-6 text-2xl">Liệt kê từng chỉ số, dự đoán Tăng/Giảm sắc bén.</ul></div>
-           3. KHỐI 3: CẢNH BÁO TỚI HẠN: <div class="bg-rose-50 p-10 rounded-[50px] border-2 border-rose-100 mb-12"><h4 class="text-rose-900 font-black text-3xl mb-6 text-center uppercase tracking-widest">⚠️ CẢNH BÁO NGUY HIỂM</h4><p class="text-2xl">Các rủi ro cần báo động ngay.</p></div>
-           4. KHỐI 4: LỜI KHUYÊN VÀNG: <div class="bg-amber-50 p-10 rounded-[50px] border-2 border-amber-200 mb-12 shadow-lg"><h4 class="text-amber-900 font-black text-3xl mb-6">💡 KHUYẾN CÁO CHIẾN THUẬT</h4><p class="text-2xl">Hướng dẫn bác sĩ điều trị.</p></div>
-           
-           QUY ĐỊNH SỐ LIỆU: Mọi con số bọc trong <span class="font-serif font-bold text-3xl text-indigo-700 bg-indigo-50 px-2 rounded-lg mx-1">. Trả về HTML tinh khiết, không Markdown.`
-        : `Bạn là Hội đồng Cố vấn Y khoa Đa chuyên khoa (Senior Medical Board). 
+           NHIỆM VỤ: Hãy đối chiếu các chỉ định với Từ điển xét nghiệm để dự đoán xu hướng kết quả và bất thường sinh lý bệnh.
+           YÊU CẦU TRÌNH BÀY (BẮT BUỘC):
+           Mô phỏng phong cách 'Từ điển xét nghiệm' với giao diện 'Thẻ Khoa Học' (Scientific Cards):
+           1. SỬ DỤNG MÃ HTML TRỰC TIẾP (div, p, b, span, br, class Tailwind). Tuyệt đối không dùng Markdown.
+           2. CẤU TRÚC GỒM 4 KHỐI CHÍNH (Mobile-first, responsive tuyệt đối):
+              - KHỐI 1: TỔNG QUAN SINH LÝ BỆNH (Dùng class: bg-blue-50/50 p-6 rounded-3xl shadow-md mb-6). Bắt đầu bằng Icon 🧠 và Tiêu đề Indigo (text-indigo-900 font-bold). Giải thích cơ chế vì sao chẩn đoán này dẫn tới các thay đổi xét nghiệm.
+              - KHỐI 2: DỰ ĐOÁN XU HƯỚNG (Dùng class: bg-white shadow-xl border-l-4 border-indigo-600 p-6 mb-6). Bắt đầu bằng Icon 📊. Liệt kê từng chỉ số bằng danh sách, dự đoán Tăng/Giảm sắc bén dựa trên chuẩn của Từ điển.
+              - KHỐI 3: CẢNH BÁO TỚI HẠN (Dùng class: bg-red-50/50 p-6 rounded-3xl mb-6). Bắt đầu bằng Icon ⚠️ và Tiêu đề Đỏ (text-red-900). Các rủi ro cần báo động ngay cho lâm sàng.
+              - KHỐI 4: LỜI KHUYÊN (Dùng class: bg-amber-50/50 p-6 rounded-3xl mb-6). Bắt đầu bằng Icon 💡 và Tiêu đề Vàng (text-amber-900). Lời khuyên vàng cho bác sĩ điều trị.
+           3. QUY CHUẨN SỐ LIỆU: Bọc tất cả các chữ số dự đoán trong thẻ <span class="font-serif font-['Times_New_Roman'] text-lg">. Đảm bảo padding/gap hợp lý để số liệu không chồng chéo.
+           4. KHÔNG SỬ DỤNG Markdown. Trả về HTML tinh khiết.`
+        : `Bạn là Hội đồng Cố vấn Y khoa Đa chuyên khoa. 
            - Dữ liệu bệnh nhân: Tuổi ${patientContext.age || 'Chưa rõ'}, Giới tính ${patientContext.gender || 'Chưa rõ'}, Chẩn đoán ${boxChanDoan}
            - Kết quả thực tế: ${dataInput}.
-           - THAM CHIẾU CHUẨN: ${labTests.filter(t => dataInput.toLowerCase().includes(t.name.toLowerCase().substring(0, 5))).map(t => t.name + ": " + (t.concept || t.indication) + " [Ref: " + (t.ref || "Lab Std") + "]").join('; ')}
+           - TỪ ĐIỂN XÉT NGHIỆM THAM CHIẾU (BẮT BUỘC SỬ DỤNG LÀM CHUẨN): ${labTests.filter(t => dataInput.toLowerCase().includes(t.name.toLowerCase().substring(0, 5))).map(t => t.name + ": " + (t.concept || t.indication) + " [Tham chiếu: " + (t.ref || "Theo lab") + "]").join('; ')}
 
-           NHIỆM VỤ: Biện luận chuyên sâu bằng cách đối chiếu Kết quả với Tham chiếu để xác định mức độ Tăng/Giảm. Trình bày LỘNG LẪY, TRỰC QUAN BẬC NHẤT.
+           NHIỆM VỤ: 
+           Tuyệt đối sử dụng khoảng tham chiếu từ Từ điển trên để đối chiếu với Kết quả bệnh nhân nhằm xác định chính xác mức độ Tăng/Giảm. Sau đó, tiến hành biện luận đa chuyên khoa.
 
-           YÊU CẦU TRÌNH BÀY (SCIENTIFIC LUXURY CARDS):
-           1. KHỐI 1: 🎯 PHÙ HỢP LÂM SÀNG: <div class="bg-gradient-to-r from-cyan-50 to-blue-50 p-12 rounded-[60px] border-2 border-cyan-100 mb-14 shadow-xl"><h4 class="text-cyan-900 font-black text-4xl mb-8">🎯 ĐÁNH GIÁ TỔNG QUAN</h4><p class="text-3xl leading-loose">Sự phù hợp của kết quả với bệnh cảnh lâm sàng.</p></div>
-           2. KHỐI 2: 🔬 BIỆN LUẬN SINH LÝ: <div class="bg-white p-12 rounded-[60px] border-t-[20px] border-indigo-700 shadow-[0_50px_150px_rgba(0,0,0,0.1)] mb-14"><h4 class="text-indigo-950 font-black text-4xl mb-10 text-center uppercase">🔬 BIỆN LUẬN CHỈ SỐ BẤT THƯỜNG</h4><ul class="space-y-10 text-3xl">Giải thích cơ chế sinh lý bệnh và dược lý lâm sàng dựa trên số liệu thực.</ul></div>
-           3. KHỐI 3: ⚠️ CẢNH BÁO NGUY CẤP: <div class="bg-gradient-to-br from-red-50 to-rose-50 p-12 rounded-[60px] border-4 border-red-200 mb-14 animate-pulse"><h4 class="text-red-900 font-black text-5xl mb-8 text-center uppercase tracking-tighter">⚠️ CHỈ SỐ NGUY KỊCH</h4><p class="text-3xl font-bold">Cảnh báo các mức độ nguy hiểm cực hạn.</p></div>
-           4. KHỐI 4: 💡 PHÁC ĐỒ TƯ VẤN: <div class="bg-amber-50 p-12 rounded-[60px] border-2 border-amber-200 mb-14 shadow-2xl"><h4 class="text-amber-900 font-black text-4xl mb-8 italic">💡 KHUYẾN CÁO CÁ THỂ HÓA</h4><p class="text-3xl">Hướng xử trí chuẩn chuyên khoa.</p></div>
-
-           QUY ĐỊNH SỐ LIỆU: Trích dẫn giá trị thật vào câu. Bọc số trong <span class="font-serif font-black text-4xl text-red-700 bg-yellow-50 px-3 rounded-xl mx-2 shadow-sm"> (nếu nguy hiểm) hoặc text-amber-600.
-           KHÔNG DÙNG BẢNG. KHÔNG DÙNG Markdown. Trả về HTML tinh khiết.`;
+           YÊU CẦU TRÌNH BÀY (BẮT BUỘC):
+           Mô phỏng giao diện 'Thẻ Khoa Học' (Scientific Cards):
+           1. SỬ DỤNG MÃ HTML TRỰC TIẾP (div, p, b, span, br, class Tailwind). Tuyệt đối không dùng Markdown và KHÔNG SỬ DỤNG BẢNG (Table).
+           2. CẤU TRÚC GỒM 4 KHỐI CHÍNH:
+              - KHỐI 1: ĐÁNH GIÁ TỔNG QUAN (Dùng class: bg-blue-50/50 p-6 rounded-3xl shadow-md mb-6). Icon 🎯. Sự phù hợp của kết quả với bệnh cảnh.
+              - KHỐI 2: BIỆN LUẬN CHỈ SỐ BẤT THƯỜNG (Dùng class: bg-white shadow-xl border-t-4 border-indigo-600 p-6 mb-6). Icon 🔬. Liệt kê các chỉ số bất thường dưới dạng danh sách (ul/li). Giải thích cơ chế sinh lý bệnh và dược lý lâm sàng.
+              - KHỐI 3: CẢNH BÁO NGUY HIỂM (Dùng class: bg-red-50/50 p-6 rounded-3xl mb-6). Icon ⚠️.
+              - KHỐI 4: KHUYẾN CÁO CÁ THỂ HÓA (Dùng class: bg-amber-50/50 p-6 rounded-3xl mb-6). Icon 💡. Hướng xử trí theo đúng độ tuổi và chuyên khoa.
+           3. QUY CHUẨN SỐ LIỆU: Bắt buộc trích dẫn lại giá trị kết quả vào câu biện luận. Mọi chữ số phải được bọc bằng <span class="font-serif font-['Times_New_Roman'] text-red-600 font-bold"> (nếu nguy hiểm) hoặc <span class="font-serif font-['Times_New_Roman'] text-amber-600 font-bold"> (nếu bất thường). Trình bày rộng rãi, dứt khoát không để đè chữ.
+           4. DANH PHÁP MÁU: KTCPOOL hoặc KTCKIT. Không viết tắt là TC.
+           5. KHÔNG DÙNG Markdown. Trả về HTML tinh khiết.`;
 
       const parts: any[] = [{ text: finalPrompt }];
       selectedFiles.forEach(f => {
         parts.push({ inline_data: { mime_type: f.type, data: f.data } });
       });
 
-      // GỌI TRỰC TIẾP GEMINI (Bypass Proxy)
-      const data = await callGeminiDirect(aiMode === 'predict' ? 'analyze' : 'reason', { contents: [{ parts }] });
+      const response = await fetch('/api/gemini', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: aiMode === 'predict' ? 'analyze' : 'reason',
+          payload: { contents: [{ parts }] }
+        })
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Lỗi AI");
 
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
       if (text) {
-        const cleanedText = text.replace(/```html|```/g, '').trim();
-        sessionStorage.setItem(cacheKey, cleanedText);
-        setAiResult(cleanedText);
+        setAiResult(text.replace(/```html|```/g, '').trim());
         setTimeout(() => {
           document.getElementById('analysis-result')?.scrollIntoView({ behavior: 'smooth' });
         }, 300);
       }
     } catch (error: any) {
       console.error("Analysis Error:", error);
-      alert(`[PHÂN TÍCH THẤT BẠI] ${error.message}`);
+      alert(`[AI ERROR] ${error.message}`);
     } finally {
       setIsLoadingAnalyze(false);
     }
@@ -6048,69 +6030,61 @@ NHIỆM VỤ: ${modeSpecificInstructions}
                       </div>
 
                       {/* Result Display Section */}
-                      {/* Result Display Section: White Card Luxury Scientific Pro */}
+                      {/* Result Display Section: White Card Scientific Pro */}
                       <AnimatePresence mode="wait">
                         {aiResult && !isLoadingAnalyze && (
                           <motion.div
                             id="analysis-result"
-                            initial={{ opacity: 0, scale: 0.9, y: 100 }}
+                            initial={{ opacity: 0, scale: 0.95, y: 40 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.9 }}
-                            transition={{ type: "spring", damping: 30, stiffness: 150 }}
-                            className="mt-28 rounded-[80px] overflow-hidden shadow-[0_80px_200px_rgba(0,0,0,0.12)] border-[20px] border-white/80 bg-white relative group"
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                            className="mt-24 rounded-[60px] overflow-hidden shadow-[0_50px_200px_rgba(0,0,0,0.1)] border-[1px] border-sky-100 bg-white relative group"
                           >
-                             {/* Ultra-Premium Gradient Border Background */}
-                             <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-400 via-indigo-500 to-purple-600 opacity-[0.08]"></div>
-                             <div className="absolute inset-0 p-[2px] rounded-[80px] bg-gradient-to-tr from-blue-500 via-purple-500 to-rose-400 -z-10 opacity-30 pointer-events-none group-hover:opacity-50 transition-opacity duration-1000"></div>
+                             {/* Gradient Border Accent Overlay */}
+                             <div className="absolute inset-0 p-[2px] rounded-[60px] bg-gradient-to-tr from-blue-500 via-purple-500 to-indigo-500 -z-10 opacity-20 pointer-events-none group-hover:opacity-30 transition-opacity"></div>
                              
-                             <div className="p-12 sm:p-24 relative z-10">
-                                {/* Header: Splendid Medical Report Style */}
-                                <div className="flex flex-col md:flex-row items-center gap-14 mb-24 border-b-2 border-sky-50 pb-20">
-                                  <div className="relative group/icon">
-                                    <div className="absolute inset-0 bg-blue-500 blur-3xl opacity-20 group-hover/icon:opacity-40 transition-opacity"></div>
-                                    <div className="w-36 h-36 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-700 rounded-[50px] flex items-center justify-center shadow-[0_30px_60px_rgba(37,99,235,0.4)] rotate-6 group-hover/icon:rotate-0 transition-all duration-1000 relative z-10">
-                                      <Activity className="w-18 h-18 text-white animate-pulse" />
-                                    </div>
+                             <div className="p-10 sm:p-20 relative z-10">
+                                <div className="flex flex-col md:flex-row items-center gap-12 mb-20 border-b-2 border-sky-50 pb-16">
+                                  <div className="w-32 h-32 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-[45px] flex items-center justify-center shadow-2xl shadow-blue-500/40 rotate-6 hover:rotate-0 transition-all duration-700">
+                                    <Activity className="w-16 h-16 text-white animate-pulse" />
                                   </div>
-                                  
                                   <div className="text-center md:text-left">
-                                    <div className="flex flex-wrap items-center gap-5 mb-6 justify-center md:justify-start">
-                                      <span className="px-6 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[12px] font-black rounded-full uppercase tracking-[0.3em] shadow-lg shadow-blue-500/30">Scientific Report</span>
-                                      <span className="px-6 py-2 bg-white text-sky-600 text-[12px] font-black rounded-full uppercase tracking-[0.3em] border border-sky-100 shadow-sm">AI Diagnosis v5.0</span>
+                                    <div className="flex flex-wrap items-center gap-4 mb-4 justify-center md:justify-start">
+                                      <span className="px-5 py-2 bg-blue-50 text-blue-700 text-[10px] font-black rounded-full uppercase tracking-[0.2em] border border-blue-100">Scientific Report</span>
+                                      <span className="px-5 py-2 bg-sky-50 text-sky-600 text-[10px] font-black rounded-full uppercase tracking-[0.2em] border border-sky-100">AI Verified v4.0</span>
                                     </div>
-                                    <h3 className="text-5xl sm:text-8xl font-black text-sky-950 tracking-tighter uppercase leading-none mb-4">Kết Quả Biện Luận</h3>
-                                    <p className="text-sky-900/40 text-xl font-bold tracking-widest uppercase">Phân tích đa chuyên khoa chuẩn hóa lâm sàng</p>
+                                    <h3 className="text-4xl sm:text-7xl font-black text-sky-950 tracking-tighter uppercase leading-none">Biện luận Khoa học</h3>
                                   </div>
                                 </div>
 
-                                {/* Main Content with Scientific Spacing */}
                                 <div 
-                                  className="prose prose-slate max-w-none text-sky-900/90 text-2xl md:text-4xl leading-[1.8] space-y-16"
+                                  className="prose prose-slate max-w-none text-sky-900/90 text-xl md:text-3xl leading-[1.8] space-y-12"
                                   style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
                                   dangerouslySetInnerHTML={{ __html: aiResult }} 
                                 />
                                 
-                                {/* Legal Policy Luxury Frame (The Dark Side) */}
-                                <div className="mt-32 p-16 sm:p-20 bg-slate-900 rounded-[70px] shadow-3xl text-white relative overflow-hidden group/legal">
-                                   <div className="absolute top-0 right-0 p-12 opacity-5 scale-150 pointer-events-none group-hover/legal:rotate-12 transition-transform duration-1000">
-                                      <ShieldAlert size={400} />
+                                {/* Legal Policy Luxury Frame (Dark) */}
+                                <div className="mt-28 p-16 bg-slate-900 rounded-[55px] shadow-3xl text-white relative overflow-hidden group/legal">
+                                   <div className="absolute top-0 right-0 p-12 opacity-5 scale-150 pointer-events-none group-hover/legal:scale-175 transition-transform duration-1000">
+                                      <ShieldAlert size={280} />
                                    </div>
-                                   <div className="flex flex-col md:flex-row items-center md:items-start gap-16 relative z-10">
-                                      <div className="w-28 h-28 bg-gradient-to-br from-red-500 to-rose-700 rounded-[40px] flex items-center justify-center shrink-0 shadow-2xl shadow-red-500/50">
-                                         <AlertCircle className="w-14 h-14 text-white" />
+                                   <div className="flex flex-col md:flex-row items-center md:items-start gap-12 relative z-10">
+                                      <div className="w-24 h-24 bg-red-500 rounded-3xl flex items-center justify-center shrink-0 shadow-2xl shadow-red-500/50">
+                                         <AlertCircle className="w-12 h-12 text-white" />
                                       </div>
                                       <div className="flex-1">
-                                         <h4 className="font-black text-4xl mb-6 uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">Cam kết Trách nhiệm Lâm sàng</h4>
-                                         <p className="text-slate-400 font-bold text-xl md:text-3xl italic leading-relaxed break-words whitespace-normal">
-                                            Mọi phân tích từ hệ thống AI chỉ mang tính chất tham khảo học thuật. Kết quả cuối cùng phải được đối chứng, kiểm tra và ký duyệt bởi Bác sĩ lâm sàng trực tiếp điều trị.
+                                         <h4 className="font-black text-3xl mb-5 uppercase tracking-tighter text-white">Cam kết Trách nhiệm Chuyên môn</h4>
+                                         <p className="text-slate-400 font-bold text-lg md:text-2xl italic leading-relaxed break-words whitespace-normal text-slate-300">
+                                            Mọi phân tích từ AI được hỗ trợ bởi Gemini v2.5 Flash chỉ mang tính chất tham khảo, tư vấn học thuật. Kết quả cuối cùng phải được đối chứng bởi Bác sĩ lâm sàng dựa trên nền tảng thăm khám thực tế.
                                          </p>
                                       </div>
                                    </div>
                                 </div>
                              </div>
                              
-                             {/* Bottom Visual Signature Bar */}
-                             <div className="h-10 w-full bg-gradient-to-r from-blue-600 via-purple-600 to-rose-500"></div>
+                             {/* Bottom Visual Bar (Indigo Gradient) */}
+                             <div className="h-6 w-full bg-gradient-to-r from-blue-600 via-purple-500 to-indigo-600"></div>
                           </motion.div>
                         )}
                       </AnimatePresence>
