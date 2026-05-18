@@ -4094,18 +4094,32 @@ const Header = ({
   setActiveTab: (t: string) => void
 }) => {
   return (
-    <nav className="sticky top-0 z-50 glass px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
-      <div className="flex items-center gap-2 sm:gap-3">
-        <div className="bg-blue-600 p-1.5 sm:p-2 rounded-lg sm:rounded-xl">
-          <Microscope className="text-white w-5 h-5 sm:w-6 h-6" />
+    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md px-4 sm:px-8 py-4 sm:py-6 flex items-center justify-between border-b border-slate-100 shadow-sm transition-all duration-300">
+      <div className="flex items-center gap-4 sm:gap-6 group">
+        {/* Hospital Logo - Using direct image link from postimg */}
+        <div className="relative w-16 h-16 sm:w-24 sm:h-24 flex-shrink-0">
+          <img 
+            src="https://i.postimg.cc/7bphHPNJ/hospital-logo.png" 
+            alt="Bệnh viện Đa khoa Cà Mau Logo" 
+            className="w-full h-full object-contain"
+          />
         </div>
-        <div>
-          <h1 className="fluid-title font-bold tracking-tight text-blue-900 leading-none">KHOA XÉT NGHIỆM</h1>
-          <p className="text-[10px] sm:text-xs uppercase font-semibold text-blue-600 tracking-[0.1em] sm:tracking-widest mt-0.5 sm:mt-1">BVĐK CÀ MAU</p>
+
+        <div className="flex flex-col">
+          <h1 className="text-[10px] sm:text-base md:text-lg font-black tracking-tighter text-[#225797] leading-[0.9] uppercase">
+            BỆNH VIỆN ĐA KHOA CÀ MAU
+          </h1>
+          <div className="flex items-center gap-2 sm:gap-3 mt-0.5 sm:mt-1.5">
+            <div className="h-[1px] sm:h-[1.5px] flex-1 bg-[#225797]/20" />
+            <span className="text-[7px] sm:text-xs md:text-sm font-black text-[#225797]/90 uppercase tracking-[0.05em] sm:tracking-[0.1em] whitespace-nowrap">
+              KHOA XÉT NGHIỆM
+            </span>
+            <div className="h-[1px] sm:h-[1.5px] flex-1 bg-[#225797]/20" />
+          </div>
         </div>
       </div>
       
-      <div className="flex items-center gap-4 sm:gap-6 md:gap-12 text-sm sm:text-lg md:text-xl font-black uppercase tracking-tight text-slate-500">
+      <div className="flex items-center gap-4 sm:gap-8 md:gap-14 text-sm sm:text-xl md:text-2xl font-black uppercase tracking-tight text-slate-500">
         <button 
           onClick={() => setActiveTab('patients')}
           className={`transition-all pb-1 sm:pb-2 border-b-2 sm:border-b-4 ${activeTab === 'patients' ? 'text-blue-700 border-blue-700 scale-105 md:scale-110' : 'border-transparent hover:text-blue-600 cursor-pointer'}`}
@@ -4610,9 +4624,12 @@ NHIỆM VỤ: ${modeSpecificInstructions}
             
             {/* Subtle logo silhouette container */}
             <div className="absolute inset-0 flex items-center justify-center p-20">
-               {/* Note: User can replace this with an <img> tag pointing to the uploaded logo if available */}
-               <div className="w-full h-full border-[1.5px] border-blue-600/20 rounded-full flex items-center justify-center border-dashed animate-spin-slow">
-                  <Microscope className="w-32 h-32 text-blue-600/20" />
+               <div className="w-full h-full border-[1.5px] border-blue-600/5 rounded-full flex items-center justify-center border-dashed animate-spin-slow">
+                  <img 
+                    src="https://i.postimg.cc/7bphHPNJ/hospital-logo.png" 
+                    alt="" 
+                    className="w-64 h-64 grayscale opacity-[0.03] select-none pointer-events-none"
+                  />
                </div>
             </div>
          </div>
@@ -6035,9 +6052,15 @@ NHIỆM VỤ: ${modeSpecificInstructions}
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div>
-              <div className="flex items-center gap-2 mb-6">
-                <Microscope className="text-blue-600 w-8 h-8" />
-                <span className="text-xl font-bold dark:text-white uppercase tracking-tight">KHOA XÉT NGHIỆM</span>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 flex-shrink-0">
+                  <img 
+                    src="https://i.postimg.cc/7bphHPNJ/hospital-logo.png" 
+                    alt="Bệnh viện Đa khoa Cà Mau Logo" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <span className="text-xl font-black dark:text-white uppercase tracking-tight text-[#225797]">KHOA XÉT NGHIỆM</span>
               </div>
               <p className="text-slate-600 dark:text-slate-400 mb-6 font-bold leading-relaxed text-lg">
                 Đơn vị xét nghiệm đạt chuẩn ISO 15189:2022.
